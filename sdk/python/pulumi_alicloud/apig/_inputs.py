@@ -25,6 +25,8 @@ __all__ = [
     'GatewayVpcArgsDict',
     'GatewayVswitchArgs',
     'GatewayVswitchArgsDict',
+    'GatewayZoneArgs',
+    'GatewayZoneArgsDict',
     'GatewayZoneConfigArgs',
     'GatewayZoneConfigArgsDict',
 ]
@@ -135,7 +137,7 @@ if not MYPY:
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the VPC gateway.
+        The zone name.
         """
 elif False:
     GatewayVpcArgsDict: TypeAlias = Mapping[str, Any]
@@ -147,7 +149,7 @@ class GatewayVpcArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_id: The VPC network ID.
-        :param pulumi.Input[_builtins.str] name: The name of the VPC gateway.
+        :param pulumi.Input[_builtins.str] name: The zone name.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if name is not None:
@@ -169,7 +171,7 @@ class GatewayVpcArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the VPC gateway.
+        The zone name.
         """
         return pulumi.get(self, "name")
 
@@ -182,7 +184,7 @@ if not MYPY:
     class GatewayVswitchArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the VPC gateway.
+        The zone name.
         """
         vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -197,7 +199,7 @@ class GatewayVswitchArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: The name of the VPC gateway.
+        :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
         """
         if name is not None:
@@ -209,7 +211,7 @@ class GatewayVswitchArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the VPC gateway.
+        The zone name.
         """
         return pulumi.get(self, "name")
 
@@ -228,6 +230,78 @@ class GatewayVswitchArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+if not MYPY:
+    class GatewayZoneArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The zone name.
+        """
+        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The vswitch ID.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The zone ID.
+        """
+elif False:
+    GatewayZoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GatewayZoneArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The zone name.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vswitch ID.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The zone name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The vswitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 if not MYPY:

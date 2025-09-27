@@ -34,6 +34,14 @@ namespace Pulumi.AliCloud.Apig
         public Output<string?> GatewayName { get; private set; } = null!;
 
         /// <summary>
+        /// Describes the gateway type, which is categorized into the following two types:
+        /// - API: indicates an API gateway
+        /// - AI: Indicates an AI gateway
+        /// </summary>
+        [Output("gatewayType")]
+        public Output<string> GatewayType { get; private set; } = null!;
+
+        /// <summary>
         /// Log Configuration See `log_config` below.
         /// </summary>
         [Output("logConfig")]
@@ -93,6 +101,12 @@ namespace Pulumi.AliCloud.Apig
         [Output("zoneConfig")]
         public Output<Outputs.GatewayZoneConfig> ZoneConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The List of zones associated with the Gateway. See `zones` below.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<Outputs.GatewayZone>> Zones { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Gateway resource with the given unique name, arguments, and options.
@@ -144,6 +158,14 @@ namespace Pulumi.AliCloud.Apig
         /// </summary>
         [Input("gatewayName")]
         public Input<string>? GatewayName { get; set; }
+
+        /// <summary>
+        /// Describes the gateway type, which is categorized into the following two types:
+        /// - API: indicates an API gateway
+        /// - AI: Indicates an AI gateway
+        /// </summary>
+        [Input("gatewayType")]
+        public Input<string>? GatewayType { get; set; }
 
         /// <summary>
         /// Log Configuration See `log_config` below.
@@ -205,6 +227,18 @@ namespace Pulumi.AliCloud.Apig
         [Input("zoneConfig", required: true)]
         public Input<Inputs.GatewayZoneConfigArgs> ZoneConfig { get; set; } = null!;
 
+        [Input("zones")]
+        private InputList<Inputs.GatewayZoneArgs>? _zones;
+
+        /// <summary>
+        /// The List of zones associated with the Gateway. See `zones` below.
+        /// </summary>
+        public InputList<Inputs.GatewayZoneArgs> Zones
+        {
+            get => _zones ?? (_zones = new InputList<Inputs.GatewayZoneArgs>());
+            set => _zones = value;
+        }
+
         public GatewayArgs()
         {
         }
@@ -224,6 +258,14 @@ namespace Pulumi.AliCloud.Apig
         /// </summary>
         [Input("gatewayName")]
         public Input<string>? GatewayName { get; set; }
+
+        /// <summary>
+        /// Describes the gateway type, which is categorized into the following two types:
+        /// - API: indicates an API gateway
+        /// - AI: Indicates an AI gateway
+        /// </summary>
+        [Input("gatewayType")]
+        public Input<string>? GatewayType { get; set; }
 
         /// <summary>
         /// Log Configuration See `log_config` below.
@@ -290,6 +332,18 @@ namespace Pulumi.AliCloud.Apig
         /// </summary>
         [Input("zoneConfig")]
         public Input<Inputs.GatewayZoneConfigGetArgs>? ZoneConfig { get; set; }
+
+        [Input("zones")]
+        private InputList<Inputs.GatewayZoneGetArgs>? _zones;
+
+        /// <summary>
+        /// The List of zones associated with the Gateway. See `zones` below.
+        /// </summary>
+        public InputList<Inputs.GatewayZoneGetArgs> Zones
+        {
+            get => _zones ?? (_zones = new InputList<Inputs.GatewayZoneGetArgs>());
+            set => _zones = value;
+        }
 
         public GatewayState()
         {

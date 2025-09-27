@@ -19,131 +19,65 @@ __all__ = ['ServiceCertificateArgs', 'ServiceCertificate']
 @pulumi.input_type
 class ServiceCertificateArgs:
     def __init__(__self__, *,
-                 cert: pulumi.Input[_builtins.str],
-                 key: pulumi.Input[_builtins.str],
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        The set of arguments for constructing a ServiceCertificate resource.
-        :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-               **NOTE:** One of `certificate_name` and `name` must be specified.
-        :param pulumi.Input[_builtins.str] lang: The lang.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
-        """
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
-        if certificate_name is not None:
-            pulumi.set(__self__, "certificate_name", certificate_name)
-        if lang is not None:
-            pulumi.set(__self__, "lang", lang)
-        if name is not None:
-            warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter
-    def cert(self) -> pulumi.Input[_builtins.str]:
-        """
-        Cert of the Certificate in which the Certificate will add.
-        """
-        return pulumi.get(self, "cert")
-
-    @cert.setter
-    def cert(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "cert", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Key of the Certificate in which the Certificate will add.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="certificateName")
-    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-        **NOTE:** One of `certificate_name` and `name` must be specified.
-        """
-        return pulumi.get(self, "certificate_name")
-
-    @certificate_name.setter
-    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "certificate_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The lang.
-        """
-        return pulumi.get(self, "lang")
-
-    @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "lang", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        It has been deprecated from version 1.129.0 and using `certificate_name` instead.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class _ServiceCertificateState:
-    def __init__(__self__, *,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
-        Input properties used for looking up and filtering ServiceCertificate resources.
-        :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-               **NOTE:** One of `certificate_name` and `name` must be specified.
-        :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] lang: The lang.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        The set of arguments for constructing a ServiceCertificate resource.
+        :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] sign_cert: The content of an SM signing certificate in PEM format.
+        :param pulumi.Input[_builtins.str] sign_private_key: The private key of an SM signing certificate in PEM format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
         if certificate_name is not None:
             pulumi.set(__self__, "certificate_name", certificate_name)
+        if encrypt_cert is not None:
+            pulumi.set(__self__, "encrypt_cert", encrypt_cert)
+        if encrypt_private_key is not None:
+            pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if lang is not None:
+            warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
+        if lang is not None:
             pulumi.set(__self__, "lang", lang)
         if name is not None:
-            warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sign_cert is not None:
+            pulumi.set(__self__, "sign_cert", sign_cert)
+        if sign_private_key is not None:
+            pulumi.set(__self__, "sign_private_key", sign_private_key)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cert of the Certificate in which the Certificate will add.
+        The content of a non-SM certificate in PEM format.
         """
         return pulumi.get(self, "cert")
 
@@ -155,8 +89,7 @@ class _ServiceCertificateState:
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-        **NOTE:** One of `certificate_name` and `name` must be specified.
+        A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         """
         return pulumi.get(self, "certificate_name")
 
@@ -165,10 +98,34 @@ class _ServiceCertificateState:
         pulumi.set(self, "certificate_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptCert")
+    def encrypt_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content of an SM encryption certificate in PEM format.
+        """
+        return pulumi.get(self, "encrypt_cert")
+
+    @encrypt_cert.setter
+    def encrypt_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptPrivateKey")
+    def encrypt_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private key of an SM encryption certificate in PEM format.
+        """
+        return pulumi.get(self, "encrypt_private_key")
+
+    @encrypt_private_key.setter
+    def encrypt_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_private_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Key of the Certificate in which the Certificate will add.
+        The private key of a non-SM certificate in PEM format.
         """
         return pulumi.get(self, "key")
 
@@ -178,9 +135,10 @@ class _ServiceCertificateState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
     def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The lang.
+        Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         """
         return pulumi.get(self, "lang")
 
@@ -190,16 +148,256 @@ class _ServiceCertificateState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signCert")
+    def sign_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content of an SM signing certificate in PEM format.
+        """
+        return pulumi.get(self, "sign_cert")
+
+    @sign_cert.setter
+    def sign_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signPrivateKey")
+    def sign_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private key of an SM signing certificate in PEM format.
+        """
+        return pulumi.get(self, "sign_private_key")
+
+    @sign_private_key.setter
+    def sign_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _ServiceCertificateState:
+    def __init__(__self__, *,
+                 cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        Input properties used for looking up and filtering ServiceCertificate resources.
+        :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] sign_cert: The content of an SM signing certificate in PEM format.
+        :param pulumi.Input[_builtins.str] sign_private_key: The private key of an SM signing certificate in PEM format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        """
+        if cert is not None:
+            pulumi.set(__self__, "cert", cert)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if encrypt_cert is not None:
+            pulumi.set(__self__, "encrypt_cert", encrypt_cert)
+        if encrypt_private_key is not None:
+            pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if lang is not None:
+            warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sign_cert is not None:
+            pulumi.set(__self__, "sign_cert", sign_cert)
+        if sign_private_key is not None:
+            pulumi.set(__self__, "sign_private_key", sign_private_key)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content of a non-SM certificate in PEM format.
+        """
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptCert")
+    def encrypt_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content of an SM encryption certificate in PEM format.
+        """
+        return pulumi.get(self, "encrypt_cert")
+
+    @encrypt_cert.setter
+    def encrypt_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptPrivateKey")
+    def encrypt_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private key of an SM encryption certificate in PEM format.
+        """
+        return pulumi.get(self, "encrypt_private_key")
+
+    @encrypt_private_key.setter
+    def encrypt_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private key of a non-SM certificate in PEM format.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
+    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "lang", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signCert")
+    def sign_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content of an SM signing certificate in PEM format.
+        """
+        return pulumi.get(self, "sign_cert")
+
+    @sign_cert.setter
+    def sign_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signPrivateKey")
+    def sign_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private key of an SM signing certificate in PEM format.
+        """
+        return pulumi.get(self, "sign_private_key")
+
+    @sign_private_key.setter
+    def sign_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.type_token("alicloud:cas/serviceCertificate:ServiceCertificate")
@@ -210,9 +408,15 @@ class ServiceCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a SSL Certificates Certificate resource.
@@ -236,54 +440,55 @@ class ServiceCertificate(pulumi.CustomResource):
         default_service_certificate = alicloud.cas.ServiceCertificate("default",
             certificate_name=f"terraform-example-{default['result']}",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
-        TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
-        VQQHDAdCZWlKaW5nMQswCQYDVQQKDAJBQTAeFw0yMzA4MjgwNjQ5NDNaFw0yNTA4
-        MjcwNjQ5NDNaMFUxCzAJBgNVBAYTAkNOMRUwEwYDVQQDDAwqLnRmdGVzdC50b3Ax
-        EDAOBgNVBAgMB0JlaUppbmcxEDAOBgNVBAcMB0JlaUppbmcxCzAJBgNVBAoMAkFB
-        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzkk9NJUH7PLSQK4RRrGQ
-        Y5dVsftkhnKh9HhI6yrnlowWIDPS1PZHOU/5gQ7xPUPGdKQV5S7x8wROnAaXEimx
-        N4GdQw25pGhRJvlwme9fzJJiSe6lG49NCxmuBiEdJAzPKaTPpK1cG1f1TqdgCfHR
-        HAL6Jxb3ylHG2LlTNFLXikubUi5RT6/9C8psr713Zm4HveCI/cx0WdgZ+fmsc9ft
-        rkIB1DdyV1kQ51m8r2rLi3J7aC5ggGOiex/VlGSd4e6SOQLpdQEdDbodtOJ4LgVk
-        +arFNCMinUWIOPGFzXhdm6lssPbh4MOBrz8c/M9TcF4hoMn5/o/9johZIZ/DOvXt
-        ZQIDAQABo1AwTjAdBgNVHQ4EFgQUOnWiddgeZj17IeysatqhE361o5YwHwYDVR0j
-        BBgwFoAUOnWiddgeZj17IeysatqhE361o5YwDAYDVR0TBAUwAwEB/zANBgkqhkiG
-        9w0BAQsFAAOCAQEAfh3cnOszHM/5wXjY7BIkmgDOReksS+87ibhBz7T2ddZj+yCF
-        9GdIBzXCiHpQFXpW8a3kc3I7l3nGfMTkmF6ld3ot/6SXP17QKJwxtvUA4ib8QkWD
-        S7FT+UcHCUHv42Sh1e5uAlQ5pMSul7iKcR7jwlwZGZ0905HOqrmdyUGJ+Ud2uZWD
-        AC0dJF6Bv9VhNtci8Imp05PaPH09deXLZu8LRrKRZFy9qLW5R6Swv7nzxckOAqDk
-        TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
-        DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
+        MIID1jCCAr6gAwIBAgIQQ7/8/QOOTbywxdgSX9aMqDANBgkqhkiG9w0BAQsFADBe
+        MQswCQYDVQQGEwJDTjEOMAwGA1UEChMFTXlTU0wxKzApBgNVBAsTIk15U1NMIFRl
+        c3QgUlNBIC0gRm9yIHRlc3QgdXNlIG9ubHkxEjAQBgNVBAMTCU15U1NMLmNvbTAe
+        Fw0yNTA5MjIwNTU3NDVaFw0zMDA5MjEwNTU3NDVaMCAxCzAJBgNVBAYTAkNOMREw
+        DwYDVQQDEwgxNjg4LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+        AMEl04gKBqJxV+8KideZb7S4mPysehPzr/cXu4i1RXT7UFtNVZuqc4IdIzOja2SU
+        6uNn8mY6Pfc5FNybg98bYx0ADbub55TUaw2Pz1CFEbiMvLpzMkp4EZadvmJWZk8t
+        dNb+ClKqdXUWhxApS3Lz+wjCNYQnlODk4KmxmM8/U/CyQS7lgWS/1G72UFB09Skg
+        sfvWdoHLrFfIlbVkp9XVELCtOkjj8Nn/rPOhc31NbstrwV4Whl6jngGAkaEtImJ7
+        //sL+sPPsutefCgfZPrC+Zwru2En1BuIo5KW02NYLdjXbABH8xjkUobqRoro7eY3
+        VySBr7adD6QmNv5hWohOuykCAwEAAaOBzTCByjAOBgNVHQ8BAf8EBAMCBaAwHQYD
+        VR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFCiBJgXRNBo/
+        wXMPu5PPFRw/A79/MGMGCCsGAQUFBwEBBFcwVTAhBggrBgEFBQcwAYYVaHR0cDov
+        L29jc3AubXlzc2wuY29tMDAGCCsGAQUFBzAChiRodHRwOi8vY2EubXlzc2wuY29t
+        L215c3NsdGVzdHJzYS5jcnQwEwYDVR0RBAwwCoIIMTY4OC5jb20wDQYJKoZIhvcN
+        AQELBQADggEBAHa0ATVeHtPPw1+a6kajlW6OQUjhiJg+Sk9fVA1eJ2Hzl1yDDw3K
+        yAyl1gkxGI6BwWdX/C8IE6PuPYcG2CmJGoFoEAAIbAE76AKABvHoA8I6wyDruxFz
+        06bNM8104TxAHTxe2zaHgBQnYIRk07uA8gxjZKFp1//eYbxj8HiP0Q9zXqYjF79G
+        Le4PDw7Q6U22CP+cT9Sz5ZEoJCzmUtx3uQWhLzNxvyISrXeSqAFJzjtL0KKSR1cr
+        8he6FoeU37oKdmrnweLeBe+no3OMChETa2JN4VAzXj/nPpQcyB7nXDfLUHe01+BB
+        ZBXKFLD2H38e97mFl/7mgNP5Nc1sycI5Sp4=
         -----END CERTIFICATE-----
         \"\"\",
             key=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
-        rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
-        BpcSKbE3gZ1DDbmkaFEm+XCZ71/MkmJJ7qUbj00LGa4GIR0kDM8ppM+krVwbV/VO
-        p2AJ8dEcAvonFvfKUcbYuVM0UteKS5tSLlFPr/0LymyvvXdmbge94Ij9zHRZ2Bn5
-        +axz1+2uQgHUN3JXWRDnWbyvasuLcntoLmCAY6J7H9WUZJ3h7pI5Aul1AR0Nuh20
-        4nguBWT5qsU0IyKdRYg48YXNeF2bqWyw9uHgw4GvPxz8z1NwXiGgyfn+j/2OiFkh
-        n8M69e1lAgMBAAECggEAevPgTTT+0lYwx2h416ACJboP09O5KQGuUl5XaAPcoTjB
-        /1OkOFbKQPjQCAJ1+0QoR2F9w2plv6kziX/MD4FWJXVV3J+TpNCgfhBy8u1gNjiR
-        6Osa8gBJtXIK7ZBTJCeWWoXnVYoWuh2FEupkLck6D+4eV6oy6x4u3QIo+6jc24n9
-        dIXQG6/v/Iao34kB0LUdp/4WNaUDvfI6NDhEwchpKE95dtWIDlIN/YhfiYAdjrnl
-        YmH2VDbAGgsdEiHP4wLZfjgsGPPDGS0+qBHoSiJGH0E6wWEZdAE4TsYGRFsO86n3
-        LfjEPFGfPlcnZe2cTTe3kmyKq/DTjxtu2rh3I8o2CQKBgQD/5Xe7cenaOBefzPlx
-        GOEsB+qv49UmzEPOXDNZe9hmAawuuuxPUM+xlE++P+mEgQm1LPT4WWgtFLPVuwmx
-        ncxt4CJNZh+ZGFyAZ4dm4M4ZhIBXNonyIP+yGyAJUUVF9Iy3TYcJNiGzv2Rx9JRQ
-        XWJMQnTDILmZbmU+ltTea7/zqwKBgQDOXqCqb17MuLt7OcKWSgthm79OlaOdzZvl
-        i9qU6VzZKG7Axc5gA9yq6tHp3vWPI4bNdvwqIIa/nzVILjGA5fcYFbRN+7gHwo8s
-        rNAgi5PAoKWqQRovyJRY9Eq/sn6l1jbJZAOUAMZMWDm8z89OqK7PNQSIAtfFSneo
-        2QxJkGeTLwKBgGJkafBB8af9b1/7YWISLepPNPbihH/BhMThAMGEdAVs2TaymtA4
-        g1OFck/1pSVUtFXcbmjbf8ntruQcYbLQuNz6lFXsUXP9QPwCUrbE85ouL2bZSps2
-        AvsJoPzUKe2nBUAp6CUrkjPaAJYsc6ae8X/fAaRRfeu33ef9+OV4yrq3AoGAYFZo
-        ZmfrN2Kdkt7Z6dLTEVPlsMfGQ6pyNmxdM9rkzzNC0JcGymfDIb7RE35T3+hTy6La
-        AMiCXv3xn6qAzY2NFh87tpPlyymWMOLTnf3Kkcfszlfp45idOBGCu46V9NDVbppT
-        2UmrSIR/H5dbTXsNcAlt/hhlpeInjhkU1VqmH10CgYEA7Kk+QhWq705SczpWjm5J
-        9kHqfFzJLwAWNBduiia0WypgPhLe/4wT1rYQkBtKMVKrgFo7Cvi4YKlrtlDnXyeU
-        CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
-        LILJ+e7bLw8RrM0HfgFnl8c=
+        MIIEowIBAAKCAQEAwSXTiAoGonFX7wqJ15lvtLiY/Kx6E/Ov9xe7iLVFdPtQW01V
+        m6pzgh0jM6NrZJTq42fyZjo99zkU3JuD3xtjHQANu5vnlNRrDY/PUIURuIy8unMy
+        SngRlp2+YlZmTy101v4KUqp1dRaHEClLcvP7CMI1hCeU4OTgqbGYzz9T8LJBLuWB
+        ZL/UbvZQUHT1KSCx+9Z2gcusV8iVtWSn1dUQsK06SOPw2f+s86FzfU1uy2vBXhaG
+        XqOeAYCRoS0iYnv/+wv6w8+y6158KB9k+sL5nCu7YSfUG4ijkpbTY1gt2NdsAEfz
+        GORShupGiujt5jdXJIGvtp0PpCY2/mFaiE67KQIDAQABAoIBAAKF9CZTUd8zvDKE
+        azo/Ur0Zf5omxgOBC/vzj0DLyXKr89KgMdhHmPG1YBKFIIU0XYCHXkclR05LAcbu
+        BdeCJpXS5zBbwDdAB9P/XHXQqeNvfJRc++ZgJ4QAXzkuqBssXK87ALcwFeUShxot
+        cphiWpW0inlwVkVn3WLUzfUV0+ARljn8VOf+aAmfCiQMl4gsBpvD3dxF84aihS+1
+        blqar5dE1GCJWHW67R1uSaAqHf7nwbBkZY8nTWF8n4+ELAAtlOgQKZlrQ+JxB3Ar
+        rWzgMj4M6F1/man1y/XPR56px9Xv3DwBZHuLufsqPr10q/nI9VIIQHe49sFgnN4+
+        48Q7wIECgYEAwxlrgBJI8gua4mJZxJRT8gBv2Mb1Kk1k7HVX11I+yF4eXr+cm+24
+        Cq7MjqmBXSnqvdQkwGFZ+C3cTKXJBPONWGF8NgiXaHSKjPEoFuHLdKBpgZMAax/L
+        aZBQRw6g12nz3XUCK0DE0wGgPkoDxc65s4NEWS+ua43LZ4TUOzWwwWECgYEA/XB1
+        ARNHyARy+P3iTeebh3t7qJoNoptLWHMlKjSjIZ1VZ4+9ilKsi5ZKVkPaLIjo8MGv
+        Ank3vzSrFSYhId0XfmSqoWySWc0eBkc6NERvopxuIV1WwRKf/18lLhxiEjHIcgds
+        G2KmfeiXdCKSgGlWvJmLITY4gJpOYMjpEDxipskCgYAdxnljmGbNmfvPZRcyKzkM
+        jAiF2wd7p0gp1lbLo9+1ELgt2ax7F7Ko3riVZUU7BLSwt/nL6o+iks02XW7qdIkz
+        3dzpGjKRXIfwrrVhmKBGclzny5mav8V5nO7DiXX+qkrvl3X3R/FCCtN77ivZOo2Y
+        2gXKXr6N55wNdnY1eyI4wQKBgQDXjZo2O+vFVuNimqyrjd1eMcxO7hfCwUooBGcL
+        qpFEucg1uK+Awig24LCBBly9nARjIJh1Bhw/58/KwQ9U+fJNcdkeSnV/I1HyDQqY
+        AczhBSM2BWkP9YNXc9jvivxudSECuwVblV/9nqGSCQWJag53gjAvIyqTVqpq7vYq
+        9PEC4QKBgGY2pj0ZNqGkq16jD3iS+DDBpX+TPnoHzu5GZCM/1GLZ6xXbpNWtZQt4
+        /m+6koRWeGvNAULnp8RSnhBzm+ZglpbwYcvsqRNDqIPGhJ2JruVA/bY3S0ebkRlD
+        xDn0dJVMvNyRR83ZpjTQhxoq5l56TN5xk1vdJ9nZdwJMmXiz2TrA
         -----END PRIVATE KEY-----
         \"\"\")
         ```
@@ -298,18 +503,23 @@ class ServiceCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-               **NOTE:** One of `certificate_name` and `name` must be specified.
-        :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] lang: The lang.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] sign_cert: The content of an SM signing certificate in PEM format.
+        :param pulumi.Input[_builtins.str] sign_private_key: The private key of an SM signing certificate in PEM format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceCertificateArgs,
+                 args: Optional[ServiceCertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a SSL Certificates Certificate resource.
@@ -333,54 +543,55 @@ class ServiceCertificate(pulumi.CustomResource):
         default_service_certificate = alicloud.cas.ServiceCertificate("default",
             certificate_name=f"terraform-example-{default['result']}",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
-        TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
-        VQQHDAdCZWlKaW5nMQswCQYDVQQKDAJBQTAeFw0yMzA4MjgwNjQ5NDNaFw0yNTA4
-        MjcwNjQ5NDNaMFUxCzAJBgNVBAYTAkNOMRUwEwYDVQQDDAwqLnRmdGVzdC50b3Ax
-        EDAOBgNVBAgMB0JlaUppbmcxEDAOBgNVBAcMB0JlaUppbmcxCzAJBgNVBAoMAkFB
-        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzkk9NJUH7PLSQK4RRrGQ
-        Y5dVsftkhnKh9HhI6yrnlowWIDPS1PZHOU/5gQ7xPUPGdKQV5S7x8wROnAaXEimx
-        N4GdQw25pGhRJvlwme9fzJJiSe6lG49NCxmuBiEdJAzPKaTPpK1cG1f1TqdgCfHR
-        HAL6Jxb3ylHG2LlTNFLXikubUi5RT6/9C8psr713Zm4HveCI/cx0WdgZ+fmsc9ft
-        rkIB1DdyV1kQ51m8r2rLi3J7aC5ggGOiex/VlGSd4e6SOQLpdQEdDbodtOJ4LgVk
-        +arFNCMinUWIOPGFzXhdm6lssPbh4MOBrz8c/M9TcF4hoMn5/o/9johZIZ/DOvXt
-        ZQIDAQABo1AwTjAdBgNVHQ4EFgQUOnWiddgeZj17IeysatqhE361o5YwHwYDVR0j
-        BBgwFoAUOnWiddgeZj17IeysatqhE361o5YwDAYDVR0TBAUwAwEB/zANBgkqhkiG
-        9w0BAQsFAAOCAQEAfh3cnOszHM/5wXjY7BIkmgDOReksS+87ibhBz7T2ddZj+yCF
-        9GdIBzXCiHpQFXpW8a3kc3I7l3nGfMTkmF6ld3ot/6SXP17QKJwxtvUA4ib8QkWD
-        S7FT+UcHCUHv42Sh1e5uAlQ5pMSul7iKcR7jwlwZGZ0905HOqrmdyUGJ+Ud2uZWD
-        AC0dJF6Bv9VhNtci8Imp05PaPH09deXLZu8LRrKRZFy9qLW5R6Swv7nzxckOAqDk
-        TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
-        DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
+        MIID1jCCAr6gAwIBAgIQQ7/8/QOOTbywxdgSX9aMqDANBgkqhkiG9w0BAQsFADBe
+        MQswCQYDVQQGEwJDTjEOMAwGA1UEChMFTXlTU0wxKzApBgNVBAsTIk15U1NMIFRl
+        c3QgUlNBIC0gRm9yIHRlc3QgdXNlIG9ubHkxEjAQBgNVBAMTCU15U1NMLmNvbTAe
+        Fw0yNTA5MjIwNTU3NDVaFw0zMDA5MjEwNTU3NDVaMCAxCzAJBgNVBAYTAkNOMREw
+        DwYDVQQDEwgxNjg4LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+        AMEl04gKBqJxV+8KideZb7S4mPysehPzr/cXu4i1RXT7UFtNVZuqc4IdIzOja2SU
+        6uNn8mY6Pfc5FNybg98bYx0ADbub55TUaw2Pz1CFEbiMvLpzMkp4EZadvmJWZk8t
+        dNb+ClKqdXUWhxApS3Lz+wjCNYQnlODk4KmxmM8/U/CyQS7lgWS/1G72UFB09Skg
+        sfvWdoHLrFfIlbVkp9XVELCtOkjj8Nn/rPOhc31NbstrwV4Whl6jngGAkaEtImJ7
+        //sL+sPPsutefCgfZPrC+Zwru2En1BuIo5KW02NYLdjXbABH8xjkUobqRoro7eY3
+        VySBr7adD6QmNv5hWohOuykCAwEAAaOBzTCByjAOBgNVHQ8BAf8EBAMCBaAwHQYD
+        VR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFCiBJgXRNBo/
+        wXMPu5PPFRw/A79/MGMGCCsGAQUFBwEBBFcwVTAhBggrBgEFBQcwAYYVaHR0cDov
+        L29jc3AubXlzc2wuY29tMDAGCCsGAQUFBzAChiRodHRwOi8vY2EubXlzc2wuY29t
+        L215c3NsdGVzdHJzYS5jcnQwEwYDVR0RBAwwCoIIMTY4OC5jb20wDQYJKoZIhvcN
+        AQELBQADggEBAHa0ATVeHtPPw1+a6kajlW6OQUjhiJg+Sk9fVA1eJ2Hzl1yDDw3K
+        yAyl1gkxGI6BwWdX/C8IE6PuPYcG2CmJGoFoEAAIbAE76AKABvHoA8I6wyDruxFz
+        06bNM8104TxAHTxe2zaHgBQnYIRk07uA8gxjZKFp1//eYbxj8HiP0Q9zXqYjF79G
+        Le4PDw7Q6U22CP+cT9Sz5ZEoJCzmUtx3uQWhLzNxvyISrXeSqAFJzjtL0KKSR1cr
+        8he6FoeU37oKdmrnweLeBe+no3OMChETa2JN4VAzXj/nPpQcyB7nXDfLUHe01+BB
+        ZBXKFLD2H38e97mFl/7mgNP5Nc1sycI5Sp4=
         -----END CERTIFICATE-----
         \"\"\",
             key=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
-        rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
-        BpcSKbE3gZ1DDbmkaFEm+XCZ71/MkmJJ7qUbj00LGa4GIR0kDM8ppM+krVwbV/VO
-        p2AJ8dEcAvonFvfKUcbYuVM0UteKS5tSLlFPr/0LymyvvXdmbge94Ij9zHRZ2Bn5
-        +axz1+2uQgHUN3JXWRDnWbyvasuLcntoLmCAY6J7H9WUZJ3h7pI5Aul1AR0Nuh20
-        4nguBWT5qsU0IyKdRYg48YXNeF2bqWyw9uHgw4GvPxz8z1NwXiGgyfn+j/2OiFkh
-        n8M69e1lAgMBAAECggEAevPgTTT+0lYwx2h416ACJboP09O5KQGuUl5XaAPcoTjB
-        /1OkOFbKQPjQCAJ1+0QoR2F9w2plv6kziX/MD4FWJXVV3J+TpNCgfhBy8u1gNjiR
-        6Osa8gBJtXIK7ZBTJCeWWoXnVYoWuh2FEupkLck6D+4eV6oy6x4u3QIo+6jc24n9
-        dIXQG6/v/Iao34kB0LUdp/4WNaUDvfI6NDhEwchpKE95dtWIDlIN/YhfiYAdjrnl
-        YmH2VDbAGgsdEiHP4wLZfjgsGPPDGS0+qBHoSiJGH0E6wWEZdAE4TsYGRFsO86n3
-        LfjEPFGfPlcnZe2cTTe3kmyKq/DTjxtu2rh3I8o2CQKBgQD/5Xe7cenaOBefzPlx
-        GOEsB+qv49UmzEPOXDNZe9hmAawuuuxPUM+xlE++P+mEgQm1LPT4WWgtFLPVuwmx
-        ncxt4CJNZh+ZGFyAZ4dm4M4ZhIBXNonyIP+yGyAJUUVF9Iy3TYcJNiGzv2Rx9JRQ
-        XWJMQnTDILmZbmU+ltTea7/zqwKBgQDOXqCqb17MuLt7OcKWSgthm79OlaOdzZvl
-        i9qU6VzZKG7Axc5gA9yq6tHp3vWPI4bNdvwqIIa/nzVILjGA5fcYFbRN+7gHwo8s
-        rNAgi5PAoKWqQRovyJRY9Eq/sn6l1jbJZAOUAMZMWDm8z89OqK7PNQSIAtfFSneo
-        2QxJkGeTLwKBgGJkafBB8af9b1/7YWISLepPNPbihH/BhMThAMGEdAVs2TaymtA4
-        g1OFck/1pSVUtFXcbmjbf8ntruQcYbLQuNz6lFXsUXP9QPwCUrbE85ouL2bZSps2
-        AvsJoPzUKe2nBUAp6CUrkjPaAJYsc6ae8X/fAaRRfeu33ef9+OV4yrq3AoGAYFZo
-        ZmfrN2Kdkt7Z6dLTEVPlsMfGQ6pyNmxdM9rkzzNC0JcGymfDIb7RE35T3+hTy6La
-        AMiCXv3xn6qAzY2NFh87tpPlyymWMOLTnf3Kkcfszlfp45idOBGCu46V9NDVbppT
-        2UmrSIR/H5dbTXsNcAlt/hhlpeInjhkU1VqmH10CgYEA7Kk+QhWq705SczpWjm5J
-        9kHqfFzJLwAWNBduiia0WypgPhLe/4wT1rYQkBtKMVKrgFo7Cvi4YKlrtlDnXyeU
-        CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
-        LILJ+e7bLw8RrM0HfgFnl8c=
+        MIIEowIBAAKCAQEAwSXTiAoGonFX7wqJ15lvtLiY/Kx6E/Ov9xe7iLVFdPtQW01V
+        m6pzgh0jM6NrZJTq42fyZjo99zkU3JuD3xtjHQANu5vnlNRrDY/PUIURuIy8unMy
+        SngRlp2+YlZmTy101v4KUqp1dRaHEClLcvP7CMI1hCeU4OTgqbGYzz9T8LJBLuWB
+        ZL/UbvZQUHT1KSCx+9Z2gcusV8iVtWSn1dUQsK06SOPw2f+s86FzfU1uy2vBXhaG
+        XqOeAYCRoS0iYnv/+wv6w8+y6158KB9k+sL5nCu7YSfUG4ijkpbTY1gt2NdsAEfz
+        GORShupGiujt5jdXJIGvtp0PpCY2/mFaiE67KQIDAQABAoIBAAKF9CZTUd8zvDKE
+        azo/Ur0Zf5omxgOBC/vzj0DLyXKr89KgMdhHmPG1YBKFIIU0XYCHXkclR05LAcbu
+        BdeCJpXS5zBbwDdAB9P/XHXQqeNvfJRc++ZgJ4QAXzkuqBssXK87ALcwFeUShxot
+        cphiWpW0inlwVkVn3WLUzfUV0+ARljn8VOf+aAmfCiQMl4gsBpvD3dxF84aihS+1
+        blqar5dE1GCJWHW67R1uSaAqHf7nwbBkZY8nTWF8n4+ELAAtlOgQKZlrQ+JxB3Ar
+        rWzgMj4M6F1/man1y/XPR56px9Xv3DwBZHuLufsqPr10q/nI9VIIQHe49sFgnN4+
+        48Q7wIECgYEAwxlrgBJI8gua4mJZxJRT8gBv2Mb1Kk1k7HVX11I+yF4eXr+cm+24
+        Cq7MjqmBXSnqvdQkwGFZ+C3cTKXJBPONWGF8NgiXaHSKjPEoFuHLdKBpgZMAax/L
+        aZBQRw6g12nz3XUCK0DE0wGgPkoDxc65s4NEWS+ua43LZ4TUOzWwwWECgYEA/XB1
+        ARNHyARy+P3iTeebh3t7qJoNoptLWHMlKjSjIZ1VZ4+9ilKsi5ZKVkPaLIjo8MGv
+        Ank3vzSrFSYhId0XfmSqoWySWc0eBkc6NERvopxuIV1WwRKf/18lLhxiEjHIcgds
+        G2KmfeiXdCKSgGlWvJmLITY4gJpOYMjpEDxipskCgYAdxnljmGbNmfvPZRcyKzkM
+        jAiF2wd7p0gp1lbLo9+1ELgt2ax7F7Ko3riVZUU7BLSwt/nL6o+iks02XW7qdIkz
+        3dzpGjKRXIfwrrVhmKBGclzny5mav8V5nO7DiXX+qkrvl3X3R/FCCtN77ivZOo2Y
+        2gXKXr6N55wNdnY1eyI4wQKBgQDXjZo2O+vFVuNimqyrjd1eMcxO7hfCwUooBGcL
+        qpFEucg1uK+Awig24LCBBly9nARjIJh1Bhw/58/KwQ9U+fJNcdkeSnV/I1HyDQqY
+        AczhBSM2BWkP9YNXc9jvivxudSECuwVblV/9nqGSCQWJag53gjAvIyqTVqpq7vYq
+        9PEC4QKBgGY2pj0ZNqGkq16jD3iS+DDBpX+TPnoHzu5GZCM/1GLZ6xXbpNWtZQt4
+        /m+6koRWeGvNAULnp8RSnhBzm+ZglpbwYcvsqRNDqIPGhJ2JruVA/bY3S0ebkRlD
+        xDn0dJVMvNyRR83ZpjTQhxoq5l56TN5xk1vdJ9nZdwJMmXiz2TrA
         -----END PRIVATE KEY-----
         \"\"\")
         ```
@@ -410,9 +621,15 @@ class ServiceCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -422,15 +639,19 @@ class ServiceCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceCertificateArgs.__new__(ServiceCertificateArgs)
 
-            if cert is None and not opts.urn:
-                raise TypeError("Missing required property 'cert'")
             __props__.__dict__["cert"] = cert
             __props__.__dict__["certificate_name"] = certificate_name
-            if key is None and not opts.urn:
-                raise TypeError("Missing required property 'key'")
-            __props__.__dict__["key"] = key
+            __props__.__dict__["encrypt_cert"] = encrypt_cert
+            __props__.__dict__["encrypt_private_key"] = None if encrypt_private_key is None else pulumi.Output.secret(encrypt_private_key)
+            __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
             __props__.__dict__["lang"] = lang
             __props__.__dict__["name"] = name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["sign_cert"] = sign_cert
+            __props__.__dict__["sign_private_key"] = None if sign_private_key is None else pulumi.Output.secret(sign_private_key)
+            __props__.__dict__["tags"] = tags
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "signPrivateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServiceCertificate, __self__).__init__(
             'alicloud:cas/serviceCertificate:ServiceCertificate',
             resource_name,
@@ -443,9 +664,15 @@ class ServiceCertificate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cert: Optional[pulumi.Input[_builtins.str]] = None,
             certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+            encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+            encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
             key: Optional[pulumi.Input[_builtins.str]] = None,
             lang: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceCertificate':
+            name: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+            sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ServiceCertificate':
         """
         Get an existing ServiceCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -453,12 +680,17 @@ class ServiceCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-               **NOTE:** One of `certificate_name` and `name` must be specified.
-        :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] lang: The lang.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] sign_cert: The content of an SM signing certificate in PEM format.
+        :param pulumi.Input[_builtins.str] sign_private_key: The private key of an SM signing certificate in PEM format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -466,16 +698,22 @@ class ServiceCertificate(pulumi.CustomResource):
 
         __props__.__dict__["cert"] = cert
         __props__.__dict__["certificate_name"] = certificate_name
+        __props__.__dict__["encrypt_cert"] = encrypt_cert
+        __props__.__dict__["encrypt_private_key"] = encrypt_private_key
         __props__.__dict__["key"] = key
         __props__.__dict__["lang"] = lang
         __props__.__dict__["name"] = name
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["sign_cert"] = sign_cert
+        __props__.__dict__["sign_private_key"] = sign_private_key
+        __props__.__dict__["tags"] = tags
         return ServiceCertificate(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> pulumi.Output[_builtins.str]:
+    def cert(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Cert of the Certificate in which the Certificate will add.
+        The content of a non-SM certificate in PEM format.
         """
         return pulumi.get(self, "cert")
 
@@ -483,33 +721,81 @@ class ServiceCertificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-        **NOTE:** One of `certificate_name` and `name` must be specified.
+        A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         """
         return pulumi.get(self, "certificate_name")
 
     @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="encryptCert")
+    def encrypt_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Key of the Certificate in which the Certificate will add.
+        The content of an SM encryption certificate in PEM format.
+        """
+        return pulumi.get(self, "encrypt_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptPrivateKey")
+    def encrypt_private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The private key of an SM encryption certificate in PEM format.
+        """
+        return pulumi.get(self, "encrypt_private_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The private key of a non-SM certificate in PEM format.
         """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
     def lang(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The lang.
+        Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         """
         return pulumi.get(self, "lang")
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="signCert")
+    def sign_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The content of an SM signing certificate in PEM format.
+        """
+        return pulumi.get(self, "sign_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="signPrivateKey")
+    def sign_private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The private key of an SM signing certificate in PEM format.
+        """
+        return pulumi.get(self, "sign_private_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 

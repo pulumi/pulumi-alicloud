@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Apig.Inputs
     public sealed class GatewayVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the VPC gateway.
+        /// The zone name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -7,11 +7,13 @@ import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
 import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
 import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
 import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+import com.pulumi.alicloud.apig.inputs.GatewayZoneArgs;
 import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,6 +37,25 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> gatewayName() {
         return Optional.ofNullable(this.gatewayName);
+    }
+
+    /**
+     * Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     * 
+     */
+    @Import(name="gatewayType")
+    private @Nullable Output<String> gatewayType;
+
+    /**
+     * @return Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     * 
+     */
+    public Optional<Output<String>> gatewayType() {
+        return Optional.ofNullable(this.gatewayType);
     }
 
     /**
@@ -172,10 +193,26 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         return this.zoneConfig;
     }
 
+    /**
+     * The List of zones associated with the Gateway. See `zones` below.
+     * 
+     */
+    @Import(name="zones")
+    private @Nullable Output<List<GatewayZoneArgs>> zones;
+
+    /**
+     * @return The List of zones associated with the Gateway. See `zones` below.
+     * 
+     */
+    public Optional<Output<List<GatewayZoneArgs>>> zones() {
+        return Optional.ofNullable(this.zones);
+    }
+
     private GatewayArgs() {}
 
     private GatewayArgs(GatewayArgs $) {
         this.gatewayName = $.gatewayName;
+        this.gatewayType = $.gatewayType;
         this.logConfig = $.logConfig;
         this.networkAccessConfig = $.networkAccessConfig;
         this.paymentType = $.paymentType;
@@ -185,6 +222,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.vpc = $.vpc;
         this.vswitch = $.vswitch;
         this.zoneConfig = $.zoneConfig;
+        this.zones = $.zones;
     }
 
     public static Builder builder() {
@@ -224,6 +262,31 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gatewayName(String gatewayName) {
             return gatewayName(Output.of(gatewayName));
+        }
+
+        /**
+         * @param gatewayType Describes the gateway type, which is categorized into the following two types:
+         * - API: indicates an API gateway
+         * - AI: Indicates an AI gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayType(@Nullable Output<String> gatewayType) {
+            $.gatewayType = gatewayType;
+            return this;
+        }
+
+        /**
+         * @param gatewayType Describes the gateway type, which is categorized into the following two types:
+         * - API: indicates an API gateway
+         * - AI: Indicates an AI gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayType(String gatewayType) {
+            return gatewayType(Output.of(gatewayType));
         }
 
         /**
@@ -413,6 +476,37 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder zoneConfig(GatewayZoneConfigArgs zoneConfig) {
             return zoneConfig(Output.of(zoneConfig));
+        }
+
+        /**
+         * @param zones The List of zones associated with the Gateway. See `zones` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(@Nullable Output<List<GatewayZoneArgs>> zones) {
+            $.zones = zones;
+            return this;
+        }
+
+        /**
+         * @param zones The List of zones associated with the Gateway. See `zones` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(List<GatewayZoneArgs> zones) {
+            return zones(Output.of(zones));
+        }
+
+        /**
+         * @param zones The List of zones associated with the Gateway. See `zones` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(GatewayZoneArgs... zones) {
+            return zones(List.of(zones));
         }
 
         public GatewayArgs build() {

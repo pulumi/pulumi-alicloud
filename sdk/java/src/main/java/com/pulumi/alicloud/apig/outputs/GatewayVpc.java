@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVpc {
     /**
-     * @return The name of the VPC gateway.
+     * @return The zone name.
      * 
      */
     private @Nullable String name;
@@ -25,7 +25,7 @@ public final class GatewayVpc {
 
     private GatewayVpc() {}
     /**
-     * @return The name of the VPC gateway.
+     * @return The zone name.
      * 
      */
     public Optional<String> name() {

@@ -310,7 +310,7 @@ type Instance struct {
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount pulumi.IntOutput `pulumi:"secondaryPrivateIpAddressCount"`
@@ -595,7 +595,7 @@ type instanceState struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
 	RoleName *string `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
@@ -844,7 +844,7 @@ type InstanceState struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
 	RoleName pulumi.StringPtrInput
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
@@ -1077,7 +1077,7 @@ type instanceArgs struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
 	RoleName *string `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
@@ -1303,7 +1303,7 @@ type InstanceArgs struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+	// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
 	RoleName pulumi.StringPtrInput
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
@@ -1823,7 +1823,7 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
 func (o InstanceOutput) RoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
 }

@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:kvstore/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -162,7 +162,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountPrivilege", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountPrivilege;
+    private Output<String> accountPrivilege;
 
     /**
      * @return The privilege of account access database. Default value: `RoleReadWrite`
@@ -170,8 +170,8 @@ public class Account extends com.pulumi.resources.CustomResource {
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
-    public Output<Optional<String>> accountPrivilege() {
-        return Codegen.optional(this.accountPrivilege);
+    public Output<String> accountPrivilege() {
+        return this.accountPrivilege;
     }
     /**
      * Privilege type of account.
@@ -180,7 +180,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountType;
+    private Output<String> accountType;
 
     /**
      * @return Privilege type of account.
@@ -188,8 +188,8 @@ public class Account extends com.pulumi.resources.CustomResource {
      *   Default to Normal.
      * 
      */
-    public Output<Optional<String>> accountType() {
-        return Codegen.optional(this.accountType);
+    public Output<String> accountType() {
+        return this.accountType;
     }
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.

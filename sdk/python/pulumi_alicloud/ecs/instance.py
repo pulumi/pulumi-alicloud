@@ -198,7 +198,7 @@ class InstanceArgs:
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -1093,7 +1093,7 @@ class InstanceArgs:
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         """
         return pulumi.get(self, "role_name")
 
@@ -1632,7 +1632,7 @@ class _InstanceState:
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -2673,7 +2673,7 @@ class _InstanceState:
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         """
         return pulumi.get(self, "role_name")
 
@@ -3296,7 +3296,7 @@ class Instance(pulumi.CustomResource):
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -3836,7 +3836,7 @@ class Instance(pulumi.CustomResource):
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] role_name: The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         :param pulumi.Input[_builtins.int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
@@ -4532,7 +4532,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         """
         return pulumi.get(self, "role_name")
 

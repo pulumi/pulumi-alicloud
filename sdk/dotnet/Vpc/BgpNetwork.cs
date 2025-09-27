@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Bgp Network resource.
+    /// Provides a Express Connect Bgp Network resource.
     /// 
-    /// For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+    /// For information about Express Connect Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-addbgpnetwork-express-connect).
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
     /// 
@@ -30,35 +30,35 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 2999,
     ///         Min = 1,
+    ///         Max = 2999,
     ///     });
     /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new()
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         PhysicalConnectionId = @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id)),
     ///         VirtualBorderRouterName = name,
-    ///         VlanId = vlanId.Id,
+    ///         VlanId = defaultInteger.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var exampleBgpNetwork = new AliCloud.Vpc.BgpNetwork("example", new()
+    ///     var defaultBgpNetwork = new AliCloud.Vpc.BgpNetwork("default", new()
     ///     {
     ///         DstCidrBlock = "192.168.0.0/24",
-    ///         RouterId = exampleVirtualBorderRouter.Id,
+    ///         RouterId = defaultVirtualBorderRouter.Id,
     ///     });
     /// 
     /// });
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Bgp Network can be imported using the id, e.g.
+    /// Express Connect Bgp Network can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example &lt;router_id&gt;:&lt;dst_cidr_block&gt;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> DstCidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vRouter associated with the router interface.
+        /// The region ID of the virtual border router (VBR) group.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
@@ -92,6 +92,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
 
 
         /// <summary>
@@ -146,10 +152,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> DstCidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the vRouter associated with the router interface.
+        /// The region ID of the virtual border router (VBR) group.
         /// </summary>
         [Input("routerId", required: true)]
         public Input<string> RouterId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public BgpNetworkArgs()
         {
@@ -166,7 +178,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DstCidrBlock { get; set; }
 
         /// <summary>
-        /// The ID of the vRouter associated with the router interface.
+        /// The region ID of the virtual border router (VBR) group.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -176,6 +188,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public BgpNetworkState()
         {

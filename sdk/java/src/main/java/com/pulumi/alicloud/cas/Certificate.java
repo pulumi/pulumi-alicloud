@@ -11,6 +11,8 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -136,14 +138,14 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cert", refs={String.class}, tree="[0]")
-    private Output<String> cert;
+    private Output</* @Nullable */ String> cert;
 
     /**
      * @return Cert of the Certificate in which the Certificate will add.
      * 
      */
-    public Output<String> cert() {
-        return this.cert;
+    public Output<Optional<String>> cert() {
+        return Codegen.optional(this.cert);
     }
     @Export(name="certificateName", refs={String.class}, tree="[0]")
     private Output<String> certificateName;
@@ -151,20 +153,38 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<String> certificateName() {
         return this.certificateName;
     }
+    @Export(name="encryptCert", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> encryptCert;
+
+    public Output<Optional<String>> encryptCert() {
+        return Codegen.optional(this.encryptCert);
+    }
+    @Export(name="encryptPrivateKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> encryptPrivateKey;
+
+    public Output<Optional<String>> encryptPrivateKey() {
+        return Codegen.optional(this.encryptPrivateKey);
+    }
     /**
      * Key of the Certificate in which the Certificate will add.
      * 
      */
     @Export(name="key", refs={String.class}, tree="[0]")
-    private Output<String> key;
+    private Output</* @Nullable */ String> key;
 
     /**
      * @return Key of the Certificate in which the Certificate will add.
      * 
      */
-    public Output<String> key() {
-        return this.key;
+    public Output<Optional<String>> key() {
+        return Codegen.optional(this.key);
     }
+    /**
+     * @deprecated
+     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     */
+    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
     @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
@@ -175,10 +195,10 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -188,6 +208,30 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    @Export(name="signCert", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signCert;
+
+    public Output<Optional<String>> signCert() {
+        return Codegen.optional(this.signCert);
+    }
+    @Export(name="signPrivateKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signPrivateKey;
+
+    public Output<Optional<String>> signPrivateKey() {
+        return Codegen.optional(this.signPrivateKey);
+    }
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**
@@ -202,7 +246,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Certificate(java.lang.String name, CertificateArgs args) {
+    public Certificate(java.lang.String name, @Nullable CertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,7 +255,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Certificate(java.lang.String name, CertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Certificate(java.lang.String name, @Nullable CertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:cas/certificate:Certificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -219,7 +263,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         super("alicloud:cas/certificate:Certificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static CertificateArgs makeArgs(CertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static CertificateArgs makeArgs(@Nullable CertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
@@ -229,6 +273,11 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "encryptPrivateKey",
+                "key",
+                "signPrivateKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

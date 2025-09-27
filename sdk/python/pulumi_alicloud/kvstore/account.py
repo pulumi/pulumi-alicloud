@@ -399,7 +399,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -483,7 +483,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -615,7 +615,7 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountPrivilege")
-    def account_privilege(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_privilege(self) -> pulumi.Output[_builtins.str]:
         """
         The privilege of account access database. Default value: `RoleReadWrite` 
         - `RoleReadOnly`: This value is only for Redis and Memcache
@@ -625,7 +625,7 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_type(self) -> pulumi.Output[_builtins.str]:
         """
         Privilege type of account.
         - Normal: Common privilege.

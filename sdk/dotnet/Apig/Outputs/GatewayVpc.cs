@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Apig.Outputs
     public sealed class GatewayVpc
     {
         /// <summary>
-        /// The name of the VPC gateway.
+        /// The zone name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

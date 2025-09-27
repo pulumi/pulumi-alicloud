@@ -52,6 +52,12 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly gatewayName: pulumi.Output<string | undefined>;
     /**
+     * Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     */
+    declare public readonly gatewayType: pulumi.Output<string>;
+    /**
      * Log Configuration See `logConfig` below.
      */
     declare public readonly logConfig: pulumi.Output<outputs.apig.GatewayLogConfig | undefined>;
@@ -91,6 +97,10 @@ export class Gateway extends pulumi.CustomResource {
      * Availability Zone Configuration See `zoneConfig` below.
      */
     declare public readonly zoneConfig: pulumi.Output<outputs.apig.GatewayZoneConfig>;
+    /**
+     * The List of zones associated with the Gateway. See `zones` below.
+     */
+    declare public readonly zones: pulumi.Output<outputs.apig.GatewayZone[]>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -107,6 +117,7 @@ export class Gateway extends pulumi.CustomResource {
             const state = argsOrState as GatewayState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["gatewayName"] = state?.gatewayName;
+            resourceInputs["gatewayType"] = state?.gatewayType;
             resourceInputs["logConfig"] = state?.logConfig;
             resourceInputs["networkAccessConfig"] = state?.networkAccessConfig;
             resourceInputs["paymentType"] = state?.paymentType;
@@ -117,6 +128,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["vpc"] = state?.vpc;
             resourceInputs["vswitch"] = state?.vswitch;
             resourceInputs["zoneConfig"] = state?.zoneConfig;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
             if (args?.paymentType === undefined && !opts.urn) {
@@ -126,6 +138,7 @@ export class Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneConfig'");
             }
             resourceInputs["gatewayName"] = args?.gatewayName;
+            resourceInputs["gatewayType"] = args?.gatewayType;
             resourceInputs["logConfig"] = args?.logConfig;
             resourceInputs["networkAccessConfig"] = args?.networkAccessConfig;
             resourceInputs["paymentType"] = args?.paymentType;
@@ -135,6 +148,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["vpc"] = args?.vpc;
             resourceInputs["vswitch"] = args?.vswitch;
             resourceInputs["zoneConfig"] = args?.zoneConfig;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -155,6 +169,12 @@ export interface GatewayState {
      * The name of the resource
      */
     gatewayName?: pulumi.Input<string>;
+    /**
+     * Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     */
+    gatewayType?: pulumi.Input<string>;
     /**
      * Log Configuration See `logConfig` below.
      */
@@ -195,6 +215,10 @@ export interface GatewayState {
      * Availability Zone Configuration See `zoneConfig` below.
      */
     zoneConfig?: pulumi.Input<inputs.apig.GatewayZoneConfig>;
+    /**
+     * The List of zones associated with the Gateway. See `zones` below.
+     */
+    zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[]>;
 }
 
 /**
@@ -205,6 +229,12 @@ export interface GatewayArgs {
      * The name of the resource
      */
     gatewayName?: pulumi.Input<string>;
+    /**
+     * Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     */
+    gatewayType?: pulumi.Input<string>;
     /**
      * Log Configuration See `logConfig` below.
      */
@@ -241,4 +271,8 @@ export interface GatewayArgs {
      * Availability Zone Configuration See `zoneConfig` below.
      */
     zoneConfig: pulumi.Input<inputs.apig.GatewayZoneConfig>;
+    /**
+     * The List of zones associated with the Gateway. See `zones` below.
+     */
+    zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[]>;
 }

@@ -110,16 +110,22 @@ namespace Pulumi.AliCloud.Cas
         /// Cert of the Certificate in which the Certificate will add.
         /// </summary>
         [Output("cert")]
-        public Output<string> Cert { get; private set; } = null!;
+        public Output<string?> Cert { get; private set; } = null!;
 
         [Output("certificateName")]
         public Output<string> CertificateName { get; private set; } = null!;
+
+        [Output("encryptCert")]
+        public Output<string?> EncryptCert { get; private set; } = null!;
+
+        [Output("encryptPrivateKey")]
+        public Output<string?> EncryptPrivateKey { get; private set; } = null!;
 
         /// <summary>
         /// Key of the Certificate in which the Certificate will add.
         /// </summary>
         [Output("key")]
-        public Output<string> Key { get; private set; } = null!;
+        public Output<string?> Key { get; private set; } = null!;
 
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -130,6 +136,18 @@ namespace Pulumi.AliCloud.Cas
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        [Output("signCert")]
+        public Output<string?> SignCert { get; private set; } = null!;
+
+        [Output("signPrivateKey")]
+        public Output<string?> SignPrivateKey { get; private set; } = null!;
+
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Certificate resource with the given unique name, arguments, and options.
@@ -138,7 +156,7 @@ namespace Pulumi.AliCloud.Cas
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Certificate(string name, CertificateArgs args, CustomResourceOptions? options = null)
+        public Certificate(string name, CertificateArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:cas/certificate:Certificate", name, args ?? new CertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -153,6 +171,12 @@ namespace Pulumi.AliCloud.Cas
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "encryptPrivateKey",
+                    "key",
+                    "signPrivateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -179,17 +203,42 @@ namespace Pulumi.AliCloud.Cas
         /// <summary>
         /// Cert of the Certificate in which the Certificate will add.
         /// </summary>
-        [Input("cert", required: true)]
-        public Input<string> Cert { get; set; } = null!;
+        [Input("cert")]
+        public Input<string>? Cert { get; set; }
 
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }
 
+        [Input("encryptCert")]
+        public Input<string>? EncryptCert { get; set; }
+
+        [Input("encryptPrivateKey")]
+        private Input<string>? _encryptPrivateKey;
+        public Input<string>? EncryptPrivateKey
+        {
+            get => _encryptPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _encryptPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// Key of the Certificate in which the Certificate will add.
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -199,6 +248,32 @@ namespace Pulumi.AliCloud.Cas
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("signCert")]
+        public Input<string>? SignCert { get; set; }
+
+        [Input("signPrivateKey")]
+        private Input<string>? _signPrivateKey;
+        public Input<string>? SignPrivateKey
+        {
+            get => _signPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public CertificateArgs()
         {
@@ -217,11 +292,36 @@ namespace Pulumi.AliCloud.Cas
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }
 
+        [Input("encryptCert")]
+        public Input<string>? EncryptCert { get; set; }
+
+        [Input("encryptPrivateKey")]
+        private Input<string>? _encryptPrivateKey;
+        public Input<string>? EncryptPrivateKey
+        {
+            get => _encryptPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _encryptPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// Key of the Certificate in which the Certificate will add.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -231,6 +331,32 @@ namespace Pulumi.AliCloud.Cas
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("signCert")]
+        public Input<string>? SignCert { get; set; }
+
+        [Input("signPrivateKey")]
+        private Input<string>? _signPrivateKey;
+        public Input<string>? SignPrivateKey
+        {
+            get => _signPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public CertificateState()
         {

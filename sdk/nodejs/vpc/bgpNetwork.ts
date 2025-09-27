@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Bgp Network resource.
+ * Provides a Express Connect Bgp Network resource.
  *
- * For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+ * For information about Express Connect Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-addbgpnetwork-express-connect).
  *
  * > **NOTE:** Available since v1.153.0.
  *
@@ -21,34 +21,34 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const example = alicloud.expressconnect.getPhysicalConnections({
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.index.Integer("vlan_id", {
- *     max: 2999,
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 1,
+ *     max: 2999,
  * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("example", {
+ * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("default", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
+ *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: defaultInteger.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const exampleBgpNetwork = new alicloud.vpc.BgpNetwork("example", {
+ * const defaultBgpNetwork = new alicloud.vpc.BgpNetwork("default", {
  *     dstCidrBlock: "192.168.0.0/24",
- *     routerId: exampleVirtualBorderRouter.id,
+ *     routerId: defaultVirtualBorderRouter.id,
  * });
  * ```
  *
  * ## Import
  *
- * VPC Bgp Network can be imported using the id, e.g.
+ * Express Connect Bgp Network can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
@@ -87,13 +87,17 @@ export class BgpNetwork extends pulumi.CustomResource {
      */
     declare public readonly dstCidrBlock: pulumi.Output<string>;
     /**
-     * The ID of the vRouter associated with the router interface.
+     * The region ID of the virtual border router (VBR) group.
      */
     declare public readonly routerId: pulumi.Output<string>;
     /**
      * The state of the advertised BGP network.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The ID of the VPC.
+     */
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a BgpNetwork resource with the given unique name, arguments, and options.
@@ -111,6 +115,7 @@ export class BgpNetwork extends pulumi.CustomResource {
             resourceInputs["dstCidrBlock"] = state?.dstCidrBlock;
             resourceInputs["routerId"] = state?.routerId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as BgpNetworkArgs | undefined;
             if (args?.dstCidrBlock === undefined && !opts.urn) {
@@ -121,6 +126,7 @@ export class BgpNetwork extends pulumi.CustomResource {
             }
             resourceInputs["dstCidrBlock"] = args?.dstCidrBlock;
             resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -137,13 +143,17 @@ export interface BgpNetworkState {
      */
     dstCidrBlock?: pulumi.Input<string>;
     /**
-     * The ID of the vRouter associated with the router interface.
+     * The region ID of the virtual border router (VBR) group.
      */
     routerId?: pulumi.Input<string>;
     /**
      * The state of the advertised BGP network.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -155,7 +165,11 @@ export interface BgpNetworkArgs {
      */
     dstCidrBlock: pulumi.Input<string>;
     /**
-     * The ID of the vRouter associated with the router interface.
+     * The region ID of the virtual border router (VBR) group.
      */
     routerId: pulumi.Input<string>;
+    /**
+     * The ID of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
 }

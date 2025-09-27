@@ -22,25 +22,39 @@ class ControlPolicyArgs:
                  control_policy_name: pulumi.Input[_builtins.str],
                  effect_scope: pulumi.Input[_builtins.str],
                  policy_document: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ControlPolicy resource.
-        :param pulumi.Input[_builtins.str] control_policy_name: The name of control policy.
-        :param pulumi.Input[_builtins.str] effect_scope: The effect scope. Valid values `RAM`.
-        :param pulumi.Input[_builtins.str] policy_document: The policy document of control policy.
-        :param pulumi.Input[_builtins.str] description: The description of control policy.
+        :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
+               The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] effect_scope: The effective scope of the access control policy. Valid values:
+               
+               - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+               - RAM: The access control policy is in effect only for RAM users and RAM roles.
+        :param pulumi.Input[_builtins.str] policy_document: The new document of the access control policy.
+               The document can be a maximum of 4,096 characters in length.
+               For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+               For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
+        :param pulumi.Input[_builtins.str] description: The new description of the access control policy.
+               The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+               You can specify a maximum of 20 tags.
         """
         pulumi.set(__self__, "control_policy_name", control_policy_name)
         pulumi.set(__self__, "effect_scope", effect_scope)
         pulumi.set(__self__, "policy_document", policy_document)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="controlPolicyName")
     def control_policy_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of control policy.
+        The new name of the access control policy.
+        The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         """
         return pulumi.get(self, "control_policy_name")
 
@@ -52,7 +66,10 @@ class ControlPolicyArgs:
     @pulumi.getter(name="effectScope")
     def effect_scope(self) -> pulumi.Input[_builtins.str]:
         """
-        The effect scope. Valid values `RAM`.
+        The effective scope of the access control policy. Valid values:
+
+        - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+        - RAM: The access control policy is in effect only for RAM users and RAM roles.
         """
         return pulumi.get(self, "effect_scope")
 
@@ -64,7 +81,10 @@ class ControlPolicyArgs:
     @pulumi.getter(name="policyDocument")
     def policy_document(self) -> pulumi.Input[_builtins.str]:
         """
-        The policy document of control policy.
+        The new document of the access control policy.
+        The document can be a maximum of 4,096 characters in length.
+        For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+        For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
         """
         return pulumi.get(self, "policy_document")
 
@@ -76,7 +96,8 @@ class ControlPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of control policy.
+        The new description of the access control policy.
+        The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
         """
         return pulumi.get(self, "description")
 
@@ -84,35 +105,66 @@ class ControlPolicyArgs:
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tags.
+        You can specify a maximum of 20 tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _ControlPolicyState:
     def __init__(__self__, *,
                  control_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ControlPolicy resources.
-        :param pulumi.Input[_builtins.str] control_policy_name: The name of control policy.
-        :param pulumi.Input[_builtins.str] description: The description of control policy.
-        :param pulumi.Input[_builtins.str] effect_scope: The effect scope. Valid values `RAM`.
-        :param pulumi.Input[_builtins.str] policy_document: The policy document of control policy.
+        :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
+               The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] create_time: The time when the access control policy was created.
+        :param pulumi.Input[_builtins.str] description: The new description of the access control policy.
+               The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] effect_scope: The effective scope of the access control policy. Valid values:
+               
+               - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+               - RAM: The access control policy is in effect only for RAM users and RAM roles.
+        :param pulumi.Input[_builtins.str] policy_document: The new document of the access control policy.
+               The document can be a maximum of 4,096 characters in length.
+               For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+               For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+               You can specify a maximum of 20 tags.
         """
         if control_policy_name is not None:
             pulumi.set(__self__, "control_policy_name", control_policy_name)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effect_scope is not None:
             pulumi.set(__self__, "effect_scope", effect_scope)
         if policy_document is not None:
             pulumi.set(__self__, "policy_document", policy_document)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="controlPolicyName")
     def control_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of control policy.
+        The new name of the access control policy.
+        The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         """
         return pulumi.get(self, "control_policy_name")
 
@@ -121,10 +173,23 @@ class _ControlPolicyState:
         pulumi.set(self, "control_policy_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when the access control policy was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of control policy.
+        The new description of the access control policy.
+        The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
         """
         return pulumi.get(self, "description")
 
@@ -136,7 +201,10 @@ class _ControlPolicyState:
     @pulumi.getter(name="effectScope")
     def effect_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The effect scope. Valid values `RAM`.
+        The effective scope of the access control policy. Valid values:
+
+        - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+        - RAM: The access control policy is in effect only for RAM users and RAM roles.
         """
         return pulumi.get(self, "effect_scope")
 
@@ -148,13 +216,29 @@ class _ControlPolicyState:
     @pulumi.getter(name="policyDocument")
     def policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy document of control policy.
+        The new document of the access control policy.
+        The document can be a maximum of 4,096 characters in length.
+        For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+        For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
         """
         return pulumi.get(self, "policy_document")
 
     @policy_document.setter
     def policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_document", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tags.
+        You can specify a maximum of 20 tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.type_token("alicloud:resourcemanager/controlPolicy:ControlPolicy")
@@ -167,6 +251,7 @@ class ControlPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_document: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Control Policy resource.
@@ -219,10 +304,20 @@ class ControlPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] control_policy_name: The name of control policy.
-        :param pulumi.Input[_builtins.str] description: The description of control policy.
-        :param pulumi.Input[_builtins.str] effect_scope: The effect scope. Valid values `RAM`.
-        :param pulumi.Input[_builtins.str] policy_document: The policy document of control policy.
+        :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
+               The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] description: The new description of the access control policy.
+               The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] effect_scope: The effective scope of the access control policy. Valid values:
+               
+               - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+               - RAM: The access control policy is in effect only for RAM users and RAM roles.
+        :param pulumi.Input[_builtins.str] policy_document: The new document of the access control policy.
+               The document can be a maximum of 4,096 characters in length.
+               For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+               For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+               You can specify a maximum of 20 tags.
         """
         ...
     @overload
@@ -298,6 +393,7 @@ class ControlPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_document: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,6 +413,8 @@ class ControlPolicy(pulumi.CustomResource):
             if policy_document is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_document'")
             __props__.__dict__["policy_document"] = policy_document
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
         super(ControlPolicy, __self__).__init__(
             'alicloud:resourcemanager/controlPolicy:ControlPolicy',
             resource_name,
@@ -328,9 +426,11 @@ class ControlPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             control_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_document: Optional[pulumi.Input[_builtins.str]] = None) -> 'ControlPolicy':
+            policy_document: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ControlPolicy':
         """
         Get an existing ControlPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -338,34 +438,57 @@ class ControlPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] control_policy_name: The name of control policy.
-        :param pulumi.Input[_builtins.str] description: The description of control policy.
-        :param pulumi.Input[_builtins.str] effect_scope: The effect scope. Valid values `RAM`.
-        :param pulumi.Input[_builtins.str] policy_document: The policy document of control policy.
+        :param pulumi.Input[_builtins.str] control_policy_name: The new name of the access control policy.
+               The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] create_time: The time when the access control policy was created.
+        :param pulumi.Input[_builtins.str] description: The new description of the access control policy.
+               The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
+        :param pulumi.Input[_builtins.str] effect_scope: The effective scope of the access control policy. Valid values:
+               
+               - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+               - RAM: The access control policy is in effect only for RAM users and RAM roles.
+        :param pulumi.Input[_builtins.str] policy_document: The new document of the access control policy.
+               The document can be a maximum of 4,096 characters in length.
+               For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+               For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+               You can specify a maximum of 20 tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ControlPolicyState.__new__(_ControlPolicyState)
 
         __props__.__dict__["control_policy_name"] = control_policy_name
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effect_scope"] = effect_scope
         __props__.__dict__["policy_document"] = policy_document
+        __props__.__dict__["tags"] = tags
         return ControlPolicy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="controlPolicyName")
     def control_policy_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of control policy.
+        The new name of the access control policy.
+        The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         """
         return pulumi.get(self, "control_policy_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when the access control policy was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of control policy.
+        The new description of the access control policy.
+        The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
         """
         return pulumi.get(self, "description")
 
@@ -373,7 +496,10 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="effectScope")
     def effect_scope(self) -> pulumi.Output[_builtins.str]:
         """
-        The effect scope. Valid values `RAM`.
+        The effective scope of the access control policy. Valid values:
+
+        - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+        - RAM: The access control policy is in effect only for RAM users and RAM roles.
         """
         return pulumi.get(self, "effect_scope")
 
@@ -381,7 +507,19 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="policyDocument")
     def policy_document(self) -> pulumi.Output[_builtins.str]:
         """
-        The policy document of control policy.
+        The new document of the access control policy.
+        The document can be a maximum of 4,096 characters in length.
+        For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+        For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
         """
         return pulumi.get(self, "policy_document")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tags.
+        You can specify a maximum of 20 tags.
+        """
+        return pulumi.get(self, "tags")
 

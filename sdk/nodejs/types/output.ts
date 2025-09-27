@@ -3608,7 +3608,7 @@ export namespace apig {
 
     export interface GatewayVpc {
         /**
-         * The name of the VPC gateway.
+         * The zone name.
          */
         name: string;
         /**
@@ -3619,13 +3619,28 @@ export namespace apig {
 
     export interface GatewayVswitch {
         /**
-         * The name of the VPC gateway.
+         * The zone name.
          */
         name: string;
         /**
          * The ID of the virtual switch.
          */
         vswitchId?: string;
+    }
+
+    export interface GatewayZone {
+        /**
+         * The zone name.
+         */
+        name: string;
+        /**
+         * The vswitch ID.
+         */
+        vswitchId?: string;
+        /**
+         * The zone ID.
+         */
+        zoneId?: string;
     }
 
     export interface GatewayZoneConfig {

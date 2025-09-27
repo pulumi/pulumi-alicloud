@@ -6,6 +6,7 @@ package com.pulumi.alicloud.resourcemanager.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,16 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     public static final ControlPolicyState Empty = new ControlPolicyState();
 
     /**
-     * The name of control policy.
+     * The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      * 
      */
     @Import(name="controlPolicyName")
     private @Nullable Output<String> controlPolicyName;
 
     /**
-     * @return The name of control policy.
+     * @return The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      * 
      */
     public Optional<Output<String>> controlPolicyName() {
@@ -31,14 +34,31 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of control policy.
+     * The time when the access control policy was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the access control policy was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of control policy.
+     * @return The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +66,20 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The effect scope. Valid values `RAM`.
+     * The effective scope of the access control policy. Valid values:
+     * 
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      * 
      */
     @Import(name="effectScope")
     private @Nullable Output<String> effectScope;
 
     /**
-     * @return The effect scope. Valid values `RAM`.
+     * @return The effective scope of the access control policy. Valid values:
+     * 
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      * 
      */
     public Optional<Output<String>> effectScope() {
@@ -61,27 +87,52 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The policy document of control policy.
+     * The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      * 
      */
     @Import(name="policyDocument")
     private @Nullable Output<String> policyDocument;
 
     /**
-     * @return The policy document of control policy.
+     * @return The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      * 
      */
     public Optional<Output<String>> policyDocument() {
         return Optional.ofNullable(this.policyDocument);
     }
 
+    /**
+     * The tags.
+     * You can specify a maximum of 20 tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tags.
+     * You can specify a maximum of 20 tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private ControlPolicyState() {}
 
     private ControlPolicyState(ControlPolicyState $) {
         this.controlPolicyName = $.controlPolicyName;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.effectScope = $.effectScope;
         this.policyDocument = $.policyDocument;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -103,7 +154,8 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param controlPolicyName The name of control policy.
+         * @param controlPolicyName The new name of the access control policy.
+         * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
          * 
          * @return builder
          * 
@@ -114,7 +166,8 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param controlPolicyName The name of control policy.
+         * @param controlPolicyName The new name of the access control policy.
+         * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
          * 
          * @return builder
          * 
@@ -124,7 +177,29 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of control policy.
+         * @param createTime The time when the access control policy was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the access control policy was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The new description of the access control policy.
+         * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
          * 
          * @return builder
          * 
@@ -135,7 +210,8 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of control policy.
+         * @param description The new description of the access control policy.
+         * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
          * 
          * @return builder
          * 
@@ -145,7 +221,10 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effectScope The effect scope. Valid values `RAM`.
+         * @param effectScope The effective scope of the access control policy. Valid values:
+         * 
+         * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+         * - RAM: The access control policy is in effect only for RAM users and RAM roles.
          * 
          * @return builder
          * 
@@ -156,7 +235,10 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effectScope The effect scope. Valid values `RAM`.
+         * @param effectScope The effective scope of the access control policy. Valid values:
+         * 
+         * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+         * - RAM: The access control policy is in effect only for RAM users and RAM roles.
          * 
          * @return builder
          * 
@@ -166,7 +248,10 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param policyDocument The policy document of control policy.
+         * @param policyDocument The new document of the access control policy.
+         * The document can be a maximum of 4,096 characters in length.
+         * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+         * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
          * 
          * @return builder
          * 
@@ -177,13 +262,39 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param policyDocument The policy document of control policy.
+         * @param policyDocument The new document of the access control policy.
+         * The document can be a maximum of 4,096 characters in length.
+         * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+         * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
          * 
          * @return builder
          * 
          */
         public Builder policyDocument(String policyDocument) {
             return policyDocument(Output.of(policyDocument));
+        }
+
+        /**
+         * @param tags The tags.
+         * You can specify a maximum of 20 tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags.
+         * You can specify a maximum of 20 tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public ControlPolicyState build() {

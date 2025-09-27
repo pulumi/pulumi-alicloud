@@ -10,6 +10,7 @@ import com.pulumi.alicloud.apig.outputs.GatewayLogConfig;
 import com.pulumi.alicloud.apig.outputs.GatewayNetworkAccessConfig;
 import com.pulumi.alicloud.apig.outputs.GatewayVpc;
 import com.pulumi.alicloud.apig.outputs.GatewayVswitch;
+import com.pulumi.alicloud.apig.outputs.GatewayZone;
 import com.pulumi.alicloud.apig.outputs.GatewayZoneConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -17,6 +18,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -60,6 +62,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> gatewayName() {
         return Codegen.optional(this.gatewayName);
+    }
+    /**
+     * Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     * 
+     */
+    @Export(name="gatewayType", refs={String.class}, tree="[0]")
+    private Output<String> gatewayType;
+
+    /**
+     * @return Describes the gateway type, which is categorized into the following two types:
+     * - API: indicates an API gateway
+     * - AI: Indicates an AI gateway
+     * 
+     */
+    public Output<String> gatewayType() {
+        return this.gatewayType;
     }
     /**
      * Log Configuration See `log_config` below.
@@ -200,6 +220,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<GatewayZoneConfig> zoneConfig() {
         return this.zoneConfig;
+    }
+    /**
+     * The List of zones associated with the Gateway. See `zones` below.
+     * 
+     */
+    @Export(name="zones", refs={List.class,GatewayZone.class}, tree="[0,1]")
+    private Output<List<GatewayZone>> zones;
+
+    /**
+     * @return The List of zones associated with the Gateway. See `zones` below.
+     * 
+     */
+    public Output<List<GatewayZone>> zones() {
+        return this.zones;
     }
 
     /**
