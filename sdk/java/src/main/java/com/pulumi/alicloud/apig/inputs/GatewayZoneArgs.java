@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs {
+public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GatewayVswitchArgs Empty = new GatewayVswitchArgs();
+    public static final GatewayZoneArgs Empty = new GatewayZoneArgs();
 
     /**
      * The zone name.
@@ -31,43 +31,59 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the virtual switch.
+     * The vswitch ID.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the virtual switch.
+     * @return The vswitch ID.
      * 
      */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
 
-    private GatewayVswitchArgs() {}
+    /**
+     * The zone ID.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    private GatewayVswitchArgs(GatewayVswitchArgs $) {
+    /**
+     * @return The zone ID.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
+    private GatewayZoneArgs() {}
+
+    private GatewayZoneArgs(GatewayZoneArgs $) {
         this.name = $.name;
         this.vswitchId = $.vswitchId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GatewayVswitchArgs defaults) {
+    public static Builder builder(GatewayZoneArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GatewayVswitchArgs $;
+        private GatewayZoneArgs $;
 
         public Builder() {
-            $ = new GatewayVswitchArgs();
+            $ = new GatewayZoneArgs();
         }
 
-        public Builder(GatewayVswitchArgs defaults) {
-            $ = new GatewayVswitchArgs(Objects.requireNonNull(defaults));
+        public Builder(GatewayZoneArgs defaults) {
+            $ = new GatewayZoneArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -92,7 +108,7 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vswitchId The ID of the virtual switch.
+         * @param vswitchId The vswitch ID.
          * 
          * @return builder
          * 
@@ -103,7 +119,7 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vswitchId The ID of the virtual switch.
+         * @param vswitchId The vswitch ID.
          * 
          * @return builder
          * 
@@ -112,7 +128,28 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
             return vswitchId(Output.of(vswitchId));
         }
 
-        public GatewayVswitchArgs build() {
+        /**
+         * @param zoneId The zone ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The zone ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
+        }
+
+        public GatewayZoneArgs build() {
             return $;
         }
     }

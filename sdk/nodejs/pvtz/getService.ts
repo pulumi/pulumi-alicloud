@@ -7,17 +7,19 @@ import * as utilities from "../utilities";
 /**
  * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
  *
- * For information about Priavte Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+ * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
  *
- * > **NOTE:** Available in v1.114.0+
+ * > **NOTE:** Available since v1.114.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = alicloud.pvtz.getService({
+ * const _default = alicloud.pvtz.getService({
  *     enable: "On",
  * });
  * ```
@@ -35,7 +37,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetServiceArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
      *
      * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://help.aliyun.com/document_detail/65657.html). The service can not closed once it is opened.
      */
@@ -59,17 +61,19 @@ export interface GetServiceResult {
 /**
  * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
  *
- * For information about Priavte Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+ * For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
  *
- * > **NOTE:** Available in v1.114.0+
+ * > **NOTE:** Available since v1.114.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = alicloud.pvtz.getService({
+ * const _default = alicloud.pvtz.getService({
  *     enable: "On",
  * });
  * ```
@@ -87,7 +91,7 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
  */
 export interface GetServiceOutputArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
      *
      * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://help.aliyun.com/document_detail/65657.html). The service can not closed once it is opened.
      */

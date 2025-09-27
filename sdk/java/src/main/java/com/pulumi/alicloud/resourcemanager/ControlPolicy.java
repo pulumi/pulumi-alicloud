@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -89,60 +90,106 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/controlPolicy:ControlPolicy")
 public class ControlPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The name of control policy.
+     * The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      * 
      */
     @Export(name="controlPolicyName", refs={String.class}, tree="[0]")
     private Output<String> controlPolicyName;
 
     /**
-     * @return The name of control policy.
+     * @return The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      * 
      */
     public Output<String> controlPolicyName() {
         return this.controlPolicyName;
     }
     /**
-     * The description of control policy.
+     * The time when the access control policy was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the access control policy was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of control policy.
+     * @return The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The effect scope. Valid values `RAM`.
+     * The effective scope of the access control policy. Valid values:
+     * 
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      * 
      */
     @Export(name="effectScope", refs={String.class}, tree="[0]")
     private Output<String> effectScope;
 
     /**
-     * @return The effect scope. Valid values `RAM`.
+     * @return The effective scope of the access control policy. Valid values:
+     * 
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      * 
      */
     public Output<String> effectScope() {
         return this.effectScope;
     }
     /**
-     * The policy document of control policy.
+     * The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      * 
      */
     @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output<String> policyDocument;
 
     /**
-     * @return The policy document of control policy.
+     * @return The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      * 
      */
     public Output<String> policyDocument() {
         return this.policyDocument;
+    }
+    /**
+     * The tags.
+     * You can specify a maximum of 20 tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tags.
+     * You can specify a maximum of 20 tags.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

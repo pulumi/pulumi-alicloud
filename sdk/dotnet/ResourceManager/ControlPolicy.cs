@@ -68,28 +68,49 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class ControlPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of control policy.
+        /// The new name of the access control policy.
+        /// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         /// </summary>
         [Output("controlPolicyName")]
         public Output<string> ControlPolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of control policy.
+        /// The time when the access control policy was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The new description of the access control policy.
+        /// The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The effect scope. Valid values `RAM`.
+        /// The effective scope of the access control policy. Valid values:
+        /// 
+        /// - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+        /// - RAM: The access control policy is in effect only for RAM users and RAM roles.
         /// </summary>
         [Output("effectScope")]
         public Output<string> EffectScope { get; private set; } = null!;
 
         /// <summary>
-        /// The policy document of control policy.
+        /// The new document of the access control policy.
+        /// The document can be a maximum of 4,096 characters in length.
+        /// For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+        /// For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
         /// </summary>
         [Output("policyDocument")]
         public Output<string> PolicyDocument { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags.
+        /// You can specify a maximum of 20 tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -138,28 +159,49 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ControlPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of control policy.
+        /// The new name of the access control policy.
+        /// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         /// </summary>
         [Input("controlPolicyName", required: true)]
         public Input<string> ControlPolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The description of control policy.
+        /// The new description of the access control policy.
+        /// The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The effect scope. Valid values `RAM`.
+        /// The effective scope of the access control policy. Valid values:
+        /// 
+        /// - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+        /// - RAM: The access control policy is in effect only for RAM users and RAM roles.
         /// </summary>
         [Input("effectScope", required: true)]
         public Input<string> EffectScope { get; set; } = null!;
 
         /// <summary>
-        /// The policy document of control policy.
+        /// The new document of the access control policy.
+        /// The document can be a maximum of 4,096 characters in length.
+        /// For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+        /// For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
         /// </summary>
         [Input("policyDocument", required: true)]
         public Input<string> PolicyDocument { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags.
+        /// You can specify a maximum of 20 tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ControlPolicyArgs()
         {
@@ -170,28 +212,55 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ControlPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of control policy.
+        /// The new name of the access control policy.
+        /// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         /// </summary>
         [Input("controlPolicyName")]
         public Input<string>? ControlPolicyName { get; set; }
 
         /// <summary>
-        /// The description of control policy.
+        /// The time when the access control policy was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The new description of the access control policy.
+        /// The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The effect scope. Valid values `RAM`.
+        /// The effective scope of the access control policy. Valid values:
+        /// 
+        /// - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+        /// - RAM: The access control policy is in effect only for RAM users and RAM roles.
         /// </summary>
         [Input("effectScope")]
         public Input<string>? EffectScope { get; set; }
 
         /// <summary>
-        /// The policy document of control policy.
+        /// The new document of the access control policy.
+        /// The document can be a maximum of 4,096 characters in length.
+        /// For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+        /// For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
         /// </summary>
         [Input("policyDocument")]
         public Input<string>? PolicyDocument { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags.
+        /// You can specify a maximum of 20 tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ControlPolicyState()
         {

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -124,30 +123,46 @@ type Certificate struct {
 	pulumi.CustomResourceState
 
 	// Cert of the Certificate in which the Certificate will add.
-	Cert            pulumi.StringOutput `pulumi:"cert"`
-	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
+	Cert              pulumi.StringPtrOutput `pulumi:"cert"`
+	CertificateName   pulumi.StringOutput    `pulumi:"certificateName"`
+	EncryptCert       pulumi.StringPtrOutput `pulumi:"encryptCert"`
+	EncryptPrivateKey pulumi.StringPtrOutput `pulumi:"encryptPrivateKey"`
 	// Key of the Certificate in which the Certificate will add.
-	Key  pulumi.StringOutput    `pulumi:"key"`
+	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	//
-	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
+	SignCert        pulumi.StringPtrOutput `pulumi:"signCert"`
+	SignPrivateKey  pulumi.StringPtrOutput `pulumi:"signPrivateKey"`
+	Tags            pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
 func NewCertificate(ctx *pulumi.Context,
 	name string, args *CertificateArgs, opts ...pulumi.ResourceOption) (*Certificate, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &CertificateArgs{}
 	}
 
-	if args.Cert == nil {
-		return nil, errors.New("invalid value for required argument 'Cert'")
+	if args.EncryptPrivateKey != nil {
+		args.EncryptPrivateKey = pulumi.ToSecret(args.EncryptPrivateKey).(pulumi.StringPtrInput)
 	}
-	if args.Key == nil {
-		return nil, errors.New("invalid value for required argument 'Key'")
+	if args.Key != nil {
+		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
 	}
+	if args.SignPrivateKey != nil {
+		args.SignPrivateKey = pulumi.ToSecret(args.SignPrivateKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"encryptPrivateKey",
+		"key",
+		"signPrivateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certificate
 	err := ctx.RegisterResource("alicloud:cas/certificate:Certificate", name, args, &resource, opts...)
@@ -172,28 +187,42 @@ func GetCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert            *string `pulumi:"cert"`
-	CertificateName *string `pulumi:"certificateName"`
+	Cert              *string `pulumi:"cert"`
+	CertificateName   *string `pulumi:"certificateName"`
+	EncryptCert       *string `pulumi:"encryptCert"`
+	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
 	// Key of the Certificate in which the Certificate will add.
-	Key  *string `pulumi:"key"`
+	Key *string `pulumi:"key"`
+	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang *string `pulumi:"lang"`
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	//
-	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
-	Name *string `pulumi:"name"`
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	Name            *string           `pulumi:"name"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	SignCert        *string           `pulumi:"signCert"`
+	SignPrivateKey  *string           `pulumi:"signPrivateKey"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 type CertificateState struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert            pulumi.StringPtrInput
-	CertificateName pulumi.StringPtrInput
+	Cert              pulumi.StringPtrInput
+	CertificateName   pulumi.StringPtrInput
+	EncryptCert       pulumi.StringPtrInput
+	EncryptPrivateKey pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
-	Key  pulumi.StringPtrInput
+	Key pulumi.StringPtrInput
+	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrInput
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	//
-	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
-	Name pulumi.StringPtrInput
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	Name            pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
+	SignCert        pulumi.StringPtrInput
+	SignPrivateKey  pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (CertificateState) ElementType() reflect.Type {
@@ -202,29 +231,43 @@ func (CertificateState) ElementType() reflect.Type {
 
 type certificateArgs struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert            string  `pulumi:"cert"`
-	CertificateName *string `pulumi:"certificateName"`
+	Cert              *string `pulumi:"cert"`
+	CertificateName   *string `pulumi:"certificateName"`
+	EncryptCert       *string `pulumi:"encryptCert"`
+	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
 	// Key of the Certificate in which the Certificate will add.
-	Key  string  `pulumi:"key"`
+	Key *string `pulumi:"key"`
+	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang *string `pulumi:"lang"`
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	//
-	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
-	Name *string `pulumi:"name"`
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	Name            *string           `pulumi:"name"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	SignCert        *string           `pulumi:"signCert"`
+	SignPrivateKey  *string           `pulumi:"signPrivateKey"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
 	// Cert of the Certificate in which the Certificate will add.
-	Cert            pulumi.StringInput
-	CertificateName pulumi.StringPtrInput
+	Cert              pulumi.StringPtrInput
+	CertificateName   pulumi.StringPtrInput
+	EncryptCert       pulumi.StringPtrInput
+	EncryptPrivateKey pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
-	Key  pulumi.StringInput
+	Key pulumi.StringPtrInput
+	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrInput
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	//
-	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
-	Name pulumi.StringPtrInput
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	Name            pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
+	SignCert        pulumi.StringPtrInput
+	SignPrivateKey  pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (CertificateArgs) ElementType() reflect.Type {
@@ -315,28 +358,53 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 }
 
 // Cert of the Certificate in which the Certificate will add.
-func (o CertificateOutput) Cert() pulumi.StringOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Cert }).(pulumi.StringOutput)
+func (o CertificateOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
 func (o CertificateOutput) CertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateName }).(pulumi.StringOutput)
 }
 
-// Key of the Certificate in which the Certificate will add.
-func (o CertificateOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+func (o CertificateOutput) EncryptCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.EncryptCert }).(pulumi.StringPtrOutput)
 }
 
+func (o CertificateOutput) EncryptPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.EncryptPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Key of the Certificate in which the Certificate will add.
+func (o CertificateOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 func (o CertificateOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
 // Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 //
-// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) SignCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.SignCert }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateOutput) SignPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.SignPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }

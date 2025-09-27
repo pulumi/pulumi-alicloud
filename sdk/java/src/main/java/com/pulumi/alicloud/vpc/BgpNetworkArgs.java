@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BgpNetworkArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,18 +32,33 @@ public final class BgpNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vRouter associated with the router interface.
+     * The region ID of the virtual border router (VBR) group.
      * 
      */
     @Import(name="routerId", required=true)
     private Output<String> routerId;
 
     /**
-     * @return The ID of the vRouter associated with the router interface.
+     * @return The region ID of the virtual border router (VBR) group.
      * 
      */
     public Output<String> routerId() {
         return this.routerId;
+    }
+
+    /**
+     * The ID of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     private BgpNetworkArgs() {}
@@ -49,6 +66,7 @@ public final class BgpNetworkArgs extends com.pulumi.resources.ResourceArgs {
     private BgpNetworkArgs(BgpNetworkArgs $) {
         this.dstCidrBlock = $.dstCidrBlock;
         this.routerId = $.routerId;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -91,7 +109,7 @@ public final class BgpNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The ID of the vRouter associated with the router interface.
+         * @param routerId The region ID of the virtual border router (VBR) group.
          * 
          * @return builder
          * 
@@ -102,13 +120,34 @@ public final class BgpNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The ID of the vRouter associated with the router interface.
+         * @param routerId The region ID of the virtual border router (VBR) group.
          * 
          * @return builder
          * 
          */
         public Builder routerId(String routerId) {
             return routerId(Output.of(routerId));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         public BgpNetworkArgs build() {

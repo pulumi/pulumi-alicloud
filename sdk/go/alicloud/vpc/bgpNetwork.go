@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Bgp Network resource.
+// Provides a Express Connect Bgp Network resource.
 //
-// For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+// For information about Express Connect Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-addbgpnetwork-express-connect).
 //
 // > **NOTE:** Available since v1.153.0.
 //
@@ -38,30 +38,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			_default, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
-//				Max: 2999,
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Min: 1,
+//				Max: 2999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "default", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(example.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(_default.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.Id,
+//				VlanId:                  defaultInteger.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -69,9 +69,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewBgpNetwork(ctx, "example", &vpc.BgpNetworkArgs{
+//			_, err = vpc.NewBgpNetwork(ctx, "default", &vpc.BgpNetworkArgs{
 //				DstCidrBlock: pulumi.String("192.168.0.0/24"),
-//				RouterId:     exampleVirtualBorderRouter.ID(),
+//				RouterId:     defaultVirtualBorderRouter.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,7 +84,7 @@ import (
 //
 // ## Import
 //
-// VPC Bgp Network can be imported using the id, e.g.
+// Express Connect Bgp Network can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
@@ -94,10 +94,12 @@ type BgpNetwork struct {
 
 	// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
 	DstCidrBlock pulumi.StringOutput `pulumi:"dstCidrBlock"`
-	// The ID of the vRouter associated with the router interface.
+	// The region ID of the virtual border router (VBR) group.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
 	// The state of the advertised BGP network.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
 // NewBgpNetwork registers a new resource with the given unique name, arguments, and options.
@@ -138,19 +140,23 @@ func GetBgpNetwork(ctx *pulumi.Context,
 type bgpNetworkState struct {
 	// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
 	DstCidrBlock *string `pulumi:"dstCidrBlock"`
-	// The ID of the vRouter associated with the router interface.
+	// The region ID of the virtual border router (VBR) group.
 	RouterId *string `pulumi:"routerId"`
 	// The state of the advertised BGP network.
 	Status *string `pulumi:"status"`
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 type BgpNetworkState struct {
 	// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
 	DstCidrBlock pulumi.StringPtrInput
-	// The ID of the vRouter associated with the router interface.
+	// The region ID of the virtual border router (VBR) group.
 	RouterId pulumi.StringPtrInput
 	// The state of the advertised BGP network.
 	Status pulumi.StringPtrInput
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput
 }
 
 func (BgpNetworkState) ElementType() reflect.Type {
@@ -160,16 +166,20 @@ func (BgpNetworkState) ElementType() reflect.Type {
 type bgpNetworkArgs struct {
 	// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
 	DstCidrBlock string `pulumi:"dstCidrBlock"`
-	// The ID of the vRouter associated with the router interface.
+	// The region ID of the virtual border router (VBR) group.
 	RouterId string `pulumi:"routerId"`
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a BgpNetwork resource.
 type BgpNetworkArgs struct {
 	// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
 	DstCidrBlock pulumi.StringInput
-	// The ID of the vRouter associated with the router interface.
+	// The region ID of the virtual border router (VBR) group.
 	RouterId pulumi.StringInput
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput
 }
 
 func (BgpNetworkArgs) ElementType() reflect.Type {
@@ -264,7 +274,7 @@ func (o BgpNetworkOutput) DstCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpNetwork) pulumi.StringOutput { return v.DstCidrBlock }).(pulumi.StringOutput)
 }
 
-// The ID of the vRouter associated with the router interface.
+// The region ID of the virtual border router (VBR) group.
 func (o BgpNetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpNetwork) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
@@ -272,6 +282,11 @@ func (o BgpNetworkOutput) RouterId() pulumi.StringOutput {
 // The state of the advertised BGP network.
 func (o BgpNetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpNetwork) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.
+func (o BgpNetworkOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpNetwork) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 type BgpNetworkArrayOutput struct{ *pulumi.OutputState }

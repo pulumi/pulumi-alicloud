@@ -26,6 +26,10 @@ type Gateway struct {
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// The name of the resource
 	GatewayName pulumi.StringPtrOutput `pulumi:"gatewayName"`
+	// Describes the gateway type, which is categorized into the following two types:
+	// - API: indicates an API gateway
+	// - AI: Indicates an AI gateway
+	GatewayType pulumi.StringOutput `pulumi:"gatewayType"`
 	// Log Configuration See `logConfig` below.
 	LogConfig GatewayLogConfigPtrOutput `pulumi:"logConfig"`
 	// Network Access Configuration See `networkAccessConfig` below.
@@ -46,6 +50,8 @@ type Gateway struct {
 	Vswitch GatewayVswitchPtrOutput `pulumi:"vswitch"`
 	// Availability Zone Configuration See `zoneConfig` below.
 	ZoneConfig GatewayZoneConfigOutput `pulumi:"zoneConfig"`
+	// The List of zones associated with the Gateway. See `zones` below.
+	Zones GatewayZoneArrayOutput `pulumi:"zones"`
 }
 
 // NewGateway registers a new resource with the given unique name, arguments, and options.
@@ -88,6 +94,10 @@ type gatewayState struct {
 	CreateTime *int `pulumi:"createTime"`
 	// The name of the resource
 	GatewayName *string `pulumi:"gatewayName"`
+	// Describes the gateway type, which is categorized into the following two types:
+	// - API: indicates an API gateway
+	// - AI: Indicates an AI gateway
+	GatewayType *string `pulumi:"gatewayType"`
 	// Log Configuration See `logConfig` below.
 	LogConfig *GatewayLogConfig `pulumi:"logConfig"`
 	// Network Access Configuration See `networkAccessConfig` below.
@@ -108,6 +118,8 @@ type gatewayState struct {
 	Vswitch *GatewayVswitch `pulumi:"vswitch"`
 	// Availability Zone Configuration See `zoneConfig` below.
 	ZoneConfig *GatewayZoneConfig `pulumi:"zoneConfig"`
+	// The List of zones associated with the Gateway. See `zones` below.
+	Zones []GatewayZone `pulumi:"zones"`
 }
 
 type GatewayState struct {
@@ -115,6 +127,10 @@ type GatewayState struct {
 	CreateTime pulumi.IntPtrInput
 	// The name of the resource
 	GatewayName pulumi.StringPtrInput
+	// Describes the gateway type, which is categorized into the following two types:
+	// - API: indicates an API gateway
+	// - AI: Indicates an AI gateway
+	GatewayType pulumi.StringPtrInput
 	// Log Configuration See `logConfig` below.
 	LogConfig GatewayLogConfigPtrInput
 	// Network Access Configuration See `networkAccessConfig` below.
@@ -135,6 +151,8 @@ type GatewayState struct {
 	Vswitch GatewayVswitchPtrInput
 	// Availability Zone Configuration See `zoneConfig` below.
 	ZoneConfig GatewayZoneConfigPtrInput
+	// The List of zones associated with the Gateway. See `zones` below.
+	Zones GatewayZoneArrayInput
 }
 
 func (GatewayState) ElementType() reflect.Type {
@@ -144,6 +162,10 @@ func (GatewayState) ElementType() reflect.Type {
 type gatewayArgs struct {
 	// The name of the resource
 	GatewayName *string `pulumi:"gatewayName"`
+	// Describes the gateway type, which is categorized into the following two types:
+	// - API: indicates an API gateway
+	// - AI: Indicates an AI gateway
+	GatewayType *string `pulumi:"gatewayType"`
 	// Log Configuration See `logConfig` below.
 	LogConfig *GatewayLogConfig `pulumi:"logConfig"`
 	// Network Access Configuration See `networkAccessConfig` below.
@@ -162,12 +184,18 @@ type gatewayArgs struct {
 	Vswitch *GatewayVswitch `pulumi:"vswitch"`
 	// Availability Zone Configuration See `zoneConfig` below.
 	ZoneConfig GatewayZoneConfig `pulumi:"zoneConfig"`
+	// The List of zones associated with the Gateway. See `zones` below.
+	Zones []GatewayZone `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
 	// The name of the resource
 	GatewayName pulumi.StringPtrInput
+	// Describes the gateway type, which is categorized into the following two types:
+	// - API: indicates an API gateway
+	// - AI: Indicates an AI gateway
+	GatewayType pulumi.StringPtrInput
 	// Log Configuration See `logConfig` below.
 	LogConfig GatewayLogConfigPtrInput
 	// Network Access Configuration See `networkAccessConfig` below.
@@ -186,6 +214,8 @@ type GatewayArgs struct {
 	Vswitch GatewayVswitchPtrInput
 	// Availability Zone Configuration See `zoneConfig` below.
 	ZoneConfig GatewayZoneConfigInput
+	// The List of zones associated with the Gateway. See `zones` below.
+	Zones GatewayZoneArrayInput
 }
 
 func (GatewayArgs) ElementType() reflect.Type {
@@ -285,6 +315,13 @@ func (o GatewayOutput) GatewayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewayName }).(pulumi.StringPtrOutput)
 }
 
+// Describes the gateway type, which is categorized into the following two types:
+// - API: indicates an API gateway
+// - AI: Indicates an AI gateway
+func (o GatewayOutput) GatewayType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayType }).(pulumi.StringOutput)
+}
+
 // Log Configuration See `logConfig` below.
 func (o GatewayOutput) LogConfig() GatewayLogConfigPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayLogConfigPtrOutput { return v.LogConfig }).(GatewayLogConfigPtrOutput)
@@ -333,6 +370,11 @@ func (o GatewayOutput) Vswitch() GatewayVswitchPtrOutput {
 // Availability Zone Configuration See `zoneConfig` below.
 func (o GatewayOutput) ZoneConfig() GatewayZoneConfigOutput {
 	return o.ApplyT(func(v *Gateway) GatewayZoneConfigOutput { return v.ZoneConfig }).(GatewayZoneConfigOutput)
+}
+
+// The List of zones associated with the Gateway. See `zones` below.
+func (o GatewayOutput) Zones() GatewayZoneArrayOutput {
+	return o.ApplyT(func(v *Gateway) GatewayZoneArrayOutput { return v.Zones }).(GatewayZoneArrayOutput)
 }
 
 type GatewayArrayOutput struct{ *pulumi.OutputState }

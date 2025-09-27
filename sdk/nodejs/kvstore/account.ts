@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -112,13 +112,13 @@ export class Account extends pulumi.CustomResource {
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
-    declare public readonly accountPrivilege: pulumi.Output<string | undefined>;
+    declare public readonly accountPrivilege: pulumi.Output<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * Default to Normal.
      */
-    declare public readonly accountType: pulumi.Output<string | undefined>;
+    declare public readonly accountType: pulumi.Output<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */

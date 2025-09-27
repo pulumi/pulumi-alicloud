@@ -1869,7 +1869,7 @@ export namespace apig {
 
     export interface GatewayVpc {
         /**
-         * The name of the VPC gateway.
+         * The zone name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -1880,13 +1880,28 @@ export namespace apig {
 
     export interface GatewayVswitch {
         /**
-         * The name of the VPC gateway.
+         * The zone name.
          */
         name?: pulumi.Input<string>;
         /**
          * The ID of the virtual switch.
          */
         vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface GatewayZone {
+        /**
+         * The zone name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The vswitch ID.
+         */
+        vswitchId?: pulumi.Input<string>;
+        /**
+         * The zone ID.
+         */
+        zoneId?: pulumi.Input<string>;
     }
 
     export interface GatewayZoneConfig {

@@ -425,7 +425,7 @@ func (o GatewayNetworkAccessConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type GatewayVpc struct {
-	// The name of the VPC gateway.
+	// The zone name.
 	Name *string `pulumi:"name"`
 	// The VPC network ID.
 	VpcId string `pulumi:"vpcId"`
@@ -443,7 +443,7 @@ type GatewayVpcInput interface {
 }
 
 type GatewayVpcArgs struct {
-	// The name of the VPC gateway.
+	// The zone name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The VPC network ID.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -526,7 +526,7 @@ func (o GatewayVpcOutput) ToGatewayVpcPtrOutputWithContext(ctx context.Context) 
 	}).(GatewayVpcPtrOutput)
 }
 
-// The name of the VPC gateway.
+// The zone name.
 func (o GatewayVpcOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpc) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -560,7 +560,7 @@ func (o GatewayVpcPtrOutput) Elem() GatewayVpcOutput {
 	}).(GatewayVpcOutput)
 }
 
-// The name of the VPC gateway.
+// The zone name.
 func (o GatewayVpcPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpc) *string {
 		if v == nil {
@@ -581,7 +581,7 @@ func (o GatewayVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
 }
 
 type GatewayVswitch struct {
-	// The name of the VPC gateway.
+	// The zone name.
 	Name *string `pulumi:"name"`
 	// The ID of the virtual switch.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -599,7 +599,7 @@ type GatewayVswitchInput interface {
 }
 
 type GatewayVswitchArgs struct {
-	// The name of the VPC gateway.
+	// The zone name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the virtual switch.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
@@ -682,7 +682,7 @@ func (o GatewayVswitchOutput) ToGatewayVswitchPtrOutputWithContext(ctx context.C
 	}).(GatewayVswitchPtrOutput)
 }
 
-// The name of the VPC gateway.
+// The zone name.
 func (o GatewayVswitchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVswitch) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -716,7 +716,7 @@ func (o GatewayVswitchPtrOutput) Elem() GatewayVswitchOutput {
 	}).(GatewayVswitchOutput)
 }
 
-// The name of the VPC gateway.
+// The zone name.
 func (o GatewayVswitchPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVswitch) *string {
 		if v == nil {
@@ -734,6 +734,121 @@ func (o GatewayVswitchPtrOutput) VswitchId() pulumi.StringPtrOutput {
 		}
 		return v.VswitchId
 	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayZone struct {
+	// The zone name.
+	Name *string `pulumi:"name"`
+	// The vswitch ID.
+	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// GatewayZoneInput is an input type that accepts GatewayZoneArgs and GatewayZoneOutput values.
+// You can construct a concrete instance of `GatewayZoneInput` via:
+//
+//	GatewayZoneArgs{...}
+type GatewayZoneInput interface {
+	pulumi.Input
+
+	ToGatewayZoneOutput() GatewayZoneOutput
+	ToGatewayZoneOutputWithContext(context.Context) GatewayZoneOutput
+}
+
+type GatewayZoneArgs struct {
+	// The zone name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The vswitch ID.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GatewayZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayZone)(nil)).Elem()
+}
+
+func (i GatewayZoneArgs) ToGatewayZoneOutput() GatewayZoneOutput {
+	return i.ToGatewayZoneOutputWithContext(context.Background())
+}
+
+func (i GatewayZoneArgs) ToGatewayZoneOutputWithContext(ctx context.Context) GatewayZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayZoneOutput)
+}
+
+// GatewayZoneArrayInput is an input type that accepts GatewayZoneArray and GatewayZoneArrayOutput values.
+// You can construct a concrete instance of `GatewayZoneArrayInput` via:
+//
+//	GatewayZoneArray{ GatewayZoneArgs{...} }
+type GatewayZoneArrayInput interface {
+	pulumi.Input
+
+	ToGatewayZoneArrayOutput() GatewayZoneArrayOutput
+	ToGatewayZoneArrayOutputWithContext(context.Context) GatewayZoneArrayOutput
+}
+
+type GatewayZoneArray []GatewayZoneInput
+
+func (GatewayZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayZone)(nil)).Elem()
+}
+
+func (i GatewayZoneArray) ToGatewayZoneArrayOutput() GatewayZoneArrayOutput {
+	return i.ToGatewayZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayZoneArray) ToGatewayZoneArrayOutputWithContext(ctx context.Context) GatewayZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayZoneArrayOutput)
+}
+
+type GatewayZoneOutput struct{ *pulumi.OutputState }
+
+func (GatewayZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayZone)(nil)).Elem()
+}
+
+func (o GatewayZoneOutput) ToGatewayZoneOutput() GatewayZoneOutput {
+	return o
+}
+
+func (o GatewayZoneOutput) ToGatewayZoneOutputWithContext(ctx context.Context) GatewayZoneOutput {
+	return o
+}
+
+// The zone name.
+func (o GatewayZoneOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayZone) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The vswitch ID.
+func (o GatewayZoneOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayZone) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID.
+func (o GatewayZoneOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayZone) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type GatewayZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayZone)(nil)).Elem()
+}
+
+func (o GatewayZoneArrayOutput) ToGatewayZoneArrayOutput() GatewayZoneArrayOutput {
+	return o
+}
+
+func (o GatewayZoneArrayOutput) ToGatewayZoneArrayOutputWithContext(ctx context.Context) GatewayZoneArrayOutput {
+	return o
+}
+
+func (o GatewayZoneArrayOutput) Index(i pulumi.IntInput) GatewayZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayZone {
+		return vs[0].([]GatewayZone)[vs[1].(int)]
+	}).(GatewayZoneOutput)
 }
 
 type GatewayZoneConfig struct {
@@ -884,6 +999,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpcPtrInput)(nil)).Elem(), GatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVswitchInput)(nil)).Elem(), GatewayVswitchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVswitchPtrInput)(nil)).Elem(), GatewayVswitchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneInput)(nil)).Elem(), GatewayZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneArrayInput)(nil)).Elem(), GatewayZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneConfigInput)(nil)).Elem(), GatewayZoneConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneConfigPtrInput)(nil)).Elem(), GatewayZoneConfigArgs{})
 	pulumi.RegisterOutputType(GatewayLogConfigOutput{})
@@ -896,6 +1013,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayVpcPtrOutput{})
 	pulumi.RegisterOutputType(GatewayVswitchOutput{})
 	pulumi.RegisterOutputType(GatewayVswitchPtrOutput{})
+	pulumi.RegisterOutputType(GatewayZoneOutput{})
+	pulumi.RegisterOutputType(GatewayZoneArrayOutput{})
 	pulumi.RegisterOutputType(GatewayZoneConfigOutput{})
 	pulumi.RegisterOutputType(GatewayZoneConfigPtrOutput{})
 }

@@ -20,14 +20,18 @@ __all__ = ['BgpNetworkArgs', 'BgpNetwork']
 class BgpNetworkArgs:
     def __init__(__self__, *,
                  dst_cidr_block: pulumi.Input[_builtins.str],
-                 router_id: pulumi.Input[_builtins.str]):
+                 router_id: pulumi.Input[_builtins.str],
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpNetwork resource.
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the vRouter associated with the router interface.
+        :param pulumi.Input[_builtins.str] router_id: The region ID of the virtual border router (VBR) group.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         """
         pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
         pulumi.set(__self__, "router_id", router_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter(name="dstCidrBlock")
@@ -45,7 +49,7 @@ class BgpNetworkArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the vRouter associated with the router interface.
+        The region ID of the virtual border router (VBR) group.
         """
         return pulumi.get(self, "router_id")
 
@@ -53,18 +57,32 @@ class BgpNetworkArgs:
     def router_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "router_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
 
 @pulumi.input_type
 class _BgpNetworkState:
     def __init__(__self__, *,
                  dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpNetwork resources.
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the vRouter associated with the router interface.
+        :param pulumi.Input[_builtins.str] router_id: The region ID of the virtual border router (VBR) group.
         :param pulumi.Input[_builtins.str] status: The state of the advertised BGP network.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         """
         if dst_cidr_block is not None:
             pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
@@ -72,6 +90,8 @@ class _BgpNetworkState:
             pulumi.set(__self__, "router_id", router_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter(name="dstCidrBlock")
@@ -89,7 +109,7 @@ class _BgpNetworkState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the vRouter associated with the router interface.
+        The region ID of the virtual border router (VBR) group.
         """
         return pulumi.get(self, "router_id")
 
@@ -109,6 +129,18 @@ class _BgpNetworkState:
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
 
 @pulumi.type_token("alicloud:vpc/bgpNetwork:BgpNetwork")
 class BgpNetwork(pulumi.CustomResource):
@@ -118,11 +150,12 @@ class BgpNetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a VPC Bgp Network resource.
+        Provides a Express Connect Bgp Network resource.
 
-        For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+        For information about Express Connect Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-addbgpnetwork-express-connect).
 
         > **NOTE:** Available since v1.153.0.
 
@@ -138,29 +171,29 @@ class BgpNetwork(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("example",
+            name = "terraform-example"
+        default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_integer = random.index.Integer("default",
+            min=1,
+            max=2999)
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example.connections[0].id,
+            physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=default_integer["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_bgp_network = alicloud.vpc.BgpNetwork("example",
+        default_bgp_network = alicloud.vpc.BgpNetwork("default",
             dst_cidr_block="192.168.0.0/24",
-            router_id=example_virtual_border_router.id)
+            router_id=default_virtual_border_router.id)
         ```
 
         ## Import
 
-        VPC Bgp Network can be imported using the id, e.g.
+        Express Connect Bgp Network can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
@@ -169,7 +202,8 @@ class BgpNetwork(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the vRouter associated with the router interface.
+        :param pulumi.Input[_builtins.str] router_id: The region ID of the virtual border router (VBR) group.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         """
         ...
     @overload
@@ -178,9 +212,9 @@ class BgpNetwork(pulumi.CustomResource):
                  args: BgpNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Bgp Network resource.
+        Provides a Express Connect Bgp Network resource.
 
-        For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+        For information about Express Connect Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-addbgpnetwork-express-connect).
 
         > **NOTE:** Available since v1.153.0.
 
@@ -196,29 +230,29 @@ class BgpNetwork(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("example",
+            name = "terraform-example"
+        default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_integer = random.index.Integer("default",
+            min=1,
+            max=2999)
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example.connections[0].id,
+            physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=default_integer["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_bgp_network = alicloud.vpc.BgpNetwork("example",
+        default_bgp_network = alicloud.vpc.BgpNetwork("default",
             dst_cidr_block="192.168.0.0/24",
-            router_id=example_virtual_border_router.id)
+            router_id=default_virtual_border_router.id)
         ```
 
         ## Import
 
-        VPC Bgp Network can be imported using the id, e.g.
+        Express Connect Bgp Network can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
@@ -241,6 +275,7 @@ class BgpNetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,6 +291,7 @@ class BgpNetwork(pulumi.CustomResource):
             if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__.__dict__["router_id"] = router_id
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["status"] = None
         super(BgpNetwork, __self__).__init__(
             'alicloud:vpc/bgpNetwork:BgpNetwork',
@@ -269,7 +305,8 @@ class BgpNetwork(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
             router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpNetwork':
+            status: Optional[pulumi.Input[_builtins.str]] = None,
+            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpNetwork':
         """
         Get an existing BgpNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -278,8 +315,9 @@ class BgpNetwork(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the vRouter associated with the router interface.
+        :param pulumi.Input[_builtins.str] router_id: The region ID of the virtual border router (VBR) group.
         :param pulumi.Input[_builtins.str] status: The state of the advertised BGP network.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -288,6 +326,7 @@ class BgpNetwork(pulumi.CustomResource):
         __props__.__dict__["dst_cidr_block"] = dst_cidr_block
         __props__.__dict__["router_id"] = router_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["vpc_id"] = vpc_id
         return BgpNetwork(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -302,7 +341,7 @@ class BgpNetwork(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the vRouter associated with the router interface.
+        The region ID of the virtual border router (VBR) group.
         """
         return pulumi.get(self, "router_id")
 
@@ -313,4 +352,12 @@ class BgpNetwork(pulumi.CustomResource):
         The state of the advertised BGP network.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 

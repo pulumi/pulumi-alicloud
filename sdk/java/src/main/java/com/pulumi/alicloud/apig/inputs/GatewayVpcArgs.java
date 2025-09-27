@@ -17,14 +17,14 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
     public static final GatewayVpcArgs Empty = new GatewayVpcArgs();
 
     /**
-     * The name of the VPC gateway.
+     * The zone name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the VPC gateway.
+     * @return The zone name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -72,7 +72,7 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the VPC gateway.
+         * @param name The zone name.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the VPC gateway.
+         * @param name The zone name.
          * 
          * @return builder
          * 

@@ -19,95 +19,19 @@ __all__ = ['CertificateArgs', 'Certificate']
 @pulumi.input_type
 class CertificateArgs:
     def __init__(__self__, *,
-                 cert: pulumi.Input[_builtins.str],
-                 key: pulumi.Input[_builtins.str],
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        The set of arguments for constructing a Certificate resource.
-        :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
-        :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        """
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
-        if certificate_name is not None:
-            pulumi.set(__self__, "certificate_name", certificate_name)
-        if lang is not None:
-            pulumi.set(__self__, "lang", lang)
-        if name is not None:
-            warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter
-    def cert(self) -> pulumi.Input[_builtins.str]:
-        """
-        Cert of the Certificate in which the Certificate will add.
-        """
-        return pulumi.get(self, "cert")
-
-    @cert.setter
-    def cert(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "cert", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Key of the Certificate in which the Certificate will add.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="certificateName")
-    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "certificate_name")
-
-    @certificate_name.setter
-    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "certificate_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "lang")
-
-    @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "lang", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class _CertificateState:
-    def __init__(__self__, *,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
-        Input properties used for looking up and filtering Certificate resources.
+        The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -116,15 +40,30 @@ class _CertificateState:
             pulumi.set(__self__, "cert", cert)
         if certificate_name is not None:
             pulumi.set(__self__, "certificate_name", certificate_name)
+        if encrypt_cert is not None:
+            pulumi.set(__self__, "encrypt_cert", encrypt_cert)
+        if encrypt_private_key is not None:
+            pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if lang is not None:
+            warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
+        if lang is not None:
             pulumi.set(__self__, "lang", lang)
         if name is not None:
-            warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sign_cert is not None:
+            pulumi.set(__self__, "sign_cert", sign_cert)
+        if sign_private_key is not None:
+            pulumi.set(__self__, "sign_private_key", sign_private_key)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -148,6 +87,24 @@ class _CertificateState:
         pulumi.set(self, "certificate_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptCert")
+    def encrypt_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "encrypt_cert")
+
+    @encrypt_cert.setter
+    def encrypt_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptPrivateKey")
+    def encrypt_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "encrypt_private_key")
+
+    @encrypt_private_key.setter
+    def encrypt_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_private_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -161,6 +118,7 @@ class _CertificateState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
     def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "lang")
 
@@ -170,7 +128,7 @@ class _CertificateState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -180,6 +138,202 @@ class _CertificateState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signCert")
+    def sign_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "sign_cert")
+
+    @sign_cert.setter
+    def sign_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signPrivateKey")
+    def sign_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "sign_private_key")
+
+    @sign_private_key.setter
+    def sign_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _CertificateState:
+    def __init__(__self__, *,
+                 cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        Input properties used for looking up and filtering Certificate resources.
+        :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
+        :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
+        :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        if cert is not None:
+            pulumi.set(__self__, "cert", cert)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if encrypt_cert is not None:
+            pulumi.set(__self__, "encrypt_cert", encrypt_cert)
+        if encrypt_private_key is not None:
+            pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if lang is not None:
+            warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sign_cert is not None:
+            pulumi.set(__self__, "sign_cert", sign_cert)
+        if sign_private_key is not None:
+            pulumi.set(__self__, "sign_private_key", sign_private_key)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cert of the Certificate in which the Certificate will add.
+        """
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptCert")
+    def encrypt_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "encrypt_cert")
+
+    @encrypt_cert.setter
+    def encrypt_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptPrivateKey")
+    def encrypt_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "encrypt_private_key")
+
+    @encrypt_private_key.setter
+    def encrypt_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encrypt_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the Certificate in which the Certificate will add.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
+    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "lang", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signCert")
+    def sign_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "sign_cert")
+
+    @sign_cert.setter
+    def sign_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signPrivateKey")
+    def sign_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "sign_private_key")
+
+    @sign_private_key.setter
+    def sign_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sign_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 warnings.warn("""This resource has been deprecated in favour of ServiceCertificate""", DeprecationWarning)
@@ -195,9 +349,15 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a CAS Certificate resource.
@@ -291,7 +451,7 @@ class Certificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CertificateArgs,
+                 args: Optional[CertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a CAS Certificate resource.
@@ -392,9 +552,15 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         pulumi.log.warn("""Certificate is deprecated: This resource has been deprecated in favour of ServiceCertificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -405,15 +571,19 @@ class Certificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CertificateArgs.__new__(CertificateArgs)
 
-            if cert is None and not opts.urn:
-                raise TypeError("Missing required property 'cert'")
             __props__.__dict__["cert"] = cert
             __props__.__dict__["certificate_name"] = certificate_name
-            if key is None and not opts.urn:
-                raise TypeError("Missing required property 'key'")
-            __props__.__dict__["key"] = key
+            __props__.__dict__["encrypt_cert"] = encrypt_cert
+            __props__.__dict__["encrypt_private_key"] = None if encrypt_private_key is None else pulumi.Output.secret(encrypt_private_key)
+            __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
             __props__.__dict__["lang"] = lang
             __props__.__dict__["name"] = name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["sign_cert"] = sign_cert
+            __props__.__dict__["sign_private_key"] = None if sign_private_key is None else pulumi.Output.secret(sign_private_key)
+            __props__.__dict__["tags"] = tags
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "signPrivateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certificate, __self__).__init__(
             'alicloud:cas/certificate:Certificate',
             resource_name,
@@ -426,9 +596,15 @@ class Certificate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cert: Optional[pulumi.Input[_builtins.str]] = None,
             certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
+            encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
+            encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
             key: Optional[pulumi.Input[_builtins.str]] = None,
             lang: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Certificate':
+            name: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
+            sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -446,14 +622,20 @@ class Certificate(pulumi.CustomResource):
 
         __props__.__dict__["cert"] = cert
         __props__.__dict__["certificate_name"] = certificate_name
+        __props__.__dict__["encrypt_cert"] = encrypt_cert
+        __props__.__dict__["encrypt_private_key"] = encrypt_private_key
         __props__.__dict__["key"] = key
         __props__.__dict__["lang"] = lang
         __props__.__dict__["name"] = name
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["sign_cert"] = sign_cert
+        __props__.__dict__["sign_private_key"] = sign_private_key
+        __props__.__dict__["tags"] = tags
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> pulumi.Output[_builtins.str]:
+    def cert(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Cert of the Certificate in which the Certificate will add.
         """
@@ -465,8 +647,18 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "certificate_name")
 
     @_builtins.property
+    @pulumi.getter(name="encryptCert")
+    def encrypt_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "encrypt_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptPrivateKey")
+    def encrypt_private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "encrypt_private_key")
+
+    @_builtins.property
     @pulumi.getter
-    def key(self) -> pulumi.Output[_builtins.str]:
+    def key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Key of the Certificate in which the Certificate will add.
         """
@@ -474,15 +666,36 @@ class Certificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
     def lang(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "lang")
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="signCert")
+    def sign_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "sign_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="signPrivateKey")
+    def sign_private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "sign_private_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        return pulumi.get(self, "tags")
 

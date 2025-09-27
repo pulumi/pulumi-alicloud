@@ -11,12 +11,13 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Bgp Network resource.
+ * Provides a Express Connect Bgp Network resource.
  * 
- * For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+ * For information about Express Connect Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-addbgpnetwork-express-connect).
  * 
  * &gt; **NOTE:** Available since v1.153.0.
  * 
@@ -53,31 +54,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
- *             .max(2999)
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(1)
+ *             .max(2999)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+ *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
- *             .physicalConnectionId(example.connections()[0].id())
+ *             .physicalConnectionId(default_.connections()[0].id())
  *             .virtualBorderRouterName(name)
- *             .vlanId(vlanId.id())
+ *             .vlanId(defaultInteger.id())
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var exampleBgpNetwork = new BgpNetwork("exampleBgpNetwork", BgpNetworkArgs.builder()
+ *         var defaultBgpNetwork = new BgpNetwork("defaultBgpNetwork", BgpNetworkArgs.builder()
  *             .dstCidrBlock("192.168.0.0/24")
- *             .routerId(exampleVirtualBorderRouter.id())
+ *             .routerId(defaultVirtualBorderRouter.id())
  *             .build());
  * 
  *     }
@@ -87,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Bgp Network can be imported using the id, e.g.
+ * Express Connect Bgp Network can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example &lt;router_id&gt;:&lt;dst_cidr_block&gt;
@@ -111,14 +112,14 @@ public class BgpNetwork extends com.pulumi.resources.CustomResource {
         return this.dstCidrBlock;
     }
     /**
-     * The ID of the vRouter associated with the router interface.
+     * The region ID of the virtual border router (VBR) group.
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return The ID of the vRouter associated with the router interface.
+     * @return The region ID of the virtual border router (VBR) group.
      * 
      */
     public Output<String> routerId() {
@@ -137,6 +138,20 @@ public class BgpNetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The ID of the VPC.
+     * 
+     */
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vpcId;
+
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
     }
 
     /**

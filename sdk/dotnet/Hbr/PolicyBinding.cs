@@ -172,6 +172,7 @@ namespace Pulumi.AliCloud.Hbr
         /// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
         /// - `ECS_FILE`: indicates that the ECS file is backed up.
         /// - `File`: indicates a local File backup.
+        /// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -303,6 +304,7 @@ namespace Pulumi.AliCloud.Hbr
         /// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
         /// - `ECS_FILE`: indicates that the ECS file is backed up.
         /// - `File`: indicates a local File backup.
+        /// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
@@ -402,6 +404,7 @@ namespace Pulumi.AliCloud.Hbr
         /// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
         /// - `ECS_FILE`: indicates that the ECS file is backed up.
         /// - `File`: indicates a local File backup.
+        /// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }

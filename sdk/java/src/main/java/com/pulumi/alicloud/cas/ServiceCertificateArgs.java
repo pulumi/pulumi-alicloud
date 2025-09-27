@@ -5,8 +5,8 @@ package com.pulumi.alicloud.cas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,31 +17,29 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
     public static final ServiceCertificateArgs Empty = new ServiceCertificateArgs();
 
     /**
-     * Cert of the Certificate in which the Certificate will add.
+     * The content of a non-SM certificate in PEM format.
      * 
      */
-    @Import(name="cert", required=true)
-    private Output<String> cert;
+    @Import(name="cert")
+    private @Nullable Output<String> cert;
 
     /**
-     * @return Cert of the Certificate in which the Certificate will add.
+     * @return The content of a non-SM certificate in PEM format.
      * 
      */
-    public Output<String> cert() {
-        return this.cert;
+    public Optional<Output<String>> cert() {
+        return Optional.ofNullable(this.cert);
     }
 
     /**
-     * Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-     * **NOTE:** One of `certificate_name` and `name` must be specified.
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
      * 
      */
     @Import(name="certificateName")
     private @Nullable Output<String> certificateName;
 
     /**
-     * @return Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-     * **NOTE:** One of `certificate_name` and `name` must be specified.
+     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
      * 
      */
     public Optional<Output<String>> certificateName() {
@@ -49,56 +47,154 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Key of the Certificate in which the Certificate will add.
+     * The content of an SM encryption certificate in PEM format.
      * 
      */
-    @Import(name="key", required=true)
-    private Output<String> key;
+    @Import(name="encryptCert")
+    private @Nullable Output<String> encryptCert;
 
     /**
-     * @return Key of the Certificate in which the Certificate will add.
+     * @return The content of an SM encryption certificate in PEM format.
      * 
      */
-    public Output<String> key() {
-        return this.key;
+    public Optional<Output<String>> encryptCert() {
+        return Optional.ofNullable(this.encryptCert);
     }
 
     /**
-     * The lang.
+     * The private key of an SM encryption certificate in PEM format.
      * 
      */
+    @Import(name="encryptPrivateKey")
+    private @Nullable Output<String> encryptPrivateKey;
+
+    /**
+     * @return The private key of an SM encryption certificate in PEM format.
+     * 
+     */
+    public Optional<Output<String>> encryptPrivateKey() {
+        return Optional.ofNullable(this.encryptPrivateKey);
+    }
+
+    /**
+     * The private key of a non-SM certificate in PEM format.
+     * 
+     */
+    @Import(name="key")
+    private @Nullable Output<String> key;
+
+    /**
+     * @return The private key of a non-SM certificate in PEM format.
+     * 
+     */
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
+    }
+
+    /**
+     * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     * @deprecated
+     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     */
+    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The lang.
+     * @return Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     * @deprecated
+     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
 
     /**
-     * It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The content of an SM signing certificate in PEM format.
+     * 
+     */
+    @Import(name="signCert")
+    private @Nullable Output<String> signCert;
+
+    /**
+     * @return The content of an SM signing certificate in PEM format.
+     * 
+     */
+    public Optional<Output<String>> signCert() {
+        return Optional.ofNullable(this.signCert);
+    }
+
+    /**
+     * The private key of an SM signing certificate in PEM format.
+     * 
+     */
+    @Import(name="signPrivateKey")
+    private @Nullable Output<String> signPrivateKey;
+
+    /**
+     * @return The private key of an SM signing certificate in PEM format.
+     * 
+     */
+    public Optional<Output<String>> signPrivateKey() {
+        return Optional.ofNullable(this.signPrivateKey);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private ServiceCertificateArgs() {}
@@ -106,9 +202,15 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
     private ServiceCertificateArgs(ServiceCertificateArgs $) {
         this.cert = $.cert;
         this.certificateName = $.certificateName;
+        this.encryptCert = $.encryptCert;
+        this.encryptPrivateKey = $.encryptPrivateKey;
         this.key = $.key;
         this.lang = $.lang;
         this.name = $.name;
+        this.resourceGroupId = $.resourceGroupId;
+        this.signCert = $.signCert;
+        this.signPrivateKey = $.signPrivateKey;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -130,18 +232,18 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cert Cert of the Certificate in which the Certificate will add.
+         * @param cert The content of a non-SM certificate in PEM format.
          * 
          * @return builder
          * 
          */
-        public Builder cert(Output<String> cert) {
+        public Builder cert(@Nullable Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
         /**
-         * @param cert Cert of the Certificate in which the Certificate will add.
+         * @param cert The content of a non-SM certificate in PEM format.
          * 
          * @return builder
          * 
@@ -151,8 +253,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateName Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-         * **NOTE:** One of `certificate_name` and `name` must be specified.
+         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
          * 
          * @return builder
          * 
@@ -163,8 +264,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateName Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
-         * **NOTE:** One of `certificate_name` and `name` must be specified.
+         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
          * 
          * @return builder
          * 
@@ -174,18 +274,60 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param key Key of the Certificate in which the Certificate will add.
+         * @param encryptCert The content of an SM encryption certificate in PEM format.
          * 
          * @return builder
          * 
          */
-        public Builder key(Output<String> key) {
+        public Builder encryptCert(@Nullable Output<String> encryptCert) {
+            $.encryptCert = encryptCert;
+            return this;
+        }
+
+        /**
+         * @param encryptCert The content of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptCert(String encryptCert) {
+            return encryptCert(Output.of(encryptCert));
+        }
+
+        /**
+         * @param encryptPrivateKey The private key of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptPrivateKey(@Nullable Output<String> encryptPrivateKey) {
+            $.encryptPrivateKey = encryptPrivateKey;
+            return this;
+        }
+
+        /**
+         * @param encryptPrivateKey The private key of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptPrivateKey(String encryptPrivateKey) {
+            return encryptPrivateKey(Output.of(encryptPrivateKey));
+        }
+
+        /**
+         * @param key The private key of a non-SM certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
         /**
-         * @param key Key of the Certificate in which the Certificate will add.
+         * @param key The private key of a non-SM certificate in PEM format.
          * 
          * @return builder
          * 
@@ -195,62 +337,148 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param lang The lang.
+         * @param lang Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
         /**
-         * @param lang The lang.
+         * @param lang Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
 
         /**
-         * @param name It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param signCert The content of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signCert(@Nullable Output<String> signCert) {
+            $.signCert = signCert;
+            return this;
+        }
+
+        /**
+         * @param signCert The content of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signCert(String signCert) {
+            return signCert(Output.of(signCert));
+        }
+
+        /**
+         * @param signPrivateKey The private key of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signPrivateKey(@Nullable Output<String> signPrivateKey) {
+            $.signPrivateKey = signPrivateKey;
+            return this;
+        }
+
+        /**
+         * @param signPrivateKey The private key of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signPrivateKey(String signPrivateKey) {
+            return signPrivateKey(Output.of(signPrivateKey));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
         public ServiceCertificateArgs build() {
-            if ($.cert == null) {
-                throw new MissingRequiredPropertyException("ServiceCertificateArgs", "cert");
-            }
-            if ($.key == null) {
-                throw new MissingRequiredPropertyException("ServiceCertificateArgs", "key");
-            }
             return $;
         }
     }

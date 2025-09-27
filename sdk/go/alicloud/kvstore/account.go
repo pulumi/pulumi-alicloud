@@ -107,7 +107,7 @@ import (
 //
 // ## Import
 //
-// Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -125,11 +125,11 @@ type Account struct {
 	// The privilege of account access database. Default value: `RoleReadWrite`
 	// - `RoleReadOnly`: This value is only for Redis and Memcache
 	// - `RoleReadWrite`: This value is only for Redis and Memcache
-	AccountPrivilege pulumi.StringPtrOutput `pulumi:"accountPrivilege"`
+	AccountPrivilege pulumi.StringOutput `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	//   Default to Normal.
-	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
+	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
@@ -400,15 +400,15 @@ func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
 // The privilege of account access database. Default value: `RoleReadWrite`
 // - `RoleReadOnly`: This value is only for Redis and Memcache
 // - `RoleReadWrite`: This value is only for Redis and Memcache
-func (o AccountOutput) AccountPrivilege() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPrivilege }).(pulumi.StringPtrOutput)
+func (o AccountOutput) AccountPrivilege() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPrivilege }).(pulumi.StringOutput)
 }
 
 // Privilege type of account.
 //   - Normal: Common privilege.
 //     Default to Normal.
-func (o AccountOutput) AccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountType }).(pulumi.StringPtrOutput)
+func (o AccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
 }
 
 // Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.

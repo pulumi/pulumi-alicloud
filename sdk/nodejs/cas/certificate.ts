@@ -122,19 +122,28 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Cert of the Certificate in which the Certificate will add.
      */
-    declare public readonly cert: pulumi.Output<string>;
+    declare public readonly cert: pulumi.Output<string | undefined>;
     declare public readonly certificateName: pulumi.Output<string>;
+    declare public readonly encryptCert: pulumi.Output<string | undefined>;
+    declare public readonly encryptPrivateKey: pulumi.Output<string | undefined>;
     /**
      * Key of the Certificate in which the Certificate will add.
      */
-    declare public readonly key: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     */
     declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      *
-     * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+     * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    declare public readonly signCert: pulumi.Output<string | undefined>;
+    declare public readonly signPrivateKey: pulumi.Output<string | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -144,7 +153,7 @@ export class Certificate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     /** @deprecated This resource has been deprecated in favour of ServiceCertificate */
-    constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     /** @deprecated This resource has been deprecated in favour of ServiceCertificate */
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("Certificate is deprecated: This resource has been deprecated in favour of ServiceCertificate")
@@ -154,24 +163,32 @@ export class Certificate extends pulumi.CustomResource {
             const state = argsOrState as CertificateState | undefined;
             resourceInputs["cert"] = state?.cert;
             resourceInputs["certificateName"] = state?.certificateName;
+            resourceInputs["encryptCert"] = state?.encryptCert;
+            resourceInputs["encryptPrivateKey"] = state?.encryptPrivateKey;
             resourceInputs["key"] = state?.key;
             resourceInputs["lang"] = state?.lang;
             resourceInputs["name"] = state?.name;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["signCert"] = state?.signCert;
+            resourceInputs["signPrivateKey"] = state?.signPrivateKey;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if (args?.cert === undefined && !opts.urn) {
-                throw new Error("Missing required property 'cert'");
-            }
-            if (args?.key === undefined && !opts.urn) {
-                throw new Error("Missing required property 'key'");
-            }
             resourceInputs["cert"] = args?.cert;
             resourceInputs["certificateName"] = args?.certificateName;
-            resourceInputs["key"] = args?.key;
+            resourceInputs["encryptCert"] = args?.encryptCert;
+            resourceInputs["encryptPrivateKey"] = args?.encryptPrivateKey ? pulumi.secret(args.encryptPrivateKey) : undefined;
+            resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
             resourceInputs["lang"] = args?.lang;
             resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["signCert"] = args?.signCert;
+            resourceInputs["signPrivateKey"] = args?.signPrivateKey ? pulumi.secret(args.signPrivateKey) : undefined;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "signPrivateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -185,17 +202,26 @@ export interface CertificateState {
      */
     cert?: pulumi.Input<string>;
     certificateName?: pulumi.Input<string>;
+    encryptCert?: pulumi.Input<string>;
+    encryptPrivateKey?: pulumi.Input<string>;
     /**
      * Key of the Certificate in which the Certificate will add.
      */
     key?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     */
     lang?: pulumi.Input<string>;
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      *
-     * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+     * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
     name?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    signCert?: pulumi.Input<string>;
+    signPrivateKey?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -205,17 +231,26 @@ export interface CertificateArgs {
     /**
      * Cert of the Certificate in which the Certificate will add.
      */
-    cert: pulumi.Input<string>;
+    cert?: pulumi.Input<string>;
     certificateName?: pulumi.Input<string>;
+    encryptCert?: pulumi.Input<string>;
+    encryptPrivateKey?: pulumi.Input<string>;
     /**
      * Key of the Certificate in which the Certificate will add.
      */
-    key: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     */
     lang?: pulumi.Input<string>;
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      *
-     * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+     * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
     name?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    signCert?: pulumi.Input<string>;
+    signPrivateKey?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

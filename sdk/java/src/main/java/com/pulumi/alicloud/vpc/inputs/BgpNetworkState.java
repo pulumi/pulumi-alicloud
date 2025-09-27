@@ -31,14 +31,14 @@ public final class BgpNetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vRouter associated with the router interface.
+     * The region ID of the virtual border router (VBR) group.
      * 
      */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
-     * @return The ID of the vRouter associated with the router interface.
+     * @return The region ID of the virtual border router (VBR) group.
      * 
      */
     public Optional<Output<String>> routerId() {
@@ -60,12 +60,28 @@ public final class BgpNetworkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The ID of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
     private BgpNetworkState() {}
 
     private BgpNetworkState(BgpNetworkState $) {
         this.dstCidrBlock = $.dstCidrBlock;
         this.routerId = $.routerId;
         this.status = $.status;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -108,7 +124,7 @@ public final class BgpNetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The ID of the vRouter associated with the router interface.
+         * @param routerId The region ID of the virtual border router (VBR) group.
          * 
          * @return builder
          * 
@@ -119,7 +135,7 @@ public final class BgpNetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The ID of the vRouter associated with the router interface.
+         * @param routerId The region ID of the virtual border router (VBR) group.
          * 
          * @return builder
          * 
@@ -147,6 +163,27 @@ public final class BgpNetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         public BgpNetworkState build() {

@@ -21,6 +21,7 @@ __all__ = [
     'GatewayNetworkAccessConfig',
     'GatewayVpc',
     'GatewayVswitch',
+    'GatewayZone',
     'GatewayZoneConfig',
 ]
 
@@ -105,7 +106,7 @@ class GatewayVpc(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str vpc_id: The VPC network ID.
-        :param _builtins.str name: The name of the VPC gateway.
+        :param _builtins.str name: The zone name.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if name is not None:
@@ -123,7 +124,7 @@ class GatewayVpc(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The name of the VPC gateway.
+        The zone name.
         """
         return pulumi.get(self, "name")
 
@@ -151,7 +152,7 @@ class GatewayVswitch(dict):
                  name: Optional[_builtins.str] = None,
                  vswitch_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: The name of the VPC gateway.
+        :param _builtins.str name: The zone name.
         :param _builtins.str vswitch_id: The ID of the virtual switch.
         """
         if name is not None:
@@ -163,7 +164,7 @@ class GatewayVswitch(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The name of the VPC gateway.
+        The zone name.
         """
         return pulumi.get(self, "name")
 
@@ -174,6 +175,68 @@ class GatewayVswitch(dict):
         The ID of the virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GatewayZone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vswitchId":
+            suggest = "vswitch_id"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayZone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayZone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayZone.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 vswitch_id: Optional[_builtins.str] = None,
+                 zone_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The zone name.
+        :param _builtins.str vswitch_id: The vswitch ID.
+        :param _builtins.str zone_id: The zone ID.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The zone name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[_builtins.str]:
+        """
+        The vswitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

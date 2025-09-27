@@ -81,21 +81,38 @@ export class ControlPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The name of control policy.
+     * The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      */
     declare public readonly controlPolicyName: pulumi.Output<string>;
     /**
-     * The description of control policy.
+     * The time when the access control policy was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The effect scope. Valid values `RAM`.
+     * The effective scope of the access control policy. Valid values:
+     *
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      */
     declare public readonly effectScope: pulumi.Output<string>;
     /**
-     * The policy document of control policy.
+     * The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      */
     declare public readonly policyDocument: pulumi.Output<string>;
+    /**
+     * The tags.
+     * You can specify a maximum of 20 tags.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ControlPolicy resource with the given unique name, arguments, and options.
@@ -111,9 +128,11 @@ export class ControlPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ControlPolicyState | undefined;
             resourceInputs["controlPolicyName"] = state?.controlPolicyName;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectScope"] = state?.effectScope;
             resourceInputs["policyDocument"] = state?.policyDocument;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ControlPolicyArgs | undefined;
             if (args?.controlPolicyName === undefined && !opts.urn) {
@@ -129,6 +148,8 @@ export class ControlPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["effectScope"] = args?.effectScope;
             resourceInputs["policyDocument"] = args?.policyDocument;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ControlPolicy.__pulumiType, name, resourceInputs, opts);
@@ -140,21 +161,38 @@ export class ControlPolicy extends pulumi.CustomResource {
  */
 export interface ControlPolicyState {
     /**
-     * The name of control policy.
+     * The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      */
     controlPolicyName?: pulumi.Input<string>;
     /**
-     * The description of control policy.
+     * The time when the access control policy was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      */
     description?: pulumi.Input<string>;
     /**
-     * The effect scope. Valid values `RAM`.
+     * The effective scope of the access control policy. Valid values:
+     *
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      */
     effectScope?: pulumi.Input<string>;
     /**
-     * The policy document of control policy.
+     * The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      */
     policyDocument?: pulumi.Input<string>;
+    /**
+     * The tags.
+     * You can specify a maximum of 20 tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -162,19 +200,32 @@ export interface ControlPolicyState {
  */
 export interface ControlPolicyArgs {
     /**
-     * The name of control policy.
+     * The new name of the access control policy.
+     * The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
      */
     controlPolicyName: pulumi.Input<string>;
     /**
-     * The description of control policy.
+     * The new description of the access control policy.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
      */
     description?: pulumi.Input<string>;
     /**
-     * The effect scope. Valid values `RAM`.
+     * The effective scope of the access control policy. Valid values:
+     *
+     * - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
+     * - RAM: The access control policy is in effect only for RAM users and RAM roles.
      */
     effectScope: pulumi.Input<string>;
     /**
-     * The policy document of control policy.
+     * The new document of the access control policy.
+     * The document can be a maximum of 4,096 characters in length.
+     * For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
+     * For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
      */
     policyDocument: pulumi.Input<string>;
+    /**
+     * The tags.
+     * You can specify a maximum of 20 tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

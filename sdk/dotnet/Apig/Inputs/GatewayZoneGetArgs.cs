@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Apig.Inputs
 {
 
-    public sealed class GatewayVpcGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GatewayZoneGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The zone name.
@@ -19,14 +19,20 @@ namespace Pulumi.AliCloud.Apig.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The VPC network ID.
+        /// The vswitch ID.
         /// </summary>
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
-        public GatewayVpcGetArgs()
+        /// <summary>
+        /// The zone ID.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GatewayZoneGetArgs()
         {
         }
-        public static new GatewayVpcGetArgs Empty => new GatewayVpcGetArgs();
+        public static new GatewayZoneGetArgs Empty => new GatewayZoneGetArgs();
     }
 }

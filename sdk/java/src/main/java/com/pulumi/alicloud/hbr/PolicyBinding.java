@@ -293,6 +293,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
+     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
      * 
      */
     @Export(name="sourceType", refs={String.class}, tree="[0]")
@@ -305,6 +306,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
+     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
      * 
      */
     public Output<String> sourceType() {

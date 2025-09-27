@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// ## Import
     /// 
-    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
+    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:kvstore/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.KVStore
         /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
         [Output("accountPrivilege")]
-        public Output<string?> AccountPrivilege { get; private set; } = null!;
+        public Output<string> AccountPrivilege { get; private set; } = null!;
 
         /// <summary>
         /// Privilege type of account.
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.KVStore
         /// Default to Normal.
         /// </summary>
         [Output("accountType")]
-        public Output<string?> AccountType { get; private set; } = null!;
+        public Output<string> AccountType { get; private set; } = null!;
 
         /// <summary>
         /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.

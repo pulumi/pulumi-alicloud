@@ -4,26 +4,30 @@
 package com.pulumi.alicloud.apig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GatewayVpc {
+public final class GatewayZone {
     /**
      * @return The zone name.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The VPC network ID.
+     * @return The vswitch ID.
      * 
      */
-    private String vpcId;
+    private @Nullable String vswitchId;
+    /**
+     * @return The zone ID.
+     * 
+     */
+    private @Nullable String zoneId;
 
-    private GatewayVpc() {}
+    private GatewayZone() {}
     /**
      * @return The zone name.
      * 
@@ -32,29 +36,38 @@ public final class GatewayVpc {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The VPC network ID.
+     * @return The vswitch ID.
      * 
      */
-    public String vpcId() {
-        return this.vpcId;
+    public Optional<String> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
+    }
+    /**
+     * @return The zone ID.
+     * 
+     */
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static Builder builder(GatewayVpc defaults) {
+    public static Builder builder(GatewayZone defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
-        private String vpcId;
+        private @Nullable String vswitchId;
+        private @Nullable String zoneId;
         public Builder() {}
-        public Builder(GatewayVpc defaults) {
+        public Builder(GatewayZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
-    	      this.vpcId = defaults.vpcId;
+    	      this.vswitchId = defaults.vswitchId;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
@@ -64,17 +77,22 @@ public final class GatewayVpc {
             return this;
         }
         @CustomType.Setter
-        public Builder vpcId(String vpcId) {
-            if (vpcId == null) {
-              throw new MissingRequiredPropertyException("GatewayVpc", "vpcId");
-            }
-            this.vpcId = vpcId;
+        public Builder vswitchId(@Nullable String vswitchId) {
+
+            this.vswitchId = vswitchId;
             return this;
         }
-        public GatewayVpc build() {
-            final var _resultValue = new GatewayVpc();
+        @CustomType.Setter
+        public Builder zoneId(@Nullable String zoneId) {
+
+            this.zoneId = zoneId;
+            return this;
+        }
+        public GatewayZone build() {
+            final var _resultValue = new GatewayZone();
             _resultValue.name = name;
-            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
             return _resultValue;
         }
     }

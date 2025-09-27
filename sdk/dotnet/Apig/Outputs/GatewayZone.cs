@@ -11,25 +11,32 @@ namespace Pulumi.AliCloud.Apig.Outputs
 {
 
     [OutputType]
-    public sealed class GatewayVswitch
+    public sealed class GatewayZone
     {
         /// <summary>
         /// The zone name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The ID of the virtual switch.
+        /// The vswitch ID.
         /// </summary>
         public readonly string? VswitchId;
+        /// <summary>
+        /// The zone ID.
+        /// </summary>
+        public readonly string? ZoneId;
 
         [OutputConstructor]
-        private GatewayVswitch(
+        private GatewayZone(
             string? name,
 
-            string? vswitchId)
+            string? vswitchId,
+
+            string? zoneId)
         {
             Name = name;
             VswitchId = vswitchId;
+            ZoneId = zoneId;
         }
     }
 }

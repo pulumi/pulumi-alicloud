@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cas.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -37,6 +38,20 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.certificateName);
     }
 
+    @Import(name="encryptCert")
+    private @Nullable Output<String> encryptCert;
+
+    public Optional<Output<String>> encryptCert() {
+        return Optional.ofNullable(this.encryptCert);
+    }
+
+    @Import(name="encryptPrivateKey")
+    private @Nullable Output<String> encryptPrivateKey;
+
+    public Optional<Output<String>> encryptPrivateKey() {
+        return Optional.ofNullable(this.encryptPrivateKey);
+    }
+
     /**
      * Key of the Certificate in which the Certificate will add.
      * 
@@ -52,9 +67,21 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * @deprecated
+     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     */
+    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
+    /**
+     * @deprecated
+     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     */
+    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -63,10 +90,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
      * Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -74,12 +101,40 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
      * @return Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    @Import(name="signCert")
+    private @Nullable Output<String> signCert;
+
+    public Optional<Output<String>> signCert() {
+        return Optional.ofNullable(this.signCert);
+    }
+
+    @Import(name="signPrivateKey")
+    private @Nullable Output<String> signPrivateKey;
+
+    public Optional<Output<String>> signPrivateKey() {
+        return Optional.ofNullable(this.signPrivateKey);
+    }
+
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private CertificateState() {}
@@ -87,9 +142,15 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     private CertificateState(CertificateState $) {
         this.cert = $.cert;
         this.certificateName = $.certificateName;
+        this.encryptCert = $.encryptCert;
+        this.encryptPrivateKey = $.encryptPrivateKey;
         this.key = $.key;
         this.lang = $.lang;
         this.name = $.name;
+        this.resourceGroupId = $.resourceGroupId;
+        this.signCert = $.signCert;
+        this.signPrivateKey = $.signPrivateKey;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -140,6 +201,24 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return certificateName(Output.of(certificateName));
         }
 
+        public Builder encryptCert(@Nullable Output<String> encryptCert) {
+            $.encryptCert = encryptCert;
+            return this;
+        }
+
+        public Builder encryptCert(String encryptCert) {
+            return encryptCert(Output.of(encryptCert));
+        }
+
+        public Builder encryptPrivateKey(@Nullable Output<String> encryptPrivateKey) {
+            $.encryptPrivateKey = encryptPrivateKey;
+            return this;
+        }
+
+        public Builder encryptPrivateKey(String encryptPrivateKey) {
+            return encryptPrivateKey(Output.of(encryptPrivateKey));
+        }
+
         /**
          * @param key Key of the Certificate in which the Certificate will add.
          * 
@@ -161,11 +240,27 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return key(Output.of(key));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * 
+         */
+        @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * 
+         */
+        @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
@@ -176,10 +271,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -191,12 +286,48 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        public Builder signCert(@Nullable Output<String> signCert) {
+            $.signCert = signCert;
+            return this;
+        }
+
+        public Builder signCert(String signCert) {
+            return signCert(Output.of(signCert));
+        }
+
+        public Builder signPrivateKey(@Nullable Output<String> signPrivateKey) {
+            $.signPrivateKey = signPrivateKey;
+            return this;
+        }
+
+        public Builder signPrivateKey(String signPrivateKey) {
+            return signPrivateKey(Output.of(signPrivateKey));
+        }
+
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public CertificateState build() {
