@@ -3,45 +3,42 @@ major-version: 3
 lint: false
 parallel: 1
 esc:
-  enabled: true
+    enabled: true
 env:
-  ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
-  ALICLOUD_REGION: "us-west-1"
-  ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY }}
+    ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+    ALICLOUD_REGION: "us-west-1"
+    ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY }}
 makeTemplate: bridged
 plugins:
-  - name: terraform
-    version: "1.2.4"
-    kind: converter
-
-  - name: std
-    version: "2.2.0"
-
-  - name: random
-    version: "4.3.1"
+    - name: terraform
+      version: "1.2.4"
+      kind: converter
+    - name: std
+      version: "2.2.0"
+    - name: random
+      version: "4.3.1"
 team: ecosystem
 license:
-  ignore:
-    # These projects don't have a LICENSE file, but do say mention (in README.md) that
-    # they are under Apache-2.0.
-    - github.com/alibabacloud-go/endpoint-util/service
-    - github.com/alibabacloud-go/tea-roa-utils/service
-    - github.com/alibabacloud-go/tea-roa/client
-    - github.com/alibabacloud-go/tea-rpc-utils/service
-    - github.com/alibabacloud-go/tea-rpc/client
-    - github.com/alibabacloud-go/tea-xml/service
-    - github.com/alibabacloud-go/darabonba-string/client
-    - github.com/alibabacloud-go/tea-oss-utils
-
-    # These projects are generated wrapper libraries, and do not contain any mention of a
-    # license.
-    - github.com/alibabacloud-go/alibabacloud-gateway-sls-util/client
-    - github.com/alibabacloud-go/alibabacloud-gateway-sls/client
-    - github.com/alibabacloud-go/darabonba-array/client
-    - github.com/alibabacloud-go/darabonba-encode-util/client
-    - github.com/alibabacloud-go/darabonba-map/client
-    - github.com/alibabacloud-go/darabonba-signature-util/client
-    - github.com/alibabacloud-go/alibabacloud-gateway-oss/client
-    - github.com/alibabacloud-go/alibabacloud-gateway-oss-util/client
+    ignore:
+        # These projects don't have a LICENSE file, but do say mention (in README.md) that
+        # they are under Apache-2.0.
+        - github.com/alibabacloud-go/endpoint-util/service
+        - github.com/alibabacloud-go/tea-roa-utils/service
+        - github.com/alibabacloud-go/tea-roa/client
+        - github.com/alibabacloud-go/tea-rpc-utils/service
+        - github.com/alibabacloud-go/tea-rpc/client
+        - github.com/alibabacloud-go/tea-xml/service
+        - github.com/alibabacloud-go/darabonba-string/client
+        - github.com/alibabacloud-go/tea-oss-utils
+        # These projects are generated wrapper libraries, and do not contain any mention of a
+        # license.
+        - github.com/alibabacloud-go/alibabacloud-gateway-sls-util/client
+        - github.com/alibabacloud-go/alibabacloud-gateway-sls/client
+        - github.com/alibabacloud-go/darabonba-array/client
+        - github.com/alibabacloud-go/darabonba-encode-util/client
+        - github.com/alibabacloud-go/darabonba-map/client
+        - github.com/alibabacloud-go/darabonba-signature-util/client
+        - github.com/alibabacloud-go/alibabacloud-gateway-oss/client
+        - github.com/alibabacloud-go/alibabacloud-gateway-oss-util/client
 pulumiConvert: 1
 registryDocs: true
