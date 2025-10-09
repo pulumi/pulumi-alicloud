@@ -54,14 +54,14 @@ public final class GetEcsPrefixListsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * A regex string to filter results by `prefix_list_name`.
+     * A regex string to filter results by `prefixListName`.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by `prefix_list_name`.
+     * @return A regex string to filter results by `prefixListName`.
      * 
      */
     public Optional<String> nameRegex() {
@@ -149,7 +149,7 @@ public final class GetEcsPrefixListsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param nameRegex A regex string to filter results by `prefix_list_name`.
+         * @param nameRegex A regex string to filter results by `prefixListName`.
          * 
          * @return builder
          * 

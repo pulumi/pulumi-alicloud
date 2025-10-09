@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> HpnZone { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to buy PAI. default value `false`.
+        /// Whether to buy PAI. default value `False`.
         /// </summary>
         [Output("installPai")]
         public Output<bool?> InstallPai { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? HpnZone { get; set; }
 
         /// <summary>
-        /// Whether to buy PAI. default value `false`.
+        /// Whether to buy PAI. default value `False`.
         /// </summary>
         [Input("installPai")]
         public Input<bool>? InstallPai { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? HpnZone { get; set; }
 
         /// <summary>
-        /// Whether to buy PAI. default value `false`.
+        /// Whether to buy PAI. default value `False`.
         /// </summary>
         [Input("installPai")]
         public Input<bool>? InstallPai { get; set; }

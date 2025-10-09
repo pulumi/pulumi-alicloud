@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string?> ResourceTypesScope { get; private set; } = null!;
 
         /// <summary>
-        /// The content records of the rule. See `rule_contents` below.
+        /// The content records of the rule. See `RuleContents` below.
         /// </summary>
         [Output("ruleContents")]
         public Output<ImmutableArray<Outputs.AutoGroupingRuleRuleContent>> RuleContents { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<Inputs.AutoGroupingRuleRuleContentArgs>? _ruleContents;
 
         /// <summary>
-        /// The content records of the rule. See `rule_contents` below.
+        /// The content records of the rule. See `RuleContents` below.
         /// </summary>
         public InputList<Inputs.AutoGroupingRuleRuleContentArgs> RuleContents
         {
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<Inputs.AutoGroupingRuleRuleContentGetArgs>? _ruleContents;
 
         /// <summary>
-        /// The content records of the rule. See `rule_contents` below.
+        /// The content records of the rule. See `RuleContents` below.
         /// </summary>
         public InputList<Inputs.AutoGroupingRuleRuleContentGetArgs> RuleContents
         {

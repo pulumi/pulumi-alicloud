@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceMaintenanceTime {
     /**
-     * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     private @Nullable String endTime;
     /**
-     * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     private @Nullable String startTime;
 
     private InstanceMaintenanceTime() {}
     /**
-     * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
     /**
-     * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     public Optional<String> startTime() {

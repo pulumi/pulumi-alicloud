@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.OpenSearch
     public sealed class GetAppGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.OpenSearch
     public sealed class GetAppGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

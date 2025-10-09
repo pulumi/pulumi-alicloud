@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Slb
     /// For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
     /// 
     /// &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
-    /// and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
+    /// and the `alicloud.slb.Listener` block should use `DependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
     /// 
     /// ## Example Usage
     /// 
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
+        /// The type of backend server. Valid values: `Ecs`, `Eni`, `Eci`. **NOTE:** From version 1.246.0, `Type` can be set to `Eci`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> ServerId { get; set; } = null!;
 
         /// <summary>
-        /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
+        /// The type of backend server. Valid values: `Ecs`, `Eni`, `Eci`. **NOTE:** From version 1.246.0, `Type` can be set to `Eci`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerId { get; set; }
 
         /// <summary>
-        /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
+        /// The type of backend server. Valid values: `Ecs`, `Eni`, `Eci`. **NOTE:** From version 1.246.0, `Type` can be set to `Eci`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

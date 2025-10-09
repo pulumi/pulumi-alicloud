@@ -46,11 +46,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string CpuCfsQuotaPeriod;
         /// <summary>
-        /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+        /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `None` or `Static`.
         /// </summary>
         public readonly string CpuManagerPolicy;
         /// <summary>
-        /// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+        /// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `EventRecordQps`. It is only used when `EventRecordQps` is greater than 0. Valid value is `[0-100]`.
         /// </summary>
         public readonly string EventBurst;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string ReadOnlyPort;
         /// <summary>
-        /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+        /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `RegistryPullQps`. Only used if `RegistryPullQps` is greater than 0. Valid value is `[0-100]`.
         /// </summary>
         public readonly string RegistryBurst;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryResult> ReservedMemories;
         /// <summary>
-        /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `True` or `False`.
         /// </summary>
         public readonly string SerializeImagePulls;
         /// <summary>

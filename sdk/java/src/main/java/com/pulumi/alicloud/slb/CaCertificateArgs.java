@@ -48,7 +48,7 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;ca_certificate_name&#39; instead
@@ -59,7 +59,7 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;ca_certificate_name&#39; instead
@@ -71,14 +71,14 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of resource group which the slb_ca certificate belongs.
+     * The Id of resource group which the slbCa certificate belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the slb_ca certificate belongs.
+     * @return The Id of resource group which the slbCa certificate belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -171,7 +171,7 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the slb_ca certificate belongs.
+         * @param resourceGroupId The Id of resource group which the slbCa certificate belongs.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the slb_ca certificate belongs.
+         * @param resourceGroupId The Id of resource group which the slbCa certificate belongs.
          * 
          * @return builder
          * 

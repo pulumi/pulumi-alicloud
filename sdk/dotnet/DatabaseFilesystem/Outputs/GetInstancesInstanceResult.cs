@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
         /// </summary>
         public readonly int AttachNodeNumber;
         /// <summary>
-        /// The type of the Database file system. Valid values: `standard`.
+        /// The type of the Database file system. Valid values: `Standard`.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceEcsListResult> EcsLists;
         /// <summary>
-        /// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        /// Whether to create the Database file system in RAID way. Valid values : `True` anf `False`.
         /// </summary>
         public readonly bool EnableRaid;
         /// <summary>
-        /// Whether to encrypt the Database file system. Valid values: `true` and `false`.
+        /// Whether to encrypt the Database file system. Valid values: `True` and `False`.
         /// </summary>
         public readonly bool Encryption;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        /// The KMS key ID of the Database file system used. This parameter is valid When `Encryption` parameter is set to `True`.
         /// </summary>
         public readonly string KmsKeyId;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
         /// </summary>
         public readonly string PerformanceLevel;
         /// <summary>
-        /// The number of strip . When `enable_raid` parameter is set to `true` will transfer. This parameter is valid When `enable_raid` parameter is set to `true`.
+        /// The number of strip . When `EnableRaid` parameter is set to `True` will transfer. This parameter is valid When `EnableRaid` parameter is set to `True`.
         /// </summary>
         public readonly string RaidStripeUnitNumber;
         /// <summary>

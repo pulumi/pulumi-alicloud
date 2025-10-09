@@ -32,13 +32,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Acl { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when InstanceChargeType is `PrePaid`. Default to `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when InstanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AutoUpgradeMinorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `BabelfishConfig` below.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> BurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `CaType` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
         /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
         /// 
-        /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
+        /// &gt; **NOTE:** `ZoneIdSlaveA` and `ZoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `VswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `VswitchId` is not specified, the classic network version will be created). For example, `ZoneId` = "zone-a" and `ZoneIdSlaveA` = "zone-c", `ZoneIdSlaveB` = "zone-b", then the `VswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `ZoneId` = "zone-a" and `ZoneIdSlaveA` = "Auto",`ZoneIdSlaveB` = "Auto", then the `VswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> DbInstanceIpArrayName { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+        /// The storage type of the instance. Serverless instance, only `CloudEssd` can be selected. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        /// Specifies whether table names on the instance are case-sensitive. Valid values: `True`, `False`.
         /// </summary>
         [Output("dbIsIgnoreCase")]
         public Output<bool> DbIsIgnoreCase { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `InstanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Rds
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
         /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
         /// </summary>
         [Output("instanceStorage")]
         public Output<int> InstanceStorage { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer high availability: mssql.mem2.serverless.s2
         /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
-        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `InstanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `InstanceStorage`has changed. You need to manually revise the `InstanceStorage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `InstanceStorage` check. Otherwise, check.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -386,14 +386,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> OptimizedWrites { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -407,7 +407,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> PgBouncerEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `PgHbaConf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.InstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -469,7 +469,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        /// It has been deprecated from 1.69.0 and use `SecurityGroupIds` instead.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -481,7 +481,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+        /// Valid values are `Normal`, `Safety`, Default to `Normal`. support `Safety` switch to high security access mode.
         /// </summary>
         [Output("securityIpMode")]
         public Output<string?> SecurityIpMode { get; private set; } = null!;
@@ -499,26 +499,26 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `ServerCert` start  support `MySQL` engine.
         /// </summary>
         [Output("serverCert")]
         public Output<string> ServerCert { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `ServerKey` start support `MySQL` engine.
         /// </summary>
         [Output("serverKey")]
         public Output<string> ServerKey { get; private set; } = null!;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `ServerlessConfig` below.
         /// </summary>
         [Output("serverlessConfigs")]
         public Output<ImmutableArray<Outputs.InstanceServerlessConfig>> ServerlessConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-        /// &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+        /// &gt; **NOTE:** This parameter takes effect when SqlCollectorStatus is set to Enabled and does not take effect when SqlCollectorStatus is set to Disabled.
         /// </summary>
         [Output("sqlCollectorConfigValue")]
         public Output<int?> SqlCollectorConfigValue { get; private set; } = null!;
@@ -536,7 +536,7 @@ namespace Pulumi.AliCloud.Rds
         /// `Update`: update SSL certificate.
         /// See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         /// 
-        /// &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        /// &gt; **NOTE:** The attribute `SslAction` will be ignored when setting `InstanceChargeType = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         /// </summary>
         [Output("sslAction")]
         public Output<string> SslAction { get; private set; } = null!;
@@ -587,7 +587,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> StorageUpperBound { get; private set; } = null!;
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `TargetMinorVersion` is changed. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -635,7 +635,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// 
-        /// &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        /// &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of EncryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         /// </summary>
         [Output("tdeStatus")]
         public Output<string> TdeStatus { get; private set; } = null!;
@@ -665,7 +665,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> UpgradeDbInstanceKernelVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `TargetMinorVersion` is changed. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -701,8 +701,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in the one of them.
+        /// The multiple zone ID can be retrieved by setting `Multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -781,13 +781,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when InstanceChargeType is `PrePaid`. Default to `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when InstanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -806,7 +806,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceBabelfishConfigArgs>? _babelfishConfigs;
 
         /// <summary>
-        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `BabelfishConfig` below.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
@@ -834,7 +834,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `CaType` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -852,7 +852,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
         /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
         /// 
-        /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
+        /// &gt; **NOTE:** `ZoneIdSlaveA` and `ZoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `VswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `VswitchId` is not specified, the classic network version will be created). For example, `ZoneId` = "zone-a" and `ZoneIdSlaveA` = "zone-c", `ZoneIdSlaveB` = "zone-b", then the `VswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `ZoneId` = "zone-a" and `ZoneIdSlaveA` = "Auto",`ZoneIdSlaveB` = "Auto", then the `VswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -927,7 +927,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+        /// The storage type of the instance. Serverless instance, only `CloudEssd` can be selected. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -939,7 +939,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        /// Specifies whether table names on the instance are case-sensitive. Valid values: `True`, `False`.
         /// </summary>
         [Input("dbIsIgnoreCase")]
         public Input<bool>? DbIsIgnoreCase { get; set; }
@@ -969,7 +969,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `InstanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1071,7 +1071,7 @@ namespace Pulumi.AliCloud.Rds
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
         /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
         /// </summary>
         [Input("instanceStorage", required: true)]
         public Input<int> InstanceStorage { get; set; } = null!;
@@ -1084,7 +1084,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer high availability: mssql.mem2.serverless.s2
         /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
-        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `InstanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `InstanceStorage`has changed. You need to manually revise the `InstanceStorage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `InstanceStorage` check. Otherwise, check.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -1136,7 +1136,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `Parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterArgs> Parameters
         {
@@ -1145,8 +1145,8 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1163,7 +1163,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `PgHbaConf` below.
         /// </summary>
         public InputList<Inputs.InstancePgHbaConfArgs> PgHbaConfs
         {
@@ -1228,7 +1228,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        /// It has been deprecated from 1.69.0 and use `SecurityGroupIds` instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1246,7 +1246,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+        /// Valid values are `Normal`, `Safety`, Default to `Normal`. support `Safety` switch to high security access mode.
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -1273,7 +1273,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _serverCert;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `ServerCert` start  support `MySQL` engine.
         /// </summary>
         public Input<string>? ServerCert
         {
@@ -1286,7 +1286,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `ServerKey` start support `MySQL` engine.
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
@@ -1295,7 +1295,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceServerlessConfigArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `ServerlessConfig` below.
         /// </summary>
         public InputList<Inputs.InstanceServerlessConfigArgs> ServerlessConfigs
         {
@@ -1305,7 +1305,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-        /// &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+        /// &gt; **NOTE:** This parameter takes effect when SqlCollectorStatus is set to Enabled and does not take effect when SqlCollectorStatus is set to Disabled.
         /// </summary>
         [Input("sqlCollectorConfigValue")]
         public Input<int>? SqlCollectorConfigValue { get; set; }
@@ -1323,7 +1323,7 @@ namespace Pulumi.AliCloud.Rds
         /// `Update`: update SSL certificate.
         /// See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         /// 
-        /// &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        /// &gt; **NOTE:** The attribute `SslAction` will be ignored when setting `InstanceChargeType = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -1362,7 +1362,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `TargetMinorVersion` is changed. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -1416,7 +1416,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// 
-        /// &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        /// &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of EncryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -1446,7 +1446,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `TargetMinorVersion` is changed. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1482,8 +1482,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in the one of them.
+        /// The multiple zone ID can be retrieved by setting `Multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -1519,13 +1519,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when InstanceChargeType is `PrePaid`. Default to `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when InstanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -1544,7 +1544,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceBabelfishConfigGetArgs>? _babelfishConfigs;
 
         /// <summary>
-        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `BabelfishConfig` below.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
@@ -1572,7 +1572,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `CaType` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -1590,7 +1590,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
         /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
         /// 
-        /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
+        /// &gt; **NOTE:** `ZoneIdSlaveA` and `ZoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `VswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `VswitchId` is not specified, the classic network version will be created). For example, `ZoneId` = "zone-a" and `ZoneIdSlaveA` = "zone-c", `ZoneIdSlaveB` = "zone-b", then the `VswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `ZoneId` = "zone-a" and `ZoneIdSlaveA` = "Auto",`ZoneIdSlaveB` = "Auto", then the `VswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -1677,7 +1677,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+        /// The storage type of the instance. Serverless instance, only `CloudEssd` can be selected. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -1695,7 +1695,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceType { get; set; }
 
         /// <summary>
-        /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        /// Specifies whether table names on the instance are case-sensitive. Valid values: `True`, `False`.
         /// </summary>
         [Input("dbIsIgnoreCase")]
         public Input<bool>? DbIsIgnoreCase { get; set; }
@@ -1725,7 +1725,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `InstanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1827,7 +1827,7 @@ namespace Pulumi.AliCloud.Rds
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
         /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
         /// </summary>
         [Input("instanceStorage")]
         public Input<int>? InstanceStorage { get; set; }
@@ -1840,7 +1840,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer high availability: mssql.mem2.serverless.s2
         /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
-        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `InstanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `InstanceStorage`has changed. You need to manually revise the `InstanceStorage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `InstanceStorage` check. Otherwise, check.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1892,7 +1892,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `Parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
         {
@@ -1901,8 +1901,8 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1919,7 +1919,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `PgHbaConf` below.
         /// </summary>
         public InputList<Inputs.InstancePgHbaConfGetArgs> PgHbaConfs
         {
@@ -1984,7 +1984,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        /// It has been deprecated from 1.69.0 and use `SecurityGroupIds` instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -2002,7 +2002,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+        /// Valid values are `Normal`, `Safety`, Default to `Normal`. support `Safety` switch to high security access mode.
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -2029,7 +2029,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _serverCert;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `ServerCert` start  support `MySQL` engine.
         /// </summary>
         public Input<string>? ServerCert
         {
@@ -2042,7 +2042,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `ServerKey` start support `MySQL` engine.
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
@@ -2051,7 +2051,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceServerlessConfigGetArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `ServerlessConfig` below.
         /// </summary>
         public InputList<Inputs.InstanceServerlessConfigGetArgs> ServerlessConfigs
         {
@@ -2061,7 +2061,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-        /// &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+        /// &gt; **NOTE:** This parameter takes effect when SqlCollectorStatus is set to Enabled and does not take effect when SqlCollectorStatus is set to Disabled.
         /// </summary>
         [Input("sqlCollectorConfigValue")]
         public Input<int>? SqlCollectorConfigValue { get; set; }
@@ -2079,7 +2079,7 @@ namespace Pulumi.AliCloud.Rds
         /// `Update`: update SSL certificate.
         /// See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         /// 
-        /// &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
+        /// &gt; **NOTE:** The attribute `SslAction` will be ignored when setting `InstanceChargeType = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -2130,7 +2130,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `TargetMinorVersion` is changed. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -2184,7 +2184,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// 
-        /// &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        /// &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of EncryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -2226,7 +2226,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `TargetMinorVersion` is changed. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -2262,8 +2262,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in the one of them.
+        /// The multiple zone ID can be retrieved by setting `Multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -31,14 +31,14 @@ public final class BasicEndpointGroupState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="basicEndpointGroupName")
     private @Nullable Output<String> basicEndpointGroupName;
 
     /**
-     * @return The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> basicEndpointGroupName() {
@@ -188,7 +188,7 @@ public final class BasicEndpointGroupState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param basicEndpointGroupName The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+         * @param basicEndpointGroupName The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class BasicEndpointGroupState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param basicEndpointGroupName The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+         * @param basicEndpointGroupName The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 

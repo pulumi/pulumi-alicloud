@@ -63,7 +63,7 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
     /**
      * The description of the namespace.
      * 
-     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
      * 
      */
     @Import(name="namespaceDesc")
@@ -72,7 +72,7 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
     /**
      * @return The description of the namespace.
      * 
-     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
      * 
      */
     public Optional<Output<String>> namespaceDesc() {
@@ -204,7 +204,7 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
         /**
          * @param namespaceDesc The description of the namespace.
          * 
-         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * **NOTE:** You must set `clusterId` or `instanceId` or both.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
         /**
          * @param namespaceDesc The description of the namespace.
          * 
-         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * **NOTE:** You must set `clusterId` or `instanceId` or both.
          * 
          * @return builder
          * 

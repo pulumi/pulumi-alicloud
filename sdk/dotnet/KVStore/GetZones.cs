@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+        /// * ProductType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+        /// * ProductType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }

@@ -32,14 +32,14 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      * 
      */
     @Import(name="certificateName")
     private @Nullable Output<String> certificateName;
 
     /**
-     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      * 
      */
     public Optional<Output<String>> certificateName() {
@@ -115,7 +115,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
@@ -126,7 +126,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
@@ -253,7 +253,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class ServiceCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
          * 
          * @return builder
          * 

@@ -180,14 +180,14 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * NFS ACL See `nfs_acl` below.
+     * NFS ACL See `nfsAcl` below.
      * 
      */
     @Import(name="nfsAcl")
     private @Nullable Output<FileSystemNfsAclArgs> nfsAcl;
 
     /**
-     * @return NFS ACL See `nfs_acl` below.
+     * @return NFS ACL See `nfsAcl` below.
      * 
      */
     public Optional<Output<FileSystemNfsAclArgs>> nfsAcl() {
@@ -231,14 +231,14 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Recycle Bin See `recycle_bin` below.
+     * Recycle Bin See `recycleBin` below.
      * 
      */
     @Import(name="recycleBin")
     private @Nullable Output<FileSystemRecycleBinArgs> recycleBin;
 
     /**
-     * @return Recycle Bin See `recycle_bin` below.
+     * @return Recycle Bin See `recycleBin` below.
      * 
      */
     public Optional<Output<FileSystemRecycleBinArgs>> recycleBin() {
@@ -261,14 +261,14 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SMB ACL See `smb_acl` below.
+     * SMB ACL See `smbAcl` below.
      * 
      */
     @Import(name="smbAcl")
     private @Nullable Output<FileSystemSmbAclArgs> smbAcl;
 
     /**
-     * @return SMB ACL See `smb_acl` below.
+     * @return SMB ACL See `smbAcl` below.
      * 
      */
     public Optional<Output<FileSystemSmbAclArgs>> smbAcl() {
@@ -641,7 +641,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nfsAcl NFS ACL See `nfs_acl` below.
+         * @param nfsAcl NFS ACL See `nfsAcl` below.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nfsAcl NFS ACL See `nfs_acl` below.
+         * @param nfsAcl NFS ACL See `nfsAcl` below.
          * 
          * @return builder
          * 
@@ -710,7 +710,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recycleBin Recycle Bin See `recycle_bin` below.
+         * @param recycleBin Recycle Bin See `recycleBin` below.
          * 
          * @return builder
          * 
@@ -721,7 +721,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recycleBin Recycle Bin See `recycle_bin` below.
+         * @param recycleBin Recycle Bin See `recycleBin` below.
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smbAcl SMB ACL See `smb_acl` below.
+         * @param smbAcl SMB ACL See `smbAcl` below.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smbAcl SMB ACL See `smb_acl` below.
+         * @param smbAcl SMB ACL See `smbAcl` below.
          * 
          * @return builder
          * 

@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the destination region where the cross-region data backup file is stored.
         /// 
-        /// &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+        /// &gt; **NOTE:** Note You must specify the `CrossBackupId` parameter. Alternatively, you must specify the `StartTime` and `EndTime` parameters.
         /// </summary>
         [Input("crossBackupRegion")]
         public string? CrossBackupRegion { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the destination region where the cross-region data backup file is stored.
         /// 
-        /// &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+        /// &gt; **NOTE:** Note You must specify the `CrossBackupId` parameter. Alternatively, you must specify the `StartTime` and `EndTime` parameters.
         /// </summary>
         [Input("crossBackupRegion")]
         public Input<string>? CrossBackupRegion { get; set; }

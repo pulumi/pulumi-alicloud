@@ -148,14 +148,14 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The args of the domain config. See `function_args` below.
+     * The args of the domain config. See `functionArgs` below.
      * 
      */
     @Export(name="functionArgs", refs={List.class,DomainConfigFunctionArg.class}, tree="[0,1]")
     private Output<List<DomainConfigFunctionArg>> functionArgs;
 
     /**
-     * @return The args of the domain config. See `function_args` below.
+     * @return The args of the domain config. See `functionArgs` below.
      * 
      */
     public Output<List<DomainConfigFunctionArg>> functionArgs() {

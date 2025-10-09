@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.SchedulerX.Inputs
         private InputList<Inputs.JobJobMonitorInfoContactInfoArgs>? _contactInfos;
 
         /// <summary>
-        /// Contact information. See `contact_info` below.
+        /// Contact information. See `ContactInfo` below.
         /// </summary>
         public InputList<Inputs.JobJobMonitorInfoContactInfoArgs> ContactInfos
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.SchedulerX.Inputs
         }
 
         /// <summary>
-        /// Alarm switch and threshold configuration. See `monitor_config` below.
+        /// Alarm switch and threshold configuration. See `MonitorConfig` below.
         /// </summary>
         [Input("monitorConfig")]
         public Input<Inputs.JobJobMonitorInfoMonitorConfigArgs>? MonitorConfig { get; set; }

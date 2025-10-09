@@ -67,7 +67,7 @@ public final class GetSnapshotsResult {
     private @Nullable Map<String,String> tags;
     private @Nullable String type;
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     private @Nullable String usage;
@@ -160,7 +160,7 @@ public final class GetSnapshotsResult {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     public Optional<String> usage() {

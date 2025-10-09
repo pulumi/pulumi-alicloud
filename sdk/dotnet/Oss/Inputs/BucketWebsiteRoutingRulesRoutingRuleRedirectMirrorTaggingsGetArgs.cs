@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingGetArgs>? _taggings;
 
         /// <summary>
-        /// Image back-to-source save label rule list See `taggings` below.
+        /// Image back-to-source save label rule list See `Taggings` below.
         /// </summary>
         public InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingGetArgs> Taggings
         {

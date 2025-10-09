@@ -194,56 +194,56 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoReleaseTime);
     }
     /**
-     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     /**
-     * @return Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * @return Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
      * 
      */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
     /**
-     * The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
-     * @return The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * @return The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
      * 
      */
     public Output<Integer> autoRenewPeriod() {
         return this.autoRenewPeriod;
     }
     /**
-     * The list of data disks created with instance. See `data_disks` below.
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,EcsLaunchTemplateDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsLaunchTemplateDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `data_disks` below.
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Output<Optional<List<EcsLaunchTemplateDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
     /**
-     * The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
      * 
      */
     @Export(name="defaultVersionNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultVersionNumber;
 
     /**
-     * @return The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * @return The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
      * 
      */
     public Output<Integer> defaultVersionNumber() {
@@ -309,7 +309,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      * 
      */
     @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
@@ -319,21 +319,21 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @return Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      * 
      */
     public Output<String> httpEndpoint() {
         return this.httpEndpoint;
     }
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     public Output<Integer> httpPutResponseHopLimit() {
@@ -343,7 +343,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      * 
      */
     @Export(name="httpTokens", refs={String.class}, tree="[0]")
@@ -353,7 +353,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      * 
      */
     public Output<String> httpTokens() {
@@ -374,14 +374,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageId);
     }
     /**
-     * The options of images. See `image_options` below.
+     * The options of images. See `imageOptions` below.
      * 
      */
     @Export(name="imageOptions", refs={EcsLaunchTemplateImageOptions.class}, tree="[0]")
     private Output<EcsLaunchTemplateImageOptions> imageOptions;
 
     /**
-     * @return The options of images. See `image_options` below.
+     * @return The options of images. See `imageOptions` below.
      * 
      */
     public Output<EcsLaunchTemplateImageOptions> imageOptions() {
@@ -430,14 +430,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
-     * @return Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * @return Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     public Output<Optional<String>> instanceType() {
@@ -546,7 +546,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.launchTemplateName;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -557,21 +557,21 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The list of network interfaces created with instance. See `network_interfaces` below.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     @Export(name="networkInterfaces", refs={EcsLaunchTemplateNetworkInterfaces.class}, tree="[0]")
     private Output</* @Nullable */ EcsLaunchTemplateNetworkInterfaces> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance. See `network_interfaces` below.
+     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     public Output<Optional<EcsLaunchTemplateNetworkInterfaces>> networkInterfaces() {
@@ -607,8 +607,8 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     }
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
@@ -616,8 +616,8 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     public Output<Integer> period() {
@@ -764,21 +764,21 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotStrategy);
     }
     /**
-     * The System Disk. See `system_disk` below.
+     * The System Disk. See `systemDisk` below.
      * 
      */
     @Export(name="systemDisk", refs={EcsLaunchTemplateSystemDisk.class}, tree="[0]")
     private Output<EcsLaunchTemplateSystemDisk> systemDisk;
 
     /**
-     * @return The System Disk. See `system_disk` below.
+     * @return The System Disk. See `systemDisk` below.
      * 
      */
     public Output<EcsLaunchTemplateSystemDisk> systemDisk() {
         return this.systemDisk;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -789,14 +789,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskCategory;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      */
     public Output<String> systemDiskCategory() {
         return this.systemDiskCategory;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -807,14 +807,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskDescription;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      */
     public Output<String> systemDiskDescription() {
         return this.systemDiskDescription;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -825,14 +825,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskName;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      */
     public Output<String> systemDiskName() {
         return this.systemDiskName;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -843,7 +843,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<Integer> systemDiskSize;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      */
     public Output<Integer> systemDiskSize() {
@@ -896,14 +896,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.templateTags);
     }
     /**
-     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
      * 
      */
     @Export(name="updateDefaultVersionNumber", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updateDefaultVersionNumber;
 
     /**
-     * @return Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * @return Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
      * 
      */
     public Output<Optional<Boolean>> updateDefaultVersionNumber() {
@@ -924,7 +924,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.userData;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
@@ -935,7 +935,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> userdata;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
      */
     public Output<String> userdata() {

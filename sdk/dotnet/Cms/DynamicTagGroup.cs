@@ -73,13 +73,13 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<string>> ContactGroupLists { get; private set; } = null!;
 
         /// <summary>
-        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
+        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `And`, `Or`.
         /// </summary>
         [Output("matchExpressFilterRelation")]
         public Output<string> MatchExpressFilterRelation { get; private set; } = null!;
 
         /// <summary>
-        /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
+        /// The conditional expressions used to create an application group based on the tag. See `MatchExpress` below.
         /// </summary>
         [Output("matchExpresses")]
         public Output<ImmutableArray<Outputs.DynamicTagGroupMatchExpress>> MatchExpresses { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
+        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `And`, `Or`.
         /// </summary>
         [Input("matchExpressFilterRelation")]
         public Input<string>? MatchExpressFilterRelation { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.DynamicTagGroupMatchExpressArgs>? _matchExpresses;
 
         /// <summary>
-        /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
+        /// The conditional expressions used to create an application group based on the tag. See `MatchExpress` below.
         /// </summary>
         public InputList<Inputs.DynamicTagGroupMatchExpressArgs> MatchExpresses
         {
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
+        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `And`, `Or`.
         /// </summary>
         [Input("matchExpressFilterRelation")]
         public Input<string>? MatchExpressFilterRelation { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.DynamicTagGroupMatchExpressGetArgs>? _matchExpresses;
 
         /// <summary>
-        /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
+        /// The conditional expressions used to create an application group based on the tag. See `MatchExpress` below.
         /// </summary>
         public InputList<Inputs.DynamicTagGroupMatchExpressGetArgs> MatchExpresses
         {

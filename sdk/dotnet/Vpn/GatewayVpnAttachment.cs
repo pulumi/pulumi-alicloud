@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Vpn
     /// <summary>
     /// Provides a VPN Gateway Vpn Attachment resource.
     /// 
-    /// VpnAttachment has been upgraded to dual-tunnel mode. When you create a VpnAttachment in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: vpn_attachment_name, network_type, effectImmediately, tags array, resource_group_id, tunnel_options_specification array, and enable_tunnels_bgp.
+    /// VpnAttachment has been upgraded to dual-tunnel mode. When you create a VpnAttachment in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: vpn_attachment_name, network_type, effectImmediately, tags array, resource_group_id, TunnelOptionsSpecification array, and enable_tunnels_bgp.
     /// 
     /// For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
     /// 
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// Bgp configuration information.
-        /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+        /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `BgpConfig` below.
         /// </summary>
         [Output("bgpConfig")]
         public Output<Outputs.GatewayVpnAttachmentBgpConfig> BgpConfig { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool> EnableNatTraversal { get; private set; } = null!;
 
         /// <summary>
-        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default).
         /// 
         /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         /// </summary>
@@ -262,21 +262,21 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// This parameter is supported if you create an vpn attachment in single-tunnel mode.
-        /// Health check configuration information. See `health_check_config` below.
+        /// Health check configuration information. See `HealthCheckConfig` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.GatewayVpnAttachmentHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
         /// The configurations of Phase 1 negotiations. 
-        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IkeConfig` below.
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.GatewayVpnAttachmentIkeConfig> IkeConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration negotiated in the second stage. 
-        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IpsecConfig` below.
         /// </summary>
         [Output("ipsecConfig")]
         public Output<Outputs.GatewayVpnAttachmentIpsecConfig> IpsecConfig { get; private set; } = null!;
@@ -323,8 +323,8 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Configure the tunnel.
-        /// - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-        /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+        /// - You can configure parameters in the `TunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+        /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `TunnelOptionsSpecification` below.
         /// </summary>
         [Output("tunnelOptionsSpecifications")]
         public Output<ImmutableArray<Outputs.GatewayVpnAttachmentTunnelOptionsSpecification>> TunnelOptionsSpecifications { get; private set; } = null!;
@@ -383,7 +383,7 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// Bgp configuration information.
-        /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+        /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `BgpConfig` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.GatewayVpnAttachmentBgpConfigArgs>? BgpConfig { get; set; }
@@ -420,7 +420,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default).
         /// 
         /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         /// </summary>
@@ -429,21 +429,21 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// This parameter is supported if you create an vpn attachment in single-tunnel mode.
-        /// Health check configuration information. See `health_check_config` below.
+        /// Health check configuration information. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.GatewayVpnAttachmentHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
         /// The configurations of Phase 1 negotiations. 
-        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IkeConfig` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigArgs>? IkeConfig { get; set; }
 
         /// <summary>
         /// Configuration negotiated in the second stage. 
-        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IpsecConfig` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.GatewayVpnAttachmentIpsecConfigArgs>? IpsecConfig { get; set; }
@@ -493,8 +493,8 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Configure the tunnel.
-        /// - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-        /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+        /// - You can configure parameters in the `TunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+        /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `TunnelOptionsSpecification` below.
         /// </summary>
         public InputList<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs> TunnelOptionsSpecifications
         {
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// Bgp configuration information.
-        /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+        /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `BgpConfig` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.GatewayVpnAttachmentBgpConfigGetArgs>? BgpConfig { get; set; }
@@ -561,7 +561,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default).
         /// 
         /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         /// </summary>
@@ -570,21 +570,21 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// This parameter is supported if you create an vpn attachment in single-tunnel mode.
-        /// Health check configuration information. See `health_check_config` below.
+        /// Health check configuration information. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.GatewayVpnAttachmentHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
         /// The configurations of Phase 1 negotiations. 
-        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IkeConfig` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigGetArgs>? IkeConfig { get; set; }
 
         /// <summary>
         /// Configuration negotiated in the second stage. 
-        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+        /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IpsecConfig` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.GatewayVpnAttachmentIpsecConfigGetArgs>? IpsecConfig { get; set; }
@@ -640,8 +640,8 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Configure the tunnel.
-        /// - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-        /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+        /// - You can configure parameters in the `TunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+        /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `TunnelOptionsSpecification` below.
         /// </summary>
         public InputList<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationGetArgs> TunnelOptionsSpecifications
         {

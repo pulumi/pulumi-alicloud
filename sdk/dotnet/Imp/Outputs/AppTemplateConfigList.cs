@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Imp.Outputs
         /// <summary>
         /// Configuration item content.
         /// 
-        /// &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
+        /// &gt; **NOTE:**  By default, the attribute `ConfigList` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
         /// </summary>
         public readonly string? Value;
 

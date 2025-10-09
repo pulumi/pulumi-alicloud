@@ -162,7 +162,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+     * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -173,7 +173,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<String> document;
 
     /**
-     * @return Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+     * @return Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
      */
     public Output<String> document() {
@@ -194,7 +194,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -205,7 +205,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
      */
     public Output<String> name() {

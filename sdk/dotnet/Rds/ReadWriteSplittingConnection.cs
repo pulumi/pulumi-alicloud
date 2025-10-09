@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
-    /// &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+    /// &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `DependsOn` statement is necessary.
     /// 
     /// ## Import
     /// 
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when DistributionType is set to Custom.
         /// </summary>
         [Output("weight")]
         public Output<ImmutableDictionary<string, string>?> Weight { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _weight;
 
         /// <summary>
-        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when DistributionType is set to Custom.
         /// </summary>
         public InputMap<string> Weight
         {
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _weight;
 
         /// <summary>
-        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when DistributionType is set to Custom.
         /// </summary>
         public InputMap<string> Weight
         {

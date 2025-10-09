@@ -137,7 +137,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      * @deprecated
      * Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
@@ -148,7 +148,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      * @deprecated
      * Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
@@ -160,7 +160,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      * @deprecated
      * Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
@@ -171,7 +171,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      * @deprecated
      * Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
@@ -183,14 +183,14 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -198,14 +198,14 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
@@ -213,7 +213,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
@@ -224,7 +224,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
@@ -236,7 +236,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
@@ -247,7 +247,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> password;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
@@ -274,7 +274,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      * 
@@ -287,7 +287,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      * 
@@ -486,7 +486,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+         * @param description The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+         * @param description The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+         * @param instanceId The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+         * @param instanceId The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+         * @param name The attribute has been deprecated from 1.120.0 and using `accountName` instead.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+         * @param name The attribute has been deprecated from 1.120.0 and using `accountName` instead.
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+         * @param password The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+         * @param password The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+         * @param type The attribute has been deprecated from 1.120.0 and using `accountType` instead.
          * 
          * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
          * 
@@ -682,7 +682,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+         * @param type The attribute has been deprecated from 1.120.0 and using `accountType` instead.
          * 
          * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
          * 

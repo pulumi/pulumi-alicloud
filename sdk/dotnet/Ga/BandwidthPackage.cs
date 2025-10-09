@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<int> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Whether use vouchers. Default value: `false`. Valid values:
+        /// Whether use vouchers. Default value: `False`. Valid values:
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -84,14 +84,14 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> BandwidthPackageName { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `Type` is set to `Basic`, this parameter is required.
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Output("bandwidthType")]
         public Output<string?> BandwidthType { get; private set; } = null!;
 
         /// <summary>
-        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `BillingType` is valid only when `PaymentType` is set to `PayAsYouGo`.
         /// </summary>
         [Output("billingType")]
         public Output<string?> BillingType { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `PaymentType` is set to `Subscription`, this parameter is required.
         /// </summary>
         [Output("duration")]
         public Output<string?> Duration { get; private set; } = null!;
@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Output("promotionOptionNo")]
         public Output<string?> PromotionOptionNo { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `Ratio` is valid only when `BillingType` is set to `PayBy95`.
         /// </summary>
         [Output("ratio")]
         public Output<int?> Ratio { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Whether use vouchers. Default value: `false`. Valid values:
+        /// Whether use vouchers. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -248,14 +248,14 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
-        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `Type` is set to `Basic`, this parameter is required.
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
-        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `BillingType` is valid only when `PaymentType` is set to `PayAsYouGo`.
         /// </summary>
         [Input("billingType")]
         public Input<string>? BillingType { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `PaymentType` is set to `Subscription`, this parameter is required.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -291,13 +291,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `Ratio` is valid only when `BillingType` is set to `PayBy95`.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Whether use vouchers. Default value: `false`. Valid values:
+        /// Whether use vouchers. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -374,14 +374,14 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
-        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `Type` is set to `Basic`, this parameter is required.
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
-        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `BillingType` is valid only when `PaymentType` is set to `PayAsYouGo`.
         /// </summary>
         [Input("billingType")]
         public Input<string>? BillingType { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `PaymentType` is set to `Subscription`, this parameter is required.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -417,13 +417,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `Ratio` is valid only when `BillingType` is set to `PayBy95`.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }

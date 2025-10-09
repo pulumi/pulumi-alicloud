@@ -71,8 +71,8 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     private String stopTime;
     /**
      * @return Indicates whether the commands are to be automatically run.
-     * * `error_code	` - The code that indicates why the command failed to be sent or run.
-     * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+     * * `errorCode	` - The code that indicates why the command failed to be sent or run.
+     * * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
      * 
      */
     private Boolean timed;
@@ -168,8 +168,8 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     }
     /**
      * @return Indicates whether the commands are to be automatically run.
-     * * `error_code	` - The code that indicates why the command failed to be sent or run.
-     * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+     * * `errorCode	` - The code that indicates why the command failed to be sent or run.
+     * * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
      * 
      */
     public Boolean timed() {

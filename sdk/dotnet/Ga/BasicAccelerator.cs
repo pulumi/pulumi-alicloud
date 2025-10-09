@@ -54,25 +54,25 @@ namespace Pulumi.AliCloud.Ga
     public partial class BasicAccelerator : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable automatic payment. Default value: `false`. Valid values:
+        /// Specifies whether to enable automatic payment. Default value: `False`. Valid values:
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
+        /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `False`. Valid values:
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `AutoRenew` is set to `True`.
         /// </summary>
         [Output("autoRenewDuration")]
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+        /// Specifies whether to automatically pay bills by using coupons. Default value: `False`. **NOTE:** This parameter is required only if `AutoPay` is set to `True`.
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<string?> AutoUseCoupon { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> BasicAcceleratorName { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// Indicates whether cross-border acceleration is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Output("crossBorderStatus")]
         public Output<bool?> CrossBorderStatus { get; private set; } = null!;
@@ -103,8 +103,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The subscription duration. Default value: `1`.
-        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        /// * If the `PricingCycle` parameter is set to `Month`, the valid values for the `Duration` parameter are `1` to `9`.
+        /// * If the `PricingCycle` parameter is set to `Year`, the valid values for the `Duration` parameter are `1` to `3`.
         /// </summary>
         [Output("duration")]
         public Output<int?> Duration { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> PricingCycle { get; private set; } = null!;
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Output("promotionOptionNo")]
         public Output<string?> PromotionOptionNo { get; private set; } = null!;
@@ -192,25 +192,25 @@ namespace Pulumi.AliCloud.Ga
     public sealed class BasicAcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable automatic payment. Default value: `false`. Valid values:
+        /// Specifies whether to enable automatic payment. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
+        /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `AutoRenew` is set to `True`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+        /// Specifies whether to automatically pay bills by using coupons. Default value: `False`. **NOTE:** This parameter is required only if `AutoPay` is set to `True`.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<string>? AutoUseCoupon { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BasicAcceleratorName { get; set; }
 
         /// <summary>
-        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// Indicates whether cross-border acceleration is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Input("crossBorderStatus")]
         public Input<bool>? CrossBorderStatus { get; set; }
@@ -241,8 +241,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The subscription duration. Default value: `1`.
-        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        /// * If the `PricingCycle` parameter is set to `Month`, the valid values for the `Duration` parameter are `1` to `9`.
+        /// * If the `PricingCycle` parameter is set to `Year`, the valid values for the `Duration` parameter are `1` to `3`.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }
@@ -292,25 +292,25 @@ namespace Pulumi.AliCloud.Ga
     public sealed class BasicAcceleratorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable automatic payment. Default value: `false`. Valid values:
+        /// Specifies whether to enable automatic payment. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
+        /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `AutoRenew` is set to `True`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+        /// Specifies whether to automatically pay bills by using coupons. Default value: `False`. **NOTE:** This parameter is required only if `AutoPay` is set to `True`.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<string>? AutoUseCoupon { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BasicAcceleratorName { get; set; }
 
         /// <summary>
-        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// Indicates whether cross-border acceleration is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Input("crossBorderStatus")]
         public Input<bool>? CrossBorderStatus { get; set; }
@@ -341,8 +341,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The subscription duration. Default value: `1`.
-        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        /// * If the `PricingCycle` parameter is set to `Month`, the valid values for the `Duration` parameter are `1` to `9`.
+        /// * If the `PricingCycle` parameter is set to `Year`, the valid values for the `Duration` parameter are `1` to `3`.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }

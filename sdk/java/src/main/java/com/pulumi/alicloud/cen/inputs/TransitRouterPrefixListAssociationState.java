@@ -17,14 +17,14 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
     public static final TransitRouterPrefixListAssociationState Empty = new TransitRouterPrefixListAssociationState();
 
     /**
-     * The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+     * The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      * 
      */
     @Import(name="nextHop")
     private @Nullable Output<String> nextHop;
 
     /**
-     * @return The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+     * @return The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      * 
      */
     public Optional<Output<String>> nextHop() {
@@ -160,7 +160,7 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param nextHop The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+         * @param nextHop The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param nextHop The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+         * @param nextHop The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
          * 
          * @return builder
          * 

@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Nas
         }
 
         /// <summary>
-        /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+        /// Field `MountTargetDomain` has been deprecated from provider version 1.53.0. New field `Ids` replaces it.
         /// </summary>
         [Input("mountTargetDomain")]
         public string? MountTargetDomain { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Nas
         public string? Status { get; set; }
 
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// Field `Type` has been deprecated from provider version 1.95.0. New field `NetworkType` replaces it.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Nas
         }
 
         /// <summary>
-        /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+        /// Field `MountTargetDomain` has been deprecated from provider version 1.53.0. New field `Ids` replaces it.
         /// </summary>
         [Input("mountTargetDomain")]
         public Input<string>? MountTargetDomain { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// Field `Type` has been deprecated from provider version 1.95.0. New field `NetworkType` replaces it.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMountTargetsTargetResult> Targets;
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// Field `Type` has been deprecated from provider version 1.95.0. New field `NetworkType` replaces it.
         /// </summary>
         public readonly string? Type;
         /// <summary>

@@ -67,14 +67,14 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Login preferences See `login_preference` below.
+     * Login preferences See `loginPreference` below.
      * 
      */
     @Import(name="loginPreference")
     private @Nullable Output<DirectoryLoginPreferenceArgs> loginPreference;
 
     /**
-     * @return Login preferences See `login_preference` below.
+     * @return Login preferences See `loginPreference` below.
      * 
      */
     public Optional<Output<DirectoryLoginPreferenceArgs>> loginPreference() {
@@ -82,14 +82,14 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      * 
      */
     @Import(name="mfaAuthenticationSettingInfo")
     private @Nullable Output<DirectoryMfaAuthenticationSettingInfoArgs> mfaAuthenticationSettingInfo;
 
     /**
-     * @return Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * @return Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      * 
      */
     public Optional<Output<DirectoryMfaAuthenticationSettingInfoArgs>> mfaAuthenticationSettingInfo() {
@@ -112,14 +112,14 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Password policy See `password_policy` below.
+     * Password policy See `passwordPolicy` below.
      * 
      */
     @Import(name="passwordPolicy")
     private @Nullable Output<DirectoryPasswordPolicyArgs> passwordPolicy;
 
     /**
-     * @return Password policy See `password_policy` below.
+     * @return Password policy See `passwordPolicy` below.
      * 
      */
     public Optional<Output<DirectoryPasswordPolicyArgs>> passwordPolicy() {
@@ -127,14 +127,14 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+     * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      * 
      */
     @Import(name="samlIdentityProviderConfiguration")
     private @Nullable Output<DirectorySamlIdentityProviderConfigurationArgs> samlIdentityProviderConfiguration;
 
     /**
-     * @return Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+     * @return Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      * 
      */
     public Optional<Output<DirectorySamlIdentityProviderConfigurationArgs>> samlIdentityProviderConfiguration() {
@@ -142,14 +142,14 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SP information. See `saml_service_provider` below.
+     * SP information. See `samlServiceProvider` below.
      * 
      */
     @Import(name="samlServiceProvider")
     private @Nullable Output<DirectorySamlServiceProviderArgs> samlServiceProvider;
 
     /**
-     * @return SP information. See `saml_service_provider` below.
+     * @return SP information. See `samlServiceProvider` below.
      * 
      */
     public Optional<Output<DirectorySamlServiceProviderArgs>> samlServiceProvider() {
@@ -172,14 +172,14 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User Provisioning configuration See `user_provisioning_configuration` below.
+     * User Provisioning configuration See `userProvisioningConfiguration` below.
      * 
      */
     @Import(name="userProvisioningConfiguration")
     private @Nullable Output<DirectoryUserProvisioningConfigurationArgs> userProvisioningConfiguration;
 
     /**
-     * @return User Provisioning configuration See `user_provisioning_configuration` below.
+     * @return User Provisioning configuration See `userProvisioningConfiguration` below.
      * 
      */
     public Optional<Output<DirectoryUserProvisioningConfigurationArgs>> userProvisioningConfiguration() {
@@ -284,7 +284,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loginPreference Login preferences See `login_preference` below.
+         * @param loginPreference Login preferences See `loginPreference` below.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loginPreference Login preferences See `login_preference` below.
+         * @param loginPreference Login preferences See `loginPreference` below.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaAuthenticationSettingInfo Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+         * @param mfaAuthenticationSettingInfo Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaAuthenticationSettingInfo Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+         * @param mfaAuthenticationSettingInfo Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordPolicy Password policy See `password_policy` below.
+         * @param passwordPolicy Password policy See `passwordPolicy` below.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordPolicy Password policy See `password_policy` below.
+         * @param passwordPolicy Password policy See `passwordPolicy` below.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlIdentityProviderConfiguration Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+         * @param samlIdentityProviderConfiguration Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlIdentityProviderConfiguration Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+         * @param samlIdentityProviderConfiguration Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlServiceProvider SP information. See `saml_service_provider` below.
+         * @param samlServiceProvider SP information. See `samlServiceProvider` below.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlServiceProvider SP information. See `saml_service_provider` below.
+         * @param samlServiceProvider SP information. See `samlServiceProvider` below.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userProvisioningConfiguration User Provisioning configuration See `user_provisioning_configuration` below.
+         * @param userProvisioningConfiguration User Provisioning configuration See `userProvisioningConfiguration` below.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userProvisioningConfiguration User Provisioning configuration See `user_provisioning_configuration` below.
+         * @param userProvisioningConfiguration User Provisioning configuration See `userProvisioningConfiguration` below.
          * 
          * @return builder
          * 

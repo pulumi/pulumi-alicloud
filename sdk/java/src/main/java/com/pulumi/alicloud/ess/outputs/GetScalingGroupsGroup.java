@@ -226,7 +226,7 @@ public final class GetScalingGroupsGroup {
      */
     private String scalingPolicy;
     /**
-     * @return (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+     * @return (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multiAzPolicy to COMPOSABLE.
      * 
      */
     private String spotAllocationStrategy;
@@ -597,7 +597,7 @@ public final class GetScalingGroupsGroup {
         return this.scalingPolicy;
     }
     /**
-     * @return (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+     * @return (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multiAzPolicy to COMPOSABLE.
      * 
      */
     public String spotAllocationStrategy() {

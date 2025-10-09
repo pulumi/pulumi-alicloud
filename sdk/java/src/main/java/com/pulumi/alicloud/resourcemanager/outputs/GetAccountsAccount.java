@@ -17,7 +17,7 @@ public final class GetAccountsAccount {
      */
     private String accountId;
     /**
-     * @return (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String accountName;
@@ -52,7 +52,7 @@ public final class GetAccountsAccount {
      */
     private String modifyTime;
     /**
-     * @return (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.124.3) The ID of the settlement account. **Note:** `payerAccountId` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String payerAccountId;
@@ -86,7 +86,7 @@ public final class GetAccountsAccount {
         return this.accountId;
     }
     /**
-     * @return (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String accountName() {
@@ -135,7 +135,7 @@ public final class GetAccountsAccount {
         return this.modifyTime;
     }
     /**
-     * @return (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.124.3) The ID of the settlement account. **Note:** `payerAccountId` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String payerAccountId() {

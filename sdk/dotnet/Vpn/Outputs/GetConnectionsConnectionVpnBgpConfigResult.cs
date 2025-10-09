@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? PeerBgpIp;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
         /// </summary>
         public readonly string? Status;
         /// <summary>

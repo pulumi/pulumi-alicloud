@@ -262,28 +262,28 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.priority;
     }
     /**
-     * The actions of the forwarding rules. See `rule_actions` below.
+     * The actions of the forwarding rules. See `ruleActions` below.
      * 
      */
     @Export(name="ruleActions", refs={List.class,RuleRuleAction.class}, tree="[0,1]")
     private Output<List<RuleRuleAction>> ruleActions;
 
     /**
-     * @return The actions of the forwarding rules. See `rule_actions` below.
+     * @return The actions of the forwarding rules. See `ruleActions` below.
      * 
      */
     public Output<List<RuleRuleAction>> ruleActions() {
         return this.ruleActions;
     }
     /**
-     * The conditions of the forwarding rule. See `rule_conditions` below.
+     * The conditions of the forwarding rule. See `ruleConditions` below.
      * 
      */
     @Export(name="ruleConditions", refs={List.class,RuleRuleCondition.class}, tree="[0,1]")
     private Output<List<RuleRuleCondition>> ruleConditions;
 
     /**
-     * @return The conditions of the forwarding rule. See `rule_conditions` below.
+     * @return The conditions of the forwarding rule. See `ruleConditions` below.
      * 
      */
     public Output<List<RuleRuleCondition>> ruleConditions() {

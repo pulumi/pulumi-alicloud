@@ -156,14 +156,14 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
-     * Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+     * Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     @Import(name="eventBurst")
     private @Nullable Output<String> eventBurst;
 
     /**
-     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     public Optional<Output<String>> eventBurst() {
@@ -381,14 +381,14 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
-     * Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+     * Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     @Import(name="registryBurst")
     private @Nullable Output<String> registryBurst;
 
     /**
-     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     public Optional<Output<String>> registryBurst() {
@@ -411,14 +411,14 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
-     * Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * Reserve memory for NUMA nodes. See `reservedMemory` below.
      * 
      */
     @Import(name="reservedMemories")
     private @Nullable Output<List<NodePoolKubeletConfigurationReservedMemoryArgs>> reservedMemories;
 
     /**
-     * @return Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * @return Reserve memory for NUMA nodes. See `reservedMemory` below.
      * 
      */
     public Optional<Output<List<NodePoolKubeletConfigurationReservedMemoryArgs>>> reservedMemories() {
@@ -749,7 +749,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param eventBurst Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+         * @param eventBurst Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
          * 
          * @return builder
          * 
@@ -760,7 +760,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param eventBurst Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+         * @param eventBurst Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
          * 
          * @return builder
          * 
@@ -1064,7 +1064,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param registryBurst Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+         * @param registryBurst Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
          * 
          * @return builder
          * 
@@ -1075,7 +1075,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param registryBurst Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+         * @param registryBurst Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
          * 
          * @return builder
          * 
@@ -1106,7 +1106,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param reservedMemories Reserve memory for NUMA nodes. See `reserved_memory` below.
+         * @param reservedMemories Reserve memory for NUMA nodes. See `reservedMemory` below.
          * 
          * @return builder
          * 
@@ -1117,7 +1117,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param reservedMemories Reserve memory for NUMA nodes. See `reserved_memory` below.
+         * @param reservedMemories Reserve memory for NUMA nodes. See `reservedMemory` below.
          * 
          * @return builder
          * 
@@ -1127,7 +1127,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param reservedMemories Reserve memory for NUMA nodes. See `reserved_memory` below.
+         * @param reservedMemories Reserve memory for NUMA nodes. See `reservedMemory` below.
          * 
          * @return builder
          * 

@@ -51,7 +51,7 @@ public final class GetEcsNetworkInterfacesInterface {
      */
     private String mac;
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
      */
     private String name;
@@ -81,7 +81,7 @@ public final class GetEcsNetworkInterfacesInterface {
      */
     private String primaryIpAddress;
     /**
-     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+     * @return Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
      */
     private String privateIp;
@@ -207,7 +207,7 @@ public final class GetEcsNetworkInterfacesInterface {
         return this.mac;
     }
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
      */
     public String name() {
@@ -249,7 +249,7 @@ public final class GetEcsNetworkInterfacesInterface {
         return this.primaryIpAddress;
     }
     /**
-     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+     * @return Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
      */
     public String privateIp() {

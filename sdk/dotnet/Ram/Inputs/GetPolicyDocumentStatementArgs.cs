@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ram.Inputs
         private InputList<Inputs.GetPolicyDocumentStatementConditionInputArgs>? _conditions;
 
         /// <summary>
-        /// Specifies the condition that are required for a policy to take effect. See `condition` below.
+        /// Specifies the condition that are required for a policy to take effect. See `Condition` below.
         /// </summary>
         public InputList<Inputs.GetPolicyDocumentStatementConditionInputArgs> Conditions
         {
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ram.Inputs
         }
 
         /// <summary>
-        /// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+        /// This parameter indicates whether or not the `Action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ram.Inputs
         private InputList<Inputs.GetPolicyDocumentStatementPrincipalInputArgs>? _principals;
 
         /// <summary>
-        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
+        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `Principal` below.
         /// </summary>
         public InputList<Inputs.GetPolicyDocumentStatementPrincipalInputArgs> Principals
         {

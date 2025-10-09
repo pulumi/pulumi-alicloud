@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CodeChecksum { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration for custom container runtime.See `custom_container_config` below.
+        /// The configuration for custom container runtime.See `CustomContainerConfig` below.
         /// </summary>
         [Output("customContainerConfig")]
         public Output<Outputs.FunctionCustomContainerConfig?> CustomContainerConfig { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.FC
         public Output<int?> MemorySize { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
+        /// The Function Compute function name. It is the only in one service and is conflict with "NamePrefix".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -138,13 +138,13 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
+        /// The OSS bucket location containing the function's deployment package. Conflicts with `Filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         /// </summary>
         [Output("ossBucket")]
         public Output<string?> OssBucket { get; private set; } = null!;
 
         /// <summary>
-        /// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
+        /// The OSS key of an object containing the function's deployment package. Conflicts with `Filename`.
         /// </summary>
         [Output("ossKey")]
         public Output<string?> OssKey { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CodeChecksum { get; set; }
 
         /// <summary>
-        /// The configuration for custom container runtime.See `custom_container_config` below.
+        /// The configuration for custom container runtime.See `CustomContainerConfig` below.
         /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.FunctionCustomContainerConfigArgs>? CustomContainerConfig { get; set; }
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? MemorySize { get; set; }
 
         /// <summary>
-        /// The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
+        /// The Function Compute function name. It is the only in one service and is conflict with "NamePrefix".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -317,13 +317,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
+        /// The OSS bucket location containing the function's deployment package. Conflicts with `Filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         /// </summary>
         [Input("ossBucket")]
         public Input<string>? OssBucket { get; set; }
 
         /// <summary>
-        /// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
+        /// The OSS key of an object containing the function's deployment package. Conflicts with `Filename`.
         /// </summary>
         [Input("ossKey")]
         public Input<string>? OssKey { get; set; }
@@ -368,7 +368,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CodeChecksum { get; set; }
 
         /// <summary>
-        /// The configuration for custom container runtime.See `custom_container_config` below.
+        /// The configuration for custom container runtime.See `CustomContainerConfig` below.
         /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.FunctionCustomContainerConfigGetArgs>? CustomContainerConfig { get; set; }
@@ -464,7 +464,7 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? MemorySize { get; set; }
 
         /// <summary>
-        /// The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
+        /// The Function Compute function name. It is the only in one service and is conflict with "NamePrefix".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -476,13 +476,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
+        /// The OSS bucket location containing the function's deployment package. Conflicts with `Filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         /// </summary>
         [Input("ossBucket")]
         public Input<string>? OssBucket { get; set; }
 
         /// <summary>
-        /// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
+        /// The OSS key of an object containing the function's deployment package. Conflicts with `Filename`.
         /// </summary>
         [Input("ossKey")]
         public Input<string>? OssKey { get; set; }

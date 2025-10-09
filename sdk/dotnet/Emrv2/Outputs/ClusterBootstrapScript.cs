@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string ExecutionMoment;
         /// <summary>
-        /// The bootstrap scripts execution target. See `node_selector` below.
+        /// The bootstrap scripts execution target. See `NodeSelector` below.
         /// </summary>
         public readonly Outputs.ClusterBootstrapScriptNodeSelector NodeSelector;
         /// <summary>

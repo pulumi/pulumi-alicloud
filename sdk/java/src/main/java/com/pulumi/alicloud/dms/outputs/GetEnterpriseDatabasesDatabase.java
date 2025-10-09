@@ -53,7 +53,7 @@ public final class GetEnterpriseDatabasesDatabase {
      */
     private String host;
     /**
-     * @return The Database ID, same value as `database_id`.
+     * @return The Database ID, same value as `databaseId`.
      * 
      */
     private String id;
@@ -156,7 +156,7 @@ public final class GetEnterpriseDatabasesDatabase {
         return this.host;
     }
     /**
-     * @return The Database ID, same value as `database_id`.
+     * @return The Database ID, same value as `databaseId`.
      * 
      */
     public String id() {

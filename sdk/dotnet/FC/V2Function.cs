@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.FC
         public Output<int> CaPort { get; private set; } = null!;
 
         /// <summary>
-        /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        /// Function Code ZIP package. code and customContainerConfig choose one. See `Code` below.
         /// </summary>
         [Output("code")]
         public Output<Outputs.V2FunctionCode?> Code { get; private set; } = null!;
@@ -58,25 +58,25 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Custom-container runtime related function configuration. See `custom_container_config` below.
+        /// Custom-container runtime related function configuration. See `CustomContainerConfig` below.
         /// </summary>
         [Output("customContainerConfig")]
         public Output<Outputs.V2FunctionCustomContainerConfig?> CustomContainerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Function custom DNS configuration. See `custom_dns` below.
+        /// Function custom DNS configuration. See `CustomDns` below.
         /// </summary>
         [Output("customDns")]
         public Output<Outputs.V2FunctionCustomDns?> CustomDns { get; private set; } = null!;
 
         /// <summary>
-        /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        /// Custom runtime/container Custom health check configuration. See `CustomHealthCheckConfig` below.
         /// </summary>
         [Output("customHealthCheckConfig")]
         public Output<Outputs.V2FunctionCustomHealthCheckConfig?> CustomHealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        /// Detailed configuration of Custom Runtime function. See `CustomRuntimeConfig` below.
         /// </summary>
         [Output("customRuntimeConfig")]
         public Output<Outputs.V2FunctionCustomRuntimeConfig?> CustomRuntimeConfig { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.FC
         public Output<int> InstanceConcurrency { get; private set; } = null!;
 
         /// <summary>
-        /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        /// Instance lifecycle configuration. See `InstanceLifecycleConfig` below.
         /// </summary>
         [Output("instanceLifecycleConfig")]
         public Output<Outputs.V2FunctionInstanceLifecycleConfig?> InstanceLifecycleConfig { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? CaPort { get; set; }
 
         /// <summary>
-        /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        /// Function Code ZIP package. code and customContainerConfig choose one. See `Code` below.
         /// </summary>
         [Input("code")]
         public Input<Inputs.V2FunctionCodeArgs>? Code { get; set; }
@@ -260,25 +260,25 @@ namespace Pulumi.AliCloud.FC
         public Input<double>? Cpu { get; set; }
 
         /// <summary>
-        /// Custom-container runtime related function configuration. See `custom_container_config` below.
+        /// Custom-container runtime related function configuration. See `CustomContainerConfig` below.
         /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.V2FunctionCustomContainerConfigArgs>? CustomContainerConfig { get; set; }
 
         /// <summary>
-        /// Function custom DNS configuration. See `custom_dns` below.
+        /// Function custom DNS configuration. See `CustomDns` below.
         /// </summary>
         [Input("customDns")]
         public Input<Inputs.V2FunctionCustomDnsArgs>? CustomDns { get; set; }
 
         /// <summary>
-        /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        /// Custom runtime/container Custom health check configuration. See `CustomHealthCheckConfig` below.
         /// </summary>
         [Input("customHealthCheckConfig")]
         public Input<Inputs.V2FunctionCustomHealthCheckConfigArgs>? CustomHealthCheckConfig { get; set; }
 
         /// <summary>
-        /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        /// Detailed configuration of Custom Runtime function. See `CustomRuntimeConfig` below.
         /// </summary>
         [Input("customRuntimeConfig")]
         public Input<Inputs.V2FunctionCustomRuntimeConfigArgs>? CustomRuntimeConfig { get; set; }
@@ -344,7 +344,7 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? InstanceConcurrency { get; set; }
 
         /// <summary>
-        /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        /// Instance lifecycle configuration. See `InstanceLifecycleConfig` below.
         /// </summary>
         [Input("instanceLifecycleConfig")]
         public Input<Inputs.V2FunctionInstanceLifecycleConfigArgs>? InstanceLifecycleConfig { get; set; }
@@ -412,7 +412,7 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? CaPort { get; set; }
 
         /// <summary>
-        /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        /// Function Code ZIP package. code and customContainerConfig choose one. See `Code` below.
         /// </summary>
         [Input("code")]
         public Input<Inputs.V2FunctionCodeGetArgs>? Code { get; set; }
@@ -436,25 +436,25 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Custom-container runtime related function configuration. See `custom_container_config` below.
+        /// Custom-container runtime related function configuration. See `CustomContainerConfig` below.
         /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.V2FunctionCustomContainerConfigGetArgs>? CustomContainerConfig { get; set; }
 
         /// <summary>
-        /// Function custom DNS configuration. See `custom_dns` below.
+        /// Function custom DNS configuration. See `CustomDns` below.
         /// </summary>
         [Input("customDns")]
         public Input<Inputs.V2FunctionCustomDnsGetArgs>? CustomDns { get; set; }
 
         /// <summary>
-        /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        /// Custom runtime/container Custom health check configuration. See `CustomHealthCheckConfig` below.
         /// </summary>
         [Input("customHealthCheckConfig")]
         public Input<Inputs.V2FunctionCustomHealthCheckConfigGetArgs>? CustomHealthCheckConfig { get; set; }
 
         /// <summary>
-        /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        /// Detailed configuration of Custom Runtime function. See `CustomRuntimeConfig` below.
         /// </summary>
         [Input("customRuntimeConfig")]
         public Input<Inputs.V2FunctionCustomRuntimeConfigGetArgs>? CustomRuntimeConfig { get; set; }
@@ -526,7 +526,7 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? InstanceConcurrency { get; set; }
 
         /// <summary>
-        /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        /// Instance lifecycle configuration. See `InstanceLifecycleConfig` below.
         /// </summary>
         [Input("instanceLifecycleConfig")]
         public Input<Inputs.V2FunctionInstanceLifecycleConfigGetArgs>? InstanceLifecycleConfig { get; set; }

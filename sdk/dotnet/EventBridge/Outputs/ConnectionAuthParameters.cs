@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     public sealed class ConnectionAuthParameters
     {
         /// <summary>
-        /// The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+        /// The parameters that are configured for API key authentication. See `ApiKeyAuthParameters` below.
         /// </summary>
         public readonly Outputs.ConnectionAuthParametersApiKeyAuthParameters? ApiKeyAuthParameters;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// </summary>
         public readonly string? AuthorizationType;
         /// <summary>
-        /// The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+        /// The parameters that are configured for basic authentication. See `BasicAuthParameters` below.
         /// </summary>
         public readonly Outputs.ConnectionAuthParametersBasicAuthParameters? BasicAuthParameters;
         /// <summary>
-        /// The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+        /// The parameters that are configured for OAuth authentication. See `OauthParameters` below.
         /// </summary>
         public readonly Outputs.ConnectionAuthParametersOauthParameters? OauthParameters;
 

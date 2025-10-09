@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Log
         public Output<ImmutableArray<string>> MultiAccounts { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument MultiAccount should be provided.
         /// </summary>
         [Output("resourceDirectoryType")]
         public Output<string?> ResourceDirectoryType { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument MultiAccount should be provided.
         /// </summary>
         [Input("resourceDirectoryType")]
         public Input<string>? ResourceDirectoryType { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+        /// Resource Directory type. Optional values are all or custom. If the value is custom, argument MultiAccount should be provided.
         /// </summary>
         [Input("resourceDirectoryType")]
         public Input<string>? ResourceDirectoryType { get; set; }

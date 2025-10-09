@@ -26,7 +26,7 @@ public final class SyntheticTaskMonitorConfApiHttp {
      */
     private @Nullable String method;
     /**
-     * @return HTTP request body. See `request_body` below.
+     * @return HTTP request body. See `requestBody` below.
      * 
      */
     private @Nullable SyntheticTaskMonitorConfApiHttpRequestBody requestBody;
@@ -62,7 +62,7 @@ public final class SyntheticTaskMonitorConfApiHttp {
         return Optional.ofNullable(this.method);
     }
     /**
-     * @return HTTP request body. See `request_body` below.
+     * @return HTTP request body. See `requestBody` below.
      * 
      */
     public Optional<SyntheticTaskMonitorConfApiHttpRequestBody> requestBody() {

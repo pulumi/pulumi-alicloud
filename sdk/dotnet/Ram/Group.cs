@@ -66,13 +66,13 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        /// Specifies whether to force delete the Group. Default value: `False`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The group name. You must specify at least one of the `group_name` and `name`.
+        /// The group name. You must specify at least one of the `GroupName` and `Name`.
         /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -139,13 +139,13 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Comments { get; set; }
 
         /// <summary>
-        /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        /// Specifies whether to force delete the Group. Default value: `False`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The group name. You must specify at least one of the `group_name` and `name`.
+        /// The group name. You must specify at least one of the `GroupName` and `Name`.
         /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -180,13 +180,13 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        /// Specifies whether to force delete the Group. Default value: `False`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The group name. You must specify at least one of the `group_name` and `name`.
+        /// The group name. You must specify at least one of the `GroupName` and `Name`.
         /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:

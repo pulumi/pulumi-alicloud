@@ -218,14 +218,14 @@ public class LogtailConfig extends com.pulumi.resources.CustomResource {
         return this.logtailConfigName;
     }
     /**
-     * Detailed configuration of logtail output See `output_detail` below.
+     * Detailed configuration of logtail output See `outputDetail` below.
      * 
      */
     @Export(name="outputDetail", refs={LogtailConfigOutputDetail.class}, tree="[0]")
     private Output</* @Nullable */ LogtailConfigOutputDetail> outputDetail;
 
     /**
-     * @return Detailed configuration of logtail output See `output_detail` below.
+     * @return Detailed configuration of logtail output See `outputDetail` below.
      * 
      */
     public Output<Optional<LogtailConfigOutputDetail>> outputDetail() {

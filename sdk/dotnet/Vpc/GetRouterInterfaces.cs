@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
-        /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+        /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `RouterType` is set to `VBR`.
         /// </summary>
         [Input("role")]
         public string? Role { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
-        /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+        /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `RouterType` is set to `VBR`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

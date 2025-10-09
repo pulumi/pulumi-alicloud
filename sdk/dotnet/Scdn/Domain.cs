@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Scdn
         public Output<string?> BizName { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate Information. See the following `Block cert_infos`.
+        /// Certificate Information. See the following `Block CertInfos`.
         /// </summary>
         [Output("certInfos")]
         public Output<ImmutableArray<Outputs.DomainCertInfo>> CertInfos { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Scdn
         public Output<ImmutableArray<Outputs.DomainSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `offline`, `online`.
+        /// The status of the resource. Valid values: `Offline`, `Online`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Scdn
         private InputList<Inputs.DomainCertInfoArgs>? _certInfos;
 
         /// <summary>
-        /// Certificate Information. See the following `Block cert_infos`.
+        /// Certificate Information. See the following `Block CertInfos`.
         /// </summary>
         public InputList<Inputs.DomainCertInfoArgs> CertInfos
         {
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Scdn
         }
 
         /// <summary>
-        /// The status of the resource. Valid values: `offline`, `online`.
+        /// The status of the resource. Valid values: `Offline`, `Online`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Scdn
         private InputList<Inputs.DomainCertInfoGetArgs>? _certInfos;
 
         /// <summary>
-        /// Certificate Information. See the following `Block cert_infos`.
+        /// Certificate Information. See the following `Block CertInfos`.
         /// </summary>
         public InputList<Inputs.DomainCertInfoGetArgs> CertInfos
         {
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Scdn
         }
 
         /// <summary>
-        /// The status of the resource. Valid values: `offline`, `online`.
+        /// The status of the resource. Valid values: `Offline`, `Online`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

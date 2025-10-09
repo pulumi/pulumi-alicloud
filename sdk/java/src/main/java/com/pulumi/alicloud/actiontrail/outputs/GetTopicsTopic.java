@@ -55,7 +55,7 @@ public final class GetTopicsTopic {
      */
     private Integer status;
     /**
-     * @return The status_name of the topic.
+     * @return The statusName of the topic.
      * 
      */
     private String statusName;
@@ -128,7 +128,7 @@ public final class GetTopicsTopic {
         return this.status;
     }
     /**
-     * @return The status_name of the topic.
+     * @return The statusName of the topic.
      * 
      */
     public String statusName() {

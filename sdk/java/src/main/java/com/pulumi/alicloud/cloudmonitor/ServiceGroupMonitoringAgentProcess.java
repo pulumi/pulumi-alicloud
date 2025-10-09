@@ -114,14 +114,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess")
 public class ServiceGroupMonitoringAgentProcess extends com.pulumi.resources.CustomResource {
     /**
-     * The alert rule configurations. See `alert_config` below.
+     * The alert rule configurations. See `alertConfig` below.
      * 
      */
     @Export(name="alertConfigs", refs={List.class,ServiceGroupMonitoringAgentProcessAlertConfig.class}, tree="[0,1]")
     private Output<List<ServiceGroupMonitoringAgentProcessAlertConfig>> alertConfigs;
 
     /**
-     * @return The alert rule configurations. See `alert_config` below.
+     * @return The alert rule configurations. See `alertConfig` below.
      * 
      */
     public Output<List<ServiceGroupMonitoringAgentProcessAlertConfig>> alertConfigs() {
@@ -170,14 +170,14 @@ public class ServiceGroupMonitoringAgentProcess extends com.pulumi.resources.Cus
         return this.matchExpressFilterRelation;
     }
     /**
-     * The expressions used to match instances. See `match_express` below.
+     * The expressions used to match instances. See `matchExpress` below.
      * 
      */
     @Export(name="matchExpresses", refs={List.class,ServiceGroupMonitoringAgentProcessMatchExpress.class}, tree="[0,1]")
     private Output<List<ServiceGroupMonitoringAgentProcessMatchExpress>> matchExpresses;
 
     /**
-     * @return The expressions used to match instances. See `match_express` below.
+     * @return The expressions used to match instances. See `matchExpress` below.
      * 
      */
     public Output<List<ServiceGroupMonitoringAgentProcessMatchExpress>> matchExpresses() {

@@ -32,28 +32,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:kvstore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
+     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
+     * @return Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
+     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
+     * @return Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
@@ -74,7 +74,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoUseCoupon);
     }
     /**
-     * It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+     * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
@@ -85,7 +85,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
      */
     public Output<String> availabilityZone() {
@@ -134,14 +134,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.backupTime;
     }
     /**
-     * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+     * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+     * @return The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      * 
      */
     public Output<Integer> bandwidth() {
@@ -240,14 +240,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionStringPrefix);
     }
     /**
-     * The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
+     * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      * 
      */
     @Export(name="couponNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> couponNo;
 
     /**
-     * @return The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
+     * @return The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      * 
      */
     public Output<Optional<String>> couponNo() {
@@ -298,7 +298,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * - `Immediately` (Default): The configurations are immediately changed.
-     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      * 
      */
     @Export(name="effectiveTime", refs={String.class}, tree="[0]")
@@ -307,7 +307,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * - `Immediately` (Default): The configurations are immediately changed.
-     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      * 
      */
     public Output<Optional<String>> effectiveTime() {
@@ -389,7 +389,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default value: `5.0`.
-     * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
+     * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports &#34;4.0&#34;.
      * 
      */
     @Export(name="engineVersion", refs={String.class}, tree="[0]")
@@ -397,7 +397,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default value: `5.0`.
-     * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
+     * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports &#34;4.0&#34;.
      * 
      */
     public Output<String> engineVersion() {
@@ -446,7 +446,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.globalInstanceId);
     }
     /**
-     * It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+     * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
@@ -457,7 +457,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> instanceChargeType;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      */
     public Output<String> instanceChargeType() {
@@ -480,18 +480,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceClass);
     }
     /**
-     * It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+     * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
      * @deprecated
-     * Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+     * Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      * 
      */
-    @Deprecated /* Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead. */
+    @Deprecated /* Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead. */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
      */
     public Output<String> instanceName() {
@@ -554,14 +554,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
@@ -678,14 +678,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+     * The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
-     * @return The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+     * @return The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
      * 
      */
     public Output<Optional<String>> period() {
@@ -890,30 +890,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityIps;
     }
     /**
-     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      * 
      */
     @Export(name="shardCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> shardCount;
 
     /**
-     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
+     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      * 
      */
     public Output<Integer> shardCount() {
         return this.shardCount;
     }
     /**
-     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
-     * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
     @Export(name="slaveReadOnlyCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> slaveReadOnlyCount;
 
     /**
-     * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
-     * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+     * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
     public Output<Optional<Integer>> slaveReadOnlyCount() {
@@ -996,14 +996,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tdeStatus;
     }
     /**
-     * Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      * 
      */
     @Export(name="vpcAuthMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcAuthMode;
 
     /**
-     * @return Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * @return Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      * 
      */
     public Output<Optional<String>> vpcAuthMode() {

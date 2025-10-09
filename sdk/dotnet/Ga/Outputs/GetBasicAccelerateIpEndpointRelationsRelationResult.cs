@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
+        /// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `Active`.
         /// </summary>
         public readonly string Status;
 

@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Imp
         public Output<ImmutableArray<string>> ComponentLists { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+        /// Configuration list. It have several default configs after the resource is created. See the following `Block ConfigList`.
         /// </summary>
         [Output("configLists")]
         public Output<ImmutableArray<Outputs.AppTemplateConfigList>> ConfigLists { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Imp
         private InputList<Inputs.AppTemplateConfigListArgs>? _configLists;
 
         /// <summary>
-        /// Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+        /// Configuration list. It have several default configs after the resource is created. See the following `Block ConfigList`.
         /// </summary>
         public InputList<Inputs.AppTemplateConfigListArgs> ConfigLists
         {
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Imp
         private InputList<Inputs.AppTemplateConfigListGetArgs>? _configLists;
 
         /// <summary>
-        /// Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+        /// Configuration list. It have several default configs after the resource is created. See the following `Block ConfigList`.
         /// </summary>
         public InputList<Inputs.AppTemplateConfigListGetArgs> ConfigLists
         {

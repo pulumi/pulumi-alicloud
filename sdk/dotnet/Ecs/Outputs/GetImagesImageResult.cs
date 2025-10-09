@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetImagesImageResult
     {
         /// <summary>
-        /// The image architecture. Valid values: `i386` and `x86_64`.
+        /// The image architecture. Valid values: `I386` and `X8664`.
         /// </summary>
         public readonly string Architecture;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string OsNameEn;
         /// <summary>
-        /// The operating system type of the image. Valid values: `windows` and `linux`.
+        /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         public readonly string OsType;
         public readonly string Platform;

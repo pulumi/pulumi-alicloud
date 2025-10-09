@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationReadinessV2
     {
         /// <summary>
-        /// Execute. See `exec` below.
+        /// Execute. See `Exec` below.
         /// </summary>
         public readonly Outputs.ApplicationReadinessV2Exec? Exec;
         /// <summary>
-        /// The liveness check settings of the container. See `http_get` below.
+        /// The liveness check settings of the container. See `HttpGet` below.
         /// </summary>
         public readonly Outputs.ApplicationReadinessV2HttpGet? HttpGet;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int? PeriodSeconds;
         /// <summary>
-        /// The liveness check settings of the container. See `tcp_socket` below.
+        /// The liveness check settings of the container. See `TcpSocket` below.
         /// </summary>
         public readonly Outputs.ApplicationReadinessV2TcpSocket? TcpSocket;
         /// <summary>

@@ -76,14 +76,14 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      * 
      */
     @Import(name="hostPrivateAddress")
     private @Nullable Output<String> hostPrivateAddress;
 
     /**
-     * @return Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+     * @return Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      * 
      */
     public Optional<Output<String>> hostPrivateAddress() {
@@ -305,7 +305,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostPrivateAddress Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+         * @param hostPrivateAddress Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostPrivateAddress Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+         * @param hostPrivateAddress Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
          * 
          * @return builder
          * 

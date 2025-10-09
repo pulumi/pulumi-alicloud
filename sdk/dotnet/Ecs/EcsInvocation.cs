@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Timed` is set to false and Frequency is not specified, the default value of `RepeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `Period` is used as the value of RepeatMode regardless of whether `RepeatMode` is specified.
         /// </summary>
         [Output("repeatMode")]
         public Output<string> RepeatMode { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to periodically run the command. Default value: `false`.
+        /// Specifies whether to periodically run the command. Default value: `False`.
         /// </summary>
         [Output("timed")]
         public Output<bool> Timed { get; private set; } = null!;
@@ -277,13 +277,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Timed` is set to false and Frequency is not specified, the default value of `RepeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `Period` is used as the value of RepeatMode regardless of whether `RepeatMode` is specified.
         /// </summary>
         [Input("repeatMode")]
         public Input<string>? RepeatMode { get; set; }
 
         /// <summary>
-        /// Specifies whether to periodically run the command. Default value: `false`.
+        /// Specifies whether to periodically run the command. Default value: `False`.
         /// </summary>
         [Input("timed")]
         public Input<bool>? Timed { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Timed` is set to false and Frequency is not specified, the default value of `RepeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `Period` is used as the value of RepeatMode regardless of whether `RepeatMode` is specified.
         /// </summary>
         [Input("repeatMode")]
         public Input<string>? RepeatMode { get; set; }
@@ -363,7 +363,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Specifies whether to periodically run the command. Default value: `false`.
+        /// Specifies whether to periodically run the command. Default value: `False`.
         /// </summary>
         [Input("timed")]
         public Input<bool>? Timed { get; set; }

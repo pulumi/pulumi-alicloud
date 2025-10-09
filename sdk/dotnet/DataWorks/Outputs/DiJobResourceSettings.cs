@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.DataWorks.Outputs
     public sealed class DiJobResourceSettings
     {
         /// <summary>
-        /// Offline Resource Group configuration See `offline_resource_settings` below.
+        /// Offline Resource Group configuration See `OfflineResourceSettings` below.
         /// </summary>
         public readonly Outputs.DiJobResourceSettingsOfflineResourceSettings? OfflineResourceSettings;
         /// <summary>
-        /// Real-time Resource Group See `realtime_resource_settings` below.
+        /// Real-time Resource Group See `RealtimeResourceSettings` below.
         /// </summary>
         public readonly Outputs.DiJobResourceSettingsRealtimeResourceSettings? RealtimeResourceSettings;
         /// <summary>
-        /// Scheduling Resource Groups See `schedule_resource_settings` below.
+        /// Scheduling Resource Groups See `ScheduleResourceSettings` below.
         /// </summary>
         public readonly Outputs.DiJobResourceSettingsScheduleResourceSettings? ScheduleResourceSettings;
 

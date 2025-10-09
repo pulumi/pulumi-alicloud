@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CloudAuth.Outputs
         /// </summary>
         public readonly string BizName;
         /// <summary>
-        /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+        /// Scene type. **NOTE:** The BizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         /// </summary>
         public readonly string BizType;
         /// <summary>

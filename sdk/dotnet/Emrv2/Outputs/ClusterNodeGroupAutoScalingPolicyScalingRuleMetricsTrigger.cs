@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string? ConditionLogicOperator;
         /// <summary>
-        /// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+        /// The conditions for this scaling rule specific metrics trigger. See `Conditions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition> Conditions;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly int EvaluationCount;
         /// <summary>
-        /// The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+        /// The time constraints for this scaling rule specific metrics trigger. See `TimeConstraints` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint> TimeConstraints;
         /// <summary>

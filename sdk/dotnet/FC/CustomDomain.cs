@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> ApiVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of HTTPS certificate.See `cert_config` below.
+        /// The configuration of HTTPS certificate.See `CertConfig` below.
         /// </summary>
         [Output("certConfig")]
         public Output<Outputs.CustomDomainCertConfig?> CertConfig { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+        /// The configuration of domain route, mapping the path and Function Compute function.See `RouteConfig` below.
         /// </summary>
         [Output("routeConfigs")]
         public Output<ImmutableArray<Outputs.CustomDomainRouteConfig>> RouteConfigs { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.FC
     public sealed class CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of HTTPS certificate.See `cert_config` below.
+        /// The configuration of HTTPS certificate.See `CertConfig` below.
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.CustomDomainCertConfigArgs>? CertConfig { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.CustomDomainRouteConfigArgs>? _routeConfigs;
 
         /// <summary>
-        /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+        /// The configuration of domain route, mapping the path and Function Compute function.See `RouteConfig` below.
         /// </summary>
         public InputList<Inputs.CustomDomainRouteConfigArgs> RouteConfigs
         {
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// The configuration of HTTPS certificate.See `cert_config` below.
+        /// The configuration of HTTPS certificate.See `CertConfig` below.
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.CustomDomainCertConfigGetArgs>? CertConfig { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.CustomDomainRouteConfigGetArgs>? _routeConfigs;
 
         /// <summary>
-        /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+        /// The configuration of domain route, mapping the path and Function Compute function.See `RouteConfig` below.
         /// </summary>
         public InputList<Inputs.CustomDomainRouteConfigGetArgs> RouteConfigs
         {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class TransitRouterMulticastDomainOptions
     {
         /// <summary>
-        /// Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        /// Whether to enable IGMP function for multicast domain. Default value: `Disable`. Valid values: `Enable`, `Disable`.
         /// </summary>
         public readonly string? Igmpv2Support;
 

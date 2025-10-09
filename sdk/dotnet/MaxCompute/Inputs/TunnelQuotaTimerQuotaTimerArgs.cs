@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<string> EndTime { get; set; } = null!;
 
         /// <summary>
-        /// Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+        /// Time-sharing configuration parameters. See `TunnelQuotaParameter` below.
         /// </summary>
         [Input("tunnelQuotaParameter")]
         public Input<Inputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs>? TunnelQuotaParameter { get; set; }

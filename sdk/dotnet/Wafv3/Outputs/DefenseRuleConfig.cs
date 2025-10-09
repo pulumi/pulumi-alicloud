@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string? AbroadRegions;
         /// <summary>
-        /// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+        /// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `AccountIdentifiers` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DefenseRuleConfigAccountIdentifier> AccountIdentifiers;
         /// <summary>
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string? CnRegions;
         /// <summary>
-        /// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+        /// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `Conditions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DefenseRuleConfigCondition> Conditions;
         /// <summary>
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+        /// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `RateLimit` below.
         /// </summary>
         public readonly Outputs.DefenseRuleConfigRateLimit? RateLimit;
         /// <summary>

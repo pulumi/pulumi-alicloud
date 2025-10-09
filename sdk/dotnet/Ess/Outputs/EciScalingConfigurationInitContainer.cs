@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         public readonly double? Cpu;
         /// <summary>
         /// The structure of environmentVars. 
-        /// See `environment_vars` below for details.
+        /// See `EnvironmentVars` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerEnvironmentVar> EnvironmentVars;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The structure of port. See `ports` below for details.
+        /// The structure of port. See `Ports` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerPort> Ports;
         /// <summary>
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? SecurityContextRunAsUser;
         /// <summary>
-        /// The structure of volumeMounts. See `volume_mounts` below for details.
+        /// The structure of volumeMounts. See `VolumeMounts` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerVolumeMount> VolumeMounts;
         /// <summary>

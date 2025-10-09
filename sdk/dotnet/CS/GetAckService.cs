@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.CS
         public string? Enable { get; set; }
 
         /// <summary>
-        /// Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+        /// Types of services opened. Valid values: `Propayasgo`: Container service ack Pro managed version, `Edgepayasgo`: Edge container service, `Gspayasgo`: Gene computing services.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the Container Service (CS) service that means you have read and agreed the [Container Service (CS) Terms of Service](https://help.aliyun.com/document_detail/157971.html). The service can not closed once it is opened.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Enable { get; set; }
 
         /// <summary>
-        /// Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+        /// Types of services opened. Valid values: `Propayasgo`: Container service ack Pro managed version, `Edgepayasgo`: Edge container service, `Gspayasgo`: Gene computing services.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the Container Service (CS) service that means you have read and agreed the [Container Service (CS) Terms of Service](https://help.aliyun.com/document_detail/157971.html). The service can not closed once it is opened.
         /// </summary>

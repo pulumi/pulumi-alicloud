@@ -21,7 +21,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
     /**
      * ConfigFileVolumeConfigFileToPaths.
-     * See `config_file_volume_config_file_to_paths` below for details.
+     * See `configFileVolumeConfigFileToPaths` below for details.
      * 
      */
     @Import(name="configFileVolumeConfigFileToPaths")
@@ -29,7 +29,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
-     * See `config_file_volume_config_file_to_paths` below for details.
+     * See `configFileVolumeConfigFileToPaths` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs>>> configFileVolumeConfigFileToPaths() {
@@ -326,7 +326,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
-         * See `config_file_volume_config_file_to_paths` below for details.
+         * See `configFileVolumeConfigFileToPaths` below for details.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
-         * See `config_file_volume_config_file_to_paths` below for details.
+         * See `configFileVolumeConfigFileToPaths` below for details.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
-         * See `config_file_volume_config_file_to_paths` below for details.
+         * See `configFileVolumeConfigFileToPaths` below for details.
          * 
          * @return builder
          * 

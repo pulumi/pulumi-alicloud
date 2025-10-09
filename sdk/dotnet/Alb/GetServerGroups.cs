@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetServerGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetServerGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
+        /// The tags of the resource. **Note:** `Tags` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>

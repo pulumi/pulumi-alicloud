@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobJobMonitorInfo {
     /**
-     * @return Contact information. See `contact_info` below.
+     * @return Contact information. See `contactInfo` below.
      * 
      */
     private @Nullable List<JobJobMonitorInfoContactInfo> contactInfos;
     /**
-     * @return Alarm switch and threshold configuration. See `monitor_config` below.
+     * @return Alarm switch and threshold configuration. See `monitorConfig` below.
      * 
      */
     private @Nullable JobJobMonitorInfoMonitorConfig monitorConfig;
 
     private JobJobMonitorInfo() {}
     /**
-     * @return Contact information. See `contact_info` below.
+     * @return Contact information. See `contactInfo` below.
      * 
      */
     public List<JobJobMonitorInfoContactInfo> contactInfos() {
         return this.contactInfos == null ? List.of() : this.contactInfos;
     }
     /**
-     * @return Alarm switch and threshold configuration. See `monitor_config` below.
+     * @return Alarm switch and threshold configuration. See `monitorConfig` below.
      * 
      */
     public Optional<JobJobMonitorInfoMonitorConfig> monitorConfig() {

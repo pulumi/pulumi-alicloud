@@ -36,14 +36,14 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dead-letter queue policy. See `dlq_policy` below.
+     * The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     @Import(name="dlqPolicy")
     private @Nullable Output<ServiceQueueDlqPolicyArgs> dlqPolicy;
 
     /**
-     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * @return The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     public Optional<Output<ServiceQueueDlqPolicyArgs>> dlqPolicy() {
@@ -209,7 +209,7 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * @param dlqPolicy The dead-letter queue policy. See `dlqPolicy` below.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * @param dlqPolicy The dead-letter queue policy. See `dlqPolicy` below.
          * 
          * @return builder
          * 

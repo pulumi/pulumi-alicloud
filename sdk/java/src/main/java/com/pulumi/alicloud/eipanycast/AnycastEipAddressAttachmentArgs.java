@@ -102,14 +102,14 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+     * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      * 
      */
     @Import(name="popLocations")
     private @Nullable Output<List<AnycastEipAddressAttachmentPopLocationArgs>> popLocations;
 
     /**
-     * @return The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+     * @return The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      * 
      */
     public Optional<Output<List<AnycastEipAddressAttachmentPopLocationArgs>>> popLocations() {
@@ -275,7 +275,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
          * 
          * @return builder
          * 

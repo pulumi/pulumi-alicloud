@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyBindingAdvancedOptions {
     /**
-     * @return ECS Backup Advanced options. See `udm_detail` below.
+     * @return ECS Backup Advanced options. See `udmDetail` below.
      * 
      */
     private @Nullable PolicyBindingAdvancedOptionsUdmDetail udmDetail;
 
     private PolicyBindingAdvancedOptions() {}
     /**
-     * @return ECS Backup Advanced options. See `udm_detail` below.
+     * @return ECS Backup Advanced options. See `udmDetail` below.
      * 
      */
     public Optional<PolicyBindingAdvancedOptionsUdmDetail> udmDetail() {

@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.Tsdb
         public string? AppKey { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// The engine type of instance. Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
         /// </summary>
         [Input("engineType")]
         public string? EngineType { get; set; }
@@ -189,13 +189,13 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? AppKey { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// The engine type of instance. Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
         /// </summary>
         [Input("engineType")]
         public Input<string>? EngineType { get; set; }

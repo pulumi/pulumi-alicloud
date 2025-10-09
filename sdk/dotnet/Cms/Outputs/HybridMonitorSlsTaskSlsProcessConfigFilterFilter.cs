@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class HybridMonitorSlsTaskSlsProcessConfigFilterFilter
     {
         /// <summary>
-        /// The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+        /// The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `Contain`, `notContain`.
         /// </summary>
         public readonly string? Operator;
         /// <summary>

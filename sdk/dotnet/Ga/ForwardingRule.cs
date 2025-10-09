@@ -225,13 +225,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Forward action. See `rule_actions` below.
+        /// Forward action. See `RuleActions` below.
         /// </summary>
         [Output("ruleActions")]
         public Output<ImmutableArray<Outputs.ForwardingRuleRuleAction>> RuleActions { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding condition list. See `rule_conditions` below.
+        /// Forwarding condition list. See `RuleConditions` below.
         /// </summary>
         [Output("ruleConditions")]
         public Output<ImmutableArray<Outputs.ForwardingRuleRuleCondition>> RuleConditions { get; private set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleActionArgs>? _ruleActions;
 
         /// <summary>
-        /// Forward action. See `rule_actions` below.
+        /// Forward action. See `RuleActions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleActionArgs> RuleActions
         {
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleConditionArgs>? _ruleConditions;
 
         /// <summary>
-        /// Forwarding condition list. See `rule_conditions` below.
+        /// Forwarding condition list. See `RuleConditions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleConditionArgs> RuleConditions
         {
@@ -378,7 +378,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleActionGetArgs>? _ruleActions;
 
         /// <summary>
-        /// Forward action. See `rule_actions` below.
+        /// Forward action. See `RuleActions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleActionGetArgs> RuleActions
         {
@@ -390,7 +390,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleConditionGetArgs>? _ruleConditions;
 
         /// <summary>
-        /// Forwarding condition list. See `rule_conditions` below.
+        /// Forwarding condition list. See `RuleConditions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleConditionGetArgs> RuleConditions
         {

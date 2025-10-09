@@ -58,7 +58,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      * @return Add the BGP configuration for the tunnel.
      * 
      * &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-     * See `tunnel_bgp_config` below.
+     * See `tunnelBgpConfig` below.
      * 
      */
     private @Nullable GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig tunnelBgpConfig;
@@ -68,7 +68,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      */
     private @Nullable String tunnelId;
     /**
-     * @return Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+     * @return Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
      * 
      */
     private @Nullable GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig tunnelIkeConfig;
@@ -78,7 +78,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      */
     private Integer tunnelIndex;
     /**
-     * @return Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+     * @return Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
      * 
      */
     private @Nullable GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig tunnelIpsecConfig;
@@ -144,7 +144,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      * @return Add the BGP configuration for the tunnel.
      * 
      * &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-     * See `tunnel_bgp_config` below.
+     * See `tunnelBgpConfig` below.
      * 
      */
     public Optional<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig> tunnelBgpConfig() {
@@ -158,7 +158,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
         return Optional.ofNullable(this.tunnelId);
     }
     /**
-     * @return Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+     * @return Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
      * 
      */
     public Optional<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig> tunnelIkeConfig() {
@@ -172,7 +172,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
         return this.tunnelIndex;
     }
     /**
-     * @return Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+     * @return Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
      * 
      */
     public Optional<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig> tunnelIpsecConfig() {

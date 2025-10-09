@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly bool SecSensorEnabled;
         /// <summary>
-        /// Security policy ID. Support system security policies and custom security policies. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, or `tls_cipher_policy_1_2_strict_with_1_3`. **Note:** This parameter only takes effect for `TCPSSL` listeners.
+        /// Security policy ID. Support system security policies and custom security policies. Valid values: `TlsCipherPolicy10`, `TlsCipherPolicy11`, `TlsCipherPolicy12`, `TlsCipherPolicy12Strict`, or `TlsCipherPolicy12StrictWith13`. **Note:** This parameter only takes effect for `TCPSSL` listeners.
         /// </summary>
         public readonly string SecurityPolicyId;
         /// <summary>

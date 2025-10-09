@@ -95,14 +95,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+     * This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
      * 
      */
     @Import(name="retentionRules")
     private @Nullable Output<List<PolicyRuleRetentionRuleArgs>> retentionRules;
 
     /**
-     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
      * 
      */
     public Optional<Output<List<PolicyRuleRetentionRuleArgs>>> retentionRules() {
@@ -308,7 +308,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
          * 
          * @return builder
          * 

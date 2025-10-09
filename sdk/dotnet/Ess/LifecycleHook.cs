@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> DefaultResult { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter. Default value: 600.
         /// </summary>
         [Output("heartbeatTimeout")]
         public Output<int?> HeartbeatTimeout { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? DefaultResult { get; set; }
 
         /// <summary>
-        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter. Default value: 600.
         /// </summary>
         [Input("heartbeatTimeout")]
         public Input<int>? HeartbeatTimeout { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? DefaultResult { get; set; }
 
         /// <summary>
-        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter. Default value: 600.
         /// </summary>
         [Input("heartbeatTimeout")]
         public Input<int>? HeartbeatTimeout { get; set; }

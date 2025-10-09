@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Cdn
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        /// The status of the real-time log delivery feature. Valid Values: `Online` and `Offline`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        /// The status of the real-time log delivery feature. Valid Values: `Online` and `Offline`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

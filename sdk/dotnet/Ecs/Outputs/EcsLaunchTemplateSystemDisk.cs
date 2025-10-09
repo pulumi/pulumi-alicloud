@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class EcsLaunchTemplateSystemDisk
     {
         /// <summary>
-        /// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        /// The category of the system disk. System disk type. Valid values: `All`, `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `LocalDisk`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Specifies whether to release the system disk when the instance is released. Default to `true`.
+        /// Specifies whether to release the system disk when the instance is released. Default to `True`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>

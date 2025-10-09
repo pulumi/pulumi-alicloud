@@ -142,14 +142,14 @@ public class OssStockTask extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bizType);
     }
     /**
-     * The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket_01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
+     * The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
      * 
      */
     @Export(name="buckets", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> buckets;
 
     /**
-     * @return The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket_01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
+     * @return The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
      * 
      */
     public Output<Optional<String>> buckets() {

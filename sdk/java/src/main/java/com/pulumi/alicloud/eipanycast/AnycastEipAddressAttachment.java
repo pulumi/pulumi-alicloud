@@ -368,14 +368,14 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
         return this.bindTime;
     }
     /**
-     * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+     * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      * 
      */
     @Export(name="popLocations", refs={List.class,AnycastEipAddressAttachmentPopLocation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AnycastEipAddressAttachmentPopLocation>> popLocations;
 
     /**
-     * @return The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+     * @return The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      * 
      */
     public Output<Optional<List<AnycastEipAddressAttachmentPopLocation>>> popLocations() {

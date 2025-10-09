@@ -18,14 +18,14 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
     public static final ClusterNodeGroupDataDiskArgs Empty = new ClusterNodeGroupDataDiskArgs();
 
     /**
-     * The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+     * The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
      * 
      */
     @Import(name="category", required=true)
     private Output<String> category;
 
     /**
-     * @return The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+     * @return The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
      * 
      */
     public Output<String> category() {
@@ -48,14 +48,14 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+     * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+     * @return Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -105,7 +105,7 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param category The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+         * @param category The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param category The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+         * @param category The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param performanceLevel Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+         * @param performanceLevel Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param performanceLevel Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+         * @param performanceLevel Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
          * 
          * @return builder
          * 

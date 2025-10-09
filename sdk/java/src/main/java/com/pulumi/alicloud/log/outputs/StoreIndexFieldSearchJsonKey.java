@@ -21,12 +21,12 @@ public final class StoreIndexFieldSearchJsonKey {
     /**
      * @return Whether to enable statistics. default to true.
      * 
-     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     private @Nullable Boolean docValue;
     /**
-     * @return When using the json_keys field, this field is required.
+     * @return When using the jsonKeys field, this field is required.
      * 
      */
     private String name;
@@ -47,14 +47,14 @@ public final class StoreIndexFieldSearchJsonKey {
     /**
      * @return Whether to enable statistics. default to true.
      * 
-     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     public Optional<Boolean> docValue() {
         return Optional.ofNullable(this.docValue);
     }
     /**
-     * @return When using the json_keys field, this field is required.
+     * @return When using the jsonKeys field, this field is required.
      * 
      */
     public String name() {

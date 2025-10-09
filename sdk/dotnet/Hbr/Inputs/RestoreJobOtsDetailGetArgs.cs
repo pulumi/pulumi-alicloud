@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class RestoreJobOtsDetailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        /// Whether to overwrite the existing table storage recovery task. Valid values: `True`, `False`.
         /// </summary>
         [Input("overwriteExisting")]
         public Input<bool>? OverwriteExisting { get; set; }

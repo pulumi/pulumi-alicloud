@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string ConnectType;
         /// <summary>
-        /// The name of the VPC firewall instance and the value same as `vpc_firewall_id`.
+        /// The name of the VPC firewall instance and the value same as `VpcFirewallId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

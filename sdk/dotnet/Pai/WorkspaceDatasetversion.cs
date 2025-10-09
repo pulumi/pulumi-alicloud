@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Pai
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource See `labels` below.
+        /// The tag of the resource See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.WorkspaceDatasetversionLabel>> Labels { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceDatasetversionLabelArgs>? _labels;
 
         /// <summary>
-        /// The tag of the resource See `labels` below.
+        /// The tag of the resource See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceDatasetversionLabelArgs> Labels
         {
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceDatasetversionLabelGetArgs>? _labels;
 
         /// <summary>
-        /// The tag of the resource See `labels` below.
+        /// The tag of the resource See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceDatasetversionLabelGetArgs> Labels
         {

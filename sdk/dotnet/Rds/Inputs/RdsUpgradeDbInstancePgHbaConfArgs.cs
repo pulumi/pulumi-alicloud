@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public Input<string>? Mask { get; set; }
 
         /// <summary>
-        /// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+        /// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `Trust`, `Reject`, `scram-sha-256`, `Md5`, `Password`, `Gss`, `Sspi`, `Ldap`, `Radius`, `Cert`, `Pam`.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;

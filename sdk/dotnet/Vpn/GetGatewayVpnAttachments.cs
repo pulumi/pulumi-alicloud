@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Vpn
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+        /// The status of the resource. Valid values: `Init`, `Active`, `Attaching`, `Attached`, `Detaching`, `financialLocked`, `Provisioning`, `Updating`, `Upgrading`, `Deleted`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+        /// The status of the resource. Valid values: `Init`, `Active`, `Attaching`, `Attached`, `Detaching`, `financialLocked`, `Provisioning`, `Updating`, `Upgrading`, `Deleted`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

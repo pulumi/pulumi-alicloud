@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+        /// Field `MountTargetDomain` has been deprecated from provider version 1.53.0. New field `Ids` replaces it.
         /// </summary>
         public readonly string MountTargetDomain;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// Field `Type` has been deprecated from provider version 1.95.0. New field `NetworkType` replaces it.
         /// </summary>
         public readonly string Type;
         /// <summary>

@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
+        /// The origin of the protection rule template that you want to create. Set the value to `Custom`. The value specifies that the protection rule template is a custom template.
         /// </summary>
         [Output("templateOrigin")]
         public Output<string> TemplateOrigin { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
-        /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
+        /// The origin of the protection rule template that you want to create. Set the value to `Custom`. The value specifies that the protection rule template is a custom template.
         /// </summary>
         [Input("templateOrigin", required: true)]
         public Input<string> TemplateOrigin { get; set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
+        /// The origin of the protection rule template that you want to create. Set the value to `Custom`. The value specifies that the protection rule template is a custom template.
         /// </summary>
         [Input("templateOrigin")]
         public Input<string>? TemplateOrigin { get; set; }

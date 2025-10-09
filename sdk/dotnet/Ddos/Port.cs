@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
-        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `Config` below.
         /// </summary>
         [Output("config")]
         public Output<Outputs.PortConfig> Config { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
-        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `Config` below.
         /// </summary>
         [Input("config")]
         public Input<Inputs.PortConfigArgs>? Config { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
-        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `Config` below.
         /// </summary>
         [Input("config")]
         public Input<Inputs.PortConfigGetArgs>? Config { get; set; }

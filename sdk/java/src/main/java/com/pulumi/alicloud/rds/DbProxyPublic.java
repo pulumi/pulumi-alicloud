@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `depends_on` statement is necessary.
+ * &gt; **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `dependsOn` statement is necessary.
  * 
  * ## Import
  * 

@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class AntiBruteForceRuleProtocolType
     {
         /// <summary>
-        /// Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        /// Whether to enable RDP interception. Default value: `On`. Valid values: `On`, `Off`.
         /// </summary>
         public readonly string? Rdp;
         /// <summary>
-        /// Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        /// Whether to enable the SqlServer interception method. Default value: `Off`. Valid values: `On`, `Off`.
         /// </summary>
         public readonly string? SqlServer;
         /// <summary>
-        /// Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        /// Whether to enable SSH interception. Default value: `On`. Valid values: `On`, `Off`.
         /// </summary>
         public readonly string? Ssh;
 

@@ -34,14 +34,14 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
     }
 
     /**
-     * The liveness check settings of the container. See `http_get` below.
+     * The liveness check settings of the container. See `httpGet` below.
      * 
      */
     @Import(name="httpGet")
     private @Nullable Output<ApplicationLivenessV2HttpGetArgs> httpGet;
 
     /**
-     * @return The liveness check settings of the container. See `http_get` below.
+     * @return The liveness check settings of the container. See `httpGet` below.
      * 
      */
     public Optional<Output<ApplicationLivenessV2HttpGetArgs>> httpGet() {
@@ -79,14 +79,14 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
     }
 
     /**
-     * The liveness check settings of the container. See `tcp_socket` below.
+     * The liveness check settings of the container. See `tcpSocket` below.
      * 
      */
     @Import(name="tcpSocket")
     private @Nullable Output<ApplicationLivenessV2TcpSocketArgs> tcpSocket;
 
     /**
-     * @return The liveness check settings of the container. See `tcp_socket` below.
+     * @return The liveness check settings of the container. See `tcpSocket` below.
      * 
      */
     public Optional<Output<ApplicationLivenessV2TcpSocketArgs>> tcpSocket() {
@@ -159,7 +159,7 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param httpGet The liveness check settings of the container. See `http_get` below.
+         * @param httpGet The liveness check settings of the container. See `httpGet` below.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param httpGet The liveness check settings of the container. See `http_get` below.
+         * @param httpGet The liveness check settings of the container. See `httpGet` below.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tcpSocket The liveness check settings of the container. See `tcp_socket` below.
+         * @param tcpSocket The liveness check settings of the container. See `tcpSocket` below.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tcpSocket The liveness check settings of the container. See `tcp_socket` below.
+         * @param tcpSocket The liveness check settings of the container. See `tcpSocket` below.
          * 
          * @return builder
          * 

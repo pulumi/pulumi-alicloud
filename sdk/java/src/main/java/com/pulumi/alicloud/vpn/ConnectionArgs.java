@@ -44,14 +44,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * vpnBgp configuration. See `bgp_config` below.
+     * vpnBgp configuration. See `bgpConfig` below.
      * 
      */
     @Import(name="bgpConfig")
     private @Nullable Output<ConnectionBgpConfigArgs> bgpConfig;
 
     /**
-     * @return vpnBgp configuration. See `bgp_config` below.
+     * @return vpnBgp configuration. See `bgpConfig` below.
      * 
      */
     public Optional<Output<ConnectionBgpConfigArgs>> bgpConfig() {
@@ -134,14 +134,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Health Check information. See `health_check_config` below.
+     * Health Check information. See `healthCheckConfig` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<ConnectionHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return Health Check information. See `health_check_config` below.
+     * @return Health Check information. See `healthCheckConfig` below.
      * 
      */
     public Optional<Output<ConnectionHealthCheckConfigArgs>> healthCheckConfig() {
@@ -149,14 +149,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of Phase 1 negotiations. See `ike_config` below.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      * 
      */
     @Import(name="ikeConfig")
     private @Nullable Output<ConnectionIkeConfigArgs> ikeConfig;
 
     /**
-     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
+     * @return The configuration of Phase 1 negotiations. See `ikeConfig` below.
      * 
      */
     public Optional<Output<ConnectionIkeConfigArgs>> ikeConfig() {
@@ -164,14 +164,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPsec configuration. See `ipsec_config` below.
+     * IPsec configuration. See `ipsecConfig` below.
      * 
      */
     @Import(name="ipsecConfig")
     private @Nullable Output<ConnectionIpsecConfigArgs> ipsecConfig;
 
     /**
-     * @return IPsec configuration. See `ipsec_config` below.
+     * @return IPsec configuration. See `ipsecConfig` below.
      * 
      */
     public Optional<Output<ConnectionIpsecConfigArgs>> ipsecConfig() {
@@ -266,14 +266,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      * 
      */
     @Import(name="tunnelOptionsSpecifications")
     private @Nullable Output<List<ConnectionTunnelOptionsSpecificationArgs>> tunnelOptionsSpecifications;
 
     /**
-     * @return The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * @return The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      * 
      */
     public Optional<Output<List<ConnectionTunnelOptionsSpecificationArgs>>> tunnelOptionsSpecifications() {
@@ -377,7 +377,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig vpnBgp configuration. See `bgp_config` below.
+         * @param bgpConfig vpnBgp configuration. See `bgpConfig` below.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig vpnBgp configuration. See `bgp_config` below.
+         * @param bgpConfig vpnBgp configuration. See `bgpConfig` below.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig Health Check information. See `health_check_config` below.
+         * @param healthCheckConfig Health Check information. See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig Health Check information. See `health_check_config` below.
+         * @param healthCheckConfig Health Check information. See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfig The configuration of Phase 1 negotiations. See `ike_config` below.
+         * @param ikeConfig The configuration of Phase 1 negotiations. See `ikeConfig` below.
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfig The configuration of Phase 1 negotiations. See `ike_config` below.
+         * @param ikeConfig The configuration of Phase 1 negotiations. See `ikeConfig` below.
          * 
          * @return builder
          * 
@@ -545,7 +545,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfig IPsec configuration. See `ipsec_config` below.
+         * @param ipsecConfig IPsec configuration. See `ipsecConfig` below.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfig IPsec configuration. See `ipsec_config` below.
+         * @param ipsecConfig IPsec configuration. See `ipsecConfig` below.
          * 
          * @return builder
          * 
@@ -703,7 +703,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnel_options_specification` below.
+         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
          * 
          * @return builder
          * 
@@ -714,7 +714,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnel_options_specification` below.
+         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
          * 
          * @return builder
          * 
@@ -724,7 +724,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnel_options_specification` below.
+         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
          * 
          * @return builder
          * 

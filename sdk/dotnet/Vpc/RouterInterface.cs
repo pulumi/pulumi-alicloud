@@ -72,19 +72,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+        /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `RouterType` is `VBR`. The IP must be an unused IP in the local VPC. It and `HealthCheckTargetIp` must be specified at the same time.
         /// </summary>
         [Output("healthCheckSourceIp")]
         public Output<string?> HealthCheckSourceIp { get; private set; } = null!;
 
         /// <summary>
-        /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+        /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `RouterType` is `VBR`. The IP must be an unused IP in the local VPC. It and `HealthCheckSourceIp` must be specified at the same time.
         /// </summary>
         [Output("healthCheckTargetIp")]
         public Output<string?> HealthCheckTargetIp { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
+        /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and OppositeRegion are the same.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -133,8 +133,8 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> OppositeRouterType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterType { get; private set; } = null!;
 
         /// <summary>
-        /// Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
+        /// Specification of router interfaces. It is valid when `Role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
         /// </summary>
         [Output("specification")]
         public Output<string?> Specification { get; private set; } = null!;
@@ -216,19 +216,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+        /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `RouterType` is `VBR`. The IP must be an unused IP in the local VPC. It and `HealthCheckTargetIp` must be specified at the same time.
         /// </summary>
         [Input("healthCheckSourceIp")]
         public Input<string>? HealthCheckSourceIp { get; set; }
 
         /// <summary>
-        /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+        /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `RouterType` is `VBR`. The IP must be an unused IP in the local VPC. It and `HealthCheckSourceIp` must be specified at the same time.
         /// </summary>
         [Input("healthCheckTargetIp")]
         public Input<string>? HealthCheckTargetIp { get; set; }
 
         /// <summary>
-        /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
+        /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and OppositeRegion are the same.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -253,8 +253,8 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> OppositeRegion { get; set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> RouterType { get; set; } = null!;
 
         /// <summary>
-        /// Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
+        /// Specification of router interfaces. It is valid when `Role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
@@ -304,19 +304,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+        /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `RouterType` is `VBR`. The IP must be an unused IP in the local VPC. It and `HealthCheckTargetIp` must be specified at the same time.
         /// </summary>
         [Input("healthCheckSourceIp")]
         public Input<string>? HealthCheckSourceIp { get; set; }
 
         /// <summary>
-        /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+        /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `RouterType` is `VBR`. The IP must be an unused IP in the local VPC. It and `HealthCheckSourceIp` must be specified at the same time.
         /// </summary>
         [Input("healthCheckTargetIp")]
         public Input<string>? HealthCheckTargetIp { get; set; }
 
         /// <summary>
-        /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
+        /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and OppositeRegion are the same.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -365,8 +365,8 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OppositeRouterType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouterType { get; set; }
 
         /// <summary>
-        /// Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
+        /// Specification of router interfaces. It is valid when `Role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }

@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The UUID of the asset. Same as `id`.
+        /// The UUID of the asset. Same as `Id`.
         /// </summary>
         public readonly string Uuid;
         /// <summary>

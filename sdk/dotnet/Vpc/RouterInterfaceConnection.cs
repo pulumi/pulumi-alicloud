@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
     /// 
-    /// &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+    /// &gt; **NOTE:** Please remember to add a `DependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
     /// 
     /// ## Example Usage
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        /// Another side router interface ID. It must belong the specified "OppositeInterfaceOwnerId" account.
         /// </summary>
         [Output("oppositeInterfaceId")]
         public Output<string> OppositeInterfaceId { get; private set; } = null!;
@@ -123,15 +123,15 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> OppositeInterfaceOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        /// Another side router ID. It must belong the specified "OppositeInterfaceOwnerId" account. It is valid when field "OppositeInterfaceOwnerId" is specified.
         /// </summary>
         [Output("oppositeRouterId")]
         public Output<string> OppositeRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "OppositeInterfaceOwnerId" is specified.
         /// 
-        /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
+        /// &gt; **NOTE:** The value of "OppositeInterfaceOwnerId" or "AccountId" must be main account and not be sub account.
         /// </summary>
         [Output("oppositeRouterType")]
         public Output<string?> OppositeRouterType { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> InterfaceId { get; set; } = null!;
 
         /// <summary>
-        /// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        /// Another side router interface ID. It must belong the specified "OppositeInterfaceOwnerId" account.
         /// </summary>
         [Input("oppositeInterfaceId", required: true)]
         public Input<string> OppositeInterfaceId { get; set; } = null!;
@@ -201,15 +201,15 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
         /// <summary>
-        /// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        /// Another side router ID. It must belong the specified "OppositeInterfaceOwnerId" account. It is valid when field "OppositeInterfaceOwnerId" is specified.
         /// </summary>
         [Input("oppositeRouterId")]
         public Input<string>? OppositeRouterId { get; set; }
 
         /// <summary>
-        /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "OppositeInterfaceOwnerId" is specified.
         /// 
-        /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
+        /// &gt; **NOTE:** The value of "OppositeInterfaceOwnerId" or "AccountId" must be main account and not be sub account.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InterfaceId { get; set; }
 
         /// <summary>
-        /// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        /// Another side router interface ID. It must belong the specified "OppositeInterfaceOwnerId" account.
         /// </summary>
         [Input("oppositeInterfaceId")]
         public Input<string>? OppositeInterfaceId { get; set; }
@@ -241,15 +241,15 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
         /// <summary>
-        /// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        /// Another side router ID. It must belong the specified "OppositeInterfaceOwnerId" account. It is valid when field "OppositeInterfaceOwnerId" is specified.
         /// </summary>
         [Input("oppositeRouterId")]
         public Input<string>? OppositeRouterId { get; set; }
 
         /// <summary>
-        /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "OppositeInterfaceOwnerId" is specified.
         /// 
-        /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
+        /// &gt; **NOTE:** The value of "OppositeInterfaceOwnerId" or "AccountId" must be main account and not be sub account.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }

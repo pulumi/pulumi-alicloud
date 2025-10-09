@@ -19,14 +19,14 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDomainsArgs Empty = new GetDomainsArgs();
 
     /**
-     * Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+     * Default to false and only output `id`, `domainName`. Set it to true can output more details.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+     * @return Default to false and only output `id`, `domainName`. Set it to true can output more details.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -138,7 +138,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+         * @param enableDetails Default to false and only output `id`, `domainName`. Set it to true can output more details.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+         * @param enableDetails Default to false and only output `id`, `domainName`. Set it to true can output more details.
          * 
          * @return builder
          * 

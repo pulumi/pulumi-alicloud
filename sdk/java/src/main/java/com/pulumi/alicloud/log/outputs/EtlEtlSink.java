@@ -28,12 +28,12 @@ public final class EtlEtlSink {
      */
     private String endpoint;
     /**
-     * @return An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      * 
      */
     private @Nullable String kmsEncryptedAccessKeyId;
     /**
-     * @return An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      * 
      */
     private @Nullable String kmsEncryptedAccessKeySecret;
@@ -53,14 +53,14 @@ public final class EtlEtlSink {
      */
     private String project;
     /**
-     * @return Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     private @Nullable String roleArn;
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
      * 
-     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     private @Nullable String type;
@@ -88,14 +88,14 @@ public final class EtlEtlSink {
         return this.endpoint;
     }
     /**
-     * @return An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      * 
      */
     public Optional<String> kmsEncryptedAccessKeyId() {
         return Optional.ofNullable(this.kmsEncryptedAccessKeyId);
     }
     /**
-     * @return An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      * 
      */
     public Optional<String> kmsEncryptedAccessKeySecret() {
@@ -123,7 +123,7 @@ public final class EtlEtlSink {
         return this.project;
     }
     /**
-     * @return Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     public Optional<String> roleArn() {
@@ -132,7 +132,7 @@ public final class EtlEtlSink {
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
      * 
-     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     public Optional<String> type() {

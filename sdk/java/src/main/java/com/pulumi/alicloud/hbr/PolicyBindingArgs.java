@@ -19,14 +19,14 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyBindingArgs Empty = new PolicyBindingArgs();
 
     /**
-     * Backup Advanced Options See `advanced_options` below.
+     * Backup Advanced Options See `advancedOptions` below.
      * 
      */
     @Import(name="advancedOptions")
     private @Nullable Output<PolicyBindingAdvancedOptionsArgs> advancedOptions;
 
     /**
-     * @return Backup Advanced Options See `advanced_options` below.
+     * @return Backup Advanced Options See `advancedOptions` below.
      * 
      */
     public Optional<Output<PolicyBindingAdvancedOptionsArgs>> advancedOptions() {
@@ -266,7 +266,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advancedOptions Backup Advanced Options See `advanced_options` below.
+         * @param advancedOptions Backup Advanced Options See `advancedOptions` below.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advancedOptions Backup Advanced Options See `advanced_options` below.
+         * @param advancedOptions Backup Advanced Options See `advancedOptions` below.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.85.0.
     /// 
-    /// &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
+    /// &gt; **NOTE:** When the site is an international site, the `Type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
     /// 
     /// ## Example Usage
     /// 
@@ -79,13 +79,13 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
+        /// The resolution line of domain record. When the `Type` is `FORWORD_URL`, this parameter must be `Default`. Default value is `Default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Output("line")]
         public Output<string?> Line { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
+        /// The priority of domain record. Valid values: `[1-10]`. When the `Type` is `MX`, this parameter is required.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Remark { get; private set; } = null!;
 
         /// <summary>
-        /// Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
+        /// Host record for the domain record. This HostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         /// </summary>
         [Output("rr")]
         public Output<string> Rr { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> UserClientIp { get; private set; } = null!;
 
         /// <summary>
-        /// The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
+        /// The value of domain record, When the `Type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `Value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -191,13 +191,13 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
+        /// The resolution line of domain record. When the `Type` is `FORWORD_URL`, this parameter must be `Default`. Default value is `Default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }
 
         /// <summary>
-        /// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
+        /// The priority of domain record. Valid values: `[1-10]`. When the `Type` is `MX`, this parameter is required.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Remark { get; set; }
 
         /// <summary>
-        /// Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
+        /// Host record for the domain record. This HostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         /// </summary>
         [Input("rr", required: true)]
         public Input<string> Rr { get; set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
-        /// The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
+        /// The value of domain record, When the `Type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `Value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -265,13 +265,13 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
+        /// The resolution line of domain record. When the `Type` is `FORWORD_URL`, this parameter must be `Default`. Default value is `Default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }
 
         /// <summary>
-        /// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
+        /// The priority of domain record. Valid values: `[1-10]`. When the `Type` is `MX`, this parameter is required.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Remark { get; set; }
 
         /// <summary>
-        /// Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
+        /// Host record for the domain record. This HostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         /// </summary>
         [Input("rr")]
         public Input<string>? Rr { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
-        /// The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
+        /// The value of domain record, When the `Type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `Value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

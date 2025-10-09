@@ -27,7 +27,7 @@ public final class GetProductAsEndUsersUser {
      */
     private Boolean hasDefaultLaunchOption;
     /**
-     * @return ID of product, Its value is the same as `product_id`.
+     * @return ID of product, Its value is the same as `productId`.
      * 
      */
     private String id;
@@ -80,7 +80,7 @@ public final class GetProductAsEndUsersUser {
         return this.hasDefaultLaunchOption;
     }
     /**
-     * @return ID of product, Its value is the same as `product_id`.
+     * @return ID of product, Its value is the same as `productId`.
      * 
      */
     public String id() {

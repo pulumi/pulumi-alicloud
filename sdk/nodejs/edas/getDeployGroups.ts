@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.82.0+
+ *
+ * ## Example Usage
  */
 export function getDeployGroups(args: GetDeployGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeployGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,6 +67,8 @@ export interface GetDeployGroupsResult {
  * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.82.0+
+ *
+ * ## Example Usage
  */
 export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeployGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

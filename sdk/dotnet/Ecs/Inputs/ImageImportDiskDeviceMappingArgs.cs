@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<int>? DiskImageSize { get; set; }
 
         /// <summary>
-        /// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
+        /// The format of the image. Valid values: `RAW`, `VHD`, `Qcow2`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

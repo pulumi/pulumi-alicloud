@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The relationship between conditional expressions. Valid values: `and`, `or`.
+        /// The relationship between conditional expressions. Valid values: `And`, `Or`.
         /// </summary>
         public readonly string MatchExpressFilterRelation;
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        /// The label generates a matching expression that applies the grouping. See the following `Block MatchExpress`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDynamicTagGroupsGroupMatchExpressResult> MatchExpresses;
         /// <summary>

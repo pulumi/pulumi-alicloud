@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Aligreen
         public Output<string?> BizType { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket_01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
+        /// The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"Bucket01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
         /// </summary>
         [Output("buckets")]
         public Output<string?> Buckets { get; private set; } = null!;
@@ -323,7 +323,7 @@ namespace Pulumi.AliCloud.Aligreen
         public Input<string>? BizType { get; set; }
 
         /// <summary>
-        /// The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket_01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
+        /// The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"Bucket01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
         /// </summary>
         [Input("buckets")]
         public Input<string>? Buckets { get; set; }
@@ -544,7 +544,7 @@ namespace Pulumi.AliCloud.Aligreen
         public Input<string>? BizType { get; set; }
 
         /// <summary>
-        /// The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket_01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
+        /// The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"Bucket01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
         /// </summary>
         [Input("buckets")]
         public Input<string>? Buckets { get; set; }

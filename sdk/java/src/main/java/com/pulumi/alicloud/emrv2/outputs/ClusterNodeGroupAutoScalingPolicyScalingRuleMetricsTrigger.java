@@ -37,7 +37,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
      */
     private Integer evaluationCount;
     /**
-     * @return The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * @return The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint> timeConstraints;
@@ -77,7 +77,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
         return this.evaluationCount;
     }
     /**
-     * @return The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * @return The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
      * 
      */
     public List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint> timeConstraints() {

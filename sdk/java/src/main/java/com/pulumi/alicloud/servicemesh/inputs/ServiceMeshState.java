@@ -106,14 +106,14 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data plane KubeAPI access capability See `extra_configuration` below.
+     * Data plane KubeAPI access capability See `extraConfiguration` below.
      * 
      */
     @Import(name="extraConfiguration")
     private @Nullable Output<ServiceMeshExtraConfigurationArgs> extraConfiguration;
 
     /**
-     * @return Data plane KubeAPI access capability See `extra_configuration` below.
+     * @return Data plane KubeAPI access capability See `extraConfiguration` below.
      * 
      */
     public Optional<Output<ServiceMeshExtraConfigurationArgs>> extraConfiguration() {
@@ -159,14 +159,14 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Load balancing information See `load_balancer` below.
+     * Load balancing information See `loadBalancer` below.
      * 
      */
     @Import(name="loadBalancer")
     private @Nullable Output<ServiceMeshLoadBalancerArgs> loadBalancer;
 
     /**
-     * @return Load balancing information See `load_balancer` below.
+     * @return Load balancing information See `loadBalancer` below.
      * 
      */
     public Optional<Output<ServiceMeshLoadBalancerArgs>> loadBalancer() {
@@ -174,14 +174,14 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service grid configuration information See `mesh_config` below.
+     * Service grid configuration information See `meshConfig` below.
      * 
      */
     @Import(name="meshConfig")
     private @Nullable Output<ServiceMeshMeshConfigArgs> meshConfig;
 
     /**
-     * @return Service grid configuration information See `mesh_config` below.
+     * @return Service grid configuration information See `meshConfig` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigArgs>> meshConfig() {
@@ -441,7 +441,7 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraConfiguration Data plane KubeAPI access capability See `extra_configuration` below.
+         * @param extraConfiguration Data plane KubeAPI access capability See `extraConfiguration` below.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraConfiguration Data plane KubeAPI access capability See `extra_configuration` below.
+         * @param extraConfiguration Data plane KubeAPI access capability See `extraConfiguration` below.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancer Load balancing information See `load_balancer` below.
+         * @param loadBalancer Load balancing information See `loadBalancer` below.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancer Load balancing information See `load_balancer` below.
+         * @param loadBalancer Load balancing information See `loadBalancer` below.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshConfig Service grid configuration information See `mesh_config` below.
+         * @param meshConfig Service grid configuration information See `meshConfig` below.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class ServiceMeshState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshConfig Service grid configuration information See `mesh_config` below.
+         * @param meshConfig Service grid configuration information See `meshConfig` below.
          * 
          * @return builder
          * 

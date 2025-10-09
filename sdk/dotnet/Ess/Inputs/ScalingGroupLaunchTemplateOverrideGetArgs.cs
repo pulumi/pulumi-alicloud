@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         /// 
         /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
         /// 
-        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
+        /// &gt; **NOTE:** `OnDemandBaseCapacity`,`OnDemandPercentageAboveBaseCapacity`,`SpotInstancePools`,`SpotInstanceRemedy` are valid only if `MultiAzPolicy` is 'COST_OPTIMIZED'.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }

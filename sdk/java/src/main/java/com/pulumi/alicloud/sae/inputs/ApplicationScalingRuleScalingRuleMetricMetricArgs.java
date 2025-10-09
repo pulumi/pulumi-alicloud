@@ -17,14 +17,14 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
     public static final ApplicationScalingRuleScalingRuleMetricMetricArgs Empty = new ApplicationScalingRuleScalingRuleMetricMetricArgs();
 
     /**
-     * According to different `metric_type`, set the target value of the corresponding monitoring index.
+     * According to different `metricType`, set the target value of the corresponding monitoring index.
      * 
      */
     @Import(name="metricTargetAverageUtilization")
     private @Nullable Output<Integer> metricTargetAverageUtilization;
 
     /**
-     * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
+     * @return According to different `metricType`, set the target value of the corresponding monitoring index.
      * 
      */
     public Optional<Output<Integer>> metricTargetAverageUtilization() {
@@ -42,7 +42,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
      * - SLB_RT: The average response time of public network SLB within 15 seconds.
      * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
      * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+     *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
      * 
      */
     @Import(name="metricType")
@@ -59,7 +59,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
      * - SLB_RT: The average response time of public network SLB within 15 seconds.
      * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
      * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+     *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
      * 
      */
     public Optional<Output<String>> metricType() {
@@ -156,7 +156,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
         }
 
         /**
-         * @param metricTargetAverageUtilization According to different `metric_type`, set the target value of the corresponding monitoring index.
+         * @param metricTargetAverageUtilization According to different `metricType`, set the target value of the corresponding monitoring index.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
         }
 
         /**
-         * @param metricTargetAverageUtilization According to different `metric_type`, set the target value of the corresponding monitoring index.
+         * @param metricTargetAverageUtilization According to different `metricType`, set the target value of the corresponding monitoring index.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
          * - SLB_RT: The average response time of public network SLB within 15 seconds.
          * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
          * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-         *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+         *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
          * - SLB_RT: The average response time of public network SLB within 15 seconds.
          * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
          * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-         *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+         *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          * 
          * @return builder
          * 

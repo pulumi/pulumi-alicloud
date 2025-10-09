@@ -20,7 +20,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     public static final DhcpOptionsSetArgs Empty = new DhcpOptionsSetArgs();
 
     /**
-     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      * 
      * @deprecated
      * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0. Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
@@ -31,7 +31,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<DhcpOptionsSetAssociateVpcArgs>> associateVpcs;
 
     /**
-     * @return Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+     * @return Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      * 
      * @deprecated
      * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0. Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
@@ -225,7 +225,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param associateVpcs Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+         * @param associateVpcs Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param associateVpcs Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+         * @param associateVpcs Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param associateVpcs Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+         * @param associateVpcs Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
          * 
          * @return builder
          * 

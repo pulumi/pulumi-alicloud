@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
+        /// Grid instance version type. **Note:** `Edition` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string Edition;
         /// <summary>
-        /// The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
+        /// The endpoint details. **Note:** `Endpoints` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshEndpointResult> Endpoints;
         /// <summary>
@@ -38,23 +38,23 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.170.0) The Istio Operator Version. **Note:** `IstioOperatorVersion` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string IstioOperatorVersion;
         /// <summary>
-        /// The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
+        /// The content of Kube config. **Note:** `KubeConfig` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string KubeConfig;
         /// <summary>
-        /// The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
+        /// The configuration of the Load Balancer. **Note:** `LoadBalancer` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshLoadBalancerResult> LoadBalancers;
         /// <summary>
-        /// The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
+        /// The configuration of the Service grid. **Note:** `MeshConfig` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigResult> MeshConfigs;
         /// <summary>
-        /// The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
+        /// The configuration of the Service grid network. **Note:** `Network` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshNetworkResult> Networks;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string ServiceMeshName;
         /// <summary>
-        /// (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.170.0) The SideCar Version. **Note:** `SidecarVersion` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string SidecarVersion;
         /// <summary>
-        /// The status of the Service Mesh. Valid values: `running`, `initial`.
+        /// The status of the Service Mesh. Valid values: `Running`, `Initial`.
         /// </summary>
         public readonly string Status;
         /// <summary>

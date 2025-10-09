@@ -234,14 +234,14 @@ public class AScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extAttributeEnabled);
     }
     /**
-     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      * 
      */
     @Export(name="extAttributes", refs={List.class,AScriptExtAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AScriptExtAttribute>> extAttributes;
 
     /**
-     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      * 
      */
     public Output<Optional<List<AScriptExtAttribute>>> extAttributes() {

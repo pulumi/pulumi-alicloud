@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesAuditLogConfig
     {
         /// <summary>
-        /// Whether to enable audit logging. Valid values: `true`, `false`.
+        /// Whether to enable audit logging. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

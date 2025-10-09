@@ -130,14 +130,14 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return this.lockResolution;
     }
     /**
-     * Network redirection. See `net_redirect_policy` below.
+     * Network redirection. See `netRedirectPolicy` below.
      * 
      */
     @Export(name="netRedirectPolicy", refs={PolicyNetRedirectPolicy.class}, tree="[0]")
     private Output<PolicyNetRedirectPolicy> netRedirectPolicy;
 
     /**
-     * @return Network redirection. See `net_redirect_policy` below.
+     * @return Network redirection. See `netRedirectPolicy` below.
      * 
      */
     public Output<PolicyNetRedirectPolicy> netRedirectPolicy() {

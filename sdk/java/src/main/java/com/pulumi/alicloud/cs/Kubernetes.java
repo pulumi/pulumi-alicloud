@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
  * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
- * VPC, you can set `new_nat_gateway` to &#34;true&#34; to create one automatically.
+ * VPC, you can set `newNatGateway` to &#34;true&#34; to create one automatically.
  * 
  * &gt; **NOTE:** Each kubernetes cluster contains 3 master nodes and those number cannot be changed at now.
  * 
@@ -42,9 +42,9 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
  * after creating cluster successfully, and you can put them into the specified location, like &#39;~/.kube/config&#39;.
  * 
- * &gt; **NOTE:** From version 1.16.0, the provider supports Multiple Availability Zones Kubernetes Cluster. To create a cluster of this kind, you must specify 3 or 5 items in `master_vswitch_ids` and `master_instance_types`.
+ * &gt; **NOTE:** From version 1.16.0, the provider supports Multiple Availability Zones Kubernetes Cluster. To create a cluster of this kind, you must specify 3 or 5 items in `masterVswitchIds` and `masterInstanceTypes`.
  * 
- * &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+ * &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slbInternetEnabled`.
  * 
  * &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
  * 
@@ -53,13 +53,15 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
  * 
- * &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `cluster_spec`.
+ * &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `clusterSpec`.
  * 
- * &gt; **NOTE:** From version 1.177.0+, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id` are deprecated.
+ * &gt; **NOTE:** From version 1.177.0+, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId` are deprecated.
  * We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
  * 
- * &gt; **NOTE:** From version 1.212.0, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`kube_config`,`availability_zone` are removed.
+ * &gt; **NOTE:** From version 1.212.0, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId`,`kubeConfig`,`availabilityZone` are removed.
  * Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
+ * 
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -73,35 +75,35 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/kubernetes:Kubernetes")
 public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     @Export(name="addons", refs={List.class,KubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAddon>> addons;
 
     /**
-     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     public Output<Optional<List<KubernetesAddon>>> addons() {
         return Codegen.optional(this.addons);
     }
     /**
-     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     @Export(name="apiAudiences", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> apiAudiences;
 
     /**
-     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     public Output<Optional<List<String>>> apiAudiences() {
         return Codegen.optional(this.apiAudiences);
     }
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -112,7 +114,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private Output<KubernetesCertificateAuthority> certificateAuthority;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      */
     public Output<KubernetesCertificateAuthority> certificateAuthority() {
@@ -219,14 +221,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customSan);
     }
     /**
-     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     @Export(name="deleteOptions", refs={List.class,KubernetesDeleteOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesDeleteOption>> deleteOptions;
 
     /**
-     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     public Output<Optional<List<KubernetesDeleteOption>>> deleteOptions() {
@@ -303,42 +305,42 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return this.isEnterpriseSecurityGroup;
     }
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyName;
 
     /**
-     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> keyName() {
         return Codegen.optional(this.keyName);
     }
     /**
-     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
@@ -391,28 +393,28 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.masterAutoRenewPeriod);
     }
     /**
-     * The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      * 
      */
     @Export(name="masterDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterDiskCategory;
 
     /**
-     * @return The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * @return The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      * 
      */
     public Output<Optional<String>> masterDiskCategory() {
         return Codegen.optional(this.masterDiskCategory);
     }
     /**
-     * Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     @Export(name="masterDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterDiskPerformanceLevel;
 
     /**
-     * @return Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Output<Optional<String>> masterDiskPerformanceLevel() {
@@ -451,14 +453,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.masterDiskSnapshotPolicyId);
     }
     /**
-     * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+     * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      * 
      */
     @Export(name="masterInstanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterInstanceChargeType;
 
     /**
-     * @return Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+     * @return Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      * 
      */
     public Output<Optional<String>> masterInstanceChargeType() {
@@ -479,14 +481,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return this.masterInstanceTypes;
     }
     /**
-     * (Optional) The master nodes. See `master_nodes` below.
+     * (Optional) The master nodes. See `masterNodes` below.
      * 
      */
     @Export(name="masterNodes", refs={List.class,KubernetesMasterNode.class}, tree="[0,1]")
     private Output<List<KubernetesMasterNode>> masterNodes;
 
     /**
-     * @return (Optional) The master nodes. See `master_nodes` below.
+     * @return (Optional) The master nodes. See `masterNodes` below.
      * 
      */
     public Output<List<KubernetesMasterNode>> masterNodes() {
@@ -631,14 +633,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.osType);
     }
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> password() {
@@ -673,14 +675,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.podCidr);
     }
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     @Export(name="podVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<List<String>>> podVswitchIds() {
@@ -763,14 +765,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return this.securityGroupId;
     }
     /**
-     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     @Export(name="serviceAccountIssuer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountIssuer;
 
     /**
-     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     public Output<Optional<String>> serviceAccountIssuer() {
@@ -791,7 +793,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceCidr);
     }
     /**
-     * Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -800,7 +802,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> skipSetCertificateAuthority;
 
     /**
-     * @return Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -839,8 +841,8 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
      * *Master params*
      * 
@@ -851,8 +853,8 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
      * *Master params*
      * 

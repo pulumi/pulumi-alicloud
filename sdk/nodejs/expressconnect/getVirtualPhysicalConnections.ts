@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This data source provides Express Connect Virtual Physical Connection available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
  */
 export function getVirtualPhysicalConnections(args?: GetVirtualPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualPhysicalConnectionsResult> {
     args = args || {};
@@ -123,6 +125,8 @@ export interface GetVirtualPhysicalConnectionsResult {
  * This data source provides Express Connect Virtual Physical Connection available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
  */
 export function getVirtualPhysicalConnectionsOutput(args?: GetVirtualPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualPhysicalConnectionsResult> {
     args = args || {};

@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> CharacterType { get; private set; } = null!;
 
         /// <summary>
-        /// The account whose password needs to be reset. Set the value to `root`.
+        /// The account whose password needs to be reset. Set the value to `Root`.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? CharacterType { get; set; }
 
         /// <summary>
-        /// The account whose password needs to be reset. Set the value to `root`.
+        /// The account whose password needs to be reset. Set the value to `Root`.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? CharacterType { get; set; }
 
         /// <summary>
-        /// The account whose password needs to be reset. Set the value to `root`.
+        /// The account whose password needs to be reset. Set the value to `Root`.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

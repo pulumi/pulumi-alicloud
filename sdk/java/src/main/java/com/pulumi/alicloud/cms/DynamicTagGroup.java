@@ -112,14 +112,14 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
         return this.matchExpressFilterRelation;
     }
     /**
-     * The conditional expressions used to create an application group based on the tag. See `match_express` below.
+     * The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      * 
      */
     @Export(name="matchExpresses", refs={List.class,DynamicTagGroupMatchExpress.class}, tree="[0,1]")
     private Output<List<DynamicTagGroupMatchExpress>> matchExpresses;
 
     /**
-     * @return The conditional expressions used to create an application group based on the tag. See `match_express` below.
+     * @return The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      * 
      */
     public Output<List<DynamicTagGroupMatchExpress>> matchExpresses() {

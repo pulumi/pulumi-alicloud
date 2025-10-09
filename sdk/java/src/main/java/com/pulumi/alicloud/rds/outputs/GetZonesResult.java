@@ -32,10 +32,10 @@ public final class GetZonesResult {
     private @Nullable String instanceChargeType;
     /**
      * @deprecated
-     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      */
-    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
     private @Nullable Boolean multi;
     private @Nullable Boolean multiZone;
     private @Nullable String outputFile;
@@ -77,10 +77,10 @@ public final class GetZonesResult {
     }
     /**
      * @deprecated
-     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      */
-    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
     public Optional<Boolean> multi() {
         return Optional.ofNullable(this.multi);
     }

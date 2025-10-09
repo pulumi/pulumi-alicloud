@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string GroupType;
         /// <summary>
-        /// The `key` of the resource supplied above.The value is formulated as `&lt;db_cluster_id&gt;:&lt;group_name&gt;`.
+        /// The `Key` of the resource supplied above.The value is formulated as `&lt;db_cluster_id&gt;:&lt;group_name&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

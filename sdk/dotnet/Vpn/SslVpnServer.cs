@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Vpn
     public partial class SslVpnServer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`None`. Default value: `AES-128-CBC`.
         /// * `AES-128-CBC` - the AES-128-CBC algorithm.
         /// * `AES-192-CBC` - the AES-192-CBC algorithm.
         /// * `AES-256-CBC` - the AES-256-CBC algorithm.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> ClientIpPool { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
+        /// Specifies whether to enable data compression. Valid values: `True`,`False`. Default value: `False`
         /// </summary>
         [Output("compress")]
         public Output<bool?> Compress { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class SslVpnServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`None`. Default value: `AES-128-CBC`.
         /// * `AES-128-CBC` - the AES-128-CBC algorithm.
         /// * `AES-192-CBC` - the AES-192-CBC algorithm.
         /// * `AES-256-CBC` - the AES-256-CBC algorithm.
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string> ClientIpPool { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
+        /// Specifies whether to enable data compression. Valid values: `True`,`False`. Default value: `False`
         /// </summary>
         [Input("compress")]
         public Input<bool>? Compress { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class SslVpnServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`None`. Default value: `AES-128-CBC`.
         /// * `AES-128-CBC` - the AES-128-CBC algorithm.
         /// * `AES-192-CBC` - the AES-192-CBC algorithm.
         /// * `AES-256-CBC` - the AES-256-CBC algorithm.
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? ClientIpPool { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
+        /// Specifies whether to enable data compression. Valid values: `True`,`False`. Default value: `False`
         /// </summary>
         [Input("compress")]
         public Input<bool>? Compress { get; set; }

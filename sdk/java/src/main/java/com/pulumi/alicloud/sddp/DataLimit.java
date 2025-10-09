@@ -215,14 +215,14 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+     * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      * 
      */
     @Export(name="logStoreDay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> logStoreDay;
 
     /**
-     * @return The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+     * @return The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      * 
      */
     public Output<Optional<Integer>> logStoreDay() {

@@ -139,8 +139,8 @@ namespace Pulumi.AliCloud.RocketMQ
     {
         /// <summary>
         /// The type of operations that can be performed on the resource. Valid values:
-        /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-        /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        /// - If `ResourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        /// - If `ResourceType` is set to `Group`. Valid values: `Sub`.
         /// </summary>
         [Output("actions")]
         public Output<ImmutableArray<string>> Actions { get; private set; } = null!;
@@ -232,8 +232,8 @@ namespace Pulumi.AliCloud.RocketMQ
 
         /// <summary>
         /// The type of operations that can be performed on the resource. Valid values:
-        /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-        /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        /// - If `ResourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        /// - If `ResourceType` is set to `Group`. Valid values: `Sub`.
         /// </summary>
         public InputList<string> Actions
         {
@@ -296,8 +296,8 @@ namespace Pulumi.AliCloud.RocketMQ
 
         /// <summary>
         /// The type of operations that can be performed on the resource. Valid values:
-        /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-        /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        /// - If `ResourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        /// - If `ResourceType` is set to `Group`. Valid values: `Sub`.
         /// </summary>
         public InputList<string> Actions
         {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
-        /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        /// The type of the architecture. Valid values: `Cluster`, `Standard` and `SplitRW`.
         /// </summary>
         public readonly string ArchitectureType;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly int AutoRenewPeriod;
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+        /// It has been deprecated from provider version 1.101.0 and `ZoneId` instead.
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly int Capacity;
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+        /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
         /// </summary>
         public readonly string ChargeType;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string ConnectionMode;
         /// <summary>
-        /// IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
+        /// IIt has been deprecated from provider version 1.101.0 and `MaxConnections` instead.
         /// </summary>
         public readonly int Connections;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `end_time` instead.
+        /// It has been deprecated from provider version 1.101.0 and `EndTime` instead.
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly int MaxConnections;
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+        /// It has been deprecated from provider version 1.101.0 and `DbInstanceName` instead.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// Query the instance bound to the tag. The format of the incoming value is `Json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

@@ -105,42 +105,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rds/backupPolicy:BackupPolicy")
 public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+     * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
      * 
      */
     @Export(name="archiveBackupKeepCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> archiveBackupKeepCount;
 
     /**
-     * @return Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+     * @return Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
      * 
      */
     public Output<Integer> archiveBackupKeepCount() {
         return this.archiveBackupKeepCount;
     }
     /**
-     * Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      * 
      */
     @Export(name="archiveBackupKeepPolicy", refs={String.class}, tree="[0]")
     private Output<String> archiveBackupKeepPolicy;
 
     /**
-     * @return Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+     * @return Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      * 
      */
     public Output<String> archiveBackupKeepPolicy() {
         return this.archiveBackupKeepPolicy;
     }
     /**
-     * Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+     * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
      * 
      */
     @Export(name="archiveBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> archiveBackupRetentionPeriod;
 
     /**
-     * @return Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+     * @return Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
      * 
      */
     public Output<Integer> archiveBackupRetentionPeriod() {
@@ -182,7 +182,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - Snapshot: snapshot backup
      *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      * 
-     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      * 
      */
     @Export(name="backupMethod", refs={String.class}, tree="[0]")
@@ -194,7 +194,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - Snapshot: snapshot backup
      *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      * 
-     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      * 
      */
     public Output<String> backupMethod() {
@@ -204,10 +204,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
+    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
     @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
@@ -256,10 +256,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead */
+    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
     @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
@@ -335,14 +335,14 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.enableIncrementDataBackup;
     }
     /**
-     * Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+     * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      * 
      */
     @Export(name="highSpaceUsageProtection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> highSpaceUsageProtection;
 
     /**
-     * @return Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+     * @return Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      * 
      */
     public Output<Optional<String>> highSpaceUsageProtection() {
@@ -363,28 +363,28 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+     * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      * 
      */
     @Export(name="localLogRetentionHours", refs={Integer.class}, tree="[0]")
     private Output<Integer> localLogRetentionHours;
 
     /**
-     * @return Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+     * @return Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      * 
      */
     public Output<Integer> localLogRetentionHours() {
         return this.localLogRetentionHours;
     }
     /**
-     * Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      * 
      */
     @Export(name="localLogRetentionSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> localLogRetentionSpace;
 
     /**
-     * @return Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+     * @return Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      * 
      */
     public Output<Integer> localLogRetentionSpace() {
@@ -394,10 +394,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      * 
      */
-    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead */
+    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
     @Export(name="logBackup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> logBackup;
 
@@ -439,14 +439,14 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.logBackupLocalRetentionNumber;
     }
     /**
-     * Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
      * 
      */
     @Export(name="logBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logBackupRetentionPeriod;
 
     /**
-     * @return Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+     * @return Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
      * 
      */
     public Output<Integer> logBackupRetentionPeriod() {
@@ -456,10 +456,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead */
+    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
     @Export(name="logRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logRetentionPeriod;
 
@@ -522,10 +522,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead */
+    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
     @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 

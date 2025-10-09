@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.ClickHouse
     public sealed class GetRegionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set to true to match only the region configured in the provider. Default value: `true`.
+        /// Set to true to match only the region configured in the provider. Default value: `True`.
         /// </summary>
         [Input("current")]
         public bool? Current { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// You can use specified region_id to find the region and available zones information that supports ClickHouse.
+        /// You can use specified RegionId to find the region and available zones information that supports ClickHouse.
         /// </summary>
         [Input("regionId")]
         public string? RegionId { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.ClickHouse
     public sealed class GetRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set to true to match only the region configured in the provider. Default value: `true`.
+        /// Set to true to match only the region configured in the provider. Default value: `True`.
         /// </summary>
         [Input("current")]
         public Input<bool>? Current { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// You can use specified region_id to find the region and available zones information that supports ClickHouse.
+        /// You can use specified RegionId to find the region and available zones information that supports ClickHouse.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Mns.Outputs
         /// </summary>
         public readonly string FilterTag;
         /// <summary>
-        /// The ID of the topic subscription. The value is set to `name`.
+        /// The ID of the topic subscription. The value is set to `Name`.
         /// </summary>
         public readonly string Id;
         /// <summary>

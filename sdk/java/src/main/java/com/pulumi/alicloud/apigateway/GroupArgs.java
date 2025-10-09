@@ -78,14 +78,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * user_log_config defines the config of user log of the group. See `userLogConfig` below.
      * 
      */
     @Import(name="userLogConfig")
     private @Nullable Output<GroupUserLogConfigArgs> userLogConfig;
 
     /**
-     * @return user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * @return user_log_config defines the config of user log of the group. See `userLogConfig` below.
      * 
      */
     public Optional<Output<GroupUserLogConfigArgs>> userLogConfig() {
@@ -93,14 +93,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable `vpc_domain`. Defaults to `false`.
+     * Whether to enable `vpcDomain`. Defaults to `false`.
      * 
      */
     @Import(name="vpcIntranetEnable")
     private @Nullable Output<Boolean> vpcIntranetEnable;
 
     /**
-     * @return Whether to enable `vpc_domain`. Defaults to `false`.
+     * @return Whether to enable `vpcDomain`. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> vpcIntranetEnable() {
@@ -221,7 +221,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userLogConfig user_log_config defines the config of user log of the group. See `user_log_config` below.
+         * @param userLogConfig user_log_config defines the config of user log of the group. See `userLogConfig` below.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userLogConfig user_log_config defines the config of user log of the group. See `user_log_config` below.
+         * @param userLogConfig user_log_config defines the config of user log of the group. See `userLogConfig` below.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcIntranetEnable Whether to enable `vpc_domain`. Defaults to `false`.
+         * @param vpcIntranetEnable Whether to enable `vpcDomain`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcIntranetEnable Whether to enable `vpc_domain`. Defaults to `false`.
+         * @param vpcIntranetEnable Whether to enable `vpcDomain`. Defaults to `false`.
          * 
          * @return builder
          * 

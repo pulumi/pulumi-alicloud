@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<int> ForbiddenTime { get; private set; } = null!;
 
         /// <summary>
-        /// The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+        /// The types of protocols supported for interception by the brute force attack rule creation. See `ProtocolType` below.
         /// </summary>
         [Output("protocolType")]
         public Output<Outputs.AntiBruteForceRuleProtocolType> ProtocolType { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int> ForbiddenTime { get; set; } = null!;
 
         /// <summary>
-        /// The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+        /// The types of protocols supported for interception by the brute force attack rule creation. See `ProtocolType` below.
         /// </summary>
         [Input("protocolType")]
         public Input<Inputs.AntiBruteForceRuleProtocolTypeArgs>? ProtocolType { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? ForbiddenTime { get; set; }
 
         /// <summary>
-        /// The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+        /// The types of protocols supported for interception by the brute force attack rule creation. See `ProtocolType` below.
         /// </summary>
         [Input("protocolType")]
         public Input<Inputs.AntiBruteForceRuleProtocolTypeGetArgs>? ProtocolType { get; set; }

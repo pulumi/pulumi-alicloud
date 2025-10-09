@@ -476,10 +476,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     * Deprecated from 1.161.0+, use evalCondition in severity_configurations
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use eval_condition in severity_configurations */
+    @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
     @Export(name="condition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> condition;
 
@@ -590,10 +590,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Alarm information notification list, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use policy_configuration for notification
+     * Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
+    @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
     @Export(name="notificationLists", refs={List.class,AlertNotificationList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertNotificationList>> notificationLists;
 
@@ -774,10 +774,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+     * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use repeat_interval in policy_configuration */
+    @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
     @Export(name="throttling", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> throttling;
 

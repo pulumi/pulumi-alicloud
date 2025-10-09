@@ -164,42 +164,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sae/ingress:Ingress")
 public class Ingress extends com.pulumi.resources.CustomResource {
     /**
-     * The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+     * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      * 
      */
     @Export(name="certId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certId;
 
     /**
-     * @return The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+     * @return The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      * 
      */
     public Output<Optional<String>> certId() {
         return Codegen.optional(this.certId);
     }
     /**
-     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      * 
      */
     @Export(name="certIds", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certIds;
 
     /**
-     * @return The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * @return The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      * 
      */
     public Output<Optional<String>> certIds() {
         return Codegen.optional(this.certIds);
     }
     /**
-     * Default Rule. See `default_rule` below.
+     * Default Rule. See `defaultRule` below.
      * 
      */
     @Export(name="defaultRule", refs={IngressDefaultRule.class}, tree="[0]")
     private Output</* @Nullable */ IngressDefaultRule> defaultRule;
 
     /**
-     * @return Default Rule. See `default_rule` below.
+     * @return Default Rule. See `defaultRule` below.
      * 
      */
     public Output<Optional<IngressDefaultRule>> defaultRule() {

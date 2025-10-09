@@ -174,14 +174,14 @@ public class OssExport extends com.pulumi.resources.CustomResource {
         return this.compressType;
     }
     /**
-     * Configure columns when `content_type` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`.
      * 
      */
     @Export(name="configColumns", refs={List.class,OssExportConfigColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OssExportConfigColumn>> configColumns;
 
     /**
-     * @return Configure columns when `content_type` is `parquet` or `orc`.
+     * @return Configure columns when `contentType` is `parquet` or `orc`.
      * 
      */
     public Output<Optional<List<OssExportConfigColumn>>> configColumns() {
@@ -344,28 +344,28 @@ public class OssExport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fromTime);
     }
     /**
-     * Whether to deliver the label when `content_type` = `json`.
+     * Whether to deliver the label when `contentType` = `json`.
      * 
      */
     @Export(name="jsonEnableTag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jsonEnableTag;
 
     /**
-     * @return Whether to deliver the label when `content_type` = `json`.
+     * @return Whether to deliver the label when `contentType` = `json`.
      * 
      */
     public Output<Optional<Boolean>> jsonEnableTag() {
         return Codegen.optional(this.jsonEnableTag);
     }
     /**
-     * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+     * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      * 
      */
     @Export(name="logReadRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logReadRoleArn;
 
     /**
-     * @return Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+     * @return Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      * 
      */
     public Output<Optional<String>> logReadRoleArn() {

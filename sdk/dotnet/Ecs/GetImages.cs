@@ -114,13 +114,13 @@ namespace Pulumi.AliCloud.Ecs
         public string? ActionType { get; set; }
 
         /// <summary>
-        /// The image architecture. Valid values: `i386` and `x86_64`.
+        /// The image architecture. Valid values: `I386` and `X8664`.
         /// </summary>
         [Input("architecture")]
         public string? Architecture { get; set; }
 
         /// <summary>
-        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
+        /// Specifies whether the image is running on an ECS instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// The operating system type of the image. Valid values: `windows` and `linux`.
+        /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         [Input("osType")]
         public string? OsType { get; set; }
@@ -188,13 +188,13 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// 
-        /// &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+        /// &gt; **NOTE:** At least one of the `NameRegex`, `MostRecent` and `Owners` must be set.
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
+        /// Filter results by a specific image owner. Valid items are `System`, `Self`, `Others`, `Marketplace`.
         /// </summary>
         [Input("owners")]
         public string? Owners { get; set; }
@@ -258,13 +258,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ActionType { get; set; }
 
         /// <summary>
-        /// The image architecture. Valid values: `i386` and `x86_64`.
+        /// The image architecture. Valid values: `I386` and `X8664`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
 
         /// <summary>
-        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
+        /// Specifies whether the image is running on an ECS instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// The operating system type of the image. Valid values: `windows` and `linux`.
+        /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
@@ -332,13 +332,13 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// 
-        /// &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+        /// &gt; **NOTE:** At least one of the `NameRegex`, `MostRecent` and `Owners` must be set.
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
+        /// Filter results by a specific image owner. Valid items are `System`, `Self`, `Others`, `Marketplace`.
         /// </summary>
         [Input("owners")]
         public Input<string>? Owners { get; set; }

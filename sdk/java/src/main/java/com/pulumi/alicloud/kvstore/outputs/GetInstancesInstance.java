@@ -30,7 +30,7 @@ public final class GetInstancesInstance {
      */
     private Integer autoRenewPeriod;
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
      */
     private String availabilityZone;
@@ -45,7 +45,7 @@ public final class GetInstancesInstance {
      */
     private Integer capacity;
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      */
     private String chargeType;
@@ -65,7 +65,7 @@ public final class GetInstancesInstance {
      */
     private String connectionMode;
     /**
-     * @return IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
+     * @return IIt has been deprecated from provider version 1.101.0 and `maxConnections` instead.
      * 
      */
     private Integer connections;
@@ -100,7 +100,7 @@ public final class GetInstancesInstance {
      */
     private String engineVersion;
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `end_time` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `endTime` instead.
      * 
      */
     private String expireTime;
@@ -150,7 +150,7 @@ public final class GetInstancesInstance {
      */
     private Integer maxConnections;
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
      */
     private String name;
@@ -303,7 +303,7 @@ public final class GetInstancesInstance {
         return this.autoRenewPeriod;
     }
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
      */
     public String availabilityZone() {
@@ -324,7 +324,7 @@ public final class GetInstancesInstance {
         return this.capacity;
     }
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      */
     public String chargeType() {
@@ -352,7 +352,7 @@ public final class GetInstancesInstance {
         return this.connectionMode;
     }
     /**
-     * @return IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
+     * @return IIt has been deprecated from provider version 1.101.0 and `maxConnections` instead.
      * 
      */
     public Integer connections() {
@@ -401,7 +401,7 @@ public final class GetInstancesInstance {
         return this.engineVersion;
     }
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `end_time` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `endTime` instead.
      * 
      */
     public String expireTime() {
@@ -471,7 +471,7 @@ public final class GetInstancesInstance {
         return this.maxConnections;
     }
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+     * @return It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
      */
     public String name() {

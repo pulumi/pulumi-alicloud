@@ -34,14 +34,14 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+     * The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
      * 
      */
     @Import(name="authConf")
     private @Nullable Output<OriginPoolOriginAuthConfArgs> authConf;
 
     /**
-     * @return The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+     * @return The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
      * 
      */
     public Optional<Output<OriginPoolOriginAuthConfArgs>> authConf() {
@@ -197,7 +197,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authConf The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+         * @param authConf The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authConf The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+         * @param authConf The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
          * 
          * @return builder
          * 

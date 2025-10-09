@@ -16,14 +16,14 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
     public static final ListenerDefaultActionForwardGroupConfigArgs Empty = new ListenerDefaultActionForwardGroupConfigArgs();
 
     /**
-     * The Forwarding Destination Server Group See `server_group_tuples` below.
+     * The Forwarding Destination Server Group See `serverGroupTuples` below.
      * 
      */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The Forwarding Destination Server Group See `server_group_tuples` below.
+     * @return The Forwarding Destination Server Group See `serverGroupTuples` below.
      * 
      */
     public Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
@@ -55,7 +55,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The Forwarding Destination Server Group See `server_group_tuples` below.
+         * @param serverGroupTuples The Forwarding Destination Server Group See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The Forwarding Destination Server Group See `server_group_tuples` below.
+         * @param serverGroupTuples The Forwarding Destination Server Group See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The Forwarding Destination Server Group See `server_group_tuples` below.
+         * @param serverGroupTuples The Forwarding Destination Server Group See `serverGroupTuples` below.
          * 
          * @return builder
          * 

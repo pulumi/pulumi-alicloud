@@ -80,18 +80,18 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      * 
-     * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
      */
     @Import(name="forceRemovePermissionPolicies")
     private @Nullable Output<Boolean> forceRemovePermissionPolicies;
 
     /**
-     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+     * @return This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      * 
-     * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
      */
     public Optional<Output<Boolean>> forceRemovePermissionPolicies() {
@@ -99,14 +99,14 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The Policy List. See `permission_policies` below.
+     * The Policy List. See `permissionPolicies` below.
      * 
      */
     @Import(name="permissionPolicies")
     private @Nullable Output<List<AccessConfigurationPermissionPolicyArgs>> permissionPolicies;
 
     /**
-     * @return The Policy List. See `permission_policies` below.
+     * @return The Policy List. See `permissionPolicies` below.
      * 
      */
     public Optional<Output<List<AccessConfigurationPermissionPolicyArgs>>> permissionPolicies() {
@@ -259,9 +259,9 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
          * 
-         * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+         * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
          * @return builder
          * 
@@ -272,9 +272,9 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
          * 
-         * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+         * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param permissionPolicies The Policy List. See `permission_policies` below.
+         * @param permissionPolicies The Policy List. See `permissionPolicies` below.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param permissionPolicies The Policy List. See `permission_policies` below.
+         * @param permissionPolicies The Policy List. See `permissionPolicies` below.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param permissionPolicies The Policy List. See `permission_policies` below.
+         * @param permissionPolicies The Policy List. See `permissionPolicies` below.
          * 
          * @return builder
          * 

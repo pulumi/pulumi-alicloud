@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Cas
     public sealed class GetServiceCertificatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Cas
         public string? Keyword { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+        /// The language of the content within the request and response. **Note:** Field `Lang` has been deprecated from provider version 1.232.0.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.Cas
     public sealed class GetServiceCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.AliCloud.Cas
         public Input<string>? Keyword { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+        /// The language of the content within the request and response. **Note:** Field `Lang` has been deprecated from provider version 1.232.0.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }

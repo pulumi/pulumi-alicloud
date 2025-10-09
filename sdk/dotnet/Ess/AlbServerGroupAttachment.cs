@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** If scaling group's network type is `VPC`, the alb server groups must be in the same `VPC`.
     /// 
-    /// &gt; **NOTE:** Alb server group attachment is defined uniquely by `scaling_group_id`, `alb_server_group_id`, `port`.
+    /// &gt; **NOTE:** Alb server group attachment is defined uniquely by `ScalingGroupId`, `AlbServerGroupId`, `Port`.
     /// 
     /// &gt; **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` don't support modification.
     /// 

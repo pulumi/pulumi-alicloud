@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable automatic rotation. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableAutomaticRotation")]
         public Output<bool?> EnableAutomaticRotation { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> ExtendedConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to immediately delete a secret. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("forceDeleteWithoutRecovery")]
         public Output<bool?> ForceDeleteWithoutRecovery { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `ForceDeleteWithoutRecovery` is set to `True`, `RecoveryWindowInDays` will be ignored.
         /// </summary>
         [Output("recoveryWindowInDays")]
         public Output<int?> RecoveryWindowInDays { get; private set; } = null!;
@@ -125,13 +125,13 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> RotationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        /// The data of the secret. **NOTE:** From version 1.204.1, `SecretData` updating diff will be ignored when `SecretType` is not `Generic`.
         /// </summary>
         [Output("secretData")]
         public Output<string> SecretData { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
+        /// The type of the secret value. Default value: `Text`. Valid values: `Text`, `Binary`.
         /// </summary>
         [Output("secretDataType")]
         public Output<string?> SecretDataType { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable automatic rotation. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableAutomaticRotation")]
         public Input<bool>? EnableAutomaticRotation { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ExtendedConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to immediately delete a secret. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("forceDeleteWithoutRecovery")]
         public Input<bool>? ForceDeleteWithoutRecovery { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `ForceDeleteWithoutRecovery` is set to `True`, `RecoveryWindowInDays` will be ignored.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        /// The data of the secret. **NOTE:** From version 1.204.1, `SecretData` updating diff will be ignored when `SecretType` is not `Generic`.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
+        /// The type of the secret value. Default value: `Text`. Valid values: `Text`, `Binary`.
         /// </summary>
         [Input("secretDataType")]
         public Input<string>? SecretDataType { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable automatic rotation. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableAutomaticRotation")]
         public Input<bool>? EnableAutomaticRotation { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ExtendedConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to immediately delete a secret. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("forceDeleteWithoutRecovery")]
         public Input<bool>? ForceDeleteWithoutRecovery { get; set; }
@@ -415,7 +415,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `ForceDeleteWithoutRecovery` is set to `True`, `RecoveryWindowInDays` will be ignored.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
@@ -430,7 +430,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        /// The data of the secret. **NOTE:** From version 1.204.1, `SecretData` updating diff will be ignored when `SecretType` is not `Generic`.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
+        /// The type of the secret value. Default value: `Text`. Valid values: `Text`, `Binary`.
         /// </summary>
         [Input("secretDataType")]
         public Input<string>? SecretDataType { get; set; }

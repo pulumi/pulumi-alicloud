@@ -20,14 +20,14 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
     public static final GtmInstanceState Empty = new GtmInstanceState();
 
     /**
-     * The alert notification methods. See `alert_config` below for details.
+     * The alert notification methods. See `alertConfig` below for details.
      * 
      */
     @Import(name="alertConfigs")
     private @Nullable Output<List<GtmInstanceAlertConfigArgs>> alertConfigs;
 
     /**
-     * @return The alert notification methods. See `alert_config` below for details.
+     * @return The alert notification methods. See `alertConfig` below for details.
      * 
      */
     public Optional<Output<List<GtmInstanceAlertConfigArgs>>> alertConfigs() {
@@ -230,14 +230,14 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+     * Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+     * @return Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -363,7 +363,7 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertConfigs The alert notification methods. See `alert_config` below for details.
+         * @param alertConfigs The alert notification methods. See `alertConfig` below for details.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertConfigs The alert notification methods. See `alert_config` below for details.
+         * @param alertConfigs The alert notification methods. See `alertConfig` below for details.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertConfigs The alert notification methods. See `alert_config` below for details.
+         * @param alertConfigs The alert notification methods. See `alertConfig` below for details.
          * 
          * @return builder
          * 
@@ -677,7 +677,7 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+         * @param renewPeriod Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class GtmInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+         * @param renewPeriod Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
          * 
          * @return builder
          * 

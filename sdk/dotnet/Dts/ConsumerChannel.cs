@@ -173,13 +173,13 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> ConsumerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        /// The password of the consumer group account. The length of the `ConsumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         /// </summary>
         [Output("consumerGroupPassword")]
         public Output<string> ConsumerGroupPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+        /// The username of the consumer group. The length of the `ConsumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         /// </summary>
         [Output("consumerGroupUserName")]
         public Output<string> ConsumerGroupUserName { get; private set; } = null!;
@@ -243,13 +243,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> ConsumerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        /// The password of the consumer group account. The length of the `ConsumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         /// </summary>
         [Input("consumerGroupPassword", required: true)]
         public Input<string> ConsumerGroupPassword { get; set; } = null!;
 
         /// <summary>
-        /// The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+        /// The username of the consumer group. The length of the `ConsumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         /// </summary>
         [Input("consumerGroupUserName", required: true)]
         public Input<string> ConsumerGroupUserName { get; set; } = null!;
@@ -281,13 +281,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ConsumerGroupName { get; set; }
 
         /// <summary>
-        /// The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        /// The password of the consumer group account. The length of the `ConsumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         /// </summary>
         [Input("consumerGroupPassword")]
         public Input<string>? ConsumerGroupPassword { get; set; }
 
         /// <summary>
-        /// The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+        /// The username of the consumer group. The length of the `ConsumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         /// </summary>
         [Input("consumerGroupUserName")]
         public Input<string>? ConsumerGroupUserName { get; set; }

@@ -15,14 +15,14 @@ public final class AppAttachmentArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppAttachmentArgs Empty = new AppAttachmentArgs();
 
     /**
-     * The api_id that app apply to access.
+     * The apiId that app apply to access.
      * 
      */
     @Import(name="apiId", required=true)
     private Output<String> apiId;
 
     /**
-     * @return The api_id that app apply to access.
+     * @return The apiId that app apply to access.
      * 
      */
     public Output<String> apiId() {
@@ -102,7 +102,7 @@ public final class AppAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiId The api_id that app apply to access.
+         * @param apiId The apiId that app apply to access.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class AppAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiId The api_id that app apply to access.
+         * @param apiId The apiId that app apply to access.
          * 
          * @return builder
          * 

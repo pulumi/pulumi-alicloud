@@ -76,14 +76,14 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+     * The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
      * 
      */
     @Import(name="importTagKey")
     private @Nullable Output<String> importTagKey;
 
     /**
-     * @return The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+     * @return The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
      * 
      */
     public Optional<Output<String>> importTagKey() {
@@ -91,7 +91,7 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+     * The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
      * .
      * 
      */
@@ -99,7 +99,7 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> importTagValue;
 
     /**
-     * @return The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+     * @return The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
      * .
      * 
      */
@@ -221,7 +221,7 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param importTagKey The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+         * @param importTagKey The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param importTagKey The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+         * @param importTagKey The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param importTagValue The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+         * @param importTagValue The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
          * .
          * 
          * @return builder
@@ -254,7 +254,7 @@ public final class ApplicationGroupState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param importTagValue The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+         * @param importTagValue The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
          * .
          * 
          * @return builder

@@ -115,10 +115,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Field `mns_topic_arn` has been deprecated from version 1.118.0
+     * Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `mns_topic_arn` has been deprecated from version 1.118.0 */
+    @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
     @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
@@ -129,10 +129,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * The name of the trail to be created, which must be unique for an account.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -187,10 +187,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * The RAM role in ActionTrail permitted by the user.
      * 
      * @deprecated
-     * Field `role_name` has been deprecated from version 1.118.0
+     * Field `roleName` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `role_name` has been deprecated from version 1.118.0 */
+    @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
     @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleName;
 
@@ -218,7 +218,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     /**
      * The unique ARN of the Log Service role.
      * 
-     * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+     * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
      * 
      */
     @Export(name="slsWriteRoleArn", refs={String.class}, tree="[0]")
@@ -227,7 +227,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     /**
      * @return The unique ARN of the Log Service role.
      * 
-     * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+     * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
      * 
      */
     public Output<String> slsWriteRoleArn() {

@@ -129,25 +129,25 @@ namespace Pulumi.AliCloud.Compute
     public partial class NestServiceInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The order information of cloud market. See `commodity` below.
+        /// The order information of cloud market. See `Commodity` below.
         /// </summary>
         [Output("commodity")]
         public Output<Outputs.NestServiceInstanceCommodity?> Commodity { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the service instance has the O&amp;M function. Default value: `false`. Valid values:
+        /// Whether the service instance has the O&amp;M function. Default value: `False`. Valid values:
         /// </summary>
         [Output("enableInstanceOps")]
         public Output<bool> EnableInstanceOps { get; private set; } = null!;
 
         /// <summary>
-        /// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
+        /// Whether Prometheus monitoring is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Output("enableUserPrometheus")]
         public Output<bool> EnableUserPrometheus { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of O&amp;M. See `operation_metadata` below.
+        /// The configuration of O&amp;M. See `OperationMetadata` below.
         /// </summary>
         [Output("operationMetadata")]
         public Output<Outputs.NestServiceInstanceOperationMetadata> OperationMetadata { get; private set; } = null!;
@@ -259,25 +259,25 @@ namespace Pulumi.AliCloud.Compute
     public sealed class NestServiceInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The order information of cloud market. See `commodity` below.
+        /// The order information of cloud market. See `Commodity` below.
         /// </summary>
         [Input("commodity")]
         public Input<Inputs.NestServiceInstanceCommodityArgs>? Commodity { get; set; }
 
         /// <summary>
-        /// Whether the service instance has the O&amp;M function. Default value: `false`. Valid values:
+        /// Whether the service instance has the O&amp;M function. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableInstanceOps")]
         public Input<bool>? EnableInstanceOps { get; set; }
 
         /// <summary>
-        /// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
+        /// Whether Prometheus monitoring is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableUserPrometheus")]
         public Input<bool>? EnableUserPrometheus { get; set; }
 
         /// <summary>
-        /// The configuration of O&amp;M. See `operation_metadata` below.
+        /// The configuration of O&amp;M. See `OperationMetadata` below.
         /// </summary>
         [Input("operationMetadata")]
         public Input<Inputs.NestServiceInstanceOperationMetadataArgs>? OperationMetadata { get; set; }
@@ -351,25 +351,25 @@ namespace Pulumi.AliCloud.Compute
     public sealed class NestServiceInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The order information of cloud market. See `commodity` below.
+        /// The order information of cloud market. See `Commodity` below.
         /// </summary>
         [Input("commodity")]
         public Input<Inputs.NestServiceInstanceCommodityGetArgs>? Commodity { get; set; }
 
         /// <summary>
-        /// Whether the service instance has the O&amp;M function. Default value: `false`. Valid values:
+        /// Whether the service instance has the O&amp;M function. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableInstanceOps")]
         public Input<bool>? EnableInstanceOps { get; set; }
 
         /// <summary>
-        /// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
+        /// Whether Prometheus monitoring is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableUserPrometheus")]
         public Input<bool>? EnableUserPrometheus { get; set; }
 
         /// <summary>
-        /// The configuration of O&amp;M. See `operation_metadata` below.
+        /// The configuration of O&amp;M. See `OperationMetadata` below.
         /// </summary>
         [Input("operationMetadata")]
         public Input<Inputs.NestServiceInstanceOperationMetadataGetArgs>? OperationMetadata { get; set; }

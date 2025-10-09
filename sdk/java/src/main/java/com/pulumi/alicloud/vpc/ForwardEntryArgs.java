@@ -18,14 +18,14 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     public static final ForwardEntryArgs Empty = new ForwardEntryArgs();
 
     /**
-     * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+     * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      * 
      */
     @Import(name="externalIp", required=true)
     private Output<String> externalIp;
 
     /**
-     * @return The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+     * @return The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      * 
      */
     public Output<String> externalIp() {
@@ -63,14 +63,14 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forward_table_ids&#34;.
+     * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
      * 
      */
     @Import(name="forwardTableId", required=true)
     private Output<String> forwardTableId;
 
     /**
-     * @return The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forward_table_ids&#34;.
+     * @return The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
      * 
      */
     public Output<String> forwardTableId() {
@@ -123,7 +123,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
@@ -134,7 +134,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;forward_entry_name&#39; instead.
@@ -148,7 +148,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
      * 
-     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
      * 
      */
     @Import(name="portBreak")
@@ -157,7 +157,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies whether to remove limits on the port range. Default value is `false`.
      * 
-     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
      * 
      */
     public Optional<Output<Boolean>> portBreak() {
@@ -197,7 +197,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalIp The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+         * @param externalIp The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalIp The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+         * @param externalIp The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forward_table_ids&#34;.
+         * @param forwardTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forward_table_ids&#34;.
+         * @param forwardTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forwardTableIds&#34;.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portBreak Specifies whether to remove limits on the port range. Default value is `false`.
          * 
-         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portBreak Specifies whether to remove limits on the port range. Default value is `false`.
          * 
-         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
          * 
          * @return builder
          * 

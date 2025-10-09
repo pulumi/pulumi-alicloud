@@ -48,7 +48,7 @@ public final class GetGatewaysGateway {
      */
     private String enableIpsec;
     /**
-     * @return Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
+     * @return Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `sslVpn` instead.
      * 
      */
     private String enableSsl;
@@ -184,7 +184,7 @@ public final class GetGatewaysGateway {
         return this.enableIpsec;
     }
     /**
-     * @return Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
+     * @return Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `sslVpn` instead.
      * 
      */
     public String enableSsl() {

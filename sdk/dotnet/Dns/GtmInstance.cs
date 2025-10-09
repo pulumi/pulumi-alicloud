@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Dns
     public partial class GtmInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The alert notification methods. See `alert_config` below for details.
+        /// The alert notification methods. See `AlertConfig` below for details.
         /// </summary>
         [Output("alertConfigs")]
         public Output<ImmutableArray<Outputs.GtmInstanceAlertConfig>> AlertConfigs { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// Paid package version. Valid values: `ultimate`, `standard`.
+        /// Paid package version. Valid values: `Ultimate`, `Standard`.
         /// </summary>
         [Output("packageEdition")]
         public Output<string> PackageEdition { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> PublicZoneName { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+        /// Automatic renewal period, the unit is month. When setting `RenewalStatus` to AutoRenewal, it must be set.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.GtmInstanceAlertConfigArgs>? _alertConfigs;
 
         /// <summary>
-        /// The alert notification methods. See `alert_config` below for details.
+        /// The alert notification methods. See `AlertConfig` below for details.
         /// </summary>
         public InputList<Inputs.GtmInstanceAlertConfigArgs> AlertConfigs
         {
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Paid package version. Valid values: `ultimate`, `standard`.
+        /// Paid package version. Valid values: `Ultimate`, `Standard`.
         /// </summary>
         [Input("packageEdition", required: true)]
         public Input<string> PackageEdition { get; set; } = null!;
@@ -344,7 +344,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? PublicZoneName { get; set; }
 
         /// <summary>
-        /// Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+        /// Automatic renewal period, the unit is month. When setting `RenewalStatus` to AutoRenewal, it must be set.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.GtmInstanceAlertConfigGetArgs>? _alertConfigs;
 
         /// <summary>
-        /// The alert notification methods. See `alert_config` below for details.
+        /// The alert notification methods. See `AlertConfig` below for details.
         /// </summary>
         public InputList<Inputs.GtmInstanceAlertConfigGetArgs> AlertConfigs
         {
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Paid package version. Valid values: `ultimate`, `standard`.
+        /// Paid package version. Valid values: `Ultimate`, `Standard`.
         /// </summary>
         [Input("packageEdition")]
         public Input<string>? PackageEdition { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? PublicZoneName { get; set; }
 
         /// <summary>
-        /// Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+        /// Automatic renewal period, the unit is month. When setting `RenewalStatus` to AutoRenewal, it must be set.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }

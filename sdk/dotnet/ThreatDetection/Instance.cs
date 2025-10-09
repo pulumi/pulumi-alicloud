@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        /// &gt; **NOTE:**  This module can only be purchased when HoneypotSwitch = 1, starting with 20.
         /// </summary>
         [Output("honeypot")]
         public Output<string?> Honeypot { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
         /// 
-        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+        /// &gt; **NOTE:**  You must have SasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
         /// </summary>
         [Output("sasCspm")]
         public Output<string?> SasCspm { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        /// &gt; **NOTE:**  This module can only be purchased when SasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Output("sasSdk")]
         public Output<string?> SasSdk { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        /// &gt; **NOTE:**  This module can only be purchased when VulSwitch = 1. Only when the VersionCode value is level7 or level10. other versions do not need to be purchased separately.
         /// </summary>
         [Output("vulCount")]
         public Output<string?> VulCount { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - 0: No.
         /// - 1: Yes.
         /// 
-        /// &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+        /// &gt; **NOTE:**  When the value of VersionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         /// </summary>
         [Output("vulSwitch")]
         public Output<string> VulSwitch { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        /// &gt; **NOTE:**  This module can only be purchased when HoneypotSwitch = 1, starting with 20.
         /// </summary>
         [Input("honeypot")]
         public Input<string>? Honeypot { get; set; }
@@ -475,7 +475,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
         /// 
-        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+        /// &gt; **NOTE:**  You must have SasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
         /// </summary>
         [Input("sasCspm")]
         public Input<string>? SasCspm { get; set; }
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        /// &gt; **NOTE:**  This module can only be purchased when SasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasSdk")]
         public Input<string>? SasSdk { get; set; }
@@ -602,7 +602,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        /// &gt; **NOTE:**  This module can only be purchased when VulSwitch = 1. Only when the VersionCode value is level7 or level10. other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulCount")]
         public Input<string>? VulCount { get; set; }
@@ -612,7 +612,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - 0: No.
         /// - 1: Yes.
         /// 
-        /// &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+        /// &gt; **NOTE:**  When the value of VersionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulSwitch")]
         public Input<string>? VulSwitch { get; set; }
@@ -656,7 +656,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        /// &gt; **NOTE:**  This module can only be purchased when HoneypotSwitch = 1, starting with 20.
         /// </summary>
         [Input("honeypot")]
         public Input<string>? Honeypot { get; set; }
@@ -758,7 +758,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
         /// 
-        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+        /// &gt; **NOTE:**  You must have SasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
         /// </summary>
         [Input("sasCspm")]
         public Input<string>? SasCspm { get; set; }
@@ -782,7 +782,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        /// &gt; **NOTE:**  This module can only be purchased when SasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasSdk")]
         public Input<string>? SasSdk { get; set; }
@@ -891,7 +891,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
         /// 
-        /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        /// &gt; **NOTE:**  This module can only be purchased when VulSwitch = 1. Only when the VersionCode value is level7 or level10. other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulCount")]
         public Input<string>? VulCount { get; set; }
@@ -901,7 +901,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - 0: No.
         /// - 1: Yes.
         /// 
-        /// &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+        /// &gt; **NOTE:**  When the value of VersionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulSwitch")]
         public Input<string>? VulSwitch { get; set; }

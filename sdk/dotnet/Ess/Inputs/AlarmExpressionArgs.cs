@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? ComparisonOperator { get; set; }
 
         /// <summary>
-        /// The name for the alarm's associated metric. See `dimensions` below for details.
+        /// The name for the alarm's associated metric. See `Dimensions` below for details.
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }

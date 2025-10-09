@@ -94,7 +94,7 @@ public final class RouteServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The VPC associated with the cloud service.
      * 
-     * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+     * &gt; **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      * 
      */
     @Import(name="hostVpcId", required=true)
@@ -103,7 +103,7 @@ public final class RouteServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The VPC associated with the cloud service.
      * 
-     * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+     * &gt; **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      * 
      */
     public Output<String> hostVpcId() {
@@ -247,7 +247,7 @@ public final class RouteServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param hostVpcId The VPC associated with the cloud service.
          * 
-         * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+         * &gt; **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class RouteServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param hostVpcId The VPC associated with the cloud service.
          * 
-         * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+         * &gt; **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
          * 
          * @return builder
          * 

@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Rds
     public partial class ReadOnlyInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - cert
         /// - perfer
         /// - verify-ca
@@ -104,19 +104,19 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Acl { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when InstanceChargeType is `PrePaid`. Default to `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when InstanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `SslEnabled  = 1`. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -124,13 +124,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> CaType { get; private set; } = null!;
 
         /// <summary>
-        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Output("clientCaCert")]
         public Output<string?> ClientCaCert { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - 1: enables the public key
         /// - 0: disables the public key
         /// </summary>
@@ -138,13 +138,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> ClientCaEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Output("clientCertRevocationList")]
         public Output<string?> ClientCertRevocationList { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - 1: enables the CRL
         /// - 0: disables the CRL
         /// </summary>
@@ -268,13 +268,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> ModifyMode { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ReadOnlyInstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - cert
         /// - perfer
         /// - verify-ca
@@ -315,13 +315,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Output("serverCert")]
         public Output<string> ServerCert { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Output("serverKey")]
         public Output<string> ServerKey { get; private set; } = null!;
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> SslEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `UpgradeDbInstanceKernelVersion = true`. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -351,7 +351,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `UpgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
         /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
         /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
         /// - rds: The instance runs RDS Basic or High-availability Edition.
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> UpgradeDbInstanceKernelVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `UpgradeDbInstanceKernelVersion = true`. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -450,7 +450,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class ReadOnlyInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - cert
         /// - perfer
         /// - verify-ca
@@ -460,19 +460,19 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when InstanceChargeType is `PrePaid`. Default to `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when InstanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `SslEnabled  = 1`. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -480,13 +480,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CaType { get; set; }
 
         /// <summary>
-        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("clientCaCert")]
         public Input<string>? ClientCaCert { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - 1: enables the public key
         /// - 0: disables the public key
         /// </summary>
@@ -494,13 +494,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCaEnabled { get; set; }
 
         /// <summary>
-        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("clientCertRevocationList")]
         public Input<string>? ClientCertRevocationList { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - 1: enables the CRL
         /// - 0: disables the CRL
         /// </summary>
@@ -615,7 +615,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.ReadOnlyInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ReadOnlyInstanceParameterArgs> Parameters
         {
@@ -624,13 +624,13 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - cert
         /// - perfer
         /// - verify-ca
@@ -665,13 +665,13 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("serverCert")]
         public Input<string>? ServerCert { get; set; }
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
@@ -685,7 +685,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? SslEnabled { get; set; }
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `UpgradeDbInstanceKernelVersion = true`. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -707,7 +707,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `UpgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
         /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
         /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
         /// - rds: The instance runs RDS Basic or High-availability Edition.
@@ -729,7 +729,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `UpgradeDbInstanceKernelVersion = true`. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -768,7 +768,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class ReadOnlyInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - cert
         /// - perfer
         /// - verify-ca
@@ -778,19 +778,19 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when InstanceChargeType is `PrePaid`. Default to `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when InstanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `SslEnabled  = 1`. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -798,13 +798,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CaType { get; set; }
 
         /// <summary>
-        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("clientCaCert")]
         public Input<string>? ClientCaCert { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - 1: enables the public key
         /// - 0: disables the public key
         /// </summary>
@@ -812,13 +812,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCaEnabled { get; set; }
 
         /// <summary>
-        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("clientCertRevocationList")]
         public Input<string>? ClientCertRevocationList { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - 1: enables the CRL
         /// - 0: disables the CRL
         /// </summary>
@@ -945,7 +945,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.ReadOnlyInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ReadOnlyInstanceParameterGetArgs> Parameters
         {
@@ -954,7 +954,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -966,7 +966,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `SslEnabled  = 1`. Valid values:
         /// - cert
         /// - perfer
         /// - verify-ca
@@ -1001,13 +1001,13 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("serverCert")]
         public Input<string>? ServerCert { get; set; }
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `SslEnabled  = 1`.
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
@@ -1021,7 +1021,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? SslEnabled { get; set; }
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `UpgradeDbInstanceKernelVersion = true`. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -1043,7 +1043,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `UpgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
         /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
         /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
         /// - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1065,7 +1065,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `UpgradeDbInstanceKernelVersion = true`. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.

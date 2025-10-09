@@ -139,13 +139,13 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+        /// Filter results by a specific policy name. If you set this parameter without setting `PolicyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
         /// </summary>
         [Input("policyName")]
         public string? PolicyName { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `PolicyName` as well.
         /// </summary>
         [Input("policyType")]
         public string? PolicyType { get; set; }
@@ -183,13 +183,13 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+        /// Filter results by a specific policy name. If you set this parameter without setting `PolicyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `PolicyName` as well.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

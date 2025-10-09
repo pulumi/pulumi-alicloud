@@ -13,37 +13,37 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
     public sealed class DbInstancePlanPlanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Pause instance plan config. See `pause` below.
+        /// Pause instance plan config. See `Pause` below.
         /// </summary>
         [Input("pause")]
         public Input<Inputs.DbInstancePlanPlanConfigPauseArgs>? Pause { get; set; }
 
         /// <summary>
-        /// Resume instance plan config. See `resume` below.
+        /// Resume instance plan config. See `Resume` below.
         /// </summary>
         [Input("resume")]
         public Input<Inputs.DbInstancePlanPlanConfigResumeArgs>? Resume { get; set; }
 
         /// <summary>
-        /// Scale down instance plan config. See `scale_down` below.
+        /// Scale down instance plan config. See `ScaleDown` below.
         /// </summary>
         [Input("scaleDown")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleDownArgs>? ScaleDown { get; set; }
 
         /// <summary>
-        /// Scale In instance plan config. See `scale_in` below.
+        /// Scale In instance plan config. See `ScaleIn` below.
         /// </summary>
         [Input("scaleIn")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleInArgs>? ScaleIn { get; set; }
 
         /// <summary>
-        /// Scale out instance plan config. See `scale_out` below.
+        /// Scale out instance plan config. See `ScaleOut` below.
         /// </summary>
         [Input("scaleOut")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleOutArgs>? ScaleOut { get; set; }
 
         /// <summary>
-        /// Scale up instance plan config. See `scale_up` below.
+        /// Scale up instance plan config. See `ScaleUp` below.
         /// </summary>
         [Input("scaleUp")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleUpArgs>? ScaleUp { get; set; }

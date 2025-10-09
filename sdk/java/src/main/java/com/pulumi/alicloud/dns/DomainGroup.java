@@ -64,21 +64,21 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/domainGroup:DomainGroup")
 public class DomainGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+     * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      * 
      */
     @Export(name="domainGroupName", refs={String.class}, tree="[0]")
     private Output<String> domainGroupName;
 
     /**
-     * @return The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+     * @return The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      * 
      */
     public Output<String> domainGroupName() {
         return this.domainGroupName;
     }
     /**
-     * The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
+     * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      * 
      * @deprecated
      * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
@@ -89,7 +89,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
     private Output<String> groupName;
 
     /**
-     * @return The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
+     * @return The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      * 
      */
     public Output<String> groupName() {

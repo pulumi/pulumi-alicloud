@@ -752,13 +752,13 @@ namespace Pulumi.AliCloud.FC
     public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+        /// The config of Function Compute trigger.It is valid when `Type` is not "MnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         /// </summary>
         [Output("config")]
         public Output<string?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
+        /// The config of Function Compute trigger when the type is "MnsTopic".It is conflict with `Config`.
         /// </summary>
         [Output("configMns")]
         public Output<string?> ConfigMns { get; private set; } = null!;
@@ -776,7 +776,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModified { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        /// The Function Compute trigger name. It is the only in one service and is conflict with "NamePrefix".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -812,7 +812,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> TriggerId { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "MnsTopic", "CdnEvents", "eventbridge"].
         /// 
         /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
         /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
@@ -868,13 +868,13 @@ namespace Pulumi.AliCloud.FC
     public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+        /// The config of Function Compute trigger.It is valid when `Type` is not "MnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
+        /// The config of Function Compute trigger when the type is "MnsTopic".It is conflict with `Config`.
         /// </summary>
         [Input("configMns")]
         public Input<string>? ConfigMns { get; set; }
@@ -886,7 +886,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string> Function { get; set; } = null!;
 
         /// <summary>
-        /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        /// The Function Compute trigger name. It is the only in one service and is conflict with "NamePrefix".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -916,7 +916,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? SourceArn { get; set; }
 
         /// <summary>
-        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "MnsTopic", "CdnEvents", "eventbridge"].
         /// 
         /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
         /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
@@ -934,13 +934,13 @@ namespace Pulumi.AliCloud.FC
     public sealed class TriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+        /// The config of Function Compute trigger.It is valid when `Type` is not "MnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
+        /// The config of Function Compute trigger when the type is "MnsTopic".It is conflict with `Config`.
         /// </summary>
         [Input("configMns")]
         public Input<string>? ConfigMns { get; set; }
@@ -958,7 +958,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LastModified { get; set; }
 
         /// <summary>
-        /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        /// The Function Compute trigger name. It is the only in one service and is conflict with "NamePrefix".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -994,7 +994,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? TriggerId { get; set; }
 
         /// <summary>
-        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "MnsTopic", "CdnEvents", "eventbridge"].
         /// 
         /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
         /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.

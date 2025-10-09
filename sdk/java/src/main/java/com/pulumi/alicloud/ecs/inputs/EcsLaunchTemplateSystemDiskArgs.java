@@ -18,14 +18,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     public static final EcsLaunchTemplateSystemDiskArgs Empty = new EcsLaunchTemplateSystemDiskArgs();
 
     /**
-     * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -185,7 +185,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
          * 
          * @return builder
          * 

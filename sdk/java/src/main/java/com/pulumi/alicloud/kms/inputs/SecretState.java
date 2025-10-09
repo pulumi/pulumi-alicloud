@@ -170,14 +170,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      * 
      */
     @Import(name="recoveryWindowInDays")
     private @Nullable Output<Integer> recoveryWindowInDays;
 
     /**
-     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      * 
      */
     public Optional<Output<Integer>> recoveryWindowInDays() {
@@ -200,14 +200,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      * 
      */
     @Import(name="secretData")
     private @Nullable Output<String> secretData;
 
     /**
-     * @return The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      * 
      */
     public Optional<Output<String>> secretData() {
@@ -569,7 +569,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
          * 
          * @return builder
          * 

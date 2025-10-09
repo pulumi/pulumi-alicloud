@@ -113,56 +113,56 @@ public class V2Function extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Custom-container runtime related function configuration. See `custom_container_config` below.
+     * Custom-container runtime related function configuration. See `customContainerConfig` below.
      * 
      */
     @Export(name="customContainerConfig", refs={V2FunctionCustomContainerConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomContainerConfig> customContainerConfig;
 
     /**
-     * @return Custom-container runtime related function configuration. See `custom_container_config` below.
+     * @return Custom-container runtime related function configuration. See `customContainerConfig` below.
      * 
      */
     public Output<Optional<V2FunctionCustomContainerConfig>> customContainerConfig() {
         return Codegen.optional(this.customContainerConfig);
     }
     /**
-     * Function custom DNS configuration. See `custom_dns` below.
+     * Function custom DNS configuration. See `customDns` below.
      * 
      */
     @Export(name="customDns", refs={V2FunctionCustomDns.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomDns> customDns;
 
     /**
-     * @return Function custom DNS configuration. See `custom_dns` below.
+     * @return Function custom DNS configuration. See `customDns` below.
      * 
      */
     public Output<Optional<V2FunctionCustomDns>> customDns() {
         return Codegen.optional(this.customDns);
     }
     /**
-     * Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+     * Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      * 
      */
     @Export(name="customHealthCheckConfig", refs={V2FunctionCustomHealthCheckConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomHealthCheckConfig> customHealthCheckConfig;
 
     /**
-     * @return Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+     * @return Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      * 
      */
     public Output<Optional<V2FunctionCustomHealthCheckConfig>> customHealthCheckConfig() {
         return Codegen.optional(this.customHealthCheckConfig);
     }
     /**
-     * Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+     * Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      * 
      */
     @Export(name="customRuntimeConfig", refs={V2FunctionCustomRuntimeConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomRuntimeConfig> customRuntimeConfig;
 
     /**
-     * @return Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+     * @return Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      * 
      */
     public Output<Optional<V2FunctionCustomRuntimeConfig>> customRuntimeConfig() {
@@ -309,14 +309,14 @@ public class V2Function extends com.pulumi.resources.CustomResource {
         return this.instanceConcurrency;
     }
     /**
-     * Instance lifecycle configuration. See `instance_lifecycle_config` below.
+     * Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      * 
      */
     @Export(name="instanceLifecycleConfig", refs={V2FunctionInstanceLifecycleConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionInstanceLifecycleConfig> instanceLifecycleConfig;
 
     /**
-     * @return Instance lifecycle configuration. See `instance_lifecycle_config` below.
+     * @return Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      * 
      */
     public Output<Optional<V2FunctionInstanceLifecycleConfig>> instanceLifecycleConfig() {

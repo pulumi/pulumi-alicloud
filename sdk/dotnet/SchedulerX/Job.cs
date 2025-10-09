@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Output<int> JobId { get; private set; } = null!;
 
         /// <summary>
-        /// Task monitoring information See `job_monitor_info` below.
+        /// Task monitoring information See `JobMonitorInfo` below.
         /// </summary>
         [Output("jobMonitorInfo")]
         public Output<Outputs.JobJobMonitorInfo?> JobMonitorInfo { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Output<string> JobType { get; private set; } = null!;
 
         /// <summary>
-        /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+        /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `MapTaskXattrs` below.
         /// </summary>
         [Output("mapTaskXattrs")]
         public Output<Outputs.JobMapTaskXattrs?> MapTaskXattrs { get; private set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Output<string?> Template { get; private set; } = null!;
 
         /// <summary>
-        /// Time configuration information See `time_config` below.
+        /// Time configuration information See `TimeConfig` below.
         /// </summary>
         [Output("timeConfig")]
         public Output<Outputs.JobTimeConfig> TimeConfig { get; private set; } = null!;
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Task monitoring information See `job_monitor_info` below.
+        /// Task monitoring information See `JobMonitorInfo` below.
         /// </summary>
         [Input("jobMonitorInfo")]
         public Input<Inputs.JobJobMonitorInfoArgs>? JobMonitorInfo { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string> JobType { get; set; } = null!;
 
         /// <summary>
-        /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+        /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `MapTaskXattrs` below.
         /// </summary>
         [Input("mapTaskXattrs")]
         public Input<Inputs.JobMapTaskXattrsArgs>? MapTaskXattrs { get; set; }
@@ -463,7 +463,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// Time configuration information See `time_config` below.
+        /// Time configuration information See `TimeConfig` below.
         /// </summary>
         [Input("timeConfig", required: true)]
         public Input<Inputs.JobTimeConfigArgs> TimeConfig { get; set; } = null!;
@@ -539,7 +539,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<int>? JobId { get; set; }
 
         /// <summary>
-        /// Task monitoring information See `job_monitor_info` below.
+        /// Task monitoring information See `JobMonitorInfo` below.
         /// </summary>
         [Input("jobMonitorInfo")]
         public Input<Inputs.JobJobMonitorInfoGetArgs>? JobMonitorInfo { get; set; }
@@ -557,7 +557,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string>? JobType { get; set; }
 
         /// <summary>
-        /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+        /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `MapTaskXattrs` below.
         /// </summary>
         [Input("mapTaskXattrs")]
         public Input<Inputs.JobMapTaskXattrsGetArgs>? MapTaskXattrs { get; set; }
@@ -617,7 +617,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// Time configuration information See `time_config` below.
+        /// Time configuration information See `TimeConfig` below.
         /// </summary>
         [Input("timeConfig")]
         public Input<Inputs.JobTimeConfigGetArgs>? TimeConfig { get; set; }

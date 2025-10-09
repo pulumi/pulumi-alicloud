@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class IpsecServerIpsecConfig
     {
         /// <summary>
-        /// The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+        /// The authentication algorithm that is used in Phase 2 negotiations. Default value: `Sha1`.
         /// </summary>
         public readonly string? IpsecAuthAlg;
         /// <summary>
-        /// The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+        /// The encryption algorithm that is used in Phase 2 negotiations. Default value: `Aes`.
         /// </summary>
         public readonly string? IpsecEncAlg;
         /// <summary>
-        /// The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+        /// The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `Seconds`.
         /// </summary>
         public readonly int? IpsecLifetime;
         /// <summary>
-        /// Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+        /// Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `Group2`.
         /// </summary>
         public readonly string? IpsecPfs;
 

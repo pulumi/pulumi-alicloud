@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigCustomAnnotationArgs>? _customAnnotations;
 
         /// <summary>
-        /// The ack cluster custom annotations. See `custom_annotations` below.
+        /// The ack cluster custom annotations. See `CustomAnnotations` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigCustomAnnotationArgs> CustomAnnotations
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigCustomLabelArgs>? _customLabels;
 
         /// <summary>
-        /// The ack cluster custom labels. See `custom_labels` below.
+        /// The ack cluster custom labels. See `CustomLabels` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigCustomLabelArgs> CustomLabels
         {
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigNodeSelectorArgs>? _nodeSelectors;
 
         /// <summary>
-        /// The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+        /// The ack cluster node selectors for job pods scheduling. See `NodeSelectors` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigNodeSelectorArgs> NodeSelectors
         {
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigPvcArgs>? _pvcs;
 
         /// <summary>
-        /// The ack cluster persistent volume claim. See `pvcs` below.
+        /// The ack cluster persistent volume claim. See `Pvcs` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigPvcArgs> Pvcs
         {
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigTolerationArgs>? _tolerations;
 
         /// <summary>
-        /// The ack cluster tolerations. See `tolerations` below.
+        /// The ack cluster tolerations. See `Tolerations` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigTolerationArgs> Tolerations
         {
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigVolumeMountArgs>? _volumeMounts;
 
         /// <summary>
-        /// The ack cluster volume mounts. See `volume_mounts` below.
+        /// The ack cluster volume mounts. See `VolumeMounts` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigVolumeMountArgs> VolumeMounts
         {
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAckConfigVolumeArgs>? _volumes;
 
         /// <summary>
-        /// The ack cluster volumes. See `volumes` below.
+        /// The ack cluster volumes. See `Volumes` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAckConfigVolumeArgs> Volumes
         {

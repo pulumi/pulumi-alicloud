@@ -123,14 +123,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.cacheSize;
     }
     /**
-     * The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+     * The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     @Export(name="cpu", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpu;
 
     /**
-     * @return The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     public Output<Integer> cpu() {
@@ -151,14 +151,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     @Export(name="dbClusterClass", refs={String.class}, tree="[0]")
     private Output<String> dbClusterClass;
 
     /**
-     * @return The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     public Output<String> dbClusterClass() {
@@ -207,14 +207,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.dbInstanceId;
     }
     /**
-     * The modified parameter in DBCluster. See `desired_params` below.
+     * The modified parameter in DBCluster. See `desiredParams` below.
      * 
      */
     @Export(name="desiredParams", refs={List.class,DbClusterDesiredParam.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DbClusterDesiredParam>> desiredParams;
 
     /**
-     * @return The modified parameter in DBCluster. See `desired_params` below.
+     * @return The modified parameter in DBCluster. See `desiredParams` below.
      * 
      */
     public Output<Optional<List<DbClusterDesiredParam>>> desiredParams() {
@@ -263,14 +263,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+     * The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     @Export(name="memory", refs={Integer.class}, tree="[0]")
     private Output<Integer> memory;
 
     /**
-     * @return The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     public Output<Integer> memory() {

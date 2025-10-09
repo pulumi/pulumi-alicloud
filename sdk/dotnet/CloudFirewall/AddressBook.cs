@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of ECS tags. See `ecs_tags` below.
+        /// A list of ECS tags. See `EcsTags` below.
         /// </summary>
         [Output("ecsTags")]
         public Output<ImmutableArray<Outputs.AddressBookEcsTag>> EcsTags { get; private set; } = null!;
@@ -90,20 +90,20 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-        /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
+        /// The logical relation among the ECS tags that to be matched. Default value: `And`. Valid values:
         /// </summary>
         [Output("tagRelation")]
         public Output<string> TagRelation { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<Inputs.AddressBookEcsTagArgs>? _ecsTags;
 
         /// <summary>
-        /// A list of ECS tags. See `ecs_tags` below.
+        /// A list of ECS tags. See `EcsTags` below.
         /// </summary>
         public InputList<Inputs.AddressBookEcsTagArgs> EcsTags
         {
@@ -197,20 +197,20 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-        /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
         /// </summary>
         [Input("groupType", required: true)]
         public Input<string> GroupType { get; set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
+        /// The logical relation among the ECS tags that to be matched. Default value: `And`. Valid values:
         /// </summary>
         [Input("tagRelation")]
         public Input<string>? TagRelation { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<Inputs.AddressBookEcsTagGetArgs>? _ecsTags;
 
         /// <summary>
-        /// A list of ECS tags. See `ecs_tags` below.
+        /// A list of ECS tags. See `EcsTags` below.
         /// </summary>
         public InputList<Inputs.AddressBookEcsTagGetArgs> EcsTags
         {
@@ -266,20 +266,20 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-        /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
+        /// The logical relation among the ECS tags that to be matched. Default value: `And`. Valid values:
         /// </summary>
         [Input("tagRelation")]
         public Input<string>? TagRelation { get; set; }

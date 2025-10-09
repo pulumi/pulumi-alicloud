@@ -81,18 +81,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ga/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** &#34;Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      * @deprecated
-     * Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
+     * Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      * 
      */
-    @Deprecated /* Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`. */
+    @Deprecated /* Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`. */
     @Export(name="aclEntries", refs={List.class,AclAclEntry.class}, tree="[0,1]")
     private Output<List<AclAclEntry>> aclEntries;
 
     /**
-     * @return The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * @return The entries of the Acl. See `aclEntries` below. **NOTE:** &#34;Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      */
     public Output<List<AclAclEntry>> aclEntries() {

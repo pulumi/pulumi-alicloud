@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationUpdateStrategyV2
     {
         /// <summary>
-        /// The phased release policy. See `batch_update` below.
+        /// The phased release policy. See `BatchUpdate` below.
         /// </summary>
         public readonly Outputs.ApplicationUpdateStrategyV2BatchUpdate? BatchUpdate;
         /// <summary>

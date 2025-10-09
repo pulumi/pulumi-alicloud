@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string ListenerId;
         /// <summary>
-        /// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+        /// The status of the endpoint group. Valid Values: `Init`, `Active`, `Updating`, `Deleting`.
         /// </summary>
         public readonly string Status;
 

@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Output<string> BindTime { get; private set; } = null!;
 
         /// <summary>
-        /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+        /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `PopLocations` below.
         /// </summary>
         [Output("popLocations")]
         public Output<ImmutableArray<Outputs.AnycastEipAddressAttachmentPopLocation>> PopLocations { get; private set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.AliCloud.EipAnycast
         private InputList<Inputs.AnycastEipAddressAttachmentPopLocationArgs>? _popLocations;
 
         /// <summary>
-        /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+        /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `PopLocations` below.
         /// </summary>
         public InputList<Inputs.AnycastEipAddressAttachmentPopLocationArgs> PopLocations
         {
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.EipAnycast
         private InputList<Inputs.AnycastEipAddressAttachmentPopLocationGetArgs>? _popLocations;
 
         /// <summary>
-        /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+        /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `PopLocations` below.
         /// </summary>
         public InputList<Inputs.AnycastEipAddressAttachmentPopLocationGetArgs> PopLocations
         {

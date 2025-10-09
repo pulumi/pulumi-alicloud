@@ -18,14 +18,14 @@ public final class AppGroupOrderArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppGroupOrderArgs Empty = new AppGroupOrderArgs();
 
     /**
-     * Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+     * Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+     * @return Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -89,7 +89,7 @@ public final class AppGroupOrderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+         * @param autoRenew Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AppGroupOrderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+         * @param autoRenew Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
          * 
          * @return builder
          * 

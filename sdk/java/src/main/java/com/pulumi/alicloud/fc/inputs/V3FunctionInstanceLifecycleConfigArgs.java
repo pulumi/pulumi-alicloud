@@ -32,14 +32,14 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * PreStop handler method configuration See `pre_stop` below.
+     * PreStop handler method configuration See `preStop` below.
      * 
      */
     @Import(name="preStop")
     private @Nullable Output<V3FunctionInstanceLifecycleConfigPreStopArgs> preStop;
 
     /**
-     * @return PreStop handler method configuration See `pre_stop` below.
+     * @return PreStop handler method configuration See `preStop` below.
      * 
      */
     public Optional<Output<V3FunctionInstanceLifecycleConfigPreStopArgs>> preStop() {
@@ -93,7 +93,7 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preStop PreStop handler method configuration See `pre_stop` below.
+         * @param preStop PreStop handler method configuration See `preStop` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preStop PreStop handler method configuration See `pre_stop` below.
+         * @param preStop PreStop handler method configuration See `preStop` below.
          * 
          * @return builder
          * 

@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.DBS
         public string? BackupPlanName { get; set; }
 
         /// <summary>
-        /// Default to `true`. Set it to `false` can hide the `payment_type` to output.
+        /// Default to `True`. Set it to `False` can hide the `PaymentType` to output.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.DBS
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+        /// The status of the resource. Valid values: `CheckPass`, `Init`, `Locked`, `Pause`, `Running`, `Stop`, `Wait`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? BackupPlanName { get; set; }
 
         /// <summary>
-        /// Default to `true`. Set it to `false` can hide the `payment_type` to output.
+        /// Default to `True`. Set it to `False` can hide the `PaymentType` to output.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+        /// The status of the resource. Valid values: `CheckPass`, `Init`, `Locked`, `Pause`, `Running`, `Stop`, `Wait`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

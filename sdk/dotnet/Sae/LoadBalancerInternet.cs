@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> InternetSlbId { get; private set; } = null!;
 
         /// <summary>
-        /// The bound private network SLB. See `internet` below.
+        /// The bound private network SLB. See `Internet` below.
         /// </summary>
         [Output("internets")]
         public Output<ImmutableArray<Outputs.LoadBalancerInternetInternet>> Internets { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.LoadBalancerInternetInternetArgs>? _internets;
 
         /// <summary>
-        /// The bound private network SLB. See `internet` below.
+        /// The bound private network SLB. See `Internet` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerInternetInternetArgs> Internets
         {
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.LoadBalancerInternetInternetGetArgs>? _internets;
 
         /// <summary>
-        /// The bound private network SLB. See `internet` below.
+        /// The bound private network SLB. See `Internet` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerInternetInternetGetArgs> Internets
         {

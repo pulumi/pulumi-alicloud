@@ -165,38 +165,38 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.resourceType);
     }
     /**
-     * Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      * @deprecated
-     * Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
-    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
     @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * @return Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
-     * Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      * @deprecated
-     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
-    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
     @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 

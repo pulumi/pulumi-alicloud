@@ -98,15 +98,15 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+        /// This parameter is used to force deletion `PermissionPolicies`. Valid Value: `True`, `False`.
         /// 
-        /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+        /// * **NOTE:** The `PermissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
         [Output("forceRemovePermissionPolicies")]
         public Output<bool?> ForceRemovePermissionPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// The Policy List. See `permission_policies` below.
+        /// The Policy List. See `PermissionPolicies` below.
         /// </summary>
         [Output("permissionPolicies")]
         public Output<ImmutableArray<Outputs.AccessConfigurationPermissionPolicy>> PermissionPolicies { get; private set; } = null!;
@@ -188,9 +188,9 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+        /// This parameter is used to force deletion `PermissionPolicies`. Valid Value: `True`, `False`.
         /// 
-        /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+        /// * **NOTE:** The `PermissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
         [Input("forceRemovePermissionPolicies")]
         public Input<bool>? ForceRemovePermissionPolicies { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.CloudSso
         private InputList<Inputs.AccessConfigurationPermissionPolicyArgs>? _permissionPolicies;
 
         /// <summary>
-        /// The Policy List. See `permission_policies` below.
+        /// The Policy List. See `PermissionPolicies` below.
         /// </summary>
         public InputList<Inputs.AccessConfigurationPermissionPolicyArgs> PermissionPolicies
         {
@@ -252,9 +252,9 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+        /// This parameter is used to force deletion `PermissionPolicies`. Valid Value: `True`, `False`.
         /// 
-        /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+        /// * **NOTE:** The `PermissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
         [Input("forceRemovePermissionPolicies")]
         public Input<bool>? ForceRemovePermissionPolicies { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.CloudSso
         private InputList<Inputs.AccessConfigurationPermissionPolicyGetArgs>? _permissionPolicies;
 
         /// <summary>
-        /// The Policy List. See `permission_policies` below.
+        /// The Policy List. See `PermissionPolicies` below.
         /// </summary>
         public InputList<Inputs.AccessConfigurationPermissionPolicyGetArgs> PermissionPolicies
         {

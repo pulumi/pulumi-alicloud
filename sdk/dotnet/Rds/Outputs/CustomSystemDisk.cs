@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
     public sealed class CustomSystemDisk
     {
         /// <summary>
-        /// The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        /// The cloud disk type of the system disk. Currently, only `CloudEssd`(ESSD cloud disk) is supported.
         /// </summary>
         public readonly string? Category;
         /// <summary>

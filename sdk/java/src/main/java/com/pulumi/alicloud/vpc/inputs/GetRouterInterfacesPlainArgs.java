@@ -92,7 +92,7 @@ public final class GetRouterInterfacesPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      * 
      */
     @Import(name="role")
@@ -100,7 +100,7 @@ public final class GetRouterInterfacesPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      * 
      */
     public Optional<String> role() {
@@ -267,7 +267,7 @@ public final class GetRouterInterfacesPlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param role Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-         * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+         * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
          * 
          * @return builder
          * 

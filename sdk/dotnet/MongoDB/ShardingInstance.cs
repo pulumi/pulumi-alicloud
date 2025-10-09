@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
+        /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupInterval { get; private set; } = null!;
 
         /// <summary>
-        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        /// MongoDB Instance backup period. It is required when `BackupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         /// </summary>
         [Output("backupPeriods")]
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int?> BackupRetentionPolicyOnClusterDeletion { get; private set; } = null!;
 
         /// <summary>
-        /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        /// Sharding Instance backup time. It is required when `BackupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
@@ -156,13 +156,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> CloudDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The ConfigServer nodes of the instance. See `config_server_list` below.
+        /// The ConfigServer nodes of the instance. See `ConfigServerList` below.
         /// </summary>
         [Output("configServerLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// Indicates whether release protection is enabled for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Output("dbInstanceReleaseProtection")]
         public Output<bool?> DbInstanceReleaseProtection { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> EnableBackupLog { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether to enable cloud disk encryption. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
@@ -187,13 +187,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// The encryption method. **NOTE:** `EncryptorName` is valid only when `TdeStatus` is set to `Enabled`.
         /// </summary>
         [Output("encryptorName")]
         public Output<string> EncryptorName { get; private set; } = null!;
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `EngineVersion` can be modified.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> GlobalSecurityGroupLists { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `ZoneId` and `SecondaryZoneId` parameter values.
         /// </summary>
         [Output("hiddenZoneId")]
         public Output<string?> HiddenZoneId { get; private set; } = null!;
@@ -217,19 +217,19 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a instance. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `LogBackupRetentionPeriod` is valid only when `EnableBackupLog` is set to `1`.
         /// </summary>
         [Output("logBackupRetentionPeriod")]
         public Output<int> LogBackupRetentionPeriod { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `MongoList` below.
         /// </summary>
         [Output("mongoLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceMongoList>> MongoLists { get; private set; } = null!;
@@ -268,19 +268,19 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
-        /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        /// **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when `InstanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+        /// The type of the access protocol. Valid values: `Mongodb` or `Dynamodb`.
         /// </summary>
         [Output("protocolType")]
         public Output<string> ProtocolType { get; private set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `ZoneId` and `HiddenZoneId` parameter values.
         /// </summary>
         [Output("secondaryZoneId")]
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `ShardList` below.
         /// </summary>
         [Output("shardLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
@@ -363,7 +363,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> StorageEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+        /// The storage type of the instance. Valid values: `CloudEssd1`, `CloudEssd2`, `CloudEssd3`, `CloudAuto`, `LocalSsd`. **NOTE:** From version 1.229.0, `StorageType` can be modified. However, `StorageType` can only be modified to `CloudAuto`.
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+        /// The ID of the VPC. &gt; **NOTE:** `VpcId` is valid only when `NetworkType` is set to `VPC`.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in one of them.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -466,7 +466,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
+        /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -481,7 +481,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        /// MongoDB Instance backup period. It is required when `BackupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         /// </summary>
         public InputList<string> BackupPeriods
         {
@@ -502,7 +502,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
-        /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        /// Sharding Instance backup time. It is required when `BackupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -517,7 +517,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceConfigServerListArgs>? _configServerLists;
 
         /// <summary>
-        /// The ConfigServer nodes of the instance. See `config_server_list` below.
+        /// The ConfigServer nodes of the instance. See `ConfigServerList` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceConfigServerListArgs> ConfigServerLists
         {
@@ -526,7 +526,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// Indicates whether release protection is enabled for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("dbInstanceReleaseProtection")]
         public Input<bool>? DbInstanceReleaseProtection { get; set; }
@@ -539,7 +539,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? EnableBackupLog { get; set; }
 
         /// <summary>
-        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether to enable cloud disk encryption. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -551,13 +551,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// The encryption method. **NOTE:** `EncryptorName` is valid only when `TdeStatus` is set to `Enabled`.
         /// </summary>
         [Input("encryptorName")]
         public Input<string>? EncryptorName { get; set; }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `EngineVersion` can be modified.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -575,7 +575,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `ZoneId` and `SecondaryZoneId` parameter values.
         /// </summary>
         [Input("hiddenZoneId")]
         public Input<string>? HiddenZoneId { get; set; }
@@ -587,7 +587,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a instance. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -596,7 +596,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -605,7 +605,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `LogBackupRetentionPeriod` is valid only when `EnableBackupLog` is set to `1`.
         /// </summary>
         [Input("logBackupRetentionPeriod")]
         public Input<int>? LogBackupRetentionPeriod { get; set; }
@@ -626,7 +626,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceMongoListArgs>? _mongoLists;
 
         /// <summary>
-        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `MongoList` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListArgs> MongoLists
         {
@@ -650,19 +650,19 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
-        /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        /// **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when `InstanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+        /// The type of the access protocol. Valid values: `Mongodb` or `Dynamodb`.
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
@@ -686,7 +686,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `ZoneId` and `HiddenZoneId` parameter values.
         /// </summary>
         [Input("secondaryZoneId")]
         public Input<string>? SecondaryZoneId { get; set; }
@@ -713,7 +713,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceShardListArgs>? _shardLists;
 
         /// <summary>
-        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `ShardList` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListArgs> ShardLists
         {
@@ -745,7 +745,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? StorageEngine { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+        /// The storage type of the instance. Valid values: `CloudEssd1`, `CloudEssd2`, `CloudEssd3`, `CloudAuto`, `LocalSsd`. **NOTE:** From version 1.229.0, `StorageType` can be modified. However, `StorageType` can only be modified to `CloudAuto`.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
@@ -769,7 +769,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+        /// The ID of the VPC. &gt; **NOTE:** `VpcId` is valid only when `NetworkType` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -782,7 +782,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in one of them.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -812,7 +812,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
+        /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -827,7 +827,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        /// MongoDB Instance backup period. It is required when `BackupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         /// </summary>
         public InputList<string> BackupPeriods
         {
@@ -848,7 +848,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
-        /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        /// Sharding Instance backup time. It is required when `BackupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -863,7 +863,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
 
         /// <summary>
-        /// The ConfigServer nodes of the instance. See `config_server_list` below.
+        /// The ConfigServer nodes of the instance. See `ConfigServerList` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceConfigServerListGetArgs> ConfigServerLists
         {
@@ -872,7 +872,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// Indicates whether release protection is enabled for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("dbInstanceReleaseProtection")]
         public Input<bool>? DbInstanceReleaseProtection { get; set; }
@@ -885,7 +885,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? EnableBackupLog { get; set; }
 
         /// <summary>
-        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether to enable cloud disk encryption. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -897,13 +897,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// The encryption method. **NOTE:** `EncryptorName` is valid only when `TdeStatus` is set to `Enabled`.
         /// </summary>
         [Input("encryptorName")]
         public Input<string>? EncryptorName { get; set; }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `EngineVersion` can be modified.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -921,7 +921,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `ZoneId` and `SecondaryZoneId` parameter values.
         /// </summary>
         [Input("hiddenZoneId")]
         public Input<string>? HiddenZoneId { get; set; }
@@ -933,7 +933,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a instance. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -942,7 +942,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -951,7 +951,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `LogBackupRetentionPeriod` is valid only when `EnableBackupLog` is set to `1`.
         /// </summary>
         [Input("logBackupRetentionPeriod")]
         public Input<int>? LogBackupRetentionPeriod { get; set; }
@@ -972,7 +972,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceMongoListGetArgs>? _mongoLists;
 
         /// <summary>
-        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `MongoList` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListGetArgs> MongoLists
         {
@@ -996,19 +996,19 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
-        /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        /// **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when `InstanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+        /// The type of the access protocol. Valid values: `Mongodb` or `Dynamodb`.
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
@@ -1038,7 +1038,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `ZoneId` and `HiddenZoneId` parameter values.
         /// </summary>
         [Input("secondaryZoneId")]
         public Input<string>? SecondaryZoneId { get; set; }
@@ -1065,7 +1065,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceShardListGetArgs>? _shardLists;
 
         /// <summary>
-        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `ShardList` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListGetArgs> ShardLists
         {
@@ -1103,7 +1103,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? StorageEngine { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+        /// The storage type of the instance. Valid values: `CloudEssd1`, `CloudEssd2`, `CloudEssd3`, `CloudAuto`, `LocalSsd`. **NOTE:** From version 1.229.0, `StorageType` can be modified. However, `StorageType` can only be modified to `CloudAuto`.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
@@ -1127,7 +1127,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+        /// The ID of the VPC. &gt; **NOTE:** `VpcId` is valid only when `NetworkType` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -1140,7 +1140,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in one of them.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

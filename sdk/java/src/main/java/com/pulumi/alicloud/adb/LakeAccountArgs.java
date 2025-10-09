@@ -64,14 +64,14 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of permissions granted. See `account_privileges` below.
+     * List of permissions granted. See `accountPrivileges` below.
      * 
      */
     @Import(name="accountPrivileges")
     private @Nullable Output<List<LakeAccountAccountPrivilegeArgs>> accountPrivileges;
 
     /**
-     * @return List of permissions granted. See `account_privileges` below.
+     * @return List of permissions granted. See `accountPrivileges` below.
      * 
      */
     public Optional<Output<List<LakeAccountAccountPrivilegeArgs>>> accountPrivileges() {
@@ -201,7 +201,7 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPrivileges List of permissions granted. See `account_privileges` below.
+         * @param accountPrivileges List of permissions granted. See `accountPrivileges` below.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPrivileges List of permissions granted. See `account_privileges` below.
+         * @param accountPrivileges List of permissions granted. See `accountPrivileges` below.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPrivileges List of permissions granted. See `account_privileges` below.
+         * @param accountPrivileges List of permissions granted. See `accountPrivileges` below.
          * 
          * @return builder
          * 

@@ -64,14 +64,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Import(name="exclude")
     private @Nullable Output<String> exclude;
 
     /**
-     * @return The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Optional<Output<String>> exclude() {
@@ -79,14 +79,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Import(name="include")
     private @Nullable Output<String> include;
 
     /**
-     * @return The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Optional<Output<String>> include() {
@@ -94,14 +94,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
+     * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
      * 
      */
     @Import(name="options")
     private @Nullable Output<String> options;
 
     /**
-     * @return Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
+     * @return Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
      * 
      */
     public Optional<Output<String>> options() {
@@ -109,14 +109,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The details about the Tablestore instance. See the following `Block ots_detail`.
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
      * 
      */
     @Import(name="otsDetail")
     private @Nullable Output<RestoreJobOtsDetailArgs> otsDetail;
 
     /**
-     * @return The details about the Tablestore instance. See the following `Block ots_detail`.
+     * @return The details about the Tablestore instance. See the following `Block otsDetail`.
      * 
      */
     public Optional<Output<RestoreJobOtsDetailArgs>> otsDetail() {
@@ -199,14 +199,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+     * The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
      * 
      */
     @Import(name="targetBucket")
     private @Nullable Output<String> targetBucket;
 
     /**
-     * @return The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+     * @return The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
      * 
      */
     public Optional<Output<String>> targetBucket() {
@@ -229,14 +229,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     @Import(name="targetCreateTime")
     private @Nullable Output<String> targetCreateTime;
 
     /**
-     * @return The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * @return The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     public Optional<Output<String>> targetCreateTime() {
@@ -259,14 +259,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+     * The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
      * 
      */
     @Import(name="targetFileSystemId")
     private @Nullable Output<String> targetFileSystemId;
 
     /**
-     * @return The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+     * @return The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
      * 
      */
     public Optional<Output<String>> targetFileSystemId() {
@@ -274,14 +274,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+     * The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
      * 
      */
     @Import(name="targetInstanceId")
     private @Nullable Output<String> targetInstanceId;
 
     /**
-     * @return The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+     * @return The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
      * 
      */
     public Optional<Output<String>> targetInstanceId() {
@@ -289,14 +289,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+     * The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="targetInstanceName")
     private @Nullable Output<String> targetInstanceName;
 
     /**
-     * @return The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+     * @return The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<String>> targetInstanceName() {
@@ -304,14 +304,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Import(name="targetPath")
     private @Nullable Output<String> targetPath;
 
     /**
-     * @return The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Optional<Output<String>> targetPath() {
@@ -319,14 +319,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Import(name="targetPrefix")
     private @Nullable Output<String> targetPrefix;
 
     /**
-     * @return The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Optional<Output<String>> targetPrefix() {
@@ -334,14 +334,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+     * The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="targetTableName")
     private @Nullable Output<String> targetTableName;
 
     /**
-     * @return The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+     * @return The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<String>> targetTableName() {
@@ -349,14 +349,14 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+     * The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
      * 
      */
     @Import(name="targetTime")
     private @Nullable Output<String> targetTime;
 
     /**
-     * @return The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+     * @return The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
      * 
      */
     public Optional<Output<String>> targetTime() {
@@ -505,7 +505,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclude The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param exclude The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclude The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param exclude The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param include The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param include The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param include The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param include The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
+         * @param options Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
+         * @param options Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetail The details about the Tablestore instance. See the following `Block ots_detail`.
+         * @param otsDetail The details about the Tablestore instance. See the following `Block otsDetail`.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otsDetail The details about the Tablestore instance. See the following `Block ots_detail`.
+         * @param otsDetail The details about the Tablestore instance. See the following `Block otsDetail`.
          * 
          * @return builder
          * 
@@ -694,7 +694,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetBucket The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+         * @param targetBucket The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
          * 
          * @return builder
          * 
@@ -705,7 +705,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetBucket The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+         * @param targetBucket The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetCreateTime The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+         * @param targetCreateTime The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
          * 
          * @return builder
          * 
@@ -747,7 +747,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetCreateTime The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+         * @param targetCreateTime The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
          * 
          * @return builder
          * 
@@ -778,7 +778,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetFileSystemId The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+         * @param targetFileSystemId The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetFileSystemId The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+         * @param targetFileSystemId The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
          * 
          * @return builder
          * 
@@ -799,7 +799,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetInstanceId The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+         * @param targetInstanceId The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetInstanceId The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+         * @param targetInstanceId The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
          * 
          * @return builder
          * 
@@ -820,7 +820,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetInstanceName The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+         * @param targetInstanceName The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -831,7 +831,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetInstanceName The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+         * @param targetInstanceName The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -841,7 +841,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetPath The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param targetPath The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -852,7 +852,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetPath The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param targetPath The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -862,7 +862,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetPrefix The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param targetPrefix The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -873,7 +873,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetPrefix The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+         * @param targetPrefix The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetTableName The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+         * @param targetTableName The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetTableName The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+         * @param targetTableName The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetTime The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+         * @param targetTime The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
          * 
          * @return builder
          * 
@@ -915,7 +915,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetTime The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+         * @param targetTime The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
          * 
          * @return builder
          * 

@@ -71,7 +71,7 @@ public final class DomainRedirect {
     private @Nullable Integer readTimeout;
     /**
      * @return The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
-     * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
+     * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
      * 
      */
     private @Nullable List<DomainRedirectRequestHeader> requestHeaders;
@@ -177,7 +177,7 @@ public final class DomainRedirect {
     }
     /**
      * @return The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
-     * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
+     * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
      * 
      */
     public List<DomainRedirectRequestHeader> requestHeaders() {

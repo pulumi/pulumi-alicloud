@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LakeAccountAccountPrivilege {
     /**
-     * @return Object associated to privileges. See `privilege_object` below.
+     * @return Object associated to privileges. See `privilegeObject` below.
      * 
      */
     private @Nullable LakeAccountAccountPrivilegePrivilegeObject privilegeObject;
@@ -31,7 +31,7 @@ public final class LakeAccountAccountPrivilege {
 
     private LakeAccountAccountPrivilege() {}
     /**
-     * @return Object associated to privileges. See `privilege_object` below.
+     * @return Object associated to privileges. See `privilegeObject` below.
      * 
      */
     public Optional<LakeAccountAccountPrivilegePrivilegeObject> privilegeObject() {

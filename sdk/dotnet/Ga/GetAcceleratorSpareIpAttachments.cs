@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        /// The status of the standby CNAME IP address. Valid values: `Active`, `Inuse`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        /// The status of the standby CNAME IP address. Valid values: `Active`, `Inuse`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Ga
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        /// The status of the standby CNAME IP address. Valid values: `Active`, `Inuse`.
         /// </summary>
         public readonly string? Status;
 

@@ -16,14 +16,14 @@ public final class TlsCipherPolicyArgs extends com.pulumi.resources.ResourceArgs
     public static final TlsCipherPolicyArgs Empty = new TlsCipherPolicyArgs();
 
     /**
-     * The encryption algorithms supported. It depends on the value of `tls_versions`.
+     * The encryption algorithms supported. It depends on the value of `tlsVersions`.
      * 
      */
     @Import(name="ciphers", required=true)
     private Output<List<String>> ciphers;
 
     /**
-     * @return The encryption algorithms supported. It depends on the value of `tls_versions`.
+     * @return The encryption algorithms supported. It depends on the value of `tlsVersions`.
      * 
      */
     public Output<List<String>> ciphers() {
@@ -87,7 +87,7 @@ public final class TlsCipherPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ciphers The encryption algorithms supported. It depends on the value of `tls_versions`.
+         * @param ciphers The encryption algorithms supported. It depends on the value of `tlsVersions`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class TlsCipherPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ciphers The encryption algorithms supported. It depends on the value of `tls_versions`.
+         * @param ciphers The encryption algorithms supported. It depends on the value of `tlsVersions`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class TlsCipherPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ciphers The encryption algorithms supported. It depends on the value of `tls_versions`.
+         * @param ciphers The encryption algorithms supported. It depends on the value of `tlsVersions`.
          * 
          * @return builder
          * 

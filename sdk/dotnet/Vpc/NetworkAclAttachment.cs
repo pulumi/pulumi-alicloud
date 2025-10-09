@@ -12,8 +12,8 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a network acl attachment resource to associate network acls to vswitches.
     /// 
-    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.124.0`. Replace by `resources` with the resource alicloud_network_acl.
-    /// Note that because this resource conflicts with the `resources` attribute of `alicloud.vpc.NetworkAcl`, this resource can no be used.
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.124.0`. Replace by `Resources` with the resource alicloud_network_acl.
+    /// Note that because this resource conflicts with the `Resources` attribute of `alicloud.vpc.NetworkAcl`, this resource can no be used.
     /// 
     /// &gt; **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
     /// 

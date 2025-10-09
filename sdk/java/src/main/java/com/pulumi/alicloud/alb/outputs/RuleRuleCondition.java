@@ -22,47 +22,47 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleCondition {
     /**
-     * @return The configuration of the cookie. See See `cookie_config` below.
+     * @return The configuration of the cookie. See See `cookieConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionCookieConfig cookieConfig;
     /**
-     * @return The configuration of the header field. See `header_config` below.
+     * @return The configuration of the header field. See `headerConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionHeaderConfig headerConfig;
     /**
-     * @return The configuration of the host field. See `host_config` below.
+     * @return The configuration of the host field. See `hostConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionHostConfig hostConfig;
     /**
-     * @return The configuration of the request method. See `method_config` below.
+     * @return The configuration of the request method. See `methodConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionMethodConfig methodConfig;
     /**
-     * @return The configuration of the path for the request to be forwarded. See `path_config` below.
+     * @return The configuration of the path for the request to be forwarded. See `pathConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionPathConfig pathConfig;
     /**
-     * @return The configuration of the query string. See `query_string_config` below.
+     * @return The configuration of the query string. See `queryStringConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
     /**
-     * @return The configuration of the header field. See `response_header_config` below.
+     * @return The configuration of the header field. See `responseHeaderConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionResponseHeaderConfig responseHeaderConfig;
     /**
-     * @return The configuration of the header field. See `response_status_code_config` below.
+     * @return The configuration of the header field. See `responseStatusCodeConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionResponseStatusCodeConfig responseStatusCodeConfig;
     /**
-     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig;
@@ -83,63 +83,63 @@ public final class RuleRuleCondition {
 
     private RuleRuleCondition() {}
     /**
-     * @return The configuration of the cookie. See See `cookie_config` below.
+     * @return The configuration of the cookie. See See `cookieConfig` below.
      * 
      */
     public Optional<RuleRuleConditionCookieConfig> cookieConfig() {
         return Optional.ofNullable(this.cookieConfig);
     }
     /**
-     * @return The configuration of the header field. See `header_config` below.
+     * @return The configuration of the header field. See `headerConfig` below.
      * 
      */
     public Optional<RuleRuleConditionHeaderConfig> headerConfig() {
         return Optional.ofNullable(this.headerConfig);
     }
     /**
-     * @return The configuration of the host field. See `host_config` below.
+     * @return The configuration of the host field. See `hostConfig` below.
      * 
      */
     public Optional<RuleRuleConditionHostConfig> hostConfig() {
         return Optional.ofNullable(this.hostConfig);
     }
     /**
-     * @return The configuration of the request method. See `method_config` below.
+     * @return The configuration of the request method. See `methodConfig` below.
      * 
      */
     public Optional<RuleRuleConditionMethodConfig> methodConfig() {
         return Optional.ofNullable(this.methodConfig);
     }
     /**
-     * @return The configuration of the path for the request to be forwarded. See `path_config` below.
+     * @return The configuration of the path for the request to be forwarded. See `pathConfig` below.
      * 
      */
     public Optional<RuleRuleConditionPathConfig> pathConfig() {
         return Optional.ofNullable(this.pathConfig);
     }
     /**
-     * @return The configuration of the query string. See `query_string_config` below.
+     * @return The configuration of the query string. See `queryStringConfig` below.
      * 
      */
     public Optional<RuleRuleConditionQueryStringConfig> queryStringConfig() {
         return Optional.ofNullable(this.queryStringConfig);
     }
     /**
-     * @return The configuration of the header field. See `response_header_config` below.
+     * @return The configuration of the header field. See `responseHeaderConfig` below.
      * 
      */
     public Optional<RuleRuleConditionResponseHeaderConfig> responseHeaderConfig() {
         return Optional.ofNullable(this.responseHeaderConfig);
     }
     /**
-     * @return The configuration of the header field. See `response_status_code_config` below.
+     * @return The configuration of the header field. See `responseStatusCodeConfig` below.
      * 
      */
     public Optional<RuleRuleConditionResponseStatusCodeConfig> responseStatusCodeConfig() {
         return Optional.ofNullable(this.responseStatusCodeConfig);
     }
     /**
-     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
      * 
      */
     public Optional<RuleRuleConditionSourceIpConfig> sourceIpConfig() {

@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string SourceEndpointInstanceId;
         /// <summary>
-        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `Dg`.
         /// </summary>
         public readonly string SourceEndpointInstanceType;
         /// <summary>
@@ -98,11 +98,11 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DDL type of data. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool SubscriptionDataTypeDdl;
         /// <summary>
-        /// Whether to subscribe the DML type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DML type of data. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool SubscriptionDataTypeDml;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSubscriptionJobsJobSubscriptionHostResult> SubscriptionHosts;
         /// <summary>
-        /// The type of subscription instance network. Valid value: `classic`, `vpc`.
+        /// The type of subscription instance network. Valid value: `Classic`, `Vpc`.
         /// </summary>
         public readonly string SubscriptionInstanceNetworkType;
         /// <summary>

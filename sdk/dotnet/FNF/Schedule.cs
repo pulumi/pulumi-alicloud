@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.FNF
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        /// Specifies whether to enable the time-based schedule you want to create. Valid values: `False`, `True`.
         /// </summary>
         [Output("enable")]
         public Output<bool?> Enable { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.FNF
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        /// Specifies whether to enable the time-based schedule you want to create. Valid values: `False`, `True`.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.FNF
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        /// Specifies whether to enable the time-based schedule you want to create. Valid values: `False`, `True`.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

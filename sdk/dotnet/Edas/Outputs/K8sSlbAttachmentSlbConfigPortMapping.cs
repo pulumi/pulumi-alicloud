@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Edas.Outputs
         /// </summary>
         public readonly string LoadbalancerProtocol;
         /// <summary>
-        /// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
+        /// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `ServicePort` below.
         /// </summary>
         public readonly Outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort ServicePort;
 

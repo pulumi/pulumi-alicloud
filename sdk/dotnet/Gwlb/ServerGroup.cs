@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Gwlb
     public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Connected graceful interrupt configuration. See `connection_drain_config` below.
+        /// Connected graceful interrupt configuration. See `ConnectionDrainConfig` below.
         /// </summary>
         [Output("connectionDrainConfig")]
         public Output<Outputs.ServerGroupConnectionDrainConfig> ConnectionDrainConfig { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Health check configurations. See `health_check_config` below.
+        /// Health check configurations. See `HealthCheckConfig` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ServerGroupHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Gwlb
         /// The backend servers that you want to remove.
         /// 
         /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-        /// See `servers` below.
+        /// See `Servers` below.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Gwlb
     public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connected graceful interrupt configuration. See `connection_drain_config` below.
+        /// Connected graceful interrupt configuration. See `ConnectionDrainConfig` below.
         /// </summary>
         [Input("connectionDrainConfig")]
         public Input<Inputs.ServerGroupConnectionDrainConfigArgs>? ConnectionDrainConfig { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Health check configurations. See `health_check_config` below.
+        /// Health check configurations. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Gwlb
         /// The backend servers that you want to remove.
         /// 
         /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-        /// See `servers` below.
+        /// See `Servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Gwlb
     public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connected graceful interrupt configuration. See `connection_drain_config` below.
+        /// Connected graceful interrupt configuration. See `ConnectionDrainConfig` below.
         /// </summary>
         [Input("connectionDrainConfig")]
         public Input<Inputs.ServerGroupConnectionDrainConfigGetArgs>? ConnectionDrainConfig { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Health check configurations. See `health_check_config` below.
+        /// Health check configurations. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.AliCloud.Gwlb
         /// The backend servers that you want to remove.
         /// 
         /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-        /// See `servers` below.
+        /// See `Servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {

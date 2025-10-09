@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// The IPv6 CIDR block of the default VPC.
         /// 
-        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
         public readonly string? Ipv6CidrBlock;
         /// <summary>

@@ -64,14 +64,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      * 
      */
     @Import(name="eipBandwidth")
     private @Nullable Output<Integer> eipBandwidth;
 
     /**
-     * @return The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+     * @return The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      * 
      */
     public Optional<Output<Integer>> eipBandwidth() {
@@ -154,14 +154,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+     * @return The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -170,8 +170,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The subscription duration. Default value: `1`. Valid values:
-     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     @Import(name="period")
@@ -179,8 +179,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The subscription duration. Default value: `1`. Valid values:
-     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     public Optional<Output<String>> period() {
@@ -381,7 +381,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eipBandwidth The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+         * @param eipBandwidth The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eipBandwidth The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+         * @param eipBandwidth The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+         * @param paymentType The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+         * @param paymentType The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
          * 
          * @return builder
          * 
@@ -529,8 +529,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The subscription duration. Default value: `1`. Valid values:
-         * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-         * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+         * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+         * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
          * 
          * @return builder
          * 
@@ -542,8 +542,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The subscription duration. Default value: `1`. Valid values:
-         * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-         * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+         * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+         * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
          * 
          * @return builder
          * 

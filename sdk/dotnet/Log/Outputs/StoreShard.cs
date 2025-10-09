@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// Shard status, only two status of `readwrite` and `readonly`.
+        /// Shard status, only two status of `Readwrite` and `Readonly`.
         /// </summary>
         public readonly string? Status;
 

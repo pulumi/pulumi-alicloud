@@ -167,7 +167,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
      * 
-     * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+     * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      * 
      */
     @Export(name="backupId", refs={String.class}, tree="[0]")
@@ -176,7 +176,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
      * 
-     * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+     * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      * 
      */
     public Output<Optional<String>> backupId() {
@@ -201,7 +201,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backupType);
     }
     /**
-     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      * 
@@ -210,7 +210,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     private Output<String> caType;
 
     /**
-     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      * 
@@ -263,14 +263,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.certificate);
     }
     /**
-     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      * 
      */
     @Export(name="clientCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCaCert;
 
     /**
-     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      * 
      */
     public Output<Optional<String>> clientCaCert() {
@@ -291,14 +291,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientCaEnabled);
     }
     /**
-     * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+     * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      * 
      */
     @Export(name="clientCertRevocationList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertRevocationList;
 
     /**
-     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      * 
      */
     public Output<Optional<String>> clientCertRevocationList() {
@@ -469,7 +469,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
@@ -480,7 +480,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -681,7 +681,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The period. Valid values: `Month`, `Year`.
      * 
-     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+     * &gt; **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
@@ -690,21 +690,21 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The period. Valid values: `Month`, `Year`.
      * 
-     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+     * &gt; **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      * 
      */
     public Output<Optional<String>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The details of the AD domain.See `pg_hba_conf` below.
+     * The details of the AD domain.See `pgHbaConf` below.
      * 
      */
     @Export(name="pgHbaConfs", refs={List.class,RdsCloneDbInstancePgHbaConf.class}, tree="[0,1]")
     private Output<List<RdsCloneDbInstancePgHbaConf>> pgHbaConfs;
 
     /**
-     * @return The details of the AD domain.See `pg_hba_conf` below.
+     * @return The details of the AD domain.See `pgHbaConf` below.
      * 
      */
     public Output<List<RdsCloneDbInstancePgHbaConf>> pgHbaConfs() {
@@ -891,14 +891,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return this.serverKey;
     }
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
      * 
      */
     @Export(name="serverlessConfigs", refs={List.class,RdsCloneDbInstanceServerlessConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RdsCloneDbInstanceServerlessConfig>> serverlessConfigs;
 
     /**
-     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
      * 
      */
     public Output<Optional<List<RdsCloneDbInstanceServerlessConfig>>> serverlessConfigs() {
@@ -1041,7 +1041,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
      * 
-     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+     * &gt; **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      * 
      */
     @Export(name="usedTime", refs={Integer.class}, tree="[0]")
@@ -1052,7 +1052,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
      * 
-     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+     * &gt; **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      * 
      */
     public Output<Optional<Integer>> usedTime() {
@@ -1077,7 +1077,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
+     * The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
      * 
      * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 
@@ -1086,7 +1086,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
+     * @return The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
      * 
      * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 

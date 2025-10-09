@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public partial class GatewayFileShare : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
+        /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `False`. **NOTE:** The attribute is valid when the attribute `Protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         [Output("accessBasedEnumeration")]
         public Output<bool> AccessBasedEnumeration { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<int> BackendLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
+        /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `Protocol` is `SMB`. Default value: `True`.
         /// </summary>
         [Output("browsable")]
         public Output<bool> Browsable { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> CacheMode { get; private set; } = null!;
 
         /// <summary>
-        /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
+        /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `False`.
         /// </summary>
         [Output("directIo")]
         public Output<bool> DirectIo { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<int> DownloadLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
+        /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
         /// </summary>
         [Output("fastReclaim")]
         public Output<bool> FastReclaim { get; private set; } = null!;
@@ -202,13 +202,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> GatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+        /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `False`. **NOTE:** `IgnoreDelete` and `RemoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
         /// </summary>
         [Output("ignoreDelete")]
         public Output<bool> IgnoreDelete { get; private set; } = null!;
 
         /// <summary>
-        /// The whether debris optimization of the gateway file share. Default value: `false`.
+        /// The whether debris optimization of the gateway file share. Default value: `False`.
         /// </summary>
         [Output("inPlace")]
         public Output<bool> InPlace { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> LocalPath { get; private set; } = null!;
 
         /// <summary>
-        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
+        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `False`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `Protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
         /// </summary>
         [Output("nfsV4Optimization")]
         public Output<bool> NfsV4Optimization { get; private set; } = null!;
@@ -280,13 +280,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+        /// Whether to enable reverse synchronization of the gateway file share. Default value: `False`.
         /// </summary>
         [Output("remoteSync")]
         public Output<bool> RemoteSync { get; private set; } = null!;
 
         /// <summary>
-        /// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+        /// Copy mode, whether to download the file data. Default value: `False`. **NOTE:** only when the attribute `RemoteSync` is `True` or acceded to by the speed synchronization group, this parameter will not take effect.
         /// </summary>
         [Output("remoteSyncDownload")]
         public Output<bool> RemoteSyncDownload { get; private set; } = null!;
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string?> RwUserList { get; private set; } = null!;
 
         /// <summary>
-        /// The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+        /// The NFS protocol user mapping of the gateway file share. Valid values: `None`, `RootSquash`, `AllSquash`, `AllAnonymous`. Default value: `None`. **NOTE:** The attribute is valid when the attribute `Protocol` is `NFS`.
         /// </summary>
         [Output("squash")]
         public Output<string> Squash { get; private set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<bool> TransferAcceleration { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
+        /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `False`. **NOTE:** The attribute is valid when the attribute `Protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         [Output("windowsAcl")]
         public Output<bool> WindowsAcl { get; private set; } = null!;
@@ -386,7 +386,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayFileShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
+        /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `False`. **NOTE:** The attribute is valid when the attribute `Protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         [Input("accessBasedEnumeration")]
         public Input<bool>? AccessBasedEnumeration { get; set; }
@@ -398,7 +398,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<int>? BackendLimit { get; set; }
 
         /// <summary>
-        /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
+        /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `Protocol` is `SMB`. Default value: `True`.
         /// </summary>
         [Input("browsable")]
         public Input<bool>? Browsable { get; set; }
@@ -416,7 +416,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
+        /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `False`.
         /// </summary>
         [Input("directIo")]
         public Input<bool>? DirectIo { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<int>? DownloadLimit { get; set; }
 
         /// <summary>
-        /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
+        /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
         /// </summary>
         [Input("fastReclaim")]
         public Input<bool>? FastReclaim { get; set; }
@@ -452,13 +452,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> GatewayId { get; set; } = null!;
 
         /// <summary>
-        /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+        /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `False`. **NOTE:** `IgnoreDelete` and `RemoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
         /// </summary>
         [Input("ignoreDelete")]
         public Input<bool>? IgnoreDelete { get; set; }
 
         /// <summary>
-        /// The whether debris optimization of the gateway file share. Default value: `false`.
+        /// The whether debris optimization of the gateway file share. Default value: `False`.
         /// </summary>
         [Input("inPlace")]
         public Input<bool>? InPlace { get; set; }
@@ -476,7 +476,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> LocalPath { get; set; } = null!;
 
         /// <summary>
-        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
+        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `False`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `Protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
         /// </summary>
         [Input("nfsV4Optimization")]
         public Input<bool>? NfsV4Optimization { get; set; }
@@ -524,13 +524,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+        /// Whether to enable reverse synchronization of the gateway file share. Default value: `False`.
         /// </summary>
         [Input("remoteSync")]
         public Input<bool>? RemoteSync { get; set; }
 
         /// <summary>
-        /// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+        /// Copy mode, whether to download the file data. Default value: `False`. **NOTE:** only when the attribute `RemoteSync` is `True` or acceded to by the speed synchronization group, this parameter will not take effect.
         /// </summary>
         [Input("remoteSyncDownload")]
         public Input<bool>? RemoteSyncDownload { get; set; }
@@ -560,7 +560,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? RwUserList { get; set; }
 
         /// <summary>
-        /// The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+        /// The NFS protocol user mapping of the gateway file share. Valid values: `None`, `RootSquash`, `AllSquash`, `AllAnonymous`. Default value: `None`. **NOTE:** The attribute is valid when the attribute `Protocol` is `NFS`.
         /// </summary>
         [Input("squash")]
         public Input<string>? Squash { get; set; }
@@ -578,7 +578,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<bool>? TransferAcceleration { get; set; }
 
         /// <summary>
-        /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
+        /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `False`. **NOTE:** The attribute is valid when the attribute `Protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         [Input("windowsAcl")]
         public Input<bool>? WindowsAcl { get; set; }
@@ -592,7 +592,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayFileShareState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
+        /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `False`. **NOTE:** The attribute is valid when the attribute `Protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         [Input("accessBasedEnumeration")]
         public Input<bool>? AccessBasedEnumeration { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<int>? BackendLimit { get; set; }
 
         /// <summary>
-        /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
+        /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `Protocol` is `SMB`. Default value: `True`.
         /// </summary>
         [Input("browsable")]
         public Input<bool>? Browsable { get; set; }
@@ -622,7 +622,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
+        /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `False`.
         /// </summary>
         [Input("directIo")]
         public Input<bool>? DirectIo { get; set; }
@@ -634,7 +634,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<int>? DownloadLimit { get; set; }
 
         /// <summary>
-        /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
+        /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
         /// </summary>
         [Input("fastReclaim")]
         public Input<bool>? FastReclaim { get; set; }
@@ -658,13 +658,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? GatewayId { get; set; }
 
         /// <summary>
-        /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+        /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `False`. **NOTE:** `IgnoreDelete` and `RemoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
         /// </summary>
         [Input("ignoreDelete")]
         public Input<bool>? IgnoreDelete { get; set; }
 
         /// <summary>
-        /// The whether debris optimization of the gateway file share. Default value: `false`.
+        /// The whether debris optimization of the gateway file share. Default value: `False`.
         /// </summary>
         [Input("inPlace")]
         public Input<bool>? InPlace { get; set; }
@@ -688,7 +688,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? LocalPath { get; set; }
 
         /// <summary>
-        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
+        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `False`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `Protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
         /// </summary>
         [Input("nfsV4Optimization")]
         public Input<bool>? NfsV4Optimization { get; set; }
@@ -736,13 +736,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+        /// Whether to enable reverse synchronization of the gateway file share. Default value: `False`.
         /// </summary>
         [Input("remoteSync")]
         public Input<bool>? RemoteSync { get; set; }
 
         /// <summary>
-        /// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+        /// Copy mode, whether to download the file data. Default value: `False`. **NOTE:** only when the attribute `RemoteSync` is `True` or acceded to by the speed synchronization group, this parameter will not take effect.
         /// </summary>
         [Input("remoteSyncDownload")]
         public Input<bool>? RemoteSyncDownload { get; set; }
@@ -772,7 +772,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? RwUserList { get; set; }
 
         /// <summary>
-        /// The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+        /// The NFS protocol user mapping of the gateway file share. Valid values: `None`, `RootSquash`, `AllSquash`, `AllAnonymous`. Default value: `None`. **NOTE:** The attribute is valid when the attribute `Protocol` is `NFS`.
         /// </summary>
         [Input("squash")]
         public Input<string>? Squash { get; set; }
@@ -790,7 +790,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<bool>? TransferAcceleration { get; set; }
 
         /// <summary>
-        /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
+        /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `False`. **NOTE:** The attribute is valid when the attribute `Protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         [Input("windowsAcl")]
         public Input<bool>? WindowsAcl { get; set; }

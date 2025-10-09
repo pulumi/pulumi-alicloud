@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
+        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `False`. Valid values:
         /// </summary>
         [Output("deleteAfterImageUpload")]
         public Output<string?> DeleteAfterImageUpload { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Ens
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
+        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `False`. Valid values:
         /// </summary>
         [Input("deleteAfterImageUpload")]
         public Input<string>? DeleteAfterImageUpload { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
+        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `False`. Valid values:
         /// </summary>
         [Input("deleteAfterImageUpload")]
         public Input<string>? DeleteAfterImageUpload { get; set; }

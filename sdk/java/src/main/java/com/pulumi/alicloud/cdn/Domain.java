@@ -27,10 +27,10 @@ import javax.annotation.Nullable;
 public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="authConfig", refs={DomainAuthConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainAuthConfig> authConfig;
 
@@ -39,10 +39,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="blockIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockIps;
 
@@ -51,10 +51,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="cacheConfigs", refs={List.class,DomainCacheConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainCacheConfig>> cacheConfigs;
 
@@ -69,10 +69,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="certificateConfig", refs={DomainCertificateConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainCertificateConfig> certificateConfig;
 
@@ -87,10 +87,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="httpHeaderConfigs", refs={List.class,DomainHttpHeaderConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainHttpHeaderConfig>> httpHeaderConfigs;
 
@@ -99,10 +99,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="optimizeEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> optimizeEnable;
 
@@ -111,10 +111,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="page404Config", refs={DomainPage404Config.class}, tree="[0]")
     private Output</* @Nullable */ DomainPage404Config> page404Config;
 
@@ -123,10 +123,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="pageCompressEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pageCompressEnable;
 
@@ -135,10 +135,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="parameterFilterConfig", refs={DomainParameterFilterConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainParameterFilterConfig> parameterFilterConfig;
 
@@ -147,10 +147,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="rangeEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rangeEnable;
 
@@ -159,10 +159,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="referConfig", refs={DomainReferConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainReferConfig> referConfig;
 
@@ -213,10 +213,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.
+     * Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      * 
      */
-    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead. */
+    @Deprecated /* Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead. */
     @Export(name="videoSeekEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> videoSeekEnable;
 

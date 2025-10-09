@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerlessKubernetesDeleteOption {
     /**
-     * @return The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+     * @return The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
      * 
      */
     private @Nullable String deleteMode;
@@ -29,7 +29,7 @@ public final class ServerlessKubernetesDeleteOption {
 
     private ServerlessKubernetesDeleteOption() {}
     /**
-     * @return The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+     * @return The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
      * 
      */
     public Optional<String> deleteMode() {

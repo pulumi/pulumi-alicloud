@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Gpdb
         /// This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:gpdb/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -23,6 +25,8 @@ namespace Pulumi.AliCloud.Gpdb
         /// This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:gpdb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
@@ -31,6 +35,8 @@ namespace Pulumi.AliCloud.Gpdb
         /// This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:gpdb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
@@ -40,7 +46,7 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch Gpdb instances.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
@@ -60,7 +66,7 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch Gpdb instances.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }

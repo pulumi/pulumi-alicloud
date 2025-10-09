@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Destination data source See `destination_data_source_settings` below.
+        /// Destination data source See `DestinationDataSourceSettings` below.
         /// </summary>
         [Output("destinationDataSourceSettings")]
         public Output<ImmutableArray<Outputs.DiJobDestinationDataSourceSetting>> DestinationDataSourceSettings { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Output<string> JobName { get; private set; } = null!;
 
         /// <summary>
-        /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+        /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `JobSettings` below.
         /// </summary>
         [Output("jobSettings")]
         public Output<Outputs.DiJobJobSettings?> JobSettings { get; private set; } = null!;
@@ -242,13 +242,13 @@ namespace Pulumi.AliCloud.DataWorks
         public Output<int> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Group Properties See `resource_settings` below.
+        /// Resource Group Properties See `ResourceSettings` below.
         /// </summary>
         [Output("resourceSettings")]
         public Output<Outputs.DiJobResourceSettings> ResourceSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Source data source setting List See `source_data_source_settings` below.
+        /// Source data source setting List See `SourceDataSourceSettings` below.
         /// </summary>
         [Output("sourceDataSourceSettings")]
         public Output<ImmutableArray<Outputs.DiJobSourceDataSourceSetting>> SourceDataSourceSettings { get; private set; } = null!;
@@ -260,13 +260,13 @@ namespace Pulumi.AliCloud.DataWorks
         public Output<string> SourceDataSourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Synchronize object transformation mapping list See `table_mappings` below.
+        /// Synchronize object transformation mapping list See `TableMappings` below.
         /// </summary>
         [Output("tableMappings")]
         public Output<ImmutableArray<Outputs.DiJobTableMapping>> TableMappings { get; private set; } = null!;
 
         /// <summary>
-        /// Definition list of synchronization object conversion rules See `transformation_rules` below.
+        /// Definition list of synchronization object conversion rules See `TransformationRules` below.
         /// </summary>
         [Output("transformationRules")]
         public Output<ImmutableArray<Outputs.DiJobTransformationRule>> TransformationRules { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobDestinationDataSourceSettingArgs>? _destinationDataSourceSettings;
 
         /// <summary>
-        /// Destination data source See `destination_data_source_settings` below.
+        /// Destination data source See `DestinationDataSourceSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobDestinationDataSourceSettingArgs> DestinationDataSourceSettings
         {
@@ -348,7 +348,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Input<string> JobName { get; set; } = null!;
 
         /// <summary>
-        /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+        /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `JobSettings` below.
         /// </summary>
         [Input("jobSettings")]
         public Input<Inputs.DiJobJobSettingsArgs>? JobSettings { get; set; }
@@ -376,7 +376,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Input<int>? ProjectId { get; set; }
 
         /// <summary>
-        /// Resource Group Properties See `resource_settings` below.
+        /// Resource Group Properties See `ResourceSettings` below.
         /// </summary>
         [Input("resourceSettings", required: true)]
         public Input<Inputs.DiJobResourceSettingsArgs> ResourceSettings { get; set; } = null!;
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobSourceDataSourceSettingArgs>? _sourceDataSourceSettings;
 
         /// <summary>
-        /// Source data source setting List See `source_data_source_settings` below.
+        /// Source data source setting List See `SourceDataSourceSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobSourceDataSourceSettingArgs> SourceDataSourceSettings
         {
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobTableMappingArgs>? _tableMappings;
 
         /// <summary>
-        /// Synchronize object transformation mapping list See `table_mappings` below.
+        /// Synchronize object transformation mapping list See `TableMappings` below.
         /// </summary>
         public InputList<Inputs.DiJobTableMappingArgs> TableMappings
         {
@@ -415,7 +415,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobTransformationRuleArgs>? _transformationRules;
 
         /// <summary>
-        /// Definition list of synchronization object conversion rules See `transformation_rules` below.
+        /// Definition list of synchronization object conversion rules See `TransformationRules` below.
         /// </summary>
         public InputList<Inputs.DiJobTransformationRuleArgs> TransformationRules
         {
@@ -441,7 +441,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobDestinationDataSourceSettingGetArgs>? _destinationDataSourceSettings;
 
         /// <summary>
-        /// Destination data source See `destination_data_source_settings` below.
+        /// Destination data source See `DestinationDataSourceSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobDestinationDataSourceSettingGetArgs> DestinationDataSourceSettings
         {
@@ -468,7 +468,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Input<string>? JobName { get; set; }
 
         /// <summary>
-        /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+        /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `JobSettings` below.
         /// </summary>
         [Input("jobSettings")]
         public Input<Inputs.DiJobJobSettingsGetArgs>? JobSettings { get; set; }
@@ -496,7 +496,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Input<int>? ProjectId { get; set; }
 
         /// <summary>
-        /// Resource Group Properties See `resource_settings` below.
+        /// Resource Group Properties See `ResourceSettings` below.
         /// </summary>
         [Input("resourceSettings")]
         public Input<Inputs.DiJobResourceSettingsGetArgs>? ResourceSettings { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobSourceDataSourceSettingGetArgs>? _sourceDataSourceSettings;
 
         /// <summary>
-        /// Source data source setting List See `source_data_source_settings` below.
+        /// Source data source setting List See `SourceDataSourceSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobSourceDataSourceSettingGetArgs> SourceDataSourceSettings
         {
@@ -523,7 +523,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobTableMappingGetArgs>? _tableMappings;
 
         /// <summary>
-        /// Synchronize object transformation mapping list See `table_mappings` below.
+        /// Synchronize object transformation mapping list See `TableMappings` below.
         /// </summary>
         public InputList<Inputs.DiJobTableMappingGetArgs> TableMappings
         {
@@ -535,7 +535,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiJobTransformationRuleGetArgs>? _transformationRules;
 
         /// <summary>
-        /// Definition list of synchronization object conversion rules See `transformation_rules` below.
+        /// Definition list of synchronization object conversion rules See `TransformationRules` below.
         /// </summary>
         public InputList<Inputs.DiJobTransformationRuleGetArgs> TransformationRules
         {

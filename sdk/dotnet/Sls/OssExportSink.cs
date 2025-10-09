@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Sls
     public partial class OssExportSink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// OSSExportConfiguration See `configuration` below.
+        /// OSSExportConfiguration See `Configuration` below.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.OssExportSinkConfiguration> Configuration { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class OssExportSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OSSExportConfiguration See `configuration` below.
+        /// OSSExportConfiguration See `Configuration` below.
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.OssExportSinkConfigurationArgs> Configuration { get; set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class OssExportSinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OSSExportConfiguration See `configuration` below.
+        /// OSSExportConfiguration See `Configuration` below.
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.OssExportSinkConfigurationGetArgs>? Configuration { get; set; }

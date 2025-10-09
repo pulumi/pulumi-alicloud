@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         public readonly int? ReadTimeout;
         /// <summary>
         /// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
-        /// By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
+        /// By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `RequestHeaders` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DomainRedirectRequestHeader> RequestHeaders;
         /// <summary>

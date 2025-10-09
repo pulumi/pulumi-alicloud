@@ -16,14 +16,14 @@ public final class ManagedKubernetesDeleteOptionArgs extends com.pulumi.resource
     public static final ManagedKubernetesDeleteOptionArgs Empty = new ManagedKubernetesDeleteOptionArgs();
 
     /**
-     * The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+     * The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
      * 
      */
     @Import(name="deleteMode")
     private @Nullable Output<String> deleteMode;
 
     /**
-     * @return The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+     * @return The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
      * 
      */
     public Optional<Output<String>> deleteMode() {
@@ -79,7 +79,7 @@ public final class ManagedKubernetesDeleteOptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deleteMode The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+         * @param deleteMode The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ManagedKubernetesDeleteOptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deleteMode The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+         * @param deleteMode The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
          * 
          * @return builder
          * 

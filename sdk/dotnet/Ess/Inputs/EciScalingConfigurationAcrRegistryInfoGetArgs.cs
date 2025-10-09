@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-        /// when `acr_registry_info` is configured.
+        /// when `AcrRegistryInfo` is configured.
         /// </summary>
         public InputList<string> Domains
         {
@@ -27,13 +27,13 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The ID of Container Registry Enterprise Edition instance. It is required
-        /// when `acr_registry_info` is configured.
+        /// when `AcrRegistryInfo` is configured.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+        /// The name of Container Registry Enterprise Edition instance. It is required when `AcrRegistryInfo` is
         /// configured.
         /// </summary>
         [Input("instanceName")]
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The region ID of Container Registry Enterprise Edition instance. It is required
-        /// when `acr_registry_info` is configured.
+        /// when `AcrRegistryInfo` is configured.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

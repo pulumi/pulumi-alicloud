@@ -189,14 +189,14 @@ public class NatFirewall extends com.pulumi.resources.CustomResource {
         return this.natGatewayId;
     }
     /**
-     * The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+     * The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      * 
      */
     @Export(name="natRouteEntryLists", refs={List.class,NatFirewallNatRouteEntryList.class}, tree="[0,1]")
     private Output<List<NatFirewallNatRouteEntryList>> natRouteEntryLists;
 
     /**
-     * @return The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+     * @return The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      * 
      */
     public Output<List<NatFirewallNatRouteEntryList>> natRouteEntryLists() {

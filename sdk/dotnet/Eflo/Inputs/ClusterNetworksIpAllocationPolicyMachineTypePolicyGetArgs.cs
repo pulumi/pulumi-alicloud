@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.ClusterNetworksIpAllocationPolicyMachineTypePolicyBondGetArgs>? _bonds;
 
         /// <summary>
-        /// Bond information See `bonds` below.
+        /// Bond information See `Bonds` below.
         /// </summary>
         public InputList<Inputs.ClusterNetworksIpAllocationPolicyMachineTypePolicyBondGetArgs> Bonds
         {

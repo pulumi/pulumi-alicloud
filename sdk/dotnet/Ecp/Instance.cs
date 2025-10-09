@@ -114,13 +114,13 @@ namespace Pulumi.AliCloud.Ecp
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `EipBandwidth` cannot be modified.
         /// </summary>
         [Output("eipBandwidth")]
         public Output<int?> EipBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        /// Specifies whether to forcefully stop and release the instance. Default value: `False`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -150,15 +150,15 @@ namespace Pulumi.AliCloud.Ecp
         public Output<string?> KeyPairName { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `PaymentType` cannot be modified.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The subscription duration. Default value: `1`. Valid values:
-        /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-        /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        /// - If `PeriodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        /// - If `PeriodUnit` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Ecp
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `Resolution` can be modified.
         /// </summary>
         [Output("resolution")]
         public Output<string> Resolution { get; private set; } = null!;
@@ -268,13 +268,13 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `EipBandwidth` cannot be modified.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        /// Specifies whether to forcefully stop and release the instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -304,15 +304,15 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `PaymentType` cannot be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The subscription duration. Default value: `1`. Valid values:
-        /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-        /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        /// - If `PeriodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        /// - If `PeriodUnit` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `Resolution` can be modified.
         /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
@@ -390,13 +390,13 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `EipBandwidth` cannot be modified.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        /// Specifies whether to forcefully stop and release the instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -426,15 +426,15 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `PaymentType` cannot be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The subscription duration. Default value: `1`. Valid values:
-        /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-        /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        /// - If `PeriodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        /// - If `PeriodUnit` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `Resolution` can be modified.
         /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }

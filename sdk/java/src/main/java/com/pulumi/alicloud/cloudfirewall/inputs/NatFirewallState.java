@@ -64,14 +64,14 @@ public final class NatFirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+     * The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      * 
      */
     @Import(name="natRouteEntryLists")
     private @Nullable Output<List<NatFirewallNatRouteEntryListArgs>> natRouteEntryLists;
 
     /**
-     * @return The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+     * @return The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      * 
      */
     public Optional<Output<List<NatFirewallNatRouteEntryListArgs>>> natRouteEntryLists() {
@@ -297,7 +297,7 @@ public final class NatFirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class NatFirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class NatFirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
          * 
          * @return builder
          * 

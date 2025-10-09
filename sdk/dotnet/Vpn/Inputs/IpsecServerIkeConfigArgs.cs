@@ -13,37 +13,37 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class IpsecServerIkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+        /// The authentication algorithm that is used in Phase 1 negotiations. Default value: `Sha1`.
         /// </summary>
         [Input("ikeAuthAlg")]
         public Input<string>? IkeAuthAlg { get; set; }
 
         /// <summary>
-        /// The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+        /// The encryption algorithm that is used in Phase 1 negotiations. Default value: `Aes`.
         /// </summary>
         [Input("ikeEncAlg")]
         public Input<string>? IkeEncAlg { get; set; }
 
         /// <summary>
-        /// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+        /// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `Seconds`.
         /// </summary>
         [Input("ikeLifetime")]
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// The IKE negotiation mode. Default value: `main`.
+        /// The IKE negotiation mode. Default value: `Main`.
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
 
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+        /// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `Group2`.
         /// </summary>
         [Input("ikePfs")]
         public Input<string>? IkePfs { get; set; }
 
         /// <summary>
-        /// The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+        /// The IKE version. Valid values: `Ikev1` and `Ikev2`. Default value: `Ikev2`.
         /// </summary>
         [Input("ikeVersion")]
         public Input<string>? IkeVersion { get; set; }

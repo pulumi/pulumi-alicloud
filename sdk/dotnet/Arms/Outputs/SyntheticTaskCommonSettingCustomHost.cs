@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class SyntheticTaskCommonSettingCustomHost
     {
         /// <summary>
-        /// The host list. See `hosts` below.
+        /// The host list. See `Hosts` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SyntheticTaskCommonSettingCustomHostHost> Hosts;
         /// <summary>

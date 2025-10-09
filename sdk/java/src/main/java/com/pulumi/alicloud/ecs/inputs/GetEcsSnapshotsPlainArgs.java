@@ -243,14 +243,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+     * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     @Import(name="usage")
     private @Nullable String usage;
 
     /**
-     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     public Optional<String> usage() {
@@ -472,7 +472,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param usage A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+         * @param usage A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
          * 
          * @return builder
          * 

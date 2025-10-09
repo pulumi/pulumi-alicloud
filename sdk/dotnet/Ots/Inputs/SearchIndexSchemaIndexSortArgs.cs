@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ots.Inputs
         private InputList<Inputs.SearchIndexSchemaIndexSortSorterArgs>? _sorters;
 
         /// <summary>
-        /// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
+        /// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `Sorter` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaIndexSortSorterArgs> Sorters
         {

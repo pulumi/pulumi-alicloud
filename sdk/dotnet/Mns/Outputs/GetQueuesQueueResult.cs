@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Mns.Outputs
         /// </summary>
         public readonly int DelaySeconds;
         /// <summary>
-        /// The id of the queue, The value is set to `name`.
+        /// The id of the queue, The value is set to `Name`.
         /// </summary>
         public readonly string Id;
         /// <summary>

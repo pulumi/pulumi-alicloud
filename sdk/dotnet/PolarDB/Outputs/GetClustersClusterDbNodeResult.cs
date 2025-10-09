@@ -14,39 +14,39 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
     public sealed class GetClustersClusterDbNodeResult
     {
         /// <summary>
-        /// The create_time of the db_nodes.
+        /// The CreateTime of the db_nodes.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The db_node_class of the db_nodes.
+        /// The DbNodeClass of the db_nodes.
         /// </summary>
         public readonly string DbNodeClass;
         /// <summary>
-        /// The db_node_id of the db_nodes.
+        /// The DbNodeId of the db_nodes.
         /// </summary>
         public readonly string DbNodeId;
         /// <summary>
-        /// The db_node_role of the db_nodes.
+        /// The DbNodeRole of the db_nodes.
         /// </summary>
         public readonly string DbNodeRole;
         /// <summary>
-        /// The db_node_status of the db_nodes.
+        /// The DbNodeStatus of the db_nodes.
         /// </summary>
         public readonly string DbNodeStatus;
         /// <summary>
-        /// The max_connections of the db_nodes.
+        /// The MaxConnections of the db_nodes.
         /// </summary>
         public readonly int MaxConnections;
         /// <summary>
-        /// The max_iops of the db_nodes.
+        /// The MaxIops of the db_nodes.
         /// </summary>
         public readonly int MaxIops;
         /// <summary>
-        /// The region_id of the db_nodes.
+        /// The RegionId of the db_nodes.
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// The zone_id of the db_nodes.
+        /// The ZoneId of the db_nodes.
         /// </summary>
         public readonly string ZoneId;
 

@@ -25,7 +25,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+     * It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
      * 
      * @deprecated
      * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
@@ -36,7 +36,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> allocatePublicIp;
 
     /**
-     * @return It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+     * @return It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
      * 
      * @deprecated
      * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
@@ -67,18 +67,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in &#34;Month&#34;
-     * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in &#34;Month&#34;
+     * - [1, 2, 3] when `periodUnit` in &#34;Week&#34;
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in &#34;Month&#34;
-     * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
+     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in &#34;Month&#34;
+     * - [1, 2, 3] when `periodUnit` in &#34;Week&#34;
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -86,14 +86,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      * 
      */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * @return The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      * 
      */
     public Optional<Output<String>> availabilityZone() {
@@ -146,14 +146,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of data disks created with instance. See `data_disks` below.
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<InstanceDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `data_disks` below.
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Optional<Output<List<InstanceDataDiskArgs>>> dataDisks() {
@@ -161,14 +161,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     @Import(name="dedicatedHostId")
     private @Nullable Output<String> dedicatedHostId;
 
     /**
-     * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     public Optional<Output<String>> dedicatedHostId() {
@@ -383,14 +383,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -398,18 +398,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The options of images. See `image_options` below.
+     * The options of images. See `imageOptions` below.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
      * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
      * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -419,18 +419,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceImageOptionsArgs> imageOptions;
 
     /**
-     * @return The options of images. See `image_options` below.
+     * @return The options of images. See `imageOptions` below.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
      * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
      * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -459,7 +459,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
+     * there strongly recommends that `Don&#39;t change instanceChargeType frequentlly in one month`.
      * 
      */
     @Import(name="instanceChargeType")
@@ -469,7 +469,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
+     * there strongly recommends that `Don&#39;t change instanceChargeType frequentlly in one month`.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -477,14 +477,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * @return The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -492,14 +492,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+     * @return The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -560,14 +560,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      * 
      */
     @Import(name="ipv6AddressCount")
     private @Nullable Output<Integer> ipv6AddressCount;
 
     /**
-     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      * 
      */
     public Optional<Output<Integer>> ipv6AddressCount() {
@@ -575,14 +575,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      * 
      */
     @Import(name="ipv6Addresses")
     private @Nullable Output<List<String>> ipv6Addresses;
 
     /**
-     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      * 
      */
     public Optional<Output<List<String>>> ipv6Addresses() {
@@ -635,14 +635,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
@@ -650,14 +650,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     @Import(name="launchTemplateId")
     private @Nullable Output<String> launchTemplateId;
 
     /**
-     * @return The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * @return The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     public Optional<Output<String>> launchTemplateId() {
@@ -680,14 +680,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+     * The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
      * 
      */
     @Import(name="launchTemplateVersion")
     private @Nullable Output<String> launchTemplateVersion;
 
     /**
-     * @return The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+     * @return The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
      * 
      */
     public Optional<Output<String>> launchTemplateVersion() {
@@ -731,14 +731,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time of maintenance. See `maintenance_time` below.
+     * The time of maintenance. See `maintenanceTime` below.
      * 
      */
     @Import(name="maintenanceTime")
     private @Nullable Output<InstanceMaintenanceTimeArgs> maintenanceTime;
 
     /**
-     * @return The time of maintenance. See `maintenance_time` below.
+     * @return The time of maintenance. See `maintenanceTime` below.
      * 
      */
     public Optional<Output<InstanceMaintenanceTimeArgs>> maintenanceTime() {
@@ -810,14 +810,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of network interfaces created with instance. See `network_interfaces` below.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<InstanceNetworkInterfacesArgs> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance. See `network_interfaces` below.
+     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     public Optional<Output<InstanceNetworkInterfacesArgs>> networkInterfaces() {
@@ -825,14 +825,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+     * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      * 
      */
     @Import(name="operatorType")
     private @Nullable Output<String> operatorType;
 
     /**
-     * @return The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+     * @return The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      * 
      */
     public Optional<Output<String>> operatorType() {
@@ -900,9 +900,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
-     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in &#34;Month&#34;
+     * - [1-3] when `periodUnit` in &#34;Week&#34;
      * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
@@ -911,9 +911,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
-     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * @return The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in &#34;Month&#34;
+     * - [1-3] when `periodUnit` in &#34;Week&#34;
      * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
@@ -923,14 +923,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
+     * @return The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -953,14 +953,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     @Import(name="privateIp")
     private @Nullable Output<String> privateIp;
 
     /**
-     * @return Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+     * @return Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Optional<Output<String>> privateIp() {
@@ -985,7 +985,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of the private pool. Default value: `None`. Valid values:
      * - `Open`: Open private pool.
-     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
      * - `None`: No private pool. The capacity in private pools is not used.
      * 
      */
@@ -995,7 +995,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of the private pool. Default value: `None`. Valid values:
      * - `Open`: Open private pool.
-     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
      * - `None`: No private pool. The capacity in private pools is not used.
      * 
      */
@@ -1034,7 +1034,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+     * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1044,7 +1044,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+     * @return Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1070,14 +1070,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
      * 
      */
     @Import(name="roleName")
     private @Nullable Output<String> roleName;
 
     /**
-     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
      * 
      */
     public Optional<Output<String>> roleName() {
@@ -1085,14 +1085,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
      * 
      */
     @Import(name="secondaryPrivateIpAddressCount")
     private @Nullable Output<Integer> secondaryPrivateIpAddressCount;
 
     /**
-     * @return The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+     * @return The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
      * 
      */
     public Optional<Output<Integer>> secondaryPrivateIpAddressCount() {
@@ -1134,14 +1134,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+     * @return A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -1179,7 +1179,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -1191,7 +1191,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> spotStrategy;
 
     /**
-     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
+     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -1283,14 +1283,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+     * @return Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -1652,7 +1652,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
          * 
          * @return builder
          * 
@@ -1667,7 +1667,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
          * 
          * @return builder
          * 
@@ -1706,9 +1706,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-         * - [1, 2, 3, 6, 12] when `period_unit` in &#34;Month&#34;
-         * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
+         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+         * - [1, 2, 3, 6, 12] when `periodUnit` in &#34;Month&#34;
+         * - [1, 2, 3] when `periodUnit` in &#34;Week&#34;
          * 
          * @return builder
          * 
@@ -1719,9 +1719,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-         * - [1, 2, 3, 6, 12] when `period_unit` in &#34;Month&#34;
-         * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
+         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+         * - [1, 2, 3, 6, 12] when `periodUnit` in &#34;Month&#34;
+         * - [1, 2, 3] when `periodUnit` in &#34;Week&#34;
          * 
          * @return builder
          * 
@@ -1731,7 +1731,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+         * @param availabilityZone The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
          * 
          * @return builder
          * 
@@ -1742,7 +1742,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+         * @param availabilityZone The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
          * 
          * @return builder
          * 
@@ -1815,7 +1815,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1826,7 +1826,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1836,7 +1836,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1846,7 +1846,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
          * 
          * @return builder
          * 
@@ -1857,7 +1857,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
          * 
          * @return builder
          * 
@@ -2152,7 +2152,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
          * 
          * @return builder
          * 
@@ -2163,7 +2163,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
          * 
          * @return builder
          * 
@@ -2173,18 +2173,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageOptions The options of images. See `image_options` below.
+         * @param imageOptions The options of images. See `imageOptions` below.
          * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
          * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
          * 
          * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
          * 
          * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
          * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
          * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
          * 
          * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -2198,18 +2198,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageOptions The options of images. See `image_options` below.
+         * @param imageOptions The options of images. See `imageOptions` below.
          * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
          * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
          * 
          * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
          * 
          * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
          * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
          * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
          * 
          * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -2246,7 +2246,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
          * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
          * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-         * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
+         * there strongly recommends that `Don&#39;t change instanceChargeType frequentlly in one month`.
          * 
          * @return builder
          * 
@@ -2260,7 +2260,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
          * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
          * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-         * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
+         * there strongly recommends that `Don&#39;t change instanceChargeType frequentlly in one month`.
          * 
          * @return builder
          * 
@@ -2270,7 +2270,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+         * @param instanceName The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
          * 
          * @return builder
          * 
@@ -2281,7 +2281,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+         * @param instanceName The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
          * 
          * @return builder
          * 
@@ -2291,7 +2291,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
          * 
          * @return builder
          * 
@@ -2302,7 +2302,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
          * 
          * @return builder
          * 
@@ -2383,7 +2383,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
          * 
          * @return builder
          * 
@@ -2394,7 +2394,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
          * 
          * @return builder
          * 
@@ -2404,7 +2404,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
          * 
          * @return builder
          * 
@@ -2415,7 +2415,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
          * 
          * @return builder
          * 
@@ -2425,7 +2425,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
          * 
          * @return builder
          * 
@@ -2498,7 +2498,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2509,7 +2509,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2519,7 +2519,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateId The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+         * @param launchTemplateId The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
          * 
          * @return builder
          * 
@@ -2530,7 +2530,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateId The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+         * @param launchTemplateId The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
          * 
          * @return builder
          * 
@@ -2561,7 +2561,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateVersion The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+         * @param launchTemplateVersion The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
          * 
          * @return builder
          * 
@@ -2572,7 +2572,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateVersion The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+         * @param launchTemplateVersion The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
          * 
          * @return builder
          * 
@@ -2630,7 +2630,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceTime The time of maintenance. See `maintenance_time` below.
+         * @param maintenanceTime The time of maintenance. See `maintenanceTime` below.
          * 
          * @return builder
          * 
@@ -2641,7 +2641,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceTime The time of maintenance. See `maintenance_time` below.
+         * @param maintenanceTime The time of maintenance. See `maintenanceTime` below.
          * 
          * @return builder
          * 
@@ -2739,7 +2739,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
+         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -2750,7 +2750,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
+         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -2760,7 +2760,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatorType The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+         * @param operatorType The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
          * 
          * @return builder
          * 
@@ -2771,7 +2771,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatorType The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+         * @param operatorType The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
          * 
          * @return builder
          * 
@@ -2865,9 +2865,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-         * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
-         * - [1-3] when `period_unit` in &#34;Week&#34;
+         * @param period The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
+         * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in &#34;Month&#34;
+         * - [1-3] when `periodUnit` in &#34;Week&#34;
          * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
@@ -2880,9 +2880,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-         * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
-         * - [1-3] when `period_unit` in &#34;Week&#34;
+         * @param period The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
+         * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in &#34;Month&#34;
+         * - [1-3] when `periodUnit` in &#34;Week&#34;
          * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
@@ -2894,7 +2894,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
+         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
          * 
          * @return builder
          * 
@@ -2905,7 +2905,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
+         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
          * 
          * @return builder
          * 
@@ -2936,7 +2936,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIp Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+         * @param privateIp Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2947,7 +2947,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIp Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+         * @param privateIp Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2980,7 +2980,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param privatePoolOptionsMatchCriteria The type of the private pool. Default value: `None`. Valid values:
          * - `Open`: Open private pool.
-         * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+         * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
          * - `None`: No private pool. The capacity in private pools is not used.
          * 
          * @return builder
@@ -2994,7 +2994,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param privatePoolOptionsMatchCriteria The type of the private pool. Default value: `None`. Valid values:
          * - `Open`: Open private pool.
-         * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+         * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
          * - `None`: No private pool. The capacity in private pools is not used.
          * 
          * @return builder
@@ -3047,7 +3047,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+         * @param renewalStatus Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
          * - `AutoRenewal`: Enable auto renewal.
          * - `Normal`: Disable auto renewal.
          * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -3061,7 +3061,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+         * @param renewalStatus Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
          * - `AutoRenewal`: Enable auto renewal.
          * - `Normal`: Disable auto renewal.
          * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -3095,7 +3095,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
          * 
          * @return builder
          * 
@@ -3106,7 +3106,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+         * @param roleName The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
          * 
          * @return builder
          * 
@@ -3116,7 +3116,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryPrivateIpAddressCount The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+         * @param secondaryPrivateIpAddressCount The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
          * 
          * @return builder
          * 
@@ -3127,7 +3127,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryPrivateIpAddressCount The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+         * @param secondaryPrivateIpAddressCount The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
          * 
          * @return builder
          * 
@@ -3193,7 +3193,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+         * @param securityGroups A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
          * 
          * @return builder
          * 
@@ -3204,7 +3204,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+         * @param securityGroups A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
          * 
          * @return builder
          * 
@@ -3214,7 +3214,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+         * @param securityGroups A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
          * 
          * @return builder
          * 
@@ -3266,7 +3266,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
+         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;. Value range:
          * - NoSpot: A regular Pay-As-You-Go instance.
          * - SpotWithPriceLimit: A price threshold for a spot instance
          * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -3282,7 +3282,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
+         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;. Value range:
          * - NoSpot: A regular Pay-As-You-Go instance.
          * - SpotWithPriceLimit: A price threshold for a spot instance
          * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -3406,7 +3406,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+         * @param systemDiskCategory Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
          * 
          * @return builder
          * 
@@ -3417,7 +3417,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+         * @param systemDiskCategory Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
          * 
          * @return builder
          * 

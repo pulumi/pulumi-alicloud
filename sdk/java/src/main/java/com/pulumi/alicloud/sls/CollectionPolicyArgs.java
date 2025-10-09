@@ -22,14 +22,14 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
     public static final CollectionPolicyArgs Empty = new CollectionPolicyArgs();
 
     /**
-     * Centralized transfer configuration. See `centralize_config` below.
+     * Centralized transfer configuration. See `centralizeConfig` below.
      * 
      */
     @Import(name="centralizeConfig")
     private @Nullable Output<CollectionPolicyCentralizeConfigArgs> centralizeConfig;
 
     /**
-     * @return Centralized transfer configuration. See `centralize_config` below.
+     * @return Centralized transfer configuration. See `centralizeConfig` below.
      * 
      */
     public Optional<Output<CollectionPolicyCentralizeConfigArgs>> centralizeConfig() {
@@ -67,14 +67,14 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
      * 
      */
     @Import(name="dataConfig")
     private @Nullable Output<CollectionPolicyDataConfigArgs> dataConfig;
 
     /**
-     * @return The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+     * @return The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
      * 
      */
     public Optional<Output<CollectionPolicyDataConfigArgs>> dataConfig() {
@@ -97,14 +97,14 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Collection rule configuration. See `policy_config` below.
+     * Collection rule configuration. See `policyConfig` below.
      * 
      */
     @Import(name="policyConfig", required=true)
     private Output<CollectionPolicyPolicyConfigArgs> policyConfig;
 
     /**
-     * @return Collection rule configuration. See `policy_config` below.
+     * @return Collection rule configuration. See `policyConfig` below.
      * 
      */
     public Output<CollectionPolicyPolicyConfigArgs> policyConfig() {
@@ -142,14 +142,14 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     @Import(name="resourceDirectory")
     private @Nullable Output<CollectionPolicyResourceDirectoryArgs> resourceDirectory;
 
     /**
-     * @return For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+     * @return For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     public Optional<Output<CollectionPolicyResourceDirectoryArgs>> resourceDirectory() {
@@ -189,7 +189,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param centralizeConfig Centralized transfer configuration. See `centralize_config` below.
+         * @param centralizeConfig Centralized transfer configuration. See `centralizeConfig` below.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param centralizeConfig Centralized transfer configuration. See `centralize_config` below.
+         * @param centralizeConfig Centralized transfer configuration. See `centralizeConfig` below.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataConfig The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+         * @param dataConfig The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataConfig The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+         * @param dataConfig The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param policyConfig Collection rule configuration. See `policy_config` below.
+         * @param policyConfig Collection rule configuration. See `policyConfig` below.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param policyConfig Collection rule configuration. See `policy_config` below.
+         * @param policyConfig Collection rule configuration. See `policyConfig` below.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceDirectory For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+         * @param resourceDirectory For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class CollectionPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceDirectory For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+         * @param resourceDirectory For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
          * 
          * @return builder
          * 

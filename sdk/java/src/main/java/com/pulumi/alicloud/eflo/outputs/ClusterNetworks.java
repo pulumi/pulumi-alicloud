@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNetworks {
     /**
-     * @return IP allocation policy See `ip_allocation_policy` below.
+     * @return IP allocation policy See `ipAllocationPolicy` below.
      * 
      */
     private @Nullable List<ClusterNetworksIpAllocationPolicy> ipAllocationPolicies;
     /**
-     * @return Vpd configuration information See `new_vpd_info` below.
+     * @return Vpd configuration information See `newVpdInfo` below.
      * 
      */
     private @Nullable ClusterNetworksNewVpdInfo newVpdInfo;
@@ -41,7 +41,7 @@ public final class ClusterNetworks {
      */
     private @Nullable String vpcId;
     /**
-     * @return Multiplexing VPD information See `vpd_info` below.
+     * @return Multiplexing VPD information See `vpdInfo` below.
      * 
      */
     private @Nullable ClusterNetworksVpdInfo vpdInfo;
@@ -58,14 +58,14 @@ public final class ClusterNetworks {
 
     private ClusterNetworks() {}
     /**
-     * @return IP allocation policy See `ip_allocation_policy` below.
+     * @return IP allocation policy See `ipAllocationPolicy` below.
      * 
      */
     public List<ClusterNetworksIpAllocationPolicy> ipAllocationPolicies() {
         return this.ipAllocationPolicies == null ? List.of() : this.ipAllocationPolicies;
     }
     /**
-     * @return Vpd configuration information See `new_vpd_info` below.
+     * @return Vpd configuration information See `newVpdInfo` below.
      * 
      */
     public Optional<ClusterNetworksNewVpdInfo> newVpdInfo() {
@@ -93,7 +93,7 @@ public final class ClusterNetworks {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return Multiplexing VPD information See `vpd_info` below.
+     * @return Multiplexing VPD information See `vpdInfo` below.
      * 
      */
     public Optional<ClusterNetworksVpdInfo> vpdInfo() {

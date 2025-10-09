@@ -28,7 +28,7 @@ public final class GetKubernetesNodePoolsNodepoolDataDisk {
      */
     private Boolean burstingEnabled;
     /**
-     * @return The type of data disk. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: Enterprise SSD (ESSD).- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.- `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.- `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
+     * @return The type of data disk. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: Enterprise SSD (ESSD).- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.- `elasticEphemeralDiskPremium`: premium elastic ephemeral disk.- `elasticEphemeralDiskStandard`: standard elastic ephemeral disk.
      * 
      */
     private String category;
@@ -43,7 +43,7 @@ public final class GetKubernetesNodePoolsNodepoolDataDisk {
      */
     private String encrypted;
     /**
-     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * @return The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
      * 
      */
     private String fileSystem;
@@ -53,17 +53,17 @@ public final class GetKubernetesNodePoolsNodepoolDataDisk {
      */
     private String kmsKeyId;
     /**
-     * @return The Mount path. Works when auto_format is true.
+     * @return The Mount path. Works when autoFormat is true.
      * 
      */
     private String mountTarget;
     /**
-     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
      * 
      */
     private String name;
     /**
-     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     private String performanceLevel;
@@ -106,7 +106,7 @@ public final class GetKubernetesNodePoolsNodepoolDataDisk {
         return this.burstingEnabled;
     }
     /**
-     * @return The type of data disk. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: Enterprise SSD (ESSD).- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.- `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.- `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
+     * @return The type of data disk. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: Enterprise SSD (ESSD).- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.- `elasticEphemeralDiskPremium`: premium elastic ephemeral disk.- `elasticEphemeralDiskStandard`: standard elastic ephemeral disk.
      * 
      */
     public String category() {
@@ -127,7 +127,7 @@ public final class GetKubernetesNodePoolsNodepoolDataDisk {
         return this.encrypted;
     }
     /**
-     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * @return The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
      * 
      */
     public String fileSystem() {
@@ -141,21 +141,21 @@ public final class GetKubernetesNodePoolsNodepoolDataDisk {
         return this.kmsKeyId;
     }
     /**
-     * @return The Mount path. Works when auto_format is true.
+     * @return The Mount path. Works when autoFormat is true.
      * 
      */
     public String mountTarget() {
         return this.mountTarget;
     }
     /**
-     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public String performanceLevel() {

@@ -19,14 +19,14 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
     public static final DataCenterState Empty = new DataCenterState();
 
     /**
-     * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+     * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+     * @return Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -34,14 +34,14 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+     * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+     * @return Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -105,14 +105,14 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+     * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+     * @return The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -200,18 +200,18 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      * 
-     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     * @return The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      * 
-     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -219,14 +219,14 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * @return The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -274,7 +274,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+         * @param autoRenew Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+         * @param autoRenew Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+         * @param autoRenewPeriod Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+         * @param autoRenewPeriod Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskType The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+         * @param diskType The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskType The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+         * @param diskType The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
          * 
          * @return builder
          * 
@@ -525,9 +525,9 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+         * @param vswitchId The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
          * 
-         * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -538,9 +538,9 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+         * @param vswitchId The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
          * 
-         * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+         * @param zoneId The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class DataCenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+         * @param zoneId The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
          * 
          * @return builder
          * 

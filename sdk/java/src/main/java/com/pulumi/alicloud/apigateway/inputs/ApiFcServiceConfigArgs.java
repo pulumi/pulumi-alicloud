@@ -34,14 +34,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+     * The base url of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     @Import(name="functionBaseUrl")
     private @Nullable Output<String> functionBaseUrl;
 
     /**
-     * @return The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The base url of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<Output<String>> functionBaseUrl() {
@@ -49,14 +49,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * The function name of function compute service. Required if `functionType` is `FCEvent`.
      * 
      */
     @Import(name="functionName")
     private @Nullable Output<String> functionName;
 
     /**
-     * @return The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * @return The function name of function compute service. Required if `functionType` is `FCEvent`.
      * 
      */
     public Optional<Output<String>> functionName() {
@@ -94,14 +94,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * The http method of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The http method of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<Output<String>> method() {
@@ -109,14 +109,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
      * 
      */
     @Import(name="onlyBusinessPath")
     private @Nullable Output<Boolean> onlyBusinessPath;
 
     /**
-     * @return Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * @return Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<Output<Boolean>> onlyBusinessPath() {
@@ -124,14 +124,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * The path of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The path of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<Output<String>> path() {
@@ -169,14 +169,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+     * The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+     * @return The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -255,7 +255,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param functionBaseUrl The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+         * @param functionBaseUrl The base url of function compute service. Required if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param functionBaseUrl The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+         * @param functionBaseUrl The base url of function compute service. Required if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param functionName The function name of function compute service. Required if `function_type` is `FCEvent`.
+         * @param functionName The function name of function compute service. Required if `functionType` is `FCEvent`.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param functionName The function name of function compute service. Required if `function_type` is `FCEvent`.
+         * @param functionName The function name of function compute service. Required if `functionType` is `FCEvent`.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param method The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+         * @param method The http method of function compute service. Required if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param method The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+         * @param method The http method of function compute service. Required if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param onlyBusinessPath Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+         * @param onlyBusinessPath Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param onlyBusinessPath Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+         * @param onlyBusinessPath Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path The path of function compute service. Required if `function_type` is `HttpTrigger`.
+         * @param path The path of function compute service. Required if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path The path of function compute service. Required if `function_type` is `HttpTrigger`.
+         * @param path The path of function compute service. Required if `functionType` is `HttpTrigger`.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+         * @param serviceName The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+         * @param serviceName The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
          * 
          * @return builder
          * 

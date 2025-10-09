@@ -31,7 +31,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRule {
      */
     private Integer adjustmentValue;
     /**
-     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
      * 
      */
     private @Nullable ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger metricsTrigger;
@@ -46,7 +46,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRule {
      */
     private String ruleName;
     /**
-     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
      * 
      */
     private @Nullable ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger timeTrigger;
@@ -79,7 +79,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRule {
         return this.adjustmentValue;
     }
     /**
-     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
      * 
      */
     public Optional<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger> metricsTrigger() {
@@ -100,7 +100,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRule {
         return this.ruleName;
     }
     /**
-     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
      * 
      */
     public Optional<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger> timeTrigger() {

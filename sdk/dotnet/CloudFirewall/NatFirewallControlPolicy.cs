@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The destination address segment in the access control policy. Valid values:
         /// - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
-        /// - When DestinationType IS group, Destination is the name of the Destination address book. For example: db_group
+        /// - When DestinationType IS group, Destination is the name of the Destination address book. For example: DbGroup
         /// - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
         /// - When DestinationType is location, Destination is the Destination region. For example: \["BJ11", "ZB"\].
         /// </summary>
@@ -504,7 +504,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The destination address segment in the access control policy. Valid values:
         /// - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
-        /// - When DestinationType IS group, Destination is the name of the Destination address book. For example: db_group
+        /// - When DestinationType IS group, Destination is the name of the Destination address book. For example: DbGroup
         /// - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
         /// - When DestinationType is location, Destination is the Destination region. For example: \["BJ11", "ZB"\].
         /// </summary>
@@ -720,7 +720,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The destination address segment in the access control policy. Valid values:
         /// - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
-        /// - When DestinationType IS group, Destination is the name of the Destination address book. For example: db_group
+        /// - When DestinationType IS group, Destination is the name of the Destination address book. For example: DbGroup
         /// - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
         /// - When DestinationType is location, Destination is the Destination region. For example: \["BJ11", "ZB"\].
         /// </summary>

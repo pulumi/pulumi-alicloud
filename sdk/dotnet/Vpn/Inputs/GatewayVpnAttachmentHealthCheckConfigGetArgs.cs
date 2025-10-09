@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? Dip { get; set; }
 
         /// <summary>
-        /// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
+        /// Whether health check is enabled:-`False`: not enabled. - `True`: enabled.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

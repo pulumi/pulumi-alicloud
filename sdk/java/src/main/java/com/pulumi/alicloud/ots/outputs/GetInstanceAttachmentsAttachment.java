@@ -21,7 +21,7 @@ public final class GetInstanceAttachmentsAttachment {
      */
     private String endpoint;
     /**
-     * @return The resource ID, the value is same as &#34;instance_name&#34;.
+     * @return The resource ID, the value is same as &#34;instanceName&#34;.
      * 
      */
     private String id;
@@ -62,7 +62,7 @@ public final class GetInstanceAttachmentsAttachment {
         return this.endpoint;
     }
     /**
-     * @return The resource ID, the value is same as &#34;instance_name&#34;.
+     * @return The resource ID, the value is same as &#34;instanceName&#34;.
      * 
      */
     public String id() {

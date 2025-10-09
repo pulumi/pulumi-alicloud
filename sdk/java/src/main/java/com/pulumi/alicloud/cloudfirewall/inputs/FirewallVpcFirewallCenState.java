@@ -62,14 +62,14 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The details of the VPC. See `local_vpc` below.
+     * The details of the VPC. See `localVpc` below.
      * 
      */
     @Import(name="localVpc")
     private @Nullable Output<FirewallVpcFirewallCenLocalVpcArgs> localVpc;
 
     /**
-     * @return The details of the VPC. See `local_vpc` below.
+     * @return The details of the VPC. See `localVpc` below.
      * 
      */
     public Optional<Output<FirewallVpcFirewallCenLocalVpcArgs>> localVpc() {
@@ -247,7 +247,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param localVpc The details of the VPC. See `local_vpc` below.
+         * @param localVpc The details of the VPC. See `localVpc` below.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param localVpc The details of the VPC. See `local_vpc` below.
+         * @param localVpc The details of the VPC. See `localVpc` below.
          * 
          * @return builder
          * 

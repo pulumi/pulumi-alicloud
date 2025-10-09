@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetKubernetesNodePoolsNodepoolResult
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:- `True`: Automatic renewal. - `False`: Do not renew automatically.
         /// </summary>
         public readonly bool AutoRenew;
         /// <summary>
@@ -22,15 +22,15 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly int AutoRenewPeriod;
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+        /// Whether enable worker node to support cis security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. Use `SecurityHardeningOs` instead.
         /// </summary>
         public readonly bool CisEnabled;
         /// <summary>
-        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `MultiAzPolicy` to `COST_OPTIMIZED`. Valid values: `True`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `False`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         /// </summary>
         public readonly bool CompensateWithOnDemand;
         /// <summary>
-        /// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+        /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `Static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `None`: Enables the existing default CPU affinity scheme.
         /// </summary>
         public readonly string CpuPolicy;
         /// <summary>
@@ -50,15 +50,15 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+        /// The operating system image type and the `Platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
         /// </summary>
         public readonly string ImageType;
         /// <summary>
-        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `False`. Valid values:- `True` : install cloud monitoring on the ECS node.- `False` : does not install cloud monitoring on the ECS node.
         /// </summary>
         public readonly bool InstallCloudMonitor;
         /// <summary>
-        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `Period`, `PeriodUnit`, `AutoRenew` and `AutoRenewPeriod` are required.
         /// </summary>
         public readonly string InstanceChargeType;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InstanceTypes;
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `EipInternetChargeType`, EIP and public network IP can only choose one.
         /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
@@ -74,11 +74,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly int InternetMaxBandwidthOut;
         /// <summary>
-        /// The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+        /// The name of the key pair. When the node pool is a managed node pool, only `KeyName` is supported.
         /// </summary>
         public readonly string KeyName;
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        /// Kubelet configuration parameters for worker nodes. See `KubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
         /// </summary>
         public readonly Outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationResult KubeletConfiguration;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesNodePoolsNodepoolLabelResult> Labels;
         /// <summary>
-        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `True` and `False`.
         /// </summary>
         public readonly bool LoginAsNonRoot;
         /// <summary>
@@ -114,11 +114,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string OnDemandBaseCapacity;
         /// <summary>
-        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `OnDemandBaseCapacity`. Valid values: 0 to 100.
         /// </summary>
         public readonly string OnDemandPercentageAboveBaseCapacity;
         /// <summary>
-        /// The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+        /// The password of ssh login. You have to specify one of `Password` and `KeyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string PeriodUnit;
         /// <summary>
-        /// Operating system release, using `image_type` instead.
+        /// Operating system release, using `ImageType` instead.
         /// </summary>
         public readonly string Platform;
         /// <summary>
@@ -170,23 +170,23 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string ScalingGroupId;
         /// <summary>
-        /// Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+        /// Scaling group mode, default value: `Release`. Valid values:- `Release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `Recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
         /// </summary>
         public readonly string ScalingPolicy;
         /// <summary>
-        /// The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+        /// The security group ID of the node pool. This field has been replaced by `SecurityGroupIds`, please use the `SecurityGroupIds` field instead.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// Multiple security groups can be configured for a node pool. If both `SecurityGroupIds` and `SecurityGroupId` are configured, `SecurityGroupIds` takes effect. This field cannot be modified.
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+        /// Alibaba Cloud OS security reinforcement. Default value: `False`. Value:-`True`: enable Alibaba Cloud OS security reinforcement.-`False`: does not enable Alibaba Cloud OS security reinforcement.
         /// </summary>
         public readonly bool SecurityHardeningOs;
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).&gt; It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+        /// Whether enable worker node to support soc security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).&gt; It is forbidden to set both `SecurityHardeningOs` and `SocEnabled` to `True` at the same time.
         /// </summary>
         public readonly bool SocEnabled;
         /// <summary>
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly int SpotInstancePools;
         /// <summary>
-        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `True`: enables the supplementation of preemptible instances. `False`: disables the supplementation of preemptible instances.
         /// </summary>
         public readonly bool SpotInstanceRemedy;
         /// <summary>
@@ -206,15 +206,15 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string SpotStrategy;
         /// <summary>
-        /// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// Specifies whether to enable the burst feature for system disks. Valid values:`True`: enables the burst feature. `False`: disables the burst feature. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         public readonly bool SystemDiskBurstingEnabled;
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `SystemDiskCategory`.
         /// </summary>
         public readonly ImmutableArray<string> SystemDiskCategories;
         /// <summary>
-        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: ESSD.- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.
+        /// The category of the system disk for nodes. Default value: `CloudEfficiency`. Valid values:- `Cloud`: basic disk.- `CloudEfficiency`: ultra disk.- `CloudSsd`: standard SSD.- `CloudEssd`: ESSD.- `CloudAuto`: ESSD AutoPL disk.- `CloudEssdEntry`: ESSD Entry disk.
         /// </summary>
         public readonly string SystemDiskCategory;
         /// <summary>
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string SystemDiskEncryptAlgorithm;
         /// <summary>
-        /// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+        /// Whether to encrypt the system disk. Value range: `True`: encryption. `False`: Do not encrypt.
         /// </summary>
         public readonly bool SystemDiskEncrypted;
         /// <summary>
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string SystemDiskPerformanceLevel;
         /// <summary>
-        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         public readonly int SystemDiskProvisionedIops;
         /// <summary>

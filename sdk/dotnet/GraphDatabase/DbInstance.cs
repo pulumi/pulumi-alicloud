@@ -75,19 +75,19 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Output<string?> DbInstanceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+        /// IP ADDRESS whitelist for the instance group list. See `DbInstanceIpArray` below.
         /// </summary>
         [Output("dbInstanceIpArrays")]
         public Output<ImmutableArray<Outputs.DbInstanceDbInstanceIpArray>> DbInstanceIpArrays { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the db instance. Valid values: `vpc`.
+        /// The network type of the db instance. Valid values: `Vpc`.
         /// </summary>
         [Output("dbInstanceNetworkType")]
         public Output<string> DbInstanceNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+        /// Disk storage type. Valid values: `CloudEssd`, `CloudSsd`. Modification is not supported.
         /// </summary>
         [Output("dbInstanceStorageType")]
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         private InputList<Inputs.DbInstanceDbInstanceIpArrayArgs>? _dbInstanceIpArrays;
 
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+        /// IP ADDRESS whitelist for the instance group list. See `DbInstanceIpArray` below.
         /// </summary>
         public InputList<Inputs.DbInstanceDbInstanceIpArrayArgs> DbInstanceIpArrays
         {
@@ -217,13 +217,13 @@ namespace Pulumi.AliCloud.GraphDatabase
         }
 
         /// <summary>
-        /// The network type of the db instance. Valid values: `vpc`.
+        /// The network type of the db instance. Valid values: `Vpc`.
         /// </summary>
         [Input("dbInstanceNetworkType", required: true)]
         public Input<string> DbInstanceNetworkType { get; set; } = null!;
 
         /// <summary>
-        /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+        /// Disk storage type. Valid values: `CloudEssd`, `CloudSsd`. Modification is not supported.
         /// </summary>
         [Input("dbInstanceStorageType", required: true)]
         public Input<string> DbInstanceStorageType { get; set; } = null!;
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         private InputList<Inputs.DbInstanceDbInstanceIpArrayGetArgs>? _dbInstanceIpArrays;
 
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+        /// IP ADDRESS whitelist for the instance group list. See `DbInstanceIpArray` below.
         /// </summary>
         public InputList<Inputs.DbInstanceDbInstanceIpArrayGetArgs> DbInstanceIpArrays
         {
@@ -309,13 +309,13 @@ namespace Pulumi.AliCloud.GraphDatabase
         }
 
         /// <summary>
-        /// The network type of the db instance. Valid values: `vpc`.
+        /// The network type of the db instance. Valid values: `Vpc`.
         /// </summary>
         [Input("dbInstanceNetworkType")]
         public Input<string>? DbInstanceNetworkType { get; set; }
 
         /// <summary>
-        /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+        /// Disk storage type. Valid values: `CloudEssd`, `CloudSsd`. Modification is not supported.
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }

@@ -51,7 +51,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -62,7 +62,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -74,14 +74,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -284,14 +284,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The reasons why the disk was locked. See `operation_locks` below for details.
+     * The reasons why the disk was locked. See `operationLocks` below for details.
      * 
      */
     @Import(name="operationLocks")
     private @Nullable Output<List<GetEcsDisksOperationLockArgs>> operationLocks;
 
     /**
-     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * @return The reasons why the disk was locked. See `operationLocks` below for details.
      * 
      */
     public Optional<Output<List<GetEcsDisksOperationLockArgs>>> operationLocks() {
@@ -418,7 +418,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+     * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
@@ -429,7 +429,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+     * @return Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
@@ -560,7 +560,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+         * @param category Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * @param operationLocks The reasons why the disk was locked. See `operationLocks` below for details.
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * @param operationLocks The reasons why the disk was locked. See `operationLocks` below for details.
          * 
          * @return builder
          * 
@@ -914,7 +914,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * @param operationLocks The reasons why the disk was locked. See `operationLocks` below for details.
          * 
          * @return builder
          * 
@@ -1089,7 +1089,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+         * @param type Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
          * 
          * @return builder
          * 
@@ -1104,7 +1104,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+         * @param type Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
          * 
          * @return builder
          * 

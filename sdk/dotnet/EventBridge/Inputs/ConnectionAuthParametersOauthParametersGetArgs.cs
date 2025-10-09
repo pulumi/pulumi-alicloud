@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         public Input<string>? AuthorizationEndpoint { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for the client. See `client_parameters` below.
+        /// The parameters that are configured for the client. See `ClientParameters` below.
         /// </summary>
         [Input("clientParameters")]
         public Input<Inputs.ConnectionAuthParametersOauthParametersClientParametersGetArgs>? ClientParameters { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         public Input<string>? HttpMethod { get; set; }
 
         /// <summary>
-        /// The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+        /// The request parameters that are configured for OAuth authentication. See `OauthHttpParameters` below.
         /// </summary>
         [Input("oauthHttpParameters")]
         public Input<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersGetArgs>? OauthHttpParameters { get; set; }

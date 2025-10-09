@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SearchIndexSchemaIndexSortSorter {
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     private @Nullable String fieldName;
     /**
-     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
      * 
      */
     private @Nullable String mode;
@@ -34,14 +34,14 @@ public final class SearchIndexSchemaIndexSortSorter {
 
     private SearchIndexSchemaIndexSortSorter() {}
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     public Optional<String> fieldName() {
         return Optional.ofNullable(this.fieldName);
     }
     /**
-     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
      * 
      */
     public Optional<String> mode() {

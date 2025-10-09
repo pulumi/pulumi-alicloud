@@ -69,7 +69,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
     /**
      * The structure of environmentVars.
-     * See `environment_vars` below for details.
+     * See `environmentVars` below for details.
      * 
      */
     @Import(name="environmentVars")
@@ -77,7 +77,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
     /**
      * @return The structure of environmentVars.
-     * See `environment_vars` below for details.
+     * See `environmentVars` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerEnvironmentVarArgs>>> environmentVars() {
@@ -224,14 +224,14 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
     }
 
     /**
-     * The structure of volumeMounts. See `volume_mounts` below for details.
+     * The structure of volumeMounts. See `volumeMounts` below for details.
      * 
      */
     @Import(name="volumeMounts")
     private @Nullable Output<List<EciScalingConfigurationInitContainerVolumeMountArgs>> volumeMounts;
 
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below for details.
+     * @return The structure of volumeMounts. See `volumeMounts` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerVolumeMountArgs>>> volumeMounts() {
@@ -376,7 +376,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
         /**
          * @param environmentVars The structure of environmentVars.
-         * See `environment_vars` below for details.
+         * See `environmentVars` below for details.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
         /**
          * @param environmentVars The structure of environmentVars.
-         * See `environment_vars` below for details.
+         * See `environmentVars` below for details.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
         /**
          * @param environmentVars The structure of environmentVars.
-         * See `environment_vars` below for details.
+         * See `environmentVars` below for details.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below for details.
+         * @param volumeMounts The structure of volumeMounts. See `volumeMounts` below for details.
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below for details.
+         * @param volumeMounts The structure of volumeMounts. See `volumeMounts` below for details.
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below for details.
+         * @param volumeMounts The structure of volumeMounts. See `volumeMounts` below for details.
          * 
          * @return builder
          * 

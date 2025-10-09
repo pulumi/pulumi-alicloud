@@ -14,22 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesPermissionPermission {
     /**
-     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
+     * @return The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
      * 
      */
     private String cluster;
     /**
-     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
      * 
      */
     private @Nullable Boolean isCustom;
     /**
-     * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+     * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
      * 
      */
     private @Nullable Boolean isRamRole;
     /**
-     * @return The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+     * @return The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
      * 
      */
     private @Nullable String namespace;
@@ -46,28 +46,28 @@ public final class KubernetesPermissionPermission {
 
     private KubernetesPermissionPermission() {}
     /**
-     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
+     * @return The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
      * 
      */
     public String cluster() {
         return this.cluster;
     }
     /**
-     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
      * 
      */
     public Optional<Boolean> isCustom() {
         return Optional.ofNullable(this.isCustom);
     }
     /**
-     * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+     * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
      * 
      */
     public Optional<Boolean> isRamRole() {
         return Optional.ofNullable(this.isRamRole);
     }
     /**
-     * @return The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+     * @return The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
      * 
      */
     public Optional<String> namespace() {

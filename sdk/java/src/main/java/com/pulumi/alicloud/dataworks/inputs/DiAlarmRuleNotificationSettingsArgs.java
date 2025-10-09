@@ -34,14 +34,14 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
     }
 
     /**
-     * Alarm notification Channel See `notification_channels` below.
+     * Alarm notification Channel See `notificationChannels` below.
      * 
      */
     @Import(name="notificationChannels")
     private @Nullable Output<List<DiAlarmRuleNotificationSettingsNotificationChannelArgs>> notificationChannels;
 
     /**
-     * @return Alarm notification Channel See `notification_channels` below.
+     * @return Alarm notification Channel See `notificationChannels` below.
      * 
      */
     public Optional<Output<List<DiAlarmRuleNotificationSettingsNotificationChannelArgs>>> notificationChannels() {
@@ -49,14 +49,14 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
     }
 
     /**
-     * List of alert notification recipients See `notification_receivers` below.
+     * List of alert notification recipients See `notificationReceivers` below.
      * 
      */
     @Import(name="notificationReceivers")
     private @Nullable Output<List<DiAlarmRuleNotificationSettingsNotificationReceiverArgs>> notificationReceivers;
 
     /**
-     * @return List of alert notification recipients See `notification_receivers` below.
+     * @return List of alert notification recipients See `notificationReceivers` below.
      * 
      */
     public Optional<Output<List<DiAlarmRuleNotificationSettingsNotificationReceiverArgs>>> notificationReceivers() {
@@ -111,7 +111,7 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param notificationChannels Alarm notification Channel See `notification_channels` below.
+         * @param notificationChannels Alarm notification Channel See `notificationChannels` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param notificationChannels Alarm notification Channel See `notification_channels` below.
+         * @param notificationChannels Alarm notification Channel See `notificationChannels` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param notificationChannels Alarm notification Channel See `notification_channels` below.
+         * @param notificationChannels Alarm notification Channel See `notificationChannels` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param notificationReceivers List of alert notification recipients See `notification_receivers` below.
+         * @param notificationReceivers List of alert notification recipients See `notificationReceivers` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param notificationReceivers List of alert notification recipients See `notification_receivers` below.
+         * @param notificationReceivers List of alert notification recipients See `notificationReceivers` below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class DiAlarmRuleNotificationSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param notificationReceivers List of alert notification recipients See `notification_receivers` below.
+         * @param notificationReceivers List of alert notification recipients See `notificationReceivers` below.
          * 
          * @return builder
          * 

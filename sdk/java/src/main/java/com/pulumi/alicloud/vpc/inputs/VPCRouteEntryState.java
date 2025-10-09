@@ -49,14 +49,14 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Next jump See `next_hops` below.
+     * Next jump See `nextHops` below.
      * 
      */
     @Import(name="nextHops")
     private @Nullable Output<List<VPCRouteEntryNextHopArgs>> nextHops;
 
     /**
-     * @return Next jump See `next_hops` below.
+     * @return Next jump See `nextHops` below.
      * 
      */
     public Optional<Output<List<VPCRouteEntryNextHopArgs>>> nextHops() {
@@ -135,14 +135,14 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Route publish status and publish target type See `route_publish_targets` below.
+     * Route publish status and publish target type See `routePublishTargets` below.
      * 
      */
     @Import(name="routePublishTargets")
     private @Nullable Output<List<VPCRouteEntryRoutePublishTargetArgs>> routePublishTargets;
 
     /**
-     * @return Route publish status and publish target type See `route_publish_targets` below.
+     * @return Route publish status and publish target type See `routePublishTargets` below.
      * 
      */
     public Optional<Output<List<VPCRouteEntryRoutePublishTargetArgs>>> routePublishTargets() {
@@ -254,7 +254,7 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nextHops Next jump See `next_hops` below.
+         * @param nextHops Next jump See `nextHops` below.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nextHops Next jump See `next_hops` below.
+         * @param nextHops Next jump See `nextHops` below.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nextHops Next jump See `next_hops` below.
+         * @param nextHops Next jump See `nextHops` below.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routePublishTargets Route publish status and publish target type See `route_publish_targets` below.
+         * @param routePublishTargets Route publish status and publish target type See `routePublishTargets` below.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routePublishTargets Route publish status and publish target type See `route_publish_targets` below.
+         * @param routePublishTargets Route publish status and publish target type See `routePublishTargets` below.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class VPCRouteEntryState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routePublishTargets Route publish status and publish target type See `route_publish_targets` below.
+         * @param routePublishTargets Route publish status and publish target type See `routePublishTargets` below.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
     public static final AccessConfigurationPermissionPolicyArgs Empty = new AccessConfigurationPermissionPolicyArgs();
 
     /**
-     * The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+     * The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
      * 
      */
     @Import(name="permissionPolicyDocument")
     private @Nullable Output<String> permissionPolicyDocument;
 
     /**
-     * @return The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+     * @return The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
      * 
      */
     public Optional<Output<String>> permissionPolicyDocument() {
@@ -88,7 +88,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyDocument The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+         * @param permissionPolicyDocument The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyDocument The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+         * @param permissionPolicyDocument The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
          * 
          * @return builder
          * 

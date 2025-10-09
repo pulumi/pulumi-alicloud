@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
+        /// The `Key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

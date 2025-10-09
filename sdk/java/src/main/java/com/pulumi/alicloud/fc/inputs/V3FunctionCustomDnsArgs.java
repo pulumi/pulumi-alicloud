@@ -18,14 +18,14 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
     public static final V3FunctionCustomDnsArgs Empty = new V3FunctionCustomDnsArgs();
 
     /**
-     * List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+     * List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
      * 
      */
     @Import(name="dnsOptions")
     private @Nullable Output<List<V3FunctionCustomDnsDnsOptionArgs>> dnsOptions;
 
     /**
-     * @return List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+     * @return List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
      * 
      */
     public Optional<Output<List<V3FunctionCustomDnsDnsOptionArgs>>> dnsOptions() {
@@ -89,7 +89,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dnsOptions List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+         * @param dnsOptions List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dnsOptions List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+         * @param dnsOptions List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dnsOptions List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+         * @param dnsOptions List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
          * 
          * @return builder
          * 

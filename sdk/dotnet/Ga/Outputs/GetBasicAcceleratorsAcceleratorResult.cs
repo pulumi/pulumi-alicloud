@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+        /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `Init`, `Active`, `Configuring`, `Binding`, `Unbinding`, `Deleting`, `finacialLocked`.
         /// </summary>
         public readonly string Status;
 

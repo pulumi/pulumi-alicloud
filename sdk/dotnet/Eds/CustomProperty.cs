@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> PropertyKey { get; private set; } = null!;
 
         /// <summary>
-        /// Custom attribute sets the value of. See `property_values` below.
+        /// Custom attribute sets the value of. See `PropertyValues` below.
         /// </summary>
         [Output("propertyValues")]
         public Output<ImmutableArray<Outputs.CustomPropertyPropertyValue>> PropertyValues { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<Inputs.CustomPropertyPropertyValueArgs>? _propertyValues;
 
         /// <summary>
-        /// Custom attribute sets the value of. See `property_values` below.
+        /// Custom attribute sets the value of. See `PropertyValues` below.
         /// </summary>
         public InputList<Inputs.CustomPropertyPropertyValueArgs> PropertyValues
         {
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<Inputs.CustomPropertyPropertyValueGetArgs>? _propertyValues;
 
         /// <summary>
-        /// Custom attribute sets the value of. See `property_values` below.
+        /// Custom attribute sets the value of. See `PropertyValues` below.
         /// </summary>
         public InputList<Inputs.CustomPropertyPropertyValueGetArgs> PropertyValues
         {

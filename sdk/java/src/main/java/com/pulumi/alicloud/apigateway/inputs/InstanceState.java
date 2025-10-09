@@ -51,14 +51,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      * 
      */
     @Import(name="deleteVpcIpBlock")
     private @Nullable Output<String> deleteVpcIpBlock;
 
     /**
-     * @return Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * @return Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      * 
      */
     public Optional<Output<String>> deleteVpcIpBlock() {
@@ -134,14 +134,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * The user ID that the VpcID of `ingressVpcId` belongs to.
      * 
      */
     @Import(name="ingressVpcOwnerId")
     private @Nullable Output<String> ingressVpcOwnerId;
 
     /**
-     * @return The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * @return The user ID that the VpcID of `ingressVpcId` belongs to.
      * 
      */
     public Optional<Output<String>> ingressVpcOwnerId() {
@@ -149,14 +149,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      * 
      */
     @Import(name="ingressVswitchId")
     private @Nullable Output<String> ingressVswitchId;
 
     /**
-     * @return The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * @return The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      * 
      */
     public Optional<Output<String>> ingressVswitchId() {
@@ -318,14 +318,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
     @Import(name="toConnectVpcIpBlock")
     private @Nullable Output<InstanceToConnectVpcIpBlockArgs> toConnectVpcIpBlock;
 
     /**
-     * @return The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * @return The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
     public Optional<Output<InstanceToConnectVpcIpBlockArgs>> toConnectVpcIpBlock() {
@@ -378,14 +378,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      * 
      */
     @Import(name="zoneVswitchSecurityGroups")
     private @Nullable Output<List<InstanceZoneVswitchSecurityGroupArgs>> zoneVswitchSecurityGroups;
 
     /**
-     * @return Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * @return Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      * 
      */
     public Optional<Output<List<InstanceZoneVswitchSecurityGroupArgs>>> zoneVswitchSecurityGroups() {
@@ -482,7 +482,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteVpcIpBlock Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+         * @param deleteVpcIpBlock Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteVpcIpBlock Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+         * @param deleteVpcIpBlock Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressVpcOwnerId The user ID that the VpcID of `ingress_vpc_id` belongs to.
+         * @param ingressVpcOwnerId The user ID that the VpcID of `ingressVpcId` belongs to.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressVpcOwnerId The user ID that the VpcID of `ingress_vpc_id` belongs to.
+         * @param ingressVpcOwnerId The user ID that the VpcID of `ingressVpcId` belongs to.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressVswitchId The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+         * @param ingressVswitchId The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressVswitchId The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+         * @param ingressVswitchId The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
          * 
          * @return builder
          * 
@@ -851,7 +851,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
          * 
          * @return builder
          * 
@@ -862,7 +862,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
          * 
          * @return builder
          * 
@@ -935,7 +935,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
          * 
          * @return builder
          * 
@@ -946,7 +946,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
          * 
          * @return builder
          * 
@@ -956,7 +956,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
          * 
          * @return builder
          * 

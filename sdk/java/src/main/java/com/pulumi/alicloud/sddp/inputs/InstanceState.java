@@ -93,14 +93,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      * 
      */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+     * @return The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      * 
      */
     public Optional<Output<String>> modifyType() {
@@ -213,14 +213,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+     * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+     * @return Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -273,14 +273,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+     * The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      * 
      */
     @Import(name="sddpVersion")
     private @Nullable Output<String> sddpVersion;
 
     /**
-     * @return The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+     * @return The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      * 
      */
     public Optional<Output<String>> sddpVersion() {
@@ -482,7 +482,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+         * @param modifyType The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+         * @param modifyType The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+         * @param renewPeriod Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
          * 
          * @return builder
          * 
@@ -661,7 +661,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+         * @param renewPeriod Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sddpVersion The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+         * @param sddpVersion The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
          * 
          * @return builder
          * 
@@ -745,7 +745,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sddpVersion The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+         * @param sddpVersion The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
          * 
          * @return builder
          * 

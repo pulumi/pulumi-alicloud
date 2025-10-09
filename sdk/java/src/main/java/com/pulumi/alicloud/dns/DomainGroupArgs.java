@@ -16,14 +16,14 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainGroupArgs Empty = new DomainGroupArgs();
 
     /**
-     * The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+     * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      * 
      */
     @Import(name="domainGroupName")
     private @Nullable Output<String> domainGroupName;
 
     /**
-     * @return The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+     * @return The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      * 
      */
     public Optional<Output<String>> domainGroupName() {
@@ -31,7 +31,7 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
+     * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      * 
      * @deprecated
      * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
@@ -42,7 +42,7 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> groupName;
 
     /**
-     * @return The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
+     * @return The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      * 
      * @deprecated
      * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
@@ -95,7 +95,7 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainGroupName The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+         * @param domainGroupName The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainGroupName The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+         * @param domainGroupName The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
+         * @param groupName The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DomainGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
+         * @param groupName The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
          * 
          * @return builder
          * 

@@ -68,14 +68,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.codeChecksum;
     }
     /**
-     * The configuration for custom container runtime.See `custom_container_config` below.
+     * The configuration for custom container runtime.See `customContainerConfig` below.
      * 
      */
     @Export(name="customContainerConfig", refs={FunctionCustomContainerConfig.class}, tree="[0]")
     private Output</* @Nullable */ FunctionCustomContainerConfig> customContainerConfig;
 
     /**
-     * @return The configuration for custom container runtime.See `custom_container_config` below.
+     * @return The configuration for custom container runtime.See `customContainerConfig` below.
      * 
      */
     public Output<Optional<FunctionCustomContainerConfig>> customContainerConfig() {
@@ -264,14 +264,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memorySize);
     }
     /**
-     * The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * The Function Compute function name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * @return The Function Compute function name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     public Output<String> name() {

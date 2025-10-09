@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
-        /// The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// The type of the data disks. Valid values: `Cloud`, `CloudEfficiency`, `CloudSsd` and `CloudEssd`. Default to `CloudEfficiency`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+        /// Specifies whether to encrypt data disks. Valid values: true and false. Default is `False`.
         /// </summary>
         public readonly string? Encrypted;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node data disk performance level, when `Category` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>

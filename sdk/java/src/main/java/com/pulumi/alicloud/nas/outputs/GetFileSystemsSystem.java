@@ -59,7 +59,7 @@ public final class GetFileSystemsSystem {
      * @return The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`).
      * 
      */
     private String protocolType;
@@ -71,8 +71,8 @@ public final class GetFileSystemsSystem {
     /**
      * @return The storage type of the file system.
      * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      * 
      */
     private String storageType;
@@ -147,7 +147,7 @@ public final class GetFileSystemsSystem {
      * @return The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`).
      * 
      */
     public String protocolType() {
@@ -163,8 +163,8 @@ public final class GetFileSystemsSystem {
     /**
      * @return The storage type of the file system.
      * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      * 
      */
     public String storageType() {

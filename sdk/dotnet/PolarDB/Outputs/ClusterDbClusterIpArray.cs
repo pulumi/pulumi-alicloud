@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         public readonly string? DbClusterIpArrayName;
         /// <summary>
         /// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-        /// **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+        /// **NOTE:** There does not recommend setting ModifyMode to `Append` or `Delete` and it will bring a potential diff error.
         /// </summary>
         public readonly string? ModifyMode;
         /// <summary>

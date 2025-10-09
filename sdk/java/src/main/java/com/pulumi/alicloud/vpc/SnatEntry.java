@@ -164,14 +164,14 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snatEntryName);
     }
     /**
-     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      * 
      */
     @Export(name="snatIp", refs={String.class}, tree="[0]")
     private Output<String> snatIp;
 
     /**
-     * @return The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+     * @return The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      * 
      */
     public Output<String> snatIp() {

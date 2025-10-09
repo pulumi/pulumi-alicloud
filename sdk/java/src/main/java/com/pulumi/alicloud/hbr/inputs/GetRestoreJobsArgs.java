@@ -108,14 +108,14 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Valid while source_type equals `NAS`. The list of destination File System IDs.
+     * Valid while sourceType equals `NAS`. The list of destination File System IDs.
      * 
      */
     @Import(name="targetFileSystemIds")
     private @Nullable Output<List<String>> targetFileSystemIds;
 
     /**
-     * @return Valid while source_type equals `NAS`. The list of destination File System IDs.
+     * @return Valid while sourceType equals `NAS`. The list of destination File System IDs.
      * 
      */
     public Optional<Output<List<String>>> targetFileSystemIds() {
@@ -341,7 +341,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetFileSystemIds Valid while source_type equals `NAS`. The list of destination File System IDs.
+         * @param targetFileSystemIds Valid while sourceType equals `NAS`. The list of destination File System IDs.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetFileSystemIds Valid while source_type equals `NAS`. The list of destination File System IDs.
+         * @param targetFileSystemIds Valid while sourceType equals `NAS`. The list of destination File System IDs.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetFileSystemIds Valid while source_type equals `NAS`. The list of destination File System IDs.
+         * @param targetFileSystemIds Valid while sourceType equals `NAS`. The list of destination File System IDs.
          * 
          * @return builder
          * 

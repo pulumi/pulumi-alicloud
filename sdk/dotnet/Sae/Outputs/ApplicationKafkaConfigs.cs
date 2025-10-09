@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationKafkaConfigs
     {
         /// <summary>
-        /// One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        /// One or more logging configurations of ApsaraMQ for Kafka. See `KafkaConfigs` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationKafkaConfigsKafkaConfig> KafkaConfigs;
         /// <summary>

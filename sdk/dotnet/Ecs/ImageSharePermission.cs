@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///  The following attributes are exported:
     /// 
-    /// * `id` - ID of the image. It formats as `&lt;image_id&gt;:&lt;account_id&gt;`
+    /// * `Id` - ID of the image. It formats as `&lt;image_id&gt;:&lt;account_id&gt;`
     /// 
     /// ## Import
     /// 

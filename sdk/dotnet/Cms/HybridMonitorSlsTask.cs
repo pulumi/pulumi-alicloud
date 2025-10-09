@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class HybridMonitorSlsTask : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The label of the monitoring task. See `attach_labels` below.
+        /// The label of the monitoring task. See `AttachLabels` below.
         /// </summary>
         [Output("attachLabels")]
         public Output<ImmutableArray<Outputs.HybridMonitorSlsTaskAttachLabel>> AttachLabels { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+        /// The configurations of the logs that are imported from Log Service. See `SlsProcessConfig` below.
         /// </summary>
         [Output("slsProcessConfig")]
         public Output<Outputs.HybridMonitorSlsTaskSlsProcessConfig> SlsProcessConfig { get; private set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.HybridMonitorSlsTaskAttachLabelArgs>? _attachLabels;
 
         /// <summary>
-        /// The label of the monitoring task. See `attach_labels` below.
+        /// The label of the monitoring task. See `AttachLabels` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskAttachLabelArgs> AttachLabels
         {
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+        /// The configurations of the logs that are imported from Log Service. See `SlsProcessConfig` below.
         /// </summary>
         [Input("slsProcessConfig", required: true)]
         public Input<Inputs.HybridMonitorSlsTaskSlsProcessConfigArgs> SlsProcessConfig { get; set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.HybridMonitorSlsTaskAttachLabelGetArgs>? _attachLabels;
 
         /// <summary>
-        /// The label of the monitoring task. See `attach_labels` below.
+        /// The label of the monitoring task. See `AttachLabels` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskAttachLabelGetArgs> AttachLabels
         {
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+        /// The configurations of the logs that are imported from Log Service. See `SlsProcessConfig` below.
         /// </summary>
         [Input("slsProcessConfig")]
         public Input<Inputs.HybridMonitorSlsTaskSlsProcessConfigGetArgs>? SlsProcessConfig { get; set; }

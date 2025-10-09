@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleTarget {
     /**
-     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
      * 
      */
     private @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
@@ -26,7 +26,7 @@ public final class RuleTarget {
      */
     private String endpoint;
     /**
-     * @return The parameters that are configured for the event target. See `param_list` below.
+     * @return The parameters that are configured for the event target. See `paramList` below.
      * 
      */
     private List<RuleTargetParamList> paramLists;
@@ -51,7 +51,7 @@ public final class RuleTarget {
 
     private RuleTarget() {}
     /**
-     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
      * 
      */
     public Optional<RuleTargetDeadLetterQueue> deadLetterQueue() {
@@ -65,7 +65,7 @@ public final class RuleTarget {
         return this.endpoint;
     }
     /**
-     * @return The parameters that are configured for the event target. See `param_list` below.
+     * @return The parameters that are configured for the event target. See `paramList` below.
      * 
      */
     public List<RuleTargetParamList> paramLists() {

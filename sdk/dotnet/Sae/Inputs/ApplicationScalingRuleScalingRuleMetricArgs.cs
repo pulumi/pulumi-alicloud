@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs>? _metrics;
 
         /// <summary>
-        /// Indicator rule configuration. See `metrics` below.
+        /// Indicator rule configuration. See `Metrics` below.
         /// </summary>
         public InputList<Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs> Metrics
         {
@@ -37,13 +37,13 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<int>? MinReplicas { get; set; }
 
         /// <summary>
-        /// Apply shrink rules. See `scale_down_rules` below.
+        /// Apply shrink rules. See `ScaleDownRules` below.
         /// </summary>
         [Input("scaleDownRules")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs>? ScaleDownRules { get; set; }
 
         /// <summary>
-        /// Apply expansion rules. See `scale_up_rules` below.
+        /// Apply expansion rules. See `ScaleUpRules` below.
         /// </summary>
         [Input("scaleUpRules")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs>? ScaleUpRules { get; set; }

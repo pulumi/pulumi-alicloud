@@ -13,43 +13,43 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        /// Whether to enable automatic repair. Valid values: `True`: Automatic repair. `False`: not automatically repaired.
         /// </summary>
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }
 
         /// <summary>
-        /// Automatic repair node policy. See `auto_repair_policy` below.
+        /// Automatic repair node policy. See `AutoRepairPolicy` below.
         /// </summary>
         [Input("autoRepairPolicy")]
         public Input<Inputs.NodePoolManagementAutoRepairPolicyArgs>? AutoRepairPolicy { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+        /// Specifies whether to enable auto update. Valid values: `True`: enables auto update. `False`: disables auto update.
         /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
-        /// The auto update policy. See `auto_upgrade_policy` below.
+        /// The auto update policy. See `AutoUpgradePolicy` below.
         /// </summary>
         [Input("autoUpgradePolicy")]
         public Input<Inputs.NodePoolManagementAutoUpgradePolicyArgs>? AutoUpgradePolicy { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoVulFix")]
         public Input<bool>? AutoVulFix { get; set; }
 
         /// <summary>
-        /// The auto CVE patching policy. See `auto_vul_fix_policy` below.
+        /// The auto CVE patching policy. See `AutoVulFixPolicy` below.
         /// </summary>
         [Input("autoVulFixPolicy")]
         public Input<Inputs.NodePoolManagementAutoVulFixPolicyArgs>? AutoVulFixPolicy { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+        /// Specifies whether to enable the managed node pool feature. Valid values: `True`: enables the managed node pool feature. `False`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

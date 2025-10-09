@@ -100,13 +100,13 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<int> DetectMultiplier { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Enable IPv6. Valid values: `false`, `true`.
+        /// Whether to Enable IPv6. Valid values: `False`, `True`.
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        /// Whether cross account border routers are included. Valid values: `False`, `True`. Default: `True`.
         /// </summary>
         [Output("includeCrossAccountVbr")]
         public Output<bool> IncludeCrossAccountVbr { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        /// The instance state. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -272,13 +272,13 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<int>? DetectMultiplier { get; set; }
 
         /// <summary>
-        /// Whether to Enable IPv6. Valid values: `false`, `true`.
+        /// Whether to Enable IPv6. Valid values: `False`, `True`.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        /// Whether cross account border routers are included. Valid values: `False`, `True`. Default: `True`.
         /// </summary>
         [Input("includeCrossAccountVbr")]
         public Input<bool>? IncludeCrossAccountVbr { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string> PhysicalConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        /// The instance state. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -400,13 +400,13 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<int>? DetectMultiplier { get; set; }
 
         /// <summary>
-        /// Whether to Enable IPv6. Valid values: `false`, `true`.
+        /// Whether to Enable IPv6. Valid values: `False`, `True`.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        /// Whether cross account border routers are included. Valid values: `False`, `True`. Default: `True`.
         /// </summary>
         [Input("includeCrossAccountVbr")]
         public Input<bool>? IncludeCrossAccountVbr { get; set; }
@@ -472,7 +472,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        /// The instance state. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

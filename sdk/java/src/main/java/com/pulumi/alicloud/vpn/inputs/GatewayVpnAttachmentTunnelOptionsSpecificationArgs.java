@@ -134,7 +134,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
      * Add the BGP configuration for the tunnel.
      * 
      * &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-     * See `tunnel_bgp_config` below.
+     * See `tunnelBgpConfig` below.
      * 
      */
     @Import(name="tunnelBgpConfig")
@@ -144,7 +144,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
      * @return Add the BGP configuration for the tunnel.
      * 
      * &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-     * See `tunnel_bgp_config` below.
+     * See `tunnelBgpConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs>> tunnelBgpConfig() {
@@ -167,14 +167,14 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
     }
 
     /**
-     * Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+     * Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
      * 
      */
     @Import(name="tunnelIkeConfig")
     private @Nullable Output<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs> tunnelIkeConfig;
 
     /**
-     * @return Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+     * @return Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs>> tunnelIkeConfig() {
@@ -197,14 +197,14 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
     }
 
     /**
-     * Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+     * Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
      * 
      */
     @Import(name="tunnelIpsecConfig")
     private @Nullable Output<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs> tunnelIpsecConfig;
 
     /**
-     * @return Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+     * @return Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs>> tunnelIpsecConfig() {
@@ -417,7 +417,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
          * @param tunnelBgpConfig Add the BGP configuration for the tunnel.
          * 
          * &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-         * See `tunnel_bgp_config` below.
+         * See `tunnelBgpConfig` below.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
          * @param tunnelBgpConfig Add the BGP configuration for the tunnel.
          * 
          * &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-         * See `tunnel_bgp_config` below.
+         * See `tunnelBgpConfig` below.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param tunnelIkeConfig Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+         * @param tunnelIkeConfig Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param tunnelIkeConfig Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+         * @param tunnelIkeConfig Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param tunnelIpsecConfig Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+         * @param tunnelIpsecConfig Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param tunnelIpsecConfig Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+         * @param tunnelIpsecConfig Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
          * 
          * @return builder
          * 

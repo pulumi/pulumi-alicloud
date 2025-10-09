@@ -289,6 +289,8 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args) {
         return getClusterCredential(args, InvokeOptions.Empty);
@@ -299,6 +301,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args) {
@@ -311,6 +315,8 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -322,6 +328,8 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -332,6 +340,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
@@ -1572,7 +1582,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -1620,7 +1630,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -1668,7 +1678,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -1716,7 +1726,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -1764,7 +1774,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -1812,7 +1822,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -1860,7 +1870,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.34.0.
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3563,7 +3573,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3611,7 +3621,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3659,7 +3669,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3707,7 +3717,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3755,7 +3765,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3803,7 +3813,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -3851,7 +3861,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.35.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -4914,7 +4924,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -4962,7 +4972,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5010,7 +5020,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5058,7 +5068,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5106,7 +5116,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5154,7 +5164,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5202,7 +5212,7 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since 1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 

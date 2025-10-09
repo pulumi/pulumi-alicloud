@@ -16,8 +16,8 @@ namespace Pulumi.AliCloud.Ga.Inputs
         private InputList<Inputs.ForwardingRuleRuleConditionHostConfigGetArgs>? _hostConfigs;
 
         /// <summary>
-        /// The configuration of the domain name. See `host_config` below.
-        /// &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+        /// The configuration of the domain name. See `HostConfig` below.
+        /// &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `PathConfig` or `HostConfig`, and we recommend that you use the `RuleConditionType` and `RuleConditionValue` to configure forwarding conditions.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleConditionHostConfigGetArgs> HostConfigs
         {
@@ -26,13 +26,13 @@ namespace Pulumi.AliCloud.Ga.Inputs
         }
 
         /// <summary>
-        /// The configuration of the path. See `path_config` below.
+        /// The configuration of the path. See `PathConfig` below.
         /// </summary>
         [Input("pathConfig")]
         public Input<Inputs.ForwardingRuleRuleConditionPathConfigGetArgs>? PathConfig { get; set; }
 
         /// <summary>
-        /// The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+        /// The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `RuleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
         /// </summary>
         [Input("ruleConditionType", required: true)]
         public Input<string> RuleConditionType { get; set; } = null!;

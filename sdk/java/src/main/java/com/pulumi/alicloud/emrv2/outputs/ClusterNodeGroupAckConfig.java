@@ -27,12 +27,12 @@ public final class ClusterNodeGroupAckConfig {
      */
     private String ackInstanceId;
     /**
-     * @return The ack cluster custom annotations. See `custom_annotations` below.
+     * @return The ack cluster custom annotations. See `customAnnotations` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupAckConfigCustomAnnotation> customAnnotations;
     /**
-     * @return The ack cluster custom labels. See `custom_labels` below.
+     * @return The ack cluster custom labels. See `customLabels` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupAckConfigCustomLabel> customLabels;
@@ -57,7 +57,7 @@ public final class ClusterNodeGroupAckConfig {
      */
     private @Nullable String nodeAffinity;
     /**
-     * @return The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+     * @return The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupAckConfigNodeSelector> nodeSelectors;
@@ -97,7 +97,7 @@ public final class ClusterNodeGroupAckConfig {
      */
     private @Nullable List<ClusterNodeGroupAckConfigToleration> tolerations;
     /**
-     * @return The ack cluster volume mounts. See `volume_mounts` below.
+     * @return The ack cluster volume mounts. See `volumeMounts` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupAckConfigVolumeMount> volumeMounts;
@@ -116,14 +116,14 @@ public final class ClusterNodeGroupAckConfig {
         return this.ackInstanceId;
     }
     /**
-     * @return The ack cluster custom annotations. See `custom_annotations` below.
+     * @return The ack cluster custom annotations. See `customAnnotations` below.
      * 
      */
     public List<ClusterNodeGroupAckConfigCustomAnnotation> customAnnotations() {
         return this.customAnnotations == null ? List.of() : this.customAnnotations;
     }
     /**
-     * @return The ack cluster custom labels. See `custom_labels` below.
+     * @return The ack cluster custom labels. See `customLabels` below.
      * 
      */
     public List<ClusterNodeGroupAckConfigCustomLabel> customLabels() {
@@ -158,7 +158,7 @@ public final class ClusterNodeGroupAckConfig {
         return Optional.ofNullable(this.nodeAffinity);
     }
     /**
-     * @return The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+     * @return The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
      * 
      */
     public List<ClusterNodeGroupAckConfigNodeSelector> nodeSelectors() {
@@ -214,7 +214,7 @@ public final class ClusterNodeGroupAckConfig {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
     /**
-     * @return The ack cluster volume mounts. See `volume_mounts` below.
+     * @return The ack cluster volume mounts. See `volumeMounts` below.
      * 
      */
     public List<ClusterNodeGroupAckConfigVolumeMount> volumeMounts() {

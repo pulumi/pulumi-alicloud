@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Brain
         public Output<string> PidLoopConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The dcs type of Pid Loop. Valid values: `standard`.
+        /// The dcs type of Pid Loop. Valid values: `Standard`.
         /// </summary>
         [Output("pidLoopDcsType")]
         public Output<string> PidLoopDcsType { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Brain
         public Input<string> PidLoopConfiguration { get; set; } = null!;
 
         /// <summary>
-        /// The dcs type of Pid Loop. Valid values: `standard`.
+        /// The dcs type of Pid Loop. Valid values: `Standard`.
         /// </summary>
         [Input("pidLoopDcsType", required: true)]
         public Input<string> PidLoopDcsType { get; set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Brain
         public Input<string>? PidLoopConfiguration { get; set; }
 
         /// <summary>
-        /// The dcs type of Pid Loop. Valid values: `standard`.
+        /// The dcs type of Pid Loop. Valid values: `Standard`.
         /// </summary>
         [Input("pidLoopDcsType")]
         public Input<string>? PidLoopDcsType { get; set; }

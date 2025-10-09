@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderGetArgs>? _returnHeaders;
 
         /// <summary>
-        /// The list of response header rules for mirroring back-to-source return. See `return_header` below.
+        /// The list of response header rules for mirroring back-to-source return. See `ReturnHeader` below.
         /// </summary>
         public InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderGetArgs> ReturnHeaders
         {

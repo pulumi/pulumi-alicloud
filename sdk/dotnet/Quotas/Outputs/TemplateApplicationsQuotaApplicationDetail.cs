@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// </summary>
         public readonly string? AuditReason;
         /// <summary>
-        /// Quota dimension. See `dimensions` below.
+        /// Quota dimension. See `Dimensions` below.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Dimensions;
         /// <summary>

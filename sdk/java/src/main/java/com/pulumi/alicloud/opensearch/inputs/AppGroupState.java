@@ -34,14 +34,14 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing model. Valid values:`compute_resource` and `qps`.
+     * Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     @Import(name="chargeWay")
     private @Nullable Output<String> chargeWay;
 
     /**
-     * @return Billing model. Valid values:`compute_resource` and `qps`.
+     * @return Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     public Optional<Output<String>> chargeWay() {
@@ -154,14 +154,14 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+     * The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+     * @return The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -239,7 +239,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chargeWay Billing model. Valid values:`compute_resource` and `qps`.
+         * @param chargeWay Billing model. Valid values:`computeResource` and `qps`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chargeWay Billing model. Valid values:`compute_resource` and `qps`.
+         * @param chargeWay Billing model. Valid values:`computeResource` and `qps`.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+         * @param status The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+         * @param status The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
          * 
          * @return builder
          * 

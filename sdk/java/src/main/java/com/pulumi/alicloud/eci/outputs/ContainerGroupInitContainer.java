@@ -35,7 +35,7 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable Double cpu;
     /**
-     * @return The structure of environmentVars. See `environment_vars` below.
+     * @return The structure of environmentVars. See `environmentVars` below.
      * 
      */
     private @Nullable List<ContainerGroupInitContainerEnvironmentVar> environmentVars;
@@ -80,12 +80,12 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable Integer restartCount;
     /**
-     * @return The security context of the container. See `security_context` below.
+     * @return The security context of the container. See `securityContext` below.
      * 
      */
     private @Nullable List<ContainerGroupInitContainerSecurityContext> securityContexts;
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below.
+     * @return The structure of volumeMounts. See `volumeMounts` below.
      * 
      */
     private @Nullable List<ContainerGroupInitContainerVolumeMount> volumeMounts;
@@ -118,7 +118,7 @@ public final class ContainerGroupInitContainer {
         return Optional.ofNullable(this.cpu);
     }
     /**
-     * @return The structure of environmentVars. See `environment_vars` below.
+     * @return The structure of environmentVars. See `environmentVars` below.
      * 
      */
     public List<ContainerGroupInitContainerEnvironmentVar> environmentVars() {
@@ -181,14 +181,14 @@ public final class ContainerGroupInitContainer {
         return Optional.ofNullable(this.restartCount);
     }
     /**
-     * @return The security context of the container. See `security_context` below.
+     * @return The security context of the container. See `securityContext` below.
      * 
      */
     public List<ContainerGroupInitContainerSecurityContext> securityContexts() {
         return this.securityContexts == null ? List.of() : this.securityContexts;
     }
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below.
+     * @return The structure of volumeMounts. See `volumeMounts` below.
      * 
      */
     public List<ContainerGroupInitContainerVolumeMount> volumeMounts() {

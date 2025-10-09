@@ -67,14 +67,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+     * Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+     * @return Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -112,14 +112,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+     * Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+     * @return Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -136,7 +136,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
      * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
+     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = &#34;PayByCLCU&#34;`.
      * 
      */
     @Import(name="loadBalancerSpec")
@@ -145,7 +145,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     /**
      * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
      * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
+     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = &#34;PayByCLCU&#34;`.
      * 
      */
     public Optional<Output<String>> loadBalancerSpec() {
@@ -168,14 +168,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
      * 
      */
     @Import(name="modificationProtectionReason")
     private @Nullable Output<String> modificationProtectionReason;
 
     /**
-     * @return The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * @return The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
      * 
      */
     public Optional<Output<String>> modificationProtectionReason() {
@@ -198,7 +198,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
@@ -209,7 +209,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
@@ -281,7 +281,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+     * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      * 
      * @deprecated
      * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
@@ -292,7 +292,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> specification;
 
     /**
-     * @return Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+     * @return Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      * 
      * @deprecated
      * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
@@ -334,14 +334,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -460,7 +460,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bandwidth Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+         * @param bandwidth Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bandwidth Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+         * @param bandwidth Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param internetChargeType Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+         * @param internetChargeType Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param internetChargeType Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+         * @param internetChargeType Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         /**
          * @param loadBalancerSpec The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
          * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
+         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = &#34;PayByCLCU&#34;`.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         /**
          * @param loadBalancerSpec The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
          * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
+         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = &#34;PayByCLCU&#34;`.
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param modificationProtectionReason The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+         * @param modificationProtectionReason The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param modificationProtectionReason The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+         * @param modificationProtectionReason The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
          * 
          * @return builder
          * 
@@ -754,7 +754,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specification Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+         * @param specification Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
          * 
          * @return builder
          * 
@@ -769,7 +769,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specification Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+         * @param specification Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
          * 
          * @return builder
          * 

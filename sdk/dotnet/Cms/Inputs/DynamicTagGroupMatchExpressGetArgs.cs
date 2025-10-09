@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string> TagValue { get; set; } = null!;
 
         /// <summary>
-        /// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+        /// The method that is used to match the tag values of the cloud resources. Valid values: `All`, `startWith`, `endWith`, `Contains`, `notContains`, `Equals`.
         /// </summary>
         [Input("tagValueMatchFunction", required: true)]
         public Input<string> TagValueMatchFunction { get; set; } = null!;

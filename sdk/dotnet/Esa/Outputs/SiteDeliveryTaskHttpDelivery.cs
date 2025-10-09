@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         public readonly ImmutableDictionary<string, string>? QueryParam;
         public readonly bool? StandardAuthOn;
         /// <summary>
-        /// See `standard_auth_param` below.
+        /// See `StandardAuthParam` below.
         /// </summary>
         public readonly Outputs.SiteDeliveryTaskHttpDeliveryStandardAuthParam? StandardAuthParam;
         public readonly int? TransformTimeout;

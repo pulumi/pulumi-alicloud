@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ddos
     public partial class BgpPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration Content See `content` below.
+        /// Configuration Content See `Content` below.
         /// </summary>
         [Output("content")]
         public Output<Outputs.BgpPolicyContent> Content { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class BgpPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration Content See `content` below.
+        /// Configuration Content See `Content` below.
         /// </summary>
         [Input("content")]
         public Input<Inputs.BgpPolicyContentArgs>? Content { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class BgpPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration Content See `content` below.
+        /// Configuration Content See `Content` below.
         /// </summary>
         [Input("content")]
         public Input<Inputs.BgpPolicyContentGetArgs>? Content { get; set; }

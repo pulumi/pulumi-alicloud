@@ -46,14 +46,14 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+     * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
      * 
      */
     @Import(name="dbType")
     private @Nullable String dbType;
 
     /**
-     * @return Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+     * @return Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
      * 
      */
     public Optional<String> dbType() {
@@ -61,14 +61,14 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      * 
      */
     @Import(name="dbVersion")
     private @Nullable String dbVersion;
 
     /**
-     * @return Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+     * @return Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      * 
      */
     public Optional<String> dbVersion() {
@@ -189,7 +189,7 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param dbType Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+         * @param dbType Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param dbVersion Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+         * @param dbVersion Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
          * 
          * @return builder
          * 

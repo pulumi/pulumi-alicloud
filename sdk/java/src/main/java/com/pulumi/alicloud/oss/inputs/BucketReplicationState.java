@@ -66,14 +66,14 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      * 
      */
     @Import(name="encryptionConfiguration")
     private @Nullable Output<BucketReplicationEncryptionConfigurationArgs> encryptionConfiguration;
 
     /**
-     * @return Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+     * @return Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      * 
      */
     public Optional<Output<BucketReplicationEncryptionConfigurationArgs>> encryptionConfiguration() {
@@ -96,14 +96,14 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      * 
      */
     @Import(name="prefixSet")
     private @Nullable Output<BucketReplicationPrefixSetArgs> prefixSet;
 
     /**
-     * @return The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+     * @return The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      * 
      */
     public Optional<Output<BucketReplicationPrefixSetArgs>> prefixSet() {
@@ -141,14 +141,14 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+     * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      * 
      */
     @Import(name="sourceSelectionCriteria")
     private @Nullable Output<BucketReplicationSourceSelectionCriteriaArgs> sourceSelectionCriteria;
 
     /**
-     * @return Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+     * @return Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      * 
      */
     public Optional<Output<BucketReplicationSourceSelectionCriteriaArgs>> sourceSelectionCriteria() {
@@ -283,7 +283,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param encryptionConfiguration Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+         * @param encryptionConfiguration Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param encryptionConfiguration Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+         * @param encryptionConfiguration Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param prefixSet The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+         * @param prefixSet The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param prefixSet The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+         * @param prefixSet The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceSelectionCriteria Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+         * @param sourceSelectionCriteria Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceSelectionCriteria Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+         * @param sourceSelectionCriteria Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
          * 
          * @return builder
          * 

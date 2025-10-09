@@ -195,6 +195,8 @@ def get_virtual_physical_connections(business_status: Optional[_builtins.str] = 
 
     > **NOTE:** Available in 1.196.0+
 
+    ## Example Usage
+
 
     :param _builtins.str business_status: The commercial status of the physical line. Value:
            - **Normal**: activated.
@@ -255,6 +257,8 @@ def get_virtual_physical_connections_output(business_status: Optional[pulumi.Inp
     This data source provides Express Connect Virtual Physical Connection available to the user.
 
     > **NOTE:** Available in 1.196.0+
+
+    ## Example Usage
 
 
     :param _builtins.str business_status: The commercial status of the physical line. Value:

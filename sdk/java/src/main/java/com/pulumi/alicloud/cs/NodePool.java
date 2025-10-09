@@ -327,14 +327,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/nodePool:NodePool")
 public class NodePool extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
+     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
@@ -355,18 +355,18 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      * @deprecated
-     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
-    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead. */
+    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead. */
     @Export(name="cisEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cisEnabled;
 
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
     public Output<Optional<Boolean>> cisEnabled() {
@@ -387,14 +387,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+     * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      * 
      */
     @Export(name="compensateWithOnDemand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> compensateWithOnDemand;
 
     /**
-     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      * 
      */
     public Output<Optional<Boolean>> compensateWithOnDemand() {
@@ -415,14 +415,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.cpuPolicy;
     }
     /**
-     * Configure the data disk of the node in the node pool. See `data_disks` below.
+     * Configure the data disk of the node in the node pool. See `dataDisks` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,NodePoolDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolDataDisk>> dataDisks;
 
     /**
-     * @return Configure the data disk of the node in the node pool. See `data_disks` below.
+     * @return Configure the data disk of the node in the node pool. See `dataDisks` below.
      * 
      */
     public Output<Optional<List<NodePoolDataDisk>>> dataDisks() {
@@ -457,14 +457,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredSize);
     }
     /**
-     * Lingjun node pool configuration. See `eflo_node_group` below.
+     * Lingjun node pool configuration. See `efloNodeGroup` below.
      * 
      */
     @Export(name="efloNodeGroup", refs={NodePoolEfloNodeGroup.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolEfloNodeGroup> efloNodeGroup;
 
     /**
-     * @return Lingjun node pool configuration. See `eflo_node_group` below.
+     * @return Lingjun node pool configuration. See `efloNodeGroup` below.
      * 
      */
     public Output<Optional<NodePoolEfloNodeGroup>> efloNodeGroup() {
@@ -563,14 +563,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.installCloudMonitor);
     }
     /**
-     * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+     * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
-     * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+     * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      * 
      */
     public Output<String> instanceChargeType() {
@@ -605,14 +605,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instances);
     }
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
@@ -647,56 +647,56 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.keepInstanceName;
     }
     /**
-     * The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+     * The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
      * 
      */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyName;
 
     /**
-     * @return The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+     * @return The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
      * 
      */
     public Output<Optional<String>> keyName() {
         return Codegen.optional(this.keyName);
     }
     /**
-     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+     * Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubeletConfiguration` below.
      * 
      */
     @Export(name="kubeletConfiguration", refs={NodePoolKubeletConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolKubeletConfiguration> kubeletConfiguration;
 
     /**
-     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+     * @return Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubeletConfiguration` below.
      * 
      */
     public Output<Optional<NodePoolKubeletConfiguration>> kubeletConfiguration() {
@@ -777,7 +777,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+     * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      * 
      * @deprecated
      * Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
@@ -788,7 +788,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     private Output<Integer> nodeCount;
 
     /**
-     * @return The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+     * @return The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      * 
      */
     public Output<Integer> nodeCount() {
@@ -857,28 +857,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onDemandBaseCapacity);
     }
     /**
-     * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+     * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      * 
      */
     @Export(name="onDemandPercentageAboveBaseCapacity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onDemandPercentageAboveBaseCapacity;
 
     /**
-     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      * 
      */
     public Output<Optional<String>> onDemandPercentageAboveBaseCapacity() {
         return Codegen.optional(this.onDemandPercentageAboveBaseCapacity);
     }
     /**
-     * The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+     * The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+     * @return The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      * 
      */
     public Output<Optional<String>> password() {
@@ -913,18 +913,18 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * Operating system release, using `image_type` instead.
+     * Operating system release, using `imageType` instead.
      * 
      * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      * 
      */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead. */
+    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead. */
     @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
-     * @return Operating system release, using `image_type` instead.
+     * @return Operating system release, using `imageType` instead.
      * 
      */
     public Output<String> platform() {
@@ -945,14 +945,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.preUserData);
     }
     /**
-     * Private node pool configuration. See `private_pool_options` below.
+     * Private node pool configuration. See `privatePoolOptions` below.
      * 
      */
     @Export(name="privatePoolOptions", refs={NodePoolPrivatePoolOptions.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolPrivatePoolOptions> privatePoolOptions;
 
     /**
-     * @return Private node pool configuration. See `private_pool_options` below.
+     * @return Private node pool configuration. See `privatePoolOptions` below.
      * 
      */
     public Output<Optional<NodePoolPrivatePoolOptions>> privatePoolOptions() {
@@ -1009,14 +1009,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Rotary configuration. See `rolling_policy` below.
+     * Rotary configuration. See `rollingPolicy` below.
      * 
      */
     @Export(name="rollingPolicy", refs={NodePoolRollingPolicy.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolRollingPolicy> rollingPolicy;
 
     /**
-     * @return Rotary configuration. See `rolling_policy` below.
+     * @return Rotary configuration. See `rollingPolicy` below.
      * 
      */
     public Output<Optional<NodePoolRollingPolicy>> rollingPolicy() {
@@ -1051,14 +1051,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.runtimeVersion;
     }
     /**
-     * Automatic scaling configuration. See `scaling_config` below.
+     * Automatic scaling configuration. See `scalingConfig` below.
      * 
      */
     @Export(name="scalingConfig", refs={NodePoolScalingConfig.class}, tree="[0]")
     private Output<NodePoolScalingConfig> scalingConfig;
 
     /**
-     * @return Automatic scaling configuration. See `scaling_config` below.
+     * @return Automatic scaling configuration. See `scalingConfig` below.
      * 
      */
     public Output<NodePoolScalingConfig> scalingConfig() {
@@ -1093,32 +1093,32 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.scalingPolicy;
     }
     /**
-     * The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      * @deprecated
-     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
-    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead. */
+    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead. */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * @return The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+     * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
      * 
      */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
-     * @return Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+     * @return Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
      * 
      */
     public Output<List<String>> securityGroupIds() {
@@ -1141,7 +1141,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      * 
-     * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      * 
      */
     @Export(name="socEnabled", refs={Boolean.class}, tree="[0]")
@@ -1150,7 +1150,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      * 
-     * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      * 
      */
     public Output<Optional<Boolean>> socEnabled() {
@@ -1185,14 +1185,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotInstanceRemedy);
     }
     /**
-     * The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+     * The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
      * 
      */
     @Export(name="spotPriceLimits", refs={List.class,NodePoolSpotPriceLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolSpotPriceLimit>> spotPriceLimits;
 
     /**
-     * @return The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+     * @return The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
      * 
      */
     public Output<Optional<List<NodePoolSpotPriceLimit>>> spotPriceLimits() {
@@ -1219,42 +1219,42 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.spotStrategy;
     }
     /**
-     * Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     @Export(name="systemDiskBurstingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> systemDiskBurstingEnabled;
 
     /**
-     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     public Output<Optional<Boolean>> systemDiskBurstingEnabled() {
         return Codegen.optional(this.systemDiskBurstingEnabled);
     }
     /**
-     * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+     * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
      * 
      */
     @Export(name="systemDiskCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> systemDiskCategories;
 
     /**
-     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
      * 
      */
     public Output<List<String>> systemDiskCategories() {
         return this.systemDiskCategories;
     }
     /**
-     * The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
+     * The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
+     * @return The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
      * 
      */
     public Output<String> systemDiskCategory() {
@@ -1325,14 +1325,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskPerformanceLevel);
     }
     /**
-     * The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     @Export(name="systemDiskProvisionedIops", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> systemDiskProvisionedIops;
 
     /**
-     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     public Output<Optional<Integer>> systemDiskProvisionedIops() {
@@ -1403,14 +1403,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.taints);
     }
     /**
-     * The configuration about confidential computing for the cluster. See `tee_config` below.
+     * The configuration about confidential computing for the cluster. See `teeConfig` below.
      * 
      */
     @Export(name="teeConfig", refs={NodePoolTeeConfig.class}, tree="[0]")
     private Output<NodePoolTeeConfig> teeConfig;
 
     /**
-     * @return The configuration about confidential computing for the cluster. See `tee_config` below.
+     * @return The configuration about confidential computing for the cluster. See `teeConfig` below.
      * 
      */
     public Output<NodePoolTeeConfig> teeConfig() {

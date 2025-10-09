@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The IP segment list. See `ip_segment_list` below for details.
+        /// The IP segment list. See `IpSegmentList` below for details.
         /// </summary>
         [Output("ipSegmentLists")]
         public Output<ImmutableArray<Outputs.CustomLineIpSegmentList>> IpSegmentLists { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.CustomLineIpSegmentListArgs>? _ipSegmentLists;
 
         /// <summary>
-        /// The IP segment list. See `ip_segment_list` below for details.
+        /// The IP segment list. See `IpSegmentList` below for details.
         /// </summary>
         public InputList<Inputs.CustomLineIpSegmentListArgs> IpSegmentLists
         {
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.CustomLineIpSegmentListGetArgs>? _ipSegmentLists;
 
         /// <summary>
-        /// The IP segment list. See `ip_segment_list` below for details.
+        /// The IP segment list. See `IpSegmentList` below for details.
         /// </summary>
         public InputList<Inputs.CustomLineIpSegmentListGetArgs> IpSegmentLists
         {

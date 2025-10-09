@@ -72,14 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
     /**
-     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
+     * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
      * 
      */
     @Export(name="hostRecord", refs={String.class}, tree="[0]")
     private Output<String> hostRecord;
 
     /**
-     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
+     * @return Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
      * 
      */
     public Output<String> hostRecord() {

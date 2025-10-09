@@ -16,14 +16,14 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
     public static final CustomSystemDiskArgs Empty = new CustomSystemDiskArgs();
 
     /**
-     * The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+     * The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+     * @return The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
      * 
      */
     public Optional<Output<String>> category() {
@@ -71,7 +71,7 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+         * @param category The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+         * @param category The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
          * 
          * @return builder
          * 

@@ -264,28 +264,28 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return this.apiVersion;
     }
     /**
-     * Permission authentication configuration See `auth_config` below.
+     * Permission authentication configuration See `authConfig` below.
      * 
      */
     @Export(name="authConfig", refs={V3CustomDomainAuthConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3CustomDomainAuthConfig> authConfig;
 
     /**
-     * @return Permission authentication configuration See `auth_config` below.
+     * @return Permission authentication configuration See `authConfig` below.
      * 
      */
     public Output<Optional<V3CustomDomainAuthConfig>> authConfig() {
         return Codegen.optional(this.authConfig);
     }
     /**
-     * HTTPS certificate information See `cert_config` below.
+     * HTTPS certificate information See `certConfig` below.
      * 
      */
     @Export(name="certConfig", refs={V3CustomDomainCertConfig.class}, tree="[0]")
     private Output<V3CustomDomainCertConfig> certConfig;
 
     /**
-     * @return HTTPS certificate information See `cert_config` below.
+     * @return HTTPS certificate information See `certConfig` below.
      * 
      */
     public Output<V3CustomDomainCertConfig> certConfig() {
@@ -348,14 +348,14 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protocol);
     }
     /**
-     * Route matching rule configuration See `route_config` below.
+     * Route matching rule configuration See `routeConfig` below.
      * 
      */
     @Export(name="routeConfig", refs={V3CustomDomainRouteConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3CustomDomainRouteConfig> routeConfig;
 
     /**
-     * @return Route matching rule configuration See `route_config` below.
+     * @return Route matching rule configuration See `routeConfig` below.
      * 
      */
     public Output<Optional<V3CustomDomainRouteConfig>> routeConfig() {
@@ -376,28 +376,28 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return this.subdomainCount;
     }
     /**
-     * TLS configuration information See `tls_config` below.
+     * TLS configuration information See `tlsConfig` below.
      * 
      */
     @Export(name="tlsConfig", refs={V3CustomDomainTlsConfig.class}, tree="[0]")
     private Output<V3CustomDomainTlsConfig> tlsConfig;
 
     /**
-     * @return TLS configuration information See `tls_config` below.
+     * @return TLS configuration information See `tlsConfig` below.
      * 
      */
     public Output<V3CustomDomainTlsConfig> tlsConfig() {
         return this.tlsConfig;
     }
     /**
-     * Web application firewall configuration information See `waf_config` below.
+     * Web application firewall configuration information See `wafConfig` below.
      * 
      */
     @Export(name="wafConfig", refs={V3CustomDomainWafConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3CustomDomainWafConfig> wafConfig;
 
     /**
-     * @return Web application firewall configuration information See `waf_config` below.
+     * @return Web application firewall configuration information See `wafConfig` below.
      * 
      */
     public Output<Optional<V3CustomDomainWafConfig>> wafConfig() {

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
+        /// A list of sub zone ids which in the id - e.g If `Id` is `cn-beijing-MAZ5(a,b)`, `SubZoneIds` will be `["cn-beijing-a", "cn-beijing-b"]`.
         /// </summary>
         public readonly ImmutableArray<string> SubZoneIds;
 

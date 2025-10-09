@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<ImmutableArray<Outputs.ServerBackupPlanDetail>> Details { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

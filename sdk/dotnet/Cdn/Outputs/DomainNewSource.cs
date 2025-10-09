@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     public sealed class DomainNewSource
     {
         /// <summary>
-        /// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+        /// The address of source. Valid values can be ip or doaminName. Each item's `Content` can not be repeated.
         /// </summary>
         public readonly string? Content;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Cdn.Outputs
         /// </summary>
         public readonly int? Priority;
         /// <summary>
-        /// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+        /// The type of the source. Valid values are `Ipaddr`, `Domain` and `Oss`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `Ipaddr`, the value can only be `10`.
         /// </summary>
         public readonly int? Weight;
 

@@ -253,19 +253,19 @@ namespace Pulumi.AliCloud.Arms
     public partial class SyntheticTask : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Assertion List. See `available_assertions` below.
+        /// Assertion List. See `AvailableAssertions` below.
         /// </summary>
         [Output("availableAssertions")]
         public Output<ImmutableArray<Outputs.SyntheticTaskAvailableAssertion>> AvailableAssertions { get; private set; } = null!;
 
         /// <summary>
-        /// Common settings. See `common_setting` below.
+        /// Common settings. See `CommonSetting` below.
         /// </summary>
         [Output("commonSetting")]
         public Output<Outputs.SyntheticTaskCommonSetting> CommonSetting { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Cycle. See `custom_period` below.
+        /// Custom Cycle. See `CustomPeriod` below.
         /// </summary>
         [Output("customPeriod")]
         public Output<Outputs.SyntheticTaskCustomPeriod?> CustomPeriod { get; private set; } = null!;
@@ -283,13 +283,13 @@ namespace Pulumi.AliCloud.Arms
         public Output<int> MonitorCategory { get; private set; } = null!;
 
         /// <summary>
-        /// Monitoring configuration. See `monitor_conf` below.
+        /// Monitoring configuration. See `MonitorConf` below.
         /// </summary>
         [Output("monitorConf")]
         public Output<Outputs.SyntheticTaskMonitorConf> MonitorConf { get; private set; } = null!;
 
         /// <summary>
-        /// List of selected monitors. See `monitors` below.
+        /// List of selected monitors. See `Monitors` below.
         /// </summary>
         [Output("monitors")]
         public Output<ImmutableArray<Outputs.SyntheticTaskMonitor>> Monitors { get; private set; } = null!;
@@ -374,7 +374,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.SyntheticTaskAvailableAssertionArgs>? _availableAssertions;
 
         /// <summary>
-        /// Assertion List. See `available_assertions` below.
+        /// Assertion List. See `AvailableAssertions` below.
         /// </summary>
         public InputList<Inputs.SyntheticTaskAvailableAssertionArgs> AvailableAssertions
         {
@@ -383,13 +383,13 @@ namespace Pulumi.AliCloud.Arms
         }
 
         /// <summary>
-        /// Common settings. See `common_setting` below.
+        /// Common settings. See `CommonSetting` below.
         /// </summary>
         [Input("commonSetting")]
         public Input<Inputs.SyntheticTaskCommonSettingArgs>? CommonSetting { get; set; }
 
         /// <summary>
-        /// Custom Cycle. See `custom_period` below.
+        /// Custom Cycle. See `CustomPeriod` below.
         /// </summary>
         [Input("customPeriod")]
         public Input<Inputs.SyntheticTaskCustomPeriodArgs>? CustomPeriod { get; set; }
@@ -407,7 +407,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<int> MonitorCategory { get; set; } = null!;
 
         /// <summary>
-        /// Monitoring configuration. See `monitor_conf` below.
+        /// Monitoring configuration. See `MonitorConf` below.
         /// </summary>
         [Input("monitorConf", required: true)]
         public Input<Inputs.SyntheticTaskMonitorConfArgs> MonitorConf { get; set; } = null!;
@@ -416,7 +416,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.SyntheticTaskMonitorArgs>? _monitors;
 
         /// <summary>
-        /// List of selected monitors. See `monitors` below.
+        /// List of selected monitors. See `Monitors` below.
         /// </summary>
         public InputList<Inputs.SyntheticTaskMonitorArgs> Monitors
         {
@@ -472,7 +472,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.SyntheticTaskAvailableAssertionGetArgs>? _availableAssertions;
 
         /// <summary>
-        /// Assertion List. See `available_assertions` below.
+        /// Assertion List. See `AvailableAssertions` below.
         /// </summary>
         public InputList<Inputs.SyntheticTaskAvailableAssertionGetArgs> AvailableAssertions
         {
@@ -481,13 +481,13 @@ namespace Pulumi.AliCloud.Arms
         }
 
         /// <summary>
-        /// Common settings. See `common_setting` below.
+        /// Common settings. See `CommonSetting` below.
         /// </summary>
         [Input("commonSetting")]
         public Input<Inputs.SyntheticTaskCommonSettingGetArgs>? CommonSetting { get; set; }
 
         /// <summary>
-        /// Custom Cycle. See `custom_period` below.
+        /// Custom Cycle. See `CustomPeriod` below.
         /// </summary>
         [Input("customPeriod")]
         public Input<Inputs.SyntheticTaskCustomPeriodGetArgs>? CustomPeriod { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<int>? MonitorCategory { get; set; }
 
         /// <summary>
-        /// Monitoring configuration. See `monitor_conf` below.
+        /// Monitoring configuration. See `MonitorConf` below.
         /// </summary>
         [Input("monitorConf")]
         public Input<Inputs.SyntheticTaskMonitorConfGetArgs>? MonitorConf { get; set; }
@@ -514,7 +514,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.SyntheticTaskMonitorGetArgs>? _monitors;
 
         /// <summary>
-        /// List of selected monitors. See `monitors` below.
+        /// List of selected monitors. See `Monitors` below.
         /// </summary>
         public InputList<Inputs.SyntheticTaskMonitorGetArgs> Monitors
         {

@@ -299,14 +299,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
-     * @return Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * @return Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     public Output<Optional<String>> instanceType() {
