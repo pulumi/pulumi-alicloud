@@ -220,13 +220,13 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
+        /// The bucket name of OSS. While SourceType equals `OSS`, this parameter must be set.
         /// </summary>
         [Input("bucket")]
         public string? Bucket { get; set; }
 
         /// <summary>
-        /// Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+        /// Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `CompleteTimeChecker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
         /// </summary>
         [Input("completeTime")]
         public string? CompleteTime { get; set; }
@@ -238,13 +238,13 @@ namespace Pulumi.AliCloud.Hbr
         public string? CompleteTimeChecker { get; set; }
 
         /// <summary>
-        /// File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// File system creation timestamp of Nas. While SourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("createTime")]
         public string? CreateTime { get; set; }
 
         /// <summary>
-        /// The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
+        /// The File System ID of Nas. While SourceType equals `NAS`, this parameter must be set.
         /// </summary>
         [Input("fileSystemId")]
         public string? FileSystemId { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+        /// The ID of ECS instance. The ecs backup client must have been installed on the host. While SourceType equals `ECS_FILE`, this parameter must be set.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -306,13 +306,13 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
+        /// The bucket name of OSS. While SourceType equals `OSS`, this parameter must be set.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+        /// Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `CompleteTimeChecker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
         /// </summary>
         [Input("completeTime")]
         public Input<string>? CompleteTime { get; set; }
@@ -324,13 +324,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? CompleteTimeChecker { get; set; }
 
         /// <summary>
-        /// File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// File system creation timestamp of Nas. While SourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
+        /// The File System ID of Nas. While SourceType equals `NAS`, this parameter must be set.
         /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
@@ -348,7 +348,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+        /// The ID of ECS instance. The ecs backup client must have been installed on the host. While SourceType equals `ECS_FILE`, this parameter must be set.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

@@ -97,14 +97,14 @@ public final class ExperimentPlanTemplateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Representative Template Pipeline. See `template_pipeline` below.
+     * Representative Template Pipeline. See `templatePipeline` below.
      * 
      */
     @Import(name="templatePipelines")
     private @Nullable Output<List<ExperimentPlanTemplateTemplatePipelineArgs>> templatePipelines;
 
     /**
-     * @return Representative Template Pipeline. See `template_pipeline` below.
+     * @return Representative Template Pipeline. See `templatePipeline` below.
      * 
      */
     public Optional<Output<List<ExperimentPlanTemplateTemplatePipelineArgs>>> templatePipelines() {
@@ -250,7 +250,7 @@ public final class ExperimentPlanTemplateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param templatePipelines Representative Template Pipeline. See `template_pipeline` below.
+         * @param templatePipelines Representative Template Pipeline. See `templatePipeline` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class ExperimentPlanTemplateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param templatePipelines Representative Template Pipeline. See `template_pipeline` below.
+         * @param templatePipelines Representative Template Pipeline. See `templatePipeline` below.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ExperimentPlanTemplateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param templatePipelines Representative Template Pipeline. See `template_pipeline` below.
+         * @param templatePipelines Representative Template Pipeline. See `templatePipeline` below.
          * 
          * @return builder
          * 

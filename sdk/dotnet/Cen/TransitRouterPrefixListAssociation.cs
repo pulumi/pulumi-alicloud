@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterPrefixListAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+        /// The ID of the next hop. **NOTE:** If `NextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         /// </summary>
         [Output("nextHop")]
         public Output<string> NextHop { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterPrefixListAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+        /// The ID of the next hop. **NOTE:** If `NextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         /// </summary>
         [Input("nextHop", required: true)]
         public Input<string> NextHop { get; set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterPrefixListAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+        /// The ID of the next hop. **NOTE:** If `NextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         /// </summary>
         [Input("nextHop")]
         public Input<string>? NextHop { get; set; }

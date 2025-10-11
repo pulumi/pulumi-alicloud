@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Eflo.Outputs
     public sealed class NodeGroupIpAllocationPolicy
     {
         /// <summary>
-        /// Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        /// Specify the cluster subnet ID based on the bond name See `BondPolicy` below.
         /// </summary>
         public readonly Outputs.NodeGroupIpAllocationPolicyBondPolicy? BondPolicy;
         /// <summary>
-        /// Model Assignment Policy See `machine_type_policy` below.
+        /// Model Assignment Policy See `MachineTypePolicy` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeGroupIpAllocationPolicyMachineTypePolicy> MachineTypePolicies;
         /// <summary>
-        /// Node allocation policy See `node_policy` below.
+        /// Node allocation policy See `NodePolicy` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeGroupIpAllocationPolicyNodePolicy> NodePolicies;
 

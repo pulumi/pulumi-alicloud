@@ -51,7 +51,7 @@ public final class ConnectionTunnelOptionsSpecification {
      */
     private @Nullable String status;
     /**
-     * @return The bgp config of Tunnel. See `tunnel_bgp_config` below.
+     * @return The bgp config of Tunnel. See `tunnelBgpConfig` below.
      * 
      */
     private @Nullable ConnectionTunnelOptionsSpecificationTunnelBgpConfig tunnelBgpConfig;
@@ -61,12 +61,12 @@ public final class ConnectionTunnelOptionsSpecification {
      */
     private @Nullable String tunnelId;
     /**
-     * @return The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+     * @return The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
      * 
      */
     private @Nullable ConnectionTunnelOptionsSpecificationTunnelIkeConfig tunnelIkeConfig;
     /**
-     * @return IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+     * @return IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
      * 
      */
     private @Nullable ConnectionTunnelOptionsSpecificationTunnelIpsecConfig tunnelIpsecConfig;
@@ -127,7 +127,7 @@ public final class ConnectionTunnelOptionsSpecification {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The bgp config of Tunnel. See `tunnel_bgp_config` below.
+     * @return The bgp config of Tunnel. See `tunnelBgpConfig` below.
      * 
      */
     public Optional<ConnectionTunnelOptionsSpecificationTunnelBgpConfig> tunnelBgpConfig() {
@@ -141,14 +141,14 @@ public final class ConnectionTunnelOptionsSpecification {
         return Optional.ofNullable(this.tunnelId);
     }
     /**
-     * @return The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+     * @return The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
      * 
      */
     public Optional<ConnectionTunnelOptionsSpecificationTunnelIkeConfig> tunnelIkeConfig() {
         return Optional.ofNullable(this.tunnelIkeConfig);
     }
     /**
-     * @return IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+     * @return IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
      * 
      */
     public Optional<ConnectionTunnelOptionsSpecificationTunnelIpsecConfig> tunnelIpsecConfig() {

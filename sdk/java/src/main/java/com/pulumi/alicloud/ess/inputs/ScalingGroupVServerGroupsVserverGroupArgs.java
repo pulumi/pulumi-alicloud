@@ -32,14 +32,14 @@ public final class ScalingGroupVServerGroupsVserverGroupArgs extends com.pulumi.
     }
 
     /**
-     * A list of VServer Group attributes. See `vserver_attributes` below.
+     * A list of VServer Group attributes. See `vserverAttributes` below.
      * 
      */
     @Import(name="vserverAttributes", required=true)
     private Output<List<ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs>> vserverAttributes;
 
     /**
-     * @return A list of VServer Group attributes. See `vserver_attributes` below.
+     * @return A list of VServer Group attributes. See `vserverAttributes` below.
      * 
      */
     public Output<List<ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs>> vserverAttributes() {
@@ -93,7 +93,7 @@ public final class ScalingGroupVServerGroupsVserverGroupArgs extends com.pulumi.
         }
 
         /**
-         * @param vserverAttributes A list of VServer Group attributes. See `vserver_attributes` below.
+         * @param vserverAttributes A list of VServer Group attributes. See `vserverAttributes` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ScalingGroupVServerGroupsVserverGroupArgs extends com.pulumi.
         }
 
         /**
-         * @param vserverAttributes A list of VServer Group attributes. See `vserver_attributes` below.
+         * @param vserverAttributes A list of VServer Group attributes. See `vserverAttributes` below.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ScalingGroupVServerGroupsVserverGroupArgs extends com.pulumi.
         }
 
         /**
-         * @param vserverAttributes A list of VServer Group attributes. See `vserver_attributes` below.
+         * @param vserverAttributes A list of VServer Group attributes. See `vserverAttributes` below.
          * 
          * @return builder
          * 

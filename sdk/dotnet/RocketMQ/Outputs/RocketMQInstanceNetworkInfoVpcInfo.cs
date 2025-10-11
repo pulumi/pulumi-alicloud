@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// </summary>
         public readonly string? VswitchId;
         /// <summary>
-        /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+        /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `Vswitches` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RocketMQInstanceNetworkInfoVpcInfoVswitch> Vswitches;
 

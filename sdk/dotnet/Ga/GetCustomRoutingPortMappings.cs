@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ga
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+        /// The access policy of traffic for the backend instance. Valid Values: `Allow`, `Deny`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+        /// The access policy of traffic for the backend instance. Valid Values: `Allow`, `Deny`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

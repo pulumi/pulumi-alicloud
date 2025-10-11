@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

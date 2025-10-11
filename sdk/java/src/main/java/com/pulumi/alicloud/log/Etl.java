@@ -272,56 +272,56 @@ public class Etl extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fromTime);
     }
     /**
-     * An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+     * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      * 
      */
     @Export(name="kmsEncryptedAccessKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedAccessKeyId;
 
     /**
-     * @return An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      * 
      */
     public Output<Optional<String>> kmsEncryptedAccessKeyId() {
         return Codegen.optional(this.kmsEncryptedAccessKeyId);
     }
     /**
-     * An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+     * An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      * 
      */
     @Export(name="kmsEncryptedAccessKeySecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedAccessKeySecret;
 
     /**
-     * @return An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      * 
      */
     public Output<Optional<String>> kmsEncryptedAccessKeySecret() {
         return Codegen.optional(this.kmsEncryptedAccessKeySecret);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     @Export(name="kmsEncryptionAccessKeyIdContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionAccessKeyIdContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionAccessKeyIdContext() {
         return Codegen.optional(this.kmsEncryptionAccessKeyIdContext);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     @Export(name="kmsEncryptionAccessKeySecretContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionAccessKeySecretContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionAccessKeySecretContext() {
@@ -384,14 +384,14 @@ public class Etl extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
-     * @return Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     public Output<Optional<String>> roleArn() {

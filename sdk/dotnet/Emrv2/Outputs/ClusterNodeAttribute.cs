@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly bool? DataDiskEncrypted;
         /// <summary>
-        /// The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        /// The kms key id used to encrypt the data disk. It takes effect when DataDiskEncrypted is true.
         /// </summary>
         public readonly string? DataDiskKmsKeyId;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly bool? SystemDiskEncrypted;
         /// <summary>
-        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// The kms key id used to encrypt the system disk. It takes effect when SystemDiskEncrypted is true.
         /// </summary>
         public readonly string? SystemDiskKmsKeyId;
         /// <summary>

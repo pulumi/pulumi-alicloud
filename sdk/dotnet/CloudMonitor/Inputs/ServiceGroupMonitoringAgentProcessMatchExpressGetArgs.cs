@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Inputs
     public sealed class ServiceGroupMonitoringAgentProcessMatchExpressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+        /// The matching condition. Valid values: `All`, `startWith`, `endWith`, `Contains`, `notContains`, `Equals`.
         /// </summary>
         [Input("function")]
         public Input<string>? Function { get; set; }

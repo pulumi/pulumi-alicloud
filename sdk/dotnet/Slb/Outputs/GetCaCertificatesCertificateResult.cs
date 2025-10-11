@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
+        /// (Deprecated from v1.123.1) Deprecated and replace by `CaCertificateName`.
         /// </summary>
         public readonly string Name;
         /// <summary>

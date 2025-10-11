@@ -122,14 +122,14 @@ public final class V3TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+     * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      * 
      */
     @Import(name="triggerType", required=true)
     private Output<String> triggerType;
 
     /**
-     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      * 
      */
     public Output<String> triggerType() {
@@ -315,7 +315,7 @@ public final class V3TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerType The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+         * @param triggerType The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class V3TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerType The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+         * @param triggerType The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
          * 
          * @return builder
          * 

@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.CS
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
+        /// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `Expiration`.
         /// </summary>
         [Input("temporaryDurationMinutes")]
         public int? TemporaryDurationMinutes { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
+        /// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `Expiration`.
         /// </summary>
         [Input("temporaryDurationMinutes")]
         public Input<int>? TemporaryDurationMinutes { get; set; }

@@ -18,14 +18,14 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
     public static final ImageImportState Empty = new ImageImportState();
 
     /**
-     * The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+     * The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+     * @return The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -63,14 +63,14 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the custom image. See `disk_device_mapping` below.
+     * The information about the custom image. See `diskDeviceMapping` below.
      * 
      */
     @Import(name="diskDeviceMappings")
     private @Nullable Output<List<ImageImportDiskDeviceMappingArgs>> diskDeviceMappings;
 
     /**
-     * @return The information about the custom image. See `disk_device_mapping` below.
+     * @return The information about the custom image. See `diskDeviceMapping` below.
      * 
      */
     public Optional<Output<List<ImageImportDiskDeviceMappingArgs>>> diskDeviceMappings() {
@@ -78,14 +78,14 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+     * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+     * @return The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -171,7 +171,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+         * @param architecture The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+         * @param architecture The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings The information about the custom image. See `disk_device_mapping` below.
+         * @param diskDeviceMappings The information about the custom image. See `diskDeviceMapping` below.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings The information about the custom image. See `disk_device_mapping` below.
+         * @param diskDeviceMappings The information about the custom image. See `diskDeviceMapping` below.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings The information about the custom image. See `disk_device_mapping` below.
+         * @param diskDeviceMappings The information about the custom image. See `diskDeviceMapping` below.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+         * @param imageName The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+         * @param imageName The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 

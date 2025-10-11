@@ -2343,6 +2343,8 @@ public final class ExpressconnectFunctions {
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections() {
         return getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.Empty, InvokeOptions.Empty);
@@ -2351,6 +2353,8 @@ public final class ExpressconnectFunctions {
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
      * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain() {
@@ -2361,6 +2365,8 @@ public final class ExpressconnectFunctions {
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args) {
         return getVirtualPhysicalConnections(args, InvokeOptions.Empty);
@@ -2369,6 +2375,8 @@ public final class ExpressconnectFunctions {
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
      * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain(GetVirtualPhysicalConnectionsPlainArgs args) {
@@ -2379,6 +2387,8 @@ public final class ExpressconnectFunctions {
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", TypeShape.of(GetVirtualPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
@@ -2388,6 +2398,8 @@ public final class ExpressconnectFunctions {
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", TypeShape.of(GetVirtualPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
@@ -2396,6 +2408,8 @@ public final class ExpressconnectFunctions {
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
      * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain(GetVirtualPhysicalConnectionsPlainArgs args, InvokeOptions options) {

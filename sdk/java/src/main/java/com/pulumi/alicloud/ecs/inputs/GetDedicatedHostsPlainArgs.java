@@ -93,14 +93,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The reason why the dedicated host resource is locked. See `operation_locks` below.
+     * The reason why the dedicated host resource is locked. See `operationLocks` below.
      * 
      */
     @Import(name="operationLocks")
     private @Nullable List<GetDedicatedHostsOperationLock> operationLocks;
 
     /**
-     * @return The reason why the dedicated host resource is locked. See `operation_locks` below.
+     * @return The reason why the dedicated host resource is locked. See `operationLocks` below.
      * 
      */
     public Optional<List<GetDedicatedHostsOperationLock>> operationLocks() {
@@ -282,7 +282,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param operationLocks The reason why the dedicated host resource is locked. See `operation_locks` below.
+         * @param operationLocks The reason why the dedicated host resource is locked. See `operationLocks` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param operationLocks The reason why the dedicated host resource is locked. See `operation_locks` below.
+         * @param operationLocks The reason why the dedicated host resource is locked. See `operationLocks` below.
          * 
          * @return builder
          * 

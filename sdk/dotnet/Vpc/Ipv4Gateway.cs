@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        /// Whether the IPv4 gateway is active or not. Valid values are `True` and `False`.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        /// Whether the IPv4 gateway is active or not. Valid values are `True` and `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        /// Whether the IPv4 gateway is active or not. Valid values are `True` and `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

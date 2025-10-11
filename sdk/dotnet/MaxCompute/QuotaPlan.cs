@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> PlanName { get; private set; } = null!;
 
         /// <summary>
-        /// Quota property See `quota` below.
+        /// Quota property See `Quota` below.
         /// </summary>
         [Output("quota")]
         public Output<Outputs.QuotaPlanQuota?> Quota { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string> PlanName { get; set; } = null!;
 
         /// <summary>
-        /// Quota property See `quota` below.
+        /// Quota property See `Quota` below.
         /// </summary>
         [Input("quota")]
         public Input<Inputs.QuotaPlanQuotaArgs>? Quota { get; set; }
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? PlanName { get; set; }
 
         /// <summary>
-        /// Quota property See `quota` below.
+        /// Quota property See `Quota` below.
         /// </summary>
         [Input("quota")]
         public Input<Inputs.QuotaPlanQuotaGetArgs>? Quota { get; set; }

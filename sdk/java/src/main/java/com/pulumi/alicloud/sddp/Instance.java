@@ -149,14 +149,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logistics);
     }
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      * 
      */
     @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
-     * @return The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+     * @return The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      * 
      */
     public Output<Optional<String>> modifyType() {
@@ -261,14 +261,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.remainDays;
     }
     /**
-     * Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+     * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+     * @return Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {
@@ -317,14 +317,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.sdc;
     }
     /**
-     * The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+     * The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      * 
      */
     @Export(name="sddpVersion", refs={String.class}, tree="[0]")
     private Output<String> sddpVersion;
 
     /**
-     * @return The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+     * @return The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      * 
      */
     public Output<String> sddpVersion() {

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// </summary>
         public readonly string? AuthorizationEndpoint;
         /// <summary>
-        /// The parameters that are configured for the client. See `client_parameters` below.
+        /// The parameters that are configured for the client. See `ClientParameters` below.
         /// </summary>
         public readonly Outputs.ConnectionAuthParametersOauthParametersClientParameters? ClientParameters;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// </summary>
         public readonly string? HttpMethod;
         /// <summary>
-        /// The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+        /// The request parameters that are configured for OAuth authentication. See `OauthHttpParameters` below.
         /// </summary>
         public readonly Outputs.ConnectionAuthParametersOauthParametersOauthHttpParameters? OauthHttpParameters;
 

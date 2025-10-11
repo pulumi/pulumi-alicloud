@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ots.Outputs
     public sealed class SearchIndexSchemaIndexSort
     {
         /// <summary>
-        /// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
+        /// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `Sorter` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SearchIndexSchemaIndexSortSorter> Sorters;
 

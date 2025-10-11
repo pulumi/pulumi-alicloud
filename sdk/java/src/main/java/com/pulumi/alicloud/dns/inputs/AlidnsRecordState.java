@@ -92,14 +92,14 @@ public final class AlidnsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
+     * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
      * 
      */
     @Import(name="rr")
     private @Nullable Output<String> rr;
 
     /**
-     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
+     * @return Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
      * 
      */
     public Optional<Output<String>> rr() {
@@ -321,7 +321,7 @@ public final class AlidnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rr Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
+         * @param rr Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class AlidnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rr Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
+         * @param rr Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
          * 
          * @return builder
          * 

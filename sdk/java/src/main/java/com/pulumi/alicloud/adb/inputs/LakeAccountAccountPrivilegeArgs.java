@@ -18,14 +18,14 @@ public final class LakeAccountAccountPrivilegeArgs extends com.pulumi.resources.
     public static final LakeAccountAccountPrivilegeArgs Empty = new LakeAccountAccountPrivilegeArgs();
 
     /**
-     * Object associated to privileges. See `privilege_object` below.
+     * Object associated to privileges. See `privilegeObject` below.
      * 
      */
     @Import(name="privilegeObject")
     private @Nullable Output<LakeAccountAccountPrivilegePrivilegeObjectArgs> privilegeObject;
 
     /**
-     * @return Object associated to privileges. See `privilege_object` below.
+     * @return Object associated to privileges. See `privilegeObject` below.
      * 
      */
     public Optional<Output<LakeAccountAccountPrivilegePrivilegeObjectArgs>> privilegeObject() {
@@ -89,7 +89,7 @@ public final class LakeAccountAccountPrivilegeArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param privilegeObject Object associated to privileges. See `privilege_object` below.
+         * @param privilegeObject Object associated to privileges. See `privilegeObject` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class LakeAccountAccountPrivilegeArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param privilegeObject Object associated to privileges. See `privilege_object` below.
+         * @param privilegeObject Object associated to privileges. See `privilegeObject` below.
          * 
          * @return builder
          * 

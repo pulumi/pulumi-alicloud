@@ -23,14 +23,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * The AD auth server of the Instance. See `ad_auth_server` below.
+     * The AD auth server of the Instance. See `adAuthServer` below.
      * 
      */
     @Import(name="adAuthServers")
     private @Nullable Output<List<InstanceAdAuthServerArgs>> adAuthServers;
 
     /**
-     * @return The AD auth server of the Instance. See `ad_auth_server` below.
+     * @return The AD auth server of the Instance. See `adAuthServer` below.
      * 
      */
     public Optional<Output<List<InstanceAdAuthServerArgs>>> adAuthServers() {
@@ -87,14 +87,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The LDAP auth server of the Instance. See `ldap_auth_server` below.
+     * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      * 
      */
     @Import(name="ldapAuthServers")
     private @Nullable Output<List<InstanceLdapAuthServerArgs>> ldapAuthServers;
 
     /**
-     * @return The LDAP auth server of the Instance. See `ldap_auth_server` below.
+     * @return The LDAP auth server of the Instance. See `ldapAuthServer` below.
      * 
      */
     public Optional<Output<List<InstanceLdapAuthServerArgs>>> ldapAuthServers() {
@@ -156,14 +156,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -171,7 +171,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
      * - `M`: months.
      * - `Y`: years.
      * 
@@ -180,7 +180,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> renewalPeriodUnit;
 
     /**
-     * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
      * - `M`: months.
      * - `Y`: years.
      * 
@@ -190,14 +190,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
      * 
      */
     @Import(name="renewalStatus")
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+     * @return Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -221,8 +221,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * security group IDs configured to Bastionhost.
-     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      * 
      */
@@ -231,8 +231,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return security group IDs configured to Bastionhost.
-     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      * 
      */
@@ -326,7 +326,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adAuthServers The AD auth server of the Instance. See `ad_auth_server` below.
+         * @param adAuthServers The AD auth server of the Instance. See `adAuthServer` below.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adAuthServers The AD auth server of the Instance. See `ad_auth_server` below.
+         * @param adAuthServers The AD auth server of the Instance. See `adAuthServer` below.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adAuthServers The AD auth server of the Instance. See `ad_auth_server` below.
+         * @param adAuthServers The AD auth server of the Instance. See `adAuthServer` below.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldap_auth_server` below.
+         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldapAuthServer` below.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldap_auth_server` below.
+         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldapAuthServer` below.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldap_auth_server` below.
+         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldapAuthServer` below.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+         * @param renewPeriod Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+         * @param renewPeriod Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalPeriodUnit The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+         * @param renewalPeriodUnit The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
          * - `M`: months.
          * - `Y`: years.
          * 
@@ -567,7 +567,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalPeriodUnit The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+         * @param renewalPeriodUnit The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
          * - `M`: months.
          * - `Y`: years.
          * 
@@ -579,7 +579,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
          * 
          * @return builder
          * 
@@ -622,8 +622,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroupIds security group IDs configured to Bastionhost.
-         * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-         * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+         * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+         * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
          * and you can use tolist to convert it to a list.
          * 
          * @return builder
@@ -636,8 +636,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroupIds security group IDs configured to Bastionhost.
-         * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-         * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+         * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+         * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
          * and you can use tolist to convert it to a list.
          * 
          * @return builder
@@ -649,8 +649,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroupIds security group IDs configured to Bastionhost.
-         * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-         * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+         * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+         * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
          * and you can use tolist to convert it to a list.
          * 
          * @return builder

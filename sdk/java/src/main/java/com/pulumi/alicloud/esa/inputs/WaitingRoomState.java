@@ -83,14 +83,14 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Host name and path. See `host_name_and_path` below.
+     * Host name and path. See `hostNameAndPath` below.
      * 
      */
     @Import(name="hostNameAndPaths")
     private @Nullable Output<List<WaitingRoomHostNameAndPathArgs>> hostNameAndPaths;
 
     /**
-     * @return Host name and path. See `host_name_and_path` below.
+     * @return Host name and path. See `hostNameAndPath` below.
      * 
      */
     public Optional<Output<List<WaitingRoomHostNameAndPathArgs>>> hostNameAndPaths() {
@@ -458,7 +458,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostNameAndPaths Host name and path. See `host_name_and_path` below.
+         * @param hostNameAndPaths Host name and path. See `hostNameAndPath` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostNameAndPaths Host name and path. See `host_name_and_path` below.
+         * @param hostNameAndPaths Host name and path. See `hostNameAndPath` below.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostNameAndPaths Host name and path. See `host_name_and_path` below.
+         * @param hostNameAndPaths Host name and path. See `hostNameAndPath` below.
          * 
          * @return builder
          * 

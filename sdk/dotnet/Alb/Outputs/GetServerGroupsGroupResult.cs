@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetServerGroupsGroupResult
     {
         /// <summary>
-        /// The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
+        /// The configuration of health checks. **Note:** `HealthCheckConfig` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupHealthCheckConfigResult> HealthCheckConfigs;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ServerGroupName;
         /// <summary>
-        /// The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
+        /// The backend server. **Note:** `Servers` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupServerResult> Servers;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
+        /// The configuration of the sticky session. **Note:** `StickySessionConfig` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupStickySessionConfigResult> StickySessionConfigs;
         /// <summary>

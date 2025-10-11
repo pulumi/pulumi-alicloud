@@ -193,13 +193,13 @@ namespace Pulumi.AliCloud.Ecs
         public string? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.122.0. New field `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? DiskName { get; set; }
 
         /// <summary>
-        /// The disk type. Valid values: `system`, `data`, `all`.
+        /// The disk type. Valid values: `System`, `Data`, `All`.
         /// </summary>
         [Input("diskType")]
         public string? DiskType { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Valid values: `On` and `Off`.
         /// </summary>
         [Input("encrypted")]
         public string? Encrypted { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<Inputs.GetEcsDisksOperationLockArgs>? _operationLocks;
 
         /// <summary>
-        /// The reasons why the disk was locked. See `operation_locks` below for details.
+        /// The reasons why the disk was locked. See `OperationLocks` below for details.
         /// </summary>
         public List<Inputs.GetEcsDisksOperationLockArgs> OperationLocks
         {
@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+        /// Field `Type` has been deprecated from provider version 1.122.0. New field `DiskType` instead.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -393,13 +393,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.122.0. New field `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// The disk type. Valid values: `system`, `data`, `all`.
+        /// The disk type. Valid values: `System`, `Data`, `All`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Valid values: `On` and `Off`.
         /// </summary>
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.GetEcsDisksOperationLockInputArgs>? _operationLocks;
 
         /// <summary>
-        /// The reasons why the disk was locked. See `operation_locks` below for details.
+        /// The reasons why the disk was locked. See `OperationLocks` below for details.
         /// </summary>
         public InputList<Inputs.GetEcsDisksOperationLockInputArgs> OperationLocks
         {
@@ -555,7 +555,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+        /// Field `Type` has been deprecated from provider version 1.122.0. New field `DiskType` instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

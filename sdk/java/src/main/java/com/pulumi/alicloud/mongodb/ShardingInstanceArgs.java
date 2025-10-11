@@ -69,14 +69,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      * 
      */
     @Import(name="backupPeriods")
     private @Nullable Output<List<String>> backupPeriods;
 
     /**
-     * @return MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * @return MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      * 
      */
     public Optional<Output<List<String>>> backupPeriods() {
@@ -114,14 +114,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     @Import(name="backupTime")
     private @Nullable Output<String> backupTime;
 
     /**
-     * @return Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * @return Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     public Optional<Output<String>> backupTime() {
@@ -144,14 +144,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ConfigServer nodes of the instance. See `config_server_list` below.
+     * The ConfigServer nodes of the instance. See `configServerList` below.
      * 
      */
     @Import(name="configServerLists")
     private @Nullable Output<List<ShardingInstanceConfigServerListArgs>> configServerLists;
 
     /**
-     * @return The ConfigServer nodes of the instance. See `config_server_list` below.
+     * @return The ConfigServer nodes of the instance. See `configServerList` below.
      * 
      */
     public Optional<Output<List<ShardingInstanceConfigServerListArgs>>> configServerLists() {
@@ -221,14 +221,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      * 
      */
     @Import(name="encryptorName")
     private @Nullable Output<String> encryptorName;
 
     /**
-     * @return The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * @return The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      * 
      */
     public Optional<Output<String>> encryptorName() {
@@ -236,14 +236,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      * 
      */
     @Import(name="engineVersion", required=true)
     private Output<String> engineVersion;
 
     /**
-     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      * 
      */
     public Output<String> engineVersion() {
@@ -266,14 +266,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
      * 
      */
     @Import(name="hiddenZoneId")
     private @Nullable Output<String> hiddenZoneId;
 
     /**
-     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
      * 
      */
     public Optional<Output<String>> hiddenZoneId() {
@@ -296,14 +296,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -311,14 +311,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
@@ -326,14 +326,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      * 
      */
     @Import(name="logBackupRetentionPeriod")
     private @Nullable Output<Integer> logBackupRetentionPeriod;
 
     /**
-     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      * 
      */
     public Optional<Output<Integer>> logBackupRetentionPeriod() {
@@ -371,14 +371,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      * 
      */
     @Import(name="mongoLists", required=true)
     private Output<List<ShardingInstanceMongoListArgs>> mongoLists;
 
     /**
-     * @return The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+     * @return The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      * 
      */
     public Output<List<ShardingInstanceMongoListArgs>> mongoLists() {
@@ -419,7 +419,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     @Import(name="orderType")
@@ -429,7 +429,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -437,14 +437,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -512,14 +512,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
      * 
      */
     @Import(name="secondaryZoneId")
     private @Nullable Output<String> secondaryZoneId;
 
     /**
-     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
      * 
      */
     public Optional<Output<String>> secondaryZoneId() {
@@ -557,14 +557,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      * 
      */
     @Import(name="shardLists", required=true)
     private Output<List<ShardingInstanceShardListArgs>> shardLists;
 
     /**
-     * @return The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+     * @return The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      * 
      */
     public Output<List<ShardingInstanceShardListArgs>> shardLists() {
@@ -627,14 +627,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      * 
      */
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
-     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+     * @return The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -672,14 +672,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -703,7 +703,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * 
      */
     @Import(name="zoneId")
@@ -711,7 +711,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -850,7 +850,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+         * @param backupPeriods MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
          * 
          * @return builder
          * 
@@ -861,7 +861,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+         * @param backupPeriods MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
          * 
          * @return builder
          * 
@@ -871,7 +871,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+         * @param backupPeriods MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
          * 
          * @return builder
          * 
@@ -923,7 +923,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param backupTime Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+         * @param backupTime Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
          * 
          * @return builder
          * 
@@ -934,7 +934,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param backupTime Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+         * @param backupTime Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
          * 
          * @return builder
          * 
@@ -965,7 +965,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
+         * @param configServerLists The ConfigServer nodes of the instance. See `configServerList` below.
          * 
          * @return builder
          * 
@@ -976,7 +976,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
+         * @param configServerLists The ConfigServer nodes of the instance. See `configServerList` below.
          * 
          * @return builder
          * 
@@ -986,7 +986,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
+         * @param configServerLists The ConfigServer nodes of the instance. See `configServerList` below.
          * 
          * @return builder
          * 
@@ -1082,7 +1082,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryptorName The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+         * @param encryptorName The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
          * 
          * @return builder
          * 
@@ -1093,7 +1093,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryptorName The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+         * @param encryptorName The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
          * 
          * @return builder
          * 
@@ -1103,7 +1103,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
          * 
          * @return builder
          * 
@@ -1114,7 +1114,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
          * 
          * @return builder
          * 
@@ -1155,7 +1155,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
          * 
          * @return builder
          * 
@@ -1166,7 +1166,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
          * 
          * @return builder
          * 
@@ -1197,7 +1197,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -1208,7 +1208,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -1218,7 +1218,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -1229,7 +1229,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -1239,7 +1239,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
          * 
          * @return builder
          * 
@@ -1250,7 +1250,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
          * 
          * @return builder
          * 
@@ -1302,7 +1302,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
          * 
          * @return builder
          * 
@@ -1313,7 +1313,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
          * 
          * @return builder
          * 
@@ -1323,7 +1323,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
          * 
          * @return builder
          * 
@@ -1378,7 +1378,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * - `UPGRADE`: The specifications are upgraded.
          * - `DOWNGRADE`: The specifications are downgraded.
-         *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+         *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1392,7 +1392,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * - `UPGRADE`: The specifications are upgraded.
          * - `DOWNGRADE`: The specifications are downgraded.
-         *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+         *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1402,7 +1402,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -1413,7 +1413,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -1507,7 +1507,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
          * 
          * @return builder
          * 
@@ -1518,7 +1518,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
          * 
          * @return builder
          * 
@@ -1580,7 +1580,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
          * 
          * @return builder
          * 
@@ -1591,7 +1591,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
          * 
          * @return builder
          * 
@@ -1601,7 +1601,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
          * 
          * @return builder
          * 
@@ -1684,7 +1684,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+         * @param storageType The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
          * 
          * @return builder
          * 
@@ -1695,7 +1695,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+         * @param storageType The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
          * 
          * @return builder
          * 
@@ -1747,7 +1747,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -1758,7 +1758,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -1790,7 +1790,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param zoneId The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-         * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
          * 
          * @return builder
          * 
@@ -1802,7 +1802,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param zoneId The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-         * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
          * 
          * @return builder
          * 

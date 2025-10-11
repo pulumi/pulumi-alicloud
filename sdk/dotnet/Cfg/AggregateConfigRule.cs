@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<ImmutableDictionary<string, string>?> InputParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+        /// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `ConfigRuleTriggerTypes` is `ScheduledNotification`.
         /// </summary>
         [Output("maximumExecutionFrequency")]
         public Output<string> MaximumExecutionFrequency { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> TagKeyScope { get; private set; } = null!;
 
         /// <summary>
-        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, use with the `TagKeyScope` options. only applies to rules created based on managed rules.
         /// </summary>
         [Output("tagValueScope")]
         public Output<string?> TagValueScope { get; private set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+        /// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `ConfigRuleTriggerTypes` is `ScheduledNotification`.
         /// </summary>
         [Input("maximumExecutionFrequency")]
         public Input<string>? MaximumExecutionFrequency { get; set; }
@@ -337,7 +337,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? TagKeyScope { get; set; }
 
         /// <summary>
-        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, use with the `TagKeyScope` options. only applies to rules created based on managed rules.
         /// </summary>
         [Input("tagValueScope")]
         public Input<string>? TagValueScope { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+        /// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `ConfigRuleTriggerTypes` is `ScheduledNotification`.
         /// </summary>
         [Input("maximumExecutionFrequency")]
         public Input<string>? MaximumExecutionFrequency { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? TagKeyScope { get; set; }
 
         /// <summary>
-        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, use with the `TagKeyScope` options. only applies to rules created based on managed rules.
         /// </summary>
         [Input("tagValueScope")]
         public Input<string>? TagValueScope { get; set; }

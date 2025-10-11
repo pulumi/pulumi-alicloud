@@ -65,7 +65,7 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`).
      * 
      */
     @Import(name="protocolType")
@@ -75,7 +75,7 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
      * @return The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`).
      * 
      */
     public Optional<Output<String>> protocolType() {
@@ -85,8 +85,8 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The storage type of the file system.
      * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      * 
      */
     @Import(name="storageType")
@@ -95,8 +95,8 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The storage type of the file system.
      * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -208,7 +208,7 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
          * @param protocolType The protocol type of the file system.
          * Valid values:
          * `NFS`,
-         * `SMB` (Available when the `file_system_type` is `standard`).
+         * `SMB` (Available when the `fileSystemType` is `standard`).
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
          * @param protocolType The protocol type of the file system.
          * Valid values:
          * `NFS`,
-         * `SMB` (Available when the `file_system_type` is `standard`).
+         * `SMB` (Available when the `fileSystemType` is `standard`).
          * 
          * @return builder
          * 
@@ -234,8 +234,8 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param storageType The storage type of the file system.
          * * Valid values:
-         * * `Performance` (Available when the `file_system_type` is `standard`)
-         * * `Capacity` (Available when the `file_system_type` is `standard`)
+         * * `Performance` (Available when the `fileSystemType` is `standard`)
+         * * `Capacity` (Available when the `fileSystemType` is `standard`)
          * 
          * @return builder
          * 
@@ -248,8 +248,8 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param storageType The storage type of the file system.
          * * Valid values:
-         * * `Performance` (Available when the `file_system_type` is `standard`)
-         * * `Capacity` (Available when the `file_system_type` is `standard`)
+         * * `Performance` (Available when the `fileSystemType` is `standard`)
+         * * `Capacity` (Available when the `fileSystemType` is `standard`)
          * 
          * @return builder
          * 

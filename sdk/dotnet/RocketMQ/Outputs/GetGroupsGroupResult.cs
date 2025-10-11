@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// Specify the protocol applicable to the created Group ID. Valid values: `Tcp`, `Http`. Default to `Tcp`.
         /// </summary>
         public readonly string GroupType;
         /// <summary>

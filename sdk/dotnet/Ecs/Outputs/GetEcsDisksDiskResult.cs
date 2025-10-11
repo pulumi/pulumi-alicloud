@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string AutoSnapshotPolicyId;
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.122.0. New field `ZoneId` instead.
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DiskName;
         /// <summary>
-        /// The disk type. Valid values: `system`, `data`, `all`.
+        /// The disk type. Valid values: `System`, `Data`, `All`.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool EnableAutomatedSnapshotPolicy;
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Valid values: `On` and `Off`.
         /// </summary>
         public readonly string Encrypted;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The reasons why the disk was locked. See `operation_locks` below for details.
+        /// The reasons why the disk was locked. See `OperationLocks` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDisksDiskOperationLockResult> OperationLocks;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+        /// Field `Type` has been deprecated from provider version 1.122.0. New field `DiskType` instead.
         /// </summary>
         public readonly string Type;
         /// <summary>

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string PredictiveValueBehavior;
         /// <summary>
-        /// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+        /// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
         /// </summary>
         public readonly int PredictiveValueBuffer;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.BastionHost
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The AD auth server of the Instance. See `ad_auth_server` below.
+        /// The AD auth server of the Instance. See `AdAuthServer` below.
         /// </summary>
         [Output("adAuthServers")]
         public Output<ImmutableArray<Outputs.InstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
@@ -42,13 +42,13 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `True`, `False`.
         /// </summary>
         [Output("enablePublicAccess")]
         public Output<bool> EnablePublicAccess { get; private set; } = null!;
 
         /// <summary>
-        /// The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        /// The LDAP auth server of the Instance. See `LdapAuthServer` below.
         /// </summary>
         [Output("ldapAuthServers")]
         public Output<ImmutableArray<Outputs.InstanceLdapAuthServer>> LdapAuthServers { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -76,13 +76,13 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<ImmutableArray<string>> PublicWhiteLists { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `RenewPeriod` is required under the condition that `RenewalStatus` is `AutoRenewal`. From version 1.193.0, `RenewPeriod` can be modified.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `RenewalPeriodUnit` is required under the condition that `RenewalStatus` is `AutoRenewal`.
         /// - `M`: months.
         /// - `Y`: years.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> RenewalPeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `RenewalStatus` can be modified.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -103,15 +103,15 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// security group IDs configured to Bastionhost. 
-        /// **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-        /// So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
+        /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `Storage` can be modified.
         /// </summary>
         [Output("storage")]
         public Output<string> Storage { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceAdAuthServerArgs>? _adAuthServers;
 
         /// <summary>
-        /// The AD auth server of the Instance. See `ad_auth_server` below.
+        /// The AD auth server of the Instance. See `AdAuthServer` below.
         /// </summary>
         public InputList<Inputs.InstanceAdAuthServerArgs> AdAuthServers
         {
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `True`, `False`.
         /// </summary>
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceLdapAuthServerArgs>? _ldapAuthServers;
 
         /// <summary>
-        /// The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        /// The LDAP auth server of the Instance. See `LdapAuthServer` below.
         /// </summary>
         public InputList<Inputs.InstanceLdapAuthServerArgs> LdapAuthServers
         {
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -246,13 +246,13 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `RenewPeriod` is required under the condition that `RenewalStatus` is `AutoRenewal`. From version 1.193.0, `RenewPeriod` can be modified.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `RenewalPeriodUnit` is required under the condition that `RenewalStatus` is `AutoRenewal`.
         /// - `M`: months.
         /// - `Y`: years.
         /// </summary>
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? RenewalPeriodUnit { get; set; }
 
         /// <summary>
-        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `RenewalStatus` can be modified.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -276,8 +276,8 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// security group IDs configured to Bastionhost. 
-        /// **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-        /// So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
+        /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
         /// </summary>
         public InputList<string> SecurityGroupIds
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `Storage` can be modified.
         /// </summary>
         [Input("storage", required: true)]
         public Input<string> Storage { get; set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceAdAuthServerGetArgs>? _adAuthServers;
 
         /// <summary>
-        /// The AD auth server of the Instance. See `ad_auth_server` below.
+        /// The AD auth server of the Instance. See `AdAuthServer` below.
         /// </summary>
         public InputList<Inputs.InstanceAdAuthServerGetArgs> AdAuthServers
         {
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `True`, `False`.
         /// </summary>
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceLdapAuthServerGetArgs>? _ldapAuthServers;
 
         /// <summary>
-        /// The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        /// The LDAP auth server of the Instance. See `LdapAuthServer` below.
         /// </summary>
         public InputList<Inputs.InstanceLdapAuthServerGetArgs> LdapAuthServers
         {
@@ -370,7 +370,7 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -390,13 +390,13 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `RenewPeriod` is required under the condition that `RenewalStatus` is `AutoRenewal`. From version 1.193.0, `RenewPeriod` can be modified.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `RenewalPeriodUnit` is required under the condition that `RenewalStatus` is `AutoRenewal`.
         /// - `M`: months.
         /// - `Y`: years.
         /// </summary>
@@ -404,7 +404,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? RenewalPeriodUnit { get; set; }
 
         /// <summary>
-        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `RenewalStatus` can be modified.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -420,8 +420,8 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// security group IDs configured to Bastionhost. 
-        /// **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-        /// So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
+        /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
         /// </summary>
         public InputList<string> SecurityGroupIds
@@ -431,7 +431,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `Storage` can be modified.
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Message.Inputs
     public sealed class ServiceEventRuleMatchRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Match state. valid values: `true`, `false`.
+        /// Match state. valid values: `True`, `False`.
         /// </summary>
         [Input("matchState")]
         public Input<string>? MatchState { get; set; }

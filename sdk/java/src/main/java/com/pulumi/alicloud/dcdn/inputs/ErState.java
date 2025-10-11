@@ -32,14 +32,14 @@ public final class ErState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of the specified environment. See `env_conf` below.
+     * The configurations of the specified environment. See `envConf` below.
      * 
      */
     @Import(name="envConf")
     private @Nullable Output<ErEnvConfArgs> envConf;
 
     /**
-     * @return The configurations of the specified environment. See `env_conf` below.
+     * @return The configurations of the specified environment. See `envConf` below.
      * 
      */
     public Optional<Output<ErEnvConfArgs>> envConf() {
@@ -109,7 +109,7 @@ public final class ErState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envConf The configurations of the specified environment. See `env_conf` below.
+         * @param envConf The configurations of the specified environment. See `envConf` below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ErState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envConf The configurations of the specified environment. See `env_conf` below.
+         * @param envConf The configurations of the specified environment. See `envConf` below.
          * 
          * @return builder
          * 

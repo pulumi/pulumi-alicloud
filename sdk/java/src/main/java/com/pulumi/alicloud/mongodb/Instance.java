@@ -166,14 +166,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.backupInterval;
     }
     /**
-     * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
+     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
-     * @return MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
+     * @return MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     public Output<List<String>> backupPeriods() {
@@ -208,14 +208,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backupRetentionPolicyOnClusterDeletion);
     }
     /**
-     * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
-     * @return MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * @return MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     public Output<String> backupTime() {
@@ -338,28 +338,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.encryptionKey;
     }
     /**
-     * The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      * 
      */
     @Export(name="encryptorName", refs={String.class}, tree="[0]")
     private Output<String> encryptorName;
 
     /**
-     * @return The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * @return The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      * 
      */
     public Output<String> encryptorName() {
         return this.encryptorName;
     }
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      * 
      */
     @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
-     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
+     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      * 
      */
     public Output<String> engineVersion() {
@@ -380,14 +380,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.globalSecurityGroupLists);
     }
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      * 
      */
     @Export(name="hiddenZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hiddenZoneId;
 
     /**
-     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      * 
      */
     public Output<Optional<String>> hiddenZoneId() {
@@ -408,42 +408,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      * 
      */
     @Export(name="logBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logBackupRetentionPeriod;
 
     /**
-     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      * 
      */
     public Output<Integer> logBackupRetentionPeriod() {
@@ -509,7 +509,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
@@ -519,7 +519,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     public Output<Optional<String>> orderType() {
@@ -540,14 +540,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.parameters;
     }
     /**
-     * The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Output<Integer> period() {
@@ -666,14 +666,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.roleArn;
     }
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      * 
      */
     @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryZoneId;
 
     /**
-     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      * 
      */
     public Output<Optional<String>> secondaryZoneId() {
@@ -774,14 +774,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.storageEngine;
     }
     /**
-     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
+     * @return The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      * 
      */
     public Output<String> storageType() {
@@ -802,28 +802,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
+     * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      * 
      */
     @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
+     * @return The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      * 
      */
     public Output<String> tdeStatus() {
         return this.tdeStatus;
     }
     /**
-     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     public Output<String> vpcId() {
@@ -845,7 +845,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
@@ -854,7 +854,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Zone to launch the DB instance. it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */

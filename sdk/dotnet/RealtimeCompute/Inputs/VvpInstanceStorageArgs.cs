@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.RealtimeCompute.Inputs
     public sealed class VvpInstanceStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OSS stores information. See `oss` below.
+        /// OSS stores information. See `Oss` below.
         /// </summary>
         [Input("oss", required: true)]
         public Input<Inputs.VvpInstanceStorageOssArgs> Oss { get; set; } = null!;

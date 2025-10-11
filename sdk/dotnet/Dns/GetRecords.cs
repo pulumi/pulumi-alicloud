@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Dns
         public bool? IsLocked { get; set; }
 
         /// <summary>
-        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
+        /// ISP line. Valid items are `Default`, `Telecom`, `Unicom`, `Mobile`, `Oversea`, `Edu`, `Drpeng`, `Btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
         /// </summary>
         [Input("line")]
         public string? Line { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<bool>? IsLocked { get; set; }
 
         /// <summary>
-        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
+        /// ISP line. Valid items are `Default`, `Telecom`, `Unicom`, `Mobile`, `Oversea`, `Edu`, `Drpeng`, `Btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }

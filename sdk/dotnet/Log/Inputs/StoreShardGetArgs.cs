@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<int>? Id { get; set; }
 
         /// <summary>
-        /// Shard status, only two status of `readwrite` and `readonly`.
+        /// Shard status, only two status of `Readwrite` and `Readonly`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

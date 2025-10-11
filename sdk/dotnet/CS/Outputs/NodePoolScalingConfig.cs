@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly int? EipBandwidth;
         /// <summary>
-        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `InternetChargeType`. EIP and public network IP can only choose one.
         /// </summary>
         public readonly string? EipInternetChargeType;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// Whether to bind EIP for an instance. Default: `false`.
+        /// Whether to bind EIP for an instance. Default: `False`.
         /// </summary>
         public readonly bool? IsBondEip;
         /// <summary>
-        /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `MaxSize` has to be greater than `MinSize`.
         /// </summary>
         public readonly int? MaxSize;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly int? MinSize;
         /// <summary>
-        /// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+        /// Instance classification, not required. Vaild value: `Cpu`, `Gpu`, `Gpushare` and `Spot`. Default: `Cpu`. The actual instance type is determined by `InstanceTypes`.
         /// </summary>
         public readonly string? Type;
 

@@ -178,14 +178,14 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageCacheSize);
     }
     /**
-     * The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      * 
      */
     @Export(name="imageRegistryCredentials", refs={List.class,ImageCacheImageRegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ImageCacheImageRegistryCredential>> imageRegistryCredentials;
 
     /**
-     * @return The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+     * @return The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      * 
      */
     public Output<Optional<List<ImageCacheImageRegistryCredential>>> imageRegistryCredentials() {

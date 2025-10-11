@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Adb.Inputs
     public sealed class LakeAccountAccountPrivilegeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Object associated to privileges. See `privilege_object` below.
+        /// Object associated to privileges. See `PrivilegeObject` below.
         /// </summary>
         [Input("privilegeObject")]
         public Input<Inputs.LakeAccountAccountPrivilegePrivilegeObjectGetArgs>? PrivilegeObject { get; set; }

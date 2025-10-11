@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string EndpointGroupId;
         /// <summary>
-        /// The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        /// The start port of the backend service port range of the endpoint group. The `FromPort` value must be smaller than or equal to the `ToPort` value. Valid values: `1` to `65499`.
         /// </summary>
         public readonly int FromPort;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         /// <summary>
-        /// The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        /// The end port of the backend service port range of the endpoint group. The `FromPort` value must be smaller than or equal to the `ToPort` value. Valid values: `1` to `65499`.
         /// </summary>
         public readonly int ToPort;
 

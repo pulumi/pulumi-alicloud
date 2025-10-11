@@ -14,25 +14,25 @@ import javax.annotation.Nullable;
 public final class EciScalingConfigurationAcrRegistryInfo {
     /**
      * @return Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     private @Nullable List<String> domains;
     /**
      * @return The ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     private @Nullable String instanceId;
     /**
-     * @return The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+     * @return The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
      * configured.
      * 
      */
     private @Nullable String instanceName;
     /**
      * @return The region ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     private @Nullable String regionId;
@@ -40,7 +40,7 @@ public final class EciScalingConfigurationAcrRegistryInfo {
     private EciScalingConfigurationAcrRegistryInfo() {}
     /**
      * @return Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     public List<String> domains() {
@@ -48,14 +48,14 @@ public final class EciScalingConfigurationAcrRegistryInfo {
     }
     /**
      * @return The ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
     /**
-     * @return The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+     * @return The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
      * configured.
      * 
      */
@@ -64,7 +64,7 @@ public final class EciScalingConfigurationAcrRegistryInfo {
     }
     /**
      * @return The region ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     public Optional<String> regionId() {

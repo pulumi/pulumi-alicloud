@@ -99,7 +99,7 @@ public final class GetListenersListener {
      */
     private Boolean secSensorEnabled;
     /**
-     * @return Security policy ID. Support system security policies and custom security policies. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, or `tls_cipher_policy_1_2_strict_with_1_3`. **Note:** This parameter only takes effect for `TCPSSL` listeners.
+     * @return Security policy ID. Support system security policies and custom security policies. Valid values: `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, or `tlsCipherPolicy12StrictWith13`. **Note:** This parameter only takes effect for `TCPSSL` listeners.
      * 
      */
     private String securityPolicyId;
@@ -240,7 +240,7 @@ public final class GetListenersListener {
         return this.secSensorEnabled;
     }
     /**
-     * @return Security policy ID. Support system security policies and custom security policies. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, or `tls_cipher_policy_1_2_strict_with_1_3`. **Note:** This parameter only takes effect for `TCPSSL` listeners.
+     * @return Security policy ID. Support system security policies and custom security policies. Valid values: `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, or `tlsCipherPolicy12StrictWith13`. **Note:** This parameter only takes effect for `TCPSSL` listeners.
      * 
      */
     public String securityPolicyId() {

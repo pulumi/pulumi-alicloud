@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     public partial class ServiceLinkedRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
+        /// The status of the service Associated role. Valid Values: `True`: Created. `False`: not created.
         /// </summary>
         [Output("status")]
         public Output<bool> Status { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     public sealed class ServiceLinkedRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
+        /// The status of the service Associated role. Valid Values: `True`: Created. `False`: not created.
         /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }

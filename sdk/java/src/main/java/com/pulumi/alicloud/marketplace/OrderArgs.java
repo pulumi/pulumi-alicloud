@@ -109,14 +109,14 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The product_code of market place product.
+     * The productCode of market place product.
      * 
      */
     @Import(name="productCode", required=true)
     private Output<String> productCode;
 
     /**
-     * @return The product_code of market place product.
+     * @return The productCode of market place product.
      * 
      */
     public Output<String> productCode() {
@@ -296,7 +296,7 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productCode The product_code of market place product.
+         * @param productCode The productCode of market place product.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productCode The product_code of market place product.
+         * @param productCode The productCode of market place product.
          * 
          * @return builder
          * 

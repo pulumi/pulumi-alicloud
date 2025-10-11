@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         /// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         /// 
         /// 
-        /// &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
+        /// &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `True`.
         /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }

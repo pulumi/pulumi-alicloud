@@ -90,13 +90,13 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> Account { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        /// Valid values are `True`, `False`, system default to `False`, valid when PayType = PrePaid.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+        /// 0 or [800, 100000000], step:10-GB increments. 0 means IsColdStorage = false. [800, 100000000] means IsColdStorage = true.
         /// </summary>
         [Output("coldStorageSize")]
         public Output<int?> ColdStorageSize { get; private set; } = null!;
@@ -111,13 +111,13 @@ namespace Pulumi.AliCloud.Hbase
         public Output<int?> CoreDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        /// Valid values are `CloudSsd`, `CloudEssdPl1`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`，``, LocalDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Output("coreDiskType")]
         public Output<string?> CoreDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        /// Default=2, [1-200]. If CoreInstanceQuantity &gt; 1, this is cluster's instance. If CoreInstanceQuantity = 1, this is a single instance.
         /// </summary>
         [Output("coreInstanceQuantity")]
         public Output<int?> CoreInstanceQuantity { get; private set; } = null!;
@@ -135,13 +135,13 @@ namespace Pulumi.AliCloud.Hbase
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when PayType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         /// </summary>
         [Output("duration")]
         public Output<int> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `Hbaseue` and `Bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         /// </summary>
         [Output("engine")]
         public Output<string?> Engine { get; private set; } = null!;
@@ -213,9 +213,9 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        /// The slb service addresses of the cluster. See `SlbConnAddrs` below.
         /// 
-        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, CoreInstanceQuantity and so on) will be supported in the furture.
         /// </summary>
         [Output("slbConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceSlbConnAddr>> SlbConnAddrs { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        /// The Web UI proxy addresses of the cluster. See `UiProxyConnAddrs` below.
         /// </summary>
         [Output("uiProxyConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
@@ -239,19 +239,19 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+        /// If VswitchId is not empty, that mean NetType = vpc and has a same region. If VswitchId is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+        /// The zookeeper addresses of the cluster. See `ZkConnAddrs` below.
         /// </summary>
         [Output("zkConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceZkConnAddr>> ZkConnAddrs { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the HBase instance. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -313,13 +313,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Account { get; set; }
 
         /// <summary>
-        /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        /// Valid values are `True`, `False`, system default to `False`, valid when PayType = PrePaid.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+        /// 0 or [800, 100000000], step:10-GB increments. 0 means IsColdStorage = false. [800, 100000000] means IsColdStorage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
@@ -334,13 +334,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        /// Valid values are `CloudSsd`, `CloudEssdPl1`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`，``, LocalDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        /// Default=2, [1-200]. If CoreInstanceQuantity &gt; 1, this is cluster's instance. If CoreInstanceQuantity = 1, this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -358,13 +358,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when PayType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `Hbaseue` and `Bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -464,13 +464,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+        /// If VswitchId is not empty, that mean NetType = vpc and has a same region. If VswitchId is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the HBase instance. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -490,13 +490,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Account { get; set; }
 
         /// <summary>
-        /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        /// Valid values are `True`, `False`, system default to `False`, valid when PayType = PrePaid.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+        /// 0 or [800, 100000000], step:10-GB increments. 0 means IsColdStorage = false. [800, 100000000] means IsColdStorage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
@@ -511,13 +511,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        /// Valid values are `CloudSsd`, `CloudEssdPl1`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`，``, LocalDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        /// Default=2, [1-200]. If CoreInstanceQuantity &gt; 1, this is cluster's instance. If CoreInstanceQuantity = 1, this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -535,13 +535,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when PayType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `Hbaseue` and `Bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -632,9 +632,9 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceSlbConnAddrGetArgs>? _slbConnAddrs;
 
         /// <summary>
-        /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        /// The slb service addresses of the cluster. See `SlbConnAddrs` below.
         /// 
-        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, CoreInstanceQuantity and so on) will be supported in the furture.
         /// </summary>
         public InputList<Inputs.InstanceSlbConnAddrGetArgs> SlbConnAddrs
         {
@@ -658,7 +658,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceUiProxyConnAddrGetArgs>? _uiProxyConnAddrs;
 
         /// <summary>
-        /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        /// The Web UI proxy addresses of the cluster. See `UiProxyConnAddrs` below.
         /// </summary>
         public InputList<Inputs.InstanceUiProxyConnAddrGetArgs> UiProxyConnAddrs
         {
@@ -673,7 +673,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+        /// If VswitchId is not empty, that mean NetType = vpc and has a same region. If VswitchId is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -682,7 +682,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceZkConnAddrGetArgs>? _zkConnAddrs;
 
         /// <summary>
-        /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+        /// The zookeeper addresses of the cluster. See `ZkConnAddrs` below.
         /// </summary>
         public InputList<Inputs.InstanceZkConnAddrGetArgs> ZkConnAddrs
         {
@@ -691,7 +691,7 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
-        /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the HBase instance. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -63,7 +63,7 @@ public final class EnterpriseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * It has been deprecated from 1.100.0 and use `user_name` instead.
+     * It has been deprecated from 1.100.0 and use `userName` instead.
      * 
      * @deprecated
      * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
@@ -74,7 +74,7 @@ public final class EnterpriseUserState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> nickName;
 
     /**
-     * @return It has been deprecated from 1.100.0 and use `user_name` instead.
+     * @return It has been deprecated from 1.100.0 and use `userName` instead.
      * 
      * @deprecated
      * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
@@ -256,7 +256,7 @@ public final class EnterpriseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nickName It has been deprecated from 1.100.0 and use `user_name` instead.
+         * @param nickName It has been deprecated from 1.100.0 and use `userName` instead.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class EnterpriseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nickName It has been deprecated from 1.100.0 and use `user_name` instead.
+         * @param nickName It has been deprecated from 1.100.0 and use `userName` instead.
          * 
          * @return builder
          * 

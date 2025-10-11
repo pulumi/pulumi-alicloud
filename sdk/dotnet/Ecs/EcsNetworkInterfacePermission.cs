@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to force deletion of Network Interface Permission. Default value: `true`.
+        /// Whether to force deletion of Network Interface Permission. Default value: `True`.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to force deletion of Network Interface Permission. Default value: `true`.
+        /// Whether to force deletion of Network Interface Permission. Default value: `True`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether to force deletion of Network Interface Permission. Default value: `true`.
+        /// Whether to force deletion of Network Interface Permission. Default value: `True`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

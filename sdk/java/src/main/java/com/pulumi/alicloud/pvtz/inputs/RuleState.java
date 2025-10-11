@@ -33,14 +33,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Forwarding target. See `forward_ips` below.
+     * Forwarding target. See `forwardIps` below.
      * 
      */
     @Import(name="forwardIps")
     private @Nullable Output<List<RuleForwardIpArgs>> forwardIps;
 
     /**
-     * @return Forwarding target. See `forward_ips` below.
+     * @return Forwarding target. See `forwardIps` below.
      * 
      */
     public Optional<Output<List<RuleForwardIpArgs>>> forwardIps() {
@@ -142,7 +142,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardIps Forwarding target. See `forward_ips` below.
+         * @param forwardIps Forwarding target. See `forwardIps` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardIps Forwarding target. See `forward_ips` below.
+         * @param forwardIps Forwarding target. See `forwardIps` below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardIps Forwarding target. See `forward_ips` below.
+         * @param forwardIps Forwarding target. See `forwardIps` below.
          * 
          * @return builder
          * 

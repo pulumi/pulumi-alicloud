@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> DbInstancePlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The execution information of the plan. See `plan_config` below.
+        /// The execution information of the plan. See `PlanConfig` below.
         /// </summary>
         [Output("planConfigs")]
         public Output<ImmutableArray<Outputs.DbInstancePlanPlanConfig>> PlanConfigs { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> PlanType { get; private set; } = null!;
 
         /// <summary>
-        /// The Status of the Plan. Valid values: `active`, `cancel`.
+        /// The Status of the Plan. Valid values: `Active`, `Cancel`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.DbInstancePlanPlanConfigArgs>? _planConfigs;
 
         /// <summary>
-        /// The execution information of the plan. See `plan_config` below.
+        /// The execution information of the plan. See `PlanConfig` below.
         /// </summary>
         public InputList<Inputs.DbInstancePlanPlanConfigArgs> PlanConfigs
         {
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string> PlanType { get; set; } = null!;
 
         /// <summary>
-        /// The Status of the Plan. Valid values: `active`, `cancel`.
+        /// The Status of the Plan. Valid values: `Active`, `Cancel`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.DbInstancePlanPlanConfigGetArgs>? _planConfigs;
 
         /// <summary>
-        /// The execution information of the plan. See `plan_config` below.
+        /// The execution information of the plan. See `PlanConfig` below.
         /// </summary>
         public InputList<Inputs.DbInstancePlanPlanConfigGetArgs> PlanConfigs
         {
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PlanType { get; set; }
 
         /// <summary>
-        /// The Status of the Plan. Valid values: `active`, `cancel`.
+        /// The Status of the Plan. Valid values: `Active`, `Cancel`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

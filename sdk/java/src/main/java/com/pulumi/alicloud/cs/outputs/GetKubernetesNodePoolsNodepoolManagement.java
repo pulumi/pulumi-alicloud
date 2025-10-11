@@ -45,7 +45,7 @@ public final class GetKubernetesNodePoolsNodepoolManagement {
      */
     private GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy autoVulFixPolicy;
     /**
-     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
      * 
      */
     private Boolean enable;
@@ -109,7 +109,7 @@ public final class GetKubernetesNodePoolsNodepoolManagement {
         return this.autoVulFixPolicy;
     }
     /**
-     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
      * 
      */
     public Boolean enable() {

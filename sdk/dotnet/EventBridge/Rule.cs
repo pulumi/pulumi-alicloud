@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The targets of rule. See `targets` below.
+        /// The targets of rule. See `Targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.RuleTarget>> Targets { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputList<Inputs.RuleTargetArgs>? _targets;
 
         /// <summary>
-        /// The targets of rule. See `targets` below.
+        /// The targets of rule. See `Targets` below.
         /// </summary>
         public InputList<Inputs.RuleTargetArgs> Targets
         {
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputList<Inputs.RuleTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The targets of rule. See `targets` below.
+        /// The targets of rule. See `Targets` below.
         /// </summary>
         public InputList<Inputs.RuleTargetGetArgs> Targets
         {

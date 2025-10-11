@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// Rule configuration content, in JSON format, constructed with a series of parameters.
         /// 
         /// &gt; **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
-        /// See `config` below.
+        /// See `Config` below.
         /// </summary>
         [Output("config")]
         public Output<Outputs.DefenseRuleConfig> Config { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// The WAF protection scenario to be created.
         /// 
-        /// When the protection rule type `DefenseType` is set to `template`, the value is as follows:
+        /// When the protection rule type `DefenseType` is set to `Template`, the value is as follows:
         /// </summary>
         [Output("defenseScene")]
         public Output<string> DefenseScene { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// The protection object corresponding to the rule to be queried.
         /// 
-        /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
+        /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `Resource`.
         /// </summary>
         [Output("resource")]
         public Output<string> Resource { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// Rule configuration content, in JSON format, constructed with a series of parameters.
         /// 
         /// &gt; **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
-        /// See `config` below.
+        /// See `Config` below.
         /// </summary>
         [Input("config", required: true)]
         public Input<Inputs.DefenseRuleConfigArgs> Config { get; set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// The WAF protection scenario to be created.
         /// 
-        /// When the protection rule type `DefenseType` is set to `template`, the value is as follows:
+        /// When the protection rule type `DefenseType` is set to `Template`, the value is as follows:
         /// </summary>
         [Input("defenseScene", required: true)]
         public Input<string> DefenseScene { get; set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// The protection object corresponding to the rule to be queried.
         /// 
-        /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
+        /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `Resource`.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// Rule configuration content, in JSON format, constructed with a series of parameters.
         /// 
         /// &gt; **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
-        /// See `config` below.
+        /// See `Config` below.
         /// </summary>
         [Input("config")]
         public Input<Inputs.DefenseRuleConfigGetArgs>? Config { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// The WAF protection scenario to be created.
         /// 
-        /// When the protection rule type `DefenseType` is set to `template`, the value is as follows:
+        /// When the protection rule type `DefenseType` is set to `Template`, the value is as follows:
         /// </summary>
         [Input("defenseScene")]
         public Input<string>? DefenseScene { get; set; }
@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// The protection object corresponding to the rule to be queried.
         /// 
-        /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
+        /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `Resource`.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

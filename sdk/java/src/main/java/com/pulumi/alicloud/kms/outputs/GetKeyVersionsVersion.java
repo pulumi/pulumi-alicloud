@@ -16,7 +16,7 @@ public final class GetKeyVersionsVersion {
      */
     private String createTime;
     /**
-     * @return (Removed from v1.124.4) It has been removed and using `create_time` instead.
+     * @return (Removed from v1.124.4) It has been removed and using `createTime` instead.
      * 
      */
     private String creationDate;
@@ -45,7 +45,7 @@ public final class GetKeyVersionsVersion {
         return this.createTime;
     }
     /**
-     * @return (Removed from v1.124.4) It has been removed and using `create_time` instead.
+     * @return (Removed from v1.124.4) It has been removed and using `createTime` instead.
      * 
      */
     public String creationDate() {

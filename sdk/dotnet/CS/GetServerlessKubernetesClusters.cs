@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available since 1.58.0
         /// 
-        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `KubeConfigFilePrefix`.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available since 1.58.0
         /// 
-        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `KubeConfigFilePrefix`.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available since 1.58.0
         /// 
-        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `KubeConfigFilePrefix`.
         /// 
         /// ## Example Usage
         /// 
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetServerlessKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+        /// Boolean, false by default, only `Id` and `Name` are exported. Set to true if more details are needed, e.g.,  `DeletionProtection`, `Connections`. See full list in attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, KubeConfig will not export KubeConfig if this field is not set. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public string? KubeConfigFilePrefix { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetServerlessKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+        /// Boolean, false by default, only `Id` and `Name` are exported. Set to true if more details are needed, e.g.,  `DeletionProtection`, `Connections`. See full list in attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, KubeConfig will not export KubeConfig if this field is not set. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public Input<string>? KubeConfigFilePrefix { get; set; }

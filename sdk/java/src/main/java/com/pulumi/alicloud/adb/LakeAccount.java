@@ -184,14 +184,14 @@ public class LakeAccount extends com.pulumi.resources.CustomResource {
         return this.accountPassword;
     }
     /**
-     * List of permissions granted. See `account_privileges` below.
+     * List of permissions granted. See `accountPrivileges` below.
      * 
      */
     @Export(name="accountPrivileges", refs={List.class,LakeAccountAccountPrivilege.class}, tree="[0,1]")
     private Output<List<LakeAccountAccountPrivilege>> accountPrivileges;
 
     /**
-     * @return List of permissions granted. See `account_privileges` below.
+     * @return List of permissions granted. See `accountPrivileges` below.
      * 
      */
     public Output<List<LakeAccountAccountPrivilege>> accountPrivileges() {

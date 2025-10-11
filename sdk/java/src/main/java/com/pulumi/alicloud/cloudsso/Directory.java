@@ -118,28 +118,28 @@ public class Directory extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.directoryName);
     }
     /**
-     * Login preferences See `login_preference` below.
+     * Login preferences See `loginPreference` below.
      * 
      */
     @Export(name="loginPreference", refs={DirectoryLoginPreference.class}, tree="[0]")
     private Output<DirectoryLoginPreference> loginPreference;
 
     /**
-     * @return Login preferences See `login_preference` below.
+     * @return Login preferences See `loginPreference` below.
      * 
      */
     public Output<DirectoryLoginPreference> loginPreference() {
         return this.loginPreference;
     }
     /**
-     * Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      * 
      */
     @Export(name="mfaAuthenticationSettingInfo", refs={DirectoryMfaAuthenticationSettingInfo.class}, tree="[0]")
     private Output<DirectoryMfaAuthenticationSettingInfo> mfaAuthenticationSettingInfo;
 
     /**
-     * @return Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * @return Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      * 
      */
     public Output<DirectoryMfaAuthenticationSettingInfo> mfaAuthenticationSettingInfo() {
@@ -160,42 +160,42 @@ public class Directory extends com.pulumi.resources.CustomResource {
         return this.mfaAuthenticationStatus;
     }
     /**
-     * Password policy See `password_policy` below.
+     * Password policy See `passwordPolicy` below.
      * 
      */
     @Export(name="passwordPolicy", refs={DirectoryPasswordPolicy.class}, tree="[0]")
     private Output<DirectoryPasswordPolicy> passwordPolicy;
 
     /**
-     * @return Password policy See `password_policy` below.
+     * @return Password policy See `passwordPolicy` below.
      * 
      */
     public Output<DirectoryPasswordPolicy> passwordPolicy() {
         return this.passwordPolicy;
     }
     /**
-     * Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+     * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      * 
      */
     @Export(name="samlIdentityProviderConfiguration", refs={DirectorySamlIdentityProviderConfiguration.class}, tree="[0]")
     private Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration;
 
     /**
-     * @return Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+     * @return Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      * 
      */
     public Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration() {
         return this.samlIdentityProviderConfiguration;
     }
     /**
-     * SP information. See `saml_service_provider` below.
+     * SP information. See `samlServiceProvider` below.
      * 
      */
     @Export(name="samlServiceProvider", refs={DirectorySamlServiceProvider.class}, tree="[0]")
     private Output<DirectorySamlServiceProvider> samlServiceProvider;
 
     /**
-     * @return SP information. See `saml_service_provider` below.
+     * @return SP information. See `samlServiceProvider` below.
      * 
      */
     public Output<DirectorySamlServiceProvider> samlServiceProvider() {
@@ -216,14 +216,14 @@ public class Directory extends com.pulumi.resources.CustomResource {
         return this.scimSynchronizationStatus;
     }
     /**
-     * User Provisioning configuration See `user_provisioning_configuration` below.
+     * User Provisioning configuration See `userProvisioningConfiguration` below.
      * 
      */
     @Export(name="userProvisioningConfiguration", refs={DirectoryUserProvisioningConfiguration.class}, tree="[0]")
     private Output<DirectoryUserProvisioningConfiguration> userProvisioningConfiguration;
 
     /**
-     * @return User Provisioning configuration See `user_provisioning_configuration` below.
+     * @return User Provisioning configuration See `userProvisioningConfiguration` below.
      * 
      */
     public Output<DirectoryUserProvisioningConfiguration> userProvisioningConfiguration() {

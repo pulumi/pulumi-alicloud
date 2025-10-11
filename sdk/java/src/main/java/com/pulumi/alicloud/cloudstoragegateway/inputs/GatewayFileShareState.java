@@ -183,14 +183,14 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+     * The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
      * 
      */
     @Import(name="ignoreDelete")
     private @Nullable Output<Boolean> ignoreDelete;
 
     /**
-     * @return The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+     * @return The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
      * 
      */
     public Optional<Output<Boolean>> ignoreDelete() {
@@ -393,14 +393,14 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+     * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
      * 
      */
     @Import(name="remoteSyncDownload")
     private @Nullable Output<Boolean> remoteSyncDownload;
 
     /**
-     * @return Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+     * @return Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
      * 
      */
     public Optional<Output<Boolean>> remoteSyncDownload() {
@@ -468,14 +468,14 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+     * The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
      * 
      */
     @Import(name="squash")
     private @Nullable Output<String> squash;
 
     /**
-     * @return The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+     * @return The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
      * 
      */
     public Optional<Output<String>> squash() {
@@ -816,7 +816,7 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ignoreDelete The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+         * @param ignoreDelete The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ignoreDelete The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
+         * @param ignoreDelete The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
          * 
          * @return builder
          * 
@@ -1110,7 +1110,7 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param remoteSyncDownload Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+         * @param remoteSyncDownload Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
          * 
          * @return builder
          * 
@@ -1121,7 +1121,7 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param remoteSyncDownload Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+         * @param remoteSyncDownload Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
          * 
          * @return builder
          * 
@@ -1215,7 +1215,7 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param squash The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+         * @param squash The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
          * 
          * @return builder
          * 
@@ -1226,7 +1226,7 @@ public final class GatewayFileShareState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param squash The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+         * @param squash The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
          * 
          * @return builder
          * 

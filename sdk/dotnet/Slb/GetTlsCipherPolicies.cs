@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Slb
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// TLS policy instance state. Valid values: `configuring`, `normal`.
+        /// TLS policy instance state. Valid values: `Configuring`, `Normal`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// TLS policy instance state. Valid values: `configuring`, `normal`.
+        /// TLS policy instance state. Valid values: `Configuring`, `Normal`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

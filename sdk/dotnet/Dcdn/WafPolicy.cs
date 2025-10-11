@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Dcdn
     public partial class WafPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+        /// The type of protection policy. Valid values: `WafGroup`, `CustomAcl`, `Whitelist`, `IpBlacklist`, `RegionBlock`.
         /// </summary>
         [Output("defenseScene")]
         public Output<string> DefenseScene { get; private set; } = null!;
@@ -72,13 +72,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the protection policy. Valid values: `default`, `custom`.
+        /// The type of the protection policy. Valid values: `Default`, `Custom`.
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `on`, `off`.
+        /// The status of the resource. Valid values: `On`, `Off`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class WafPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+        /// The type of protection policy. Valid values: `WafGroup`, `CustomAcl`, `Whitelist`, `IpBlacklist`, `RegionBlock`.
         /// </summary>
         [Input("defenseScene", required: true)]
         public Input<string> DefenseScene { get; set; } = null!;
@@ -142,13 +142,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the protection policy. Valid values: `default`, `custom`.
+        /// The type of the protection policy. Valid values: `Default`, `Custom`.
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `on`, `off`.
+        /// The status of the resource. Valid values: `On`, `Off`.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class WafPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+        /// The type of protection policy. Valid values: `WafGroup`, `CustomAcl`, `Whitelist`, `IpBlacklist`, `RegionBlock`.
         /// </summary>
         [Input("defenseScene")]
         public Input<string>? DefenseScene { get; set; }
@@ -174,13 +174,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The type of the protection policy. Valid values: `default`, `custom`.
+        /// The type of the protection policy. Valid values: `Default`, `Custom`.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `on`, `off`.
+        /// The status of the resource. Valid values: `On`, `Off`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

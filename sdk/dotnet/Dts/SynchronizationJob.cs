@@ -245,19 +245,19 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DataCheckConfigure { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
+        /// Whether to perform full data migration or full data initialization. Valid values: `True`, `False`.
         /// </summary>
         [Output("dataInitialization")]
         public Output<bool> DataInitialization { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
+        /// Whether to perform incremental data migration or synchronization. Valid values: `True`, `False`.
         /// </summary>
         [Output("dataSynchronization")]
         public Output<bool> DataSynchronization { get; private set; } = null!;
 
         /// <summary>
-        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `DbList` can be modified.
         /// </summary>
         [Output("dbList")]
         public Output<string> DbList { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DedicatedClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The delay notice. Valid values: `true`, `false`.
+        /// The delay notice. Valid values: `True`, `False`.
         /// </summary>
         [Output("delayNotice")]
         public Output<bool?> DelayNotice { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DelayPhone { get; private set; } = null!;
 
         /// <summary>
-        /// The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+        /// The delay rule time. When `DelayNotice` is set to `True`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         /// </summary>
         [Output("delayRuleTime")]
         public Output<string?> DelayRuleTime { get; private set; } = null!;
@@ -293,16 +293,16 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `DestinationEndpointInstanceType`. For example, the value of `DestinationEndpointInstanceType` is:
         /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
         /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Output("destinationEndpointInstanceId")]
         public Output<string?> DestinationEndpointInstanceId { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> DestinationEndpointInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+        /// The IP of source endpoint. When `DestinationEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Output("destinationEndpointIp")]
         public Output<string?> DestinationEndpointIp { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `InstanceClass`, you must also modify the property `InstanceClass` of it's instance to keep them consistent.
         /// </summary>
         [Output("dtsBisLabel")]
         public Output<string?> DtsBisLabel { get; private set; } = null!;
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> DtsJobName { get; private set; } = null!;
 
         /// <summary>
-        /// The error notice. Valid values: `true`, `false`.
+        /// The error notice. Valid values: `True`, `False`.
         /// </summary>
         [Output("errorNotice")]
         public Output<bool?> ErrorNotice { get; private set; } = null!;
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> ErrorPhone { get; private set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
@@ -420,10 +420,10 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> SourceEndpointEngineName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `SourceEndpointInstanceType`. For example, the value of `SourceEndpointInstanceType` is:
         /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
         /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Output("sourceEndpointInstanceId")]
         public Output<string?> SourceEndpointInstanceId { get; private set; } = null!;
@@ -435,7 +435,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> SourceEndpointInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+        /// The IP of source endpoint. When `SourceEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Output("sourceEndpointIp")]
         public Output<string?> SourceEndpointIp { get; private set; } = null!;
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointOracleSid { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
+        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `SourceEndpointRole` parameter.
         /// </summary>
         [Output("sourceEndpointOwnerId")]
         public Output<string?> SourceEndpointOwnerId { get; private set; } = null!;
@@ -495,13 +495,13 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
+        /// Whether to perform library table structure migration or initialization. Valid values: `True`, `False`.
         /// </summary>
         [Output("structureInitialization")]
         public Output<bool> StructureInitialization { get; private set; } = null!;
 
         /// <summary>
-        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `SyncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `Bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         /// </summary>
         [Output("synchronizationDirection")]
         public Output<string> SynchronizationDirection { get; private set; } = null!;
@@ -565,19 +565,19 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DataCheckConfigure { get; set; }
 
         /// <summary>
-        /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
+        /// Whether to perform full data migration or full data initialization. Valid values: `True`, `False`.
         /// </summary>
         [Input("dataInitialization", required: true)]
         public Input<bool> DataInitialization { get; set; } = null!;
 
         /// <summary>
-        /// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
+        /// Whether to perform incremental data migration or synchronization. Valid values: `True`, `False`.
         /// </summary>
         [Input("dataSynchronization", required: true)]
         public Input<bool> DataSynchronization { get; set; } = null!;
 
         /// <summary>
-        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `DbList` can be modified.
         /// </summary>
         [Input("dbList", required: true)]
         public Input<string> DbList { get; set; } = null!;
@@ -589,7 +589,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DedicatedClusterId { get; set; }
 
         /// <summary>
-        /// The delay notice. Valid values: `true`, `false`.
+        /// The delay notice. Valid values: `True`, `False`.
         /// </summary>
         [Input("delayNotice")]
         public Input<bool>? DelayNotice { get; set; }
@@ -601,7 +601,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DelayPhone { get; set; }
 
         /// <summary>
-        /// The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+        /// The delay rule time. When `DelayNotice` is set to `True`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         /// </summary>
         [Input("delayRuleTime")]
         public Input<string>? DelayRuleTime { get; set; }
@@ -613,16 +613,16 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Input("destinationEndpointEngineName", required: true)]
         public Input<string> DestinationEndpointEngineName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `DestinationEndpointInstanceType`. For example, the value of `DestinationEndpointInstanceType` is:
         /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
         /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("destinationEndpointInstanceId")]
         public Input<string>? DestinationEndpointInstanceId { get; set; }
@@ -634,7 +634,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> DestinationEndpointInstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+        /// The IP of source endpoint. When `DestinationEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointIp")]
         public Input<string>? DestinationEndpointIp { get; set; }
@@ -686,7 +686,7 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `InstanceClass`, you must also modify the property `InstanceClass` of it's instance to keep them consistent.
         /// </summary>
         [Input("dtsBisLabel")]
         public Input<string>? DtsBisLabel { get; set; }
@@ -704,7 +704,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> DtsJobName { get; set; } = null!;
 
         /// <summary>
-        /// The error notice. Valid values: `true`, `false`.
+        /// The error notice. Valid values: `True`, `False`.
         /// </summary>
         [Input("errorNotice")]
         public Input<bool>? ErrorNotice { get; set; }
@@ -716,7 +716,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ErrorPhone { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -740,10 +740,10 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> SourceEndpointEngineName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `SourceEndpointInstanceType`. For example, the value of `SourceEndpointInstanceType` is:
         /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
         /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
@@ -755,7 +755,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> SourceEndpointInstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+        /// The IP of source endpoint. When `SourceEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointIp")]
         public Input<string>? SourceEndpointIp { get; set; }
@@ -767,7 +767,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointOracleSid { get; set; }
 
         /// <summary>
-        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
+        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `SourceEndpointRole` parameter.
         /// </summary>
         [Input("sourceEndpointOwnerId")]
         public Input<string>? SourceEndpointOwnerId { get; set; }
@@ -815,13 +815,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
+        /// Whether to perform library table structure migration or initialization. Valid values: `True`, `False`.
         /// </summary>
         [Input("structureInitialization", required: true)]
         public Input<bool> StructureInitialization { get; set; } = null!;
 
         /// <summary>
-        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `SyncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `Bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         /// </summary>
         [Input("synchronizationDirection")]
         public Input<string>? SynchronizationDirection { get; set; }
@@ -847,19 +847,19 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DataCheckConfigure { get; set; }
 
         /// <summary>
-        /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
+        /// Whether to perform full data migration or full data initialization. Valid values: `True`, `False`.
         /// </summary>
         [Input("dataInitialization")]
         public Input<bool>? DataInitialization { get; set; }
 
         /// <summary>
-        /// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
+        /// Whether to perform incremental data migration or synchronization. Valid values: `True`, `False`.
         /// </summary>
         [Input("dataSynchronization")]
         public Input<bool>? DataSynchronization { get; set; }
 
         /// <summary>
-        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `DbList` can be modified.
         /// </summary>
         [Input("dbList")]
         public Input<string>? DbList { get; set; }
@@ -871,7 +871,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DedicatedClusterId { get; set; }
 
         /// <summary>
-        /// The delay notice. Valid values: `true`, `false`.
+        /// The delay notice. Valid values: `True`, `False`.
         /// </summary>
         [Input("delayNotice")]
         public Input<bool>? DelayNotice { get; set; }
@@ -883,7 +883,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DelayPhone { get; set; }
 
         /// <summary>
-        /// The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+        /// The delay rule time. When `DelayNotice` is set to `True`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         /// </summary>
         [Input("delayRuleTime")]
         public Input<string>? DelayRuleTime { get; set; }
@@ -895,16 +895,16 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
 
         /// <summary>
-        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `DestinationEndpointInstanceType`. For example, the value of `DestinationEndpointInstanceType` is:
         /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
         /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("destinationEndpointInstanceId")]
         public Input<string>? DestinationEndpointInstanceId { get; set; }
@@ -916,7 +916,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointInstanceType { get; set; }
 
         /// <summary>
-        /// The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+        /// The IP of source endpoint. When `DestinationEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointIp")]
         public Input<string>? DestinationEndpointIp { get; set; }
@@ -968,7 +968,7 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `InstanceClass`, you must also modify the property `InstanceClass` of it's instance to keep them consistent.
         /// </summary>
         [Input("dtsBisLabel")]
         public Input<string>? DtsBisLabel { get; set; }
@@ -986,7 +986,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DtsJobName { get; set; }
 
         /// <summary>
-        /// The error notice. Valid values: `true`, `false`.
+        /// The error notice. Valid values: `True`, `False`.
         /// </summary>
         [Input("errorNotice")]
         public Input<bool>? ErrorNotice { get; set; }
@@ -998,7 +998,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ErrorPhone { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -1022,10 +1022,10 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointEngineName { get; set; }
 
         /// <summary>
-        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `SourceEndpointInstanceType`. For example, the value of `SourceEndpointInstanceType` is:
         /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
         /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
@@ -1037,7 +1037,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointInstanceType { get; set; }
 
         /// <summary>
-        /// The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+        /// The IP of source endpoint. When `SourceEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointIp")]
         public Input<string>? SourceEndpointIp { get; set; }
@@ -1049,7 +1049,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointOracleSid { get; set; }
 
         /// <summary>
-        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
+        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `SourceEndpointRole` parameter.
         /// </summary>
         [Input("sourceEndpointOwnerId")]
         public Input<string>? SourceEndpointOwnerId { get; set; }
@@ -1097,13 +1097,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
+        /// Whether to perform library table structure migration or initialization. Valid values: `True`, `False`.
         /// </summary>
         [Input("structureInitialization")]
         public Input<bool>? StructureInitialization { get; set; }
 
         /// <summary>
-        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `SyncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `Bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         /// </summary>
         [Input("synchronizationDirection")]
         public Input<string>? SynchronizationDirection { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesDeleteOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        /// The deletion mode of the cluster. Different resources may have different default behavior, see `ResourceType` for details. Valid values:
         /// </summary>
         [Input("deleteMode")]
         public Input<string>? DeleteMode { get; set; }

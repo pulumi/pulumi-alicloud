@@ -676,7 +676,7 @@ namespace Pulumi.AliCloud.Emr
         public string? DepositType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -792,7 +792,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? DepositType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

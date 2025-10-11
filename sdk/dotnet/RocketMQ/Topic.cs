@@ -95,13 +95,13 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// 
-        /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+        /// &gt; **NOTE:** At least one of `TopicName` and `Topic` should be set.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Replaced by `topic_name` after version 1.97.0.
+        /// Replaced by `TopicName` after version 1.97.0.
         /// </summary>
         [Output("topic")]
         public Output<string> TopicDeprecated { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// 
-        /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+        /// &gt; **NOTE:** At least one of `TopicName` and `Topic` should be set.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         /// <summary>
-        /// Replaced by `topic_name` after version 1.97.0.
+        /// Replaced by `TopicName` after version 1.97.0.
         /// </summary>
         [Input("topic")]
         public Input<string>? TopicDeprecated { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// 
-        /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+        /// &gt; **NOTE:** At least one of `TopicName` and `Topic` should be set.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         /// <summary>
-        /// Replaced by `topic_name` after version 1.97.0.
+        /// Replaced by `TopicName` after version 1.97.0.
         /// </summary>
         [Input("topic")]
         public Input<string>? TopicDeprecated { get; set; }

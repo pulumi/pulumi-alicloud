@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         public readonly string? Name;
         public readonly string? Operator;
         /// <summary>
-        /// The compare types. Valid values: `param`, `cookie`, `header`.
+        /// The compare types. Valid values: `Param`, `Cookie`, `Header`.
         /// </summary>
         public readonly string? Type;
         public readonly string? Value;

@@ -123,7 +123,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mobile);
     }
     /**
-     * It has been deprecated from 1.100.0 and use `user_name` instead.
+     * It has been deprecated from 1.100.0 and use `userName` instead.
      * 
      * @deprecated
      * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
@@ -134,7 +134,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
     private Output<String> nickName;
 
     /**
-     * @return It has been deprecated from 1.100.0 and use `user_name` instead.
+     * @return It has been deprecated from 1.100.0 and use `userName` instead.
      * 
      */
     public Output<String> nickName() {

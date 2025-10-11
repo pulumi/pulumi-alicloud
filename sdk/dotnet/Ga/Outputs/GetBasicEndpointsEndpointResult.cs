@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+        /// The status of the Global Accelerator Basic Endpoint. Valid Value: `Init`, `Active`, `Updating`, `Binding`, `Unbinding`, `Deleting`, `Bound`.
         /// </summary>
         public readonly string Status;
 

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
         /// </summary>
         public readonly string? NodeGroupName;
         /// <summary>
-        /// Node List See `nodes` below.
+        /// Node List See `Nodes` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupNode> Nodes;
         /// <summary>

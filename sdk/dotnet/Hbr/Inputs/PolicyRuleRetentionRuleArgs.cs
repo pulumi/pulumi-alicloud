@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class PolicyRuleRetentionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
+        /// Valid values: `Annually`, `MONTHLY`, and `WEEKLY`:- `Annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
         /// </summary>
         [Input("advancedRetentionType")]
         public Input<string>? AdvancedRetentionType { get; set; }

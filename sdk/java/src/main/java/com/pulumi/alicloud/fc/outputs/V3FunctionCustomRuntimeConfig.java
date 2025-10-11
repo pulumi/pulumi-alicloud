@@ -25,7 +25,7 @@ public final class V3FunctionCustomRuntimeConfig {
      */
     private @Nullable List<String> commands;
     /**
-     * @return Function custom health check configuration. See `health_check_config` below.
+     * @return Function custom health check configuration. See `healthCheckConfig` below.
      * 
      */
     private @Nullable V3FunctionCustomRuntimeConfigHealthCheckConfig healthCheckConfig;
@@ -51,7 +51,7 @@ public final class V3FunctionCustomRuntimeConfig {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return Function custom health check configuration. See `health_check_config` below.
+     * @return Function custom health check configuration. See `healthCheckConfig` below.
      * 
      */
     public Optional<V3FunctionCustomRuntimeConfigHealthCheckConfig> healthCheckConfig() {

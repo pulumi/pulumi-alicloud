@@ -56,13 +56,13 @@ namespace Pulumi.AliCloud.Ecs
     public partial class ReservedInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `Allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
         /// </summary>
         [Output("allocationStatus")]
         public Output<string> AllocationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `PeriodUnit` is set to Month: 1 Default value when `PeriodUnit` is set to Year: 12
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.194.0. New field `ReservedInstanceName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -119,15 +119,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<Outputs.ReservedInstanceOperationLock>> OperationLocks { get; private set; } = null!;
 
         /// <summary>
-        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `Period` can be set to `5`, when `PeriodUnit` is `Year`.
+        /// - When `PeriodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `PeriodUnit` can be set to `Month`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ReservedInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `PeriodUnit` is set to Month: 1 Default value when `PeriodUnit` is set to Year: 12
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.194.0. New field `ReservedInstanceName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -272,15 +272,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OfferingType { get; set; }
 
         /// <summary>
-        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `Period` can be set to `5`, when `PeriodUnit` is `Year`.
+        /// - When `PeriodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `PeriodUnit` can be set to `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -342,13 +342,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ReservedInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `Allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
         /// </summary>
         [Input("allocationStatus")]
         public Input<string>? AllocationStatus { get; set; }
 
         /// <summary>
-        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `PeriodUnit` is set to Month: 1 Default value when `PeriodUnit` is set to Year: 12
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.194.0. New field `ReservedInstanceName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -411,15 +411,15 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `Period` can be set to `5`, when `PeriodUnit` is `Year`.
+        /// - When `PeriodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `PeriodUnit` can be set to `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }

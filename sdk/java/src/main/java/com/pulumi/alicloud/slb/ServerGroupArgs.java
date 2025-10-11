@@ -21,14 +21,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupArgs Empty = new ServerGroupArgs();
 
     /**
-     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      * 
      */
     @Import(name="deleteProtectionValidation")
     private @Nullable Output<Boolean> deleteProtectionValidation;
 
     /**
-     * @return Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+     * @return Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      * 
      */
     public Optional<Output<Boolean>> deleteProtectionValidation() {
@@ -134,7 +134,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
          * 
          * @return builder
          * 

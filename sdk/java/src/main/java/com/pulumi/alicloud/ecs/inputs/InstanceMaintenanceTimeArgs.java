@@ -16,14 +16,14 @@ public final class InstanceMaintenanceTimeArgs extends com.pulumi.resources.Reso
     public static final InstanceMaintenanceTimeArgs Empty = new InstanceMaintenanceTimeArgs();
 
     /**
-     * The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -31,14 +31,14 @@ public final class InstanceMaintenanceTimeArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+     * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -71,7 +71,7 @@ public final class InstanceMaintenanceTimeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param endTime The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         * @param endTime The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class InstanceMaintenanceTimeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param endTime The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         * @param endTime The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class InstanceMaintenanceTimeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param startTime The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         * @param startTime The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InstanceMaintenanceTimeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param startTime The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         * @param startTime The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
          * 
          * @return builder
          * 

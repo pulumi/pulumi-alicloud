@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Pai
         public Output<string> ConfigValue { get; private set; } = null!;
 
         /// <summary>
-        /// The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
+        /// The scope. Default value: `Owner`. Valid values: `Owner`, `subUser`.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Pai
         public Input<string> ConfigValue { get; set; } = null!;
 
         /// <summary>
-        /// The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
+        /// The scope. Default value: `Owner`. Valid values: `Owner`, `subUser`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Pai
         public Input<string>? ConfigValue { get; set; }
 
         /// <summary>
-        /// The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
+        /// The scope. Default value: `Owner`. Valid values: `Owner`, `subUser`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

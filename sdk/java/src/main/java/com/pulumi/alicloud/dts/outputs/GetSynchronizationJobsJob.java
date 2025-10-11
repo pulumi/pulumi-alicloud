@@ -156,7 +156,7 @@ public final class GetSynchronizationJobsJob {
      */
     private Boolean structureInitialization;
     /**
-     * @return Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+     * @return Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      * 
      */
     private String synchronizationDirection;
@@ -371,7 +371,7 @@ public final class GetSynchronizationJobsJob {
         return this.structureInitialization;
     }
     /**
-     * @return Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+     * @return Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      * 
      */
     public String synchronizationDirection() {

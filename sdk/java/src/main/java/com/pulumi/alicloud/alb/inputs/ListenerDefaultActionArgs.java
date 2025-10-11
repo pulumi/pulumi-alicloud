@@ -18,14 +18,14 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
     public static final ListenerDefaultActionArgs Empty = new ListenerDefaultActionArgs();
 
     /**
-     * Forwarding Action Configurations See `forward_group_config` below.
+     * Forwarding Action Configurations See `forwardGroupConfig` below.
      * 
      */
     @Import(name="forwardGroupConfig")
     private @Nullable Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig;
 
     /**
-     * @return Forwarding Action Configurations See `forward_group_config` below.
+     * @return Forwarding Action Configurations See `forwardGroupConfig` below.
      * 
      */
     public Optional<Output<ListenerDefaultActionForwardGroupConfigArgs>> forwardGroupConfig() {
@@ -73,7 +73,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param forwardGroupConfig Forwarding Action Configurations See `forward_group_config` below.
+         * @param forwardGroupConfig Forwarding Action Configurations See `forwardGroupConfig` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param forwardGroupConfig Forwarding Action Configurations See `forward_group_config` below.
+         * @param forwardGroupConfig Forwarding Action Configurations See `forwardGroupConfig` below.
          * 
          * @return builder
          * 

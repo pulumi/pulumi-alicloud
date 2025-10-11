@@ -33,24 +33,24 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -134,30 +134,30 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+         * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+         * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }

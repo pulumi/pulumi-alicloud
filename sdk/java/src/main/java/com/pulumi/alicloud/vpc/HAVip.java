@@ -293,14 +293,14 @@ public class HAVip extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The vswitch_id of the HaVip, the field can&#39;t be changed.
+     * The vswitchId of the HaVip, the field can&#39;t be changed.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of the HaVip, the field can&#39;t be changed.
+     * @return The vswitchId of the HaVip, the field can&#39;t be changed.
      * 
      */
     public Output<String> vswitchId() {

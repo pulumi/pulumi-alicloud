@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetFoldersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+        /// The ID of the parent folder. **NOTE:** If `ParentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
         /// </summary>
         [Input("parentFolderId")]
         public string? ParentFolderId { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetFoldersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+        /// The ID of the parent folder. **NOTE:** If `ParentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
         /// </summary>
         [Input("parentFolderId")]
         public Input<string>? ParentFolderId { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.114.0) The ID of the parent folder. **Note:** `ParentFolderId` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string? ParentFolderId;
         public readonly string? QueryKeyword;

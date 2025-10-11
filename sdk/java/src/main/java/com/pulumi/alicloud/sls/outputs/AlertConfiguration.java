@@ -37,7 +37,7 @@ public final class AlertConfiguration {
      */
     private @Nullable Boolean autoAnnotation;
     /**
-     * @return Alarm trigger condition. See `condition_configuration` below.
+     * @return Alarm trigger condition. See `conditionConfiguration` below.
      * 
      */
     private @Nullable AlertConfigurationConditionConfiguration conditionConfiguration;
@@ -47,12 +47,12 @@ public final class AlertConfiguration {
      */
     private @Nullable String dashboard;
     /**
-     * @return Group evaluation configuration. See `group_configuration` below.
+     * @return Group evaluation configuration. See `groupConfiguration` below.
      * 
      */
     private @Nullable AlertConfigurationGroupConfiguration groupConfiguration;
     /**
-     * @return Set operation configuration. See `join_configurations` below.
+     * @return Set operation configuration. See `joinConfigurations` below.
      * 
      */
     private @Nullable List<AlertConfigurationJoinConfiguration> joinConfigurations;
@@ -77,12 +77,12 @@ public final class AlertConfiguration {
      */
     private @Nullable Integer noDataSeverity;
     /**
-     * @return Alert policy configuration. See `policy_configuration` below.
+     * @return Alert policy configuration. See `policyConfiguration` below.
      * 
      */
     private @Nullable AlertConfigurationPolicyConfiguration policyConfiguration;
     /**
-     * @return Query the statistical list. See `query_list` below.
+     * @return Query the statistical list. See `queryList` below.
      * 
      */
     private @Nullable List<AlertConfigurationQueryList> queryLists;
@@ -92,22 +92,22 @@ public final class AlertConfiguration {
      */
     private @Nullable Boolean sendResolved;
     /**
-     * @return Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+     * @return Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
      * 
      */
     private @Nullable List<AlertConfigurationSeverityConfiguration> severityConfigurations;
     /**
-     * @return Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+     * @return Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
      * 
      */
     private @Nullable AlertConfigurationSinkAlerthub sinkAlerthub;
     /**
-     * @return Configure alerts sent to CloudMonitor. See `sink_cms` below.
+     * @return Configure alerts sent to CloudMonitor. See `sinkCms` below.
      * 
      */
     private @Nullable AlertConfigurationSinkCms sinkCms;
     /**
-     * @return Configuration of sending alarms to EventStore. See `sink_event_store` below.
+     * @return Configuration of sending alarms to EventStore. See `sinkEventStore` below.
      * 
      */
     private @Nullable AlertConfigurationSinkEventStore sinkEventStore;
@@ -117,7 +117,7 @@ public final class AlertConfiguration {
      */
     private @Nullable List<String> tags;
     /**
-     * @return Alarm rule template configuration. See `template_configuration` below.
+     * @return Alarm rule template configuration. See `templateConfiguration` below.
      * 
      */
     private @Nullable AlertConfigurationTemplateConfiguration templateConfiguration;
@@ -153,7 +153,7 @@ public final class AlertConfiguration {
         return Optional.ofNullable(this.autoAnnotation);
     }
     /**
-     * @return Alarm trigger condition. See `condition_configuration` below.
+     * @return Alarm trigger condition. See `conditionConfiguration` below.
      * 
      */
     public Optional<AlertConfigurationConditionConfiguration> conditionConfiguration() {
@@ -167,14 +167,14 @@ public final class AlertConfiguration {
         return Optional.ofNullable(this.dashboard);
     }
     /**
-     * @return Group evaluation configuration. See `group_configuration` below.
+     * @return Group evaluation configuration. See `groupConfiguration` below.
      * 
      */
     public Optional<AlertConfigurationGroupConfiguration> groupConfiguration() {
         return Optional.ofNullable(this.groupConfiguration);
     }
     /**
-     * @return Set operation configuration. See `join_configurations` below.
+     * @return Set operation configuration. See `joinConfigurations` below.
      * 
      */
     public List<AlertConfigurationJoinConfiguration> joinConfigurations() {
@@ -209,14 +209,14 @@ public final class AlertConfiguration {
         return Optional.ofNullable(this.noDataSeverity);
     }
     /**
-     * @return Alert policy configuration. See `policy_configuration` below.
+     * @return Alert policy configuration. See `policyConfiguration` below.
      * 
      */
     public Optional<AlertConfigurationPolicyConfiguration> policyConfiguration() {
         return Optional.ofNullable(this.policyConfiguration);
     }
     /**
-     * @return Query the statistical list. See `query_list` below.
+     * @return Query the statistical list. See `queryList` below.
      * 
      */
     public List<AlertConfigurationQueryList> queryLists() {
@@ -230,28 +230,28 @@ public final class AlertConfiguration {
         return Optional.ofNullable(this.sendResolved);
     }
     /**
-     * @return Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+     * @return Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
      * 
      */
     public List<AlertConfigurationSeverityConfiguration> severityConfigurations() {
         return this.severityConfigurations == null ? List.of() : this.severityConfigurations;
     }
     /**
-     * @return Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+     * @return Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
      * 
      */
     public Optional<AlertConfigurationSinkAlerthub> sinkAlerthub() {
         return Optional.ofNullable(this.sinkAlerthub);
     }
     /**
-     * @return Configure alerts sent to CloudMonitor. See `sink_cms` below.
+     * @return Configure alerts sent to CloudMonitor. See `sinkCms` below.
      * 
      */
     public Optional<AlertConfigurationSinkCms> sinkCms() {
         return Optional.ofNullable(this.sinkCms);
     }
     /**
-     * @return Configuration of sending alarms to EventStore. See `sink_event_store` below.
+     * @return Configuration of sending alarms to EventStore. See `sinkEventStore` below.
      * 
      */
     public Optional<AlertConfigurationSinkEventStore> sinkEventStore() {
@@ -265,7 +265,7 @@ public final class AlertConfiguration {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Alarm rule template configuration. See `template_configuration` below.
+     * @return Alarm rule template configuration. See `templateConfiguration` below.
      * 
      */
     public Optional<AlertConfigurationTemplateConfiguration> templateConfiguration() {

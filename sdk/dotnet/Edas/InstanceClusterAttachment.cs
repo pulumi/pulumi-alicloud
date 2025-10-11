@@ -114,13 +114,13 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+        /// The cluster members map of the resource supplied above. The key is InstanceId and the value is cluster_member_id.
         /// </summary>
         [Output("clusterMemberIds")]
         public Output<ImmutableDictionary<string, string>> ClusterMemberIds { get; private set; } = null!;
 
         /// <summary>
-        /// The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+        /// The ecu map of the resource supplied above. The key is InstanceId and the value is ecu_id.
         /// </summary>
         [Output("ecuMap")]
         public Output<ImmutableDictionary<string, string>> EcuMap { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
-        /// The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+        /// The status map of the resource supplied above. The key is InstanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         /// </summary>
         [Output("statusMap")]
         public Output<ImmutableDictionary<string, int>> StatusMap { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Edas
         private InputMap<string>? _clusterMemberIds;
 
         /// <summary>
-        /// The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+        /// The cluster members map of the resource supplied above. The key is InstanceId and the value is cluster_member_id.
         /// </summary>
         public InputMap<string> ClusterMemberIds
         {
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Edas
         private InputMap<string>? _ecuMap;
 
         /// <summary>
-        /// The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+        /// The ecu map of the resource supplied above. The key is InstanceId and the value is ecu_id.
         /// </summary>
         public InputMap<string> EcuMap
         {
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Edas
         private InputMap<int>? _statusMap;
 
         /// <summary>
-        /// The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+        /// The status map of the resource supplied above. The key is InstanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         /// </summary>
         public InputMap<int> StatusMap
         {

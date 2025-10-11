@@ -18,14 +18,14 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
     public static final ApplicationScalingRuleScalingRuleTimerArgs Empty = new ApplicationScalingRuleScalingRuleTimerArgs();
 
     /**
-     * The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     @Import(name="beginDate")
     private @Nullable Output<String> beginDate;
 
     /**
-     * @return The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * @return The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     public Optional<Output<String>> beginDate() {
@@ -33,14 +33,14 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
     }
 
     /**
-     * The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     @Import(name="endDate")
     private @Nullable Output<String> endDate;
 
     /**
-     * @return The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * @return The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     public Optional<Output<String>> endDate() {
@@ -105,7 +105,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param beginDate The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+         * @param beginDate The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param beginDate The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+         * @param beginDate The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param endDate The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+         * @param endDate The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param endDate The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+         * @param endDate The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
          * 
          * @return builder
          * 

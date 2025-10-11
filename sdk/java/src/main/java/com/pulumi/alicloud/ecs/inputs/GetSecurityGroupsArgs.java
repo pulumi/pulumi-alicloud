@@ -86,14 +86,14 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The Id of resource group which the security_group belongs.
+     * The Id of resource group which the securityGroup belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The Id of resource group which the securityGroup belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -329,7 +329,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the security_group belongs.
+         * @param resourceGroupId The Id of resource group which the securityGroup belongs.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the security_group belongs.
+         * @param resourceGroupId The Id of resource group which the securityGroup belongs.
          * 
          * @return builder
          * 

@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Ga
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+        /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `Init`, `Active`, `Configuring`, `Binding`, `Unbinding`, `Deleting`, `finacialLocked`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+        /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `Init`, `Active`, `Configuring`, `Binding`, `Unbinding`, `Deleting`, `finacialLocked`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

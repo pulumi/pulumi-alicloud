@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
     /// 
-    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `Force`  with `True` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value: `false`.
+        /// This parameter is used for resource destroy. Default value: `False`.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value: `false`.
+        /// This parameter is used for resource destroy. Default value: `False`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value: `false`.
+        /// This parameter is used for resource destroy. Default value: `False`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

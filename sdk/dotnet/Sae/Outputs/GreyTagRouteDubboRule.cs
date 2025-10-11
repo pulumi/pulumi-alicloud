@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Group;
         /// <summary>
-        /// A list of conditions items. See `items` below.
+        /// A list of conditions items. See `Items` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GreyTagRouteDubboRuleItem> Items;
         /// <summary>

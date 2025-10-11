@@ -106,13 +106,13 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `ServerlessBasic`, `ServerlessStandard`, `ServerlessHa`, `Cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// The DB instance storage space required by the user. Valid values: "CloudSsd", "LocalSsd", "CloudEssd", "CloudEssd2", "CloudEssd3".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public string? DbInstanceStorageType { get; set; }
@@ -136,13 +136,13 @@ namespace Pulumi.AliCloud.Rds
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+        /// It has been deprecated from version 1.137.0 and using `MultiZone` instead.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch RDS instances.
         /// </summary>
         [Input("multiZone")]
         public bool? MultiZone { get; set; }
@@ -162,13 +162,13 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `ServerlessBasic`, `ServerlessStandard`, `ServerlessHa`, `Cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// The DB instance storage space required by the user. Valid values: "CloudSsd", "LocalSsd", "CloudEssd", "CloudEssd2", "CloudEssd3".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }
@@ -192,13 +192,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+        /// It has been deprecated from version 1.137.0 and using `MultiZone` instead.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch RDS instances.
         /// </summary>
         [Input("multiZone")]
         public Input<bool>? MultiZone { get; set; }

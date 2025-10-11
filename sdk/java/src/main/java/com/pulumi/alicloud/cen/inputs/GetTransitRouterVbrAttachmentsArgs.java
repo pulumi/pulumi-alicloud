@@ -33,14 +33,14 @@ public final class GetTransitRouterVbrAttachmentsArgs extends com.pulumi.resourc
     }
 
     /**
-     * A list of resource id. The element value is same as `transit_router_id`.
+     * A list of resource id. The element value is same as `transitRouterId`.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of resource id. The element value is same as `transit_router_id`.
+     * @return A list of resource id. The element value is same as `transitRouterId`.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -142,7 +142,7 @@ public final class GetTransitRouterVbrAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ids A list of resource id. The element value is same as `transit_router_id`.
+         * @param ids A list of resource id. The element value is same as `transitRouterId`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class GetTransitRouterVbrAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ids A list of resource id. The element value is same as `transit_router_id`.
+         * @param ids A list of resource id. The element value is same as `transitRouterId`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class GetTransitRouterVbrAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ids A list of resource id. The element value is same as `transit_router_id`.
+         * @param ids A list of resource id. The element value is same as `transitRouterId`.
          * 
          * @return builder
          * 

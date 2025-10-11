@@ -25,7 +25,7 @@ public final class ScalingGroupLaunchTemplateOverride {
      * 
      * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
      * 
-     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
+     * &gt; **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
     private @Nullable Double spotPriceLimit;
@@ -50,7 +50,7 @@ public final class ScalingGroupLaunchTemplateOverride {
      * 
      * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
      * 
-     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
+     * &gt; **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
     public Optional<Double> spotPriceLimit() {

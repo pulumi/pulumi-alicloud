@@ -105,13 +105,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -357,7 +357,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password

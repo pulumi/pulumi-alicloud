@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        /// The data disk of the cloud disk to be attached to the node. See `DataDisk` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.NodeGroupAttachmentDataDisk>> DataDisks { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.NodeGroupAttachmentDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        /// The data disk of the cloud disk to be attached to the node. See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.NodeGroupAttachmentDataDiskArgs> DataDisks
         {
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.NodeGroupAttachmentDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        /// The data disk of the cloud disk to be attached to the node. See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.NodeGroupAttachmentDataDiskGetArgs> DataDisks
         {

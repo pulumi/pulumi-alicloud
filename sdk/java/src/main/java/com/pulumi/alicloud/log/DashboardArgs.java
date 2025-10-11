@@ -33,7 +33,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration of charts in the dashboard.
-     * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
+     * **Note:** From version 1.164.0, `charList` can set parameter &#34;action&#34;.
      * 
      */
     @Import(name="charList", required=true)
@@ -41,7 +41,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration of charts in the dashboard.
-     * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
+     * **Note:** From version 1.164.0, `charList` can set parameter &#34;action&#34;.
      * 
      */
     public Output<String> charList() {
@@ -144,7 +144,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param charList Configuration of charts in the dashboard.
-         * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
+         * **Note:** From version 1.164.0, `charList` can set parameter &#34;action&#34;.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param charList Configuration of charts in the dashboard.
-         * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
+         * **Note:** From version 1.164.0, `charList` can set parameter &#34;action&#34;.
          * 
          * @return builder
          * 

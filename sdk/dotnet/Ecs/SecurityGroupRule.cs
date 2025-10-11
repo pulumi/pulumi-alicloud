@@ -16,9 +16,9 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v0.1.0.
     /// 
-    /// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+    /// Represents a single `Ingress` or `Egress` group rule, which can be added to external Security Groups.
     /// 
-    /// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+    /// &gt; **NOTE:**  `NicType` should set to `Intranet` when security group type is `Vpc` or specifying the `SourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
     /// 
     /// ## Example Usage
     /// 
@@ -77,31 +77,31 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         /// 
-        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+        /// &gt; **NOTE:**  You must specify one of the following field: `CidrIp`,`SourceSecurityGroupId`,`PrefixListId`,`Ipv6CidrIp`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Gre`, `All`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `CidrIp` parameter.
         /// </summary>
         [Output("ipv6CidrIp")]
         public Output<string?> Ipv6CidrIp { get; private set; } = null!;
 
         /// <summary>
-        /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
+        /// Network type, can be either `Internet` or `Intranet`, the default value is `Internet`.
         /// </summary>
         [Output("nicType")]
         public Output<string> NicType { get; private set; } = null!;
 
         /// <summary>
-        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
+        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `Accept`. Valid values: `Accept`, `Drop`.
         /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> PortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `CidrIp`,`SourceSecurityGroupId`,`Ipv6CidrIp` parameter, this parameter is ignored.
         /// </summary>
         [Output("prefixListId")]
         public Output<string> PrefixListId { get; private set; } = null!;
@@ -138,13 +138,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SecurityGroupRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Output("sourceGroupOwnerAccount")]
         public Output<string?> SourceGroupOwnerAccount { get; private set; } = null!;
 
         /// <summary>
-        /// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+        /// The target security group ID within the same region. If this field is specified, the `NicType` can only select `Intranet`.
         /// </summary>
         [Output("sourceSecurityGroupId")]
         public Output<string?> SourceSecurityGroupId { get; private set; } = null!;
@@ -210,31 +210,31 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         /// 
-        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+        /// &gt; **NOTE:**  You must specify one of the following field: `CidrIp`,`SourceSecurityGroupId`,`PrefixListId`,`Ipv6CidrIp`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Gre`, `All`.
         /// </summary>
         [Input("ipProtocol", required: true)]
         public Input<string> IpProtocol { get; set; } = null!;
 
         /// <summary>
-        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `CidrIp` parameter.
         /// </summary>
         [Input("ipv6CidrIp")]
         public Input<string>? Ipv6CidrIp { get; set; }
 
         /// <summary>
-        /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
+        /// Network type, can be either `Internet` or `Intranet`, the default value is `Internet`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
 
         /// <summary>
-        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
+        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `Accept`. Valid values: `Accept`, `Drop`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `CidrIp`,`SourceSecurityGroupId`,`Ipv6CidrIp` parameter, this parameter is ignored.
         /// </summary>
         [Input("prefixListId")]
         public Input<string>? PrefixListId { get; set; }
@@ -265,13 +265,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Input("sourceGroupOwnerAccount")]
         public Input<string>? SourceGroupOwnerAccount { get; set; }
 
         /// <summary>
-        /// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+        /// The target security group ID within the same region. If this field is specified, the `NicType` can only select `Intranet`.
         /// </summary>
         [Input("sourceSecurityGroupId")]
         public Input<string>? SourceSecurityGroupId { get; set; }
@@ -299,31 +299,31 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         /// 
-        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+        /// &gt; **NOTE:**  You must specify one of the following field: `CidrIp`,`SourceSecurityGroupId`,`PrefixListId`,`Ipv6CidrIp`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Gre`, `All`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `CidrIp` parameter.
         /// </summary>
         [Input("ipv6CidrIp")]
         public Input<string>? Ipv6CidrIp { get; set; }
 
         /// <summary>
-        /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
+        /// Network type, can be either `Internet` or `Intranet`, the default value is `Internet`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
 
         /// <summary>
-        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
+        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `Accept`. Valid values: `Accept`, `Drop`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -336,7 +336,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `CidrIp`,`SourceSecurityGroupId`,`Ipv6CidrIp` parameter, this parameter is ignored.
         /// </summary>
         [Input("prefixListId")]
         public Input<string>? PrefixListId { get; set; }
@@ -360,13 +360,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityGroupRuleId { get; set; }
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Input("sourceGroupOwnerAccount")]
         public Input<string>? SourceGroupOwnerAccount { get; set; }
 
         /// <summary>
-        /// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+        /// The target security group ID within the same region. If this field is specified, the `NicType` can only select `Intranet`.
         /// </summary>
         [Input("sourceSecurityGroupId")]
         public Input<string>? SourceSecurityGroupId { get; set; }

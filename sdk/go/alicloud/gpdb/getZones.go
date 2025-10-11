@@ -14,6 +14,8 @@ import (
 // This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available in v1.73.0+.
+//
+// ## Example Usage
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult

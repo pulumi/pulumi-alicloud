@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly string? Code;
         /// <summary>
-        /// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+        /// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `Ratio` and `Count` fields.
         /// </summary>
         public readonly int? Count;
         /// <summary>
-        /// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+        /// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `Ratio` and `Count` fields.
         /// </summary>
         public readonly int? Ratio;
 

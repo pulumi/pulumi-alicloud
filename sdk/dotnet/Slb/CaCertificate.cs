@@ -84,13 +84,13 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> CaCertificateName { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `CaCertificateName` instead
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the slb_ca certificate belongs.
+        /// The Id of resource group which the SlbCa certificate belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -160,13 +160,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? CaCertificateName { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `CaCertificateName` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the slb_ca certificate belongs.
+        /// The Id of resource group which the SlbCa certificate belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -204,13 +204,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? CaCertificateName { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `CaCertificateName` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the slb_ca certificate belongs.
+        /// The Id of resource group which the SlbCa certificate belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

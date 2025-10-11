@@ -20,16 +20,16 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     public static final ForwardingRuleRuleConditionArgs Empty = new ForwardingRuleRuleConditionArgs();
 
     /**
-     * The configuration of the domain name. See `host_config` below.
-     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+     * The configuration of the domain name. See `hostConfig` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
     @Import(name="hostConfigs")
     private @Nullable Output<List<ForwardingRuleRuleConditionHostConfigArgs>> hostConfigs;
 
     /**
-     * @return The configuration of the domain name. See `host_config` below.
-     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+     * @return The configuration of the domain name. See `hostConfig` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
     public Optional<Output<List<ForwardingRuleRuleConditionHostConfigArgs>>> hostConfigs() {
@@ -37,14 +37,14 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     }
 
     /**
-     * The configuration of the path. See `path_config` below.
+     * The configuration of the path. See `pathConfig` below.
      * 
      */
     @Import(name="pathConfig")
     private @Nullable Output<ForwardingRuleRuleConditionPathConfigArgs> pathConfig;
 
     /**
-     * @return The configuration of the path. See `path_config` below.
+     * @return The configuration of the path. See `pathConfig` below.
      * 
      */
     public Optional<Output<ForwardingRuleRuleConditionPathConfigArgs>> pathConfig() {
@@ -52,14 +52,14 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+     * The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     @Import(name="ruleConditionType", required=true)
     private Output<String> ruleConditionType;
 
     /**
-     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     public Output<String> ruleConditionType() {
@@ -109,8 +109,8 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostConfigs The configuration of the domain name. See `host_config` below.
-         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+         * @param hostConfigs The configuration of the domain name. See `hostConfig` below.
+         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          * 
          * @return builder
          * 
@@ -121,8 +121,8 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostConfigs The configuration of the domain name. See `host_config` below.
-         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+         * @param hostConfigs The configuration of the domain name. See `hostConfig` below.
+         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          * 
          * @return builder
          * 
@@ -132,8 +132,8 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostConfigs The configuration of the domain name. See `host_config` below.
-         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+         * @param hostConfigs The configuration of the domain name. See `hostConfig` below.
+         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pathConfig The configuration of the path. See `path_config` below.
+         * @param pathConfig The configuration of the path. See `pathConfig` below.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pathConfig The configuration of the path. See `path_config` below.
+         * @param pathConfig The configuration of the path. See `pathConfig` below.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
          * 
          * @return builder
          * 

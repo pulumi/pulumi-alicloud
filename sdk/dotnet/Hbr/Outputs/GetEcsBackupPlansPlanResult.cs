@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string CreatedTime;
         public readonly string Detail;
         /// <summary>
-        /// Whether to be suspended. Valid values: `true`, `false`.
+        /// Whether to be suspended. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool Disabled;
         /// <summary>

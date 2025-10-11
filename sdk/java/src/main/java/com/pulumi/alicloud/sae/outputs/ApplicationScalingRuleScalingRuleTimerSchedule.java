@@ -20,7 +20,7 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
     private @Nullable Integer maxReplicas;
     private @Nullable Integer minReplicas;
     /**
-     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
      * 
      */
     private @Nullable Integer targetReplicas;
@@ -40,7 +40,7 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
         return Optional.ofNullable(this.minReplicas);
     }
     /**
-     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
      * 
      */
     public Optional<Integer> targetReplicas() {

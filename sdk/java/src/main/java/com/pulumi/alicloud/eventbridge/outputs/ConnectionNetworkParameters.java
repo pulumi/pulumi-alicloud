@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionNetworkParameters {
     /**
-     * @return The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+     * @return The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
      * 
      */
     private String networkType;
@@ -35,7 +35,7 @@ public final class ConnectionNetworkParameters {
 
     private ConnectionNetworkParameters() {}
     /**
-     * @return The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+     * @return The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
      * 
      */
     public String networkType() {

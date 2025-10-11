@@ -94,14 +94,14 @@ public class NodeGroupAttachment extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,NodeGroupAttachmentDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodeGroupAttachmentDataDisk>> dataDisks;
 
     /**
-     * @return The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+     * @return The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
      * 
      */
     public Output<Optional<List<NodeGroupAttachmentDataDisk>>> dataDisks() {

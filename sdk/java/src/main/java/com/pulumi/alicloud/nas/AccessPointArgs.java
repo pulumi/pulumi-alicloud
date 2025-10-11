@@ -80,14 +80,14 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Posix user. See `posix_user` below.
+     * The Posix user. See `posixUser` below.
      * 
      */
     @Import(name="posixUser")
     private @Nullable Output<AccessPointPosixUserArgs> posixUser;
 
     /**
-     * @return The Posix user. See `posix_user` below.
+     * @return The Posix user. See `posixUser` below.
      * 
      */
     public Optional<Output<AccessPointPosixUserArgs>> posixUser() {
@@ -110,14 +110,14 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Root permissions. See `root_path_permission` below.
+     * Root permissions. See `rootPathPermission` below.
      * 
      */
     @Import(name="rootPathPermission")
     private @Nullable Output<AccessPointRootPathPermissionArgs> rootPathPermission;
 
     /**
-     * @return Root permissions. See `root_path_permission` below.
+     * @return Root permissions. See `rootPathPermission` below.
      * 
      */
     public Optional<Output<AccessPointRootPathPermissionArgs>> rootPathPermission() {
@@ -271,7 +271,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param posixUser The Posix user. See `posix_user` below.
+         * @param posixUser The Posix user. See `posixUser` below.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param posixUser The Posix user. See `posix_user` below.
+         * @param posixUser The Posix user. See `posixUser` below.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPathPermission Root permissions. See `root_path_permission` below.
+         * @param rootPathPermission Root permissions. See `rootPathPermission` below.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPathPermission Root permissions. See `root_path_permission` below.
+         * @param rootPathPermission Root permissions. See `rootPathPermission` below.
          * 
          * @return builder
          * 

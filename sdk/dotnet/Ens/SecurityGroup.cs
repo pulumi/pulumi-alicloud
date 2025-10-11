@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `Https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         /// </summary>
         [Output("securityGroupName")]
         public Output<string?> SecurityGroupName { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `Https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `Https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }

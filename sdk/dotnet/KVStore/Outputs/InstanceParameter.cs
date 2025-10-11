@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.KVStore.Outputs
     public sealed class InstanceParameter
     {
         /// <summary>
-        /// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        /// Field `Parameters` has been deprecated from provider version 1.101.0 and `Config` instead.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        /// Field `Parameters` has been deprecated from provider version 1.101.0 and `Config` instead.
         /// </summary>
         public readonly string? Value;
 

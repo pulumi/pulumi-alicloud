@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class PolicyVersion : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`.
+        /// Specifies whether to set the policy version as the default version. Default to `False`.
         /// </summary>
         [Output("isDefaultVersion")]
         public Output<bool?> IsDefaultVersion { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`.
+        /// Specifies whether to set the policy version as the default version. Default to `False`.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`.
+        /// Specifies whether to set the policy version as the default version. Default to `False`.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }

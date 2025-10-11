@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Ebs.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// List of special retention rules. See `rules` below.
+        /// List of special retention rules. See `Rules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EnterpriseSnapshotPolicySpecialRetainRulesRule> Rules;
 

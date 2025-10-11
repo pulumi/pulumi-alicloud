@@ -20,14 +20,14 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     public static final IngressState Empty = new IngressState();
 
     /**
-     * The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+     * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      * 
      */
     @Import(name="certId")
     private @Nullable Output<String> certId;
 
     /**
-     * @return The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+     * @return The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      * 
      */
     public Optional<Output<String>> certId() {
@@ -35,14 +35,14 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      * 
      */
     @Import(name="certIds")
     private @Nullable Output<String> certIds;
 
     /**
-     * @return The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * @return The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      * 
      */
     public Optional<Output<String>> certIds() {
@@ -50,14 +50,14 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default Rule. See `default_rule` below.
+     * Default Rule. See `defaultRule` below.
      * 
      */
     @Import(name="defaultRule")
     private @Nullable Output<IngressDefaultRuleArgs> defaultRule;
 
     /**
-     * @return Default Rule. See `default_rule` below.
+     * @return Default Rule. See `defaultRule` below.
      * 
      */
     public Optional<Output<IngressDefaultRuleArgs>> defaultRule() {
@@ -203,7 +203,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+         * @param certId The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+         * @param certId The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certIds The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+         * @param certIds The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certIds The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+         * @param certIds The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRule Default Rule. See `default_rule` below.
+         * @param defaultRule Default Rule. See `defaultRule` below.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRule Default Rule. See `default_rule` below.
+         * @param defaultRule Default Rule. See `defaultRule` below.
          * 
          * @return builder
          * 

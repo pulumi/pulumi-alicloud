@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Dns.Inputs
     public sealed class GtmInstanceAlertConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+        /// Whether to configure DingTalk notifications. Valid values: `True`, `False`.
         /// </summary>
         [Input("dingtalkNotice")]
         public Input<bool>? DingtalkNotice { get; set; }
 
         /// <summary>
-        /// Whether to configure mail notification. Valid values: `true`, `false`.
+        /// Whether to configure mail notification. Valid values: `True`, `False`.
         /// </summary>
         [Input("emailNotice")]
         public Input<bool>? EmailNotice { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public Input<string>? NoticeType { get; set; }
 
         /// <summary>
-        /// Whether to configure SMS notification. Valid values: `true`, `false`.
+        /// Whether to configure SMS notification. Valid values: `True`, `False`.
         /// </summary>
         [Input("smsNotice")]
         public Input<bool>? SmsNotice { get; set; }

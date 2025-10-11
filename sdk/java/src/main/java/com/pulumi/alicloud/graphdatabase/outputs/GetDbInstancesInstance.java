@@ -64,7 +64,7 @@ public final class GetDbInstancesInstance {
      */
     private String dbInstanceNetworkType;
     /**
-     * @return Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`.
+     * @return Disk storage type. Valid values: `cloudEssd`, `cloudSsd`.
      * 
      */
     private String dbInstanceStorageType;
@@ -251,7 +251,7 @@ public final class GetDbInstancesInstance {
         return this.dbInstanceNetworkType;
     }
     /**
-     * @return Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`.
+     * @return Disk storage type. Valid values: `cloudEssd`, `cloudSsd`.
      * 
      */
     public String dbInstanceStorageType() {

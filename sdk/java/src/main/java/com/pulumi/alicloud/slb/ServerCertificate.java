@@ -142,28 +142,28 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.alicloudCertificateId);
     }
     /**
-     * the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+     * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      * 
      */
     @Export(name="alicloudCertificateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertificateName;
 
     /**
-     * @return the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+     * @return the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      * 
      */
     public Output<Optional<String>> alicloudCertificateName() {
         return Codegen.optional(this.alicloudCertificateName);
     }
     /**
-     * the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+     * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      * 
      */
     @Export(name="alicloudCertificateRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertificateRegionId;
 
     /**
-     * @return the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+     * @return the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      * 
      */
     public Output<Optional<String>> alicloudCertificateRegionId() {
@@ -184,14 +184,14 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
-     * @return the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * @return the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     public Output<Optional<String>> privateKey() {
@@ -212,14 +212,14 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     @Export(name="serverCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverCertificate;
 
     /**
-     * @return the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * @return the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     public Output<Optional<String>> serverCertificate() {

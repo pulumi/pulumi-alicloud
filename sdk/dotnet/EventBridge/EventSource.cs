@@ -94,31 +94,31 @@ namespace Pulumi.AliCloud.EventBridge
 
         /// <summary>
         /// The config of external source.
-        /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+        /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
         /// `VirtualHostName` - The virtual host name of RabbitMQ.
         /// `QueueName` - The queue name of RabbitMQ.
-        /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+        /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
         /// `Topic` - The topic of RabbitMQ.
         /// `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
         /// `GroupID` - The group ID of consumer.
-        /// When `external_source_type` is `MNS`, The following attributes are supported:
+        /// When `ExternalSourceType` is `MNS`, The following attributes are supported:
         /// `QueueName` - The queue name of MNS.
         /// </summary>
         [Output("externalSourceConfig")]
         public Output<ImmutableDictionary<string, string>?> ExternalSourceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `LinkedExternalSource` is `True`, This field is valid.
         /// </summary>
         [Output("externalSourceType")]
         public Output<string?> ExternalSourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to connect to an external data source. Default value: `false`
+        /// Whether to connect to an external data source. Default value: `False`
         /// </summary>
         [Output("linkedExternalSource")]
         public Output<bool> LinkedExternalSource { get; private set; } = null!;
@@ -192,18 +192,18 @@ namespace Pulumi.AliCloud.EventBridge
 
         /// <summary>
         /// The config of external source.
-        /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+        /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
         /// `VirtualHostName` - The virtual host name of RabbitMQ.
         /// `QueueName` - The queue name of RabbitMQ.
-        /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+        /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
         /// `Topic` - The topic of RabbitMQ.
         /// `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
         /// `GroupID` - The group ID of consumer.
-        /// When `external_source_type` is `MNS`, The following attributes are supported:
+        /// When `ExternalSourceType` is `MNS`, The following attributes are supported:
         /// `QueueName` - The queue name of MNS.
         /// </summary>
         public InputMap<string> ExternalSourceConfig
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.EventBridge
         }
 
         /// <summary>
-        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `LinkedExternalSource` is `True`, This field is valid.
         /// </summary>
         [Input("externalSourceType")]
         public Input<string>? ExternalSourceType { get; set; }
 
         /// <summary>
-        /// Whether to connect to an external data source. Default value: `false`
+        /// Whether to connect to an external data source. Default value: `False`
         /// </summary>
         [Input("linkedExternalSource")]
         public Input<bool>? LinkedExternalSource { get; set; }
@@ -255,18 +255,18 @@ namespace Pulumi.AliCloud.EventBridge
 
         /// <summary>
         /// The config of external source.
-        /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+        /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
         /// `VirtualHostName` - The virtual host name of RabbitMQ.
         /// `QueueName` - The queue name of RabbitMQ.
-        /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+        /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
         /// `Topic` - The topic of RabbitMQ.
         /// `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
         /// `GroupID` - The group ID of consumer.
-        /// When `external_source_type` is `MNS`, The following attributes are supported:
+        /// When `ExternalSourceType` is `MNS`, The following attributes are supported:
         /// `QueueName` - The queue name of MNS.
         /// </summary>
         public InputMap<string> ExternalSourceConfig
@@ -276,13 +276,13 @@ namespace Pulumi.AliCloud.EventBridge
         }
 
         /// <summary>
-        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `LinkedExternalSource` is `True`, This field is valid.
         /// </summary>
         [Input("externalSourceType")]
         public Input<string>? ExternalSourceType { get; set; }
 
         /// <summary>
-        /// Whether to connect to an external data source. Default value: `false`
+        /// Whether to connect to an external data source. Default value: `False`
         /// </summary>
         [Input("linkedExternalSource")]
         public Input<bool>? LinkedExternalSource { get; set; }

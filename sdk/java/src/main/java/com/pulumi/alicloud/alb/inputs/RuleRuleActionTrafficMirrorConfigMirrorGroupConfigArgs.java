@@ -17,14 +17,14 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs extend
     public static final RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs Empty = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs();
 
     /**
-     * The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * The destination server group to which requests are forwarded. See `serverGroupTuples` below.
      * 
      */
     @Import(name="serverGroupTuples")
     private @Nullable Output<List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * @return The destination server group to which requests are forwarded. See `serverGroupTuples` below.
      * 
      */
     public Optional<Output<List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs>>> serverGroupTuples() {
@@ -56,7 +56,7 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs extend
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs extend
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs extend
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          * 
          * @return builder
          * 

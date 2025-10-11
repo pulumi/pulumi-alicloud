@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
-        /// &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        /// &gt; **NOTE:** There should not set the `InstanceType` parameter when creating a serverless instance. Only need to set `PaymentType = "PayAsYouGo"` and `ServerlessChargeType = "onDemand"`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
-        /// &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        /// &gt; **NOTE:** There should not set the `InstanceType` parameter when creating a serverless instance. Only need to set `PaymentType = "PayAsYouGo"` and `ServerlessChargeType = "onDemand"`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
-        /// &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        /// &gt; **NOTE:** There should not set the `InstanceType` parameter when creating a serverless instance. Only need to set `PaymentType = "PayAsYouGo"` and `ServerlessChargeType = "onDemand"`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

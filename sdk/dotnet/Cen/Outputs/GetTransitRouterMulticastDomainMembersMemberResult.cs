@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string GroupIpAddress;
         /// <summary>
-        /// The `key` of the resource supplied above.The value is formulated as `&lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;network_interface_id&gt;`.
+        /// The `Key` of the resource supplied above.The value is formulated as `&lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;network_interface_id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

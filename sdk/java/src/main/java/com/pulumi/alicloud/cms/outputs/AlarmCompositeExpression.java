@@ -20,7 +20,7 @@ public final class AlarmCompositeExpression {
      */
     private @Nullable String expressionListJoin;
     /**
-     * @return The trigger conditions that are created in standard mode. See `expression_list` below.
+     * @return The trigger conditions that are created in standard mode. See `expressionList` below.
      * 
      */
     private @Nullable List<AlarmCompositeExpressionExpressionList> expressionLists;
@@ -49,7 +49,7 @@ public final class AlarmCompositeExpression {
         return Optional.ofNullable(this.expressionListJoin);
     }
     /**
-     * @return The trigger conditions that are created in standard mode. See `expression_list` below.
+     * @return The trigger conditions that are created in standard mode. See `expressionList` below.
      * 
      */
     public List<AlarmCompositeExpressionExpressionList> expressionLists() {

@@ -20,7 +20,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
     /**
      * Each node in the delivery chain. See `nodes` below.
      * 
-     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     @Import(name="nodes")
@@ -29,7 +29,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Each node in the delivery chain. See `nodes` below.
      * 
-     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     public Optional<Output<List<ChainChainConfigNodeArgs>>> nodes() {
@@ -79,7 +79,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param nodes Each node in the delivery chain. See `nodes` below.
          * 
-         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param nodes Each node in the delivery chain. See `nodes` below.
          * 
-         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param nodes Each node in the delivery chain. See `nodes` below.
          * 
-         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          * 
          * @return builder
          * 

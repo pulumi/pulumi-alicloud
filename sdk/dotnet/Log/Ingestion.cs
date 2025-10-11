@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> IngestionName { get; private set; } = null!;
 
         /// <summary>
-        /// Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
+        /// Task execution interval, support minute `M`, hour `H`, day `D`, for example 30 minutes `30m`.
         /// </summary>
         [Output("interval")]
         public Output<string> Interval { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> IngestionName { get; set; } = null!;
 
         /// <summary>
-        /// Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
+        /// Task execution interval, support minute `M`, hour `H`, day `D`, for example 30 minutes `30m`.
         /// </summary>
         [Input("interval", required: true)]
         public Input<string> Interval { get; set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? IngestionName { get; set; }
 
         /// <summary>
-        /// Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
+        /// Task execution interval, support minute `M`, hour `H`, day `D`, for example 30 minutes `30m`.
         /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }

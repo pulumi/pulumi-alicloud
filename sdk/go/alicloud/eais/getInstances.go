@@ -14,6 +14,10 @@ import (
 // This data source provides the Eais Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.137.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

@@ -136,14 +136,14 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retentionDays);
     }
     /**
-     * The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+     * The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      * 
      */
     @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotName;
 
     /**
-     * @return The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+     * @return The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      * 
      */
     public Output<Optional<String>> snapshotName() {

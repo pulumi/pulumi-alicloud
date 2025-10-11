@@ -1368,6 +1368,8 @@ public final class GpdbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -1376,6 +1378,8 @@ public final class GpdbFunctions {
      * This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1386,6 +1390,8 @@ public final class GpdbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -1394,6 +1400,8 @@ public final class GpdbFunctions {
      * This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1404,6 +1412,8 @@ public final class GpdbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:gpdb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -1413,6 +1423,8 @@ public final class GpdbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:gpdb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -1421,6 +1433,8 @@ public final class GpdbFunctions {
      * This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

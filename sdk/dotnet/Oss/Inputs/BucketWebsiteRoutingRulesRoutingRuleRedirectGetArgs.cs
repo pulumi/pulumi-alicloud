@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<int>? MirrorAsyncStatus { get; set; }
 
         /// <summary>
-        /// Image back Source station authentication information See `mirror_auth` below.
+        /// Image back Source station authentication information See `MirrorAuth` below.
         /// </summary>
         [Input("mirrorAuth")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthGetArgs>? MirrorAuth { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<bool>? MirrorFollowRedirect { get; set; }
 
         /// <summary>
-        /// Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+        /// Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `MirrorHeaders` below.
         /// </summary>
         [Input("mirrorHeaders")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersGetArgs>? MirrorHeaders { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<bool>? MirrorIsExpressTunnel { get; set; }
 
         /// <summary>
-        /// Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+        /// Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `MirrorMultiAlternates` below.
         /// </summary>
         [Input("mirrorMultiAlternates")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesGetArgs>? MirrorMultiAlternates { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<bool>? MirrorProxyPass { get; set; }
 
         /// <summary>
-        /// The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+        /// The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `MirrorReturnHeaders` below.
         /// </summary>
         [Input("mirrorReturnHeaders")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersGetArgs>? MirrorReturnHeaders { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<bool>? MirrorSwitchAllErrors { get; set; }
 
         /// <summary>
-        /// Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+        /// Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `MirrorTaggings` below.
         /// </summary>
         [Input("mirrorTaggings")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsGetArgs>? MirrorTaggings { get; set; }

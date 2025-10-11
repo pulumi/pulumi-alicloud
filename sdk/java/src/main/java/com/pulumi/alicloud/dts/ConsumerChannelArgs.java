@@ -30,14 +30,14 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+     * The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      * 
      */
     @Import(name="consumerGroupPassword", required=true)
     private Output<String> consumerGroupPassword;
 
     /**
-     * @return The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+     * @return The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      * 
      */
     public Output<String> consumerGroupPassword() {
@@ -45,14 +45,14 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+     * The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      * 
      */
     @Import(name="consumerGroupUserName", required=true)
     private Output<String> consumerGroupUserName;
 
     /**
-     * @return The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+     * @return The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      * 
      */
     public Output<String> consumerGroupUserName() {
@@ -123,7 +123,7 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param consumerGroupPassword The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+         * @param consumerGroupPassword The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param consumerGroupPassword The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+         * @param consumerGroupPassword The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param consumerGroupUserName The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+         * @param consumerGroupUserName The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param consumerGroupUserName The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+         * @param consumerGroupUserName The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
          * 
          * @return builder
          * 

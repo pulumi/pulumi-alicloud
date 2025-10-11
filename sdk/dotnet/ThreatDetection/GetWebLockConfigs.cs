@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The language of the content within the request and the response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and the response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public string? SourceIp { get; set; }
 
         /// <summary>
-        /// The protection status of the server that you want to query. Valid values: `on`, `off`.
+        /// The protection status of the server that you want to query. Valid values: `On`, `Off`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The language of the content within the request and the response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and the response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? SourceIp { get; set; }
 
         /// <summary>
-        /// The protection status of the server that you want to query. Valid values: `on`, `off`.
+        /// The protection status of the server that you want to query. Valid values: `On`, `Off`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

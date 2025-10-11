@@ -140,14 +140,14 @@ public class ClickHouseEnterpriseDbCluster extends com.pulumi.resources.CustomRe
         return this.createTime;
     }
     /**
-     * The list of multi-zone information. See `multi_zones` below.
+     * The list of multi-zone information. See `multiZones` below.
      * 
      */
     @Export(name="multiZones", refs={List.class,ClickHouseEnterpriseDbClusterMultiZone.class}, tree="[0,1]")
     private Output<List<ClickHouseEnterpriseDbClusterMultiZone>> multiZones;
 
     /**
-     * @return The list of multi-zone information. See `multi_zones` below.
+     * @return The list of multi-zone information. See `multiZones` below.
      * 
      */
     public Output<List<ClickHouseEnterpriseDbClusterMultiZone>> multiZones() {

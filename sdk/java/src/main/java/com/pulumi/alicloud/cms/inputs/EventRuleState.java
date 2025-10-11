@@ -25,14 +25,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     public static final EventRuleState Empty = new EventRuleState();
 
     /**
-     * The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+     * The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      * 
      */
     @Import(name="contactParameters")
     private @Nullable Output<List<EventRuleContactParameterArgs>> contactParameters;
 
     /**
-     * @return The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+     * @return The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      * 
      */
     public Optional<Output<List<EventRuleContactParameterArgs>>> contactParameters() {
@@ -55,14 +55,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+     * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      * 
      */
     @Import(name="eventPattern")
     private @Nullable Output<EventRuleEventPatternArgs> eventPattern;
 
     /**
-     * @return Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+     * @return Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      * 
      */
     public Optional<Output<EventRuleEventPatternArgs>> eventPattern() {
@@ -70,14 +70,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the recipients in Function Compute. See `fc_parameters` below.
+     * The information about the recipients in Function Compute. See `fcParameters` below.
      * 
      */
     @Import(name="fcParameters")
     private @Nullable Output<List<EventRuleFcParameterArgs>> fcParameters;
 
     /**
-     * @return The information about the recipients in Function Compute. See `fc_parameters` below.
+     * @return The information about the recipients in Function Compute. See `fcParameters` below.
      * 
      */
     public Optional<Output<List<EventRuleFcParameterArgs>>> fcParameters() {
@@ -100,14 +100,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+     * The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      * 
      */
     @Import(name="mnsParameters")
     private @Nullable Output<List<EventRuleMnsParameterArgs>> mnsParameters;
 
     /**
-     * @return The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+     * @return The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      * 
      */
     public Optional<Output<List<EventRuleMnsParameterArgs>>> mnsParameters() {
@@ -115,14 +115,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The parameters of API callback notification. See `open_api_parameters` below.
+     * The parameters of API callback notification. See `openApiParameters` below.
      * 
      */
     @Import(name="openApiParameters")
     private @Nullable Output<List<EventRuleOpenApiParameterArgs>> openApiParameters;
 
     /**
-     * @return The parameters of API callback notification. See `open_api_parameters` below.
+     * @return The parameters of API callback notification. See `openApiParameters` below.
      * 
      */
     public Optional<Output<List<EventRuleOpenApiParameterArgs>>> openApiParameters() {
@@ -160,14 +160,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the recipients in Simple Log Service. See `sls_parameters` below.
+     * The information about the recipients in Simple Log Service. See `slsParameters` below.
      * 
      */
     @Import(name="slsParameters")
     private @Nullable Output<List<EventRuleSlsParameterArgs>> slsParameters;
 
     /**
-     * @return The information about the recipients in Simple Log Service. See `sls_parameters` below.
+     * @return The information about the recipients in Simple Log Service. See `slsParameters` below.
      * 
      */
     public Optional<Output<List<EventRuleSlsParameterArgs>>> slsParameters() {
@@ -190,14 +190,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+     * The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      * 
      */
     @Import(name="webhookParameters")
     private @Nullable Output<List<EventRuleWebhookParameterArgs>> webhookParameters;
 
     /**
-     * @return The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+     * @return The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      * 
      */
     public Optional<Output<List<EventRuleWebhookParameterArgs>>> webhookParameters() {
@@ -240,7 +240,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fcParameters The information about the recipients in Function Compute. See `fc_parameters` below.
+         * @param fcParameters The information about the recipients in Function Compute. See `fcParameters` below.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fcParameters The information about the recipients in Function Compute. See `fc_parameters` below.
+         * @param fcParameters The information about the recipients in Function Compute. See `fcParameters` below.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fcParameters The information about the recipients in Function Compute. See `fc_parameters` below.
+         * @param fcParameters The information about the recipients in Function Compute. See `fcParameters` below.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mnsParameters` below.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mnsParameters` below.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mnsParameters` below.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openApiParameters The parameters of API callback notification. See `open_api_parameters` below.
+         * @param openApiParameters The parameters of API callback notification. See `openApiParameters` below.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openApiParameters The parameters of API callback notification. See `open_api_parameters` below.
+         * @param openApiParameters The parameters of API callback notification. See `openApiParameters` below.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openApiParameters The parameters of API callback notification. See `open_api_parameters` below.
+         * @param openApiParameters The parameters of API callback notification. See `openApiParameters` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsParameters The information about the recipients in Simple Log Service. See `sls_parameters` below.
+         * @param slsParameters The information about the recipients in Simple Log Service. See `slsParameters` below.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsParameters The information about the recipients in Simple Log Service. See `sls_parameters` below.
+         * @param slsParameters The information about the recipients in Simple Log Service. See `slsParameters` below.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsParameters The information about the recipients in Simple Log Service. See `sls_parameters` below.
+         * @param slsParameters The information about the recipients in Simple Log Service. See `slsParameters` below.
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
          * 
          * @return builder
          * 

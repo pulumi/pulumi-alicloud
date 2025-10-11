@@ -154,14 +154,14 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     @Import(name="withDecryption")
     private @Nullable Output<Boolean> withDecryption;
 
     /**
-     * @return Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+     * @return Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Optional<Output<Boolean>> withDecryption() {
@@ -401,7 +401,7 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
          * 
          * @return builder
          * 

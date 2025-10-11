@@ -71,14 +71,14 @@ public class Resource extends com.pulumi.resources.CustomResource {
         return this.clusterName;
     }
     /**
-     * Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+     * Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
      * 
      */
     @Export(name="machineTypes", refs={ResourceMachineTypes.class}, tree="[0]")
     private Output<ResourceMachineTypes> machineTypes;
 
     /**
-     * @return Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+     * @return Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
      * 
      */
     public Output<ResourceMachineTypes> machineTypes() {
@@ -99,14 +99,14 @@ public class Resource extends com.pulumi.resources.CustomResource {
         return this.resourceId;
     }
     /**
-     * Used to define the access parameters for the user. See `user_access_param` below.
+     * Used to define the access parameters for the user. See `userAccessParam` below.
      * 
      */
     @Export(name="userAccessParam", refs={ResourceUserAccessParam.class}, tree="[0]")
     private Output<ResourceUserAccessParam> userAccessParam;
 
     /**
-     * @return Used to define the access parameters for the user. See `user_access_param` below.
+     * @return Used to define the access parameters for the user. See `userAccessParam` below.
      * 
      */
     public Output<ResourceUserAccessParam> userAccessParam() {

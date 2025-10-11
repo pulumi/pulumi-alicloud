@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
      * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
@@ -90,7 +90,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
     private Output<List<AclAclEntry>> aclEntries;
 
     /**
-     * @return The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * @return The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
      * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      */

@@ -25,7 +25,7 @@ public final class BucketLifecycleRuleTransition {
      */
     private @Nullable Integer days;
     /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
      * 
      */
     private @Nullable Boolean isAccessTime;
@@ -56,7 +56,7 @@ public final class BucketLifecycleRuleTransition {
         return Optional.ofNullable(this.days);
     }
     /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
      * 
      */
     public Optional<Boolean> isAccessTime() {

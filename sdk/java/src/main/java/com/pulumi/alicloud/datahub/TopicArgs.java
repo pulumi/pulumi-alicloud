@@ -21,7 +21,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Comment of the datahub topic. It cannot be longer than 255 characters.
      * 
-     * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      * 
      */
     @Import(name="comment")
@@ -30,7 +30,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Comment of the datahub topic. It cannot be longer than 255 characters.
      * 
-     * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -170,7 +170,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param comment Comment of the datahub topic. It cannot be longer than 255 characters.
          * 
-         * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+         * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param comment Comment of the datahub topic. It cannot be longer than 255 characters.
          * 
-         * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+         * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
          * 
          * @return builder
          * 

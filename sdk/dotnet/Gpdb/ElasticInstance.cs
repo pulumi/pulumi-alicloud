@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> DbInstanceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        /// The ID of the encryption key. **Note:** If the `EncryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> EncryptionType { get; private set; } = null!;
 
         /// <summary>
-        /// Database engine: `gpdb`.
+        /// Database engine: `Gpdb`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -126,22 +126,22 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The specification of segment nodes. 
-        /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-        /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        /// * When `DbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// * When `DbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
         [Output("instanceSpec")]
         public Output<string> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The subscription period. Valid values: [1~12]. It is valid when PaymentType is `Subscription`.  
+        /// **NOTE:** Will not take effect after modifying `PaymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Output("paymentDuration")]
         public Output<int?> PaymentDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when PaymentType is `Subscription`.  
+        /// **NOTE:** Will not take effect after modifying `PaymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Output("paymentDurationUnit")]
         public Output<string?> PaymentDurationUnit { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<int> SegNodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+        /// The disk type of segment nodes. Valid values: `CloudEssd`, `CloudEfficiency`.
         /// </summary>
         [Output("segStorageType")]
         public Output<string> SegStorageType { get; private set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? DbInstanceDescription { get; set; }
 
         /// <summary>
-        /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        /// The ID of the encryption key. **Note:** If the `EncryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? EncryptionType { get; set; }
 
         /// <summary>
-        /// Database engine: `gpdb`.
+        /// Database engine: `Gpdb`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -296,22 +296,22 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The specification of segment nodes. 
-        /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-        /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        /// * When `DbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// * When `DbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
         [Input("instanceSpec", required: true)]
         public Input<string> InstanceSpec { get; set; } = null!;
 
         /// <summary>
-        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The subscription period. Valid values: [1~12]. It is valid when PaymentType is `Subscription`.  
+        /// **NOTE:** Will not take effect after modifying `PaymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when PaymentType is `Subscription`.  
+        /// **NOTE:** Will not take effect after modifying `PaymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -341,7 +341,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int> SegNodeNum { get; set; } = null!;
 
         /// <summary>
-        /// The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+        /// The disk type of segment nodes. Valid values: `CloudEssd`, `CloudEfficiency`.
         /// </summary>
         [Input("segStorageType", required: true)]
         public Input<string> SegStorageType { get; set; } = null!;
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? DbInstanceDescription { get; set; }
 
         /// <summary>
-        /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        /// The ID of the encryption key. **Note:** If the `EncryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -415,7 +415,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? EncryptionType { get; set; }
 
         /// <summary>
-        /// Database engine: `gpdb`.
+        /// Database engine: `Gpdb`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -434,22 +434,22 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The specification of segment nodes. 
-        /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-        /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        /// * When `DbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// * When `DbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }
 
         /// <summary>
-        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The subscription period. Valid values: [1~12]. It is valid when PaymentType is `Subscription`.  
+        /// **NOTE:** Will not take effect after modifying `PaymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when PaymentType is `Subscription`.  
+        /// **NOTE:** Will not take effect after modifying `PaymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -485,7 +485,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? SegNodeNum { get; set; }
 
         /// <summary>
-        /// The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+        /// The disk type of segment nodes. Valid values: `CloudEssd`, `CloudEfficiency`.
         /// </summary>
         [Input("segStorageType")]
         public Input<string>? SegStorageType { get; set; }

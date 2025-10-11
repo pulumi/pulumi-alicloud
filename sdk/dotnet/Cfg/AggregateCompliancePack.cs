@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Cfg
     public partial class AggregateCompliancePack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+        /// The name of compliance package name. **NOTE:** From version 1.145.0, `AggregateCompliancePackName` can be modified.
         /// </summary>
         [Output("aggregateCompliancePackName")]
         public Output<string> AggregateCompliancePackName { get; private set; } = null!;
@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> CompliancePackTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rule IDs. See `config_rule_ids` below.
+        /// A list of Config Rule IDs. See `ConfigRuleIds` below.
         /// </summary>
         [Output("configRuleIds")]
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        /// A list of Config Rules. See `ConfigRules` below. **NOTE:** Field `ConfigRules` has been deprecated from provider version 1.141.0. New field `ConfigRuleIds` instead.
         /// </summary>
         [Output("configRules")]
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class AggregateCompliancePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+        /// The name of compliance package name. **NOTE:** From version 1.145.0, `AggregateCompliancePackName` can be modified.
         /// </summary>
         [Input("aggregateCompliancePackName", required: true)]
         public Input<string> AggregateCompliancePackName { get; set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs>? _configRuleIds;
 
         /// <summary>
-        /// A list of Config Rule IDs. See `config_rule_ids` below.
+        /// A list of Config Rule IDs. See `ConfigRuleIds` below.
         /// </summary>
         public InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs> ConfigRuleIds
         {
@@ -236,9 +236,9 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        /// A list of Config Rules. See `ConfigRules` below. **NOTE:** Field `ConfigRules` has been deprecated from provider version 1.141.0. New field `ConfigRuleIds` instead.
         /// </summary>
-        [Obsolete(@"Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.")]
+        [Obsolete(@"Field `ConfigRules` has been deprecated from provider version 1.141.0. New field `ConfigRuleIds` instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.AggregateCompliancePackConfigRuleArgs>());
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class AggregateCompliancePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+        /// The name of compliance package name. **NOTE:** From version 1.145.0, `AggregateCompliancePackName` can be modified.
         /// </summary>
         [Input("aggregateCompliancePackName")]
         public Input<string>? AggregateCompliancePackName { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs>? _configRuleIds;
 
         /// <summary>
-        /// A list of Config Rule IDs. See `config_rule_ids` below.
+        /// A list of Config Rule IDs. See `ConfigRuleIds` below.
         /// </summary>
         public InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs> ConfigRuleIds
         {
@@ -305,9 +305,9 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        /// A list of Config Rules. See `ConfigRules` below. **NOTE:** Field `ConfigRules` has been deprecated from provider version 1.141.0. New field `ConfigRuleIds` instead.
         /// </summary>
-        [Obsolete(@"Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.")]
+        [Obsolete(@"Field `ConfigRules` has been deprecated from provider version 1.141.0. New field `ConfigRuleIds` instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>());

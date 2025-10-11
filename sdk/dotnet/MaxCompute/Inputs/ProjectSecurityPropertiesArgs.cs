@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<bool>? ObjectCreatorHasGrantPermission { get; set; }
 
         /// <summary>
-        /// Project protection See `project_protection` below.
+        /// Project protection See `ProjectProtection` below.
         /// </summary>
         [Input("projectProtection")]
         public Input<Inputs.ProjectSecurityPropertiesProjectProtectionArgs>? ProjectProtection { get; set; }

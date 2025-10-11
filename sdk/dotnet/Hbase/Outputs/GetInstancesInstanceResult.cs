@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly string CoreInstanceType;
         /// <summary>
-        /// Same with "core_instance_quantity"
+        /// Same with "CoreInstanceQuantity"
         /// </summary>
         public readonly int CoreNodeCount;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// The engine_version of the instance.
+        /// The EngineVersion of the instance.
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>

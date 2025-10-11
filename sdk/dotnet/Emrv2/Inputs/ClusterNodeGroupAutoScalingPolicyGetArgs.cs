@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
     public sealed class ClusterNodeGroupAutoScalingPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The constraints of auto scaling policy. See `constraints` below.
+        /// The constraints of auto scaling policy. See `Constraints` below.
         /// </summary>
         [Input("constraints")]
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyConstraintsGetArgs>? Constraints { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleGetArgs>? _scalingRules;
 
         /// <summary>
-        /// The scaling rules of auto scaling policy. See `scaling_rules` below.
+        /// The scaling rules of auto scaling policy. See `ScalingRules` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleGetArgs> ScalingRules
         {

@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly bool? RetriveClientIp;
         /// <summary>
-        /// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
+        /// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? RetriveSlbId;
         /// <summary>
-        /// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
+        /// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? RetriveSlbIp;
         /// <summary>
-        /// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? RetriveSlbProto;
 

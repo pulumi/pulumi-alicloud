@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateGetArgs>? _mirrorMultiAlternates;
 
         /// <summary>
-        /// Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+        /// Mirror back-to-source multi-source station configuration list See `MirrorMultiAlternate` below.
         /// </summary>
         public InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateGetArgs> MirrorMultiAlternates
         {

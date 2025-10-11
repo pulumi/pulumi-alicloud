@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Edas.Inputs
         public Input<string> LoadbalancerProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
+        /// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `ServicePort` below.
         /// </summary>
         [Input("servicePort", required: true)]
         public Input<Inputs.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs> ServicePort { get; set; } = null!;

@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<ImmutableArray<string>> DefinedColumns { get; private set; } = null!;
 
         /// <summary>
-        /// whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+        /// whether the index contains data that already exists in the data table. When IncludeBaseData is set to true, it means that stock data is included.
         /// </summary>
         [Output("includeBaseData")]
         public Output<bool> IncludeBaseData { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+        /// whether the index contains data that already exists in the data table. When IncludeBaseData is set to true, it means that stock data is included.
         /// </summary>
         [Input("includeBaseData", required: true)]
         public Input<bool> IncludeBaseData { get; set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+        /// whether the index contains data that already exists in the data table. When IncludeBaseData is set to true, it means that stock data is included.
         /// </summary>
         [Input("includeBaseData")]
         public Input<bool>? IncludeBaseData { get; set; }

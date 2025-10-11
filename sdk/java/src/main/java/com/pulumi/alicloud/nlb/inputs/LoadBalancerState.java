@@ -131,14 +131,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+     * Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
      * 
      */
     @Import(name="deletionProtectionConfig")
     private @Nullable Output<LoadBalancerDeletionProtectionConfigArgs> deletionProtectionConfig;
 
     /**
-     * @return Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+     * @return Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
      * 
      */
     public Optional<Output<LoadBalancerDeletionProtectionConfigArgs>> deletionProtectionConfig() {
@@ -161,14 +161,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
      * 
      */
     @Import(name="deletionProtectionReason")
     private @Nullable Output<String> deletionProtectionReason;
 
     /**
-     * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * @return The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
      * 
      */
     public Optional<Output<String>> deletionProtectionReason() {
@@ -257,14 +257,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
      * 
      */
     @Import(name="modificationProtectionConfig")
     private @Nullable Output<LoadBalancerModificationProtectionConfigArgs> modificationProtectionConfig;
 
     /**
-     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
      * 
      */
     public Optional<Output<LoadBalancerModificationProtectionConfigArgs>> modificationProtectionConfig() {
@@ -272,14 +272,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
      * 
      */
     @Import(name="modificationProtectionReason")
     private @Nullable Output<String> modificationProtectionReason;
 
     /**
-     * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * @return The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
      * 
      */
     public Optional<Output<String>> modificationProtectionReason() {
@@ -288,8 +288,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
      * 
      */
     @Import(name="modificationProtectionStatus")
@@ -297,8 +297,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
      * 
      */
     public Optional<Output<String>> modificationProtectionStatus() {
@@ -413,14 +413,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
      * 
      */
     public Optional<Output<List<LoadBalancerZoneMappingArgs>>> zoneMappings() {
@@ -620,7 +620,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionConfig Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+         * @param deletionProtectionConfig Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionConfig Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+         * @param deletionProtectionConfig Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
          * 
          * @return builder
          * 
@@ -794,7 +794,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+         * @param modificationProtectionConfig Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+         * @param modificationProtectionConfig Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -837,8 +837,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
          * 
          * @return builder
          * 
@@ -850,8 +850,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
          * 
          * @return builder
          * 
@@ -1031,7 +1031,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
          * 
          * @return builder
          * 

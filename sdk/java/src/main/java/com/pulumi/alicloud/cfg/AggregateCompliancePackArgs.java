@@ -21,14 +21,14 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
     public static final AggregateCompliancePackArgs Empty = new AggregateCompliancePackArgs();
 
     /**
-     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      * 
      */
     @Import(name="aggregateCompliancePackName", required=true)
     private Output<String> aggregateCompliancePackName;
 
     /**
-     * @return The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+     * @return The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      * 
      */
     public Output<String> aggregateCompliancePackName() {
@@ -66,14 +66,14 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * A list of Config Rule IDs. See `config_rule_ids` below.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      * 
      */
     @Import(name="configRuleIds")
     private @Nullable Output<List<AggregateCompliancePackConfigRuleIdArgs>> configRuleIds;
 
     /**
-     * @return A list of Config Rule IDs. See `config_rule_ids` below.
+     * @return A list of Config Rule IDs. See `configRuleIds` below.
      * 
      */
     public Optional<Output<List<AggregateCompliancePackConfigRuleIdArgs>>> configRuleIds() {
@@ -81,24 +81,24 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      * @deprecated
-     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
-    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
+    @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
     @Import(name="configRules")
     private @Nullable Output<List<AggregateCompliancePackConfigRuleArgs>> configRules;
 
     /**
-     * @return A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * @return A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      * @deprecated
-     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
-    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
+    @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
     public Optional<Output<List<AggregateCompliancePackConfigRuleArgs>>> configRules() {
         return Optional.ofNullable(this.configRules);
     }
@@ -164,7 +164,7 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configRuleIds A list of Config Rule IDs. See `config_rule_ids` below.
+         * @param configRuleIds A list of Config Rule IDs. See `configRuleIds` below.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configRuleIds A list of Config Rule IDs. See `config_rule_ids` below.
+         * @param configRuleIds A list of Config Rule IDs. See `configRuleIds` below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configRuleIds A list of Config Rule IDs. See `config_rule_ids` below.
+         * @param configRuleIds A list of Config Rule IDs. See `configRuleIds` below.
          * 
          * @return builder
          * 
@@ -258,44 +258,44 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+         * @param configRules A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+         * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          */
-        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
+        @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
         public Builder configRules(@Nullable Output<List<AggregateCompliancePackConfigRuleArgs>> configRules) {
             $.configRules = configRules;
             return this;
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+         * @param configRules A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+         * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          */
-        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
+        @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
         public Builder configRules(List<AggregateCompliancePackConfigRuleArgs> configRules) {
             return configRules(Output.of(configRules));
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+         * @param configRules A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+         * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          */
-        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
+        @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
         public Builder configRules(AggregateCompliancePackConfigRuleArgs... configRules) {
             return configRules(List.of(configRules));
         }

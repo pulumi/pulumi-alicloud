@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
-        /// The structure of environmentVars. See `environment_vars` below.
+        /// The structure of environmentVars. See `EnvironmentVars` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerEnvironmentVar> EnvironmentVars;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LifecyclePreStopHandlerExecs;
         /// <summary>
-        /// The health check of the container. See `liveness_probe` below.
+        /// The health check of the container. See `LivenessProbe` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbe> LivenessProbes;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The structure of port. See `ports` below.
+        /// The structure of port. See `Ports` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerPort> Ports;
         /// <summary>
-        /// The health check of the container. See `readiness_probe` below.
+        /// The health check of the container. See `ReadinessProbe` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbe> ReadinessProbes;
         /// <summary>
@@ -74,11 +74,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? RestartCount;
         /// <summary>
-        /// The security context of the container. See `security_context` below.
+        /// The security context of the container. See `SecurityContext` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerSecurityContext> SecurityContexts;
         /// <summary>
-        /// The structure of volumeMounts. See `volume_mounts` below.
+        /// The structure of volumeMounts. See `VolumeMounts` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerVolumeMount> VolumeMounts;
         /// <summary>

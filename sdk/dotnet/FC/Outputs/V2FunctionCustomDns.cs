@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V2FunctionCustomDns
     {
         /// <summary>
-        /// DNS resolver configuration parameter list. See `dns_options` below.
+        /// DNS resolver configuration parameter list. See `DnsOptions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V2FunctionCustomDnsDnsOption> DnsOptions;
         /// <summary>

@@ -19,19 +19,19 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The cool_down_duration option of cluster-autoscaler.
+        /// The CoolDownDuration option of cluster-autoscaler.
         /// </summary>
         [Output("coolDownDuration")]
         public Output<string> CoolDownDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The defer_scale_in_duration option of cluster-autoscaler.
+        /// The DeferScaleInDuration option of cluster-autoscaler.
         /// </summary>
         [Output("deferScaleInDuration")]
         public Output<string> DeferScaleInDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The list of the node pools. See `nodepools` below.
+        /// The list of the node pools. See `Nodepools` below.
         /// </summary>
         [Output("nodepools")]
         public Output<ImmutableArray<Outputs.KubernetesAutoscalerNodepool>> Nodepools { get; private set; } = null!;
@@ -101,13 +101,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The cool_down_duration option of cluster-autoscaler.
+        /// The CoolDownDuration option of cluster-autoscaler.
         /// </summary>
         [Input("coolDownDuration", required: true)]
         public Input<string> CoolDownDuration { get; set; } = null!;
 
         /// <summary>
-        /// The defer_scale_in_duration option of cluster-autoscaler.
+        /// The DeferScaleInDuration option of cluster-autoscaler.
         /// </summary>
         [Input("deferScaleInDuration", required: true)]
         public Input<string> DeferScaleInDuration { get; set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAutoscalerNodepoolArgs>? _nodepools;
 
         /// <summary>
-        /// The list of the node pools. See `nodepools` below.
+        /// The list of the node pools. See `Nodepools` below.
         /// </summary>
         public InputList<Inputs.KubernetesAutoscalerNodepoolArgs> Nodepools
         {
@@ -151,13 +151,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The cool_down_duration option of cluster-autoscaler.
+        /// The CoolDownDuration option of cluster-autoscaler.
         /// </summary>
         [Input("coolDownDuration")]
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
-        /// The defer_scale_in_duration option of cluster-autoscaler.
+        /// The DeferScaleInDuration option of cluster-autoscaler.
         /// </summary>
         [Input("deferScaleInDuration")]
         public Input<string>? DeferScaleInDuration { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs>? _nodepools;
 
         /// <summary>
-        /// The list of the node pools. See `nodepools` below.
+        /// The list of the node pools. See `Nodepools` below.
         /// </summary>
         public InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs> Nodepools
         {

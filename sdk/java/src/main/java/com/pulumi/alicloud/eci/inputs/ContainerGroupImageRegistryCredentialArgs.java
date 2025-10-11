@@ -15,14 +15,14 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
     public static final ContainerGroupImageRegistryCredentialArgs Empty = new ContainerGroupImageRegistryCredentialArgs();
 
     /**
-     * The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * @return The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     public Output<String> password() {
@@ -30,14 +30,14 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
     }
 
     /**
-     * The address of the image repository. It is required when `image_registry_credential` is configured.
+     * The address of the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     @Import(name="server", required=true)
     private Output<String> server;
 
     /**
-     * @return The address of the image repository. It is required when `image_registry_credential` is configured.
+     * @return The address of the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     public Output<String> server() {
@@ -45,14 +45,14 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
     }
 
     /**
-     * The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     @Import(name="userName", required=true)
     private Output<String> userName;
 
     /**
-     * @return The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * @return The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     public Output<String> userName() {
@@ -86,7 +86,7 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         /**
-         * @param password The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+         * @param password The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         /**
-         * @param password The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+         * @param password The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         /**
-         * @param server The address of the image repository. It is required when `image_registry_credential` is configured.
+         * @param server The address of the image repository. It is required when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         /**
-         * @param server The address of the image repository. It is required when `image_registry_credential` is configured.
+         * @param server The address of the image repository. It is required when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         /**
-         * @param userName The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+         * @param userName The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         /**
-         * @param userName The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+         * @param userName The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 

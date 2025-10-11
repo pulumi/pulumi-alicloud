@@ -146,42 +146,42 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> password() {

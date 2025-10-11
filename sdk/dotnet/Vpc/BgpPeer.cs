@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class BgpPeer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+        /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `EnableBfd` is `True`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         /// </summary>
         [Output("bfdMultiHop")]
         public Output<int?> BfdMultiHop { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class BgpPeerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+        /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `EnableBfd` is `True`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         /// </summary>
         [Input("bfdMultiHop")]
         public Input<int>? BfdMultiHop { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class BgpPeerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+        /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `EnableBfd` is `True`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         /// </summary>
         [Input("bfdMultiHop")]
         public Input<int>? BfdMultiHop { get; set; }

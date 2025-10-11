@@ -23,7 +23,7 @@ public final class DispatchRuleNotifyRule {
      */
     private String notifyEndTime;
     /**
-     * @return Sets the notification object. See `notify_objects` below.
+     * @return Sets the notification object. See `notifyObjects` below.
      * 
      */
     private List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
@@ -49,7 +49,7 @@ public final class DispatchRuleNotifyRule {
         return this.notifyEndTime;
     }
     /**
-     * @return Sets the notification object. See `notify_objects` below.
+     * @return Sets the notification object. See `notifyObjects` below.
      * 
      */
     public List<DispatchRuleNotifyRuleNotifyObject> notifyObjects() {

@@ -125,14 +125,14 @@ public class HttpRequestHeaderModificationRule extends com.pulumi.resources.Cust
         return this.configId;
     }
     /**
-     * The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+     * The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
      * 
      */
     @Export(name="requestHeaderModifications", refs={List.class,HttpRequestHeaderModificationRuleRequestHeaderModification.class}, tree="[0,1]")
     private Output<List<HttpRequestHeaderModificationRuleRequestHeaderModification>> requestHeaderModifications;
 
     /**
-     * @return The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+     * @return The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
      * 
      */
     public Output<List<HttpRequestHeaderModificationRuleRequestHeaderModification>> requestHeaderModifications() {

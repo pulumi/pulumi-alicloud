@@ -153,7 +153,7 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
     /**
      * The description of the namespace.
      * 
-     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
      * 
      */
     @Export(name="namespaceDesc", refs={String.class}, tree="[0]")
@@ -162,7 +162,7 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
     /**
      * @return The description of the namespace.
      * 
-     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
      * 
      */
     public Output<String> namespaceDesc() {

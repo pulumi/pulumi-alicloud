@@ -125,14 +125,14 @@ public final class K8sApplicationArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
+     * Mirror address. When the packageType is set to &#39;Image&#39;, this parameter item is required.
      * 
      */
     @Import(name="imageUrl")
     private @Nullable Output<String> imageUrl;
 
     /**
-     * @return Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
+     * @return Mirror address. When the packageType is set to &#39;Image&#39;, this parameter item is required.
      * 
      */
     public Optional<Output<String>> imageUrl() {
@@ -732,7 +732,7 @@ public final class K8sApplicationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageUrl Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
+         * @param imageUrl Mirror address. When the packageType is set to &#39;Image&#39;, this parameter item is required.
          * 
          * @return builder
          * 
@@ -743,7 +743,7 @@ public final class K8sApplicationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageUrl Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
+         * @param imageUrl Mirror address. When the packageType is set to &#39;Image&#39;, this parameter item is required.
          * 
          * @return builder
          * 

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedKubernetesOperationPolicy {
     /**
-     * @return Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+     * @return Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
      * 
      */
     private @Nullable ManagedKubernetesOperationPolicyClusterAutoUpgrade clusterAutoUpgrade;
 
     private ManagedKubernetesOperationPolicy() {}
     /**
-     * @return Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+     * @return Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
      * 
      */
     public Optional<ManagedKubernetesOperationPolicyClusterAutoUpgrade> clusterAutoUpgrade() {

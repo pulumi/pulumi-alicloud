@@ -21,13 +21,13 @@ namespace Pulumi.AliCloud.Log.Inputs
         /// <summary>
         /// Whether to enable statistics. default to true.
         /// 
-        /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
+        /// &gt; **Note:** At least one of the "FullText" and "FieldSearch" should be specified.
         /// </summary>
         [Input("docValue")]
         public Input<bool>? DocValue { get; set; }
 
         /// <summary>
-        /// When using the json_keys field, this field is required.
+        /// When using the JsonKeys field, this field is required.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

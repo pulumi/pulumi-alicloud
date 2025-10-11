@@ -92,13 +92,13 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `Interval` can be set to `30`, `60`.
         /// </summary>
         [Output("interval")]
         public Output<int?> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `IspCities` below.
         /// </summary>
         [Output("ispCities")]
         public Output<ImmutableArray<Outputs.SiteMonitorIspCity>> IspCities { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `Interval` can be set to `30`, `60`.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.SiteMonitorIspCityArgs>? _ispCities;
 
         /// <summary>
-        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `IspCities` below.
         /// </summary>
         public InputList<Inputs.SiteMonitorIspCityArgs> IspCities
         {
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `Interval` can be set to `30`, `60`.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.SiteMonitorIspCityGetArgs>? _ispCities;
 
         /// <summary>
-        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `IspCities` below.
         /// </summary>
         public InputList<Inputs.SiteMonitorIspCityGetArgs> IspCities
         {

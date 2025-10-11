@@ -108,10 +108,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     * Deprecated from 1.161.0+, use evalCondition in severity_configurations
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use eval_condition in severity_configurations */
+    @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
@@ -119,10 +119,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * @return Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     * Deprecated from 1.161.0+, use evalCondition in severity_configurations
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use eval_condition in severity_configurations */
+    @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -240,10 +240,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * Alarm information notification list, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use policy_configuration for notification
+     * Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
+    @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
     @Import(name="notificationLists")
     private @Nullable Output<List<AlertNotificationListArgs>> notificationLists;
 
@@ -251,10 +251,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * @return Alarm information notification list, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use policy_configuration for notification
+     * Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
+    @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
     public Optional<Output<List<AlertNotificationListArgs>>> notificationLists() {
         return Optional.ofNullable(this.notificationLists);
     }
@@ -452,10 +452,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+     * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use repeat_interval in policy_configuration */
+    @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
     @Import(name="throttling")
     private @Nullable Output<String> throttling;
 
@@ -463,10 +463,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * @return Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      * 
      * @deprecated
-     * Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+     * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use repeat_interval in policy_configuration */
+    @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
     public Optional<Output<String>> throttling() {
         return Optional.ofNullable(this.throttling);
     }
@@ -673,10 +673,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use eval_condition in severity_configurations
+         * Deprecated from 1.161.0+, use evalCondition in severity_configurations
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use eval_condition in severity_configurations */
+        @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
@@ -688,10 +688,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use eval_condition in severity_configurations
+         * Deprecated from 1.161.0+, use evalCondition in severity_configurations
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use eval_condition in severity_configurations */
+        @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }
@@ -873,10 +873,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use policy_configuration for notification
+         * Deprecated from 1.161.0+, use policyConfiguration for notification
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
+        @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
         public Builder notificationLists(@Nullable Output<List<AlertNotificationListArgs>> notificationLists) {
             $.notificationLists = notificationLists;
             return this;
@@ -888,10 +888,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use policy_configuration for notification
+         * Deprecated from 1.161.0+, use policyConfiguration for notification
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
+        @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
         public Builder notificationLists(List<AlertNotificationListArgs> notificationLists) {
             return notificationLists(Output.of(notificationLists));
         }
@@ -902,10 +902,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use policy_configuration for notification
+         * Deprecated from 1.161.0+, use policyConfiguration for notification
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
+        @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
         public Builder notificationLists(AlertNotificationListArgs... notificationLists) {
             return notificationLists(List.of(notificationLists));
         }
@@ -1191,10 +1191,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+         * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use repeat_interval in policy_configuration */
+        @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
         public Builder throttling(@Nullable Output<String> throttling) {
             $.throttling = throttling;
             return this;
@@ -1206,10 +1206,10 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+         * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use repeat_interval in policy_configuration */
+        @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
         public Builder throttling(String throttling) {
             return throttling(Output.of(throttling));
         }

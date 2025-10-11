@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class FunctionAsyncInvokeConfigDestinationConfig
     {
         /// <summary>
-        /// Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
+        /// Configuration block with destination configuration for failed asynchronous invocations. See `OnFailure` below.
         /// </summary>
         public readonly Outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure? OnFailure;
         /// <summary>
-        /// Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
+        /// Configuration block with destination configuration for successful asynchronous invocations. See `OnSuccess` below.
         /// </summary>
         public readonly Outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess? OnSuccess;
 

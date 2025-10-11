@@ -65,7 +65,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return this.cenBandwidthPackageName;
     }
     /**
-     * Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+     * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
      * @deprecated
      * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
@@ -76,7 +76,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     private Output<String> chargeType;
 
     /**
-     * @return Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+     * @return Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
      */
     public Output<String> chargeType() {
@@ -139,7 +139,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return this.geographicRegionBId;
     }
     /**
-     * Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+     * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
      * @deprecated
      * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
@@ -150,14 +150,14 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     private Output<List<String>> geographicRegionIds;
 
     /**
-     * @return Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+     * @return Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
      */
     public Output<List<String>> geographicRegionIds() {
         return this.geographicRegionIds;
     }
     /**
-     * Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+     * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
@@ -168,7 +168,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+     * @return Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
      */
     public Output<String> name() {

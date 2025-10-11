@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// ConfigMap instance data. The value's format is a `json` string
+        /// ConfigMap instance data. The value's format is a `Json` string
         /// </summary>
         public readonly string Data;
         /// <summary>

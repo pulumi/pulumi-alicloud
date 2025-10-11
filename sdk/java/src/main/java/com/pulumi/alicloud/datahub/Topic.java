@@ -100,7 +100,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * Comment of the datahub topic. It cannot be longer than 255 characters.
      * 
-     * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
@@ -109,7 +109,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * @return Comment of the datahub topic. It cannot be longer than 255 characters.
      * 
-     * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      * 
      */
     public Output<Optional<String>> comment() {

@@ -63,14 +63,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of data disk. Default value: `cloud_efficiency`. Valid values:
+     * The type of data disk. Default value: `cloudEfficiency`. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The type of data disk. Default value: `cloud_efficiency`. Valid values:
+     * @return The type of data disk. Default value: `cloudEfficiency`. Valid values:
      * 
      */
     public Optional<Output<String>> category() {
@@ -108,14 +108,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
      * 
      */
     @Import(name="fileSystem")
     private @Nullable Output<String> fileSystem;
 
     /**
-     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * @return The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
      * 
      */
     public Optional<Output<String>> fileSystem() {
@@ -138,14 +138,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Mount path. Works when auto_format is true.
+     * The Mount path. Works when autoFormat is true.
      * 
      */
     @Import(name="mountTarget")
     private @Nullable Output<String> mountTarget;
 
     /**
-     * @return The Mount path. Works when auto_format is true.
+     * @return The Mount path. Works when autoFormat is true.
      * 
      */
     public Optional<Output<String>> mountTarget() {
@@ -153,14 +153,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+     * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
      * 
      */
     public Optional<Output<String>> name() {
@@ -168,14 +168,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -328,7 +328,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The type of data disk. Default value: `cloud_efficiency`. Valid values:
+         * @param category The type of data disk. Default value: `cloudEfficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The type of data disk. Default value: `cloud_efficiency`. Valid values:
+         * @param category The type of data disk. Default value: `cloudEfficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileSystem The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+         * @param fileSystem The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileSystem The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+         * @param fileSystem The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountTarget The Mount path. Works when auto_format is true.
+         * @param mountTarget The Mount path. Works when autoFormat is true.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountTarget The Mount path. Works when auto_format is true.
+         * @param mountTarget The Mount path. Works when autoFormat is true.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param performanceLevel Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param performanceLevel Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param performanceLevel Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param performanceLevel Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 

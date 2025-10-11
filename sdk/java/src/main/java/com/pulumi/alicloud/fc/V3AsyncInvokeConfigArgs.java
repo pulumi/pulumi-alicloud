@@ -35,14 +35,14 @@ public final class V3AsyncInvokeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Target Configuration See `destination_config` below.
+     * Target Configuration See `destinationConfig` below.
      * 
      */
     @Import(name="destinationConfig")
     private @Nullable Output<V3AsyncInvokeConfigDestinationConfigArgs> destinationConfig;
 
     /**
-     * @return Target Configuration See `destination_config` below.
+     * @return Target Configuration See `destinationConfig` below.
      * 
      */
     public Optional<Output<V3AsyncInvokeConfigDestinationConfigArgs>> destinationConfig() {
@@ -160,7 +160,7 @@ public final class V3AsyncInvokeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param destinationConfig Target Configuration See `destination_config` below.
+         * @param destinationConfig Target Configuration See `destinationConfig` below.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class V3AsyncInvokeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param destinationConfig Target Configuration See `destination_config` below.
+         * @param destinationConfig Target Configuration See `destinationConfig` below.
          * 
          * @return builder
          * 

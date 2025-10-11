@@ -45,14 +45,14 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+     * Whether to renewal a DB instance automatically or not. It is valid when paymentType is `Subscription`. Default to `false`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+     * @return Whether to renewal a DB instance automatically or not. It is valid when paymentType is `Subscription`. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -60,14 +60,14 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when paymentType is `Subscription`. Valid value:[1~12], Default to 1.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when paymentType is `Subscription`. Valid value:[1~12], Default to 1.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -318,7 +318,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     @Import(name="deletionProtection")
@@ -329,7 +329,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -498,7 +498,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * DB Instance type.
      * 
-     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
      * 
      */
     @Import(name="instanceType")
@@ -507,7 +507,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return DB Instance type.
      * 
-     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -615,7 +615,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -623,7 +623,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -632,14 +632,14 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      * 
      */
     @Import(name="pgHbaConfs")
     private @Nullable Output<List<DdrInstancePgHbaConfArgs>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      * 
      */
     public Optional<Output<List<DdrInstancePgHbaConfArgs>>> pgHbaConfs() {
@@ -1025,7 +1025,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
@@ -1034,7 +1034,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> switchTime;
 
     /**
-     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
@@ -1063,7 +1063,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1078,7 +1078,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> targetMinorVersion;
 
     /**
-     * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+     * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1147,7 +1147,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1157,7 +1157,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> upgradeTime;
 
     /**
-     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1228,7 +1228,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Zone to launch the DB instance. It supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
@@ -1237,7 +1237,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Zone to launch the DB instance. It supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
@@ -1398,7 +1398,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when paymentType is `Subscription`. Default to `false`.
          * 
          * @return builder
          * 
@@ -1409,7 +1409,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when paymentType is `Subscription`. Default to `false`.
          * 
          * @return builder
          * 
@@ -1419,7 +1419,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when paymentType is `Subscription`. Valid value:[1~12], Default to 1.
          * 
          * @return builder
          * 
@@ -1430,7 +1430,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when paymentType is `Subscription`. Valid value:[1~12], Default to 1.
          * 
          * @return builder
          * 
@@ -1761,7 +1761,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+         * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
          * 
          * @return builder
          * 
@@ -1776,7 +1776,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+         * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
          * 
          * @return builder
          * 
@@ -2001,7 +2001,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceType DB Instance type.
          * 
-         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
          * 
          * @return builder
          * 
@@ -2014,7 +2014,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceType DB Instance type.
          * 
-         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
          * 
          * @return builder
          * 
@@ -2170,7 +2170,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2182,7 +2182,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2193,7 +2193,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
          * 
          * @return builder
          * 
@@ -2204,7 +2204,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
          * 
          * @return builder
          * 
@@ -2214,7 +2214,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
          * 
          * @return builder
          * 
@@ -2754,7 +2754,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
          * 
@@ -2767,7 +2767,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
          * 
@@ -2804,7 +2804,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
          * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
          * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
          * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -2823,7 +2823,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
          * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
          * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
          * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -2912,7 +2912,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
          * - Immediate: The minor engine version is immediately updated.
          * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
          * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -2926,7 +2926,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
          * - Immediate: The minor engine version is immediately updated.
          * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
          * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -3017,7 +3017,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zoneId The Zone to launch the DB instance. It supports multiple zone.
-         * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
          * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
          * 
          * @return builder
@@ -3030,7 +3030,7 @@ public final class DdrInstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zoneId The Zone to launch the DB instance. It supports multiple zone.
-         * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
          * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
          * 
          * @return builder

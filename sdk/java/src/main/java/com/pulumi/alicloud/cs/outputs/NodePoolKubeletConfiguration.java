@@ -62,7 +62,7 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable String cpuManagerPolicy;
     /**
-     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     private @Nullable String eventBurst;
@@ -137,7 +137,7 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable String readOnlyPort;
     /**
-     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     private @Nullable String registryBurst;
@@ -147,7 +147,7 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable String registryPullQps;
     /**
-     * @return Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * @return Reserve memory for NUMA nodes. See `reservedMemory` below.
      * 
      */
     private @Nullable List<NodePoolKubeletConfigurationReservedMemory> reservedMemories;
@@ -237,7 +237,7 @@ public final class NodePoolKubeletConfiguration {
         return Optional.ofNullable(this.cpuManagerPolicy);
     }
     /**
-     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     public Optional<String> eventBurst() {
@@ -342,7 +342,7 @@ public final class NodePoolKubeletConfiguration {
         return Optional.ofNullable(this.readOnlyPort);
     }
     /**
-     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     public Optional<String> registryBurst() {
@@ -356,7 +356,7 @@ public final class NodePoolKubeletConfiguration {
         return Optional.ofNullable(this.registryPullQps);
     }
     /**
-     * @return Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * @return Reserve memory for NUMA nodes. See `reservedMemory` below.
      * 
      */
     public List<NodePoolKubeletConfigurationReservedMemory> reservedMemories() {

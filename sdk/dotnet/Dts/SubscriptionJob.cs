@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<int?> ComputeUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `SourceEndpointEngineName` equals `Drds`.
         /// </summary>
         [Output("databaseCount")]
         public Output<int?> DatabaseCount { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DbList { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
+        /// This parameter decides whether to monitor the delay status. Valid values: `True`, `False`.
         /// </summary>
         [Output("delayNotice")]
         public Output<bool?> DelayNotice { get; private set; } = null!;
@@ -197,13 +197,13 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DelayPhone { get; private set; } = null!;
 
         /// <summary>
-        /// When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+        /// When `DelayNotice` is set to `True`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         /// </summary>
         [Output("delayRuleTime")]
         public Output<string?> DelayRuleTime { get; private set; } = null!;
 
         /// <summary>
-        /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+        /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string?> DestinationEndpointEngineName { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DtsJobName { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
+        /// This parameter decides whether to monitor abnormal status. Valid values: `True`, `False`.
         /// </summary>
         [Output("errorNotice")]
         public Output<bool?> ErrorNotice { get; private set; } = null!;
@@ -239,19 +239,19 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> ErrorPhone { get; private set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`.
         /// </summary>
         [Output("instanceClass")]
         public Output<string?> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The duration of prepaid instance purchase. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Output("paymentDuration")]
         public Output<int?> PaymentDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The payment duration unit. Valid values: `Month`, `Year`. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Output("paymentDurationUnit")]
         public Output<string?> PaymentDurationUnit { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `Dg`.
         /// </summary>
         [Output("sourceEndpointInstanceType")]
         public Output<string> SourceEndpointInstanceType { get; private set; } = null!;
@@ -347,37 +347,37 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DDL type of data. Valid values: `True`, `False`.
         /// </summary>
         [Output("subscriptionDataTypeDdl")]
         public Output<bool> SubscriptionDataTypeDdl { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to subscribe the DML type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DML type of data. Valid values: `True`, `False`.
         /// </summary>
         [Output("subscriptionDataTypeDml")]
         public Output<bool> SubscriptionDataTypeDml { get; private set; } = null!;
 
         /// <summary>
-        /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
+        /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `Classic`, `Vpc`.
         /// </summary>
         [Output("subscriptionInstanceNetworkType")]
         public Output<string?> SubscriptionInstanceNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+        /// The ID of subscription vpc instance. When the value of `SubscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
         /// </summary>
         [Output("subscriptionInstanceVpcId")]
         public Output<string?> SubscriptionInstanceVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+        /// The ID of subscription VSwitch instance. When the value of `SubscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
         /// </summary>
         [Output("subscriptionInstanceVswitchId")]
         public Output<string?> SubscriptionInstanceVswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The sync architecture. Valid values: `bidirectional`, `oneway`.
+        /// The sync architecture. Valid values: `Bidirectional`, `Oneway`.
         /// </summary>
         [Output("syncArchitecture")]
         public Output<string?> SyncArchitecture { get; private set; } = null!;
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? ComputeUnit { get; set; }
 
         /// <summary>
-        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `SourceEndpointEngineName` equals `Drds`.
         /// </summary>
         [Input("databaseCount")]
         public Input<int>? DatabaseCount { get; set; }
@@ -465,7 +465,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DbList { get; set; }
 
         /// <summary>
-        /// This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
+        /// This parameter decides whether to monitor the delay status. Valid values: `True`, `False`.
         /// </summary>
         [Input("delayNotice")]
         public Input<bool>? DelayNotice { get; set; }
@@ -477,13 +477,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DelayPhone { get; set; }
 
         /// <summary>
-        /// When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+        /// When `DelayNotice` is set to `True`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         /// </summary>
         [Input("delayRuleTime")]
         public Input<string>? DelayRuleTime { get; set; }
 
         /// <summary>
-        /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+        /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DtsJobName { get; set; }
 
         /// <summary>
-        /// This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
+        /// This parameter decides whether to monitor abnormal status. Valid values: `True`, `False`.
         /// </summary>
         [Input("errorNotice")]
         public Input<bool>? ErrorNotice { get; set; }
@@ -519,19 +519,19 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ErrorPhone { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The duration of prepaid instance purchase. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The payment duration unit. Valid values: `Month`, `Year`. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -567,7 +567,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointInstanceId { get; set; }
 
         /// <summary>
-        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `Dg`.
         /// </summary>
         [Input("sourceEndpointInstanceType", required: true)]
         public Input<string> SourceEndpointInstanceType { get; set; } = null!;
@@ -627,37 +627,37 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DDL type of data. Valid values: `True`, `False`.
         /// </summary>
         [Input("subscriptionDataTypeDdl")]
         public Input<bool>? SubscriptionDataTypeDdl { get; set; }
 
         /// <summary>
-        /// Whether to subscribe the DML type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DML type of data. Valid values: `True`, `False`.
         /// </summary>
         [Input("subscriptionDataTypeDml")]
         public Input<bool>? SubscriptionDataTypeDml { get; set; }
 
         /// <summary>
-        /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
+        /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `Classic`, `Vpc`.
         /// </summary>
         [Input("subscriptionInstanceNetworkType")]
         public Input<string>? SubscriptionInstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+        /// The ID of subscription vpc instance. When the value of `SubscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
         /// </summary>
         [Input("subscriptionInstanceVpcId")]
         public Input<string>? SubscriptionInstanceVpcId { get; set; }
 
         /// <summary>
-        /// The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+        /// The ID of subscription VSwitch instance. When the value of `SubscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
         /// </summary>
         [Input("subscriptionInstanceVswitchId")]
         public Input<string>? SubscriptionInstanceVswitchId { get; set; }
 
         /// <summary>
-        /// The sync architecture. Valid values: `bidirectional`, `oneway`.
+        /// The sync architecture. Valid values: `Bidirectional`, `Oneway`.
         /// </summary>
         [Input("syncArchitecture")]
         public Input<string>? SyncArchitecture { get; set; }
@@ -701,7 +701,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? ComputeUnit { get; set; }
 
         /// <summary>
-        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `SourceEndpointEngineName` equals `Drds`.
         /// </summary>
         [Input("databaseCount")]
         public Input<int>? DatabaseCount { get; set; }
@@ -713,7 +713,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DbList { get; set; }
 
         /// <summary>
-        /// This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
+        /// This parameter decides whether to monitor the delay status. Valid values: `True`, `False`.
         /// </summary>
         [Input("delayNotice")]
         public Input<bool>? DelayNotice { get; set; }
@@ -725,13 +725,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DelayPhone { get; set; }
 
         /// <summary>
-        /// When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+        /// When `DelayNotice` is set to `True`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         /// </summary>
         [Input("delayRuleTime")]
         public Input<string>? DelayRuleTime { get; set; }
 
         /// <summary>
-        /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+        /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -755,7 +755,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DtsJobName { get; set; }
 
         /// <summary>
-        /// This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
+        /// This parameter decides whether to monitor abnormal status. Valid values: `True`, `False`.
         /// </summary>
         [Input("errorNotice")]
         public Input<bool>? ErrorNotice { get; set; }
@@ -767,19 +767,19 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ErrorPhone { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The duration of prepaid instance purchase. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The payment duration unit. Valid values: `Month`, `Year`. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -815,7 +815,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointInstanceId { get; set; }
 
         /// <summary>
-        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+        /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `Dg`.
         /// </summary>
         [Input("sourceEndpointInstanceType")]
         public Input<string>? SourceEndpointInstanceType { get; set; }
@@ -875,37 +875,37 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DDL type of data. Valid values: `True`, `False`.
         /// </summary>
         [Input("subscriptionDataTypeDdl")]
         public Input<bool>? SubscriptionDataTypeDdl { get; set; }
 
         /// <summary>
-        /// Whether to subscribe the DML type of data. Valid values: `true`, `false`.
+        /// Whether to subscribe the DML type of data. Valid values: `True`, `False`.
         /// </summary>
         [Input("subscriptionDataTypeDml")]
         public Input<bool>? SubscriptionDataTypeDml { get; set; }
 
         /// <summary>
-        /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
+        /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `Classic`, `Vpc`.
         /// </summary>
         [Input("subscriptionInstanceNetworkType")]
         public Input<string>? SubscriptionInstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+        /// The ID of subscription vpc instance. When the value of `SubscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
         /// </summary>
         [Input("subscriptionInstanceVpcId")]
         public Input<string>? SubscriptionInstanceVpcId { get; set; }
 
         /// <summary>
-        /// The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+        /// The ID of subscription VSwitch instance. When the value of `SubscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
         /// </summary>
         [Input("subscriptionInstanceVswitchId")]
         public Input<string>? SubscriptionInstanceVswitchId { get; set; }
 
         /// <summary>
-        /// The sync architecture. Valid values: `bidirectional`, `oneway`.
+        /// The sync architecture. Valid values: `Bidirectional`, `Oneway`.
         /// </summary>
         [Input("syncArchitecture")]
         public Input<string>? SyncArchitecture { get; set; }

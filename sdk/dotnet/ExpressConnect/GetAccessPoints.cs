@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
+        /// The Physical Connection to Which the Access Point State. Valid values: `Disabled`, `Full`, `Hot`, `Recommended`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
+        /// The Physical Connection to Which the Access Point State. Valid values: `Disabled`, `Full`, `Hot`, `Recommended`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

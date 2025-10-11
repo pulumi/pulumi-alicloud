@@ -148,7 +148,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
     /**
      * The destination CIDR block of the route entry to publish.
      * 
-     * -&gt;**NOTE:** The &#34;alicloud_cen_instance_route_entries&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * -&gt;**NOTE:** The &#34;alicloudCenInstanceRouteEntries&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      * -&gt;**NOTE:** The &#34;alicloud.cen.InstanceAttachment&#34; resource should depend on the related &#34;alicloud.vpc.Switch&#34; resource.
      * 
@@ -159,7 +159,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
     /**
      * @return The destination CIDR block of the route entry to publish.
      * 
-     * -&gt;**NOTE:** The &#34;alicloud_cen_instance_route_entries&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * -&gt;**NOTE:** The &#34;alicloudCenInstanceRouteEntries&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      * -&gt;**NOTE:** The &#34;alicloud.cen.InstanceAttachment&#34; resource should depend on the related &#34;alicloud.vpc.Switch&#34; resource.
      * 

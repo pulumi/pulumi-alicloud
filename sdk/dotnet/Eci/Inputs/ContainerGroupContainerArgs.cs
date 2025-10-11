@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerEnvironmentVarArgs>? _environmentVars;
 
         /// <summary>
-        /// The structure of environmentVars. See `environment_vars` below.
+        /// The structure of environmentVars. See `EnvironmentVars` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerEnvironmentVarArgs> EnvironmentVars
         {
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerLivenessProbeArgs>? _livenessProbes;
 
         /// <summary>
-        /// The health check of the container. See `liveness_probe` below.
+        /// The health check of the container. See `LivenessProbe` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeArgs> LivenessProbes
         {
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerPortArgs>? _ports;
 
         /// <summary>
-        /// The structure of port. See `ports` below.
+        /// The structure of port. See `Ports` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerPortArgs> Ports
         {
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerReadinessProbeArgs>? _readinessProbes;
 
         /// <summary>
-        /// The health check of the container. See `readiness_probe` below.
+        /// The health check of the container. See `ReadinessProbe` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerReadinessProbeArgs> ReadinessProbes
         {
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerSecurityContextArgs>? _securityContexts;
 
         /// <summary>
-        /// The security context of the container. See `security_context` below.
+        /// The security context of the container. See `SecurityContext` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerSecurityContextArgs> SecurityContexts
         {
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerVolumeMountArgs>? _volumeMounts;
 
         /// <summary>
-        /// The structure of volumeMounts. See `volume_mounts` below.
+        /// The structure of volumeMounts. See `VolumeMounts` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerVolumeMountArgs> VolumeMounts
         {

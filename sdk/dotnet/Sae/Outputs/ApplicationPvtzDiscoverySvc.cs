@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? NamespaceId;
         /// <summary>
-        /// The port number and protocol. See `port_protocols` below.
+        /// The port number and protocol. See `PortProtocols` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationPvtzDiscoverySvcPortProtocol> PortProtocols;
         /// <summary>

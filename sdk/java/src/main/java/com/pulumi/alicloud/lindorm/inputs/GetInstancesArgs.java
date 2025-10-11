@@ -79,14 +79,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The query str, which can use `instance_name` keyword for fuzzy search.
+     * The query str, which can use `instanceName` keyword for fuzzy search.
      * 
      */
     @Import(name="queryStr")
     private @Nullable Output<String> queryStr;
 
     /**
-     * @return The query str, which can use `instance_name` keyword for fuzzy search.
+     * @return The query str, which can use `instanceName` keyword for fuzzy search.
      * 
      */
     public Optional<Output<String>> queryStr() {
@@ -248,7 +248,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryStr The query str, which can use `instance_name` keyword for fuzzy search.
+         * @param queryStr The query str, which can use `instanceName` keyword for fuzzy search.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryStr The query str, which can use `instance_name` keyword for fuzzy search.
+         * @param queryStr The query str, which can use `instanceName` keyword for fuzzy search.
          * 
          * @return builder
          * 

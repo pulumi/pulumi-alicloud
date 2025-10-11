@@ -128,42 +128,42 @@ public class BucketWebsite extends com.pulumi.resources.CustomResource {
         return this.bucket;
     }
     /**
-     * The container that holds the error page configuration information. See `error_document` below.
+     * The container that holds the error page configuration information. See `errorDocument` below.
      * 
      */
     @Export(name="errorDocument", refs={BucketWebsiteErrorDocument.class}, tree="[0]")
     private Output</* @Nullable */ BucketWebsiteErrorDocument> errorDocument;
 
     /**
-     * @return The container that holds the error page configuration information. See `error_document` below.
+     * @return The container that holds the error page configuration information. See `errorDocument` below.
      * 
      */
     public Output<Optional<BucketWebsiteErrorDocument>> errorDocument() {
         return Codegen.optional(this.errorDocument);
     }
     /**
-     * Static Website Default Home Page Configuration See `index_document` below.
+     * Static Website Default Home Page Configuration See `indexDocument` below.
      * 
      */
     @Export(name="indexDocument", refs={BucketWebsiteIndexDocument.class}, tree="[0]")
     private Output</* @Nullable */ BucketWebsiteIndexDocument> indexDocument;
 
     /**
-     * @return Static Website Default Home Page Configuration See `index_document` below.
+     * @return Static Website Default Home Page Configuration See `indexDocument` below.
      * 
      */
     public Output<Optional<BucketWebsiteIndexDocument>> indexDocument() {
         return Codegen.optional(this.indexDocument);
     }
     /**
-     * The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+     * The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
      * 
      */
     @Export(name="routingRules", refs={BucketWebsiteRoutingRules.class}, tree="[0]")
     private Output</* @Nullable */ BucketWebsiteRoutingRules> routingRules;
 
     /**
-     * @return The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+     * @return The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
      * 
      */
     public Output<Optional<BucketWebsiteRoutingRules>> routingRules() {

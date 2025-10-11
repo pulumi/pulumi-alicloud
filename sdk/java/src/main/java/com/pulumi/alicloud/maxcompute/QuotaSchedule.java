@@ -43,14 +43,14 @@ public class QuotaSchedule extends com.pulumi.resources.CustomResource {
         return this.nickname;
     }
     /**
-     * schedule list See `schedule_list` below.
+     * schedule list See `scheduleList` below.
      * 
      */
     @Export(name="scheduleLists", refs={List.class,QuotaScheduleScheduleList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<QuotaScheduleScheduleList>> scheduleLists;
 
     /**
-     * @return schedule list See `schedule_list` below.
+     * @return schedule list See `scheduleList` below.
      * 
      */
     public Output<Optional<List<QuotaScheduleScheduleList>>> scheduleLists() {

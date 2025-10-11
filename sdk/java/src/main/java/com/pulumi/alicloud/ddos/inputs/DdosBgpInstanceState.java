@@ -97,24 +97,24 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -354,30 +354,30 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+         * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+         * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }

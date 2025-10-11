@@ -240,14 +240,14 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch_id of the HaVip, the field can&#39;t be changed.
+     * The vswitchId of the HaVip, the field can&#39;t be changed.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of the HaVip, the field can&#39;t be changed.
+     * @return The vswitchId of the HaVip, the field can&#39;t be changed.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -619,7 +619,7 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch_id of the HaVip, the field can&#39;t be changed.
+         * @param vswitchId The vswitchId of the HaVip, the field can&#39;t be changed.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch_id of the HaVip, the field can&#39;t be changed.
+         * @param vswitchId The vswitchId of the HaVip, the field can&#39;t be changed.
          * 
          * @return builder
          * 

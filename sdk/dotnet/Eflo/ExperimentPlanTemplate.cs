@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> TemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// Representative Template Pipeline. See `template_pipeline` below.
+        /// Representative Template Pipeline. See `TemplatePipeline` below.
         /// </summary>
         [Output("templatePipelines")]
         public Output<ImmutableArray<Outputs.ExperimentPlanTemplateTemplatePipeline>> TemplatePipelines { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.ExperimentPlanTemplateTemplatePipelineArgs>? _templatePipelines;
 
         /// <summary>
-        /// Representative Template Pipeline. See `template_pipeline` below.
+        /// Representative Template Pipeline. See `TemplatePipeline` below.
         /// </summary>
         public InputList<Inputs.ExperimentPlanTemplateTemplatePipelineArgs> TemplatePipelines
         {
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.ExperimentPlanTemplateTemplatePipelineGetArgs>? _templatePipelines;
 
         /// <summary>
-        /// Representative Template Pipeline. See `template_pipeline` below.
+        /// Representative Template Pipeline. See `TemplatePipeline` below.
         /// </summary>
         public InputList<Inputs.ExperimentPlanTemplateTemplatePipelineGetArgs> TemplatePipelines
         {

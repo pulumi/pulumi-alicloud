@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
+        /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `Servers` below.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.MasterSlaveServerGroupServer>> Servers { get; private set; } = null!;
@@ -271,7 +271,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.MasterSlaveServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
+        /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `Servers` below.
         /// </summary>
         public InputList<Inputs.MasterSlaveServerGroupServerArgs> Servers
         {
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.MasterSlaveServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
+        /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `Servers` below.
         /// </summary>
         public InputList<Inputs.MasterSlaveServerGroupServerGetArgs> Servers
         {

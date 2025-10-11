@@ -75,25 +75,25 @@ namespace Pulumi.AliCloud.Sag
         public Output<int> InactiveAging { get; private set; } = null!;
 
         /// <summary>
-        /// The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The Logstore in Log Service. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Output("logstoreName")]
         public Output<string?> LogstoreName { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The IP address of the NetFlow collector where the flow log is stored. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Output("netflowServerIp")]
         public Output<string?> NetflowServerIp { get; private set; } = null!;
 
         /// <summary>
-        /// The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The port of the NetFlow collector. Default value: `9995`. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Output("netflowServerPort")]
         public Output<int> NetflowServerPort { get; private set; } = null!;
 
         /// <summary>
-        /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Output("netflowVersion")]
         public Output<string> NetflowVersion { get; private set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.AliCloud.Sag
         public Output<string> OutputType { get; private set; } = null!;
 
         /// <summary>
-        /// The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The project in Log Service. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Output("projectName")]
         public Output<string?> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The ID of the region where Log Service is deployed. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Output("slsRegionId")]
         public Output<string?> SlsRegionId { get; private set; } = null!;
@@ -193,25 +193,25 @@ namespace Pulumi.AliCloud.Sag
         public Input<int>? InactiveAging { get; set; }
 
         /// <summary>
-        /// The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The Logstore in Log Service. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Input("logstoreName")]
         public Input<string>? LogstoreName { get; set; }
 
         /// <summary>
-        /// The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The IP address of the NetFlow collector where the flow log is stored. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Input("netflowServerIp")]
         public Input<string>? NetflowServerIp { get; set; }
 
         /// <summary>
-        /// The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The port of the NetFlow collector. Default value: `9995`. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Input("netflowServerPort")]
         public Input<int>? NetflowServerPort { get; set; }
 
         /// <summary>
-        /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Input("netflowVersion")]
         public Input<string>? NetflowVersion { get; set; }
@@ -223,13 +223,13 @@ namespace Pulumi.AliCloud.Sag
         public Input<string> OutputType { get; set; } = null!;
 
         /// <summary>
-        /// The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The project in Log Service. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The ID of the region where Log Service is deployed. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Input("slsRegionId")]
         public Input<string>? SlsRegionId { get; set; }
@@ -273,25 +273,25 @@ namespace Pulumi.AliCloud.Sag
         public Input<int>? InactiveAging { get; set; }
 
         /// <summary>
-        /// The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The Logstore in Log Service. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Input("logstoreName")]
         public Input<string>? LogstoreName { get; set; }
 
         /// <summary>
-        /// The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The IP address of the NetFlow collector where the flow log is stored. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Input("netflowServerIp")]
         public Input<string>? NetflowServerIp { get; set; }
 
         /// <summary>
-        /// The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The port of the NetFlow collector. Default value: `9995`. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Input("netflowServerPort")]
         public Input<int>? NetflowServerPort { get; set; }
 
         /// <summary>
-        /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+        /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `OutputType` is set to `Netflow` or `All`, this parameter is required.
         /// </summary>
         [Input("netflowVersion")]
         public Input<string>? NetflowVersion { get; set; }
@@ -303,13 +303,13 @@ namespace Pulumi.AliCloud.Sag
         public Input<string>? OutputType { get; set; }
 
         /// <summary>
-        /// The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The project in Log Service. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+        /// The ID of the region where Log Service is deployed. If `OutputType` is set to `Sls` or `All`, this parameter is required.
         /// </summary>
         [Input("slsRegionId")]
         public Input<string>? SlsRegionId { get; set; }

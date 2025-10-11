@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Rds
     public partial class RdsCloneDbInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `Cert` and `Perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         /// </summary>
         [Output("acl")]
         public Output<string> Acl { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
         /// 
-        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `InstanceStorage` check. Otherwise, check.
         /// </summary>
         [Output("backupId")]
         public Output<string?> BackupId { get; private set; } = null!;
@@ -132,9 +132,9 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> BackupType { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of SslAction is Open, the default value of this parameter is aliyun. Value range:
         /// * **aliyun**: using cloud certificates
-        /// * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
+        /// * **custom**: use a custom certificate. Valid values: `Aliyun`, `Custom`.
         /// </summary>
         [Output("caType")]
         public Output<string> CaType { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of ClientCaEnabled is 1, this parameter must be configured.
         /// </summary>
         [Output("clientCaCert")]
         public Output<string?> ClientCaCert { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> ClientCaEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of ClientCrlEnabled is 1, this parameter must be configured.
         /// </summary>
         [Output("clientCertRevocationList")]
         public Output<string?> ClientCertRevocationList { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `PaymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.RdsCloneDbInstanceParameter>> Parameters { get; private set; } = null!;
@@ -344,13 +344,13 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The period. Valid values: `Month`, `Year`.
         /// 
-        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+        /// &gt; **NOTE:** If you set the PaymentType parameter to Subscription, you must specify the period parameter.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the AD domain.See `pg_hba_conf` below.
+        /// The details of the AD domain.See `PgHbaConf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.RdsCloneDbInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -380,7 +380,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> ReleasedKeepPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `Cert` and `Perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         /// </summary>
         [Output("replicationAcl")]
         public Output<string> ReplicationAcl { get; private set; } = null!;
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ServerKey { get; private set; } = null!;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `ServerlessConfig` below.
         /// </summary>
         [Output("serverlessConfigs")]
         public Output<ImmutableArray<Outputs.RdsCloneDbInstanceServerlessConfig>> ServerlessConfigs { get; private set; } = null!;
@@ -502,7 +502,7 @@ namespace Pulumi.AliCloud.Rds
         /// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         /// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
         /// 
-        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+        /// &gt; **NOTE:** If you set the PaymentType parameter to Subscription, you must specify the UsedTime parameter.
         /// </summary>
         [Output("usedTime")]
         public Output<int?> UsedTime { get; private set; } = null!;
@@ -516,7 +516,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
+        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `VswitchId` check.
         /// 
         /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
@@ -590,7 +590,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsCloneDbInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `Cert` and `Perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -606,7 +606,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
         /// 
-        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `InstanceStorage` check. Otherwise, check.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
@@ -620,9 +620,9 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of SslAction is Open, the default value of this parameter is aliyun. Value range:
         /// * **aliyun**: using cloud certificates
-        /// * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
+        /// * **custom**: use a custom certificate. Valid values: `Aliyun`, `Custom`.
         /// </summary>
         [Input("caType")]
         public Input<string>? CaType { get; set; }
@@ -648,7 +648,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of ClientCaEnabled is 1, this parameter must be configured.
         /// </summary>
         [Input("clientCaCert")]
         public Input<string>? ClientCaCert { get; set; }
@@ -660,7 +660,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCaEnabled { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of ClientCrlEnabled is 1, this parameter must be configured.
         /// </summary>
         [Input("clientCertRevocationList")]
         public Input<string>? ClientCertRevocationList { get; set; }
@@ -734,7 +734,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `PaymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -807,7 +807,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `Parameters` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceParameterArgs> Parameters
         {
@@ -832,7 +832,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The period. Valid values: `Month`, `Year`.
         /// 
-        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+        /// &gt; **NOTE:** If you set the PaymentType parameter to Subscription, you must specify the period parameter.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -841,7 +841,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The details of the AD domain.See `pg_hba_conf` below.
+        /// The details of the AD domain.See `PgHbaConf` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs> PgHbaConfs
         {
@@ -874,7 +874,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `Cert` and `Perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         /// </summary>
         [Input("replicationAcl")]
         public Input<string>? ReplicationAcl { get; set; }
@@ -937,7 +937,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceServerlessConfigArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `ServerlessConfig` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceServerlessConfigArgs> ServerlessConfigs
         {
@@ -1008,7 +1008,7 @@ namespace Pulumi.AliCloud.Rds
         /// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         /// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
         /// 
-        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+        /// &gt; **NOTE:** If you set the PaymentType parameter to Subscription, you must specify the UsedTime parameter.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
@@ -1022,7 +1022,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
+        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `VswitchId` check.
         /// 
         /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
@@ -1058,7 +1058,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsCloneDbInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `Cert` and `Perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -1074,7 +1074,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
         /// 
-        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `InstanceStorage` check. Otherwise, check.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
@@ -1088,9 +1088,9 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of SslAction is Open, the default value of this parameter is aliyun. Value range:
         /// * **aliyun**: using cloud certificates
-        /// * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
+        /// * **custom**: use a custom certificate. Valid values: `Aliyun`, `Custom`.
         /// </summary>
         [Input("caType")]
         public Input<string>? CaType { get; set; }
@@ -1116,7 +1116,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of ClientCaEnabled is 1, this parameter must be configured.
         /// </summary>
         [Input("clientCaCert")]
         public Input<string>? ClientCaCert { get; set; }
@@ -1128,7 +1128,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCaEnabled { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of ClientCrlEnabled is 1, this parameter must be configured.
         /// </summary>
         [Input("clientCertRevocationList")]
         public Input<string>? ClientCertRevocationList { get; set; }
@@ -1208,7 +1208,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `PaymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1281,7 +1281,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `Parameters` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceParameterGetArgs> Parameters
         {
@@ -1306,7 +1306,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The period. Valid values: `Month`, `Year`.
         /// 
-        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+        /// &gt; **NOTE:** If you set the PaymentType parameter to Subscription, you must specify the period parameter.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -1315,7 +1315,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The details of the AD domain.See `pg_hba_conf` below.
+        /// The details of the AD domain.See `PgHbaConf` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs> PgHbaConfs
         {
@@ -1348,7 +1348,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
-        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+        /// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `Cert` and `Perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         /// </summary>
         [Input("replicationAcl")]
         public Input<string>? ReplicationAcl { get; set; }
@@ -1411,7 +1411,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceServerlessConfigGetArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `ServerlessConfig` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceServerlessConfigGetArgs> ServerlessConfigs
         {
@@ -1482,7 +1482,7 @@ namespace Pulumi.AliCloud.Rds
         /// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         /// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
         /// 
-        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+        /// &gt; **NOTE:** If you set the PaymentType parameter to Subscription, you must specify the UsedTime parameter.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
@@ -1496,7 +1496,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
+        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `VswitchId` check.
         /// 
         /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>

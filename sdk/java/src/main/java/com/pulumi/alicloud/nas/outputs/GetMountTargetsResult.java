@@ -56,7 +56,7 @@ public final class GetMountTargetsResult {
      */
     private List<GetMountTargetsTarget> targets;
     /**
-     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
@@ -136,7 +136,7 @@ public final class GetMountTargetsResult {
         return this.targets;
     }
     /**
-     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.

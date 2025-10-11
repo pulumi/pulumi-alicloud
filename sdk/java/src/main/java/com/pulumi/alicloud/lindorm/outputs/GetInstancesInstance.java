@@ -34,7 +34,7 @@ public final class GetInstancesInstance {
      */
     private Boolean deletionProection;
     /**
-     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      * 
      */
     private String diskCategory;
@@ -139,7 +139,7 @@ public final class GetInstancesInstance {
      */
     private String searchEngineSpecification;
     /**
-     * @return The service type of Instance, Valid values:  `lindorm`, `serverless_lindorm`, `lindorm_standalone`.
+     * @return The service type of Instance, Valid values:  `lindorm`, `serverlessLindorm`, `lindormStandalone`.
      * 
      */
     private String serviceType;
@@ -214,7 +214,7 @@ public final class GetInstancesInstance {
         return this.deletionProection;
     }
     /**
-     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      * 
      */
     public String diskCategory() {
@@ -361,7 +361,7 @@ public final class GetInstancesInstance {
         return this.searchEngineSpecification;
     }
     /**
-     * @return The service type of Instance, Valid values:  `lindorm`, `serverless_lindorm`, `lindorm_standalone`.
+     * @return The service type of Instance, Valid values:  `lindorm`, `serverlessLindorm`, `lindormStandalone`.
      * 
      */
     public String serviceType() {

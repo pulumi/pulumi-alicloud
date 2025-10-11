@@ -141,14 +141,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.category;
     }
     /**
-     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
      * 
      */
     @Export(name="coldStorage", refs={String.class}, tree="[0]")
     private Output<String> coldStorage;
 
     /**
-     * @return Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+     * @return Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
      * 
      */
     public Output<String> coldStorage() {
@@ -169,21 +169,21 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.connectionString;
     }
     /**
-     * The db cluster access white list. See `db_cluster_access_white_list` below.
+     * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      * 
      */
     @Export(name="dbClusterAccessWhiteLists", refs={List.class,DbClusterDbClusterAccessWhiteList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DbClusterDbClusterAccessWhiteList>> dbClusterAccessWhiteLists;
 
     /**
-     * @return The db cluster access white list. See `db_cluster_access_white_list` below.
+     * @return The db cluster access white list. See `dbClusterAccessWhiteList` below.
      * 
      */
     public Output<Optional<List<DbClusterDbClusterAccessWhiteList>>> dbClusterAccessWhiteLists() {
         return Codegen.optional(this.dbClusterAccessWhiteLists);
     }
     /**
-     * The DBCluster class. According to the category, db_cluster_class has two value ranges:
+     * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
      * * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
      * 
@@ -192,7 +192,7 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
     private Output<String> dbClusterClass;
 
     /**
-     * @return The DBCluster class. According to the category, db_cluster_class has two value ranges:
+     * @return The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
      * * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
      * 
@@ -229,14 +229,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.dbClusterNetworkType;
     }
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      * 
      */
     @Export(name="dbClusterVersion", refs={String.class}, tree="[0]")
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      * 
      */
     public Output<String> dbClusterVersion() {
@@ -271,14 +271,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.dbNodeStorage;
     }
     /**
-     * Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
+     * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      * 
      */
     @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
-     * @return Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
+     * @return Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      * 
      */
     public Output<Optional<String>> encryptionKey() {
@@ -314,7 +314,7 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The zone IDs and
-     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      * 
      */
     @Export(name="multiZoneVswitchLists", refs={List.class,DbClusterMultiZoneVswitchList.class}, tree="[0,1]")
@@ -322,7 +322,7 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The zone IDs and
-     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      * 
      */
     public Output<Optional<List<DbClusterMultiZoneVswitchList>>> multiZoneVswitchLists() {
@@ -343,14 +343,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
+     * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
-     * @return Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
+     * @return Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      * 
      */
     public Output<Optional<String>> period() {
@@ -371,28 +371,28 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+     * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
      * 
      */
     @Export(name="publicConnectionString", refs={String.class}, tree="[0]")
     private Output<String> publicConnectionString;
 
     /**
-     * @return (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+     * @return (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
      * 
      */
     public Output<String> publicConnectionString() {
         return this.publicConnectionString;
     }
     /**
-     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
-     * @return The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+     * @return The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      * 
      */
     public Output<String> renewalStatus() {
@@ -427,28 +427,28 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+     * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+     * @return Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      * 
      */
     public Output<String> storageType() {
         return this.storageType;
     }
     /**
-     * The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      * 
      */
     @Export(name="usedTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usedTime;
 
     /**
-     * @return The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
+     * @return The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      * 
      */
     public Output<Optional<String>> usedTime() {

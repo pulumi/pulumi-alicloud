@@ -33,14 +33,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:bastionhost/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The AD auth server of the Instance. See `ad_auth_server` below.
+     * The AD auth server of the Instance. See `adAuthServer` below.
      * 
      */
     @Export(name="adAuthServers", refs={List.class,InstanceAdAuthServer.class}, tree="[0,1]")
     private Output<List<InstanceAdAuthServer>> adAuthServers;
 
     /**
-     * @return The AD auth server of the Instance. See `ad_auth_server` below.
+     * @return The AD auth server of the Instance. See `adAuthServer` below.
      * 
      */
     public Output<List<InstanceAdAuthServer>> adAuthServers() {
@@ -93,14 +93,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.enablePublicAccess;
     }
     /**
-     * The LDAP auth server of the Instance. See `ldap_auth_server` below.
+     * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      * 
      */
     @Export(name="ldapAuthServers", refs={List.class,InstanceLdapAuthServer.class}, tree="[0,1]")
     private Output<List<InstanceLdapAuthServer>> ldapAuthServers;
 
     /**
-     * @return The LDAP auth server of the Instance. See `ldap_auth_server` below.
+     * @return The LDAP auth server of the Instance. See `ldapAuthServer` below.
      * 
      */
     public Output<List<InstanceLdapAuthServer>> ldapAuthServers() {
@@ -157,21 +157,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.publicWhiteLists);
     }
     /**
-     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
     /**
-     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
      * - `M`: months.
      * - `Y`: years.
      * 
@@ -180,7 +180,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> renewalPeriodUnit;
 
     /**
-     * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
      * - `M`: months.
      * - `Y`: years.
      * 
@@ -189,14 +189,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.renewalPeriodUnit;
     }
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
-     * @return Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+     * @return Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
      * 
      */
     public Output<String> renewalStatus() {
@@ -218,8 +218,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * security group IDs configured to Bastionhost.
-     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      * 
      */
@@ -228,8 +228,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return security group IDs configured to Bastionhost.
-     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
-     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      * 
      */

@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
+        /// Specifies whether to enable the RAM policy. Default value: `False`. Valid values:
         /// </summary>
         [Output("enabledRam")]
         public Output<bool?> EnabledRam { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The Posix user. See `posix_user` below.
+        /// The Posix user. See `PosixUser` below.
         /// </summary>
         [Output("posixUser")]
         public Output<Outputs.AccessPointPosixUser> PosixUser { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> RootPath { get; private set; } = null!;
 
         /// <summary>
-        /// Root permissions. See `root_path_permission` below.
+        /// Root permissions. See `RootPathPermission` below.
         /// </summary>
         [Output("rootPathPermission")]
         public Output<Outputs.AccessPointRootPathPermission> RootPathPermission { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? AccessPointName { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
+        /// Specifies whether to enable the RAM policy. Default value: `False`. Valid values:
         /// </summary>
         [Input("enabledRam")]
         public Input<bool>? EnabledRam { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
-        /// The Posix user. See `posix_user` below.
+        /// The Posix user. See `PosixUser` below.
         /// </summary>
         [Input("posixUser")]
         public Input<Inputs.AccessPointPosixUserArgs>? PosixUser { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? RootPath { get; set; }
 
         /// <summary>
-        /// Root permissions. See `root_path_permission` below.
+        /// Root permissions. See `RootPathPermission` below.
         /// </summary>
         [Input("rootPathPermission")]
         public Input<Inputs.AccessPointRootPathPermissionArgs>? RootPathPermission { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
+        /// Specifies whether to enable the RAM policy. Default value: `False`. Valid values:
         /// </summary>
         [Input("enabledRam")]
         public Input<bool>? EnabledRam { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? FileSystemId { get; set; }
 
         /// <summary>
-        /// The Posix user. See `posix_user` below.
+        /// The Posix user. See `PosixUser` below.
         /// </summary>
         [Input("posixUser")]
         public Input<Inputs.AccessPointPosixUserGetArgs>? PosixUser { get; set; }
@@ -348,7 +348,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? RootPath { get; set; }
 
         /// <summary>
-        /// Root permissions. See `root_path_permission` below.
+        /// Root permissions. See `RootPathPermission` below.
         /// </summary>
         [Input("rootPathPermission")]
         public Input<Inputs.AccessPointRootPathPermissionGetArgs>? RootPathPermission { get; set; }

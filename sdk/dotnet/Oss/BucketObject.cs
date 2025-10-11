@@ -166,9 +166,9 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        /// Specifies the primary key managed by KMS. This parameter is valid when the value of `ServerSideEncryption` is set to KMS.
         /// 
-        /// Either `source` or `content` must be provided to specify the bucket content.
+        /// Either `Source` or `Content` must be provided to specify the bucket content.
         /// These two arguments are mutually-exclusive.
         /// </summary>
         [Output("kmsKeyId")]
@@ -299,9 +299,9 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        /// Specifies the primary key managed by KMS. This parameter is valid when the value of `ServerSideEncryption` is set to KMS.
         /// 
-        /// Either `source` or `content` must be provided to specify the bucket content.
+        /// Either `Source` or `Content` must be provided to specify the bucket content.
         /// These two arguments are mutually-exclusive.
         /// </summary>
         [Input("kmsKeyId")]
@@ -400,9 +400,9 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        /// Specifies the primary key managed by KMS. This parameter is valid when the value of `ServerSideEncryption` is set to KMS.
         /// 
-        /// Either `source` or `content` must be provided to specify the bucket content.
+        /// Either `Source` or `Content` must be provided to specify the bucket content.
         /// These two arguments are mutually-exclusive.
         /// </summary>
         [Input("kmsKeyId")]

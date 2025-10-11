@@ -94,14 +94,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:oos/serviceSetting:ServiceSetting")
 public class ServiceSetting extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     @Export(name="deliveryOssBucketName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryOssBucketName;
 
     /**
-     * @return The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * @return The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     public Output<Optional<String>> deliveryOssBucketName() {
@@ -122,14 +122,14 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deliveryOssEnabled);
     }
     /**
-     * The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     @Export(name="deliveryOssKeyPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryOssKeyPrefix;
 
     /**
-     * @return The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * @return The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     public Output<Optional<String>> deliveryOssKeyPrefix() {
@@ -150,14 +150,14 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deliverySlsEnabled);
     }
     /**
-     * The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+     * The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      * 
      */
     @Export(name="deliverySlsProjectName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliverySlsProjectName;
 
     /**
-     * @return The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+     * @return The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      * 
      */
     public Output<Optional<String>> deliverySlsProjectName() {

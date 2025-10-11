@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ActionOnMaintenance { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
+        /// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `On`, `Off`. Default: `On`.
         /// </summary>
         [Output("autoPlacement")]
         public Output<string?> AutoPlacement { get; private set; } = null!;
@@ -82,13 +82,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
+        /// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `False`.
         /// </summary>
         [Output("detailFee")]
         public Output<bool?> DetailFee { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to only validate the request. Default: `false`.
+        /// Specifies whether to only validate the request. Default: `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ActionOnMaintenance { get; set; }
 
         /// <summary>
-        /// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
+        /// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `On`, `Off`. Default: `On`.
         /// </summary>
         [Input("autoPlacement")]
         public Input<string>? AutoPlacement { get; set; }
@@ -254,13 +254,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
+        /// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `False`.
         /// </summary>
         [Input("detailFee")]
         public Input<bool>? DetailFee { get; set; }
 
         /// <summary>
-        /// Specifies whether to only validate the request. Default: `false`.
+        /// Specifies whether to only validate the request. Default: `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -340,7 +340,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ActionOnMaintenance { get; set; }
 
         /// <summary>
-        /// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
+        /// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `On`, `Off`. Default: `On`.
         /// </summary>
         [Input("autoPlacement")]
         public Input<string>? AutoPlacement { get; set; }
@@ -394,13 +394,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
+        /// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `False`.
         /// </summary>
         [Input("detailFee")]
         public Input<bool>? DetailFee { get; set; }
 
         /// <summary>
-        /// Specifies whether to only validate the request. Default: `false`.
+        /// Specifies whether to only validate the request. Default: `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

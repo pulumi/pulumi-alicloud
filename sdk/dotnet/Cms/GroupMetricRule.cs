@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> EmailSubject { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm level. See `escalations` below.
+        /// Alarm level. See `Escalations` below.
         /// </summary>
         [Output("escalations")]
         public Output<Outputs.GroupMetricRuleEscalations> Escalations { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See `targets` below.
+        /// The information about the resource for which alerts are triggered. See `Targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.GroupMetricRuleTarget>> Targets { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EmailSubject { get; set; }
 
         /// <summary>
-        /// Alarm level. See `escalations` below.
+        /// Alarm level. See `Escalations` below.
         /// </summary>
         [Input("escalations", required: true)]
         public Input<Inputs.GroupMetricRuleEscalationsArgs> Escalations { get; set; } = null!;
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.GroupMetricRuleTargetArgs>? _targets;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See `targets` below.
+        /// The information about the resource for which alerts are triggered. See `Targets` below.
         /// </summary>
         public InputList<Inputs.GroupMetricRuleTargetArgs> Targets
         {
@@ -392,7 +392,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EmailSubject { get; set; }
 
         /// <summary>
-        /// Alarm level. See `escalations` below.
+        /// Alarm level. See `Escalations` below.
         /// </summary>
         [Input("escalations")]
         public Input<Inputs.GroupMetricRuleEscalationsGetArgs>? Escalations { get; set; }
@@ -461,7 +461,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.GroupMetricRuleTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See `targets` below.
+        /// The information about the resource for which alerts are triggered. See `Targets` below.
         /// </summary>
         public InputList<Inputs.GroupMetricRuleTargetGetArgs> Targets
         {

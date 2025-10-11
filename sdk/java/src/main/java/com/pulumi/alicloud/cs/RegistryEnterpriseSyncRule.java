@@ -175,18 +175,18 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
         return this.instanceId;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      */
     public Output<String> name() {
@@ -249,18 +249,18 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
         return this.repoSyncRuleId;
     }
     /**
-     * (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+     * (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      * 
      * @deprecated
-     * Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+     * Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      * 
      */
-    @Deprecated /* Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead. */
+    @Deprecated /* Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead. */
     @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
-     * @return (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+     * @return (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      * 
      */
     public Output<String> ruleId() {
@@ -298,7 +298,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
-     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+     * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
     @Export(name="syncScope", refs={String.class}, tree="[0]")
@@ -308,7 +308,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * @return The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
-     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+     * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
     public Output<String> syncScope() {

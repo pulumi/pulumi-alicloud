@@ -26,7 +26,7 @@ public final class GetFoldersFolder {
      */
     private String id;
     /**
-     * @return The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+     * @return The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     private String parentFolderId;
@@ -54,7 +54,7 @@ public final class GetFoldersFolder {
         return this.id;
     }
     /**
-     * @return The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+     * @return The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     public String parentFolderId() {

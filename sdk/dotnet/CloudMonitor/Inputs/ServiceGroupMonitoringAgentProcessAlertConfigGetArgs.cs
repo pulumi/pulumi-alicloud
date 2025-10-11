@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Inputs
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// The alert level. Valid values: `critical`, `warn`, `info`.
+        /// The alert level. Valid values: `Critical`, `Warn`, `Info`.
         /// </summary>
         [Input("escalationsLevel", required: true)]
         public Input<string> EscalationsLevel { get; set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Inputs
         private InputList<Inputs.ServiceGroupMonitoringAgentProcessAlertConfigTargetListGetArgs>? _targetLists;
 
         /// <summary>
-        /// The alert triggers. See `target_list` below.
+        /// The alert triggers. See `TargetList` below.
         /// </summary>
         public InputList<Inputs.ServiceGroupMonitoringAgentProcessAlertConfigTargetListGetArgs> TargetLists
         {

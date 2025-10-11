@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> CreateMode { get; private set; } = null!;
 
         /// <summary>
-        /// Data disk See `data_disk` below.
+        /// Data disk See `DataDisk` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.CustomDataDisk>> DataDisks { get; private set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> SupportCase { get; private set; } = null!;
 
         /// <summary>
-        /// System disk specifications. See `system_disk` below.
+        /// System disk specifications. See `SystemDisk` below.
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.CustomSystemDisk?> SystemDisk { get; private set; } = null!;
@@ -422,7 +422,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.CustomDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk See `data_disk` below.
+        /// Data disk See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.CustomDataDiskArgs> DataDisks
         {
@@ -585,7 +585,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SupportCase { get; set; }
 
         /// <summary>
-        /// System disk specifications. See `system_disk` below.
+        /// System disk specifications. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.CustomSystemDiskArgs>? SystemDisk { get; set; }
@@ -657,7 +657,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.CustomDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk See `data_disk` below.
+        /// Data disk See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.CustomDataDiskGetArgs> DataDisks
         {
@@ -826,7 +826,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SupportCase { get; set; }
 
         /// <summary>
-        /// System disk specifications. See `system_disk` below.
+        /// System disk specifications. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.CustomSystemDiskGetArgs>? SystemDisk { get; set; }

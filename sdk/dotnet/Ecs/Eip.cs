@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -98,13 +98,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HighDefinitionMonitorLogStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// (It has been deprecated from version 1.126.0 and using new attribute `PaymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `InstanceChargeType` is PrePaid.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        /// It has been deprecated from version 1.126.0 and using new attribute `AddressName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -146,8 +146,8 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -267,13 +267,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// (It has been deprecated from version 1.126.0 and using new attribute `PaymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `InstanceChargeType` is PrePaid.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        /// It has been deprecated from version 1.126.0 and using new attribute `AddressName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -315,8 +315,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -406,13 +406,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// (It has been deprecated from version 1.126.0 and using new attribute `PaymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `InstanceChargeType` is PrePaid.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -439,7 +439,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        /// It has been deprecated from version 1.126.0 and using new attribute `AddressName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -454,8 +454,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

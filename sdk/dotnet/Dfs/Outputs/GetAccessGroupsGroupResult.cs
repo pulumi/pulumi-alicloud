@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Dfs.Outputs
     public sealed class GetAccessGroupsGroupResult
     {
         /// <summary>
-        /// The length of `description` does not exceed 100 bytes.
+        /// The length of `Description` does not exceed 100 bytes.
         /// </summary>
         public readonly string AccessGroupId;
         /// <summary>
-        /// The Name of Access Group. The length Of `access_group_name` does not exceed 100 bytes.
+        /// The Name of Access Group. The length Of `AccessGroupName` does not exceed 100 bytes.
         /// </summary>
         public readonly string AccessGroupName;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Dfs.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The Description of Access Group. The length Of `description` does not exceed 100 bytes.
+        /// The Description of Access Group. The length Of `Description` does not exceed 100 bytes.
         /// </summary>
         public readonly string Description;
         /// <summary>

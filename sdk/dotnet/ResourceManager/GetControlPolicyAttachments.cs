@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetControlPolicyAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+        /// The language. Valid value `zh-CN`, `En`, and `Ja`. Default value `zh-CN`
         /// </summary>
         [Input("language")]
         public string? Language { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetControlPolicyAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+        /// The language. Valid value `zh-CN`, `En`, and `Ja`. Default value `zh-CN`
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

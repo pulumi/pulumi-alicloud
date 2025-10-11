@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eais
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        /// EAIS instance category, valid values: `Eais`, `Jupyter`, `Ei`, default is `Eais`.
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Eais
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Setting environment variables in eais instance on Initialization See `environment_var` below.
+        /// Setting environment variables in eais instance on Initialization See `EnvironmentVar` below.
         /// </summary>
         [Output("environmentVars")]
         public Output<ImmutableArray<Outputs.InstanceEnvironmentVar>> EnvironmentVars { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Eais
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        /// EAIS instance category, valid values: `Eais`, `Jupyter`, `Ei`, default is `Eais`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Eais
         private InputList<Inputs.InstanceEnvironmentVarArgs>? _environmentVars;
 
         /// <summary>
-        /// Setting environment variables in eais instance on Initialization See `environment_var` below.
+        /// Setting environment variables in eais instance on Initialization See `EnvironmentVar` below.
         /// </summary>
         public InputList<Inputs.InstanceEnvironmentVarArgs> EnvironmentVars
         {
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Eais
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        /// EAIS instance category, valid values: `Eais`, `Jupyter`, `Ei`, default is `Eais`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Eais
         private InputList<Inputs.InstanceEnvironmentVarGetArgs>? _environmentVars;
 
         /// <summary>
-        /// Setting environment variables in eais instance on Initialization See `environment_var` below.
+        /// Setting environment variables in eais instance on Initialization See `EnvironmentVar` below.
         /// </summary>
         public InputList<Inputs.InstanceEnvironmentVarGetArgs> EnvironmentVars
         {

@@ -146,19 +146,19 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> CacheMode { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `False`.
         /// </summary>
         [Output("chapEnabled")]
         public Output<bool> ChapEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         [Output("chapInPassword")]
         public Output<string?> ChapInPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The Inbound CHAP user. The `ChapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         [Output("chapInUser")]
         public Output<string?> ChapInUser { get; private set; } = null!;
@@ -188,13 +188,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> IndexId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+        /// Whether to delete the source data. Default value `True`. **NOTE:** When `IsSourceDeletion` is `True`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
         /// </summary>
         [Output("isSourceDeletion")]
         public Output<bool?> IsSourceDeletion { get; private set; } = null!;
 
         /// <summary>
-        /// The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+        /// The Cache disk to local path. **NOTE:**  When the `CacheMode` is  `Cache` is,The `ChapInPassword` is valid.
         /// </summary>
         [Output("localPath")]
         public Output<string?> LocalPath { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> OssBucketName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+        /// Whether to enable SSL access your OSS Buckets. Default value: `True`.
         /// </summary>
         [Output("ossBucketSsl")]
         public Output<bool> OssBucketSsl { get; private set; } = null!;
@@ -294,19 +294,19 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `False`.
         /// </summary>
         [Input("chapEnabled")]
         public Input<bool>? ChapEnabled { get; set; }
 
         /// <summary>
-        /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         [Input("chapInPassword")]
         public Input<string>? ChapInPassword { get; set; }
 
         /// <summary>
-        /// The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The Inbound CHAP user. The `ChapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         [Input("chapInUser")]
         public Input<string>? ChapInUser { get; set; }
@@ -330,13 +330,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> GatewayId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+        /// Whether to delete the source data. Default value `True`. **NOTE:** When `IsSourceDeletion` is `True`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
         /// </summary>
         [Input("isSourceDeletion")]
         public Input<bool>? IsSourceDeletion { get; set; }
 
         /// <summary>
-        /// The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+        /// The Cache disk to local path. **NOTE:**  When the `CacheMode` is  `Cache` is,The `ChapInPassword` is valid.
         /// </summary>
         [Input("localPath")]
         public Input<string>? LocalPath { get; set; }
@@ -348,7 +348,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> OssBucketName { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+        /// Whether to enable SSL access your OSS Buckets. Default value: `True`.
         /// </summary>
         [Input("ossBucketSsl")]
         public Input<bool>? OssBucketSsl { get; set; }
@@ -392,19 +392,19 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `False`.
         /// </summary>
         [Input("chapEnabled")]
         public Input<bool>? ChapEnabled { get; set; }
 
         /// <summary>
-        /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         [Input("chapInPassword")]
         public Input<string>? ChapInPassword { get; set; }
 
         /// <summary>
-        /// The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The Inbound CHAP user. The `ChapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         [Input("chapInUser")]
         public Input<string>? ChapInUser { get; set; }
@@ -434,13 +434,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? IndexId { get; set; }
 
         /// <summary>
-        /// Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+        /// Whether to delete the source data. Default value `True`. **NOTE:** When `IsSourceDeletion` is `True`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
         /// </summary>
         [Input("isSourceDeletion")]
         public Input<bool>? IsSourceDeletion { get; set; }
 
         /// <summary>
-        /// The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+        /// The Cache disk to local path. **NOTE:**  When the `CacheMode` is  `Cache` is,The `ChapInPassword` is valid.
         /// </summary>
         [Input("localPath")]
         public Input<string>? LocalPath { get; set; }
@@ -452,7 +452,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? OssBucketName { get; set; }
 
         /// <summary>
-        /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+        /// Whether to enable SSL access your OSS Buckets. Default value: `True`.
         /// </summary>
         [Input("ossBucketSsl")]
         public Input<bool>? OssBucketSsl { get; set; }

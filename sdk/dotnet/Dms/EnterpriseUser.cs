@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<string?> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from 1.100.0 and use `user_name` instead.
+        /// It has been deprecated from 1.100.0 and use `UserName` instead.
         /// </summary>
         [Output("nickName")]
         public Output<string> NickName { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.100.0 and use `user_name` instead.
+        /// It has been deprecated from 1.100.0 and use `UserName` instead.
         /// </summary>
         [Input("nickName")]
         public Input<string>? NickName { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.100.0 and use `user_name` instead.
+        /// It has been deprecated from 1.100.0 and use `UserName` instead.
         /// </summary>
         [Input("nickName")]
         public Input<string>? NickName { get; set; }

@@ -110,31 +110,31 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a db account. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a user with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        /// The authentication mechanism. Default value: `Plain`. Valid values: `Plain`, `Scram`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
+        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `A`-`Z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a db account. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.AliKafka
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a user with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.AliKafka
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -230,13 +230,13 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        /// The authentication mechanism. Default value: `Plain`. Valid values: `Plain`, `Scram`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
+        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `A`-`Z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a db account. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.AliKafka
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a user with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.AliKafka
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -290,13 +290,13 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        /// The authentication mechanism. Default value: `Plain`. Valid values: `Plain`, `Scram`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
+        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `A`-`Z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -161,14 +161,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:gwlb/serverGroup:ServerGroup")
 public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Connected graceful interrupt configuration. See `connection_drain_config` below.
+     * Connected graceful interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     @Export(name="connectionDrainConfig", refs={ServerGroupConnectionDrainConfig.class}, tree="[0]")
     private Output<ServerGroupConnectionDrainConfig> connectionDrainConfig;
 
     /**
-     * @return Connected graceful interrupt configuration. See `connection_drain_config` below.
+     * @return Connected graceful interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     public Output<ServerGroupConnectionDrainConfig> connectionDrainConfig() {
@@ -203,14 +203,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Health check configurations. See `health_check_config` below.
+     * Health check configurations. See `healthCheckConfig` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ServerGroupHealthCheckConfig.class}, tree="[0]")
     private Output<ServerGroupHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return Health check configurations. See `health_check_config` below.
+     * @return Health check configurations. See `healthCheckConfig` below.
      * 
      */
     public Output<ServerGroupHealthCheckConfig> healthCheckConfig() {

@@ -167,14 +167,14 @@ public class ExperimentPlanTemplate extends com.pulumi.resources.CustomResource 
         return this.templateName;
     }
     /**
-     * Representative Template Pipeline. See `template_pipeline` below.
+     * Representative Template Pipeline. See `templatePipeline` below.
      * 
      */
     @Export(name="templatePipelines", refs={List.class,ExperimentPlanTemplateTemplatePipeline.class}, tree="[0,1]")
     private Output<List<ExperimentPlanTemplateTemplatePipeline>> templatePipelines;
 
     /**
-     * @return Representative Template Pipeline. See `template_pipeline` below.
+     * @return Representative Template Pipeline. See `templatePipeline` below.
      * 
      */
     public Output<List<ExperimentPlanTemplateTemplatePipeline>> templatePipelines() {

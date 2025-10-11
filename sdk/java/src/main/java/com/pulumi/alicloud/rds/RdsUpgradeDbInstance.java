@@ -169,7 +169,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
         return this.autoUpgradeMinorVersion;
     }
     /**
-     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates.
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      * 
@@ -178,7 +178,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     private Output<String> caType;
 
     /**
-     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of ssl_action is Open, the default value of this parameter is aliyun. Value range:
+     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates.
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      * 
@@ -201,14 +201,14 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.certificate);
     }
     /**
-     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+     * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      * 
      */
     @Export(name="clientCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCaCert;
 
     /**
-     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
+     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      * 
      */
     public Output<Optional<String>> clientCaCert() {
@@ -229,14 +229,14 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientCaEnabled);
     }
     /**
-     * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+     * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      * 
      */
     @Export(name="clientCertRevocationList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertRevocationList;
 
     /**
-     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
+     * @return This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      * 
      */
     public Output<Optional<String>> clientCertRevocationList() {
@@ -413,7 +413,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
@@ -424,7 +424,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -623,14 +623,14 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      * 
      */
     @Export(name="pgHbaConfs", refs={List.class,RdsUpgradeDbInstancePgHbaConf.class}, tree="[0,1]")
     private Output<List<RdsUpgradeDbInstancePgHbaConf>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      * 
      */
     public Output<List<RdsUpgradeDbInstancePgHbaConf>> pgHbaConfs() {

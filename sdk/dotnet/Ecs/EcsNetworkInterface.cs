@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v1.123.1.
     /// 
-    /// &gt; **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
+    /// &gt; **NOTE** Only one of `PrivateIpAddresses` or `SecondaryPrivateIpAddressCount` can be specified when assign private IPs.
     /// 
     /// ## Example Usage
     /// 
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv4Prefixes` and `Ipv4PrefixCount` parameters.
         /// </summary>
         [Output("ipv4PrefixCount")]
         public Output<int> Ipv4PrefixCount { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> Ipv4Prefixes { get; private set; } = null!;
 
         /// <summary>
-        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv6Addresses` and `Ipv6AddressCount` parameters.
         /// </summary>
         [Output("ipv6AddressCount")]
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `NetworkInterfaceName` instead
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PrimaryIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        /// Field `PrivateIp` has been deprecated from provider version 1.123.1. New field `PrimaryIpAddress` instead
         /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
@@ -173,13 +173,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> PrivateIpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+        /// Field `PrivateIps` has been deprecated from provider version 1.123.1. New field `PrivateIpAddresses` instead
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
 
         /// <summary>
-        /// Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+        /// Field `PrivateIpsCount` has been deprecated from provider version 1.123.1. New field `SecondaryPrivateIpAddressCount` instead
         /// </summary>
         [Output("privateIpsCount")]
         public Output<int> PrivateIpsCount { get; private set; } = null!;
@@ -203,19 +203,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `SecurityGroupIds` or `SecurityGroups` must be set with valid security group IDs.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        /// Field `SecurityGroups` has been deprecated from provider version 1.123.1. New field `SecurityGroupIds` instead. **NOTE:** Either `SecurityGroupIds` or `SecurityGroups` must be set with valid security group IDs.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("sourceDestCheck")]
         public Output<bool?> SourceDestCheck { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv4Prefixes` and `Ipv4PrefixCount` parameters.
         /// </summary>
         [Input("ipv4PrefixCount")]
         public Input<int>? Ipv4PrefixCount { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv6Addresses` and `Ipv6AddressCount` parameters.
         /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
@@ -333,7 +333,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `NetworkInterfaceName` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        /// Field `PrivateIp` has been deprecated from provider version 1.123.1. New field `PrimaryIpAddress` instead
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+        /// Field `PrivateIps` has been deprecated from provider version 1.123.1. New field `PrivateIpAddresses` instead
         /// </summary>
         [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+        /// Field `PrivateIpsCount` has been deprecated from provider version 1.123.1. New field `SecondaryPrivateIpAddressCount` instead
         /// </summary>
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
@@ -415,7 +415,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `SecurityGroupIds` or `SecurityGroups` must be set with valid security group IDs.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -427,7 +427,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        /// Field `SecurityGroups` has been deprecated from provider version 1.123.1. New field `SecurityGroupIds` instead. **NOTE:** Either `SecurityGroupIds` or `SecurityGroups` must be set with valid security group IDs.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
@@ -481,7 +481,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv4Prefixes` and `Ipv4PrefixCount` parameters.
         /// </summary>
         [Input("ipv4PrefixCount")]
         public Input<int>? Ipv4PrefixCount { get; set; }
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv6Addresses` and `Ipv6AddressCount` parameters.
         /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
@@ -523,7 +523,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `NetworkInterfaceName` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -547,7 +547,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        /// Field `PrivateIp` has been deprecated from provider version 1.123.1. New field `PrimaryIpAddress` instead
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
@@ -568,7 +568,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+        /// Field `PrivateIps` has been deprecated from provider version 1.123.1. New field `PrivateIpAddresses` instead
         /// </summary>
         [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
@@ -578,7 +578,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+        /// Field `PrivateIpsCount` has been deprecated from provider version 1.123.1. New field `SecondaryPrivateIpAddressCount` instead
         /// </summary>
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
@@ -605,7 +605,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `SecurityGroupIds` or `SecurityGroups` must be set with valid security group IDs.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -617,7 +617,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        /// Field `SecurityGroups` has been deprecated from provider version 1.123.1. New field `SecurityGroupIds` instead. **NOTE:** Either `SecurityGroupIds` or `SecurityGroups` must be set with valid security group IDs.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
@@ -627,7 +627,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }

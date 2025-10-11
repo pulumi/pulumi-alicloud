@@ -50,7 +50,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+     * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
      * @deprecated
      * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
@@ -61,7 +61,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> domain;
 
     /**
-     * @return Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+     * @return Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
      * @deprecated
      * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
@@ -73,14 +73,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
+     * The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
+     * @return The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -371,7 +371,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+         * @param domain Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+         * @param domain Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainName The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
+         * @param domainName The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainName The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
+         * @param domainName The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
          * 
          * @return builder
          * 

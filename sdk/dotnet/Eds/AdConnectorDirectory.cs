@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+        /// The Enterprise already has the DNS address of the AD subdomain. If `SubDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
         /// </summary>
         [Output("subDomainDnsAddresses")]
         public Output<ImmutableArray<string>> SubDomainDnsAddresses { get; private set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<string>? _subDomainDnsAddresses;
 
         /// <summary>
-        /// The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+        /// The Enterprise already has the DNS address of the AD subdomain. If `SubDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
         /// </summary>
         public InputList<string> SubDomainDnsAddresses
         {
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<string>? _subDomainDnsAddresses;
 
         /// <summary>
-        /// The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+        /// The Enterprise already has the DNS address of the AD subdomain. If `SubDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
         /// </summary>
         public InputList<string> SubDomainDnsAddresses
         {

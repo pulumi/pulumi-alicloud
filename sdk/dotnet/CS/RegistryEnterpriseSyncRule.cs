@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.240.0. New field `SyncRuleName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> RepoSyncRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+        /// (Deprecated since v1.240.0) Field `RuleId` has been deprecated from provider version 1.240.0. New field `RepoSyncRuleId` instead.
         /// </summary>
         [Output("ruleId")]
         public Output<string> RuleId { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.CS
         /// The synchronization scope. Valid values:
         /// - `REPO`: Encrypts or decrypts data.
         /// - `NAMESPACE`: Generates or verifies a digital signature.
-        /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        /// &gt; **NOTE:** From version 1.240.0, `SyncScope` can be set.
         /// </summary>
         [Output("syncScope")]
         public Output<string> SyncScope { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.240.0. New field `SyncRuleName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.CS
         /// The synchronization scope. Valid values:
         /// - `REPO`: Encrypts or decrypts data.
         /// - `NAMESPACE`: Generates or verifies a digital signature.
-        /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        /// &gt; **NOTE:** From version 1.240.0, `SyncScope` can be set.
         /// </summary>
         [Input("syncScope")]
         public Input<string>? SyncScope { get; set; }
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.240.0. New field `SyncRuleName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -418,7 +418,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? RepoSyncRuleId { get; set; }
 
         /// <summary>
-        /// (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+        /// (Deprecated since v1.240.0) Field `RuleId` has been deprecated from provider version 1.240.0. New field `RepoSyncRuleId` instead.
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
@@ -439,7 +439,7 @@ namespace Pulumi.AliCloud.CS
         /// The synchronization scope. Valid values:
         /// - `REPO`: Encrypts or decrypts data.
         /// - `NAMESPACE`: Generates or verifies a digital signature.
-        /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        /// &gt; **NOTE:** From version 1.240.0, `SyncScope` can be set.
         /// </summary>
         [Input("syncScope")]
         public Input<string>? SyncScope { get; set; }

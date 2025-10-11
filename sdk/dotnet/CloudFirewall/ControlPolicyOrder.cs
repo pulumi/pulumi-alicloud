@@ -71,14 +71,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> AclUuid { get; private set; } = null!;
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
-        /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
+        /// &gt; **NOTE:** From version 1.227.1, `Order` must be set.
         /// </summary>
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
@@ -136,14 +136,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> AclUuid { get; set; } = null!;
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
-        /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
+        /// &gt; **NOTE:** From version 1.227.1, `Order` must be set.
         /// </summary>
         [Input("order", required: true)]
         public Input<int> Order { get; set; } = null!;
@@ -163,14 +163,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? AclUuid { get; set; }
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
-        /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
+        /// &gt; **NOTE:** From version 1.227.1, `Order` must be set.
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }

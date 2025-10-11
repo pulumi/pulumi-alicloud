@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Oss
     public partial class BucketAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
+        /// Bucket-level Access Control List (ACL)，Valid values: `Private`, `public-read`, `public-read-write`.
         /// </summary>
         [Output("acl")]
         public Output<string> Acl { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
+        /// Bucket-level Access Control List (ACL)，Valid values: `Private`, `public-read`, `public-read-write`.
         /// </summary>
         [Input("acl", required: true)]
         public Input<string> Acl { get; set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
+        /// Bucket-level Access Control List (ACL)，Valid values: `Private`, `public-read`, `public-read-write`.
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }

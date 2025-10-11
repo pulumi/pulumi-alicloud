@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        /// The Ip Configs. See `IpConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         /// </summary>
         [Output("ipConfigs")]
         public Output<ImmutableArray<Outputs.EndpointIpConfig>> IpConfigs { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.EndpointIpConfigArgs>? _ipConfigs;
 
         /// <summary>
-        /// The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        /// The Ip Configs. See `IpConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         /// </summary>
         public InputList<Inputs.EndpointIpConfigArgs> IpConfigs
         {
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.EndpointIpConfigGetArgs>? _ipConfigs;
 
         /// <summary>
-        /// The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        /// The Ip Configs. See `IpConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         /// </summary>
         public InputList<Inputs.EndpointIpConfigGetArgs> IpConfigs
         {

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * Using `vpc_ids` to attach being in same region several vpc instances to a private zone
+ * Using `vpcIds` to attach being in same region several vpc instances to a private zone
  * 
  * <pre>
  * {@code

@@ -36,7 +36,7 @@ public final class GetHoneypotImagesImage {
      */
     private String honeypotImageVersion;
     /**
-     * @return The image ID of the honeypot.The value is the same as `honeypot_image_id`.
+     * @return The image ID of the honeypot.The value is the same as `honeypotImageId`.
      * 
      */
     private String id;
@@ -98,7 +98,7 @@ public final class GetHoneypotImagesImage {
         return this.honeypotImageVersion;
     }
     /**
-     * @return The image ID of the honeypot.The value is the same as `honeypot_image_id`.
+     * @return The image ID of the honeypot.The value is the same as `honeypotImageId`.
      * 
      */
     public String id() {

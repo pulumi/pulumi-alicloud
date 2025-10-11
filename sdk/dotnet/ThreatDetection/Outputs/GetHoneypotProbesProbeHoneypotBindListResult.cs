@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class GetHoneypotProbesProbeHoneypotBindListResult
     {
         /// <summary>
-        /// List of listening ports. Available when `enable_details` is on.
+        /// List of listening ports. Available when `EnableDetails` is on.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetHoneypotProbesProbeHoneypotBindListBindPortListResult> BindPortLists;
         public readonly string HoneypotId;

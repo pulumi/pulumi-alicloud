@@ -133,14 +133,14 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
         return this.acceleratorId;
     }
     /**
-     * The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="basicEndpointGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basicEndpointGroupName;
 
     /**
-     * @return The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<Optional<String>> basicEndpointGroupName() {

@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<string> EipInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+        /// Whether to enable public network. **NOTE:** If `EipInstanceId` is not configured and `EnablePublicNetwork` is true, the system will create an elastic public network IP.
         /// </summary>
         [Output("enablePublicNetwork")]
         public Output<bool?> EnablePublicNetwork { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The taint. See `taints` below.
+        /// The taint. See `Taints` below.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.VirtualNodeTaint>> Taints { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? EipInstanceId { get; set; }
 
         /// <summary>
-        /// Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+        /// Whether to enable public network. **NOTE:** If `EipInstanceId` is not configured and `EnablePublicNetwork` is true, the system will create an elastic public network IP.
         /// </summary>
         [Input("enablePublicNetwork")]
         public Input<bool>? EnablePublicNetwork { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.VirtualNodeTaintArgs>? _taints;
 
         /// <summary>
-        /// The taint. See `taints` below.
+        /// The taint. See `Taints` below.
         /// </summary>
         public InputList<Inputs.VirtualNodeTaintArgs> Taints
         {
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? EipInstanceId { get; set; }
 
         /// <summary>
-        /// Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+        /// Whether to enable public network. **NOTE:** If `EipInstanceId` is not configured and `EnablePublicNetwork` is true, the system will create an elastic public network IP.
         /// </summary>
         [Input("enablePublicNetwork")]
         public Input<bool>? EnablePublicNetwork { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.VirtualNodeTaintGetArgs>? _taints;
 
         /// <summary>
-        /// The taint. See `taints` below.
+        /// The taint. See `Taints` below.
         /// </summary>
         public InputList<Inputs.VirtualNodeTaintGetArgs> Taints
         {

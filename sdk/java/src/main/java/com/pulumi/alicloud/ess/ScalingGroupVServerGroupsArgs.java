@@ -50,14 +50,14 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A list of vserver groups attached on scaling group. See `vserver_groups` below.
+     * A list of vserver groups attached on scaling group. See `vserverGroups` below.
      * 
      */
     @Import(name="vserverGroups", required=true)
     private Output<List<ScalingGroupVServerGroupsVserverGroupArgs>> vserverGroups;
 
     /**
-     * @return A list of vserver groups attached on scaling group. See `vserver_groups` below.
+     * @return A list of vserver groups attached on scaling group. See `vserverGroups` below.
      * 
      */
     public Output<List<ScalingGroupVServerGroupsVserverGroupArgs>> vserverGroups() {
@@ -133,7 +133,7 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserverGroups` below.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserverGroups` below.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserverGroups` below.
          * 
          * @return builder
          * 

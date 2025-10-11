@@ -100,14 +100,14 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The dead-letter queue policy. See `dlq_policy` below.
+     * The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     @Export(name="dlqPolicy", refs={ServiceSubscriptionDlqPolicy.class}, tree="[0]")
     private Output<ServiceSubscriptionDlqPolicy> dlqPolicy;
 
     /**
-     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * @return The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     public Output<ServiceSubscriptionDlqPolicy> dlqPolicy() {

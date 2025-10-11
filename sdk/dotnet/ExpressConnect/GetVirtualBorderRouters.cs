@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        /// The instance state with. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        /// The instance state with. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

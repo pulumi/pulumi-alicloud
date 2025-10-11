@@ -14,151 +14,151 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
     public sealed class ErEnvConf
     {
         /// <summary>
-        /// The configuration of a presetCanaryAnhui environment. See `staging` below.
+        /// The configuration of a presetCanaryAnhui environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryAnhui? PresetCanaryAnhui;
         /// <summary>
-        /// The configuration of a presetCanaryBeijing environment. See `staging` below.
+        /// The configuration of a presetCanaryBeijing environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryBeijing? PresetCanaryBeijing;
         /// <summary>
-        /// The configuration of a presetCanaryChongqing environment. See `staging` below.
+        /// The configuration of a presetCanaryChongqing environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryChongqing? PresetCanaryChongqing;
         /// <summary>
-        /// The configuration of a presetCanaryFujian environment. See `staging` below.
+        /// The configuration of a presetCanaryFujian environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryFujian? PresetCanaryFujian;
         /// <summary>
-        /// The configuration of a presetCanaryGansu environment. See `staging` below.
+        /// The configuration of a presetCanaryGansu environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGansu? PresetCanaryGansu;
         /// <summary>
-        /// The configuration of a presetCanaryGuangdong environment. See `staging` below.
+        /// The configuration of a presetCanaryGuangdong environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGuangdong? PresetCanaryGuangdong;
         /// <summary>
-        /// The configuration of a presetCanaryGuangxi environment. See `staging` below.
+        /// The configuration of a presetCanaryGuangxi environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGuangxi? PresetCanaryGuangxi;
         /// <summary>
-        /// The configuration of a presetCanaryGuizhou environment. See `staging` below.
+        /// The configuration of a presetCanaryGuizhou environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGuizhou? PresetCanaryGuizhou;
         /// <summary>
-        /// The configuration of a presetCanaryHainan environment. See `staging` below.
+        /// The configuration of a presetCanaryHainan environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHainan? PresetCanaryHainan;
         /// <summary>
-        /// The configuration of a presetCanaryHebei environment. See `staging` below.
+        /// The configuration of a presetCanaryHebei environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHebei? PresetCanaryHebei;
         /// <summary>
-        /// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+        /// The configuration of a presetCanaryHeilongjiang environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHeilongjiang? PresetCanaryHeilongjiang;
         /// <summary>
-        /// The configuration of a presetCanaryHenan environment. See `staging` below.
+        /// The configuration of a presetCanaryHenan environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHenan? PresetCanaryHenan;
         /// <summary>
-        /// The configuration of a presetCanaryHongKong environment. See `staging` below.
+        /// The configuration of a presetCanaryHongKong environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHongKong? PresetCanaryHongKong;
         /// <summary>
-        /// The configuration of a presetCanaryHubei environment. See `staging` below.
+        /// The configuration of a presetCanaryHubei environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHubei? PresetCanaryHubei;
         /// <summary>
-        /// The configuration of a presetCanaryHunan environment. See `staging` below.
+        /// The configuration of a presetCanaryHunan environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHunan? PresetCanaryHunan;
         /// <summary>
-        /// The configuration of a presetCanaryJiangsu environment. See `staging` below.
+        /// The configuration of a presetCanaryJiangsu environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryJiangsu? PresetCanaryJiangsu;
         /// <summary>
-        /// The configuration of a presetCanaryJiangxi environment. See `staging` below.
+        /// The configuration of a presetCanaryJiangxi environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryJiangxi? PresetCanaryJiangxi;
         /// <summary>
-        /// The configuration of a presetCanaryJilin environment. See `staging` below.
+        /// The configuration of a presetCanaryJilin environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryJilin? PresetCanaryJilin;
         /// <summary>
-        /// The configuration of a presetCanaryLiaoning environment. See `staging` below.
+        /// The configuration of a presetCanaryLiaoning environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryLiaoning? PresetCanaryLiaoning;
         /// <summary>
-        /// The configuration of a presetCanaryMacau environment. See `staging` below.
+        /// The configuration of a presetCanaryMacau environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryMacau? PresetCanaryMacau;
         /// <summary>
-        /// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+        /// The configuration of a presetCanaryNeimenggu environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryNeimenggu? PresetCanaryNeimenggu;
         /// <summary>
-        /// The configuration of a presetCanaryNingxia environment. See `staging` below.
+        /// The configuration of a presetCanaryNingxia environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryNingxia? PresetCanaryNingxia;
         /// <summary>
-        /// The configuration of a presetCanaryOverseas environment. See `staging` below.
+        /// The configuration of a presetCanaryOverseas environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryOverseas? PresetCanaryOverseas;
         /// <summary>
-        /// The configuration of a presetCanaryQinghai environment. See `staging` below.
+        /// The configuration of a presetCanaryQinghai environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryQinghai? PresetCanaryQinghai;
         /// <summary>
-        /// The configuration of a presetCanaryShaanxi environment. See `staging` below.
+        /// The configuration of a presetCanaryShaanxi environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShaanxi? PresetCanaryShaanxi;
         /// <summary>
-        /// The configuration of a presetCanaryShandong environment. See `staging` below.
+        /// The configuration of a presetCanaryShandong environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShandong? PresetCanaryShandong;
         /// <summary>
-        /// The configuration of a presetCanaryShanghai environment. See `staging` below.
+        /// The configuration of a presetCanaryShanghai environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShanghai? PresetCanaryShanghai;
         /// <summary>
-        /// The configuration of a presetCanaryShanxi environment. See `staging` below.
+        /// The configuration of a presetCanaryShanxi environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShanxi? PresetCanaryShanxi;
         /// <summary>
-        /// The configuration of a presetCanarySichuan environment. See `staging` below.
+        /// The configuration of a presetCanarySichuan environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanarySichuan? PresetCanarySichuan;
         /// <summary>
-        /// The configuration of a presetCanaryTaiwan environment. See `staging` below.
+        /// The configuration of a presetCanaryTaiwan environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryTaiwan? PresetCanaryTaiwan;
         /// <summary>
-        /// The configuration of a presetCanaryTianjin environment. See `staging` below.
+        /// The configuration of a presetCanaryTianjin environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryTianjin? PresetCanaryTianjin;
         /// <summary>
-        /// The configuration of a presetCanaryXinjiang environment. See `staging` below.
+        /// The configuration of a presetCanaryXinjiang environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryXinjiang? PresetCanaryXinjiang;
         /// <summary>
-        /// The configuration of a presetCanaryXizang environment. See `staging` below.
+        /// The configuration of a presetCanaryXizang environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryXizang? PresetCanaryXizang;
         /// <summary>
-        /// The configuration of a presetCanaryYunnan environment. See `staging` below.
+        /// The configuration of a presetCanaryYunnan environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryYunnan? PresetCanaryYunnan;
         /// <summary>
-        /// The configuration of a presetCanaryZhejiang environment. See `staging` below.
+        /// The configuration of a presetCanaryZhejiang environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryZhejiang? PresetCanaryZhejiang;
         /// <summary>
-        /// The configuration of a production environment. See `staging` below.
+        /// The configuration of a production environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfProduction? Production;
         /// <summary>
-        /// The configuration of a staging environment. See `staging` below.
+        /// The configuration of a staging environment. See `Staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfStaging? Staging;
 

@@ -211,14 +211,14 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.adjustmentValue);
     }
     /**
-     * AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * AlarmDimension for StepScalingRule. See `alarmDimension` below.
      * 
      */
     @Export(name="alarmDimension", refs={ScalingRuleAlarmDimension.class}, tree="[0]")
     private Output</* @Nullable */ ScalingRuleAlarmDimension> alarmDimension;
 
     /**
-     * @return AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * @return AlarmDimension for StepScalingRule. See `alarmDimension` below.
      * 
      */
     public Output<Optional<ScalingRuleAlarmDimension>> alarmDimension() {
@@ -281,14 +281,14 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return this.estimatedInstanceWarmup;
     }
     /**
-     * The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      * 
      */
     @Export(name="hybridMetrics", refs={List.class,ScalingRuleHybridMetric.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingRuleHybridMetric>> hybridMetrics;
 
     /**
-     * @return The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * @return The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      * 
      */
     public Output<Optional<List<ScalingRuleHybridMetric>>> hybridMetrics() {
@@ -491,14 +491,14 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scalingRuleType);
     }
     /**
-     * Steps for StepScalingRule. See `step_adjustment` below.
+     * Steps for StepScalingRule. See `stepAdjustment` below.
      * 
      */
     @Export(name="stepAdjustments", refs={List.class,ScalingRuleStepAdjustment.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingRuleStepAdjustment>> stepAdjustments;
 
     /**
-     * @return Steps for StepScalingRule. See `step_adjustment` below.
+     * @return Steps for StepScalingRule. See `stepAdjustment` below.
      * 
      */
     public Output<Optional<List<ScalingRuleStepAdjustment>>> stepAdjustments() {

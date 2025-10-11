@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainRouteConfig
     {
         /// <summary>
-        /// Routing Configuration List See `routes` below.
+        /// Routing Configuration List See `Routes` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3CustomDomainRouteConfigRoute> Routes;
 

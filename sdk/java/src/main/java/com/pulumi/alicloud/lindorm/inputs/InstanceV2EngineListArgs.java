@@ -81,14 +81,14 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Node Group List See `node_group` below.
+     * Node Group List See `nodeGroup` below.
      * 
      */
     @Import(name="nodeGroups")
     private @Nullable Output<List<InstanceV2EngineListNodeGroupArgs>> nodeGroups;
 
     /**
-     * @return Node Group List See `node_group` below.
+     * @return Node Group List See `nodeGroup` below.
      * 
      */
     public Optional<Output<List<InstanceV2EngineListNodeGroupArgs>>> nodeGroups() {
@@ -234,7 +234,7 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeGroups Node Group List See `node_group` below.
+         * @param nodeGroups Node Group List See `nodeGroup` below.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeGroups Node Group List See `node_group` below.
+         * @param nodeGroups Node Group List See `nodeGroup` below.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeGroups Node Group List See `node_group` below.
+         * @param nodeGroups Node Group List See `nodeGroup` below.
          * 
          * @return builder
          * 

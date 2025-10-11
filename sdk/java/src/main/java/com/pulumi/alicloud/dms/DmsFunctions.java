@@ -604,6 +604,10 @@ public final class DmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases() {
         return getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.Empty, InvokeOptions.Empty);
@@ -612,6 +616,10 @@ public final class DmsFunctions {
      * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain() {
@@ -622,6 +630,10 @@ public final class DmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args) {
         return getEnterpriseLogicDatabases(args, InvokeOptions.Empty);
@@ -630,6 +642,10 @@ public final class DmsFunctions {
      * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args) {
@@ -640,6 +656,10 @@ public final class DmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
@@ -649,6 +669,10 @@ public final class DmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
@@ -657,6 +681,10 @@ public final class DmsFunctions {
      * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args, InvokeOptions options) {

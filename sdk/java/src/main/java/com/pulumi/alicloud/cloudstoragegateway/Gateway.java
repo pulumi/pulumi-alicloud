@@ -128,14 +128,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+     * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
      * 
      */
     @Export(name="gatewayClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayClass;
 
     /**
-     * @return The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+     * @return The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
      * 
      */
     public Output<Optional<String>> gatewayClass() {
@@ -176,14 +176,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
+     * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
      * 
      */
     @Export(name="publicNetworkBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicNetworkBandwidth;
 
     /**
-     * @return The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
+     * @return The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
      * 
      */
     public Output<Integer> publicNetworkBandwidth() {
@@ -274,14 +274,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
+     * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
+     * @return The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
      * 
      */
     public Output<Optional<String>> vswitchId() {

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         /// </summary>
         public readonly string? SecurityIpList;
         /// <summary>
-        /// The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
+        /// The IP address type. Valid values: `Ipv4`, `Ipv6` (not supported).
         /// </summary>
         public readonly string? SecurityIpType;
 

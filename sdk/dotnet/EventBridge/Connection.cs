@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.EventBridge
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The parameters that are configured for authentication. See `auth_parameters` below.
+        /// The parameters that are configured for authentication. See `AuthParameters` below.
         /// </summary>
         [Output("authParameters")]
         public Output<Outputs.ConnectionAuthParameters?> AuthParameters { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters that are configured for the network. See `network_parameters` below.
+        /// The parameters that are configured for the network. See `NetworkParameters` below.
         /// </summary>
         [Output("networkParameters")]
         public Output<Outputs.ConnectionNetworkParameters> NetworkParameters { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.EventBridge
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The parameters that are configured for authentication. See `auth_parameters` below.
+        /// The parameters that are configured for authentication. See `AuthParameters` below.
         /// </summary>
         [Input("authParameters")]
         public Input<Inputs.ConnectionAuthParametersArgs>? AuthParameters { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for the network. See `network_parameters` below.
+        /// The parameters that are configured for the network. See `NetworkParameters` below.
         /// </summary>
         [Input("networkParameters", required: true)]
         public Input<Inputs.ConnectionNetworkParametersArgs> NetworkParameters { get; set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.EventBridge
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The parameters that are configured for authentication. See `auth_parameters` below.
+        /// The parameters that are configured for authentication. See `AuthParameters` below.
         /// </summary>
         [Input("authParameters")]
         public Input<Inputs.ConnectionAuthParametersGetArgs>? AuthParameters { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for the network. See `network_parameters` below.
+        /// The parameters that are configured for the network. See `NetworkParameters` below.
         /// </summary>
         [Input("networkParameters")]
         public Input<Inputs.ConnectionNetworkParametersGetArgs>? NetworkParameters { get; set; }

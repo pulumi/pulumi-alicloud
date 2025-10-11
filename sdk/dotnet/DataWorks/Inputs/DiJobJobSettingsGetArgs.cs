@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiJobJobSettingsColumnDataTypeSettingGetArgs>? _columnDataTypeSettings;
 
         /// <summary>
-        /// Column type mapping of the synchronization task See `column_data_type_settings` below.
+        /// Column type mapping of the synchronization task See `ColumnDataTypeSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobJobSettingsColumnDataTypeSettingGetArgs> ColumnDataTypeSettings
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         }
 
         /// <summary>
-        /// Periodic scheduling settings See `cycle_schedule_settings` below.
+        /// Periodic scheduling settings See `CycleScheduleSettings` below.
         /// </summary>
         [Input("cycleScheduleSettings")]
         public Input<Inputs.DiJobJobSettingsCycleScheduleSettingsGetArgs>? CycleScheduleSettings { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiJobJobSettingsDdlHandlingSettingGetArgs>? _ddlHandlingSettings;
 
         /// <summary>
-        /// List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+        /// List of DDL processing settings for synchronization tasks See `DdlHandlingSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobJobSettingsDdlHandlingSettingGetArgs> DdlHandlingSettings
         {
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiJobJobSettingsRuntimeSettingGetArgs>? _runtimeSettings;
 
         /// <summary>
-        /// Run-time setting parameter list See `runtime_settings` below.
+        /// Run-time setting parameter list See `RuntimeSettings` below.
         /// </summary>
         public InputList<Inputs.DiJobJobSettingsRuntimeSettingGetArgs> RuntimeSettings
         {

@@ -31,14 +31,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      * 
      */
     @Import(name="diskCategory")
     private @Nullable Output<String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      * 
      */
     public Optional<Output<String>> diskCategory() {
@@ -61,14 +61,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+     * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      * 
      */
     @Import(name="engineType")
     private @Nullable Output<String> engineType;
 
     /**
-     * @return The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+     * @return The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      * 
      */
     public Optional<Output<String>> engineType() {
@@ -280,7 +280,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+         * @param diskCategory The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+         * @param diskCategory The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineType The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+         * @param engineType The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineType The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+         * @param engineType The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
          * 
          * @return builder
          * 

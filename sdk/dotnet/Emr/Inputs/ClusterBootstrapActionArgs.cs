@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<string>? ExecutionMoment { get; set; }
 
         /// <summary>
-        /// bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
+        /// bootstrap action execution target, you can specify the host group name, e.g. "CoreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
         /// </summary>
         [Input("executionTarget")]
         public Input<string>? ExecutionTarget { get; set; }

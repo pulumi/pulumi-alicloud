@@ -18,7 +18,7 @@ public final class ScalingGroupVServerGroupsVserverGroup {
      */
     private String loadbalancerId;
     /**
-     * @return A list of VServer Group attributes. See `vserver_attributes` below.
+     * @return A list of VServer Group attributes. See `vserverAttributes` below.
      * 
      */
     private List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes;
@@ -32,7 +32,7 @@ public final class ScalingGroupVServerGroupsVserverGroup {
         return this.loadbalancerId;
     }
     /**
-     * @return A list of VServer Group attributes. See `vserver_attributes` below.
+     * @return A list of VServer Group attributes. See `vserverAttributes` below.
      * 
      */
     public List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes() {

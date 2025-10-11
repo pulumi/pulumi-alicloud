@@ -35,7 +35,7 @@ public final class EciScalingConfigurationContainer {
     private @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
-     * See `environment_vars` below for details.
+     * See `environmentVars` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars;
@@ -203,7 +203,7 @@ public final class EciScalingConfigurationContainer {
     private @Nullable Boolean tty;
     /**
      * @return The structure of volumeMounts.
-     * See `volume_mounts` below for details.
+     * See `volumeMounts` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
@@ -237,7 +237,7 @@ public final class EciScalingConfigurationContainer {
     }
     /**
      * @return The structure of environmentVars.
-     * See `environment_vars` below for details.
+     * See `environmentVars` below for details.
      * 
      */
     public List<EciScalingConfigurationContainerEnvironmentVar> environmentVars() {
@@ -471,7 +471,7 @@ public final class EciScalingConfigurationContainer {
     }
     /**
      * @return The structure of volumeMounts.
-     * See `volume_mounts` below for details.
+     * See `volumeMounts` below for details.
      * 
      */
     public List<EciScalingConfigurationContainerVolumeMount> volumeMounts() {

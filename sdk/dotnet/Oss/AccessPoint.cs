@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> NetworkOrigin { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+        /// Configuration of Access Point Blocking Public Access See `PublicAccessBlockConfiguration` below.
         /// </summary>
         [Output("publicAccessBlockConfiguration")]
         public Output<Outputs.AccessPointPublicAccessBlockConfiguration?> PublicAccessBlockConfiguration { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+        /// If the Network Origin is vpc, the VPC source information is saved here. See `VpcConfiguration` below.
         /// </summary>
         [Output("vpcConfiguration")]
         public Output<Outputs.AccessPointVpcConfiguration?> VpcConfiguration { get; private set; } = null!;
@@ -171,13 +171,13 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> NetworkOrigin { get; set; } = null!;
 
         /// <summary>
-        /// Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+        /// Configuration of Access Point Blocking Public Access See `PublicAccessBlockConfiguration` below.
         /// </summary>
         [Input("publicAccessBlockConfiguration")]
         public Input<Inputs.AccessPointPublicAccessBlockConfigurationArgs>? PublicAccessBlockConfiguration { get; set; }
 
         /// <summary>
-        /// If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+        /// If the Network Origin is vpc, the VPC source information is saved here. See `VpcConfiguration` below.
         /// </summary>
         [Input("vpcConfiguration")]
         public Input<Inputs.AccessPointVpcConfigurationArgs>? VpcConfiguration { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? NetworkOrigin { get; set; }
 
         /// <summary>
-        /// Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+        /// Configuration of Access Point Blocking Public Access See `PublicAccessBlockConfiguration` below.
         /// </summary>
         [Input("publicAccessBlockConfiguration")]
         public Input<Inputs.AccessPointPublicAccessBlockConfigurationGetArgs>? PublicAccessBlockConfiguration { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+        /// If the Network Origin is vpc, the VPC source information is saved here. See `VpcConfiguration` below.
         /// </summary>
         [Input("vpcConfiguration")]
         public Input<Inputs.AccessPointVpcConfigurationGetArgs>? VpcConfiguration { get; set; }

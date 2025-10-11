@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.DataWorks.Outputs
         /// </summary>
         public readonly int? InhibitionInterval;
         /// <summary>
-        /// Alarm notification Channel See `notification_channels` below.
+        /// Alarm notification Channel See `NotificationChannels` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiAlarmRuleNotificationSettingsNotificationChannel> NotificationChannels;
         /// <summary>
-        /// List of alert notification recipients See `notification_receivers` below.
+        /// List of alert notification recipients See `NotificationReceivers` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiAlarmRuleNotificationSettingsNotificationReceiver> NotificationReceivers;
 

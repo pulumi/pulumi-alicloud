@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
     public sealed class ClusterNodeGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+        /// The node group of ack configuration for emr cluster to deploying on kubernetes. See `AckConfig` below.
         /// </summary>
         [Input("ackConfig")]
         public Input<Inputs.ClusterNodeGroupAckConfigArgs>? AckConfig { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<string>? _additionalSecurityGroupIds;
 
         /// <summary>
-        /// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+        /// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `AdditionalSecurityGroupIds` can be modified.
         /// </summary>
         public InputList<string> AdditionalSecurityGroupIds
         {
@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
-        /// The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+        /// The node group auto scaling policy for emr cluster. See `AutoScalingPolicy` below.
         /// </summary>
         [Input("autoScalingPolicy")]
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyArgs>? AutoScalingPolicy { get; set; }
 
         /// <summary>
-        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+        /// The detail cost optimized configuration of emr cluster. See `CostOptimizedConfig` below. **NOTE:** From version 1.236.0, `CostOptimizedConfig` can be modified.
         /// </summary>
         [Input("costOptimizedConfig")]
         public Input<Inputs.ClusterNodeGroupCostOptimizedConfigArgs>? CostOptimizedConfig { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Host Ecs data disks information in this node group. See `data_disks` below.
+        /// Host Ecs data disks information in this node group. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupDataDiskArgs> DataDisks
         {
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
-        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `DeploymentSetStrategy` can be modified.
         /// </summary>
         [Input("deploymentSetStrategy")]
         public Input<string>? DeploymentSetStrategy { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<string>? _instanceTypes;
 
         /// <summary>
-        /// Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+        /// Host Ecs instance types. **NOTE:** From version 1.236.0, `InstanceTypes` can be modified.
         /// </summary>
         public InputList<string> InstanceTypes
         {
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The node group specific private pool resources. See `private_pool_options` below.
+        /// The node group specific private pool resources. See `PrivatePoolOptions` below.
         /// </summary>
         [Input("privatePoolOptions")]
         public Input<Inputs.ClusterNodeGroupPrivatePoolOptionsArgs>? PrivatePoolOptions { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupSpotBidPriceArgs>? _spotBidPrices;
 
         /// <summary>
-        /// The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+        /// The spot bid prices of a PayAsYouGo instance. See `SpotBidPrices` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupSpotBidPriceArgs> SpotBidPrices
         {
@@ -139,13 +139,13 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The detail configuration of subscription payment type. See `subscription_config` below.
+        /// The detail configuration of subscription payment type. See `SubscriptionConfig` below.
         /// </summary>
         [Input("subscriptionConfig")]
         public Input<Inputs.ClusterNodeGroupSubscriptionConfigArgs>? SubscriptionConfig { get; set; }
 
         /// <summary>
-        /// Host Ecs system disk information in this node group. See `system_disk` below.
+        /// Host Ecs system disk information in this node group. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk", required: true)]
         public Input<Inputs.ClusterNodeGroupSystemDiskArgs> SystemDisk { get; set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+        /// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `VswitchIds` can be modified.
         /// </summary>
         public InputList<string> VswitchIds
         {
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
-        /// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+        /// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `WithPublicIp` can be modified.
         /// </summary>
         [Input("withPublicIp")]
         public Input<bool>? WithPublicIp { get; set; }

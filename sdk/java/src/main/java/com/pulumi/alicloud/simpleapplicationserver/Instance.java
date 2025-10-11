@@ -43,14 +43,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
+     * The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `autoRenew` is valid when the attribute is `true`.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
+     * @return The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `autoRenew` is valid when the attribute is `true`.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {

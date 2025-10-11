@@ -54,7 +54,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
      */
     private @Nullable Integer mirrorAsyncStatus;
     /**
-     * @return Image back Source station authentication information See `mirror_auth` below.
+     * @return Image back Source station authentication information See `mirrorAuth` below.
      * 
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth mirrorAuth;
@@ -84,7 +84,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
      */
     private @Nullable Boolean mirrorFollowRedirect;
     /**
-     * @return Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+     * @return Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
      * 
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders mirrorHeaders;
@@ -94,7 +94,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
      */
     private @Nullable Boolean mirrorIsExpressTunnel;
     /**
-     * @return Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+     * @return Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
      * 
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates mirrorMultiAlternates;
@@ -114,7 +114,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
      */
     private @Nullable Boolean mirrorProxyPass;
     /**
-     * @return The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+     * @return The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
      * 
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders mirrorReturnHeaders;
@@ -139,7 +139,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
      */
     private @Nullable Boolean mirrorSwitchAllErrors;
     /**
-     * @return Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+     * @return Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
      * 
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings mirrorTaggings;
@@ -255,7 +255,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
         return Optional.ofNullable(this.mirrorAsyncStatus);
     }
     /**
-     * @return Image back Source station authentication information See `mirror_auth` below.
+     * @return Image back Source station authentication information See `mirrorAuth` below.
      * 
      */
     public Optional<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth> mirrorAuth() {
@@ -297,7 +297,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
         return Optional.ofNullable(this.mirrorFollowRedirect);
     }
     /**
-     * @return Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+     * @return Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
      * 
      */
     public Optional<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders> mirrorHeaders() {
@@ -311,7 +311,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
         return Optional.ofNullable(this.mirrorIsExpressTunnel);
     }
     /**
-     * @return Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+     * @return Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
      * 
      */
     public Optional<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates> mirrorMultiAlternates() {
@@ -339,7 +339,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
         return Optional.ofNullable(this.mirrorProxyPass);
     }
     /**
-     * @return The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+     * @return The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
      * 
      */
     public Optional<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders> mirrorReturnHeaders() {
@@ -374,7 +374,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirect {
         return Optional.ofNullable(this.mirrorSwitchAllErrors);
     }
     /**
-     * @return Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+     * @return Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
      * 
      */
     public Optional<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings> mirrorTaggings() {

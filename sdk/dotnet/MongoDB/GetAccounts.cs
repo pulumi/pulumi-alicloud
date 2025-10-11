@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the account. Valid values: `root`.
+        /// The name of the account. Valid values: `Root`.
         /// </summary>
         [Input("accountName")]
         public string? AccountName { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the account. Valid values: `root`.
+        /// The name of the account. Valid values: `Root`.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }

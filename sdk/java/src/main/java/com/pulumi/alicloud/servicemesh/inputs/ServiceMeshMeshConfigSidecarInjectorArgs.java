@@ -48,14 +48,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * CNI configuration See `init_cni_configuration` below.
+     * CNI configuration See `initCniConfiguration` below.
      * 
      */
     @Import(name="initCniConfiguration")
     private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs> initCniConfiguration;
 
     /**
-     * @return CNI configuration See `init_cni_configuration` below.
+     * @return CNI configuration See `initCniConfiguration` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs>> initCniConfiguration() {
@@ -211,7 +211,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param initCniConfiguration CNI configuration See `init_cni_configuration` below.
+         * @param initCniConfiguration CNI configuration See `initCniConfiguration` below.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param initCniConfiguration CNI configuration See `init_cni_configuration` below.
+         * @param initCniConfiguration CNI configuration See `initCniConfiguration` below.
          * 
          * @return builder
          * 

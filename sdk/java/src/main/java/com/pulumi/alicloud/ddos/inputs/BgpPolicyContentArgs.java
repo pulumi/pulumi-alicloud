@@ -84,14 +84,14 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Fingerprint Rules. See `finger_print_rule_list` below.
+     * Fingerprint Rules. See `fingerPrintRuleList` below.
      * 
      */
     @Import(name="fingerPrintRuleLists")
     private @Nullable Output<List<BgpPolicyContentFingerPrintRuleListArgs>> fingerPrintRuleLists;
 
     /**
-     * @return Fingerprint Rules. See `finger_print_rule_list` below.
+     * @return Fingerprint Rules. See `fingerPrintRuleList` below.
      * 
      */
     public Optional<Output<List<BgpPolicyContentFingerPrintRuleListArgs>>> fingerPrintRuleLists() {
@@ -114,14 +114,14 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * L4 protection rules. See `layer4_rule_list` below.
+     * L4 protection rules. See `layer4RuleList` below.
      * 
      */
     @Import(name="layer4RuleLists")
     private @Nullable Output<List<BgpPolicyContentLayer4RuleListArgs>> layer4RuleLists;
 
     /**
-     * @return L4 protection rules. See `layer4_rule_list` below.
+     * @return L4 protection rules. See `layer4RuleList` below.
      * 
      */
     public Optional<Output<List<BgpPolicyContentLayer4RuleListArgs>>> layer4RuleLists() {
@@ -129,14 +129,14 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Port Rule List. See `port_rule_list` below.
+     * Port Rule List. See `portRuleList` below.
      * 
      */
     @Import(name="portRuleLists")
     private @Nullable Output<List<BgpPolicyContentPortRuleListArgs>> portRuleLists;
 
     /**
-     * @return Port Rule List. See `port_rule_list` below.
+     * @return Port Rule List. See `portRuleList` below.
      * 
      */
     public Optional<Output<List<BgpPolicyContentPortRuleListArgs>>> portRuleLists() {
@@ -189,14 +189,14 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Source pull Black. See `source_block_list` below.
+     * Source pull Black. See `sourceBlockList` below.
      * 
      */
     @Import(name="sourceBlockLists")
     private @Nullable Output<List<BgpPolicyContentSourceBlockListArgs>> sourceBlockLists;
 
     /**
-     * @return Source pull Black. See `source_block_list` below.
+     * @return Source pull Black. See `sourceBlockList` below.
      * 
      */
     public Optional<Output<List<BgpPolicyContentSourceBlockListArgs>>> sourceBlockLists() {
@@ -204,14 +204,14 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Do not fill in when the source speed limit is deleted. See `source_limit` below.
+     * Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
      * 
      */
     @Import(name="sourceLimit")
     private @Nullable Output<BgpPolicyContentSourceLimitArgs> sourceLimit;
 
     /**
-     * @return Do not fill in when the source speed limit is deleted. See `source_limit` below.
+     * @return Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
      * 
      */
     public Optional<Output<BgpPolicyContentSourceLimitArgs>> sourceLimit() {
@@ -355,7 +355,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerPrintRuleLists Fingerprint Rules. See `finger_print_rule_list` below.
+         * @param fingerPrintRuleLists Fingerprint Rules. See `fingerPrintRuleList` below.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerPrintRuleLists Fingerprint Rules. See `finger_print_rule_list` below.
+         * @param fingerPrintRuleLists Fingerprint Rules. See `fingerPrintRuleList` below.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerPrintRuleLists Fingerprint Rules. See `finger_print_rule_list` below.
+         * @param fingerPrintRuleLists Fingerprint Rules. See `fingerPrintRuleList` below.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param layer4RuleLists L4 protection rules. See `layer4_rule_list` below.
+         * @param layer4RuleLists L4 protection rules. See `layer4RuleList` below.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param layer4RuleLists L4 protection rules. See `layer4_rule_list` below.
+         * @param layer4RuleLists L4 protection rules. See `layer4RuleList` below.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param layer4RuleLists L4 protection rules. See `layer4_rule_list` below.
+         * @param layer4RuleLists L4 protection rules. See `layer4RuleList` below.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portRuleLists Port Rule List. See `port_rule_list` below.
+         * @param portRuleLists Port Rule List. See `portRuleList` below.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portRuleLists Port Rule List. See `port_rule_list` below.
+         * @param portRuleLists Port Rule List. See `portRuleList` below.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portRuleLists Port Rule List. See `port_rule_list` below.
+         * @param portRuleLists Port Rule List. See `portRuleList` below.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceBlockLists Source pull Black. See `source_block_list` below.
+         * @param sourceBlockLists Source pull Black. See `sourceBlockList` below.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceBlockLists Source pull Black. See `source_block_list` below.
+         * @param sourceBlockLists Source pull Black. See `sourceBlockList` below.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceBlockLists Source pull Black. See `source_block_list` below.
+         * @param sourceBlockLists Source pull Black. See `sourceBlockList` below.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceLimit Do not fill in when the source speed limit is deleted. See `source_limit` below.
+         * @param sourceLimit Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class BgpPolicyContentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceLimit Do not fill in when the source speed limit is deleted. See `source_limit` below.
+         * @param sourceLimit Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
          * 
          * @return builder
          * 

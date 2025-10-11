@@ -217,42 +217,42 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
+     * The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `customContainerConfig` below.
      * 
      */
     @Export(name="customContainerConfig", refs={V3FunctionCustomContainerConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionCustomContainerConfig> customContainerConfig;
 
     /**
-     * @return The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
+     * @return The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `customContainerConfig` below.
      * 
      */
     public Output<Optional<V3FunctionCustomContainerConfig>> customContainerConfig() {
         return Codegen.optional(this.customContainerConfig);
     }
     /**
-     * Function custom DNS configuration See `custom_dns` below.
+     * Function custom DNS configuration See `customDns` below.
      * 
      */
     @Export(name="customDns", refs={V3FunctionCustomDns.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionCustomDns> customDns;
 
     /**
-     * @return Function custom DNS configuration See `custom_dns` below.
+     * @return Function custom DNS configuration See `customDns` below.
      * 
      */
     public Output<Optional<V3FunctionCustomDns>> customDns() {
         return Codegen.optional(this.customDns);
     }
     /**
-     * Customize the runtime configuration. See `custom_runtime_config` below.
+     * Customize the runtime configuration. See `customRuntimeConfig` below.
      * 
      */
     @Export(name="customRuntimeConfig", refs={V3FunctionCustomRuntimeConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionCustomRuntimeConfig> customRuntimeConfig;
 
     /**
-     * @return Customize the runtime configuration. See `custom_runtime_config` below.
+     * @return Customize the runtime configuration. See `customRuntimeConfig` below.
      * 
      */
     public Output<Optional<V3FunctionCustomRuntimeConfig>> customRuntimeConfig() {
@@ -343,14 +343,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.functionName;
     }
     /**
-     * Function GPU configuration. See `gpu_config` below.
+     * Function GPU configuration. See `gpuConfig` below.
      * 
      */
     @Export(name="gpuConfig", refs={V3FunctionGpuConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionGpuConfig> gpuConfig;
 
     /**
-     * @return Function GPU configuration. See `gpu_config` below.
+     * @return Function GPU configuration. See `gpuConfig` below.
      * 
      */
     public Output<Optional<V3FunctionGpuConfig>> gpuConfig() {
@@ -399,14 +399,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceIsolationMode);
     }
     /**
-     * Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
+     * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      * 
      */
     @Export(name="instanceLifecycleConfig", refs={V3FunctionInstanceLifecycleConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionInstanceLifecycleConfig> instanceLifecycleConfig;
 
     /**
-     * @return Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
+     * @return Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      * 
      */
     public Output<Optional<V3FunctionInstanceLifecycleConfig>> instanceLifecycleConfig() {
@@ -427,14 +427,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.internetAccess;
     }
     /**
-     * Invocation Restriction Detail See `invocation_restriction` below.
+     * Invocation Restriction Detail See `invocationRestriction` below.
      * 
      */
     @Export(name="invocationRestriction", refs={V3FunctionInvocationRestriction.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionInvocationRestriction> invocationRestriction;
 
     /**
-     * @return Invocation Restriction Detail See `invocation_restriction` below.
+     * @return Invocation Restriction Detail See `invocationRestriction` below.
      * 
      */
     public Output<Optional<V3FunctionInvocationRestriction>> invocationRestriction() {
@@ -511,14 +511,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.layers);
     }
     /**
-     * The logs generated by the function are written to the configured Logstore. See `log_config` below.
+     * The logs generated by the function are written to the configured Logstore. See `logConfig` below.
      * 
      */
     @Export(name="logConfig", refs={V3FunctionLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionLogConfig> logConfig;
 
     /**
-     * @return The logs generated by the function are written to the configured Logstore. See `log_config` below.
+     * @return The logs generated by the function are written to the configured Logstore. See `logConfig` below.
      * 
      */
     public Output<Optional<V3FunctionLogConfig>> logConfig() {
@@ -539,28 +539,28 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.memorySize;
     }
     /**
-     * NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
+     * NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nasConfig` below.
      * 
      */
     @Export(name="nasConfig", refs={V3FunctionNasConfig.class}, tree="[0]")
     private Output<V3FunctionNasConfig> nasConfig;
 
     /**
-     * @return NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
+     * @return NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nasConfig` below.
      * 
      */
     public Output<V3FunctionNasConfig> nasConfig() {
         return this.nasConfig;
     }
     /**
-     * OSS mount configuration See `oss_mount_config` below.
+     * OSS mount configuration See `ossMountConfig` below.
      * 
      */
     @Export(name="ossMountConfig", refs={V3FunctionOssMountConfig.class}, tree="[0]")
     private Output<V3FunctionOssMountConfig> ossMountConfig;
 
     /**
-     * @return OSS mount configuration See `oss_mount_config` below.
+     * @return OSS mount configuration See `ossMountConfig` below.
      * 
      */
     public Output<V3FunctionOssMountConfig> ossMountConfig() {
@@ -721,14 +721,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.tracingConfig;
     }
     /**
-     * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
+     * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      * 
      */
     @Export(name="vpcConfig", refs={V3FunctionVpcConfig.class}, tree="[0]")
     private Output<V3FunctionVpcConfig> vpcConfig;
 
     /**
-     * @return VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
+     * @return VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      * 
      */
     public Output<V3FunctionVpcConfig> vpcConfig() {

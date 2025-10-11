@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> IpType { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `NodeItems` below.
         /// </summary>
         [Output("nodeItems")]
         public Output<ImmutableArray<Outputs.DbInstanceEndpointNodeItem>> NodeItems { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DbInstanceEndpointNodeItemArgs>? _nodeItems;
 
         /// <summary>
-        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `NodeItems` below.
         /// </summary>
         public InputList<Inputs.DbInstanceEndpointNodeItemArgs> NodeItems
         {
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DbInstanceEndpointNodeItemGetArgs>? _nodeItems;
 
         /// <summary>
-        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `NodeItems` below.
         /// </summary>
         public InputList<Inputs.DbInstanceEndpointNodeItemGetArgs> NodeItems
         {

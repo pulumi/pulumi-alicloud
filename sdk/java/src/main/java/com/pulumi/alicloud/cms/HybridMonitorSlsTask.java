@@ -178,14 +178,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask")
 public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
     /**
-     * The label of the monitoring task. See `attach_labels` below.
+     * The label of the monitoring task. See `attachLabels` below.
      * 
      */
     @Export(name="attachLabels", refs={List.class,HybridMonitorSlsTaskAttachLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HybridMonitorSlsTaskAttachLabel>> attachLabels;
 
     /**
-     * @return The label of the monitoring task. See `attach_labels` below.
+     * @return The label of the monitoring task. See `attachLabels` below.
      * 
      */
     public Output<Optional<List<HybridMonitorSlsTaskAttachLabel>>> attachLabels() {
@@ -248,14 +248,14 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
         return this.namespace;
     }
     /**
-     * The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+     * The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      * 
      */
     @Export(name="slsProcessConfig", refs={HybridMonitorSlsTaskSlsProcessConfig.class}, tree="[0]")
     private Output<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig;
 
     /**
-     * @return The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+     * @return The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      * 
      */
     public Output<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig() {

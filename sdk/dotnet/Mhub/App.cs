@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Mhub
         public Output<string> AppName { get; private set; } = null!;
 
         /// <summary>
-        /// The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// The app id of iOS. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         [Output("bundleId")]
         public Output<string?> BundleId { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Mhub
         public Output<string> IndustryId { get; private set; } = null!;
 
         /// <summary>
-        /// Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// Android App package name. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         [Output("packageName")]
         public Output<string?> PackageName { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Mhub
         public Input<string> AppName { get; set; } = null!;
 
         /// <summary>
-        /// The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// The app id of iOS. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         [Input("bundleId")]
         public Input<string>? BundleId { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Mhub
         public Input<string>? IndustryId { get; set; }
 
         /// <summary>
-        /// Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// Android App package name. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         [Input("packageName")]
         public Input<string>? PackageName { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Mhub
         public Input<string>? AppName { get; set; }
 
         /// <summary>
-        /// The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// The app id of iOS. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         [Input("bundleId")]
         public Input<string>? BundleId { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Mhub
         public Input<string>? IndustryId { get; set; }
 
         /// <summary>
-        /// Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// Android App package name. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         [Input("packageName")]
         public Input<string>? PackageName { get; set; }

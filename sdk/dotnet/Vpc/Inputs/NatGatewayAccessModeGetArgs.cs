@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string>? ModeValue { get; set; }
 
         /// <summary>
-        /// The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        /// The type of Tunnel. Valid values: `Geneve`. **NOTE:** `TunnelType` takes effect only if `ModeValue` is set to `Tunnel`.
         /// </summary>
         [Input("tunnelType")]
         public Input<string>? TunnelType { get; set; }

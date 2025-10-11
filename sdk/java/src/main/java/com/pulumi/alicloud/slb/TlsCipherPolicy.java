@@ -72,14 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/tlsCipherPolicy:TlsCipherPolicy")
 public class TlsCipherPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The encryption algorithms supported. It depends on the value of `tls_versions`.
+     * The encryption algorithms supported. It depends on the value of `tlsVersions`.
      * 
      */
     @Export(name="ciphers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ciphers;
 
     /**
-     * @return The encryption algorithms supported. It depends on the value of `tls_versions`.
+     * @return The encryption algorithms supported. It depends on the value of `tlsVersions`.
      * 
      */
     public Output<List<String>> ciphers() {

@@ -34,14 +34,14 @@ public final class BucketWebsiteRoutingRulesRoutingRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The Lua script configuration to be executed. See `lua_config` below.
+     * The Lua script configuration to be executed. See `luaConfig` below.
      * 
      */
     @Import(name="luaConfig")
     private @Nullable Output<BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs> luaConfig;
 
     /**
-     * @return The Lua script configuration to be executed. See `lua_config` below.
+     * @return The Lua script configuration to be executed. See `luaConfig` below.
      * 
      */
     public Optional<Output<BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs>> luaConfig() {
@@ -127,7 +127,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param luaConfig The Lua script configuration to be executed. See `lua_config` below.
+         * @param luaConfig The Lua script configuration to be executed. See `luaConfig` below.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param luaConfig The Lua script configuration to be executed. See `lua_config` below.
+         * @param luaConfig The Lua script configuration to be executed. See `luaConfig` below.
          * 
          * @return builder
          * 

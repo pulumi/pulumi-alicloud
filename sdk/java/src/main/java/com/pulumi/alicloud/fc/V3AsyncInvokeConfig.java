@@ -182,14 +182,14 @@ public class V3AsyncInvokeConfig extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Target Configuration See `destination_config` below.
+     * Target Configuration See `destinationConfig` below.
      * 
      */
     @Export(name="destinationConfig", refs={V3AsyncInvokeConfigDestinationConfig.class}, tree="[0]")
     private Output</* @Nullable */ V3AsyncInvokeConfigDestinationConfig> destinationConfig;
 
     /**
-     * @return Target Configuration See `destination_config` below.
+     * @return Target Configuration See `destinationConfig` below.
      * 
      */
     public Output<Optional<V3AsyncInvokeConfigDestinationConfig>> destinationConfig() {

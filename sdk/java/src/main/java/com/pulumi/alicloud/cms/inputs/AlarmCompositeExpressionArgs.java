@@ -34,14 +34,14 @@ public final class AlarmCompositeExpressionArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The trigger conditions that are created in standard mode. See `expression_list` below.
+     * The trigger conditions that are created in standard mode. See `expressionList` below.
      * 
      */
     @Import(name="expressionLists")
     private @Nullable Output<List<AlarmCompositeExpressionExpressionListArgs>> expressionLists;
 
     /**
-     * @return The trigger conditions that are created in standard mode. See `expression_list` below.
+     * @return The trigger conditions that are created in standard mode. See `expressionList` below.
      * 
      */
     public Optional<Output<List<AlarmCompositeExpressionExpressionListArgs>>> expressionLists() {
@@ -143,7 +143,7 @@ public final class AlarmCompositeExpressionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param expressionLists The trigger conditions that are created in standard mode. See `expression_list` below.
+         * @param expressionLists The trigger conditions that are created in standard mode. See `expressionList` below.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class AlarmCompositeExpressionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param expressionLists The trigger conditions that are created in standard mode. See `expression_list` below.
+         * @param expressionLists The trigger conditions that are created in standard mode. See `expressionList` below.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class AlarmCompositeExpressionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param expressionLists The trigger conditions that are created in standard mode. See `expression_list` below.
+         * @param expressionLists The trigger conditions that are created in standard mode. See `expressionList` below.
          * 
          * @return builder
          * 

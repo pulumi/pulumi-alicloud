@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`.
+        /// The type of the ACL. Valid values: `White`, `Black`.
         /// </summary>
         [Output("aclType")]
         public Output<string> AclType { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`.
+        /// The type of the ACL. Valid values: `White`, `Black`.
         /// </summary>
         [Input("aclType", required: true)]
         public Input<string> AclType { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`.
+        /// The type of the ACL. Valid values: `White`, `Black`.
         /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }

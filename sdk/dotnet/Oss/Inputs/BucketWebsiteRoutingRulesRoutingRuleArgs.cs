@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketWebsiteRoutingRulesRoutingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Save the criteria that the rule needs to match. See `condition` below.
+        /// Save the criteria that the rule needs to match. See `Condition` below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// The Lua script configuration to be executed. See `lua_config` below.
+        /// The Lua script configuration to be executed. See `LuaConfig` below.
         /// </summary>
         [Input("luaConfig")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs>? LuaConfig { get; set; }
 
         /// <summary>
-        /// Specifies the action to perform after this rule is matched. See `redirect` below.
+        /// Specifies the action to perform after this rule is matched. See `Redirect` below.
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.BucketWebsiteRoutingRulesRoutingRuleRedirectArgs>? Redirect { get; set; }

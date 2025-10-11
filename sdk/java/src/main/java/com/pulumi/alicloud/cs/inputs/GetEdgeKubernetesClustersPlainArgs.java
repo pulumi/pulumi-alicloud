@@ -17,14 +17,14 @@ public final class GetEdgeKubernetesClustersPlainArgs extends com.pulumi.resourc
     public static final GetEdgeKubernetesClustersPlainArgs Empty = new GetEdgeKubernetesClustersPlainArgs();
 
     /**
-     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -104,7 +104,7 @@ public final class GetEdgeKubernetesClustersPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
          * 
          * @return builder
          * 

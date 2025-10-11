@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Rds
         public string? DbType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output parameter template about resource attributes.
+        /// Default to `False`. Set it to `True` can output parameter template about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// A map of tags assigned to the DB instances. 
-        /// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
+        /// Note: Before 1.60.0, the value's format is a `Json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Rds
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output parameter template about resource attributes.
+        /// Default to `False`. Set it to `True` can output parameter template about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// A map of tags assigned to the DB instances. 
-        /// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
+        /// Note: Before 1.60.0, the value's format is a `Json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
         /// </summary>
         public InputMap<string> Tags
         {
@@ -299,7 +299,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

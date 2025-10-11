@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESS scaling configuration resource.
  * 
- * &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
+ * &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
  * 
  * &gt; **NOTE:** Available since v1.39.0.
  * 
@@ -195,28 +195,28 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.creditSpecification);
     }
     /**
-     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
      * 
      */
     @Export(name="customPriorities", refs={List.class,ScalingConfigurationCustomPriority.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationCustomPriority>> customPriorities;
 
     /**
-     * @return You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+     * @return You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationCustomPriority>>> customPriorities() {
         return Codegen.optional(this.customPriorities);
     }
     /**
-     * DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+     * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      * 
      */
     @Export(name="dataDisks", refs={List.class,ScalingConfigurationDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationDataDisk>> dataDisks;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationDataDisk>>> dataDisks() {
@@ -367,14 +367,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
      * 
      */
     @Export(name="instancePatternInfos", refs={List.class,ScalingConfigurationInstancePatternInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationInstancePatternInfo>> instancePatternInfos;
 
     /**
-     * @return intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+     * @return intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationInstancePatternInfo>>> instancePatternInfos() {
@@ -395,14 +395,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceType);
     }
     /**
-     * specify the weight of instance type.  See `instance_type_override` below for details.
+     * specify the weight of instance type.  See `instanceTypeOverride` below for details.
      * 
      */
     @Export(name="instanceTypeOverrides", refs={List.class,ScalingConfigurationInstanceTypeOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationInstanceTypeOverride>> instanceTypeOverrides;
 
     /**
-     * @return specify the weight of instance type.  See `instance_type_override` below for details.
+     * @return specify the weight of instance type.  See `instanceTypeOverride` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationInstanceTypeOverride>>> instanceTypeOverrides() {
@@ -468,10 +468,10 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
      * @deprecated
-     * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
+    @Deprecated /* Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
     @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
@@ -525,28 +525,28 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
      * 
      */
     @Export(name="networkInterfaces", refs={List.class,ScalingConfigurationNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationNetworkInterface>> networkInterfaces;
 
     /**
-     * @return Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+     * @return Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationNetworkInterface>>> networkInterfaces() {
@@ -581,14 +581,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+     * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      * 
      */
     @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     /**
-     * @return Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+     * @return Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      * 
      */
     public Output<Optional<Boolean>> passwordInherit() {
@@ -665,28 +665,28 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityEnhancementStrategy);
     }
     /**
-     * ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+     * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+     * @return ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      * 
      */
     public Output<Optional<String>> securityGroupId() {
         return Codegen.optional(this.securityGroupId);
     }
     /**
-     * List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+     * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      * 
      */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
-     * @return List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+     * @return List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      * 
      */
     public Output<Optional<List<String>>> securityGroupIds() {
@@ -707,11 +707,11 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotDuration);
     }
     /**
-     * Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+     * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      * 
      * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
      * 
-     * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+     * &gt; **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      * 
      * &gt; **NOTE:** Restrictions on attaching ECS instances:
      * 
@@ -728,11 +728,11 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<ScalingConfigurationSpotPriceLimit>> spotPriceLimits;
 
     /**
-     * @return Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+     * @return Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      * 
      * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
      * 
-     * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+     * &gt; **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      * 
      * &gt; **NOTE:** Restrictions on attaching ECS instances:
      * 
@@ -791,14 +791,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
     }
     /**
-     * Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+     * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskCategory;
 
     /**
-     * @return Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+     * @return Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      * 
      */
     public Output<Optional<String>> systemDiskCategory() {

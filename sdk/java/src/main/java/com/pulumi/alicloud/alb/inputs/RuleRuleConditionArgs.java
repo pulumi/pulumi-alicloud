@@ -26,14 +26,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     public static final RuleRuleConditionArgs Empty = new RuleRuleConditionArgs();
 
     /**
-     * The configuration of the cookie. See See `cookie_config` below.
+     * The configuration of the cookie. See See `cookieConfig` below.
      * 
      */
     @Import(name="cookieConfig")
     private @Nullable Output<RuleRuleConditionCookieConfigArgs> cookieConfig;
 
     /**
-     * @return The configuration of the cookie. See See `cookie_config` below.
+     * @return The configuration of the cookie. See See `cookieConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionCookieConfigArgs>> cookieConfig() {
@@ -41,14 +41,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the header field. See `header_config` below.
+     * The configuration of the header field. See `headerConfig` below.
      * 
      */
     @Import(name="headerConfig")
     private @Nullable Output<RuleRuleConditionHeaderConfigArgs> headerConfig;
 
     /**
-     * @return The configuration of the header field. See `header_config` below.
+     * @return The configuration of the header field. See `headerConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionHeaderConfigArgs>> headerConfig() {
@@ -56,14 +56,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the host field. See `host_config` below.
+     * The configuration of the host field. See `hostConfig` below.
      * 
      */
     @Import(name="hostConfig")
     private @Nullable Output<RuleRuleConditionHostConfigArgs> hostConfig;
 
     /**
-     * @return The configuration of the host field. See `host_config` below.
+     * @return The configuration of the host field. See `hostConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionHostConfigArgs>> hostConfig() {
@@ -71,14 +71,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the request method. See `method_config` below.
+     * The configuration of the request method. See `methodConfig` below.
      * 
      */
     @Import(name="methodConfig")
     private @Nullable Output<RuleRuleConditionMethodConfigArgs> methodConfig;
 
     /**
-     * @return The configuration of the request method. See `method_config` below.
+     * @return The configuration of the request method. See `methodConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionMethodConfigArgs>> methodConfig() {
@@ -86,14 +86,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the path for the request to be forwarded. See `path_config` below.
+     * The configuration of the path for the request to be forwarded. See `pathConfig` below.
      * 
      */
     @Import(name="pathConfig")
     private @Nullable Output<RuleRuleConditionPathConfigArgs> pathConfig;
 
     /**
-     * @return The configuration of the path for the request to be forwarded. See `path_config` below.
+     * @return The configuration of the path for the request to be forwarded. See `pathConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionPathConfigArgs>> pathConfig() {
@@ -101,14 +101,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the query string. See `query_string_config` below.
+     * The configuration of the query string. See `queryStringConfig` below.
      * 
      */
     @Import(name="queryStringConfig")
     private @Nullable Output<RuleRuleConditionQueryStringConfigArgs> queryStringConfig;
 
     /**
-     * @return The configuration of the query string. See `query_string_config` below.
+     * @return The configuration of the query string. See `queryStringConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionQueryStringConfigArgs>> queryStringConfig() {
@@ -116,14 +116,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the header field. See `response_header_config` below.
+     * The configuration of the header field. See `responseHeaderConfig` below.
      * 
      */
     @Import(name="responseHeaderConfig")
     private @Nullable Output<RuleRuleConditionResponseHeaderConfigArgs> responseHeaderConfig;
 
     /**
-     * @return The configuration of the header field. See `response_header_config` below.
+     * @return The configuration of the header field. See `responseHeaderConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionResponseHeaderConfigArgs>> responseHeaderConfig() {
@@ -131,14 +131,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the header field. See `response_status_code_config` below.
+     * The configuration of the header field. See `responseStatusCodeConfig` below.
      * 
      */
     @Import(name="responseStatusCodeConfig")
     private @Nullable Output<RuleRuleConditionResponseStatusCodeConfigArgs> responseStatusCodeConfig;
 
     /**
-     * @return The configuration of the header field. See `response_status_code_config` below.
+     * @return The configuration of the header field. See `responseStatusCodeConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionResponseStatusCodeConfigArgs>> responseStatusCodeConfig() {
@@ -146,14 +146,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+     * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
      * 
      */
     @Import(name="sourceIpConfig")
     private @Nullable Output<RuleRuleConditionSourceIpConfigArgs> sourceIpConfig;
 
     /**
-     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionSourceIpConfigArgs>> sourceIpConfig() {
@@ -227,7 +227,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cookieConfig The configuration of the cookie. See See `cookie_config` below.
+         * @param cookieConfig The configuration of the cookie. See See `cookieConfig` below.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cookieConfig The configuration of the cookie. See See `cookie_config` below.
+         * @param cookieConfig The configuration of the cookie. See See `cookieConfig` below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param headerConfig The configuration of the header field. See `header_config` below.
+         * @param headerConfig The configuration of the header field. See `headerConfig` below.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param headerConfig The configuration of the header field. See `header_config` below.
+         * @param headerConfig The configuration of the header field. See `headerConfig` below.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostConfig The configuration of the host field. See `host_config` below.
+         * @param hostConfig The configuration of the host field. See `hostConfig` below.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostConfig The configuration of the host field. See `host_config` below.
+         * @param hostConfig The configuration of the host field. See `hostConfig` below.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param methodConfig The configuration of the request method. See `method_config` below.
+         * @param methodConfig The configuration of the request method. See `methodConfig` below.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param methodConfig The configuration of the request method. See `method_config` below.
+         * @param methodConfig The configuration of the request method. See `methodConfig` below.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pathConfig The configuration of the path for the request to be forwarded. See `path_config` below.
+         * @param pathConfig The configuration of the path for the request to be forwarded. See `pathConfig` below.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pathConfig The configuration of the path for the request to be forwarded. See `path_config` below.
+         * @param pathConfig The configuration of the path for the request to be forwarded. See `pathConfig` below.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryStringConfig The configuration of the query string. See `query_string_config` below.
+         * @param queryStringConfig The configuration of the query string. See `queryStringConfig` below.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryStringConfig The configuration of the query string. See `query_string_config` below.
+         * @param queryStringConfig The configuration of the query string. See `queryStringConfig` below.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param responseHeaderConfig The configuration of the header field. See `response_header_config` below.
+         * @param responseHeaderConfig The configuration of the header field. See `responseHeaderConfig` below.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param responseHeaderConfig The configuration of the header field. See `response_header_config` below.
+         * @param responseHeaderConfig The configuration of the header field. See `responseHeaderConfig` below.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param responseStatusCodeConfig The configuration of the header field. See `response_status_code_config` below.
+         * @param responseStatusCodeConfig The configuration of the header field. See `responseStatusCodeConfig` below.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param responseStatusCodeConfig The configuration of the header field. See `response_status_code_config` below.
+         * @param responseStatusCodeConfig The configuration of the header field. See `responseStatusCodeConfig` below.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
          * 
          * @return builder
          * 

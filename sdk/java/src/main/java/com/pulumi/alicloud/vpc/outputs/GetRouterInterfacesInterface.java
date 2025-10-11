@@ -72,7 +72,7 @@ public final class GetRouterInterfacesInterface {
     private String oppositeRouterType;
     /**
      * @return Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      * 
      */
     private String role;
@@ -189,7 +189,7 @@ public final class GetRouterInterfacesInterface {
     }
     /**
      * @return Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      * 
      */
     public String role() {

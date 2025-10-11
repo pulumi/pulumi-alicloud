@@ -63,14 +63,14 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
         return this.dbInstancePlanName;
     }
     /**
-     * The execution information of the plan. See `plan_config` below.
+     * The execution information of the plan. See `planConfig` below.
      * 
      */
     @Export(name="planConfigs", refs={List.class,DbInstancePlanPlanConfig.class}, tree="[0,1]")
     private Output<List<DbInstancePlanPlanConfig>> planConfigs;
 
     /**
-     * @return The execution information of the plan. See `plan_config` below.
+     * @return The execution information of the plan. See `planConfig` below.
      * 
      */
     public Output<List<DbInstancePlanPlanConfig>> planConfigs() {

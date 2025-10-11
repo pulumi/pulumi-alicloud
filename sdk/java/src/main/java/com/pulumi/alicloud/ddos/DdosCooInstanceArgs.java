@@ -19,14 +19,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     public static final DdosCooInstanceArgs Empty = new DdosCooInstanceArgs();
 
     /**
-     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Import(name="addressType")
     private @Nullable Output<String> addressType;
 
     /**
-     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Optional<Output<String>> addressType() {
@@ -34,14 +34,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -64,14 +64,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Import(name="baseBandwidth")
     private @Nullable Output<String> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Optional<Output<String>> baseBandwidth() {
@@ -154,14 +154,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      * 
      */
     @Import(name="normalBandwidth")
     private @Nullable Output<String> normalBandwidth;
 
     /**
-     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+     * @return The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      * 
      */
     public Optional<Output<String>> normalBandwidth() {
@@ -169,14 +169,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      * 
      */
     @Import(name="normalQps")
     private @Nullable Output<String> normalQps;
 
     /**
-     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+     * @return The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      * 
      */
     public Optional<Output<String>> normalQps() {
@@ -244,14 +244,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Import(name="serviceBandwidth")
     private @Nullable Output<String> serviceBandwidth;
 
     /**
-     * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Optional<Output<String>> serviceBandwidth() {
@@ -314,7 +314,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param addressType The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param addressType The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param addressType The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param addressType The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
          * 
          * @return builder
          * 
@@ -629,7 +629,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceBandwidth Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param serviceBandwidth Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceBandwidth Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+         * @param serviceBandwidth Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
          * 
          * @return builder
          * 

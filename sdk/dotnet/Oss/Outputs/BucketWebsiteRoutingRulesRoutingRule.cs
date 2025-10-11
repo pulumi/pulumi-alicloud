@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketWebsiteRoutingRulesRoutingRule
     {
         /// <summary>
-        /// Save the criteria that the rule needs to match. See `condition` below.
+        /// Save the criteria that the rule needs to match. See `Condition` below.
         /// </summary>
         public readonly Outputs.BucketWebsiteRoutingRulesRoutingRuleCondition? Condition;
         /// <summary>
-        /// The Lua script configuration to be executed. See `lua_config` below.
+        /// The Lua script configuration to be executed. See `LuaConfig` below.
         /// </summary>
         public readonly Outputs.BucketWebsiteRoutingRulesRoutingRuleLuaConfig? LuaConfig;
         /// <summary>
-        /// Specifies the action to perform after this rule is matched. See `redirect` below.
+        /// Specifies the action to perform after this rule is matched. See `Redirect` below.
         /// </summary>
         public readonly Outputs.BucketWebsiteRoutingRulesRoutingRuleRedirect? Redirect;
         /// <summary>

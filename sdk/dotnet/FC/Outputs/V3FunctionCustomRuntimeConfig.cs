@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// Function custom health check configuration. See `health_check_config` below.
+        /// Function custom health check configuration. See `HealthCheckConfig` below.
         /// </summary>
         public readonly Outputs.V3FunctionCustomRuntimeConfigHealthCheckConfig? HealthCheckConfig;
         /// <summary>

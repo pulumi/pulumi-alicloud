@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string DbEndpointId;
         /// <summary>
-        /// The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `load`.
+        /// The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `Load`.
         /// </summary>
         public readonly string EndpointConfig;
         /// <summary>

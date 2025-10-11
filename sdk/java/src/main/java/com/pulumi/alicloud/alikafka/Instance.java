@@ -47,16 +47,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
-     * The configurations of Confluent. See `confluent_config` below.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+     * The configurations of Confluent. See `confluentConfig` below.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      * 
      */
     @Export(name="confluentConfig", refs={InstanceConfluentConfig.class}, tree="[0]")
     private Output<InstanceConfluentConfig> confluentConfig;
 
     /**
-     * @return The configurations of Confluent. See `confluent_config` below.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+     * @return The configurations of Confluent. See `confluentConfig` below.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      * 
      */
     public Output<InstanceConfluentConfig> confluentConfig() {
@@ -92,7 +92,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      * 
      */
     @Export(name="diskSize", refs={Integer.class}, tree="[0]")
@@ -100,7 +100,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      * 
      */
     public Output<Optional<Integer>> diskSize() {
@@ -135,14 +135,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.domainEndpoint;
     }
     /**
-     * The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+     * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      * 
      */
     @Export(name="eipMax", refs={Integer.class}, tree="[0]")
     private Output<Integer> eipMax;
 
     /**
-     * @return The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+     * @return The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      * 
      */
     public Output<Integer> eipMax() {
@@ -248,7 +248,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The traffic specification of the instance. We recommend that you configure this parameter.
-     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      * 
      */
@@ -257,7 +257,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The traffic specification of the instance. We recommend that you configure this parameter.
-     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      * 
      */
@@ -363,14 +363,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.partitionUsed;
     }
     /**
-     * The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+     * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+     * @return The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
      * 
      */
     public Output<Optional<String>> password() {
@@ -433,16 +433,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.selectedZones);
     }
     /**
-     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      * 
      */
     @Export(name="serverlessConfig", refs={InstanceServerlessConfig.class}, tree="[0]")
     private Output<InstanceServerlessConfig> serverlessConfig;
 
     /**
-     * @return The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+     * @return The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      * 
      */
     public Output<InstanceServerlessConfig> serverlessConfig() {
@@ -450,9 +450,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The version of the Instance. Valid values:
-     * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
-     * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
-     * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
+     * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      * 
      */
     @Export(name="serviceVersion", refs={String.class}, tree="[0]")
@@ -460,9 +460,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The version of the Instance. Valid values:
-     * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
-     * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
-     * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
+     * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      * 
      */
     public Output<String> serviceVersion() {
@@ -470,9 +470,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The instance edition. Default value: `normal`. Valid values:
-     * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
-     * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
+     * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      * 
      */
     @Export(name="specType", refs={String.class}, tree="[0]")
@@ -480,9 +480,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The instance edition. Default value: `normal`. Valid values:
-     * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
-     * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
+     * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      * 
      */
     public Output<Optional<String>> specType() {
@@ -574,23 +574,23 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The max num of topic can be creation of the instance.
-     * It has been deprecated since version 1.194.0 and using `partition_num` instead.
-     * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
-     * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
+     * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: &lt;`topicQuota`&gt; = 1000 + &lt;`partitionNum`&gt;.
+     * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+     * Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      * 
      */
-    @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
+    @Deprecated /* Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead. */
     @Export(name="topicQuota", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicQuota;
 
     /**
      * @return The max num of topic can be creation of the instance.
-     * It has been deprecated since version 1.194.0 and using `partition_num` instead.
-     * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
-     * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
+     * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: &lt;`topicQuota`&gt; = 1000 + &lt;`partitionNum`&gt;.
+     * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      * 
      */
     public Output<Integer> topicQuota() {
@@ -640,7 +640,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The IDs of the vSwitches with which the instance is associated.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      * 
      */
     @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
@@ -648,7 +648,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IDs of the vSwitches with which the instance is associated.
-     * &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
+     * &gt; **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      * 
      */
     public Output<List<String>> vswitchIds() {

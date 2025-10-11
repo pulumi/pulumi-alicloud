@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Dns
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// DNS security level. Valid values: `no`, `basic`, `advanced`.
+        /// DNS security level. Valid values: `No`, `Basic`, `Advanced`.
         /// </summary>
         [Output("dnsSecurity")]
         public Output<string> DnsSecurity { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+        /// Paid package version. Valid values: `VersionPersonal`, `VersionEnterpriseBasic`, `VersionEnterpriseAdvanced`.
         /// </summary>
         [Output("versionCode")]
         public Output<string> VersionCode { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Dns
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// DNS security level. Valid values: `no`, `basic`, `advanced`.
+        /// DNS security level. Valid values: `No`, `Basic`, `Advanced`.
         /// </summary>
         [Input("dnsSecurity", required: true)]
         public Input<string> DnsSecurity { get; set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+        /// Paid package version. Valid values: `VersionPersonal`, `VersionEnterpriseBasic`, `VersionEnterpriseAdvanced`.
         /// </summary>
         [Input("versionCode", required: true)]
         public Input<string> VersionCode { get; set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Dns
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// DNS security level. Valid values: `no`, `basic`, `advanced`.
+        /// DNS security level. Valid values: `No`, `Basic`, `Advanced`.
         /// </summary>
         [Input("dnsSecurity")]
         public Input<string>? DnsSecurity { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+        /// Paid package version. Valid values: `VersionPersonal`, `VersionEnterpriseBasic`, `VersionEnterpriseAdvanced`.
         /// </summary>
         [Input("versionCode")]
         public Input<string>? VersionCode { get; set; }

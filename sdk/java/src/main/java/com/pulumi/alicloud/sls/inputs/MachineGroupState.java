@@ -18,14 +18,14 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
     public static final MachineGroupState Empty = new MachineGroupState();
 
     /**
-     * Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+     * Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
      * 
      */
     @Import(name="groupAttribute")
     private @Nullable Output<MachineGroupGroupAttributeArgs> groupAttribute;
 
     /**
-     * @return Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+     * @return Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
      * 
      */
     public Optional<Output<MachineGroupGroupAttributeArgs>> groupAttribute() {
@@ -145,7 +145,7 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupAttribute Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+         * @param groupAttribute Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupAttribute Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+         * @param groupAttribute Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
          * 
          * @return builder
          * 

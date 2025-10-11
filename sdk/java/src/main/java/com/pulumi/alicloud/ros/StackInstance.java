@@ -146,28 +146,28 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.operationPreferences);
     }
     /**
-     * ParameterOverrides. See the following `Block parameter_overrides`.
+     * ParameterOverrides. See the following `Block parameterOverrides`.
      * 
      */
     @Export(name="parameterOverrides", refs={List.class,StackInstanceParameterOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackInstanceParameterOverride>> parameterOverrides;
 
     /**
-     * @return ParameterOverrides. See the following `Block parameter_overrides`.
+     * @return ParameterOverrides. See the following `Block parameterOverrides`.
      * 
      */
     public Output<Optional<List<StackInstanceParameterOverride>>> parameterOverrides() {
         return Codegen.optional(this.parameterOverrides);
     }
     /**
-     * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+     * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      * 
      */
     @Export(name="retainStacks", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> retainStacks;
 
     /**
-     * @return Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+     * @return Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      * 
      */
     public Output<Optional<Boolean>> retainStacks() {

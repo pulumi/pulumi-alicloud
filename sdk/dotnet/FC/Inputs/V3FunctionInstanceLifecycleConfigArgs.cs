@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionInstanceLifecycleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Initializer handler method configuration See `initializer` below.
+        /// Initializer handler method configuration See `Initializer` below.
         /// </summary>
         [Input("initializer")]
         public Input<Inputs.V3FunctionInstanceLifecycleConfigInitializerArgs>? Initializer { get; set; }
 
         /// <summary>
-        /// PreStop handler method configuration See `pre_stop` below.
+        /// PreStop handler method configuration See `PreStop` below.
         /// </summary>
         [Input("preStop")]
         public Input<Inputs.V3FunctionInstanceLifecycleConfigPreStopArgs>? PreStop { get; set; }

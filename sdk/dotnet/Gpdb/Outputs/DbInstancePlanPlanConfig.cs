@@ -14,27 +14,27 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
     public sealed class DbInstancePlanPlanConfig
     {
         /// <summary>
-        /// Pause instance plan config. See `pause` below.
+        /// Pause instance plan config. See `Pause` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigPause? Pause;
         /// <summary>
-        /// Resume instance plan config. See `resume` below.
+        /// Resume instance plan config. See `Resume` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigResume? Resume;
         /// <summary>
-        /// Scale down instance plan config. See `scale_down` below.
+        /// Scale down instance plan config. See `ScaleDown` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigScaleDown? ScaleDown;
         /// <summary>
-        /// Scale In instance plan config. See `scale_in` below.
+        /// Scale In instance plan config. See `ScaleIn` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigScaleIn? ScaleIn;
         /// <summary>
-        /// Scale out instance plan config. See `scale_out` below.
+        /// Scale out instance plan config. See `ScaleOut` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigScaleOut? ScaleOut;
         /// <summary>
-        /// Scale up instance plan config. See `scale_up` below.
+        /// Scale up instance plan config. See `ScaleUp` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigScaleUp? ScaleUp;
 

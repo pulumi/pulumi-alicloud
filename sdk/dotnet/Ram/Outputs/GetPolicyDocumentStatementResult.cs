@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// Specifies the condition that are required for a policy to take effect. See `condition` below.
+        /// Specifies the condition that are required for a policy to take effect. See `Condition` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementConditionResult> Conditions;
         /// <summary>
-        /// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+        /// This parameter indicates whether or not the `Action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
+        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `Principal` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementPrincipalResult> Principals;
         /// <summary>

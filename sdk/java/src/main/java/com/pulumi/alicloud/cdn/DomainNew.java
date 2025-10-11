@@ -105,14 +105,14 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.cdnType;
     }
     /**
-     * Certificate configuration See `certificate_config` below.
+     * Certificate configuration See `certificateConfig` below.
      * 
      */
     @Export(name="certificateConfig", refs={DomainNewCertificateConfig.class}, tree="[0]")
     private Output<DomainNewCertificateConfig> certificateConfig;
 
     /**
-     * @return Certificate configuration See `certificate_config` below.
+     * @return Certificate configuration See `certificateConfig` below.
      * 
      */
     public Output<DomainNewCertificateConfig> certificateConfig() {

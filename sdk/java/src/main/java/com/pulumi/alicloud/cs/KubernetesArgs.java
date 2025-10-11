@@ -24,14 +24,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     public static final KubernetesArgs Empty = new KubernetesArgs();
 
     /**
-     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<KubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     public Optional<Output<List<KubernetesAddonArgs>>> addons() {
@@ -39,14 +39,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     @Import(name="apiAudiences")
     private @Nullable Output<List<String>> apiAudiences;
 
     /**
-     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     public Optional<Output<List<String>>> apiAudiences() {
@@ -157,14 +157,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     @Import(name="deleteOptions")
     private @Nullable Output<List<KubernetesDeleteOptionArgs>> deleteOptions;
 
     /**
-     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     public Optional<Output<List<KubernetesDeleteOptionArgs>>> deleteOptions() {
@@ -247,14 +247,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
-     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> keyName() {
@@ -262,14 +262,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -277,14 +277,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
@@ -345,14 +345,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      * 
      */
     @Import(name="masterDiskCategory")
     private @Nullable Output<String> masterDiskCategory;
 
     /**
-     * @return The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * @return The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      * 
      */
     public Optional<Output<String>> masterDiskCategory() {
@@ -360,14 +360,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     @Import(name="masterDiskPerformanceLevel")
     private @Nullable Output<String> masterDiskPerformanceLevel;
 
     /**
-     * @return Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<Output<String>> masterDiskPerformanceLevel() {
@@ -409,14 +409,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+     * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      * 
      */
     @Import(name="masterInstanceChargeType")
     private @Nullable Output<String> masterInstanceChargeType;
 
     /**
-     * @return Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+     * @return Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      * 
      */
     public Optional<Output<String>> masterInstanceChargeType() {
@@ -578,14 +578,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> password() {
@@ -623,14 +623,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     @Import(name="podVswitchIds")
     private @Nullable Output<List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     public Optional<Output<List<String>>> podVswitchIds() {
@@ -720,14 +720,14 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     @Import(name="serviceAccountIssuer")
     private @Nullable Output<String> serviceAccountIssuer;
 
     /**
-     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     public Optional<Output<String>> serviceAccountIssuer() {
@@ -750,7 +750,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -759,7 +759,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> skipSetCertificateAuthority;
 
     /**
-     * @return Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -771,8 +771,8 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
      * *Master params*
      * 
@@ -783,8 +783,8 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
      * *Master params*
      * 
@@ -929,7 +929,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -940,7 +940,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -950,7 +950,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -971,7 +971,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1124,7 +1124,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -1135,7 +1135,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -1145,7 +1145,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -1260,7 +1260,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1271,7 +1271,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1281,7 +1281,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1292,7 +1292,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1302,7 +1302,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -1313,7 +1313,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -1394,7 +1394,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterDiskCategory The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+         * @param masterDiskCategory The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -1405,7 +1405,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterDiskCategory The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+         * @param masterDiskCategory The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -1415,7 +1415,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterDiskPerformanceLevel Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param masterDiskPerformanceLevel Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -1426,7 +1426,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterDiskPerformanceLevel Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param masterDiskPerformanceLevel Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -1482,7 +1482,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterInstanceChargeType Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+         * @param masterInstanceChargeType Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
          * 
          * @return builder
          * 
@@ -1493,7 +1493,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterInstanceChargeType Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+         * @param masterInstanceChargeType Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
          * 
          * @return builder
          * 
@@ -1737,7 +1737,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param password The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1748,7 +1748,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param password The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1800,7 +1800,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1811,7 +1811,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1821,7 +1821,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1959,7 +1959,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1970,7 +1970,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -2001,7 +2001,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
          * *Network params*
          * 
@@ -2014,7 +2014,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
          * *Network params*
          * 
@@ -2028,8 +2028,8 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
          * 
-         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-         * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+         * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
          * 
          * *Master params*
          * 
@@ -2044,8 +2044,8 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
          * 
-         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-         * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+         * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
          * 
          * *Master params*
          * 

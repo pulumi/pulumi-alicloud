@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationUpdateStrategyV2GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The phased release policy. See `batch_update` below.
+        /// The phased release policy. See `BatchUpdate` below.
         /// </summary>
         [Input("batchUpdate")]
         public Input<Inputs.ApplicationUpdateStrategyV2BatchUpdateGetArgs>? BatchUpdate { get; set; }

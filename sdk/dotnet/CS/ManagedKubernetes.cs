@@ -18,14 +18,14 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
     /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
-    /// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+    /// VPC, you can set `NewNatGateway` to "true" to create one automatically.
     /// 
     /// &gt; **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
     /// 
     /// &gt; **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
     /// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
     /// 
-    /// &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+    /// &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `False` to `SlbInternetEnabled`.
     /// 
     /// &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
     /// 
@@ -36,10 +36,10 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** From version 1.120.0, Support for cluster migration from Standard cluster to professional.
     /// 
-    /// &gt; **NOTE:** From version 1.177.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
+    /// &gt; **NOTE:** From version 1.177.0, `Runtime`,`EnableSsh`,`RdsInstances`,`ExcludeAutoscalerNodes`,`WorkerNumber`,`WorkerInstanceTypes`,`Password`,`KeyName`,`KmsEncryptedPassword`,`KmsEncryptionContext`,`WorkerInstanceChargeType`,`WorkerPeriod`,`WorkerPeriodUnit`,`WorkerAutoRenew`,`WorkerAutoRenewPeriod`,`WorkerDiskCategory`,`WorkerDiskSize`,`WorkerDataDisks`,`NodeNameMode`,`NodePortRange`,`OsType`,`Platform`,`ImageId`,`CpuPolicy`,`UserData`,`Taints`,`WorkerDiskPerformanceLevel`,`WorkerDiskSnapshotPolicyId`,`InstallCloudMonitor` are deprecated.
     /// We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
     /// 
-    /// &gt; **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
+    /// &gt; **NOTE:** From version 1.212.0, `Runtime`,`EnableSsh`,`RdsInstances`,`ExcludeAutoscalerNodes`,`WorkerNumber`,`WorkerInstanceTypes`,`Password`,`KeyName`,`KmsEncryptedPassword`,`KmsEncryptionContext`,`WorkerInstanceChargeType`,`WorkerPeriod`,`WorkerPeriodUnit`,`WorkerAutoRenew`,`WorkerAutoRenewPeriod`,`WorkerDiskCategory`,`WorkerDiskSize`,`WorkerDataDisks`,`NodeNameMode`,`NodePortRange`,`OsType`,`Platform`,`ImageId`,`CpuPolicy`,`UserData`,`Taints`,`WorkerDiskPerformanceLevel`,`WorkerDiskSnapshotPolicyId`,`InstallCloudMonitor`,`KubeConfig`,`AvailabilityZone` are removed.
     /// Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
     /// 
     /// ## Example Usage
@@ -403,31 +403,31 @@ namespace Pulumi.AliCloud.CS
     public partial class ManagedKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesAddon>> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `ServiceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Output("apiAudiences")]
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
         /// <summary>
-        /// Audit log configuration. See `audit_log_config` below.
+        /// Audit log configuration. See `AuditLogConfig` below.
         /// </summary>
         [Output("auditLogConfig")]
         public Output<Outputs.ManagedKubernetesAuditLogConfig> AuditLogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Auto mode cluster configuration. See `auto_mode` below.
+        /// Auto mode cluster configuration. See `AutoMode` below.
         /// </summary>
         [Output("autoMode")]
         public Output<Outputs.ManagedKubernetesAutoMode?> AutoMode { get; private set; } = null!;
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.ManagedKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -473,7 +473,7 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.ManagedKubernetesConnections> Connections { get; private set; } = null!;
 
         /// <summary>
-        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
+        /// List of target components for which logs need to be collected. Supports `Apiserver`, `Kcm`, `Scheduler`, `Ccm` and `controlplane-events`.
         /// </summary>
         [Output("controlPlaneLogComponents")]
         public Output<ImmutableArray<string>> ControlPlaneLogComponents { get; private set; } = null!;
@@ -485,7 +485,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ControlPlaneLogProject { get; private set; } = null!;
 
         /// <summary>
-        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `ControlPlaneLogTtl` and `ControlPlaneLogComponents` must be specified.
         /// </summary>
         [Output("controlPlaneLogTtl")]
         public Output<string> ControlPlaneLogTtl { get; private set; } = null!;
@@ -498,7 +498,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CustomSan { get; private set; } = null!;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         [Output("deleteOptions")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesDeleteOption>> DeleteOptions { get; private set; } = null!;
@@ -510,7 +510,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Output("enableRrsa")]
         public Output<bool?> EnableRrsa { get; private set; } = null!;
@@ -540,7 +540,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window. Managed node pool will use it. See `MaintenanceWindow` below.
         /// </summary>
         [Output("maintenanceWindow")]
         public Output<Outputs.ManagedKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
@@ -573,7 +573,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+        /// The cluster automatic operation policy, only works when `MaintenanceWindow` is enabled. See `OperationPolicy` below.
         /// </summary>
         [Output("operationPolicy")]
         public Output<Outputs.ManagedKubernetesOperationPolicy> OperationPolicy { get; private set; } = null!;
@@ -585,7 +585,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PodCidr { get; private set; } = null!;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `PodVswitchIds` is not belong to `VswitchIds` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
@@ -623,7 +623,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+        /// * &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
         /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -632,7 +632,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `Iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `ApiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Output("serviceAccountIssuer")]
         public Output<string?> ServiceAccountIssuer { get; private set; } = null!;
@@ -644,7 +644,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -676,14 +676,14 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbIntranet { get; private set; } = null!;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `Tags` below.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Cluster timezone, works for control plane and Worker nodes.
-        /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
+        /// * &gt; **NOTE:** Please take of note before updating the `Timezone`:
         /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -698,7 +698,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> UserCa { get; private set; } = null!;
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see ClusterAutoUpgrade for more information.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -711,7 +711,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The vSwitches of the control plane.
-        /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+        /// &gt; **NOTE:** Please take of note before updating the `VswitchIds`:
         /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
         /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -727,13 +727,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> WorkerRamRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `VswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         /// </summary>
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `VswitchIds` together.
         /// </summary>
         [Output("zoneIds")]
         public Output<ImmutableArray<string>> ZoneIds { get; private set; } = null!;
@@ -788,7 +788,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesAddonArgs> Addons
         {
@@ -800,7 +800,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _apiAudiences;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `ServiceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         public InputList<string> ApiAudiences
         {
@@ -809,13 +809,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Audit log configuration. See `audit_log_config` below.
+        /// Audit log configuration. See `AuditLogConfig` below.
         /// </summary>
         [Input("auditLogConfig")]
         public Input<Inputs.ManagedKubernetesAuditLogConfigArgs>? AuditLogConfig { get; set; }
 
         /// <summary>
-        /// Auto mode cluster configuration. See `auto_mode` below.
+        /// Auto mode cluster configuration. See `AutoMode` below.
         /// </summary>
         [Input("autoMode")]
         public Input<Inputs.ManagedKubernetesAutoModeArgs>? AutoMode { get; set; }
@@ -858,7 +858,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _controlPlaneLogComponents;
 
         /// <summary>
-        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
+        /// List of target components for which logs need to be collected. Supports `Apiserver`, `Kcm`, `Scheduler`, `Ccm` and `controlplane-events`.
         /// </summary>
         public InputList<string> ControlPlaneLogComponents
         {
@@ -873,7 +873,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ControlPlaneLogProject { get; set; }
 
         /// <summary>
-        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `ControlPlaneLogTtl` and `ControlPlaneLogComponents` must be specified.
         /// </summary>
         [Input("controlPlaneLogTtl")]
         public Input<string>? ControlPlaneLogTtl { get; set; }
@@ -889,7 +889,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesDeleteOptionArgs>? _deleteOptions;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesDeleteOptionArgs> DeleteOptions
         {
@@ -904,7 +904,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -934,7 +934,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window. Managed node pool will use it. See `MaintenanceWindow` below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ManagedKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
@@ -961,7 +961,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+        /// The cluster automatic operation policy, only works when `MaintenanceWindow` is enabled. See `OperationPolicy` below.
         /// </summary>
         [Input("operationPolicy")]
         public Input<Inputs.ManagedKubernetesOperationPolicyArgs>? OperationPolicy { get; set; }
@@ -976,7 +976,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `PodVswitchIds` is not belong to `VswitchIds` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -1016,7 +1016,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+        /// * &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
         /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1025,7 +1025,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `Iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `ApiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Input("serviceAccountIssuer")]
         public Input<string>? ServiceAccountIssuer { get; set; }
@@ -1037,7 +1037,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -1054,7 +1054,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `Tags` below.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1064,7 +1064,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Cluster timezone, works for control plane and Worker nodes.
-        /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
+        /// * &gt; **NOTE:** Please take of note before updating the `Timezone`:
         /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -1079,7 +1079,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see ClusterAutoUpgrade for more information.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -1089,7 +1089,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The vSwitches of the control plane.
-        /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+        /// &gt; **NOTE:** Please take of note before updating the `VswitchIds`:
         /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
         /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -1105,7 +1105,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `VswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         /// </summary>
         [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches")]
         public InputList<string> WorkerVswitchIds
@@ -1118,7 +1118,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `VswitchIds` together.
         /// </summary>
         public InputList<string> ZoneIds
         {
@@ -1138,7 +1138,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesAddonGetArgs> Addons
         {
@@ -1150,7 +1150,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _apiAudiences;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `ServiceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         public InputList<string> ApiAudiences
         {
@@ -1159,19 +1159,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Audit log configuration. See `audit_log_config` below.
+        /// Audit log configuration. See `AuditLogConfig` below.
         /// </summary>
         [Input("auditLogConfig")]
         public Input<Inputs.ManagedKubernetesAuditLogConfigGetArgs>? AuditLogConfig { get; set; }
 
         /// <summary>
-        /// Auto mode cluster configuration. See `auto_mode` below.
+        /// Auto mode cluster configuration. See `AutoMode` below.
         /// </summary>
         [Input("autoMode")]
         public Input<Inputs.ManagedKubernetesAutoModeGetArgs>? AutoMode { get; set; }
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.ManagedKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -1220,7 +1220,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _controlPlaneLogComponents;
 
         /// <summary>
-        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
+        /// List of target components for which logs need to be collected. Supports `Apiserver`, `Kcm`, `Scheduler`, `Ccm` and `controlplane-events`.
         /// </summary>
         public InputList<string> ControlPlaneLogComponents
         {
@@ -1235,7 +1235,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ControlPlaneLogProject { get; set; }
 
         /// <summary>
-        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `ControlPlaneLogTtl` and `ControlPlaneLogComponents` must be specified.
         /// </summary>
         [Input("controlPlaneLogTtl")]
         public Input<string>? ControlPlaneLogTtl { get; set; }
@@ -1251,7 +1251,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesDeleteOptionGetArgs>? _deleteOptions;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesDeleteOptionGetArgs> DeleteOptions
         {
@@ -1266,7 +1266,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -1296,7 +1296,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window. Managed node pool will use it. See `MaintenanceWindow` below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ManagedKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
@@ -1329,7 +1329,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+        /// The cluster automatic operation policy, only works when `MaintenanceWindow` is enabled. See `OperationPolicy` below.
         /// </summary>
         [Input("operationPolicy")]
         public Input<Inputs.ManagedKubernetesOperationPolicyGetArgs>? OperationPolicy { get; set; }
@@ -1344,7 +1344,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `PodVswitchIds` is not belong to `VswitchIds` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -1390,7 +1390,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+        /// * &gt; **NOTE:** Please take of note before updating the `SecurityGroupId`:
         /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
         /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1399,7 +1399,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `Iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `ApiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Input("serviceAccountIssuer")]
         public Input<string>? ServiceAccountIssuer { get; set; }
@@ -1411,7 +1411,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -1446,7 +1446,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `Tags` below.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1456,7 +1456,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Cluster timezone, works for control plane and Worker nodes.
-        /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
+        /// * &gt; **NOTE:** Please take of note before updating the `Timezone`:
         /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
         /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
         /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
@@ -1471,7 +1471,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see ClusterAutoUpgrade for more information.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -1487,7 +1487,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The vSwitches of the control plane.
-        /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+        /// &gt; **NOTE:** Please take of note before updating the `VswitchIds`:
         /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
         /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
         /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -1509,7 +1509,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `VswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         /// </summary>
         [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches")]
         public InputList<string> WorkerVswitchIds
@@ -1522,7 +1522,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `VswitchIds` together.
         /// </summary>
         public InputList<string> ZoneIds
         {

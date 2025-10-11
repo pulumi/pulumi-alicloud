@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Kms
     public sealed class GetSecretVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+        /// Default to false and only output `SecretName`, `VersionId`, `VersionStages`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// Specifies whether to return deprecated secret versions. Default to `false`.
+        /// Specifies whether to return deprecated secret versions. Default to `False`.
         /// </summary>
         [Input("includeDeprecated")]
         public string? IncludeDeprecated { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Kms
     public sealed class GetSecretVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+        /// Default to false and only output `SecretName`, `VersionId`, `VersionStages`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// Specifies whether to return deprecated secret versions. Default to `false`.
+        /// Specifies whether to return deprecated secret versions. Default to `False`.
         /// </summary>
         [Input("includeDeprecated")]
         public Input<string>? IncludeDeprecated { get; set; }

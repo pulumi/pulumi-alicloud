@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterComponent {
     /**
-     * @return Component Configuration See `component_config` below.
+     * @return Component Configuration See `componentConfig` below.
      * 
      */
     private @Nullable ClusterComponentComponentConfig componentConfig;
@@ -25,7 +25,7 @@ public final class ClusterComponent {
 
     private ClusterComponent() {}
     /**
-     * @return Component Configuration See `component_config` below.
+     * @return Component Configuration See `componentConfig` below.
      * 
      */
     public Optional<ClusterComponentComponentConfig> componentConfig() {

@@ -16,14 +16,14 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesPlainArgs Empty = new GetZonesPlainArgs();
 
     /**
-     * Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+     * Filter the results by a specific disk category. Can be either `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`.
      * 
      */
     @Import(name="availableDiskCategory")
     private @Nullable String availableDiskCategory;
 
     /**
-     * @return Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+     * @return Filter the results by a specific disk category. Can be either `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`.
      * 
      */
     public Optional<String> availableDiskCategory() {
@@ -49,7 +49,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
      * Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
      * 
-     * &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value &#34;Rds&#34; has been deprecated.
+     * &gt; **NOTE:** From version 1.134.0, the `availableResourceCreation` value &#34;Rds&#34; has been deprecated.
      * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
      * 
      */
@@ -60,7 +60,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
      * @return Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
      * 
-     * &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value &#34;Rds&#34; has been deprecated.
+     * &gt; **NOTE:** From version 1.134.0, the `availableResourceCreation` value &#34;Rds&#34; has been deprecated.
      * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
      * 
      */
@@ -71,7 +71,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      * 
-     * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
+     * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
      * 
      */
     @Import(name="availableSlbAddressIpVersion")
@@ -80,7 +80,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      * 
-     * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
+     * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
      * 
      */
     public Optional<String> availableSlbAddressIpVersion() {
@@ -88,14 +88,14 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+     * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
      * 
      */
     @Import(name="availableSlbAddressType")
     private @Nullable String availableSlbAddressType;
 
     /**
-     * @return Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+     * @return Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
      * 
      */
     public Optional<String> availableSlbAddressType() {
@@ -227,7 +227,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availableDiskCategory Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+         * @param availableDiskCategory Filter the results by a specific disk category. Can be either `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @param availableResourceCreation Filter the results by a specific resource type.
          * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
          * 
-         * &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value &#34;Rds&#34; has been deprecated.
+         * &gt; **NOTE:** From version 1.134.0, the `availableResourceCreation` value &#34;Rds&#34; has been deprecated.
          * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
          * 
          * @return builder
@@ -266,7 +266,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param availableSlbAddressIpVersion Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
          * 
-         * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
+         * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availableSlbAddressType Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+         * @param availableSlbAddressType Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
          * 
          * @return builder
          * 

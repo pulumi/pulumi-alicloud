@@ -286,14 +286,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.jobId;
     }
     /**
-     * Task monitoring information See `job_monitor_info` below.
+     * Task monitoring information See `jobMonitorInfo` below.
      * 
      */
     @Export(name="jobMonitorInfo", refs={JobJobMonitorInfo.class}, tree="[0]")
     private Output</* @Nullable */ JobJobMonitorInfo> jobMonitorInfo;
 
     /**
-     * @return Task monitoring information See `job_monitor_info` below.
+     * @return Task monitoring information See `jobMonitorInfo` below.
      * 
      */
     public Output<Optional<JobJobMonitorInfo>> jobMonitorInfo() {
@@ -328,14 +328,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.jobType;
     }
     /**
-     * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+     * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      * 
      */
     @Export(name="mapTaskXattrs", refs={JobMapTaskXattrs.class}, tree="[0]")
     private Output</* @Nullable */ JobMapTaskXattrs> mapTaskXattrs;
 
     /**
-     * @return Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+     * @return Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      * 
      */
     public Output<Optional<JobMapTaskXattrs>> mapTaskXattrs() {
@@ -468,14 +468,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.template);
     }
     /**
-     * Time configuration information See `time_config` below.
+     * Time configuration information See `timeConfig` below.
      * 
      */
     @Export(name="timeConfig", refs={JobTimeConfig.class}, tree="[0]")
     private Output<JobTimeConfig> timeConfig;
 
     /**
-     * @return Time configuration information See `time_config` below.
+     * @return Time configuration information See `timeConfig` below.
      * 
      */
     public Output<JobTimeConfig> timeConfig() {

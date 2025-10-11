@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string ScalingPolicy;
         /// <summary>
-        /// (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+        /// (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set MultiAzPolicy to COMPOSABLE.
         /// </summary>
         public readonly string SpotAllocationStrategy;
         /// <summary>

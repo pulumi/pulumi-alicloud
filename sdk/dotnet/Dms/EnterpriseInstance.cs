@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<string?> EcsRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
+        /// Environment type. Valid values: `Product` production environment, `Dev` development environment, `Pre` pre-release environment, `Test` test environment, `Sit` SIT environment, `Uat` UAT environment, `Pet` pressure test environment, `Stag` STAG environment.
         /// </summary>
         [Output("envType")]
         public Output<string> EnvType { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        /// Field `InstanceAlias` has been deprecated from version 1.100.0. Use `InstanceName` instead.
         /// </summary>
         [Output("instanceAlias")]
         public Output<string> InstanceAlias { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<string?> Sid { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        /// Whether the instance ignores test connectivity. Valid values: `True`, `False`.
         /// </summary>
         [Output("skipTest")]
         public Output<bool?> SkipTest { get; private set; } = null!;
@@ -425,7 +425,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? EcsRegion { get; set; }
 
         /// <summary>
-        /// Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
+        /// Environment type. Valid values: `Product` production environment, `Dev` development environment, `Pre` pre-release environment, `Test` test environment, `Sit` SIT environment, `Uat` UAT environment, `Pet` pressure test environment, `Stag` STAG environment.
         /// </summary>
         [Input("envType", required: true)]
         public Input<string> EnvType { get; set; } = null!;
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        /// Field `InstanceAlias` has been deprecated from version 1.100.0. Use `InstanceName` instead.
         /// </summary>
         [Input("instanceAlias")]
         public Input<string>? InstanceAlias { get; set; }
@@ -509,7 +509,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Sid { get; set; }
 
         /// <summary>
-        /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        /// Whether the instance ignores test connectivity. Valid values: `True`, `False`.
         /// </summary>
         [Input("skipTest")]
         public Input<bool>? SkipTest { get; set; }
@@ -605,7 +605,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? EcsRegion { get; set; }
 
         /// <summary>
-        /// Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
+        /// Environment type. Valid values: `Product` production environment, `Dev` development environment, `Pre` pre-release environment, `Test` test environment, `Sit` SIT environment, `Uat` UAT environment, `Pet` pressure test environment, `Stag` STAG environment.
         /// </summary>
         [Input("envType")]
         public Input<string>? EnvType { get; set; }
@@ -623,7 +623,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        /// Field `InstanceAlias` has been deprecated from version 1.100.0. Use `InstanceName` instead.
         /// </summary>
         [Input("instanceAlias")]
         public Input<string>? InstanceAlias { get; set; }
@@ -689,7 +689,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Sid { get; set; }
 
         /// <summary>
-        /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        /// Whether the instance ignores test connectivity. Valid values: `True`, `False`.
         /// </summary>
         [Input("skipTest")]
         public Input<bool>? SkipTest { get; set; }

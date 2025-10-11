@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rds/readOnlyInstance:ReadOnlyInstance")
 public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert
      * - perfer
      * - verify-ca
@@ -133,7 +133,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output<String> acl;
 
     /**
-     * @return The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * @return The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert
      * - perfer
      * - verify-ca
@@ -144,35 +144,35 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.acl;
     }
     /**
-     * Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * @return Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+     * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      * 
@@ -181,7 +181,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output<String> caType;
 
     /**
-     * @return The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+     * @return The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      * 
@@ -190,21 +190,21 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.caType;
     }
     /**
-     * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     @Export(name="clientCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCaCert;
 
     /**
-     * @return The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * @return The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     public Output<Optional<String>> clientCaCert() {
         return Codegen.optional(this.clientCaCert);
     }
     /**
-     * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      * 
@@ -213,7 +213,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> clientCaEnabled;
 
     /**
-     * @return Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * @return Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      * 
@@ -222,21 +222,21 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientCaEnabled);
     }
     /**
-     * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     @Export(name="clientCertRevocationList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertRevocationList;
 
     /**
-     * @return The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * @return The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     public Output<Optional<String>> clientCertRevocationList() {
         return Codegen.optional(this.clientCertRevocationList);
     }
     /**
-     * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      * 
@@ -245,7 +245,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> clientCrlEnabled;
 
     /**
-     * @return Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * @return Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      * 
@@ -532,14 +532,14 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.parameters;
     }
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -560,7 +560,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert
      * - perfer
      * - verify-ca
@@ -572,7 +572,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output<String> replicationAcl;
 
     /**
-     * @return The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+     * @return The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert
      * - perfer
      * - verify-ca
@@ -626,28 +626,28 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.securityIps;
     }
     /**
-     * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     @Export(name="serverCert", refs={String.class}, tree="[0]")
     private Output<String> serverCert;
 
     /**
-     * @return The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * @return The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     public Output<String> serverCert() {
         return this.serverCert;
     }
     /**
-     * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     @Export(name="serverKey", refs={String.class}, tree="[0]")
     private Output<String> serverKey;
 
     /**
-     * @return The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+     * @return The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      * 
      */
     public Output<String> serverKey() {
@@ -672,7 +672,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.sslEnabled;
     }
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
@@ -681,7 +681,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> switchTime;
 
     /**
-     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
@@ -708,7 +708,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -723,7 +723,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output<String> targetMinorVersion;
 
     /**
-     * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+     * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -756,7 +756,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.upgradeDbInstanceKernelVersion);
     }
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -766,7 +766,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> upgradeTime;
 
     /**
-     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.

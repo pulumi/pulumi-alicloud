@@ -34,8 +34,8 @@ public final class ConfigurationRecorderArgs extends com.pulumi.resources.Resour
 
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-     * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-     * * If you use an enterprise account, the `resource_types` does not support updating.
+     * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+     * * If you use an enterprise account, the `resourceTypes` does not support updating.
      * 
      */
     @Import(name="resourceTypes")
@@ -43,8 +43,8 @@ public final class ConfigurationRecorderArgs extends com.pulumi.resources.Resour
 
     /**
      * @return A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-     * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-     * * If you use an enterprise account, the `resource_types` does not support updating.
+     * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+     * * If you use an enterprise account, the `resourceTypes` does not support updating.
      * 
      */
     public Optional<Output<List<String>>> resourceTypes() {
@@ -99,8 +99,8 @@ public final class ConfigurationRecorderArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceTypes A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-         * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-         * * If you use an enterprise account, the `resource_types` does not support updating.
+         * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+         * * If you use an enterprise account, the `resourceTypes` does not support updating.
          * 
          * @return builder
          * 
@@ -112,8 +112,8 @@ public final class ConfigurationRecorderArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceTypes A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-         * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-         * * If you use an enterprise account, the `resource_types` does not support updating.
+         * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+         * * If you use an enterprise account, the `resourceTypes` does not support updating.
          * 
          * @return builder
          * 
@@ -124,8 +124,8 @@ public final class ConfigurationRecorderArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceTypes A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-         * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-         * * If you use an enterprise account, the `resource_types` does not support updating.
+         * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+         * * If you use an enterprise account, the `resourceTypes` does not support updating.
          * 
          * @return builder
          * 

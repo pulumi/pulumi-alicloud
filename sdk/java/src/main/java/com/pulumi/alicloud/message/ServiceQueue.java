@@ -107,14 +107,14 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
         return this.delaySeconds;
     }
     /**
-     * The dead-letter queue policy. See `dlq_policy` below.
+     * The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     @Export(name="dlqPolicy", refs={ServiceQueueDlqPolicy.class}, tree="[0]")
     private Output<ServiceQueueDlqPolicy> dlqPolicy;
 
     /**
-     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * @return The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     public Output<ServiceQueueDlqPolicy> dlqPolicy() {

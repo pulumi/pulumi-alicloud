@@ -154,14 +154,14 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.definedColumns);
     }
     /**
-     * whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+     * whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      * 
      */
     @Export(name="includeBaseData", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> includeBaseData;
 
     /**
-     * @return whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+     * @return whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      * 
      */
     public Output<Boolean> includeBaseData() {

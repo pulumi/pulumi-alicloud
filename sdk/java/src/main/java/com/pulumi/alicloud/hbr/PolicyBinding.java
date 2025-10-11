@@ -115,14 +115,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:hbr/policyBinding:PolicyBinding")
 public class PolicyBinding extends com.pulumi.resources.CustomResource {
     /**
-     * Backup Advanced Options See `advanced_options` below.
+     * Backup Advanced Options See `advancedOptions` below.
      * 
      */
     @Export(name="advancedOptions", refs={PolicyBindingAdvancedOptions.class}, tree="[0]")
     private Output<PolicyBindingAdvancedOptions> advancedOptions;
 
     /**
-     * @return Backup Advanced Options See `advanced_options` below.
+     * @return Backup Advanced Options See `advancedOptions` below.
      * 
      */
     public Output<PolicyBindingAdvancedOptions> advancedOptions() {

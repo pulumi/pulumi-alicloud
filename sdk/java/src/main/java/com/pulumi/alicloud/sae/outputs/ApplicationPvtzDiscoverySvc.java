@@ -25,7 +25,7 @@ public final class ApplicationPvtzDiscoverySvc {
      */
     private @Nullable String namespaceId;
     /**
-     * @return The port number and protocol. See `port_protocols` below.
+     * @return The port number and protocol. See `portProtocols` below.
      * 
      */
     private @Nullable List<ApplicationPvtzDiscoverySvcPortProtocol> portProtocols;
@@ -51,7 +51,7 @@ public final class ApplicationPvtzDiscoverySvc {
         return Optional.ofNullable(this.namespaceId);
     }
     /**
-     * @return The port number and protocol. See `port_protocols` below.
+     * @return The port number and protocol. See `portProtocols` below.
      * 
      */
     public List<ApplicationPvtzDiscoverySvcPortProtocol> portProtocols() {

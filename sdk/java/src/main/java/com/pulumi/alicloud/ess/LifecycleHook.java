@@ -151,14 +151,14 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultResult);
     }
     /**
-     * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+     * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      * 
      */
     @Export(name="heartbeatTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> heartbeatTimeout;
 
     /**
-     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      * 
      */
     public Output<Optional<Integer>> heartbeatTimeout() {

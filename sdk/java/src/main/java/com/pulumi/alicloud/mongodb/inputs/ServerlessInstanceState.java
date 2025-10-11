@@ -130,14 +130,14 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+     * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
      * 
      */
     @Import(name="maintainEndTime")
     private @Nullable Output<String> maintainEndTime;
 
     /**
-     * @return The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+     * @return The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
      * 
      */
     public Optional<Output<String>> maintainEndTime() {
@@ -503,7 +503,7 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maintainEndTime The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+         * @param maintainEndTime The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class ServerlessInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maintainEndTime The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+         * @param maintainEndTime The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
          * 
          * @return builder
          * 

@@ -31,14 +31,14 @@ public final class NatGatewayAccessModeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+     * The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
      * 
      */
     @Import(name="tunnelType")
     private @Nullable Output<String> tunnelType;
 
     /**
-     * @return The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+     * @return The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
      * 
      */
     public Optional<Output<String>> tunnelType() {
@@ -92,7 +92,7 @@ public final class NatGatewayAccessModeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tunnelType The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+         * @param tunnelType The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class NatGatewayAccessModeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tunnelType The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+         * @param tunnelType The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
          * 
          * @return builder
          * 

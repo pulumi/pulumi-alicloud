@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<int?> ImageCacheSize { get; private set; } = null!;
 
         /// <summary>
-        /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        /// The Image Registry parameters about the image to be cached. See `ImageRegistryCredential` below.
         /// </summary>
         [Output("imageRegistryCredentials")]
         public Output<ImmutableArray<Outputs.ImageCacheImageRegistryCredential>> ImageRegistryCredentials { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ImageCacheImageRegistryCredentialArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        /// The Image Registry parameters about the image to be cached. See `ImageRegistryCredential` below.
         /// </summary>
         public InputList<Inputs.ImageCacheImageRegistryCredentialArgs> ImageRegistryCredentials
         {
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ImageCacheImageRegistryCredentialGetArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        /// The Image Registry parameters about the image to be cached. See `ImageRegistryCredential` below.
         /// </summary>
         public InputList<Inputs.ImageCacheImageRegistryCredentialGetArgs> ImageRegistryCredentials
         {

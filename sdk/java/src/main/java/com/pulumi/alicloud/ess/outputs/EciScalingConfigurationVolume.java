@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class EciScalingConfigurationVolume {
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
-     * See `config_file_volume_config_file_to_paths` below for details.
+     * See `configFileVolumeConfigFileToPaths` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
@@ -109,7 +109,7 @@ public final class EciScalingConfigurationVolume {
     private EciScalingConfigurationVolume() {}
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
-     * See `config_file_volume_config_file_to_paths` below for details.
+     * See `configFileVolumeConfigFileToPaths` below for details.
      * 
      */
     public List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths() {

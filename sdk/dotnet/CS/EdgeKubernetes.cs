@@ -14,20 +14,20 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
     /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
-    /// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+    /// VPC, you can set `NewNatGateway` to "true" to create one automatically.
     /// 
     /// &gt; **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
     /// 
     /// &gt; **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
     /// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
     /// 
-    /// &gt; **NOTE:** The provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+    /// &gt; **NOTE:** The provider supports disabling internet load balancer for API Server by setting `False` to `SlbInternetEnabled`.
     /// 
     /// &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
     /// 
     /// &gt; **NOTE:** Available since v1.103.0.
     /// 
-    /// &gt; **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
+    /// &gt; **NOTE:** From version 1.185.0+, support new fields `ClusterSpec`, `Runtime` and `LoadBalancerSpec`.
     /// 
     /// ## Example Usage
     /// 
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.CS
     public partial class EdgeKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below.
+        /// The addon you want to install in cluster. See `Addons` below.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.EdgeKubernetesAddon>> Addons { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.EdgeKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: `true`.
+        /// Install cloud monitor agent on ECS. default: `True`.
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -266,20 +266,20 @@ namespace Pulumi.AliCloud.CS
         public Output<bool> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("keyName")]
         public Output<string?> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("kubeConfig")]
         public Output<string?> KubeConfig { get; private set; } = null!;
 
         /// <summary>
         /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+        /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `PodCidr` field and addons with `Flannel`.
         /// 
         /// *Worker params*
         /// </summary>
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
-        /// A list of one element containing information about the associated log store. See `log_config` below.
+        /// A list of one element containing information about the associated log store. See `LogConfig` below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.EdgeKubernetesLogConfig?> LogConfig { get; private set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `Password`, `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `Runtime` below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.EdgeKubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -421,19 +421,19 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `WorkerDataDisks` below.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.EdgeKubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `CloudEfficiency`, `CloudSsd` and `CloudEssd` and . Default to `CloudEfficiency`.
         /// </summary>
         [Output("workerDiskCategory")]
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node system disk performance level, when `WorkerDiskCategory` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Output("workerDiskPerformanceLevel")]
         public Output<string?> WorkerDiskPerformanceLevel { get; private set; } = null!;
@@ -449,7 +449,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// *Computed params*
         /// 
-        /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
+        /// You can set some file paths to save KubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
         [Output("workerDiskSnapshotPolicyId")]
         public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
@@ -544,7 +544,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below.
+        /// The addon you want to install in cluster. See `Addons` below.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesAddonArgs> Addons
         {
@@ -593,7 +593,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: `true`.
+        /// Install cloud monitor agent on ECS. default: `True`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -605,20 +605,20 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
         /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+        /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `PodCidr` field and addons with `Flannel`.
         /// 
         /// *Worker params*
         /// </summary>
@@ -626,7 +626,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// A list of one element containing information about the associated log store. See `log_config` below.
+        /// A list of one element containing information about the associated log store. See `LogConfig` below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.EdgeKubernetesLogConfigArgs>? LogConfig { get; set; }
@@ -656,7 +656,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `Password`, `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -707,7 +707,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `Runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.EdgeKubernetesRuntimeArgs>? Runtime { get; set; }
@@ -725,7 +725,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -766,7 +766,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesWorkerDataDiskArgs>? _workerDataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `WorkerDataDisks` below.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskArgs> WorkerDataDisks
         {
@@ -775,13 +775,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `CloudEfficiency`, `CloudSsd` and `CloudEssd` and . Default to `CloudEfficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node system disk performance level, when `WorkerDiskCategory` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("workerDiskPerformanceLevel")]
         public Input<string>? WorkerDiskPerformanceLevel { get; set; }
@@ -797,7 +797,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// *Computed params*
         /// 
-        /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
+        /// You can set some file paths to save KubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
         [Input("workerDiskSnapshotPolicyId")]
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
@@ -850,7 +850,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below.
+        /// The addon you want to install in cluster. See `Addons` below.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesAddonGetArgs> Addons
         {
@@ -865,7 +865,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.EdgeKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -911,7 +911,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: `true`.
+        /// Install cloud monitor agent on ECS. default: `True`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -923,20 +923,20 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
         /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+        /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `PodCidr` field and addons with `Flannel`.
         /// 
         /// *Worker params*
         /// </summary>
@@ -944,7 +944,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// A list of one element containing information about the associated log store. See `log_config` below.
+        /// A list of one element containing information about the associated log store. See `LogConfig` below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.EdgeKubernetesLogConfigGetArgs>? LogConfig { get; set; }
@@ -980,7 +980,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `Password`, `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -1031,7 +1031,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `Runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.EdgeKubernetesRuntimeGetArgs>? Runtime { get; set; }
@@ -1049,7 +1049,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -1108,7 +1108,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesWorkerDataDiskGetArgs>? _workerDataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `WorkerDataDisks` below.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
         {
@@ -1117,13 +1117,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `CloudEfficiency`, `CloudSsd` and `CloudEssd` and . Default to `CloudEfficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node system disk performance level, when `WorkerDiskCategory` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("workerDiskPerformanceLevel")]
         public Input<string>? WorkerDiskPerformanceLevel { get; set; }
@@ -1139,7 +1139,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// *Computed params*
         /// 
-        /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
+        /// You can set some file paths to save KubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
         [Input("workerDiskSnapshotPolicyId")]
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }

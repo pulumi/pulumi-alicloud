@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.RealtimeCompute.Outputs
     public sealed class VvpInstanceStorage
     {
         /// <summary>
-        /// OSS stores information. See `oss` below.
+        /// OSS stores information. See `Oss` below.
         /// </summary>
         public readonly Outputs.VvpInstanceStorageOss Oss;
 

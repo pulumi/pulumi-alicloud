@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string InstanceClass;
         /// <summary>
-        /// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+        /// Type of the instance to be queried. If it is set to `Sharding`, the sharded cluster instances are listed. If it is set to `Replicate`, replica set instances are listed. Default value `Replicate`.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>

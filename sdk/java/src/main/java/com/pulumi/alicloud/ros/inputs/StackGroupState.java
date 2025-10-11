@@ -36,7 +36,7 @@ public final class StackGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Automatic deployment setting information. Description
-     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `autoDeployment` below.
      * 
      */
     @Import(name="autoDeployment")
@@ -44,7 +44,7 @@ public final class StackGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Automatic deployment setting information. Description
-     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `autoDeployment` below.
      * 
      */
     public Optional<Output<StackGroupAutoDeploymentArgs>> autoDeployment() {
@@ -327,7 +327,7 @@ public final class StackGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoDeployment Automatic deployment setting information. Description
-         * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+         * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `autoDeployment` below.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class StackGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoDeployment Automatic deployment setting information. Description
-         * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+         * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `autoDeployment` below.
          * 
          * @return builder
          * 

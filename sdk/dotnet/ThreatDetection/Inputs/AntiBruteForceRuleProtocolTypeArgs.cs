@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
     public sealed class AntiBruteForceRuleProtocolTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        /// Whether to enable RDP interception. Default value: `On`. Valid values: `On`, `Off`.
         /// </summary>
         [Input("rdp")]
         public Input<string>? Rdp { get; set; }
 
         /// <summary>
-        /// Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        /// Whether to enable the SqlServer interception method. Default value: `Off`. Valid values: `On`, `Off`.
         /// </summary>
         [Input("sqlServer")]
         public Input<string>? SqlServer { get; set; }
 
         /// <summary>
-        /// Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        /// Whether to enable SSH interception. Default value: `On`. Valid values: `On`, `Off`.
         /// </summary>
         [Input("ssh")]
         public Input<string>? Ssh { get; set; }

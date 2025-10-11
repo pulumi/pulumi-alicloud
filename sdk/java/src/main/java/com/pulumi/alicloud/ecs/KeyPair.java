@@ -107,10 +107,10 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
+    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
@@ -134,14 +134,14 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
         return this.keyPairName;
     }
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      * 
      */
     @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicKey;
 
     /**
-     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      * 
      */
     public Output<Optional<String>> publicKey() {

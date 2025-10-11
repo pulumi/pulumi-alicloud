@@ -14,39 +14,39 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleCondition
     {
         /// <summary>
-        /// The configuration of the cookie. See See `cookie_config` below.
+        /// The configuration of the cookie. See See `CookieConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionCookieConfig? CookieConfig;
         /// <summary>
-        /// The configuration of the header field. See `header_config` below.
+        /// The configuration of the header field. See `HeaderConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionHeaderConfig? HeaderConfig;
         /// <summary>
-        /// The configuration of the host field. See `host_config` below.
+        /// The configuration of the host field. See `HostConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionHostConfig? HostConfig;
         /// <summary>
-        /// The configuration of the request method. See `method_config` below.
+        /// The configuration of the request method. See `MethodConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionMethodConfig? MethodConfig;
         /// <summary>
-        /// The configuration of the path for the request to be forwarded. See `path_config` below.
+        /// The configuration of the path for the request to be forwarded. See `PathConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionPathConfig? PathConfig;
         /// <summary>
-        /// The configuration of the query string. See `query_string_config` below.
+        /// The configuration of the query string. See `QueryStringConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionQueryStringConfig? QueryStringConfig;
         /// <summary>
-        /// The configuration of the header field. See `response_header_config` below.
+        /// The configuration of the header field. See `ResponseHeaderConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionResponseHeaderConfig? ResponseHeaderConfig;
         /// <summary>
-        /// The configuration of the header field. See `response_status_code_config` below.
+        /// The configuration of the header field. See `ResponseStatusCodeConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionResponseStatusCodeConfig? ResponseStatusCodeConfig;
         /// <summary>
-        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `SourceIpConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionSourceIpConfig? SourceIpConfig;
         /// <summary>

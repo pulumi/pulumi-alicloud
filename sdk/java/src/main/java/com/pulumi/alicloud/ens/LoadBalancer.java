@@ -96,14 +96,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The list of backend servers. See `backend_servers` below.
+     * The list of backend servers. See `backendServers` below.
      * 
      */
     @Export(name="backendServers", refs={List.class,LoadBalancerBackendServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerBackendServer>> backendServers;
 
     /**
-     * @return The list of backend servers. See `backend_servers` below.
+     * @return The list of backend servers. See `backendServers` below.
      * 
      */
     public Output<Optional<List<LoadBalancerBackendServer>>> backendServers() {

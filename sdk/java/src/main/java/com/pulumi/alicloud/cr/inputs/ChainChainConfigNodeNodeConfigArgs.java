@@ -17,14 +17,14 @@ public final class ChainChainConfigNodeNodeConfigArgs extends com.pulumi.resourc
     public static final ChainChainConfigNodeNodeConfigArgs Empty = new ChainChainConfigNodeNodeConfigArgs();
 
     /**
-     * Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+     * Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
      * 
      */
     @Import(name="denyPolicies")
     private @Nullable Output<List<ChainChainConfigNodeNodeConfigDenyPolicyArgs>> denyPolicies;
 
     /**
-     * @return Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+     * @return Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
      * 
      */
     public Optional<Output<List<ChainChainConfigNodeNodeConfigDenyPolicyArgs>>> denyPolicies() {
@@ -56,7 +56,7 @@ public final class ChainChainConfigNodeNodeConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param denyPolicies Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+         * @param denyPolicies Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ChainChainConfigNodeNodeConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param denyPolicies Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+         * @param denyPolicies Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ChainChainConfigNodeNodeConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param denyPolicies Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+         * @param denyPolicies Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
          * 
          * @return builder
          * 

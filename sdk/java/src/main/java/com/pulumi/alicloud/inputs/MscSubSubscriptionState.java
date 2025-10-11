@@ -34,8 +34,8 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
 
     /**
      * The ids of subscribed contacts.
-     * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-     * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+     * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+     * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      * 
      */
@@ -44,8 +44,8 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
 
     /**
      * @return The ids of subscribed contacts.
-     * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-     * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+     * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+     * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      * 
      */
@@ -229,8 +229,8 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
 
         /**
          * @param contactIds The ids of subscribed contacts.
-         * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-         * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+         * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+         * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
          * and you can use tolist to convert it to a list.
          * 
          * @return builder
@@ -243,8 +243,8 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
 
         /**
          * @param contactIds The ids of subscribed contacts.
-         * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-         * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+         * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+         * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
          * and you can use tolist to convert it to a list.
          * 
          * @return builder
@@ -256,8 +256,8 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
 
         /**
          * @param contactIds The ids of subscribed contacts.
-         * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-         * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+         * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+         * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
          * and you can use tolist to convert it to a list.
          * 
          * @return builder

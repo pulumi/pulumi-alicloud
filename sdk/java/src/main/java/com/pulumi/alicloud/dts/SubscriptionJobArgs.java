@@ -50,14 +50,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+     * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      * 
      */
     @Import(name="databaseCount")
     private @Nullable Output<Integer> databaseCount;
 
     /**
-     * @return The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+     * @return The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      * 
      */
     public Optional<Output<Integer>> databaseCount() {
@@ -110,14 +110,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+     * When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
     @Import(name="delayRuleTime")
     private @Nullable Output<String> delayRuleTime;
 
     /**
-     * @return When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+     * @return When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
     public Optional<Output<String>> delayRuleTime() {
@@ -125,14 +125,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+     * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      * 
      */
     @Import(name="destinationEndpointEngineName")
     private @Nullable Output<String> destinationEndpointEngineName;
 
     /**
-     * @return The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+     * @return The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      * 
      */
     public Optional<Output<String>> destinationEndpointEngineName() {
@@ -230,14 +230,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     @Import(name="paymentDuration")
     private @Nullable Output<Integer> paymentDuration;
 
     /**
-     * @return The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * @return The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     public Optional<Output<Integer>> paymentDuration() {
@@ -245,14 +245,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     @Import(name="paymentDurationUnit")
     private @Nullable Output<String> paymentDurationUnit;
 
     /**
-     * @return The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * @return The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     public Optional<Output<String>> paymentDurationUnit() {
@@ -530,14 +530,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     @Import(name="subscriptionInstanceVpcId")
     private @Nullable Output<String> subscriptionInstanceVpcId;
 
     /**
-     * @return The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * @return The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     public Optional<Output<String>> subscriptionInstanceVpcId() {
@@ -545,14 +545,14 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     @Import(name="subscriptionInstanceVswitchId")
     private @Nullable Output<String> subscriptionInstanceVswitchId;
 
     /**
-     * @return The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * @return The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     public Optional<Output<String>> subscriptionInstanceVswitchId() {
@@ -709,7 +709,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delayRuleTime When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+         * @param delayRuleTime When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delayRuleTime When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+         * @param delayRuleTime When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param destinationEndpointEngineName The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+         * @param destinationEndpointEngineName The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param destinationEndpointEngineName The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+         * @param destinationEndpointEngineName The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
          * 
          * @return builder
          * 
@@ -961,7 +961,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param paymentDuration The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+         * @param paymentDuration The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
          * 
          * @return builder
          * 
@@ -972,7 +972,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param paymentDuration The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+         * @param paymentDuration The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
          * 
          * @return builder
          * 
@@ -1381,7 +1381,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subscriptionInstanceVpcId The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+         * @param subscriptionInstanceVpcId The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
          * 
          * @return builder
          * 
@@ -1392,7 +1392,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subscriptionInstanceVpcId The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+         * @param subscriptionInstanceVpcId The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
          * 
          * @return builder
          * 
@@ -1402,7 +1402,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subscriptionInstanceVswitchId The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+         * @param subscriptionInstanceVswitchId The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
          * 
          * @return builder
          * 
@@ -1413,7 +1413,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subscriptionInstanceVswitchId The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+         * @param subscriptionInstanceVswitchId The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
          * 
          * @return builder
          * 

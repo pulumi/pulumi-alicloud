@@ -114,14 +114,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/bgpPeer:BgpPeer")
 public class BgpPeer extends com.pulumi.resources.CustomResource {
     /**
-     * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+     * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      * 
      */
     @Export(name="bfdMultiHop", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bfdMultiHop;
 
     /**
-     * @return The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+     * @return The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      * 
      */
     public Output<Optional<Integer>> bfdMultiHop() {

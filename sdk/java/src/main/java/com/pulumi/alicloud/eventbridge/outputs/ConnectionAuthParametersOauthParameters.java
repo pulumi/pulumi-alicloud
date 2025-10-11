@@ -19,7 +19,7 @@ public final class ConnectionAuthParametersOauthParameters {
      */
     private @Nullable String authorizationEndpoint;
     /**
-     * @return The parameters that are configured for the client. See `client_parameters` below.
+     * @return The parameters that are configured for the client. See `clientParameters` below.
      * 
      */
     private @Nullable ConnectionAuthParametersOauthParametersClientParameters clientParameters;
@@ -29,7 +29,7 @@ public final class ConnectionAuthParametersOauthParameters {
      */
     private @Nullable String httpMethod;
     /**
-     * @return The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * @return The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
      * 
      */
     private @Nullable ConnectionAuthParametersOauthParametersOauthHttpParameters oauthHttpParameters;
@@ -43,7 +43,7 @@ public final class ConnectionAuthParametersOauthParameters {
         return Optional.ofNullable(this.authorizationEndpoint);
     }
     /**
-     * @return The parameters that are configured for the client. See `client_parameters` below.
+     * @return The parameters that are configured for the client. See `clientParameters` below.
      * 
      */
     public Optional<ConnectionAuthParametersOauthParametersClientParameters> clientParameters() {
@@ -57,7 +57,7 @@ public final class ConnectionAuthParametersOauthParameters {
         return Optional.ofNullable(this.httpMethod);
     }
     /**
-     * @return The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * @return The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
      * 
      */
     public Optional<ConnectionAuthParametersOauthParametersOauthHttpParameters> oauthHttpParameters() {

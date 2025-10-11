@@ -81,7 +81,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+     * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -92,7 +92,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> document;
 
     /**
-     * @return Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+     * @return Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -119,7 +119,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -130,7 +130,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -404,7 +404,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+         * @param document Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+         * @param document Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
          * 
          * @return builder
          * 

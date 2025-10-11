@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** Available since v1.0.0.
         /// 
-        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `IsOutdated` to true.
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** Available since v1.0.0.
         /// 
-        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `IsOutdated` to true.
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** Available since v1.0.0.
         /// 
-        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `IsOutdated` to true.
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Ecs
         public int? CpuCoreCount { get; set; }
 
         /// <summary>
-        /// Filter the result whose network interface number is no more than `eni_amount`.
+        /// Filter the result whose network interface number is no more than `EniAmount`.
         /// </summary>
         [Input("eniAmount")]
         public int? EniAmount { get; set; }
@@ -416,8 +416,8 @@ namespace Pulumi.AliCloud.Ecs
         public string? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
-        /// **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
+        /// Filter the results by system disk category. Valid values: `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `CloudEssdEntry`, `CloudAuto`. 
+        /// **NOTE**: Its default value `CloudEfficiency` has been removed from the version v1.150.0.
         /// </summary>
         [Input("systemDiskCategory")]
         public string? SystemDiskCategory { get; set; }
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? CpuCoreCount { get; set; }
 
         /// <summary>
-        /// Filter the result whose network interface number is no more than `eni_amount`.
+        /// Filter the result whose network interface number is no more than `EniAmount`.
         /// </summary>
         [Input("eniAmount")]
         public Input<int>? EniAmount { get; set; }
@@ -540,8 +540,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
-        /// **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
+        /// Filter the results by system disk category. Valid values: `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `CloudEssdEntry`, `CloudAuto`. 
+        /// **NOTE**: Its default value `CloudEfficiency` has been removed from the version v1.150.0.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly int? CpuCoreCount;
         /// <summary>
-        /// (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eni_quantity`.
+        /// (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `EniQuantity`.
         /// </summary>
         public readonly int? EniAmount;
         public readonly int? GpuAmount;

@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetPolicyVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetPolicyVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

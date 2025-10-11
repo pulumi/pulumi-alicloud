@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessConfigurationPermissionPolicy {
     /**
-     * @return The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+     * @return The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
      * 
      */
     private @Nullable String permissionPolicyDocument;
@@ -30,7 +30,7 @@ public final class AccessConfigurationPermissionPolicy {
 
     private AccessConfigurationPermissionPolicy() {}
     /**
-     * @return The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+     * @return The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
      * 
      */
     public Optional<String> permissionPolicyDocument() {

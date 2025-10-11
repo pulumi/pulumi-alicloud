@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> SubDomain { get; private set; } = null!;
 
         /// <summary>
-        /// user_log_config defines the config of user log of the group. See `user_log_config` below.
+        /// user_log_config defines the config of user log of the group. See `UserLogConfig` below.
         /// </summary>
         [Output("userLogConfig")]
         public Output<Outputs.GroupUserLogConfig?> UserLogConfig { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> VpcDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable `vpc_domain`. Defaults to `false`.
+        /// Whether to enable `VpcDomain`. Defaults to `False`.
         /// </summary>
         [Output("vpcIntranetEnable")]
         public Output<bool?> VpcIntranetEnable { get; private set; } = null!;
@@ -171,13 +171,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// user_log_config defines the config of user log of the group. See `user_log_config` below.
+        /// user_log_config defines the config of user log of the group. See `UserLogConfig` below.
         /// </summary>
         [Input("userLogConfig")]
         public Input<Inputs.GroupUserLogConfigArgs>? UserLogConfig { get; set; }
 
         /// <summary>
-        /// Whether to enable `vpc_domain`. Defaults to `false`.
+        /// Whether to enable `VpcDomain`. Defaults to `False`.
         /// </summary>
         [Input("vpcIntranetEnable")]
         public Input<bool>? VpcIntranetEnable { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? SubDomain { get; set; }
 
         /// <summary>
-        /// user_log_config defines the config of user log of the group. See `user_log_config` below.
+        /// user_log_config defines the config of user log of the group. See `UserLogConfig` below.
         /// </summary>
         [Input("userLogConfig")]
         public Input<Inputs.GroupUserLogConfigGetArgs>? UserLogConfig { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? VpcDomain { get; set; }
 
         /// <summary>
-        /// Whether to enable `vpc_domain`. Defaults to `false`.
+        /// Whether to enable `VpcDomain`. Defaults to `False`.
         /// </summary>
         [Input("vpcIntranetEnable")]
         public Input<bool>? VpcIntranetEnable { get; set; }

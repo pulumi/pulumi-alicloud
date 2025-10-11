@@ -25,7 +25,7 @@ public final class FirewallVpcFirewallLocalVpc {
      */
     private @Nullable String eniPrivateIpAddress;
     /**
-     * @return The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+     * @return The network segment list of the local VPC. See `localVpcCidrTableList` below.
      * 
      */
     private List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists;
@@ -66,7 +66,7 @@ public final class FirewallVpcFirewallLocalVpc {
         return Optional.ofNullable(this.eniPrivateIpAddress);
     }
     /**
-     * @return The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+     * @return The network segment list of the local VPC. See `localVpcCidrTableList` below.
      * 
      */
     public List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists() {

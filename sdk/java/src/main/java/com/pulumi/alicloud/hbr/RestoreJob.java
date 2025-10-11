@@ -183,56 +183,56 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.crossAccountUserId);
     }
     /**
-     * The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Export(name="exclude", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclude;
 
     /**
-     * @return The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Output<Optional<String>> exclude() {
         return Codegen.optional(this.exclude);
     }
     /**
-     * The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Export(name="include", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> include;
 
     /**
-     * @return The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Output<Optional<String>> include() {
         return Codegen.optional(this.include);
     }
     /**
-     * Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
+     * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
      * 
      */
     @Export(name="options", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> options;
 
     /**
-     * @return Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
+     * @return Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
      * 
      */
     public Output<Optional<String>> options() {
         return Codegen.optional(this.options);
     }
     /**
-     * The details about the Tablestore instance. See the following `Block ots_detail`.
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
      * 
      */
     @Export(name="otsDetail", refs={RestoreJobOtsDetail.class}, tree="[0]")
     private Output<RestoreJobOtsDetail> otsDetail;
 
     /**
-     * @return The details about the Tablestore instance. See the following `Block ots_detail`.
+     * @return The details about the Tablestore instance. See the following `Block otsDetail`.
      * 
      */
     public Output<RestoreJobOtsDetail> otsDetail() {
@@ -323,14 +323,14 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+     * The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
      * 
      */
     @Export(name="targetBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetBucket;
 
     /**
-     * @return The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+     * @return The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
      * 
      */
     public Output<Optional<String>> targetBucket() {
@@ -351,14 +351,14 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetClientId);
     }
     /**
-     * The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     @Export(name="targetCreateTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetCreateTime;
 
     /**
-     * @return The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * @return The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     public Output<Optional<String>> targetCreateTime() {
@@ -379,98 +379,98 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetDataSourceId);
     }
     /**
-     * The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+     * The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
      * 
      */
     @Export(name="targetFileSystemId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetFileSystemId;
 
     /**
-     * @return The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+     * @return The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
      * 
      */
     public Output<Optional<String>> targetFileSystemId() {
         return Codegen.optional(this.targetFileSystemId);
     }
     /**
-     * The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+     * The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
      * 
      */
     @Export(name="targetInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetInstanceId;
 
     /**
-     * @return The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+     * @return The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
      * 
      */
     public Output<Optional<String>> targetInstanceId() {
         return Codegen.optional(this.targetInstanceId);
     }
     /**
-     * The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+     * The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="targetInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetInstanceName;
 
     /**
-     * @return The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+     * @return The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<String>> targetInstanceName() {
         return Codegen.optional(this.targetInstanceName);
     }
     /**
-     * The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Export(name="targetPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetPath;
 
     /**
-     * @return The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Output<Optional<String>> targetPath() {
         return Codegen.optional(this.targetPath);
     }
     /**
-     * The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     @Export(name="targetPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetPrefix;
 
     /**
-     * @return The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * @return The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
     public Output<Optional<String>> targetPrefix() {
         return Codegen.optional(this.targetPrefix);
     }
     /**
-     * The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+     * The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="targetTableName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetTableName;
 
     /**
-     * @return The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+     * @return The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<String>> targetTableName() {
         return Codegen.optional(this.targetTableName);
     }
     /**
-     * The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+     * The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
      * 
      */
     @Export(name="targetTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetTime;
 
     /**
-     * @return The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+     * @return The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
      * 
      */
     public Output<Optional<String>> targetTime() {

@@ -35,7 +35,7 @@ public final class EciScalingConfigurationInitContainer {
     private @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
-     * See `environment_vars` below for details.
+     * See `environmentVars` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars;
@@ -87,7 +87,7 @@ public final class EciScalingConfigurationInitContainer {
      */
     private @Nullable Integer securityContextRunAsUser;
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below for details.
+     * @return The structure of volumeMounts. See `volumeMounts` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts;
@@ -121,7 +121,7 @@ public final class EciScalingConfigurationInitContainer {
     }
     /**
      * @return The structure of environmentVars.
-     * See `environment_vars` below for details.
+     * See `environmentVars` below for details.
      * 
      */
     public List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars() {
@@ -193,7 +193,7 @@ public final class EciScalingConfigurationInitContainer {
         return Optional.ofNullable(this.securityContextRunAsUser);
     }
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below for details.
+     * @return The structure of volumeMounts. See `volumeMounts` below for details.
      * 
      */
     public List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts() {

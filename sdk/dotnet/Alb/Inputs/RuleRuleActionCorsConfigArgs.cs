@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleActionCorsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        /// Specifies whether credentials can be passed during CORS operations. Valid values: `On`, `Off`.
         /// </summary>
         [Input("allowCredentials")]
         public Input<string>? AllowCredentials { get; set; }

@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> DefaultAddrPoolType { get; private set; } = null!;
 
         /// <summary>
-        /// List of primary address pool collections. See `default_addr_pools` below for details.
+        /// List of primary address pool collections. See `DefaultAddrPools` below for details.
         /// </summary>
         [Output("defaultAddrPools")]
         public Output<ImmutableArray<Outputs.AccessStrategyDefaultAddrPool>> DefaultAddrPools { get; private set; } = null!;
@@ -174,13 +174,13 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> DefaultLatencyOptimization { get; private set; } = null!;
 
         /// <summary>
-        /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+        /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `DefaultLbaStrategy` is required under the condition that `StrategyMode` is `GEO`.
         /// </summary>
         [Output("defaultLbaStrategy")]
         public Output<string?> DefaultLbaStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+        /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `DefaultMaxReturnAddrNum` is required under the condition that `StrategyMode` is `LATENCY`.
         /// </summary>
         [Output("defaultMaxReturnAddrNum")]
         public Output<int?> DefaultMaxReturnAddrNum { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> FailoverAddrPoolType { get; private set; } = null!;
 
         /// <summary>
-        /// List of backup address pool sets. See `failover_addr_pools` below for details.
+        /// List of backup address pool sets. See `FailoverAddrPools` below for details.
         /// </summary>
         [Output("failoverAddrPools")]
         public Output<ImmutableArray<Outputs.AccessStrategyFailoverAddrPool>> FailoverAddrPools { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        /// The source regions. See `Lines` below for details. **NOTE:** The `Lines` is required under the condition that `StrategyMode` is `GEO`.
         /// </summary>
         [Output("lines")]
         public Output<ImmutableArray<Outputs.AccessStrategyLine>> Lines { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyDefaultAddrPoolArgs>? _defaultAddrPools;
 
         /// <summary>
-        /// List of primary address pool collections. See `default_addr_pools` below for details.
+        /// List of primary address pool collections. See `DefaultAddrPools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyDefaultAddrPoolArgs> DefaultAddrPools
         {
@@ -334,13 +334,13 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? DefaultLatencyOptimization { get; set; }
 
         /// <summary>
-        /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+        /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `DefaultLbaStrategy` is required under the condition that `StrategyMode` is `GEO`.
         /// </summary>
         [Input("defaultLbaStrategy")]
         public Input<string>? DefaultLbaStrategy { get; set; }
 
         /// <summary>
-        /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+        /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `DefaultMaxReturnAddrNum` is required under the condition that `StrategyMode` is `LATENCY`.
         /// </summary>
         [Input("defaultMaxReturnAddrNum")]
         public Input<int>? DefaultMaxReturnAddrNum { get; set; }
@@ -361,7 +361,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyFailoverAddrPoolArgs>? _failoverAddrPools;
 
         /// <summary>
-        /// List of backup address pool sets. See `failover_addr_pools` below for details.
+        /// List of backup address pool sets. See `FailoverAddrPools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyFailoverAddrPoolArgs> FailoverAddrPools
         {
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyLineArgs>? _lines;
 
         /// <summary>
-        /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        /// The source regions. See `Lines` below for details. **NOTE:** The `Lines` is required under the condition that `StrategyMode` is `GEO`.
         /// </summary>
         public InputList<Inputs.AccessStrategyLineArgs> Lines
         {
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyDefaultAddrPoolGetArgs>? _defaultAddrPools;
 
         /// <summary>
-        /// List of primary address pool collections. See `default_addr_pools` below for details.
+        /// List of primary address pool collections. See `DefaultAddrPools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyDefaultAddrPoolGetArgs> DefaultAddrPools
         {
@@ -468,13 +468,13 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? DefaultLatencyOptimization { get; set; }
 
         /// <summary>
-        /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+        /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `DefaultLbaStrategy` is required under the condition that `StrategyMode` is `GEO`.
         /// </summary>
         [Input("defaultLbaStrategy")]
         public Input<string>? DefaultLbaStrategy { get; set; }
 
         /// <summary>
-        /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+        /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `DefaultMaxReturnAddrNum` is required under the condition that `StrategyMode` is `LATENCY`.
         /// </summary>
         [Input("defaultMaxReturnAddrNum")]
         public Input<int>? DefaultMaxReturnAddrNum { get; set; }
@@ -495,7 +495,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyFailoverAddrPoolGetArgs>? _failoverAddrPools;
 
         /// <summary>
-        /// List of backup address pool sets. See `failover_addr_pools` below for details.
+        /// List of backup address pool sets. See `FailoverAddrPools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyFailoverAddrPoolGetArgs> FailoverAddrPools
         {
@@ -543,7 +543,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyLineGetArgs>? _lines;
 
         /// <summary>
-        /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        /// The source regions. See `Lines` below for details. **NOTE:** The `Lines` is required under the condition that `StrategyMode` is `GEO`.
         /// </summary>
         public InputList<Inputs.AccessStrategyLineGetArgs> Lines
         {

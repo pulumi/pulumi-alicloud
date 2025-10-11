@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
  * 
- * &gt; **NOTE:** From version 1.214.0, if `product_type` is set to `ddoscoo` or `ddoscoo_intl`, the provider `region` should be set to `cn-hangzhou`, and if `product_type` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
+ * &gt; **NOTE:** From version 1.214.0, if `productType` is set to `ddoscoo` or `ddoscooIntl`, the provider `region` should be set to `cn-hangzhou`, and if `productType` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
  * 
  * ## Example Usage
  * 
@@ -87,28 +87,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/ddosCooInstance:DdosCooInstance")
 public class DdosCooInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Export(name="addressType", refs={String.class}, tree="[0]")
     private Output<String> addressType;
 
     /**
-     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Output<String> addressType() {
         return this.addressType;
     }
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
-     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Output<String> bandwidth() {
@@ -129,14 +129,14 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bandwidthMode);
     }
     /**
-     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Export(name="baseBandwidth", refs={String.class}, tree="[0]")
     private Output<String> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Output<String> baseBandwidth() {
@@ -241,28 +241,28 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      * 
      */
     @Export(name="normalBandwidth", refs={String.class}, tree="[0]")
     private Output<String> normalBandwidth;
 
     /**
-     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+     * @return The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      * 
      */
     public Output<String> normalBandwidth() {
         return this.normalBandwidth;
     }
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      * 
      */
     @Export(name="normalQps", refs={String.class}, tree="[0]")
     private Output<String> normalQps;
 
     /**
-     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+     * @return The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      * 
      */
     public Output<String> normalQps() {
@@ -325,14 +325,14 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.productType);
     }
     /**
-     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     @Export(name="serviceBandwidth", refs={String.class}, tree="[0]")
     private Output<String> serviceBandwidth;
 
     /**
-     * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+     * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      * 
      */
     public Output<String> serviceBandwidth() {

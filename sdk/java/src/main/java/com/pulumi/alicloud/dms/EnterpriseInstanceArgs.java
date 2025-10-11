@@ -184,7 +184,7 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+     * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
      * @deprecated
      * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
@@ -195,7 +195,7 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> instanceAlias;
 
     /**
-     * @return Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+     * @return Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
      * @deprecated
      * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
@@ -697,7 +697,7 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceAlias Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+         * @param instanceAlias Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceAlias Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+         * @param instanceAlias Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
          * 
          * @return builder
          * 

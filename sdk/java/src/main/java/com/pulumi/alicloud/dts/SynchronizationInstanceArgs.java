@@ -63,14 +63,14 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+     * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      * 
      */
     @Import(name="databaseCount")
     private @Nullable Output<Integer> databaseCount;
 
     /**
-     * @return The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+     * @return The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      * 
      */
     public Optional<Output<Integer>> databaseCount() {
@@ -78,14 +78,14 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+     * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      * 
      */
     @Import(name="destinationEndpointEngineName", required=true)
     private Output<String> destinationEndpointEngineName;
 
     /**
-     * @return The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+     * @return The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      * 
      */
     public Output<String> destinationEndpointEngineName() {
@@ -123,14 +123,14 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+     * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      * 
      */
     @Import(name="paymentDuration")
     private @Nullable Output<Integer> paymentDuration;
 
     /**
-     * @return The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+     * @return The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      * 
      */
     public Optional<Output<Integer>> paymentDuration() {
@@ -138,14 +138,14 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     @Import(name="paymentDurationUnit")
     private @Nullable Output<String> paymentDurationUnit;
 
     /**
-     * @return The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * @return The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     public Optional<Output<String>> paymentDurationUnit() {
@@ -183,14 +183,14 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+     * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      * 
      */
     @Import(name="sourceEndpointEngineName", required=true)
     private Output<String> sourceEndpointEngineName;
 
     /**
-     * @return The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+     * @return The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      * 
      */
     public Output<String> sourceEndpointEngineName() {
@@ -328,7 +328,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+         * @param databaseCount The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destinationEndpointEngineName The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+         * @param destinationEndpointEngineName The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destinationEndpointEngineName The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+         * @param destinationEndpointEngineName The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param paymentDuration The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+         * @param paymentDuration The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param paymentDuration The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+         * @param paymentDuration The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+         * @param paymentDurationUnit The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sourceEndpointEngineName The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+         * @param sourceEndpointEngineName The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sourceEndpointEngineName The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+         * @param sourceEndpointEngineName The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
          * 
          * @return builder
          * 

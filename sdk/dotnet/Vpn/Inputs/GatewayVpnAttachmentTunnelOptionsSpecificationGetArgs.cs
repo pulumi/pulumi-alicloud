@@ -59,8 +59,8 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         /// <summary>
         /// Add the BGP configuration for the tunnel.
         /// 
-        /// &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
-        /// See `tunnel_bgp_config` below.
+        /// &gt; **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `True`), you must configure this parameter.
+        /// See `TunnelBgpConfig` below.
         /// </summary>
         [Input("tunnelBgpConfig")]
         public Input<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigGetArgs>? TunnelBgpConfig { get; set; }
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? TunnelId { get; set; }
 
         /// <summary>
-        /// Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
+        /// Configuration information for the first phase negotiation. See `TunnelIkeConfig` below.
         /// </summary>
         [Input("tunnelIkeConfig")]
         public Input<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigGetArgs>? TunnelIkeConfig { get; set; }
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<int> TunnelIndex { get; set; } = null!;
 
         /// <summary>
-        /// Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
+        /// Configuration information for the second-stage negotiation. See `TunnelIpsecConfig` below.
         /// </summary>
         [Input("tunnelIpsecConfig")]
         public Input<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigGetArgs>? TunnelIpsecConfig { get; set; }

@@ -17,7 +17,7 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
      */
     private Integer availableDisk;
     /**
-     * @return The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+     * @return The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
      * 
      */
     private String dataDiskCategory;
@@ -36,7 +36,7 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
         return this.availableDisk;
     }
     /**
-     * @return The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+     * @return The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
      * 
      */
     public String dataDiskCategory() {

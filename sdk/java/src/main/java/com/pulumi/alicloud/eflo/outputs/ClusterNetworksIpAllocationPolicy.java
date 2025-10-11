@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNetworksIpAllocationPolicy {
     /**
-     * @return Bond policy See `bond_policy` below.
+     * @return Bond policy See `bondPolicy` below.
      * 
      */
     private @Nullable ClusterNetworksIpAllocationPolicyBondPolicy bondPolicy;
     /**
-     * @return Model Assignment Policy See `machine_type_policy` below.
+     * @return Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     private @Nullable List<ClusterNetworksIpAllocationPolicyMachineTypePolicy> machineTypePolicies;
     /**
-     * @return Node allocation policy See `node_policy` below.
+     * @return Node allocation policy See `nodePolicy` below.
      * 
      */
     private @Nullable List<ClusterNetworksIpAllocationPolicyNodePolicy> nodePolicies;
 
     private ClusterNetworksIpAllocationPolicy() {}
     /**
-     * @return Bond policy See `bond_policy` below.
+     * @return Bond policy See `bondPolicy` below.
      * 
      */
     public Optional<ClusterNetworksIpAllocationPolicyBondPolicy> bondPolicy() {
         return Optional.ofNullable(this.bondPolicy);
     }
     /**
-     * @return Model Assignment Policy See `machine_type_policy` below.
+     * @return Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     public List<ClusterNetworksIpAllocationPolicyMachineTypePolicy> machineTypePolicies() {
         return this.machineTypePolicies == null ? List.of() : this.machineTypePolicies;
     }
     /**
-     * @return Node allocation policy See `node_policy` below.
+     * @return Node allocation policy See `nodePolicy` below.
      * 
      */
     public List<ClusterNetworksIpAllocationPolicyNodePolicy> nodePolicies() {

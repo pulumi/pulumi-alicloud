@@ -13,37 +13,37 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class KubernetesPermissionPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
+        /// The ID of the cluster that you want to manage, When `RoleType` value is `all-clusters`, the value of `Cluster` must be `""`.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+        /// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `IsCustom` must be `True`, and set `RoleName` to a custom cluster role.
         /// </summary>
         [Input("isCustom")]
         public Input<bool>? IsCustom { get; set; }
 
         /// <summary>
-        /// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+        /// Specifies whether the permissions are granted to a RAM role. When `Uid` is ram role id, the value of `IsRamRole` must be `True`.
         /// </summary>
         [Input("isRamRole")]
         public Input<bool>? IsRamRole { get; set; }
 
         /// <summary>
-        /// The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+        /// The namespace to which the permissions are scoped. This parameter is required only if you set RoleType to namespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+        /// Specifies the predefined role that you want to assign. Valid values `Admin`, `Ops`, `Dev`, `Restricted` and the custom cluster roles.
         /// </summary>
         [Input("roleName", required: true)]
         public Input<string> RoleName { get; set; } = null!;
 
         /// <summary>
-        /// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
+        /// The authorization type. Valid values `Cluster`, `Namespace` and `all-clusters`.
         /// </summary>
         [Input("roleType", required: true)]
         public Input<string> RoleType { get; set; } = null!;

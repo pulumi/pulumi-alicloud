@@ -14,6 +14,10 @@ import (
 // This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 //
 // > **NOTE:** Available since v1.195.0.
+//
+// ## Example Usage
+//
+// Basic Usage
 func GetEnterpriseLogicDatabases(ctx *pulumi.Context, args *GetEnterpriseLogicDatabasesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseLogicDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseLogicDatabasesResult

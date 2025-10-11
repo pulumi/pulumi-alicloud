@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerEnvironmentVarGetArgs>? _environmentVars;
 
         /// <summary>
-        /// The structure of environmentVars. See `environment_vars` below.
+        /// The structure of environmentVars. See `EnvironmentVars` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerEnvironmentVarGetArgs> EnvironmentVars
         {
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerPortGetArgs>? _ports;
 
         /// <summary>
-        /// The structure of port. See `ports` below.
+        /// The structure of port. See `Ports` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerPortGetArgs> Ports
         {
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerSecurityContextGetArgs>? _securityContexts;
 
         /// <summary>
-        /// The security context of the container. See `security_context` below.
+        /// The security context of the container. See `SecurityContext` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerSecurityContextGetArgs> SecurityContexts
         {
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerVolumeMountGetArgs>? _volumeMounts;
 
         /// <summary>
-        /// The structure of volumeMounts. See `volume_mounts` below.
+        /// The structure of volumeMounts. See `VolumeMounts` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerVolumeMountGetArgs> VolumeMounts
         {

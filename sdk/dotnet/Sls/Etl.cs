@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Sls
     public partial class Etl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ETL configuration. See `configuration` below.
+        /// The ETL configuration. See `Configuration` below.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.EtlConfiguration> Configuration { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class EtlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ETL configuration. See `configuration` below.
+        /// The ETL configuration. See `Configuration` below.
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.EtlConfigurationArgs> Configuration { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class EtlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ETL configuration. See `configuration` below.
+        /// The ETL configuration. See `Configuration` below.
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.EtlConfigurationGetArgs>? Configuration { get; set; }

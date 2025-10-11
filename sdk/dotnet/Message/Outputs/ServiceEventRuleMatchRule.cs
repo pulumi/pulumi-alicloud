@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Message.Outputs
     public sealed class ServiceEventRuleMatchRule
     {
         /// <summary>
-        /// Match state. valid values: `true`, `false`.
+        /// Match state. valid values: `True`, `False`.
         /// </summary>
         public readonly string? MatchState;
         public readonly string? Name;

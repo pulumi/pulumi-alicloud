@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Sddp
     public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+        /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `AccessFailedCnt`, `AccessPermissionExprieMaxDays`, `LogDatasizeAvgDays`.
         /// </summary>
         [Output("code")]
         public Output<string?> Code { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the request and response. Valid values: `zh`,`en`.
+        /// The language of the request and response. Valid values: `Zh`,`En`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Sddp
     public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+        /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `AccessFailedCnt`, `AccessPermissionExprieMaxDays`, `LogDatasizeAvgDays`.
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The language of the request and response. Valid values: `zh`,`en`.
+        /// The language of the request and response. Valid values: `Zh`,`En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Sddp
     public sealed class ConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+        /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `AccessFailedCnt`, `AccessPermissionExprieMaxDays`, `LogDatasizeAvgDays`.
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The language of the request and response. Valid values: `zh`,`en`.
+        /// The language of the request and response. Valid values: `Zh`,`En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }

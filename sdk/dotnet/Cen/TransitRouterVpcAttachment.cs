@@ -156,13 +156,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// Whether to enabled route table association. **NOTE:** "Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// Whether to enabled route table propagation. **NOTE:** "Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         /// </summary>
         [Output("routeTablePropagationEnabled")]
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> VpcOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// ZoneMappingss See `zone_mappings` below.
+        /// ZoneMappingss See `ZoneMappings` below.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -323,13 +323,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// Whether to enabled route table association. **NOTE:** "Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// Whether to enabled route table propagation. **NOTE:** "Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
@@ -402,7 +402,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// ZoneMappingss See `zone_mappings` below.
+        /// ZoneMappingss See `ZoneMappings` below.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -470,13 +470,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// Whether to enabled route table association. **NOTE:** "Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// Whether to enabled route table propagation. **NOTE:** "Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
@@ -561,7 +561,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// ZoneMappingss See `zone_mappings` below.
+        /// ZoneMappingss See `ZoneMappings` below.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

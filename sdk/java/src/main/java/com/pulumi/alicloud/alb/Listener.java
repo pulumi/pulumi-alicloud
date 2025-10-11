@@ -255,21 +255,21 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessLogRecordCustomizedHeadersEnabled);
     }
     /**
-     * Xtrace Configuration Information. See `access_log_tracing_config` below.
+     * Xtrace Configuration Information. See `accessLogTracingConfig` below.
      * 
      */
     @Export(name="accessLogTracingConfig", refs={ListenerAccessLogTracingConfig.class}, tree="[0]")
     private Output</* @Nullable */ ListenerAccessLogTracingConfig> accessLogTracingConfig;
 
     /**
-     * @return Xtrace Configuration Information. See `access_log_tracing_config` below.
+     * @return Xtrace Configuration Information. See `accessLogTracingConfig` below.
      * 
      */
     public Output<Optional<ListenerAccessLogTracingConfig>> accessLogTracingConfig() {
         return Codegen.optional(this.accessLogTracingConfig);
     }
     /**
-     * The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
      * @deprecated
      * Field &#39;acl_config&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_listener_acl_attachment&#39;.
@@ -280,21 +280,21 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output<ListenerAclConfig> aclConfig;
 
     /**
-     * @return The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * @return The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
      */
     public Output<ListenerAclConfig> aclConfig() {
         return this.aclConfig;
     }
     /**
-     * The list of certificates. See `ca_certificates` below.
+     * The list of certificates. See `caCertificates` below.
      * 
      */
     @Export(name="caCertificates", refs={List.class,ListenerCaCertificate.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListenerCaCertificate>> caCertificates;
 
     /**
-     * @return The list of certificates. See `ca_certificates` below.
+     * @return The list of certificates. See `caCertificates` below.
      * 
      */
     public Output<Optional<List<ListenerCaCertificate>>> caCertificates() {
@@ -329,14 +329,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.certificates);
     }
     /**
-     * The Default Rule Action List See `default_actions` below.
+     * The Default Rule Action List See `defaultActions` below.
      * 
      */
     @Export(name="defaultActions", refs={List.class,ListenerDefaultAction.class}, tree="[0,1]")
     private Output<List<ListenerDefaultAction>> defaultActions;
 
     /**
-     * @return The Default Rule Action List See `default_actions` below.
+     * @return The Default Rule Action List See `defaultActions` below.
      * 
      */
     public Output<List<ListenerDefaultAction>> defaultActions() {
@@ -455,14 +455,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.loadBalancerId;
     }
     /**
-     * Configuration Associated with the QuIC Listening See `quic_config` below.
+     * Configuration Associated with the QuIC Listening See `quicConfig` below.
      * 
      */
     @Export(name="quicConfig", refs={ListenerQuicConfig.class}, tree="[0]")
     private Output<ListenerQuicConfig> quicConfig;
 
     /**
-     * @return Configuration Associated with the QuIC Listening See `quic_config` below.
+     * @return Configuration Associated with the QuIC Listening See `quicConfig` below.
      * 
      */
     public Output<ListenerQuicConfig> quicConfig() {
@@ -525,14 +525,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+     * xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
      * 
      */
     @Export(name="xForwardedForConfig", refs={ListenerXForwardedForConfig.class}, tree="[0]")
     private Output<ListenerXForwardedForConfig> xForwardedForConfig;
 
     /**
-     * @return xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+     * @return xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
      * 
      */
     public Output<ListenerXForwardedForConfig> xForwardedForConfig() {

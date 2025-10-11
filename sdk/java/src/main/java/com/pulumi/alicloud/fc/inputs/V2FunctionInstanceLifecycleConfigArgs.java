@@ -17,14 +17,14 @@ public final class V2FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
     public static final V2FunctionInstanceLifecycleConfigArgs Empty = new V2FunctionInstanceLifecycleConfigArgs();
 
     /**
-     * PreFreeze function configuration. See `pre_freeze` below.
+     * PreFreeze function configuration. See `preFreeze` below.
      * 
      */
     @Import(name="preFreeze")
     private @Nullable Output<V2FunctionInstanceLifecycleConfigPreFreezeArgs> preFreeze;
 
     /**
-     * @return PreFreeze function configuration. See `pre_freeze` below.
+     * @return PreFreeze function configuration. See `preFreeze` below.
      * 
      */
     public Optional<Output<V2FunctionInstanceLifecycleConfigPreFreezeArgs>> preFreeze() {
@@ -32,14 +32,14 @@ public final class V2FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * PreStop function configuration. See `pre_stop` below.
+     * PreStop function configuration. See `preStop` below.
      * 
      */
     @Import(name="preStop")
     private @Nullable Output<V2FunctionInstanceLifecycleConfigPreStopArgs> preStop;
 
     /**
-     * @return PreStop function configuration. See `pre_stop` below.
+     * @return PreStop function configuration. See `preStop` below.
      * 
      */
     public Optional<Output<V2FunctionInstanceLifecycleConfigPreStopArgs>> preStop() {
@@ -72,7 +72,7 @@ public final class V2FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preFreeze PreFreeze function configuration. See `pre_freeze` below.
+         * @param preFreeze PreFreeze function configuration. See `preFreeze` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class V2FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preFreeze PreFreeze function configuration. See `pre_freeze` below.
+         * @param preFreeze PreFreeze function configuration. See `preFreeze` below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class V2FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preStop PreStop function configuration. See `pre_stop` below.
+         * @param preStop PreStop function configuration. See `preStop` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class V2FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preStop PreStop function configuration. See `pre_stop` below.
+         * @param preStop PreStop function configuration. See `preStop` below.
          * 
          * @return builder
          * 

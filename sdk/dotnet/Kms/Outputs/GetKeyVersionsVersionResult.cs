@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (Removed from v1.124.4) It has been removed and using `create_time` instead.
+        /// (Removed from v1.124.4) It has been removed and using `CreateTime` instead.
         /// </summary>
         public readonly string CreationDate;
         /// <summary>

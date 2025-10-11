@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly bool? EnableIntelligence;
         /// <summary>
-        /// Fingerprint Rules. See `finger_print_rule_list` below.
+        /// Fingerprint Rules. See `FingerPrintRuleList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BgpPolicyContentFingerPrintRuleList> FingerPrintRuleLists;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string? IntelligenceLevel;
         /// <summary>
-        /// L4 protection rules. See `layer4_rule_list` below.
+        /// L4 protection rules. See `Layer4RuleList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BgpPolicyContentLayer4RuleList> Layer4RuleLists;
         /// <summary>
-        /// Port Rule List. See `port_rule_list` below.
+        /// Port Rule List. See `PortRuleList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BgpPolicyContentPortRuleList> PortRuleLists;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly ImmutableArray<int> RegionBlockProvinceLists;
         /// <summary>
-        /// Source pull Black. See `source_block_list` below.
+        /// Source pull Black. See `SourceBlockList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BgpPolicyContentSourceBlockList> SourceBlockLists;
         /// <summary>
-        /// Do not fill in when the source speed limit is deleted. See `source_limit` below.
+        /// Do not fill in when the source speed limit is deleted. See `SourceLimit` below.
         /// </summary>
         public readonly Outputs.BgpPolicyContentSourceLimit? SourceLimit;
         /// <summary>

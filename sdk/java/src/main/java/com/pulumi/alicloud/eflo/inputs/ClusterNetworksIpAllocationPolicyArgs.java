@@ -19,14 +19,14 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
     public static final ClusterNetworksIpAllocationPolicyArgs Empty = new ClusterNetworksIpAllocationPolicyArgs();
 
     /**
-     * Bond policy See `bond_policy` below.
+     * Bond policy See `bondPolicy` below.
      * 
      */
     @Import(name="bondPolicy")
     private @Nullable Output<ClusterNetworksIpAllocationPolicyBondPolicyArgs> bondPolicy;
 
     /**
-     * @return Bond policy See `bond_policy` below.
+     * @return Bond policy See `bondPolicy` below.
      * 
      */
     public Optional<Output<ClusterNetworksIpAllocationPolicyBondPolicyArgs>> bondPolicy() {
@@ -34,14 +34,14 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * Model Assignment Policy See `machine_type_policy` below.
+     * Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     @Import(name="machineTypePolicies")
     private @Nullable Output<List<ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs>> machineTypePolicies;
 
     /**
-     * @return Model Assignment Policy See `machine_type_policy` below.
+     * @return Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     public Optional<Output<List<ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs>>> machineTypePolicies() {
@@ -49,14 +49,14 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * Node allocation policy See `node_policy` below.
+     * Node allocation policy See `nodePolicy` below.
      * 
      */
     @Import(name="nodePolicies")
     private @Nullable Output<List<ClusterNetworksIpAllocationPolicyNodePolicyArgs>> nodePolicies;
 
     /**
-     * @return Node allocation policy See `node_policy` below.
+     * @return Node allocation policy See `nodePolicy` below.
      * 
      */
     public Optional<Output<List<ClusterNetworksIpAllocationPolicyNodePolicyArgs>>> nodePolicies() {
@@ -90,7 +90,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param bondPolicy Bond policy See `bond_policy` below.
+         * @param bondPolicy Bond policy See `bondPolicy` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param bondPolicy Bond policy See `bond_policy` below.
+         * @param bondPolicy Bond policy See `bondPolicy` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param machineTypePolicies Model Assignment Policy See `machine_type_policy` below.
+         * @param machineTypePolicies Model Assignment Policy See `machineTypePolicy` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param machineTypePolicies Model Assignment Policy See `machine_type_policy` below.
+         * @param machineTypePolicies Model Assignment Policy See `machineTypePolicy` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param machineTypePolicies Model Assignment Policy See `machine_type_policy` below.
+         * @param machineTypePolicies Model Assignment Policy See `machineTypePolicy` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodePolicies Node allocation policy See `node_policy` below.
+         * @param nodePolicies Node allocation policy See `nodePolicy` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodePolicies Node allocation policy See `node_policy` below.
+         * @param nodePolicies Node allocation policy See `nodePolicy` below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterNetworksIpAllocationPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodePolicies Node allocation policy See `node_policy` below.
+         * @param nodePolicies Node allocation policy See `nodePolicy` below.
          * 
          * @return builder
          * 

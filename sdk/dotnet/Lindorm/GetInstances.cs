@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Lindorm
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Lindorm
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The query str, which can use `instance_name` keyword for fuzzy search.
+        /// The query str, which can use `InstanceName` keyword for fuzzy search.
         /// </summary>
         [Input("queryStr")]
         public string? QueryStr { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Lindorm
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The query str, which can use `instance_name` keyword for fuzzy search.
+        /// The query str, which can use `InstanceName` keyword for fuzzy search.
         /// </summary>
         [Input("queryStr")]
         public Input<string>? QueryStr { get; set; }

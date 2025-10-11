@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         private InputList<Inputs.BgpPolicyContentLayer4RuleListConditionListGetArgs>? _conditionLists;
 
         /// <summary>
-        /// Matching Condition. See `condition_list` below.
+        /// Matching Condition. See `ConditionList` below.
         /// </summary>
         public InputList<Inputs.BgpPolicyContentLayer4RuleListConditionListGetArgs> ConditionLists
         {

@@ -17,7 +17,7 @@ public final class GetAccessGroupsGroup {
      */
     private String accessGroupId;
     /**
-     * @return The Name of Access Group. The length Of `access_group_name` does not exceed 100 bytes.
+     * @return The Name of Access Group. The length Of `accessGroupName` does not exceed 100 bytes.
      * 
      */
     private String accessGroupName;
@@ -61,7 +61,7 @@ public final class GetAccessGroupsGroup {
         return this.accessGroupId;
     }
     /**
-     * @return The Name of Access Group. The length Of `access_group_name` does not exceed 100 bytes.
+     * @return The Name of Access Group. The length Of `accessGroupName` does not exceed 100 bytes.
      * 
      */
     public String accessGroupName() {

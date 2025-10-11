@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
+        /// The status of the anti-ransomware policy. Valid Value: `Enabled`, `Disabled`, `Closed`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
+        /// The status of the anti-ransomware policy. Valid Value: `Enabled`, `Disabled`, `Closed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

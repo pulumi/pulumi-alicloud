@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// </summary>
         public readonly bool HasDefaultLaunchOption;
         /// <summary>
-        /// ID of product, Its value is the same as `product_id`.
+        /// ID of product, Its value is the same as `ProductId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

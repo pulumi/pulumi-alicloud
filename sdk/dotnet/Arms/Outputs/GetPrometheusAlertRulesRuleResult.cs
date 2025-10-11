@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
-        /// The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+        /// The ID of the notification policy. This parameter is required when the `NotifyType` parameter is set to `DISPATCH_RULE`.
         /// </summary>
         public readonly string DispatchRuleId;
         /// <summary>

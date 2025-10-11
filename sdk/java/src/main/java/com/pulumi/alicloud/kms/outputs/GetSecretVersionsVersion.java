@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretVersionsVersion {
     /**
-     * @return The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
+     * @return The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
      * 
      */
     private String secretData;
     /**
-     * @return The type of the secret value. (Returned when `enable_details` is true).
+     * @return The type of the secret value. (Returned when `enableDetails` is true).
      * 
      */
     private String secretDataType;
@@ -39,14 +39,14 @@ public final class GetSecretVersionsVersion {
 
     private GetSecretVersionsVersion() {}
     /**
-     * @return The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
+     * @return The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
      * 
      */
     public String secretData() {
         return this.secretData;
     }
     /**
-     * @return The type of the secret value. (Returned when `enable_details` is true).
+     * @return The type of the secret value. (Returned when `enableDetails` is true).
      * 
      */
     public String secretDataType() {

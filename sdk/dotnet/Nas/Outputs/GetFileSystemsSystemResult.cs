@@ -33,8 +33,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// <summary>
         /// The type of the file system.
         /// Valid values:
-        /// `standard` (Default),
-        /// `extreme`.
+        /// `Standard` (Default),
+        /// `Extreme`.
         /// </summary>
         public readonly string FileSystemType;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// The protocol type of the file system.
         /// Valid values:
         /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`).
+        /// `SMB` (Available when the `FileSystemType` is `Standard`).
         /// </summary>
         public readonly string ProtocolType;
         /// <summary>
@@ -63,8 +63,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// <summary>
         /// The storage type of the file system.
         /// * Valid values:
-        /// * `Performance` (Available when the `file_system_type` is `standard`)
-        /// * `Capacity` (Available when the `file_system_type` is `standard`)
+        /// * `Performance` (Available when the `FileSystemType` is `Standard`)
+        /// * `Capacity` (Available when the `FileSystemType` is `Standard`)
         /// </summary>
         public readonly string StorageType;
         /// <summary>

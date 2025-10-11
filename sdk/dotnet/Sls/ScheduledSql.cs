@@ -119,13 +119,13 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `Schedule` below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.ScheduledSqlSchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Task Configuration. See `scheduled_sql_configuration` below.
+        /// Task Configuration. See `ScheduledSqlConfiguration` below.
         /// </summary>
         [Output("scheduledSqlConfiguration")]
         public Output<Outputs.ScheduledSqlScheduledSqlConfiguration> ScheduledSqlConfiguration { get; private set; } = null!;
@@ -201,13 +201,13 @@ namespace Pulumi.AliCloud.Sls
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `Schedule` below.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.ScheduledSqlScheduleArgs> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Task Configuration. See `scheduled_sql_configuration` below.
+        /// Task Configuration. See `ScheduledSqlConfiguration` below.
         /// </summary>
         [Input("scheduledSqlConfiguration", required: true)]
         public Input<Inputs.ScheduledSqlScheduledSqlConfigurationArgs> ScheduledSqlConfiguration { get; set; } = null!;
@@ -245,13 +245,13 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `Schedule` below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ScheduledSqlScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Task Configuration. See `scheduled_sql_configuration` below.
+        /// Task Configuration. See `ScheduledSqlConfiguration` below.
         /// </summary>
         [Input("scheduledSqlConfiguration")]
         public Input<Inputs.ScheduledSqlScheduledSqlConfigurationGetArgs>? ScheduledSqlConfiguration { get; set; }

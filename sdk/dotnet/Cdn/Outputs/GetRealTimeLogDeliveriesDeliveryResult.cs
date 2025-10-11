@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
         /// </summary>
         public readonly string SlsRegion;
         /// <summary>
-        /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        /// The status of the real-time log delivery feature. Valid Values: `Online` and `Offline`.
         /// </summary>
         public readonly string Status;
 

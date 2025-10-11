@@ -105,28 +105,28 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      * 
      */
     @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
-     * @return The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * @return The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      * 
      */
     public Output<Optional<Integer>> autoRenewDuration() {
         return Codegen.optional(this.autoRenewDuration);
     }
     /**
-     * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+     * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      * 
      */
     @Export(name="autoUseCoupon", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoUseCoupon;
 
     /**
-     * @return Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+     * @return Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      * 
      */
     public Output<Optional<String>> autoUseCoupon() {
@@ -190,8 +190,8 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
     }
     /**
      * The subscription duration. Default value: `1`.
-     * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-     * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      * 
      */
     @Export(name="duration", refs={Integer.class}, tree="[0]")
@@ -199,8 +199,8 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The subscription duration. Default value: `1`.
-     * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-     * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      * 
      */
     public Output<Optional<Integer>> duration() {
@@ -235,14 +235,14 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pricingCycle);
     }
     /**
-     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     @Export(name="promotionOptionNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> promotionOptionNo;
 
     /**
-     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * @return The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     public Output<Optional<String>> promotionOptionNo() {

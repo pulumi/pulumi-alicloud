@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// Does it contain renewal data. Valid values: `true`, `false`.
+        /// Does it contain renewal data. Valid values: `True`, `False`.
         /// </summary>
         [Input("includeReservationData")]
         public string? IncludeReservationData { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// Does it contain renewal data. Valid values: `true`, `false`.
+        /// Does it contain renewal data. Valid values: `True`, `False`.
         /// </summary>
         [Input("includeReservationData")]
         public Input<string>? IncludeReservationData { get; set; }

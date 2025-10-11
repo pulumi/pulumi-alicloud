@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? ResourceId { get; set; }
 
         /// <summary>
-        /// The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
+        /// The type of the associated resource. Valid values `VSwitch`. `ResourceType` and `ResourceId` need to be specified at the same time to take effect.
         /// </summary>
         [Input("resourceType")]
         public string? ResourceType { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
+        /// The type of the associated resource. Valid values `VSwitch`. `ResourceType` and `ResourceId` need to be specified at the same time to take effect.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

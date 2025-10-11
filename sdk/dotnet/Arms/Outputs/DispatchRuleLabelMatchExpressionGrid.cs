@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class DispatchRuleLabelMatchExpressionGrid
     {
         /// <summary>
-        /// Sets the dispatch rule. See `label_match_expression_groups` below.
+        /// Sets the dispatch rule. See `LabelMatchExpressionGroups` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup> LabelMatchExpressionGroups;
 

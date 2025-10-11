@@ -408,18 +408,18 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.routerTableId;
     }
     /**
-     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     @Export(name="secondaryCidrBlocks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> secondaryCidrBlocks;
 
     /**
-     * @return Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @return Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
     public Output<List<String>> secondaryCidrBlocks() {
@@ -429,10 +429,10 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
      * @deprecated
-     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     @Export(name="secondaryCidrMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> secondaryCidrMask;
 

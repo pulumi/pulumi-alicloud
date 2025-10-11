@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Cas
         public Output<string?> Cert { get; private set; } = null!;
 
         /// <summary>
-        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
         /// </summary>
         [Output("certificateName")]
         public Output<string> CertificateName { get; private set; } = null!;
@@ -137,13 +137,13 @@ namespace Pulumi.AliCloud.Cas
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `CertificateName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Cas
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
         /// </summary>
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }
@@ -275,13 +275,13 @@ namespace Pulumi.AliCloud.Cas
         }
 
         /// <summary>
-        /// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `CertificateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -341,7 +341,7 @@ namespace Pulumi.AliCloud.Cas
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
         /// </summary>
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }
@@ -385,13 +385,13 @@ namespace Pulumi.AliCloud.Cas
         }
 
         /// <summary>
-        /// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `CertificateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

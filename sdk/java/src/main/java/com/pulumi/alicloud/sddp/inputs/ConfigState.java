@@ -16,14 +16,14 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
     public static final ConfigState Empty = new ConfigState();
 
     /**
-     * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+     * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      * 
      */
     @Import(name="code")
     private @Nullable Output<String> code;
 
     /**
-     * @return Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+     * @return Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      * 
      */
     public Optional<Output<String>> code() {
@@ -103,7 +103,7 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param code Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+         * @param code Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param code Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+         * @param code Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
          * 
          * @return builder
          * 

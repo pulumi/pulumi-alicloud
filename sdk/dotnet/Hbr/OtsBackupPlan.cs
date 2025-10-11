@@ -169,13 +169,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`. Default values: `False`.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The name of the Table store instance. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Output("instanceName")]
         public Output<string?> InstanceName { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> OtsBackupPlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The details about the Table store instance. See the following `Block OtsDetail`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Output("otsDetails")]
         public Output<ImmutableArray<Outputs.OtsBackupPlanOtsDetail>> OtsDetails { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The backup plan rule. See the following `Block rules`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.OtsBackupPlanRule>> Rules { get; private set; } = null!;
@@ -288,13 +288,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`. Default values: `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The name of the Table store instance. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanOtsDetailArgs>? _otsDetails;
 
         /// <summary>
-        /// The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The details about the Table store instance. See the following `Block OtsDetail`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanOtsDetailArgs> OtsDetails
         {
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanRuleArgs>? _rules;
 
         /// <summary>
-        /// The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The backup plan rule. See the following `Block rules`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanRuleArgs> Rules
         {
@@ -381,13 +381,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`. Default values: `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The name of the Table store instance. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -402,7 +402,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanOtsDetailGetArgs>? _otsDetails;
 
         /// <summary>
-        /// The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The details about the Table store instance. See the following `Block OtsDetail`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanOtsDetailGetArgs> OtsDetails
         {
@@ -420,7 +420,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.OtsBackupPlanRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// The backup plan rule. See the following `Block rules`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         public InputList<Inputs.OtsBackupPlanRuleGetArgs> Rules
         {

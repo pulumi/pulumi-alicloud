@@ -399,14 +399,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mss);
     }
     /**
-     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      * 
      */
     @Export(name="proxyProtocolConfig", refs={ListenerProxyProtocolConfig.class}, tree="[0]")
     private Output<ListenerProxyProtocolConfig> proxyProtocolConfig;
 
     /**
-     * @return The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * @return The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      * 
      */
     public Output<ListenerProxyProtocolConfig> proxyProtocolConfig() {

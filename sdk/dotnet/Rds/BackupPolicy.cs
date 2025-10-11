@@ -78,19 +78,19 @@ namespace Pulumi.AliCloud.Rds
     public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        /// Instance archive backup keep count. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. When `ArchiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `ArchiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
         /// </summary>
         [Output("archiveBackupKeepCount")]
         public Output<int> ArchiveBackupKeepCount { get; private set; } = null!;
 
         /// <summary>
-        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+        /// Instance archive backup keep policy. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         /// </summary>
         [Output("archiveBackupKeepPolicy")]
         public Output<string> ArchiveBackupKeepPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        /// Instance archive backup retention days. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. Valid values: [30-1095], and `ArchiveBackupRetentionPeriod` must larger than `BackupRetentionPeriod` 730.
         /// </summary>
         [Output("archiveBackupRetentionPeriod")]
         public Output<int> ArchiveBackupRetentionPeriod { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Snapshot: snapshot backup
         /// -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         /// 
-        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `LogBackupRetentionPeriod`.
         /// </summary>
         [Output("backupMethod")]
         public Output<string> BackupMethod { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> CompressType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        /// Whether to backup instance log. Valid values are `True`, `False`, Default to `True`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         /// </summary>
         [Output("enableBackupLog")]
         public Output<bool> EnableBackupLog { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool> EnableIncrementDataBackup { get; private set; } = null!;
 
         /// <summary>
-        /// Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        /// Instance high space usage protection policy. Valid when the `EnableBackupLog` is `True`. Valid values are `Enable`, `Disable`.
         /// </summary>
         [Output("highSpaceUsageProtection")]
         public Output<string?> HighSpaceUsageProtection { get; private set; } = null!;
@@ -188,13 +188,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+        /// Instance log backup local retention hours. Valid when the `EnableBackupLog` is `True`. Valid values: [0-7*24].
         /// </summary>
         [Output("localLogRetentionHours")]
         public Output<int> LocalLogRetentionHours { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+        /// Instance log backup local retention space. Valid when the `EnableBackupLog` is `True`. Valid values: [0-50].
         /// </summary>
         [Output("localLogRetentionSpace")]
         public Output<int> LocalLogRetentionSpace { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> LogBackupLocalRetentionNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        /// Instance log backup retention days. Valid when the `EnableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `BackupRetentionPeriod`.
         /// </summary>
         [Output("logBackupRetentionPeriod")]
         public Output<int> LogBackupRetentionPeriod { get; private set; } = null!;
@@ -304,19 +304,19 @@ namespace Pulumi.AliCloud.Rds
     public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        /// Instance archive backup keep count. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. When `ArchiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `ArchiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
         /// </summary>
         [Input("archiveBackupKeepCount")]
         public Input<int>? ArchiveBackupKeepCount { get; set; }
 
         /// <summary>
-        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+        /// Instance archive backup keep policy. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         /// </summary>
         [Input("archiveBackupKeepPolicy")]
         public Input<string>? ArchiveBackupKeepPolicy { get; set; }
 
         /// <summary>
-        /// Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        /// Instance archive backup retention days. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. Valid values: [30-1095], and `ArchiveBackupRetentionPeriod` must larger than `BackupRetentionPeriod` 730.
         /// </summary>
         [Input("archiveBackupRetentionPeriod")]
         public Input<int>? ArchiveBackupRetentionPeriod { get; set; }
@@ -341,7 +341,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Snapshot: snapshot backup
         /// -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         /// 
-        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `LogBackupRetentionPeriod`.
         /// </summary>
         [Input("backupMethod")]
         public Input<string>? BackupMethod { get; set; }
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
-        [Obsolete(@"Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead")]
+        [Obsolete(@"Attribute 'backup_period' has been deprecated from version 1.69.0. Use `PreferredBackupPeriod` instead")]
         public InputList<string> BackupPeriods
         {
             get => _backupPeriods ?? (_backupPeriods = new InputList<string>());
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CompressType { get; set; }
 
         /// <summary>
-        /// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        /// Whether to backup instance log. Valid values are `True`, `False`, Default to `True`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         /// </summary>
         [Input("enableBackupLog")]
         public Input<bool>? EnableBackupLog { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? EnableIncrementDataBackup { get; set; }
 
         /// <summary>
-        /// Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        /// Instance high space usage protection policy. Valid when the `EnableBackupLog` is `True`. Valid values are `Enable`, `Disable`.
         /// </summary>
         [Input("highSpaceUsageProtection")]
         public Input<string>? HighSpaceUsageProtection { get; set; }
@@ -421,13 +421,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+        /// Instance log backup local retention hours. Valid when the `EnableBackupLog` is `True`. Valid values: [0-7*24].
         /// </summary>
         [Input("localLogRetentionHours")]
         public Input<int>? LocalLogRetentionHours { get; set; }
 
         /// <summary>
-        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+        /// Instance log backup local retention space. Valid when the `EnableBackupLog` is `True`. Valid values: [0-50].
         /// </summary>
         [Input("localLogRetentionSpace")]
         public Input<int>? LocalLogRetentionSpace { get; set; }
@@ -452,7 +452,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LogBackupLocalRetentionNumber { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        /// Instance log backup retention days. Valid when the `EnableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `BackupRetentionPeriod`.
         /// </summary>
         [Input("logBackupRetentionPeriod")]
         public Input<int>? LogBackupRetentionPeriod { get; set; }
@@ -505,19 +505,19 @@ namespace Pulumi.AliCloud.Rds
     public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        /// Instance archive backup keep count. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. When `ArchiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `ArchiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
         /// </summary>
         [Input("archiveBackupKeepCount")]
         public Input<int>? ArchiveBackupKeepCount { get; set; }
 
         /// <summary>
-        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+        /// Instance archive backup keep policy. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         /// </summary>
         [Input("archiveBackupKeepPolicy")]
         public Input<string>? ArchiveBackupKeepPolicy { get; set; }
 
         /// <summary>
-        /// Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        /// Instance archive backup retention days. Valid when the `EnableBackupLog` is `True` and instance is mysql local disk. Valid values: [30-1095], and `ArchiveBackupRetentionPeriod` must larger than `BackupRetentionPeriod` 730.
         /// </summary>
         [Input("archiveBackupRetentionPeriod")]
         public Input<int>? ArchiveBackupRetentionPeriod { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Snapshot: snapshot backup
         /// -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         /// 
-        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `LogBackupRetentionPeriod`.
         /// </summary>
         [Input("backupMethod")]
         public Input<string>? BackupMethod { get; set; }
@@ -553,7 +553,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
-        [Obsolete(@"Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead")]
+        [Obsolete(@"Attribute 'backup_period' has been deprecated from version 1.69.0. Use `PreferredBackupPeriod` instead")]
         public InputList<string> BackupPeriods
         {
             get => _backupPeriods ?? (_backupPeriods = new InputList<string>());
@@ -595,7 +595,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CompressType { get; set; }
 
         /// <summary>
-        /// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        /// Whether to backup instance log. Valid values are `True`, `False`, Default to `True`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         /// </summary>
         [Input("enableBackupLog")]
         public Input<bool>? EnableBackupLog { get; set; }
@@ -610,7 +610,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? EnableIncrementDataBackup { get; set; }
 
         /// <summary>
-        /// Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        /// Instance high space usage protection policy. Valid when the `EnableBackupLog` is `True`. Valid values are `Enable`, `Disable`.
         /// </summary>
         [Input("highSpaceUsageProtection")]
         public Input<string>? HighSpaceUsageProtection { get; set; }
@@ -622,13 +622,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+        /// Instance log backup local retention hours. Valid when the `EnableBackupLog` is `True`. Valid values: [0-7*24].
         /// </summary>
         [Input("localLogRetentionHours")]
         public Input<int>? LocalLogRetentionHours { get; set; }
 
         /// <summary>
-        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+        /// Instance log backup local retention space. Valid when the `EnableBackupLog` is `True`. Valid values: [0-50].
         /// </summary>
         [Input("localLogRetentionSpace")]
         public Input<int>? LocalLogRetentionSpace { get; set; }
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LogBackupLocalRetentionNumber { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        /// Instance log backup retention days. Valid when the `EnableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `BackupRetentionPeriod`.
         /// </summary>
         [Input("logBackupRetentionPeriod")]
         public Input<int>? LogBackupRetentionPeriod { get; set; }

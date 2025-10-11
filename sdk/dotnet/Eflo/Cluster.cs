@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> ClusterType { get; private set; } = null!;
 
         /// <summary>
-        /// Component (software instance) See `components` below.
+        /// Component (software instance) See `Components` below.
         /// </summary>
         [Output("components")]
         public Output<ImmutableArray<Outputs.ClusterComponent>> Components { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<bool?> IgnoreFailedNodeTasks { get; private set; } = null!;
 
         /// <summary>
-        /// Network Information See `networks` below.
+        /// Network Information See `Networks` below.
         /// </summary>
         [Output("networks")]
         public Output<Outputs.ClusterNetworks?> Networks { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<ImmutableArray<string>> NimizVswitches { get; private set; } = null!;
 
         /// <summary>
-        /// Node Group List See `node_groups` below.
+        /// Node Group List See `NodeGroups` below.
         /// </summary>
         [Output("nodeGroups")]
         public Output<ImmutableArray<Outputs.ClusterNodeGroup>> NodeGroups { get; private set; } = null!;
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.ClusterComponentArgs>? _components;
 
         /// <summary>
-        /// Component (software instance) See `components` below.
+        /// Component (software instance) See `Components` below.
         /// </summary>
         public InputList<Inputs.ClusterComponentArgs> Components
         {
@@ -351,7 +351,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<bool>? IgnoreFailedNodeTasks { get; set; }
 
         /// <summary>
-        /// Network Information See `networks` below.
+        /// Network Information See `Networks` below.
         /// </summary>
         [Input("networks")]
         public Input<Inputs.ClusterNetworksArgs>? Networks { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.ClusterNodeGroupArgs>? _nodeGroups;
 
         /// <summary>
-        /// Node Group List See `node_groups` below.
+        /// Node Group List See `NodeGroups` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupArgs> NodeGroups
         {
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.ClusterComponentGetArgs>? _components;
 
         /// <summary>
-        /// Component (software instance) See `components` below.
+        /// Component (software instance) See `Components` below.
         /// </summary>
         public InputList<Inputs.ClusterComponentGetArgs> Components
         {
@@ -461,7 +461,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<bool>? IgnoreFailedNodeTasks { get; set; }
 
         /// <summary>
-        /// Network Information See `networks` below.
+        /// Network Information See `Networks` below.
         /// </summary>
         [Input("networks")]
         public Input<Inputs.ClusterNetworksGetArgs>? Networks { get; set; }
@@ -482,7 +482,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.ClusterNodeGroupGetArgs>? _nodeGroups;
 
         /// <summary>
-        /// Node Group List See `node_groups` below.
+        /// Node Group List See `NodeGroups` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupGetArgs> NodeGroups
         {

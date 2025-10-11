@@ -16,14 +16,14 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
     public static final SearchIndexSchemaIndexSortSorterArgs Empty = new SearchIndexSchemaIndexSortSorterArgs();
 
     /**
-     * The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     @Import(name="fieldName")
     private @Nullable Output<String> fieldName;
 
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     public Optional<Output<String>> fieldName() {
@@ -31,14 +31,14 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
     }
 
     /**
-     * The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -103,7 +103,7 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * @param fieldName The name of the field that is used to sort data. only required if sorterType is FieldSort.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * @param fieldName The name of the field that is used to sort data. only required if sorterType is FieldSort.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param mode The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+         * @param mode The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param mode The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+         * @param mode The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
          * 
          * @return builder
          * 

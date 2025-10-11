@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
     public sealed class NodeGroupIpAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        /// Specify the cluster subnet ID based on the bond name See `BondPolicy` below.
         /// </summary>
         [Input("bondPolicy")]
         public Input<Inputs.NodeGroupIpAllocationPolicyBondPolicyArgs>? BondPolicy { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.NodeGroupIpAllocationPolicyMachineTypePolicyArgs>? _machineTypePolicies;
 
         /// <summary>
-        /// Model Assignment Policy See `machine_type_policy` below.
+        /// Model Assignment Policy See `MachineTypePolicy` below.
         /// </summary>
         public InputList<Inputs.NodeGroupIpAllocationPolicyMachineTypePolicyArgs> MachineTypePolicies
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.NodeGroupIpAllocationPolicyNodePolicyArgs>? _nodePolicies;
 
         /// <summary>
-        /// Node allocation policy See `node_policy` below.
+        /// Node allocation policy See `NodePolicy` below.
         /// </summary>
         public InputList<Inputs.NodeGroupIpAllocationPolicyNodePolicyArgs> NodePolicies
         {

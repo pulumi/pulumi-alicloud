@@ -47,18 +47,18 @@ public final class BucketReplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+     * The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
      * 
-     * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+     * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
      * 
      */
     @Import(name="transferType")
     private @Nullable Output<String> transferType;
 
     /**
-     * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+     * @return The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
      * 
-     * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+     * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
      * 
      */
     public Optional<Output<String>> transferType() {
@@ -134,9 +134,9 @@ public final class BucketReplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transferType The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+         * @param transferType The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
          * 
-         * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+         * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
          * 
          * @return builder
          * 
@@ -147,9 +147,9 @@ public final class BucketReplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transferType The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+         * @param transferType The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
          * 
-         * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+         * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
          * 
          * @return builder
          * 

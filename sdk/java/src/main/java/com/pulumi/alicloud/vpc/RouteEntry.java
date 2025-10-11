@@ -249,10 +249,10 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      * @deprecated
-     * Attribute router_id has been deprecated and suggest removing it from your template.
+     * Attribute routerId has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute router_id has been deprecated and suggest removing it from your template. */
+    @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 

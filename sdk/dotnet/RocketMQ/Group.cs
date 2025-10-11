@@ -65,19 +65,19 @@ namespace Pulumi.AliCloud.RocketMQ
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Replaced by `group_name` after version 1.98.0.
+        /// Replaced by `GroupName` after version 1.98.0.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// Name of the group. Two groups on a single instance cannot have the same name. A `GroupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// Specify the protocol applicable to the created Group ID. Valid values: `Tcp`, `Http`. Default to `Tcp`.
         /// </summary>
         [Output("groupType")]
         public Output<string?> GroupType { get; private set; } = null!;
@@ -155,19 +155,19 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Replaced by `group_name` after version 1.98.0.
+        /// Replaced by `GroupName` after version 1.98.0.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// Name of the group. Two groups on a single instance cannot have the same name. A `GroupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// Specify the protocol applicable to the created Group ID. Valid values: `Tcp`, `Http`. Default to `Tcp`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
@@ -213,19 +213,19 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Replaced by `group_name` after version 1.98.0.
+        /// Replaced by `GroupName` after version 1.98.0.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// Name of the group. Two groups on a single instance cannot have the same name. A `GroupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// Specify the protocol applicable to the created Group ID. Valid values: `Tcp`, `Http`. Default to `Tcp`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }

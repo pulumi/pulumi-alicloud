@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The bgp config of Tunnel. See `tunnel_bgp_config` below.
+        /// The bgp config of Tunnel. See `TunnelBgpConfig` below.
         /// </summary>
         [Input("tunnelBgpConfig")]
         public Input<Inputs.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs>? TunnelBgpConfig { get; set; }
@@ -67,13 +67,13 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? TunnelId { get; set; }
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+        /// The configuration of Phase 1 negotiations in Tunnel. See `TunnelIkeConfig` below.
         /// </summary>
         [Input("tunnelIkeConfig")]
         public Input<Inputs.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs>? TunnelIkeConfig { get; set; }
 
         /// <summary>
-        /// IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+        /// IPsec configuration in Tunnel. See `TunnelIpsecConfig` below.
         /// </summary>
         [Input("tunnelIpsecConfig")]
         public Input<Inputs.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs>? TunnelIpsecConfig { get; set; }

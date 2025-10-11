@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v1.0.0
     /// 
-    /// &gt; **NOTE:** From version v1.213.0, you can specify `launch_template_id` and `launch_template_version` to use a launch template. This eliminates the need to configure a large number of parameters every time you create instances.
+    /// &gt; **NOTE:** From version v1.213.0, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use a launch template. This eliminates the need to configure a large number of parameters every time you create instances.
     /// 
     /// ## Example Usage
     /// 
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        /// It has been deprecated from version "1.7.0". Setting "InternetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
         /// </summary>
         [Output("allocatePublicIp")]
         public Output<bool?> AllocatePublicIp { get; private set; } = null!;
@@ -130,15 +130,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-        /// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-        /// - [1, 2, 3] when `period_unit` in "Week"
+        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`. Default to 1. Valid value:
+        /// - [1, 2, 3, 6, 12] when `PeriodUnit` in "Month"
+        /// - [1, 2, 3] when `PeriodUnit` in "Week"
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+        /// The Zone to start the instance in. It is ignored and will be computed when set `VswitchId`.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -162,19 +162,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> CreditSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `SpotStrategy` and `SpotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         /// </summary>
         [Output("dedicatedHostId")]
         public Output<string?> DedicatedHostId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
+        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `False`.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableJumboFrame")]
         public Output<bool> EnableJumboFrame { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> HpcClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: `Enabled`, `Disabled`. Default value: `Enabled`.
         /// </summary>
         [Output("httpEndpoint")]
         public Output<string> HttpEndpoint { get; private set; } = null!;
@@ -258,24 +258,24 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HttpTokens { get; private set; } = null!;
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The options of images. See `image_options` below.
+        /// The options of images. See `ImageOptions` below.
         /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// &gt; **NOTE:** System disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `Period` and `PeriodUnit`, but it is irreversible.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
         /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// &gt; **NOTE:** From version 1.7.0, setting "InternetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+        /// Setting "InternetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
         /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
         /// 
         /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -293,19 +293,19 @@ namespace Pulumi.AliCloud.Ecs
         /// Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-        /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        /// there strongly recommends that `Don't change InstanceChargeType frequentlly in one month`.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `InstanceType`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -329,13 +329,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
-        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv6Addresses` and `Ipv6AddressCount` parameters.
         /// </summary>
         [Output("ipv6AddressCount")]
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
 
         /// <summary>
-        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `Ipv6Addresses` can be modified.
         /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
@@ -353,19 +353,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating an instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the launch template.
         /// </summary>
         [Output("launchTemplateId")]
         public Output<string?> LaunchTemplateId { get; private set; } = null!;
@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LaunchTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+        /// The version of the launch template. If you set `LaunchTemplateId` or `LaunchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
         /// </summary>
         [Output("launchTemplateVersion")]
         public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
@@ -392,13 +392,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> MaintenanceAction { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        /// Specifies whether to send an event notification before instance shutdown. Valid values: `True`, `False`. Default value: `False`.
         /// </summary>
         [Output("maintenanceNotify")]
         public Output<bool?> MaintenanceNotify { get; private set; } = null!;
 
         /// <summary>
-        /// The time of maintenance. See `maintenance_time` below.
+        /// The time of maintenance. See `MaintenanceTime` below.
         /// </summary>
         [Output("maintenanceTime")]
         public Output<Outputs.InstanceMaintenanceTime?> MaintenanceTime { get; private set; } = null!;
@@ -430,13 +430,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> NetworkInterfaceTrafficMode { get; private set; } = null!;
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `network_interfaces` below.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<Outputs.InstanceNetworkInterfaces> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+        /// The operation type. It is valid when `InstanceChargeType` is `PrePaid`. Default value: `Upgrade`. Valid values: `Upgrade`, `Downgrade`. **NOTE:**  When the new instance type specified by the `InstanceType` parameter has lower specifications than the current instance type, you must set `OperatorType` to `Downgrade`.
         /// </summary>
         [Output("operatorType")]
         public Output<string?> OperatorType { get; private set; } = null!;
@@ -460,23 +460,23 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        /// Specifies whether to use the password preset in the image. Default value: `False`. Valid values:
         /// </summary>
         [Output("passwordInherit")]
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        /// - [1-3] when `period_unit` in "Week"
+        /// The duration that you will buy the resource, in month. It is valid and required when `InstanceChargeType` is `PrePaid`. Valid values:
+        /// - [1-9, 12, 24, 36, 48, 60] when `PeriodUnit` in "Month"
+        /// - [1-3] when `PeriodUnit` in "Week"
         /// 
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -488,7 +488,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PrimaryIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        /// Instance private IP address can be specified when you creating new instance. It is valid when `VswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
@@ -502,7 +502,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The type of the private pool. Default value: `None`. Valid values:
         /// - `Open`: Open private pool.
-        /// - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        /// - `Target`: Specified private pool. **NOTE:** If `PrivatePoolOptionsMatchCriteria` is set to `Target`, `PrivatePoolOptionsId` is required.
         /// - `None`: No private pool. The capacity in private pools is not used.
         /// </summary>
         [Output("privatePoolOptionsMatchCriteria")]
@@ -521,7 +521,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> QueuePairNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        /// Whether to renew an ECS instance automatically or not. It is valid when `InstanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
         /// - `AutoRenewal`: Enable auto renewal.
         /// - `Normal`: Disable auto renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -536,13 +536,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        /// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `RoleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         /// </summary>
         [Output("roleName")]
         public Output<string> RoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `SecondaryPrivateIps` or `SecondaryPrivateIpAddressCount` but not both.
         /// </summary>
         [Output("secondaryPrivateIpAddressCount")]
         public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        /// A list of security group ids to associate with. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -580,7 +580,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<double> SpotPriceLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'. Value range:
         /// - NoSpot: A regular Pay-As-You-Go instance.
         /// - SpotWithPriceLimit: A price threshold for a spot instance
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -623,7 +623,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> SystemDiskBurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        /// Valid values are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`, `CloudAuto`, `CloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `CloudAuto` Available since v1.184.0.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -641,7 +641,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskEncryptAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
+        /// Specifies whether to encrypt the system disk. Valid values: `True`,`False`. Default value: `False`.
         /// </summary>
         [Output("systemDiskEncrypted")]
         public Output<bool> SystemDiskEncrypted { get; private set; } = null!;
@@ -776,7 +776,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        /// It has been deprecated from version "1.7.0". Setting "InternetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
         /// </summary>
         [Input("allocatePublicIp")]
         public Input<bool>? AllocatePublicIp { get; set; }
@@ -790,15 +790,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-        /// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-        /// - [1, 2, 3] when `period_unit` in "Week"
+        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`. Default to 1. Valid value:
+        /// - [1, 2, 3, 6, 12] when `PeriodUnit` in "Month"
+        /// - [1, 2, 3] when `PeriodUnit` in "Week"
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+        /// The Zone to start the instance in. It is ignored and will be computed when set `VswitchId`.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -813,7 +813,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.InstanceDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskArgs> DataDisks
         {
@@ -822,13 +822,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `SpotStrategy` and `SpotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
+        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `False`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -854,7 +854,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableJumboFrame")]
         public Input<bool>? EnableJumboFrame { get; set; }
@@ -880,7 +880,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HpcClusterId { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: `Enabled`, `Disabled`. Default value: `Enabled`.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
@@ -900,24 +900,24 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The options of images. See `image_options` below.
+        /// The options of images. See `ImageOptions` below.
         /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// &gt; **NOTE:** System disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `Period` and `PeriodUnit`, but it is irreversible.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
         /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// &gt; **NOTE:** From version 1.7.0, setting "InternetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+        /// Setting "InternetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
         /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
         /// 
         /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -935,19 +935,19 @@ namespace Pulumi.AliCloud.Ecs
         /// Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-        /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        /// there strongly recommends that `Don't change InstanceChargeType frequentlly in one month`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `InstanceType`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -971,7 +971,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv6Addresses` and `Ipv6AddressCount` parameters.
         /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
@@ -980,7 +980,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ipv6Addresses;
 
         /// <summary>
-        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `Ipv6Addresses` can be modified.
         /// </summary>
         public InputList<string> Ipv6Addresses
         {
@@ -1001,7 +1001,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -1010,7 +1010,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating an instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1019,7 +1019,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the launch template.
         /// </summary>
         [Input("launchTemplateId")]
         public Input<string>? LaunchTemplateId { get; set; }
@@ -1031,7 +1031,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+        /// The version of the launch template. If you set `LaunchTemplateId` or `LaunchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
         /// </summary>
         [Input("launchTemplateVersion")]
         public Input<string>? LaunchTemplateVersion { get; set; }
@@ -1046,13 +1046,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? MaintenanceAction { get; set; }
 
         /// <summary>
-        /// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        /// Specifies whether to send an event notification before instance shutdown. Valid values: `True`, `False`. Default value: `False`.
         /// </summary>
         [Input("maintenanceNotify")]
         public Input<bool>? MaintenanceNotify { get; set; }
 
         /// <summary>
-        /// The time of maintenance. See `maintenance_time` below.
+        /// The time of maintenance. See `MaintenanceTime` below.
         /// </summary>
         [Input("maintenanceTime")]
         public Input<Inputs.InstanceMaintenanceTimeArgs>? MaintenanceTime { get; set; }
@@ -1072,13 +1072,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `network_interfaces` below.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.InstanceNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+        /// The operation type. It is valid when `InstanceChargeType` is `PrePaid`. Default value: `Upgrade`. Valid values: `Upgrade`, `Downgrade`. **NOTE:**  When the new instance type specified by the `InstanceType` parameter has lower specifications than the current instance type, you must set `OperatorType` to `Downgrade`.
         /// </summary>
         [Input("operatorType")]
         public Input<string>? OperatorType { get; set; }
@@ -1100,29 +1100,29 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        /// Specifies whether to use the password preset in the image. Default value: `False`. Valid values:
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        /// - [1-3] when `period_unit` in "Week"
+        /// The duration that you will buy the resource, in month. It is valid and required when `InstanceChargeType` is `PrePaid`. Valid values:
+        /// - [1-9, 12, 24, 36, 48, 60] when `PeriodUnit` in "Month"
+        /// - [1-3] when `PeriodUnit` in "Week"
         /// 
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        /// Instance private IP address can be specified when you creating new instance. It is valid when `VswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
@@ -1136,7 +1136,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The type of the private pool. Default value: `None`. Valid values:
         /// - `Open`: Open private pool.
-        /// - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        /// - `Target`: Specified private pool. **NOTE:** If `PrivatePoolOptionsMatchCriteria` is set to `Target`, `PrivatePoolOptionsId` is required.
         /// - `None`: No private pool. The capacity in private pools is not used.
         /// </summary>
         [Input("privatePoolOptionsMatchCriteria")]
@@ -1149,7 +1149,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? QueuePairNumber { get; set; }
 
         /// <summary>
-        /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        /// Whether to renew an ECS instance automatically or not. It is valid when `InstanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
         /// - `AutoRenewal`: Enable auto renewal.
         /// - `Normal`: Disable auto renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1164,13 +1164,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        /// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `RoleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `SecondaryPrivateIps` or `SecondaryPrivateIpAddressCount` but not both.
         /// </summary>
         [Input("secondaryPrivateIpAddressCount")]
         public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
@@ -1199,7 +1199,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        /// A list of security group ids to associate with. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -1220,7 +1220,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? SpotPriceLimit { get; set; }
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'. Value range:
         /// - NoSpot: A regular Pay-As-You-Go instance.
         /// - SpotWithPriceLimit: A price threshold for a spot instance
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -1257,7 +1257,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? SystemDiskBurstingEnabled { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        /// Valid values are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`, `CloudAuto`, `CloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `CloudAuto` Available since v1.184.0.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1275,7 +1275,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
+        /// Specifies whether to encrypt the system disk. Valid values: `True`,`False`. Default value: `False`.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
@@ -1374,7 +1374,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        /// It has been deprecated from version "1.7.0". Setting "InternetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
         /// </summary>
         [Input("allocatePublicIp")]
         public Input<bool>? AllocatePublicIp { get; set; }
@@ -1388,15 +1388,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-        /// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-        /// - [1, 2, 3] when `period_unit` in "Week"
+        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`. Default to 1. Valid value:
+        /// - [1, 2, 3, 6, 12] when `PeriodUnit` in "Month"
+        /// - [1, 2, 3] when `PeriodUnit` in "Week"
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+        /// The Zone to start the instance in. It is ignored and will be computed when set `VswitchId`.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -1423,7 +1423,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.InstanceDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskGetArgs> DataDisks
         {
@@ -1432,13 +1432,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `SpotStrategy` and `SpotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
+        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `False`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1470,7 +1470,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableJumboFrame")]
         public Input<bool>? EnableJumboFrame { get; set; }
@@ -1502,7 +1502,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HpcClusterId { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: `Enabled`, `Disabled`. Default value: `Enabled`.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
@@ -1522,24 +1522,24 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The options of images. See `image_options` below.
+        /// The options of images. See `ImageOptions` below.
         /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// &gt; **NOTE:** System disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `Period` and `PeriodUnit`, but it is irreversible.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
         /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// &gt; **NOTE:** From version 1.7.0, setting "InternetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+        /// Setting "InternetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
         /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
         /// 
         /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -1557,19 +1557,19 @@ namespace Pulumi.AliCloud.Ecs
         /// Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-        /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        /// there strongly recommends that `Don't change InstanceChargeType frequentlly in one month`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `InstanceType`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1593,7 +1593,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `Ipv6Addresses` and `Ipv6AddressCount` parameters.
         /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
@@ -1602,7 +1602,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ipv6Addresses;
 
         /// <summary>
-        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `Ipv6Addresses` can be modified.
         /// </summary>
         public InputList<string> Ipv6Addresses
         {
@@ -1623,7 +1623,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -1632,7 +1632,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating an instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1641,7 +1641,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the launch template.
         /// </summary>
         [Input("launchTemplateId")]
         public Input<string>? LaunchTemplateId { get; set; }
@@ -1653,7 +1653,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+        /// The version of the launch template. If you set `LaunchTemplateId` or `LaunchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
         /// </summary>
         [Input("launchTemplateVersion")]
         public Input<string>? LaunchTemplateVersion { get; set; }
@@ -1668,13 +1668,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? MaintenanceAction { get; set; }
 
         /// <summary>
-        /// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        /// Specifies whether to send an event notification before instance shutdown. Valid values: `True`, `False`. Default value: `False`.
         /// </summary>
         [Input("maintenanceNotify")]
         public Input<bool>? MaintenanceNotify { get; set; }
 
         /// <summary>
-        /// The time of maintenance. See `maintenance_time` below.
+        /// The time of maintenance. See `MaintenanceTime` below.
         /// </summary>
         [Input("maintenanceTime")]
         public Input<Inputs.InstanceMaintenanceTimeGetArgs>? MaintenanceTime { get; set; }
@@ -1706,13 +1706,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `network_interfaces` below.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.InstanceNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+        /// The operation type. It is valid when `InstanceChargeType` is `PrePaid`. Default value: `Upgrade`. Valid values: `Upgrade`, `Downgrade`. **NOTE:**  When the new instance type specified by the `InstanceType` parameter has lower specifications than the current instance type, you must set `OperatorType` to `Downgrade`.
         /// </summary>
         [Input("operatorType")]
         public Input<string>? OperatorType { get; set; }
@@ -1746,23 +1746,23 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        /// Specifies whether to use the password preset in the image. Default value: `False`. Valid values:
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        /// - [1-3] when `period_unit` in "Week"
+        /// The duration that you will buy the resource, in month. It is valid and required when `InstanceChargeType` is `PrePaid`. Valid values:
+        /// - [1-9, 12, 24, 36, 48, 60] when `PeriodUnit` in "Month"
+        /// - [1-3] when `PeriodUnit` in "Week"
         /// 
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -1774,7 +1774,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        /// Instance private IP address can be specified when you creating new instance. It is valid when `VswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
@@ -1788,7 +1788,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The type of the private pool. Default value: `None`. Valid values:
         /// - `Open`: Open private pool.
-        /// - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        /// - `Target`: Specified private pool. **NOTE:** If `PrivatePoolOptionsMatchCriteria` is set to `Target`, `PrivatePoolOptionsId` is required.
         /// - `None`: No private pool. The capacity in private pools is not used.
         /// </summary>
         [Input("privatePoolOptionsMatchCriteria")]
@@ -1807,7 +1807,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? QueuePairNumber { get; set; }
 
         /// <summary>
-        /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        /// Whether to renew an ECS instance automatically or not. It is valid when `InstanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
         /// - `AutoRenewal`: Enable auto renewal.
         /// - `Normal`: Disable auto renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1822,13 +1822,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+        /// The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `RoleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `SecondaryPrivateIps` or `SecondaryPrivateIpAddressCount` but not both.
         /// </summary>
         [Input("secondaryPrivateIpAddressCount")]
         public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
@@ -1857,7 +1857,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        /// A list of security group ids to associate with. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -1878,7 +1878,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? SpotPriceLimit { get; set; }
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'. Value range:
         /// - NoSpot: A regular Pay-As-You-Go instance.
         /// - SpotWithPriceLimit: A price threshold for a spot instance
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -1921,7 +1921,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? SystemDiskBurstingEnabled { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+        /// Valid values are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`, `CloudAuto`, `CloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `CloudAuto` Available since v1.184.0.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1939,7 +1939,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
+        /// Specifies whether to encrypt the system disk. Valid values: `True`,`False`. Default value: `False`.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }

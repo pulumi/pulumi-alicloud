@@ -37,14 +37,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -100,7 +100,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-     * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+     * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
      * 
      */
     @Import(name="compressStorage")
@@ -108,7 +108,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-     * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+     * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
      * 
      */
     public Optional<Output<String>> compressStorage() {
@@ -117,7 +117,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      * 
      */
     @Import(name="creationCategory")
@@ -125,7 +125,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      * 
      */
     public Optional<Output<String>> creationCategory() {
@@ -133,16 +133,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-     * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+     * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
      * 
      */
     @Import(name="creationOption")
     private @Nullable Output<String> creationOption;
 
     /**
-     * @return The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-     * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+     * @return The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+     * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
      * 
      */
     public Optional<Output<String>> creationOption() {
@@ -150,14 +150,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+     * db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
      * 
      */
     @Import(name="dbClusterIpArrays")
     private @Nullable Output<List<ClusterDbClusterIpArrayArgs>> dbClusterIpArrays;
 
     /**
-     * @return db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+     * @return db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
      * 
      */
     public Optional<Output<List<ClusterDbClusterIpArrayArgs>>> dbClusterIpArrays() {
@@ -165,14 +165,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+     * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
      * 
      */
     @Import(name="dbMinorVersion")
     private @Nullable Output<String> dbMinorVersion;
 
     /**
-     * @return Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+     * @return Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
      * 
      */
     public Optional<Output<String>> dbMinorVersion() {
@@ -180,20 +180,20 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db_node_class of cluster node.
+     * The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     @Import(name="dbNodeClass", required=true)
     private Output<String> dbNodeClass;
 
     /**
-     * @return The db_node_class of cluster node.
+     * @return The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     public Output<String> dbNodeClass() {
@@ -296,7 +296,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+     * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
      * 
      */
     @Import(name="deletionLock")
@@ -304,7 +304,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+     * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
      * 
      */
     public Optional<Output<Integer>> deletionLock() {
@@ -328,7 +328,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-     * &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+     * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      * 
      */
     @Import(name="encryptNewTables")
@@ -336,7 +336,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-     * &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+     * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      * 
      */
     public Optional<Output<String>> encryptNewTables() {
@@ -344,14 +344,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
      * 
      */
     @Import(name="encryptionKey")
     private @Nullable Output<String> encryptionKey;
 
     /**
-     * @return The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * @return The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
      * 
      */
     public Optional<Output<String>> encryptionKey() {
@@ -407,7 +407,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-     * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+     * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      * 
      */
     @Import(name="hotStandbyCluster")
@@ -415,7 +415,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-     * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+     * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      * 
      */
     public Optional<Output<String>> hotStandbyCluster() {
@@ -460,7 +460,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-     * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
      * 
      */
     @Import(name="looseXengine")
@@ -468,7 +468,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-     * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
      * 
      */
     public Optional<Output<String>> looseXengine() {
@@ -477,7 +477,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-     * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+     * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
      * 
      */
     @Import(name="looseXengineUseMemoryPct")
@@ -485,7 +485,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-     * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+     * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
      * 
      */
     public Optional<Output<Integer>> looseXengineUseMemoryPct() {
@@ -525,14 +525,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      * 
      */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * @return Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      * 
      */
     public Optional<Output<String>> modifyType() {
@@ -587,7 +587,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -595,7 +595,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -705,7 +705,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-     * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+     * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
@@ -713,7 +713,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-     * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+     * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -766,14 +766,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleMax")
     private @Nullable Output<Integer> scaleMax;
 
     /**
-     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleMax() {
@@ -781,14 +781,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleMin")
     private @Nullable Output<Integer> scaleMin;
 
     /**
-     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleMin() {
@@ -796,14 +796,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleRoNumMax")
     private @Nullable Output<Integer> scaleRoNumMax;
 
     /**
-     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleRoNumMax() {
@@ -811,14 +811,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleRoNumMin")
     private @Nullable Output<Integer> scaleRoNumMin;
 
     /**
-     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleRoNumMin() {
@@ -858,16 +858,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-     * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
+     * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+     * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is &#34;default&#34;.
      * 
      */
     @Import(name="securityIps")
     private @Nullable Output<List<String>> securityIps;
 
     /**
-     * @return This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-     * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
+     * @return This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+     * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is &#34;default&#34;.
      * 
      */
     public Optional<Output<List<String>>> securityIps() {
@@ -876,7 +876,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-     * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+     * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
      * 
      */
     @Import(name="serverlessRuleCpuEnlargeThreshold")
@@ -884,7 +884,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-     * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+     * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
      * 
      */
     public Optional<Output<Integer>> serverlessRuleCpuEnlargeThreshold() {
@@ -923,7 +923,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-     * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+     * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
      * 
      */
     @Import(name="serverlessSteadySwitch")
@@ -931,7 +931,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-     * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+     * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
      * 
      */
     public Optional<Output<String>> serverlessSteadySwitch() {
@@ -969,16 +969,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-     * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+     * The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
      * 
      */
     @Import(name="standbyAz")
     private @Nullable Output<String> standbyAz;
 
     /**
-     * @return The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-     * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+     * @return The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
      * 
      */
     public Optional<Output<String>> standbyAz() {
@@ -1002,8 +1002,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Storage space charged by space (monthly package). Unit: GB.
-     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      * 
      */
     @Import(name="storageSpace")
@@ -1011,8 +1011,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Storage space charged by space (monthly package). Unit: GB.
-     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      * 
      */
     public Optional<Output<Integer>> storageSpace() {
@@ -1100,7 +1100,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+     * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      * 
      */
     @Import(name="tdeStatus")
@@ -1108,7 +1108,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+     * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      * 
      */
     public Optional<Output<String>> tdeStatus() {
@@ -1147,7 +1147,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The virtual switch ID to launch DB instances in one VPC.
-     * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+     * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
     @Import(name="vswitchId")
@@ -1155,7 +1155,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
-     * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+     * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -1294,7 +1294,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
          * 
          * @return builder
          * 
@@ -1305,7 +1305,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
          * 
          * @return builder
          * 
@@ -1381,7 +1381,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param compressStorage Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-         * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+         * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
          * 
          * @return builder
          * 
@@ -1393,7 +1393,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param compressStorage Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-         * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+         * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
          * 
          * @return builder
          * 
@@ -1404,7 +1404,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
          * 
          * @return builder
          * 
@@ -1416,7 +1416,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
          * 
          * @return builder
          * 
@@ -1426,8 +1426,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationOption The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-         * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+         * @param creationOption The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+         * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
          * 
          * @return builder
          * 
@@ -1438,8 +1438,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationOption The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-         * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+         * @param creationOption The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+         * * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
          * 
          * @return builder
          * 
@@ -1449,7 +1449,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterIpArrays db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+         * @param dbClusterIpArrays db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
          * 
          * @return builder
          * 
@@ -1460,7 +1460,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterIpArrays db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+         * @param dbClusterIpArrays db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
          * 
          * @return builder
          * 
@@ -1470,7 +1470,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterIpArrays db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+         * @param dbClusterIpArrays db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
          * 
          * @return builder
          * 
@@ -1480,7 +1480,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbMinorVersion Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+         * @param dbMinorVersion Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
          * 
          * @return builder
          * 
@@ -1491,7 +1491,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbMinorVersion Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+         * @param dbMinorVersion Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
          * 
          * @return builder
          * 
@@ -1501,10 +1501,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The db_node_class of cluster node.
+         * @param dbNodeClass The dbNodeClass of cluster node.
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
          * 
          * @return builder
          * 
@@ -1515,10 +1515,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The db_node_class of cluster node.
+         * @param dbNodeClass The dbNodeClass of cluster node.
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
          * 
          * @return builder
          * 
@@ -1659,7 +1659,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionLock turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-         * &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+         * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
          * 
          * @return builder
          * 
@@ -1671,7 +1671,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionLock turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-         * &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+         * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
          * 
          * @return builder
          * 
@@ -1703,7 +1703,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptNewTables turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-         * &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+         * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
          * 
          * @return builder
          * 
@@ -1715,7 +1715,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptNewTables turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-         * &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+         * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
          * 
          * @return builder
          * 
@@ -1725,7 +1725,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKey The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+         * @param encryptionKey The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
          * 
          * @return builder
          * 
@@ -1736,7 +1736,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKey The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+         * @param encryptionKey The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
          * 
          * @return builder
          * 
@@ -1812,7 +1812,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-         * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+         * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
          * 
          * @return builder
          * 
@@ -1824,7 +1824,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-         * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+         * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
          * 
          * @return builder
          * 
@@ -1883,7 +1883,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengine Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-         * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+         * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
          * 
          * @return builder
          * 
@@ -1895,7 +1895,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengine Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-         * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+         * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
          * 
          * @return builder
          * 
@@ -1906,7 +1906,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengineUseMemoryPct Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-         * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+         * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
          * 
          * @return builder
          * 
@@ -1918,7 +1918,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengineUseMemoryPct Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-         * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+         * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
          * 
          * @return builder
          * 
@@ -1972,7 +1972,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+         * @param modifyType Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
          * 
          * @return builder
          * 
@@ -1983,7 +1983,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+         * @param modifyType Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
          * 
          * @return builder
          * 
@@ -2068,7 +2068,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2080,7 +2080,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2228,7 +2228,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-         * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+         * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -2240,7 +2240,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-         * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+         * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -2313,7 +2313,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2324,7 +2324,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2334,7 +2334,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2345,7 +2345,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2355,7 +2355,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2366,7 +2366,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2376,7 +2376,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2387,7 +2387,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2452,8 +2452,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIps This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-         * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
+         * @param securityIps This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+         * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is &#34;default&#34;.
          * 
          * @return builder
          * 
@@ -2464,8 +2464,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIps This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-         * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
+         * @param securityIps This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+         * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is &#34;default&#34;.
          * 
          * @return builder
          * 
@@ -2475,8 +2475,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIps This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-         * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
+         * @param securityIps This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+         * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is &#34;default&#34;.
          * 
          * @return builder
          * 
@@ -2487,7 +2487,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessRuleCpuEnlargeThreshold CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-         * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+         * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
          * 
          * @return builder
          * 
@@ -2499,7 +2499,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessRuleCpuEnlargeThreshold CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-         * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+         * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
          * 
          * @return builder
          * 
@@ -2552,7 +2552,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessSteadySwitch Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-         * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+         * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
          * 
          * @return builder
          * 
@@ -2564,7 +2564,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessSteadySwitch Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-         * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+         * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
          * 
          * @return builder
          * 
@@ -2616,8 +2616,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-         * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+         * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+         * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
          * 
          * @return builder
          * 
@@ -2628,8 +2628,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-         * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+         * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+         * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
          * 
          * @return builder
          * 
@@ -2661,8 +2661,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSpace Storage space charged by space (monthly package). Unit: GB.
-         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
          * 
          * @return builder
          * 
@@ -2674,8 +2674,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSpace Storage space charged by space (monthly package). Unit: GB.
-         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
          * 
          * @return builder
          * 
@@ -2795,7 +2795,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tdeStatus turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-         * &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+         * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
          * 
          * @return builder
          * 
@@ -2807,7 +2807,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tdeStatus turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-         * &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+         * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
          * 
          * @return builder
          * 
@@ -2860,7 +2860,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
-         * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+         * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
          * 
          * @return builder
          * 
@@ -2872,7 +2872,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
-         * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+         * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
          * 
          * @return builder
          * 

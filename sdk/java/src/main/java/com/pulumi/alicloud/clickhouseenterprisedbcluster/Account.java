@@ -173,14 +173,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Authorization information. See `dml_auth_setting` below.
+     * Authorization information. See `dmlAuthSetting` below.
      * 
      */
     @Export(name="dmlAuthSetting", refs={AccountDmlAuthSetting.class}, tree="[0]")
     private Output</* @Nullable */ AccountDmlAuthSetting> dmlAuthSetting;
 
     /**
-     * @return Authorization information. See `dml_auth_setting` below.
+     * @return Authorization information. See `dmlAuthSetting` below.
      * 
      */
     public Output<Optional<AccountDmlAuthSetting>> dmlAuthSetting() {

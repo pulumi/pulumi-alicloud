@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string IpSetId;
         /// <summary>
-        /// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
+        /// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `Active`, `Binding`, `Bound`, `Unbinding`, `Deleting`.
         /// </summary>
         public readonly string Status;
 

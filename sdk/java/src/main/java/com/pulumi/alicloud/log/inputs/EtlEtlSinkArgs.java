@@ -62,14 +62,14 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+     * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      * 
      */
     @Import(name="kmsEncryptedAccessKeyId")
     private @Nullable Output<String> kmsEncryptedAccessKeyId;
 
     /**
-     * @return An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      * 
      */
     public Optional<Output<String>> kmsEncryptedAccessKeyId() {
@@ -77,14 +77,14 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+     * An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      * 
      */
     @Import(name="kmsEncryptedAccessKeySecret")
     private @Nullable Output<String> kmsEncryptedAccessKeySecret;
 
     /**
-     * @return An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+     * @return An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      * 
      */
     public Optional<Output<String>> kmsEncryptedAccessKeySecret() {
@@ -137,14 +137,14 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
-     * @return Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -154,7 +154,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * ETL sinks type, the default value is AliyunLOG.
      * 
-     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     @Import(name="type")
@@ -163,7 +163,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
      * 
-     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     public Optional<Output<String>> type() {
@@ -267,7 +267,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedAccessKeyId An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+         * @param kmsEncryptedAccessKeyId An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedAccessKeyId An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+         * @param kmsEncryptedAccessKeyId An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedAccessKeySecret An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+         * @param kmsEncryptedAccessKeySecret An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedAccessKeySecret An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+         * @param kmsEncryptedAccessKeySecret An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * @param roleArn Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * @param roleArn Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type ETL sinks type, the default value is AliyunLOG.
          * 
-         * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type ETL sinks type, the default value is AliyunLOG.
          * 
-         * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
          * 
          * @return builder
          * 

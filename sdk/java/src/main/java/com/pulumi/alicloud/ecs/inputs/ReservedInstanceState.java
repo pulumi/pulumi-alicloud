@@ -35,14 +35,14 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+     * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+     * @return The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -125,7 +125,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+     * Field `name` has been deprecated from provider version 1.194.0. New field `reservedInstanceName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
@@ -136,7 +136,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.194.0. New field `reservedInstanceName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
@@ -184,18 +184,18 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-     * - When `period_unit` is `Month`, Valid values: `1`.
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+     * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `periodUnit` is `Month`, Valid values: `1`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-     * - When `period_unit` is `Month`, Valid values: `1`.
+     * @return The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+     * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `periodUnit` is `Month`, Valid values: `1`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -203,14 +203,14 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+     * @return The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -418,7 +418,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewPeriod The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+         * @param autoRenewPeriod The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewPeriod The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+         * @param autoRenewPeriod The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.194.0. New field `reservedInstanceName` instead.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.194.0. New field `reservedInstanceName` instead.
          * 
          * @return builder
          * 
@@ -631,9 +631,9 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-         * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-         * - When `period_unit` is `Month`, Valid values: `1`.
+         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+         * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+         * - When `periodUnit` is `Month`, Valid values: `1`.
          * 
          * @return builder
          * 
@@ -644,9 +644,9 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
-         * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
-         * - When `period_unit` is `Month`, Valid values: `1`.
+         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+         * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+         * - When `periodUnit` is `Month`, Valid values: `1`.
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
+         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
          * 
          * @return builder
          * 

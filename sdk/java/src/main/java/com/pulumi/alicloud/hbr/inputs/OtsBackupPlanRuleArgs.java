@@ -62,14 +62,14 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+     * The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+     * @return The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -185,7 +185,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleName The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+         * @param ruleName The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class OtsBackupPlanRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleName The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+         * @param ruleName The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
          * 
          * @return builder
          * 

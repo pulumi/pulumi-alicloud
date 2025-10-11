@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
-    /// &gt; **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `depends_on` statement is necessary.
+    /// &gt; **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `DependsOn` statement is necessary.
     /// 
     /// ## Import
     /// 

@@ -19,12 +19,12 @@ public final class SearchIndexSchemaFieldSchema {
      */
     private @Nullable String analyzer;
     /**
-     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
      * 
      */
     private @Nullable Boolean enableSortAndAgg;
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     private String fieldName;
@@ -58,14 +58,14 @@ public final class SearchIndexSchemaFieldSchema {
         return Optional.ofNullable(this.analyzer);
     }
     /**
-     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
      * 
      */
     public Optional<Boolean> enableSortAndAgg() {
         return Optional.ofNullable(this.enableSortAndAgg);
     }
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     public String fieldName() {

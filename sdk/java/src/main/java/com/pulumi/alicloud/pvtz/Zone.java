@@ -175,14 +175,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      * 
      */
     @Export(name="syncStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> syncStatus;
 
     /**
-     * @return The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+     * @return The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      * 
      */
     public Output<Optional<String>> syncStatus() {
@@ -217,28 +217,28 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userClientIp);
     }
     /**
-     * The user information of the host synchronization task. See `user_info` below.
+     * The user information of the host synchronization task. See `userInfo` below.
      * 
      */
     @Export(name="userInfos", refs={List.class,ZoneUserInfo.class}, tree="[0,1]")
     private Output<List<ZoneUserInfo>> userInfos;
 
     /**
-     * @return The user information of the host synchronization task. See `user_info` below.
+     * @return The user information of the host synchronization task. See `userInfo` below.
      * 
      */
     public Output<List<ZoneUserInfo>> userInfos() {
         return this.userInfos;
     }
     /**
-     * The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+     * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      * 
      */
     @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;
 
     /**
-     * @return The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+     * @return The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      * 
      */
     public Output<String> zoneName() {

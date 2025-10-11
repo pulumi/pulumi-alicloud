@@ -139,7 +139,7 @@ public final class GetEcsSnapshotsSnapshot {
      */
     private String type;
     /**
-     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     private String usage;
@@ -321,7 +321,7 @@ public final class GetEcsSnapshotsSnapshot {
         return this.type;
     }
     /**
-     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     public String usage() {

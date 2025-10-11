@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<bool?> Ping { get; private set; } = null!;
 
         /// <summary>
-        /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
+        /// Probe type, support `HostProbe` and `VpcBlackHoleProbe`.
         /// </summary>
         [Output("probeType")]
         public Output<string> ProbeType { get; private set; } = null!;
@@ -134,13 +134,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        /// Machine uuid, **probe_type** is `HostProbe`. This value cannot be empty.
         /// </summary>
         [Output("uuid")]
         public Output<string?> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        /// The ID of the VPC. **probe_type** is `VpcBlackHoleProbe`. This value cannot be empty.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<bool>? Ping { get; set; }
 
         /// <summary>
-        /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
+        /// Probe type, support `HostProbe` and `VpcBlackHoleProbe`.
         /// </summary>
         [Input("probeType", required: true)]
         public Input<string> ProbeType { get; set; } = null!;
@@ -258,13 +258,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        /// Machine uuid, **probe_type** is `HostProbe`. This value cannot be empty.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        /// The ID of the VPC. **probe_type** is `VpcBlackHoleProbe`. This value cannot be empty.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<bool>? Ping { get; set; }
 
         /// <summary>
-        /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
+        /// Probe type, support `HostProbe` and `VpcBlackHoleProbe`.
         /// </summary>
         [Input("probeType")]
         public Input<string>? ProbeType { get; set; }
@@ -356,13 +356,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        /// Machine uuid, **probe_type** is `HostProbe`. This value cannot be empty.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        /// The ID of the VPC. **probe_type** is `VpcBlackHoleProbe`. This value cannot be empty.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

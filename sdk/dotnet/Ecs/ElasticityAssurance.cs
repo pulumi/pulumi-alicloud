@@ -118,8 +118,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
-        /// - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        /// - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+        /// - When the `PeriodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        /// - When the `PeriodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -256,8 +256,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
-        /// - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        /// - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+        /// - When the `PeriodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        /// - When the `PeriodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -368,8 +368,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
-        /// - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        /// - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+        /// - When the `PeriodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        /// - When the `PeriodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

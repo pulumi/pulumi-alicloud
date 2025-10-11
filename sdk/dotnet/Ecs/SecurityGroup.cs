@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+        /// Field `InnerAccess` has been deprecated from provider version 1.55.3. New field `InnerAccessPolicy` instead.
         /// </summary>
         [Output("innerAccess")]
         public Output<bool> InnerAccess { get; private set; } = null!;
@@ -108,13 +108,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InnerAccessPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.239.0. New field `SecurityGroupName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SecurityGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the security group. Default value: `normal`. Valid values:
+        /// The type of the security group. Default value: `Normal`. Valid values:
         /// </summary>
         [Output("securityGroupType")]
         public Output<string> SecurityGroupType { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+        /// Field `InnerAccess` has been deprecated from provider version 1.55.3. New field `InnerAccessPolicy` instead.
         /// </summary>
         [Input("innerAccess")]
         public Input<bool>? InnerAccess { get; set; }
@@ -210,13 +210,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InnerAccessPolicy { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.239.0. New field `SecurityGroupName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityGroupName { get; set; }
 
         /// <summary>
-        /// The type of the security group. Default value: `normal`. Valid values:
+        /// The type of the security group. Default value: `Normal`. Valid values:
         /// </summary>
         [Input("securityGroupType")]
         public Input<string>? SecurityGroupType { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+        /// Field `InnerAccess` has been deprecated from provider version 1.55.3. New field `InnerAccessPolicy` instead.
         /// </summary>
         [Input("innerAccess")]
         public Input<bool>? InnerAccess { get; set; }
@@ -286,13 +286,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InnerAccessPolicy { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.239.0. New field `SecurityGroupName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityGroupName { get; set; }
 
         /// <summary>
-        /// The type of the security group. Default value: `normal`. Valid values:
+        /// The type of the security group. Default value: `Normal`. Valid values:
         /// </summary>
         [Input("securityGroupType")]
         public Input<string>? SecurityGroupType { get; set; }

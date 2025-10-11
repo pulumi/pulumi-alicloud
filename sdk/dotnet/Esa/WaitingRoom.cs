@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> DisableSessionRenewalEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Host name and path. See `host_name_and_path` below.
+        /// Host name and path. See `HostNameAndPath` below.
         /// </summary>
         [Output("hostNameAndPaths")]
         public Output<ImmutableArray<Outputs.WaitingRoomHostNameAndPath>> HostNameAndPaths { get; private set; } = null!;
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.WaitingRoomHostNameAndPathArgs>? _hostNameAndPaths;
 
         /// <summary>
-        /// Host name and path. See `host_name_and_path` below.
+        /// Host name and path. See `HostNameAndPath` below.
         /// </summary>
         public InputList<Inputs.WaitingRoomHostNameAndPathArgs> HostNameAndPaths
         {
@@ -436,7 +436,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.WaitingRoomHostNameAndPathGetArgs>? _hostNameAndPaths;
 
         /// <summary>
-        /// Host name and path. See `host_name_and_path` below.
+        /// Host name and path. See `HostNameAndPath` below.
         /// </summary>
         public InputList<Inputs.WaitingRoomHostNameAndPathGetArgs> HostNameAndPaths
         {

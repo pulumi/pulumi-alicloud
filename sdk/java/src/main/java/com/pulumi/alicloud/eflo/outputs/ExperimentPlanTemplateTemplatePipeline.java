@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ExperimentPlanTemplateTemplatePipeline {
     /**
-     * @return Contains a series of parameters related to the environment. See `env_params` below.
+     * @return Contains a series of parameters related to the environment. See `envParams` below.
      * 
      */
     private ExperimentPlanTemplateTemplatePipelineEnvParams envParams;
@@ -48,7 +48,7 @@ public final class ExperimentPlanTemplateTemplatePipeline {
 
     private ExperimentPlanTemplateTemplatePipeline() {}
     /**
-     * @return Contains a series of parameters related to the environment. See `env_params` below.
+     * @return Contains a series of parameters related to the environment. See `envParams` below.
      * 
      */
     public ExperimentPlanTemplateTemplatePipelineEnvParams envParams() {

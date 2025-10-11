@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<int> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        /// Use coupons to pay bills automatically. Default value: `False`. Valid values:
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -76,13 +76,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> BandwidthBillingType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `Private`. **NOTE:** `CrossBorderMode` is valid only when `CrossBorderStatus` is set to `True`.
         /// </summary>
         [Output("crossBorderMode")]
         public Output<string> CrossBorderMode { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// Indicates whether cross-border acceleration is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Output("crossBorderStatus")]
         public Output<bool?> CrossBorderStatus { get; private set; } = null!;
@@ -95,8 +95,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The subscription duration.
-        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        /// * If the `PricingCycle` parameter is set to `Month`, the valid values for the `Duration` parameter are 1 to 9.
+        /// * If the `PricingCycle` parameter is set to `Year`, the valid values for the `Duration` parameter are 1 to 3.
         /// </summary>
         [Output("duration")]
         public Output<int?> Duration { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> PricingCycle { get; private set; } = null!;
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Output("promotionOptionNo")]
         public Output<string?> PromotionOptionNo { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        /// Use coupons to pay bills automatically. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -227,13 +227,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
-        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `Private`. **NOTE:** `CrossBorderMode` is valid only when `CrossBorderStatus` is set to `True`.
         /// </summary>
         [Input("crossBorderMode")]
         public Input<string>? CrossBorderMode { get; set; }
 
         /// <summary>
-        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// Indicates whether cross-border acceleration is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Input("crossBorderStatus")]
         public Input<bool>? CrossBorderStatus { get; set; }
@@ -246,8 +246,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The subscription duration.
-        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        /// * If the `PricingCycle` parameter is set to `Month`, the valid values for the `Duration` parameter are 1 to 9.
+        /// * If the `PricingCycle` parameter is set to `Year`, the valid values for the `Duration` parameter are 1 to 3.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        /// Use coupons to pay bills automatically. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -340,13 +340,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
-        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `Private`. **NOTE:** `CrossBorderMode` is valid only when `CrossBorderStatus` is set to `True`.
         /// </summary>
         [Input("crossBorderMode")]
         public Input<string>? CrossBorderMode { get; set; }
 
         /// <summary>
-        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// Indicates whether cross-border acceleration is enabled. Default value: `False`. Valid values:
         /// </summary>
         [Input("crossBorderStatus")]
         public Input<bool>? CrossBorderStatus { get; set; }
@@ -359,8 +359,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The subscription duration.
-        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        /// * If the `PricingCycle` parameter is set to `Month`, the valid values for the `Duration` parameter are 1 to 9.
+        /// * If the `PricingCycle` parameter is set to `Year`, the valid values for the `Duration` parameter are 1 to 3.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -380,7 +380,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// The code of the coupon. **NOTE:** The `PromotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
         /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }

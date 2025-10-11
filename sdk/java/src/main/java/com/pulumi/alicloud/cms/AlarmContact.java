@@ -155,7 +155,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
      * 
-     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      * 
      */
     @Export(name="lang", refs={String.class}, tree="[0]")
@@ -164,7 +164,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
     /**
      * @return The language type of the alarm. Valid values: `en`, `zh-cn`.
      * 
-     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      * 
      */
     public Output<Optional<String>> lang() {

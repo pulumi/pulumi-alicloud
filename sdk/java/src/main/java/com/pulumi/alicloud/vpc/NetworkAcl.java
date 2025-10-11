@@ -152,28 +152,28 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Out direction rule information. See `egress_acl_entries` below.
+     * Out direction rule information. See `egressAclEntries` below.
      * 
      */
     @Export(name="egressAclEntries", refs={List.class,NetworkAclEgressAclEntry.class}, tree="[0,1]")
     private Output<List<NetworkAclEgressAclEntry>> egressAclEntries;
 
     /**
-     * @return Out direction rule information. See `egress_acl_entries` below.
+     * @return Out direction rule information. See `egressAclEntries` below.
      * 
      */
     public Output<List<NetworkAclEgressAclEntry>> egressAclEntries() {
         return this.egressAclEntries;
     }
     /**
-     * Inward direction rule information. See `ingress_acl_entries` below.
+     * Inward direction rule information. See `ingressAclEntries` below.
      * 
      */
     @Export(name="ingressAclEntries", refs={List.class,NetworkAclIngressAclEntry.class}, tree="[0,1]")
     private Output<List<NetworkAclIngressAclEntry>> ingressAclEntries;
 
     /**
-     * @return Inward direction rule information. See `ingress_acl_entries` below.
+     * @return Inward direction rule information. See `ingressAclEntries` below.
      * 
      */
     public Output<List<NetworkAclIngressAclEntry>> ingressAclEntries() {

@@ -36,14 +36,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+     * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+     * @return Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -51,14 +51,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+     * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      * 
      */
     @Import(name="coldStorageSize")
     private @Nullable Output<Integer> coldStorageSize;
 
     /**
-     * @return 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+     * @return 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      * 
      */
     public Optional<Output<Integer>> coldStorageSize() {
@@ -87,14 +87,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      * 
      */
     @Import(name="coreDiskType")
     private @Nullable Output<String> coreDiskType;
 
     /**
-     * @return Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * @return Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      * 
      */
     public Optional<Output<String>> coreDiskType() {
@@ -102,14 +102,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
+     * Default=2, [1-200]. If coreInstanceQuantity &gt; 1, this is cluster&#39;s instance. If coreInstanceQuantity = 1, this is a single instance.
      * 
      */
     @Import(name="coreInstanceQuantity")
     private @Nullable Output<Integer> coreInstanceQuantity;
 
     /**
-     * @return Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
+     * @return Default=2, [1-200]. If coreInstanceQuantity &gt; 1, this is cluster&#39;s instance. If coreInstanceQuantity = 1, this is a single instance.
      * 
      */
     public Optional<Output<Integer>> coreInstanceQuantity() {
@@ -147,14 +147,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<Integer> duration;
 
     /**
-     * @return 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+     * @return 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      * 
      */
     public Optional<Output<Integer>> duration() {
@@ -357,14 +357,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+     * @return If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -372,14 +372,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * @return The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -455,7 +455,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+         * @param autoRenew Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+         * @param autoRenew Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coldStorageSize 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+         * @param coldStorageSize 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coldStorageSize 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+         * @param coldStorageSize 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreDiskType Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+         * @param coreDiskType Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreDiskType Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+         * @param coreDiskType Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
          * 
          * @return builder
          * 
@@ -545,7 +545,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreInstanceQuantity Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
+         * @param coreInstanceQuantity Default=2, [1-200]. If coreInstanceQuantity &gt; 1, this is cluster&#39;s instance. If coreInstanceQuantity = 1, this is a single instance.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreInstanceQuantity Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
+         * @param coreInstanceQuantity Default=2, [1-200]. If coreInstanceQuantity &gt; 1, this is cluster&#39;s instance. If coreInstanceQuantity = 1, this is a single instance.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+         * @param duration 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+         * @param duration 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
          * 
          * @return builder
          * 
@@ -912,7 +912,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+         * @param vswitchId If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
          * 
          * @return builder
          * 
@@ -923,7 +923,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+         * @param vswitchId If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
          * 
          * @return builder
          * 
@@ -933,7 +933,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+         * @param zoneId The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
          * 
          * @return builder
          * 
@@ -944,7 +944,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+         * @param zoneId The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
          * 
          * @return builder
          * 

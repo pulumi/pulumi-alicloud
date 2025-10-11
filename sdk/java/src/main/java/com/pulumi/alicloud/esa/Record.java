@@ -106,14 +106,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
     /**
-     * The origin authentication information of the CNAME record. See `auth_conf` below.
+     * The origin authentication information of the CNAME record. See `authConf` below.
      * 
      */
     @Export(name="authConf", refs={RecordAuthConf.class}, tree="[0]")
     private Output</* @Nullable */ RecordAuthConf> authConf;
 
     /**
-     * @return The origin authentication information of the CNAME record. See `auth_conf` below.
+     * @return The origin authentication information of the CNAME record. See `authConf` below.
      * 
      */
     public Output<Optional<RecordAuthConf>> authConf() {

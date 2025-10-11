@@ -246,14 +246,14 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
         return this.scalingRuleEnable;
     }
     /**
-     * Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+     * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      * 
      */
     @Export(name="scalingRuleMetric", refs={ApplicationScalingRuleScalingRuleMetric.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationScalingRuleScalingRuleMetric> scalingRuleMetric;
 
     /**
-     * @return Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+     * @return Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      * 
      */
     public Output<Optional<ApplicationScalingRuleScalingRuleMetric>> scalingRuleMetric() {
@@ -274,14 +274,14 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
         return this.scalingRuleName;
     }
     /**
-     * Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+     * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      * 
      */
     @Export(name="scalingRuleTimer", refs={ApplicationScalingRuleScalingRuleTimer.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationScalingRuleScalingRuleTimer> scalingRuleTimer;
 
     /**
-     * @return Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+     * @return Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      * 
      */
     public Output<Optional<ApplicationScalingRuleScalingRuleTimer>> scalingRuleTimer() {

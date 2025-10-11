@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetInstanceKeywordsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of reserved keyword to query. Valid values: `account`, `database`.
+        /// The type of reserved keyword to query. Valid values: `Account`, `Database`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetInstanceKeywordsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of reserved keyword to query. Valid values: `account`, `database`.
+        /// The type of reserved keyword to query. Valid values: `Account`, `Database`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

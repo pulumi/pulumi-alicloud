@@ -28,7 +28,7 @@ public final class GetGatewayBlockVolumesVolume {
      */
     private Boolean chapEnabled;
     /**
-     * @return The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * @return The Inbound CHAP user.**NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     private String chapInUser;
@@ -73,7 +73,7 @@ public final class GetGatewayBlockVolumesVolume {
      */
     private String indexId;
     /**
-     * @return CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+     * @return CThe Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      * 
      */
     private String localPath;
@@ -162,7 +162,7 @@ public final class GetGatewayBlockVolumesVolume {
         return this.chapEnabled;
     }
     /**
-     * @return The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * @return The Inbound CHAP user.**NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     public String chapInUser() {
@@ -225,7 +225,7 @@ public final class GetGatewayBlockVolumesVolume {
         return this.indexId;
     }
     /**
-     * @return CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+     * @return CThe Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      * 
      */
     public String localPath() {

@@ -21,19 +21,19 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+     * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      * 
      */
-    @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
+    @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
     /**
      * @deprecated
-     * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+     * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      * 
      */
-    @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
+    @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
     public Optional<Output<String>> aclId() {
         return Optional.ofNullable(this.aclId);
     }
@@ -422,10 +422,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+         * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
          * 
          */
-        @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
+        @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
         public Builder aclId(@Nullable Output<String> aclId) {
             $.aclId = aclId;
             return this;
@@ -435,10 +435,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+         * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
          * 
          */
-        @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
+        @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
         public Builder aclId(String aclId) {
             return aclId(Output.of(aclId));
         }

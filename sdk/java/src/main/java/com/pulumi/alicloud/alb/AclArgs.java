@@ -20,7 +20,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
     public static final AclArgs Empty = new AclArgs();
 
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
      * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
@@ -32,7 +32,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<AclAclEntryArgs>> aclEntries;
 
     /**
-     * @return The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * @return The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
      * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
@@ -133,7 +133,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
          * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
          * 
          * @return builder
@@ -149,7 +149,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
          * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
          * 
          * @return builder
@@ -164,7 +164,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
          * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
          * 
          * @return builder

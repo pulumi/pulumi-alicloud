@@ -137,14 +137,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.carrier);
     }
     /**
-     * Data disk specifications See `data_disk` below.
+     * Data disk specifications See `dataDisk` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
     private Output<List<InstanceDataDisk>> dataDisks;
 
     /**
-     * @return Data disk specifications See `data_disk` below.
+     * @return Data disk specifications See `dataDisk` below.
      * 
      */
     public Output<List<InstanceDataDisk>> dataDisks() {
@@ -587,14 +587,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+     * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      * 
      */
     @Export(name="systemDisk", refs={InstanceSystemDisk.class}, tree="[0]")
     private Output</* @Nullable */ InstanceSystemDisk> systemDisk;
 
     /**
-     * @return System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+     * @return System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      * 
      */
     public Output<Optional<InstanceSystemDisk>> systemDisk() {

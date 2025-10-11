@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Ga
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+        /// The status of the endpoint group. Valid Values: `Init`, `Active`, `Updating`, `Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+        /// The status of the endpoint group. Valid Values: `Init`, `Active`, `Updating`, `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -35,14 +35,14 @@ public final class AppGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing model. Valid values:`compute_resource` and `qps`.
+     * Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     @Import(name="chargeWay")
     private @Nullable Output<String> chargeWay;
 
     /**
-     * @return Billing model. Valid values:`compute_resource` and `qps`.
+     * @return Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     public Optional<Output<String>> chargeWay() {
@@ -208,7 +208,7 @@ public final class AppGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chargeWay Billing model. Valid values:`compute_resource` and `qps`.
+         * @param chargeWay Billing model. Valid values:`computeResource` and `qps`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class AppGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chargeWay Billing model. Valid values:`compute_resource` and `qps`.
+         * @param chargeWay Billing model. Valid values:`computeResource` and `qps`.
          * 
          * @return builder
          * 

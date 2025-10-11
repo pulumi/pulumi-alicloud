@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHoneypotProbesProbeHoneypotBindList {
     /**
-     * @return List of listening ports. Available when `enable_details` is on.
+     * @return List of listening ports. Available when `enableDetails` is on.
      * 
      */
     private List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists;
@@ -21,7 +21,7 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
 
     private GetHoneypotProbesProbeHoneypotBindList() {}
     /**
-     * @return List of listening ports. Available when `enable_details` is on.
+     * @return List of listening ports. Available when `enableDetails` is on.
      * 
      */
     public List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists() {

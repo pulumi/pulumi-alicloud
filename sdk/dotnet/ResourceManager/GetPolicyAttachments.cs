@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetPolicyAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+        /// The language that is used to return the description of the system policy. Valid values:`En`: English, `zh-CN`: Chinese, `Ja`: Japanese.
         /// </summary>
         [Input("language")]
         public string? Language { get; set; }
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetPolicyAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+        /// The language that is used to return the description of the system policy. Valid values:`En`: English, `zh-CN`: Chinese, `Ja`: Japanese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

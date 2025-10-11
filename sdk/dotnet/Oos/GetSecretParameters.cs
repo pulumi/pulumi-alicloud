@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class GetSecretParametersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+        /// Specifies whether to decrypt the parameter value. Default value: `False`. **Note:** `WithDecryption` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         [Input("withDecryption")]
         public bool? WithDecryption { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class GetSecretParametersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+        /// Specifies whether to decrypt the parameter value. Default value: `False`. **Note:** `WithDecryption` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         [Input("withDecryption")]
         public Input<bool>? WithDecryption { get; set; }

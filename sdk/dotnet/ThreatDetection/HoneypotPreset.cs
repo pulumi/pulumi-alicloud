@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> HoneypotPresetId { get; private set; } = null!;
 
         /// <summary>
-        /// Honeypot template custom parameters. See `meta` below.
+        /// Honeypot template custom parameters. See `Meta` below.
         /// </summary>
         [Output("meta")]
         public Output<Outputs.HoneypotPresetMeta> Meta { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string> HoneypotImageName { get; set; } = null!;
 
         /// <summary>
-        /// Honeypot template custom parameters. See `meta` below.
+        /// Honeypot template custom parameters. See `Meta` below.
         /// </summary>
         [Input("meta", required: true)]
         public Input<Inputs.HoneypotPresetMetaArgs> Meta { get; set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? HoneypotPresetId { get; set; }
 
         /// <summary>
-        /// Honeypot template custom parameters. See `meta` below.
+        /// Honeypot template custom parameters. See `Meta` below.
         /// </summary>
         [Input("meta")]
         public Input<Inputs.HoneypotPresetMetaGetArgs>? Meta { get; set; }

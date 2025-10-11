@@ -20,7 +20,7 @@ public final class ClusterDbClusterIpArray {
     private @Nullable String dbClusterIpArrayName;
     /**
      * @return The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-     * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+     * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
      * 
      */
     private @Nullable String modifyMode;
@@ -41,7 +41,7 @@ public final class ClusterDbClusterIpArray {
     }
     /**
      * @return The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-     * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+     * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
      * 
      */
     public Optional<String> modifyMode() {

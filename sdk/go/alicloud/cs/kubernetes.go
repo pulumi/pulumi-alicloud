@@ -48,6 +48,8 @@ import (
 // > **NOTE:** From version 1.212.0, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId`,`kubeConfig`,`availabilityZone` are removed.
 // Please use resource **`cs.NodePool`** to manage your cluster worker nodes.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

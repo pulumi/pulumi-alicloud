@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? Dip;
         /// <summary>
-        /// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
+        /// Whether health check is enabled:-`False`: not enabled. - `True`: enabled.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

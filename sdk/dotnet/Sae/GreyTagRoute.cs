@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+        /// The grayscale rule created for Dubbo Application. See `DubboRules` below.
         /// </summary>
         [Output("dubboRules")]
         public Output<ImmutableArray<Outputs.GreyTagRouteDubboRule>> DubboRules { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> GreyTagRouteName { get; private set; } = null!;
 
         /// <summary>
-        /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+        /// The grayscale rule created for SpringCloud Application. See `ScRules` below.
         /// </summary>
         [Output("scRules")]
         public Output<ImmutableArray<Outputs.GreyTagRouteScRule>> ScRules { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteDubboRuleArgs>? _dubboRules;
 
         /// <summary>
-        /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+        /// The grayscale rule created for Dubbo Application. See `DubboRules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteDubboRuleArgs> DubboRules
         {
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteScRuleArgs>? _scRules;
 
         /// <summary>
-        /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+        /// The grayscale rule created for SpringCloud Application. See `ScRules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteScRuleArgs> ScRules
         {
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteDubboRuleGetArgs>? _dubboRules;
 
         /// <summary>
-        /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+        /// The grayscale rule created for Dubbo Application. See `DubboRules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteDubboRuleGetArgs> DubboRules
         {
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteScRuleGetArgs>? _scRules;
 
         /// <summary>
-        /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+        /// The grayscale rule created for SpringCloud Application. See `ScRules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteScRuleGetArgs> ScRules
         {

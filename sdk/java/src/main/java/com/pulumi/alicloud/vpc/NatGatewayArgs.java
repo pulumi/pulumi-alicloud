@@ -21,14 +21,14 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     public static final NatGatewayArgs Empty = new NatGatewayArgs();
 
     /**
-     * The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+     * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      * 
      */
     @Import(name="accessMode")
     private @Nullable Output<NatGatewayAccessModeArgs> accessMode;
 
     /**
-     * @return The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+     * @return The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      * 
      */
     public Optional<Output<NatGatewayAccessModeArgs>> accessMode() {
@@ -134,37 +134,37 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
      * @deprecated
-     * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
+    @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * @return Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
      * @deprecated
-     * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
+    @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
-     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+     * @return The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -172,24 +172,24 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -210,14 +210,14 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      * 
      */
     @Import(name="natType")
     private @Nullable Output<String> natType;
 
     /**
-     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      * 
      */
     public Optional<Output<String>> natType() {
@@ -255,7 +255,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+     * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -263,7 +263,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+     * @return The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -287,14 +287,14 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+     * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      * 
      */
     @Import(name="specification")
     private @Nullable Output<String> specification;
 
     /**
-     * @return The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+     * @return The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      * 
      */
     public Optional<Output<String>> specification() {
@@ -390,7 +390,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMode The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+         * @param accessMode The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMode The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+         * @param accessMode The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
          * 
          * @return builder
          * 
@@ -545,36 +545,36 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * @param instanceChargeType Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
+        @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * @param instanceChargeType Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
+        @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
-         * @param internetChargeType The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+         * @param internetChargeType The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+         * @param internetChargeType The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
          * 
          * @return builder
          * 
@@ -595,30 +595,30 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+         * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+         * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -645,7 +645,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+         * @param period The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -720,7 +720,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+         * @param period The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -752,7 +752,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specification The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+         * @param specification The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specification The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+         * @param specification The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
          * 
          * @return builder
          * 

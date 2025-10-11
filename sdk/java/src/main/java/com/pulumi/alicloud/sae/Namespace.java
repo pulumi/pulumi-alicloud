@@ -87,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sae/namespace:Namespace")
 public class Namespace extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+     * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      * 
      */
     @Export(name="enableMicroRegistration", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableMicroRegistration;
 
     /**
-     * @return Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+     * @return Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      * 
      */
     public Output<Boolean> enableMicroRegistration() {
@@ -143,14 +143,14 @@ public class Namespace extends com.pulumi.resources.CustomResource {
         return this.namespaceName;
     }
     /**
-     * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+     * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      * 
      */
     @Export(name="namespaceShortId", refs={String.class}, tree="[0]")
     private Output<String> namespaceShortId;
 
     /**
-     * @return The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+     * @return The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      * 
      */
     public Output<String> namespaceShortId() {

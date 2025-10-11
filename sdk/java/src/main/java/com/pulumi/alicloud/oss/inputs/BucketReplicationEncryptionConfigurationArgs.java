@@ -17,7 +17,7 @@ public final class BucketReplicationEncryptionConfigurationArgs extends com.pulu
     /**
      * The CMK ID used in SSE-KMS.
      * 
-     * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+     * `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
      * 
      */
     @Import(name="replicaKmsKeyId", required=true)
@@ -26,7 +26,7 @@ public final class BucketReplicationEncryptionConfigurationArgs extends com.pulu
     /**
      * @return The CMK ID used in SSE-KMS.
      * 
-     * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+     * `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
      * 
      */
     public Output<String> replicaKmsKeyId() {
@@ -60,7 +60,7 @@ public final class BucketReplicationEncryptionConfigurationArgs extends com.pulu
         /**
          * @param replicaKmsKeyId The CMK ID used in SSE-KMS.
          * 
-         * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+         * `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class BucketReplicationEncryptionConfigurationArgs extends com.pulu
         /**
          * @param replicaKmsKeyId The CMK ID used in SSE-KMS.
          * 
-         * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+         * `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
          * 
          * @return builder
          * 

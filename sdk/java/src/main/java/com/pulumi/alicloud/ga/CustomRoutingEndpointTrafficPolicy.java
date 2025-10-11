@@ -254,14 +254,14 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
         return this.listenerId;
     }
     /**
-     * Port rangeSee the following. See `port_ranges` below.
+     * Port rangeSee the following. See `portRanges` below.
      * 
      */
     @Export(name="portRanges", refs={List.class,CustomRoutingEndpointTrafficPolicyPortRange.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomRoutingEndpointTrafficPolicyPortRange>> portRanges;
 
     /**
-     * @return Port rangeSee the following. See `port_ranges` below.
+     * @return Port rangeSee the following. See `portRanges` below.
      * 
      */
     public Output<Optional<List<CustomRoutingEndpointTrafficPolicyPortRange>>> portRanges() {

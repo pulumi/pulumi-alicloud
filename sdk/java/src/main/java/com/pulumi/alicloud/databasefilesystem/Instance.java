@@ -137,7 +137,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deleteSnapshot);
     }
     /**
-     * The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
+     * The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecsList` below.
      * 
      * @deprecated
      * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
@@ -148,7 +148,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<InstanceEcsList>> ecsLists;
 
     /**
-     * @return The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
+     * @return The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecsList` below.
      * 
      */
     public Output<Optional<List<InstanceEcsList>>> ecsLists() {

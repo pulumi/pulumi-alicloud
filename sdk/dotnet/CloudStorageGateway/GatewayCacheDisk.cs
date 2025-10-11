@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public partial class GatewayCacheDisk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        /// The type of the cache disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`. **NOTE:** From version 1.227.0, `CacheDiskCategory` can be set to `CloudEssd`.
         /// </summary>
         [Output("cacheDiskCategory")]
         public Output<string> CacheDiskCategory { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> LocalFilePath { get; private set; } = null!;
 
         /// <summary>
-        /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `CacheDiskCategory` is set to `CloudEssd`, `PerformanceLevel` is required.
         /// </summary>
         [Output("performanceLevel")]
         public Output<string?> PerformanceLevel { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayCacheDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        /// The type of the cache disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`. **NOTE:** From version 1.227.0, `CacheDiskCategory` can be set to `CloudEssd`.
         /// </summary>
         [Input("cacheDiskCategory")]
         public Input<string>? CacheDiskCategory { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> GatewayId { get; set; } = null!;
 
         /// <summary>
-        /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `CacheDiskCategory` is set to `CloudEssd`, `PerformanceLevel` is required.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayCacheDiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        /// The type of the cache disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`. **NOTE:** From version 1.227.0, `CacheDiskCategory` can be set to `CloudEssd`.
         /// </summary>
         [Input("cacheDiskCategory")]
         public Input<string>? CacheDiskCategory { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? LocalFilePath { get; set; }
 
         /// <summary>
-        /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `CacheDiskCategory` is set to `CloudEssd`, `PerformanceLevel` is required.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }

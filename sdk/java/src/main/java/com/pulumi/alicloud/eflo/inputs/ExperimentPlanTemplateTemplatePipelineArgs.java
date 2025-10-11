@@ -20,14 +20,14 @@ public final class ExperimentPlanTemplateTemplatePipelineArgs extends com.pulumi
     public static final ExperimentPlanTemplateTemplatePipelineArgs Empty = new ExperimentPlanTemplateTemplatePipelineArgs();
 
     /**
-     * Contains a series of parameters related to the environment. See `env_params` below.
+     * Contains a series of parameters related to the environment. See `envParams` below.
      * 
      */
     @Import(name="envParams", required=true)
     private Output<ExperimentPlanTemplateTemplatePipelineEnvParamsArgs> envParams;
 
     /**
-     * @return Contains a series of parameters related to the environment. See `env_params` below.
+     * @return Contains a series of parameters related to the environment. See `envParams` below.
      * 
      */
     public Output<ExperimentPlanTemplateTemplatePipelineEnvParamsArgs> envParams() {
@@ -141,7 +141,7 @@ public final class ExperimentPlanTemplateTemplatePipelineArgs extends com.pulumi
         }
 
         /**
-         * @param envParams Contains a series of parameters related to the environment. See `env_params` below.
+         * @param envParams Contains a series of parameters related to the environment. See `envParams` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ExperimentPlanTemplateTemplatePipelineArgs extends com.pulumi
         }
 
         /**
-         * @param envParams Contains a series of parameters related to the environment. See `env_params` below.
+         * @param envParams Contains a series of parameters related to the environment. See `envParams` below.
          * 
          * @return builder
          * 

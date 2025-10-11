@@ -66,7 +66,7 @@ public final class DefenseRuleConfigRateLimitArgs extends com.pulumi.resources.R
 
     /**
      * The type of the statistical object. Valid values:
-     * - remote_addr (default): indicates IP.
+     * - remoteAddr (default): indicates IP.
      * - cookie.acw_tc: indicates session.
      * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
      * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
@@ -78,7 +78,7 @@ public final class DefenseRuleConfigRateLimitArgs extends com.pulumi.resources.R
 
     /**
      * @return The type of the statistical object. Valid values:
-     * - remote_addr (default): indicates IP.
+     * - remoteAddr (default): indicates IP.
      * - cookie.acw_tc: indicates session.
      * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
      * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
@@ -217,7 +217,7 @@ public final class DefenseRuleConfigRateLimitArgs extends com.pulumi.resources.R
 
         /**
          * @param target The type of the statistical object. Valid values:
-         * - remote_addr (default): indicates IP.
+         * - remoteAddr (default): indicates IP.
          * - cookie.acw_tc: indicates session.
          * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
          * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
@@ -233,7 +233,7 @@ public final class DefenseRuleConfigRateLimitArgs extends com.pulumi.resources.R
 
         /**
          * @param target The type of the statistical object. Valid values:
-         * - remote_addr (default): indicates IP.
+         * - remoteAddr (default): indicates IP.
          * - cookie.acw_tc: indicates session.
          * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
          * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.

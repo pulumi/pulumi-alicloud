@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationScalingRuleScalingRuleMetricMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// According to different `metric_type`, set the target value of the corresponding monitoring index.
+        /// According to different `MetricType`, set the target value of the corresponding monitoring index.
         /// </summary>
         [Input("metricTargetAverageUtilization")]
         public Input<int>? MetricTargetAverageUtilization { get; set; }
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         /// - SLB_RT: The average response time of public network SLB within 15 seconds.
         /// - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
         /// - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-        /// **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+        /// **NOTE:** From version 1.206.0, `MetricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
         /// </summary>
         [Input("metricType")]
         public Input<string>? MetricType { get; set; }

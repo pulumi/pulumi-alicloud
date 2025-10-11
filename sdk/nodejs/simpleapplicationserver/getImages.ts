@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * The following arguments are supported:
+ *
+ * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+ * * `imageType` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+ * * `nameRegex` - (Optional, ForceNew) A regex string to filter results by Image name.
+ * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
+ * * `outputFile` - (Optional) File name where to save data source results (after running `pulumi preview`).
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
@@ -54,6 +66,18 @@ export interface GetImagesResult {
  * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * The following arguments are supported:
+ *
+ * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+ * * `imageType` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+ * * `nameRegex` - (Optional, ForceNew) A regex string to filter results by Image name.
+ * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
+ * * `outputFile` - (Optional) File name where to save data source results (after running `pulumi preview`).
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImagesResult> {
     args = args || {};

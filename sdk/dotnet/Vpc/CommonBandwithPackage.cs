@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `InternetChargeType` is `PayBy95`.
         /// </summary>
         [Output("securityProtectionTypes")]
         public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _securityProtectionTypes;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `InternetChargeType` is `PayBy95`.
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _securityProtectionTypes;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `InternetChargeType` is `PayBy95`.
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {

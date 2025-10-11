@@ -123,14 +123,14 @@ public final class DbInstanceEndpointState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      * 
      */
     @Import(name="nodeItems")
     private @Nullable Output<List<DbInstanceEndpointNodeItemArgs>> nodeItems;
 
     /**
-     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      * 
      */
     public Optional<Output<List<DbInstanceEndpointNodeItemArgs>>> nodeItems() {
@@ -380,7 +380,7 @@ public final class DbInstanceEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class DbInstanceEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class DbInstanceEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
          * 
          * @return builder
          * 

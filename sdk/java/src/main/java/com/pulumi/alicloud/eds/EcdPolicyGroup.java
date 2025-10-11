@@ -91,28 +91,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eds/ecdPolicyGroup:EcdPolicyGroup")
 public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The rule of authorize access rule. See `authorize_access_policy_rules` below.
+     * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      * 
      */
     @Export(name="authorizeAccessPolicyRules", refs={List.class,EcdPolicyGroupAuthorizeAccessPolicyRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcdPolicyGroupAuthorizeAccessPolicyRule>> authorizeAccessPolicyRules;
 
     /**
-     * @return The rule of authorize access rule. See `authorize_access_policy_rules` below.
+     * @return The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      * 
      */
     public Output<Optional<List<EcdPolicyGroupAuthorizeAccessPolicyRule>>> authorizeAccessPolicyRules() {
         return Codegen.optional(this.authorizeAccessPolicyRules);
     }
     /**
-     * The policy rule. See `authorize_security_policy_rules` below.
+     * The policy rule. See `authorizeSecurityPolicyRules` below.
      * 
      */
     @Export(name="authorizeSecurityPolicyRules", refs={List.class,EcdPolicyGroupAuthorizeSecurityPolicyRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcdPolicyGroupAuthorizeSecurityPolicyRule>> authorizeSecurityPolicyRules;
 
     /**
-     * @return The policy rule. See `authorize_security_policy_rules` below.
+     * @return The policy rule. See `authorizeSecurityPolicyRules` below.
      * 
      */
     public Output<Optional<List<EcdPolicyGroupAuthorizeSecurityPolicyRule>>> authorizeSecurityPolicyRules() {

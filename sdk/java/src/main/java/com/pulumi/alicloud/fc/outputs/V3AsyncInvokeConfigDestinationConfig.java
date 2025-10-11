@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3AsyncInvokeConfigDestinationConfig {
     /**
-     * @return Failed callback target structure See `on_failure` below.
+     * @return Failed callback target structure See `onFailure` below.
      * 
      */
     private @Nullable V3AsyncInvokeConfigDestinationConfigOnFailure onFailure;
     /**
-     * @return Successful callback target structure See `on_success` below.
+     * @return Successful callback target structure See `onSuccess` below.
      * 
      */
     private @Nullable V3AsyncInvokeConfigDestinationConfigOnSuccess onSuccess;
 
     private V3AsyncInvokeConfigDestinationConfig() {}
     /**
-     * @return Failed callback target structure See `on_failure` below.
+     * @return Failed callback target structure See `onFailure` below.
      * 
      */
     public Optional<V3AsyncInvokeConfigDestinationConfigOnFailure> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
     /**
-     * @return Successful callback target structure See `on_success` below.
+     * @return Successful callback target structure See `onSuccess` below.
      * 
      */
     public Optional<V3AsyncInvokeConfigDestinationConfigOnSuccess> onSuccess() {

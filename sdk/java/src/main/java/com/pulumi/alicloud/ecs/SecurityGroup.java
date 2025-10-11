@@ -148,18 +148,18 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      * @deprecated
-     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      */
-    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
+    @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
     @Export(name="innerAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> innerAccess;
 
     /**
-     * @return Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * @return Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      */
     public Output<Boolean> innerAccess() {
@@ -184,32 +184,32 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
         return this.innerAccessPolicy;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+     * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {

@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Quotas
         public Output<double> DesireValue { get; private set; } = null!;
 
         /// <summary>
-        /// QuotaDimensions. See `dimensions` below.
+        /// QuotaDimensions. See `Dimensions` below.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableArray<Outputs.QuotaApplicationDimension>> Dimensions { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaApplicationDimensionArgs>? _dimensions;
 
         /// <summary>
-        /// QuotaDimensions. See `dimensions` below.
+        /// QuotaDimensions. See `Dimensions` below.
         /// </summary>
         public InputList<Inputs.QuotaApplicationDimensionArgs> Dimensions
         {
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaApplicationDimensionGetArgs>? _dimensions;
 
         /// <summary>
-        /// QuotaDimensions. See `dimensions` below.
+        /// QuotaDimensions. See `Dimensions` below.
         /// </summary>
         public InputList<Inputs.QuotaApplicationDimensionGetArgs> Dimensions
         {

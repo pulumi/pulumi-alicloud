@@ -81,8 +81,8 @@ public final class ElasticityAssuranceArgs extends com.pulumi.resources.Resource
 
     /**
      * Length of purchase. The unit of duration is determined by the &#39;period_unit&#39; parameter. Default value: 1.
-     * - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-     * - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+     * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+     * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
      * 
      */
     @Import(name="period")
@@ -90,8 +90,8 @@ public final class ElasticityAssuranceArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Length of purchase. The unit of duration is determined by the &#39;period_unit&#39; parameter. Default value: 1.
-     * - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-     * - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+     * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+     * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -324,8 +324,8 @@ public final class ElasticityAssuranceArgs extends com.pulumi.resources.Resource
 
         /**
          * @param period Length of purchase. The unit of duration is determined by the &#39;period_unit&#39; parameter. Default value: 1.
-         * - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-         * - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+         * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+         * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
          * 
          * @return builder
          * 
@@ -337,8 +337,8 @@ public final class ElasticityAssuranceArgs extends com.pulumi.resources.Resource
 
         /**
          * @param period Length of purchase. The unit of duration is determined by the &#39;period_unit&#39; parameter. Default value: 1.
-         * - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-         * - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
+         * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+         * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
          * 
          * @return builder
          * 

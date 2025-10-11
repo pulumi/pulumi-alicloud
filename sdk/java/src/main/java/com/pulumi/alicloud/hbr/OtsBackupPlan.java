@@ -233,14 +233,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.disabled;
     }
     /**
-     * The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
-     * @return The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<String>> instanceName() {
@@ -261,14 +261,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.otsBackupPlanName;
     }
     /**
-     * The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="otsDetails", refs={List.class,OtsBackupPlanOtsDetail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OtsBackupPlanOtsDetail>> otsDetails;
 
     /**
-     * @return The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<List<OtsBackupPlanOtsDetail>>> otsDetails() {
@@ -289,14 +289,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.retention;
     }
     /**
-     * The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Export(name="rules", refs={List.class,OtsBackupPlanRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OtsBackupPlanRule>> rules;
 
     /**
-     * @return The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Output<Optional<List<OtsBackupPlanRule>>> rules() {

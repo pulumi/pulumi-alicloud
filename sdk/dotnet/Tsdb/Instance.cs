@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Output<string?> AppKey { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid when the engine type is `TsdbInfluxdb`. `CloudSsd` refers to SSD disk, `CloudEfficiency` refers to efficiency disk, `CloudEssd` refers to ESSD PL1 disk. Valid values: `CloudEfficiency`, `CloudEssd`, `CloudSsd`.
         /// </summary>
         [Output("diskCategory")]
         public Output<string?> DiskCategory { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Output<string?> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// The engine type of instance Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
         /// </summary>
         [Output("engineType")]
         public Output<string?> EngineType { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? AppKey { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid when the engine type is `TsdbInfluxdb`. `CloudSsd` refers to SSD disk, `CloudEfficiency` refers to efficiency disk, `CloudEssd` refers to ESSD PL1 disk. Valid values: `CloudEfficiency`, `CloudEssd`, `CloudSsd`.
         /// </summary>
         [Input("diskCategory")]
         public Input<string>? DiskCategory { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// The engine type of instance Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
         /// </summary>
         [Input("engineType")]
         public Input<string>? EngineType { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? AppKey { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid when the engine type is `TsdbInfluxdb`. `CloudSsd` refers to SSD disk, `CloudEfficiency` refers to efficiency disk, `CloudEssd` refers to ESSD PL1 disk. Valid values: `CloudEfficiency`, `CloudEssd`, `CloudSsd`.
         /// </summary>
         [Input("diskCategory")]
         public Input<string>? DiskCategory { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// The engine type of instance Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
         /// </summary>
         [Input("engineType")]
         public Input<string>? EngineType { get; set; }

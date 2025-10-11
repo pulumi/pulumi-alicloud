@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Sls
     public partial class MachineGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+        /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `GroupAttribute` below.
         /// </summary>
         [Output("groupAttribute")]
         public Output<Outputs.MachineGroupGroupAttribute?> GroupAttribute { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class MachineGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+        /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `GroupAttribute` below.
         /// </summary>
         [Input("groupAttribute")]
         public Input<Inputs.MachineGroupGroupAttributeArgs>? GroupAttribute { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class MachineGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+        /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `GroupAttribute` below.
         /// </summary>
         [Input("groupAttribute")]
         public Input<Inputs.MachineGroupGroupAttributeGetArgs>? GroupAttribute { get; set; }

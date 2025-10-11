@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.114.0. New field `ResourceGroupName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.114.0. New field `ResourceGroupName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.114.0. New field `ResourceGroupName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

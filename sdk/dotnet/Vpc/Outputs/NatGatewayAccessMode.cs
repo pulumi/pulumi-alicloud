@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string? ModeValue;
         /// <summary>
-        /// The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        /// The type of Tunnel. Valid values: `Geneve`. **NOTE:** `TunnelType` takes effect only if `ModeValue` is set to `Tunnel`.
         /// </summary>
         public readonly string? TunnelType;
 

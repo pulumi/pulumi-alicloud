@@ -124,13 +124,13 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// Specifies whether to grant DDL permissions to the database account. Valid values: `True` and `False`.
         /// </summary>
         [Output("ddlAuthority")]
         public Output<bool> DdlAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `All` and `readOnly,modify`.
         /// </summary>
         [Output("dmlAuthority")]
         public Output<string> DmlAuthority { get; private set; } = null!;
@@ -242,13 +242,13 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// Specifies whether to grant DDL permissions to the database account. Valid values: `True` and `False`.
         /// </summary>
         [Input("ddlAuthority")]
         public Input<bool>? DdlAuthority { get; set; }
 
         /// <summary>
-        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `All` and `readOnly,modify`.
         /// </summary>
         [Input("dmlAuthority")]
         public Input<string>? DmlAuthority { get; set; }
@@ -316,13 +316,13 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DbClusterId { get; set; }
 
         /// <summary>
-        /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// Specifies whether to grant DDL permissions to the database account. Valid values: `True` and `False`.
         /// </summary>
         [Input("ddlAuthority")]
         public Input<bool>? DdlAuthority { get; set; }
 
         /// <summary>
-        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `All` and `readOnly,modify`.
         /// </summary>
         [Input("dmlAuthority")]
         public Input<string>? DmlAuthority { get; set; }

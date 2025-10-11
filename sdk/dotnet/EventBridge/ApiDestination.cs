@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters that are configured for the API destination. See `http_api_parameters` below.
+        /// The parameters that are configured for the API destination. See `HttpApiParameters` below.
         /// </summary>
         [Output("httpApiParameters")]
         public Output<Outputs.ApiDestinationHttpApiParameters> HttpApiParameters { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for the API destination. See `http_api_parameters` below.
+        /// The parameters that are configured for the API destination. See `HttpApiParameters` below.
         /// </summary>
         [Input("httpApiParameters", required: true)]
         public Input<Inputs.ApiDestinationHttpApiParametersArgs> HttpApiParameters { get; set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for the API destination. See `http_api_parameters` below.
+        /// The parameters that are configured for the API destination. See `HttpApiParameters` below.
         /// </summary>
         [Input("httpApiParameters")]
         public Input<Inputs.ApiDestinationHttpApiParametersGetArgs>? HttpApiParameters { get; set; }

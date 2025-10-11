@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> ConfigId { get; private set; } = null!;
 
         /// <summary>
-        /// Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        /// Modify response headers, supporting add, delete, and modify operations. See `ResponseHeaderModification` below.
         /// </summary>
         [Output("responseHeaderModifications")]
         public Output<ImmutableArray<Outputs.HttpResponseHeaderModificationRuleResponseHeaderModification>> ResponseHeaderModifications { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>? _responseHeaderModifications;
 
         /// <summary>
-        /// Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        /// Modify response headers, supporting add, delete, and modify operations. See `ResponseHeaderModification` below.
         /// </summary>
         public InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationArgs> ResponseHeaderModifications
         {
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationGetArgs>? _responseHeaderModifications;
 
         /// <summary>
-        /// Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        /// Modify response headers, supporting add, delete, and modify operations. See `ResponseHeaderModification` below.
         /// </summary>
         public InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationGetArgs> ResponseHeaderModifications
         {

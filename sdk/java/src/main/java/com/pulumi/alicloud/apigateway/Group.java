@@ -145,14 +145,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.subDomain;
     }
     /**
-     * user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * user_log_config defines the config of user log of the group. See `userLogConfig` below.
      * 
      */
     @Export(name="userLogConfig", refs={GroupUserLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ GroupUserLogConfig> userLogConfig;
 
     /**
-     * @return user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * @return user_log_config defines the config of user log of the group. See `userLogConfig` below.
      * 
      */
     public Output<Optional<GroupUserLogConfig>> userLogConfig() {
@@ -173,14 +173,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.vpcDomain;
     }
     /**
-     * Whether to enable `vpc_domain`. Defaults to `false`.
+     * Whether to enable `vpcDomain`. Defaults to `false`.
      * 
      */
     @Export(name="vpcIntranetEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vpcIntranetEnable;
 
     /**
-     * @return Whether to enable `vpc_domain`. Defaults to `false`.
+     * @return Whether to enable `vpcDomain`. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> vpcIntranetEnable() {

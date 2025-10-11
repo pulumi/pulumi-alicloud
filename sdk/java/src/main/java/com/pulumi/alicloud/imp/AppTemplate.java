@@ -103,14 +103,14 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
         return this.componentLists;
     }
     /**
-     * Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+     * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      * 
      */
     @Export(name="configLists", refs={List.class,AppTemplateConfigList.class}, tree="[0,1]")
     private Output<List<AppTemplateConfigList>> configLists;
 
     /**
-     * @return Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+     * @return Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      * 
      */
     public Output<List<AppTemplateConfigList>> configLists() {

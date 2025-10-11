@@ -115,28 +115,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:arms/prometheus:Prometheus")
 public class Prometheus extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+     * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      * 
      */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
-     * @return The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+     * @return The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      * 
      */
     public Output<String> clusterId() {
         return this.clusterId;
     }
     /**
-     * The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+     * The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
      * 
      */
     @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
-     * @return The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+     * @return The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
      * 
      */
     public Output<String> clusterName() {
@@ -157,14 +157,14 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
         return this.clusterType;
     }
     /**
-     * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+     * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      * 
      */
     @Export(name="grafanaInstanceId", refs={String.class}, tree="[0]")
     private Output<String> grafanaInstanceId;
 
     /**
-     * @return The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+     * @return The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      * 
      */
     public Output<String> grafanaInstanceId() {
@@ -185,14 +185,14 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * @return The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     public Output<Optional<String>> securityGroupId() {
@@ -227,28 +227,28 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * @return The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     public Output<Optional<String>> vpcId() {
         return Codegen.optional(this.vpcId);
     }
     /**
-     * The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * @return The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     public Output<Optional<String>> vswitchId() {

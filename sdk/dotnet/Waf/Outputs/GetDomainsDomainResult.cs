@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Waf.Outputs
         /// </summary>
         public readonly int ConnectionTime;
         /// <summary>
-        /// Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        /// Field `Domain` has been deprecated from version 1.94.0. Use `DomainName` instead.
         /// </summary>
         public readonly string Domain;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Waf.Outputs
         /// </summary>
         public readonly string HttpsRedirect;
         /// <summary>
-        /// The ID of domain self ID, value as `domain_name`.
+        /// The ID of domain self ID, value as `DomainName`.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to disable rollback on stack creation failure. Default to: `false`.
+        /// Specifies whether to disable rollback on stack creation failure. Default to: `False`.
         /// </summary>
         [Output("disableRollback")]
         public Output<bool?> DisableRollback { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Specifies whether to disable rollback on stack creation failure. Default to: `false`.
+        /// Specifies whether to disable rollback on stack creation failure. Default to: `False`.
         /// </summary>
         [Input("disableRollback")]
         public Input<bool>? DisableRollback { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Specifies whether to disable rollback on stack creation failure. Default to: `false`.
+        /// Specifies whether to disable rollback on stack creation failure. Default to: `False`.
         /// </summary>
         [Input("disableRollback")]
         public Input<bool>? DisableRollback { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly int AdjustmentValue;
         /// <summary>
-        /// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+        /// The trigger metrics of scaling rules for emr node group auto scaling policy. See `MetricsTrigger` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger? MetricsTrigger;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string RuleName;
         /// <summary>
-        /// The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+        /// The trigger time of scaling rules for emr node group auto scaling policy. See `TimeTrigger` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger? TimeTrigger;
         /// <summary>

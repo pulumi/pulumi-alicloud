@@ -26,7 +26,7 @@ public final class AddressPoolAddress {
      */
     private String attributeInfo;
     /**
-     * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+     * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
      * 
      */
     private @Nullable Integer lbaWeight;
@@ -59,7 +59,7 @@ public final class AddressPoolAddress {
         return this.attributeInfo;
     }
     /**
-     * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+     * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
      * 
      */
     public Optional<Integer> lbaWeight() {

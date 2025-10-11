@@ -418,13 +418,13 @@ namespace Pulumi.AliCloud.Vpn
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The Routing input type. Valid values: `custom`, `bgp`.
+        /// The Routing input type. Valid values: `Custom`, `Bgp`.
         /// </summary>
         [Input("routeEntryType")]
         public string? RouteEntryType { get; set; }
 
         /// <summary>
-        /// The status of the vpn route entry. Valid values: `normal`, `published`.
+        /// The status of the vpn route entry. Valid values: `Normal`, `Published`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -468,13 +468,13 @@ namespace Pulumi.AliCloud.Vpn
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The Routing input type. Valid values: `custom`, `bgp`.
+        /// The Routing input type. Valid values: `Custom`, `Bgp`.
         /// </summary>
         [Input("routeEntryType")]
         public Input<string>? RouteEntryType { get; set; }
 
         /// <summary>
-        /// The status of the vpn route entry. Valid values: `normal`, `published`.
+        /// The status of the vpn route entry. Valid values: `Normal`, `Published`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

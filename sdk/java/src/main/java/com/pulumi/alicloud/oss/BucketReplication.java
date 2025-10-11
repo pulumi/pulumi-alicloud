@@ -221,14 +221,14 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return this.destination;
     }
     /**
-     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      * 
      */
     @Export(name="encryptionConfiguration", refs={BucketReplicationEncryptionConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationEncryptionConfiguration> encryptionConfiguration;
 
     /**
-     * @return Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+     * @return Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      * 
      */
     public Output<Optional<BucketReplicationEncryptionConfiguration>> encryptionConfiguration() {
@@ -249,14 +249,14 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.historicalObjectReplication);
     }
     /**
-     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      * 
      */
     @Export(name="prefixSet", refs={BucketReplicationPrefixSet.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationPrefixSet> prefixSet;
 
     /**
-     * @return The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+     * @return The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      * 
      */
     public Output<Optional<BucketReplicationPrefixSet>> prefixSet() {
@@ -291,14 +291,14 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return this.ruleId;
     }
     /**
-     * Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+     * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      * 
      */
     @Export(name="sourceSelectionCriteria", refs={BucketReplicationSourceSelectionCriteria.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationSourceSelectionCriteria> sourceSelectionCriteria;
 
     /**
-     * @return Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+     * @return Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      * 
      */
     public Output<Optional<BucketReplicationSourceSelectionCriteria>> sourceSelectionCriteria() {

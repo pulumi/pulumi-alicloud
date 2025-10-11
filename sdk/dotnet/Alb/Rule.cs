@@ -229,13 +229,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The actions of the forwarding rules. See `rule_actions` below.
+        /// The actions of the forwarding rules. See `RuleActions` below.
         /// </summary>
         [Output("ruleActions")]
         public Output<ImmutableArray<Outputs.RuleRuleAction>> RuleActions { get; private set; } = null!;
 
         /// <summary>
-        /// The conditions of the forwarding rule. See `rule_conditions` below.
+        /// The conditions of the forwarding rule. See `RuleConditions` below.
         /// </summary>
         [Output("ruleConditions")]
         public Output<ImmutableArray<Outputs.RuleRuleCondition>> RuleConditions { get; private set; } = null!;
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleActionArgs>? _ruleActions;
 
         /// <summary>
-        /// The actions of the forwarding rules. See `rule_actions` below.
+        /// The actions of the forwarding rules. See `RuleActions` below.
         /// </summary>
         public InputList<Inputs.RuleRuleActionArgs> RuleActions
         {
@@ -340,7 +340,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleConditionArgs>? _ruleConditions;
 
         /// <summary>
-        /// The conditions of the forwarding rule. See `rule_conditions` below.
+        /// The conditions of the forwarding rule. See `RuleConditions` below.
         /// </summary>
         public InputList<Inputs.RuleRuleConditionArgs> RuleConditions
         {
@@ -392,7 +392,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleActionGetArgs>? _ruleActions;
 
         /// <summary>
-        /// The actions of the forwarding rules. See `rule_actions` below.
+        /// The actions of the forwarding rules. See `RuleActions` below.
         /// </summary>
         public InputList<Inputs.RuleRuleActionGetArgs> RuleActions
         {
@@ -404,7 +404,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleConditionGetArgs>? _ruleConditions;
 
         /// <summary>
-        /// The conditions of the forwarding rule. See `rule_conditions` below.
+        /// The conditions of the forwarding rule. See `RuleConditions` below.
         /// </summary>
         public InputList<Inputs.RuleRuleConditionGetArgs> RuleConditions
         {

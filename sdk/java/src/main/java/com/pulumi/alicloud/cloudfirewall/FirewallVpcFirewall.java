@@ -142,14 +142,14 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * The details of the local VPC. See `local_vpc` below.
+     * The details of the local VPC. See `localVpc` below.
      * 
      */
     @Export(name="localVpc", refs={FirewallVpcFirewallLocalVpc.class}, tree="[0]")
     private Output<FirewallVpcFirewallLocalVpc> localVpc;
 
     /**
-     * @return The details of the local VPC. See `local_vpc` below.
+     * @return The details of the local VPC. See `localVpc` below.
      * 
      */
     public Output<FirewallVpcFirewallLocalVpc> localVpc() {
@@ -170,14 +170,14 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memberUid);
     }
     /**
-     * The details of the peer VPC. See `peer_vpc` below.
+     * The details of the peer VPC. See `peerVpc` below.
      * 
      */
     @Export(name="peerVpc", refs={FirewallVpcFirewallPeerVpc.class}, tree="[0]")
     private Output<FirewallVpcFirewallPeerVpc> peerVpc;
 
     /**
-     * @return The details of the peer VPC. See `peer_vpc` below.
+     * @return The details of the peer VPC. See `peerVpc` below.
      * 
      */
     public Output<FirewallVpcFirewallPeerVpc> peerVpc() {

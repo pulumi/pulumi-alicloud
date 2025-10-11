@@ -47,14 +47,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+     * Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
      * 
      */
     @Import(name="pilotPublicEip")
     private @Nullable Output<Boolean> pilotPublicEip;
 
     /**
-     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
      * 
      */
     public Optional<Output<Boolean>> pilotPublicEip() {
@@ -162,7 +162,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
          * 
          * @return builder
          * 

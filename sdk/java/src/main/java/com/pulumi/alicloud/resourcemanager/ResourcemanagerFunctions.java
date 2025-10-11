@@ -2131,6 +2131,8 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPoliciesResult> getPolicies() {
         return getPolicies(GetPoliciesArgs.Empty, InvokeOptions.Empty);
@@ -2139,6 +2141,8 @@ public final class ResourcemanagerFunctions {
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
@@ -2149,6 +2153,8 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args) {
         return getPolicies(args, InvokeOptions.Empty);
@@ -2157,6 +2163,8 @@ public final class ResourcemanagerFunctions {
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args) {
@@ -2167,6 +2175,8 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
@@ -2176,6 +2186,8 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
@@ -2184,6 +2196,8 @@ public final class ResourcemanagerFunctions {
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {

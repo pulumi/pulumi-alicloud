@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetListenersListenerXforwardedForConfig {
     /**
-     * @return The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+     * @return The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
      * 
      */
     private String xforwardedforclientcertIssuerdnalias;
@@ -79,7 +79,7 @@ public final class GetListenersListenerXforwardedForConfig {
 
     private GetListenersListenerXforwardedForConfig() {}
     /**
-     * @return The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+     * @return The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
      * 
      */
     public String xforwardedforclientcertIssuerdnalias() {

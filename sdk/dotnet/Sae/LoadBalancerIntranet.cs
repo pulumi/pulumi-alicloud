@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> IntranetSlbId { get; private set; } = null!;
 
         /// <summary>
-        /// The bound private network SLB. See `intranet` below.
+        /// The bound private network SLB. See `Intranet` below.
         /// </summary>
         [Output("intranets")]
         public Output<ImmutableArray<Outputs.LoadBalancerIntranetIntranet>> Intranets { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.LoadBalancerIntranetIntranetArgs>? _intranets;
 
         /// <summary>
-        /// The bound private network SLB. See `intranet` below.
+        /// The bound private network SLB. See `Intranet` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerIntranetIntranetArgs> Intranets
         {
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.LoadBalancerIntranetIntranetGetArgs>? _intranets;
 
         /// <summary>
-        /// The bound private network SLB. See `intranet` below.
+        /// The bound private network SLB. See `Intranet` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerIntranetIntranetGetArgs> Intranets
         {

@@ -34,14 +34,14 @@ public final class GetBackupPlansArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Default to `true`. Set it to `false` can hide the `payment_type` to output.
+     * Default to `true`. Set it to `false` can hide the `paymentType` to output.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `true`. Set it to `false` can hide the `payment_type` to output.
+     * @return Default to `true`. Set it to `false` can hide the `paymentType` to output.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -108,14 +108,14 @@ public final class GetBackupPlansArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+     * The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+     * @return The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -175,7 +175,7 @@ public final class GetBackupPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `true`. Set it to `false` can hide the `payment_type` to output.
+         * @param enableDetails Default to `true`. Set it to `false` can hide the `paymentType` to output.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class GetBackupPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `true`. Set it to `false` can hide the `payment_type` to output.
+         * @param enableDetails Default to `true`. Set it to `false` can hide the `paymentType` to output.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class GetBackupPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+         * @param status The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GetBackupPlansArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+         * @param status The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
          * 
          * @return builder
          * 

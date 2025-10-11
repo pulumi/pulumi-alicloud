@@ -183,14 +183,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eci/containerGroup:ContainerGroup")
 public class ContainerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The ACR enterprise edition example properties. See `acr_registry_info` below.
+     * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      * 
      */
     @Export(name="acrRegistryInfos", refs={List.class,ContainerGroupAcrRegistryInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupAcrRegistryInfo>> acrRegistryInfos;
 
     /**
-     * @return The ACR enterprise edition example properties. See `acr_registry_info` below.
+     * @return The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      * 
      */
     public Output<Optional<List<ContainerGroupAcrRegistryInfo>>> acrRegistryInfos() {
@@ -267,14 +267,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.cpu;
     }
     /**
-     * The structure of dnsConfig. See `dns_config` below.
+     * The structure of dnsConfig. See `dnsConfig` below.
      * 
      */
     @Export(name="dnsConfig", refs={ContainerGroupDnsConfig.class}, tree="[0]")
     private Output</* @Nullable */ ContainerGroupDnsConfig> dnsConfig;
 
     /**
-     * @return The structure of dnsConfig. See `dns_config` below.
+     * @return The structure of dnsConfig. See `dnsConfig` below.
      * 
      */
     public Output<Optional<ContainerGroupDnsConfig>> dnsConfig() {
@@ -323,42 +323,42 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eipInstanceId);
     }
     /**
-     * HostAliases. See `host_aliases` below.
+     * HostAliases. See `hostAliases` below.
      * 
      */
     @Export(name="hostAliases", refs={List.class,ContainerGroupHostAlias.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupHostAlias>> hostAliases;
 
     /**
-     * @return HostAliases. See `host_aliases` below.
+     * @return HostAliases. See `hostAliases` below.
      * 
      */
     public Output<Optional<List<ContainerGroupHostAlias>>> hostAliases() {
         return Codegen.optional(this.hostAliases);
     }
     /**
-     * The image registry credential. See `image_registry_credential` below.
+     * The image registry credential. See `imageRegistryCredential` below.
      * 
      */
     @Export(name="imageRegistryCredentials", refs={List.class,ContainerGroupImageRegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupImageRegistryCredential>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential. See `image_registry_credential` below.
+     * @return The image registry credential. See `imageRegistryCredential` below.
      * 
      */
     public Output<Optional<List<ContainerGroupImageRegistryCredential>>> imageRegistryCredentials() {
         return Codegen.optional(this.imageRegistryCredentials);
     }
     /**
-     * The list of initContainers. See `init_containers` below.
+     * The list of initContainers. See `initContainers` below.
      * 
      */
     @Export(name="initContainers", refs={List.class,ContainerGroupInitContainer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupInitContainer>> initContainers;
 
     /**
-     * @return The list of initContainers. See `init_containers` below.
+     * @return The list of initContainers. See `initContainers` below.
      * 
      */
     public Output<Optional<List<ContainerGroupInitContainer>>> initContainers() {
@@ -463,14 +463,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ramRoleName);
     }
     /**
-     * The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
+     * @return The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -491,14 +491,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.restartPolicy;
     }
     /**
-     * The security context of the container group. See `security_context` below.
+     * The security context of the container group. See `securityContext` below.
      * 
      */
     @Export(name="securityContext", refs={ContainerGroupSecurityContext.class}, tree="[0]")
     private Output</* @Nullable */ ContainerGroupSecurityContext> securityContext;
 
     /**
-     * @return The security context of the container group. See `security_context` below.
+     * @return The security context of the container group. See `securityContext` below.
      * 
      */
     public Output<Optional<ContainerGroupSecurityContext>> securityContext() {
@@ -608,7 +608,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
@@ -616,7 +616,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      * 
      */
     public Output<String> vswitchId() {

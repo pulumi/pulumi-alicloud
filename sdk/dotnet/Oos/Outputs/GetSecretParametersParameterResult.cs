@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
     public sealed class GetSecretParametersParameterResult
     {
         /// <summary>
-        /// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
+        /// The constraints of the encryption parameter. **Note:** `Constraints` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string Constraints;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string UpdatedDate;
         /// <summary>
-        /// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+        /// (Available since v1.231.0) The value of the encryption parameter. **Note:** `Value` takes effect only if `WithDecryption` is set to `True`.
         /// </summary>
         public readonly string Value;
 

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsHostNetworkAttributeResult> NetworkAttributes;
         /// <summary>
-        /// The reason why the dedicated host resource is locked. See `operation_locks` below.
+        /// The reason why the dedicated host resource is locked. See `OperationLocks` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsHostOperationLockResult> OperationLocks;
         /// <summary>

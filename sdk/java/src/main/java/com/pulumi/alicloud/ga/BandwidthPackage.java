@@ -163,14 +163,14 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bandwidthType);
     }
     /**
-     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      * 
      */
     @Export(name="billingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingType;
 
     /**
-     * @return The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+     * @return The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      * 
      */
     public Output<Optional<String>> billingType() {
@@ -219,14 +219,14 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+     * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      * 
      */
     @Export(name="duration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> duration;
 
     /**
-     * @return The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+     * @return The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      * 
      */
     public Output<Optional<String>> duration() {
@@ -247,28 +247,28 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     @Export(name="promotionOptionNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> promotionOptionNo;
 
     /**
-     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * @return The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     public Output<Optional<String>> promotionOptionNo() {
         return Codegen.optional(this.promotionOptionNo);
     }
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      * 
      */
     @Export(name="ratio", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ratio;
 
     /**
-     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      * 
      */
     public Output<Optional<Integer>> ratio() {

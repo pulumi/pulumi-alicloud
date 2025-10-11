@@ -196,14 +196,14 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+     * The grayscale rule created for Dubbo Application. See `dubboRules` below.
      * 
      */
     @Export(name="dubboRules", refs={List.class,GreyTagRouteDubboRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GreyTagRouteDubboRule>> dubboRules;
 
     /**
-     * @return The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+     * @return The grayscale rule created for Dubbo Application. See `dubboRules` below.
      * 
      */
     public Output<Optional<List<GreyTagRouteDubboRule>>> dubboRules() {
@@ -224,14 +224,14 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
         return this.greyTagRouteName;
     }
     /**
-     * The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+     * The grayscale rule created for SpringCloud Application. See `scRules` below.
      * 
      */
     @Export(name="scRules", refs={List.class,GreyTagRouteScRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GreyTagRouteScRule>> scRules;
 
     /**
-     * @return The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+     * @return The grayscale rule created for SpringCloud Application. See `scRules` below.
      * 
      */
     public Output<Optional<List<GreyTagRouteScRule>>> scRules() {

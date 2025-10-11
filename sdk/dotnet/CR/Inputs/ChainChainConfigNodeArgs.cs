@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CR.Inputs
     public sealed class ChainChainConfigNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        /// Whether to enable the delivery chain node. Valid values: `True`, `False`.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         private InputList<Inputs.ChainChainConfigNodeNodeConfigArgs>? _nodeConfigs;
 
         /// <summary>
-        /// The configuration of delivery chain node. See `node_config` below.
+        /// The configuration of delivery chain node. See `NodeConfig` below.
         /// </summary>
         public InputList<Inputs.ChainChainConfigNodeNodeConfigArgs> NodeConfigs
         {

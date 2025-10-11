@@ -49,14 +49,14 @@ public final class ApplicationPvtzDiscoverySvcArgs extends com.pulumi.resources.
     }
 
     /**
-     * The port number and protocol. See `port_protocols` below.
+     * The port number and protocol. See `portProtocols` below.
      * 
      */
     @Import(name="portProtocols")
     private @Nullable Output<List<ApplicationPvtzDiscoverySvcPortProtocolArgs>> portProtocols;
 
     /**
-     * @return The port number and protocol. See `port_protocols` below.
+     * @return The port number and protocol. See `portProtocols` below.
      * 
      */
     public Optional<Output<List<ApplicationPvtzDiscoverySvcPortProtocolArgs>>> portProtocols() {
@@ -148,7 +148,7 @@ public final class ApplicationPvtzDiscoverySvcArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param portProtocols The port number and protocol. See `port_protocols` below.
+         * @param portProtocols The port number and protocol. See `portProtocols` below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ApplicationPvtzDiscoverySvcArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param portProtocols The port number and protocol. See `port_protocols` below.
+         * @param portProtocols The port number and protocol. See `portProtocols` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ApplicationPvtzDiscoverySvcArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param portProtocols The port number and protocol. See `port_protocols` below.
+         * @param portProtocols The port number and protocol. See `portProtocols` below.
          * 
          * @return builder
          * 

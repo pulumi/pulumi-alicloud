@@ -131,56 +131,56 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
         return this.logicalIdStrategy;
     }
     /**
-     * Priority parameter. See the following `Block preference_parameters`.
+     * Priority parameter. See the following `Block preferenceParameters`.
      * 
      */
     @Export(name="preferenceParameters", refs={List.class,TemplateScratchPreferenceParameter.class}, tree="[0,1]")
     private Output<List<TemplateScratchPreferenceParameter>> preferenceParameters;
 
     /**
-     * @return Priority parameter. See the following `Block preference_parameters`.
+     * @return Priority parameter. See the following `Block preferenceParameters`.
      * 
      */
     public Output<List<TemplateScratchPreferenceParameter>> preferenceParameters() {
         return this.preferenceParameters;
     }
     /**
-     * Source resource grouping. See the following `Block source_resource_group`.
+     * Source resource grouping. See the following `Block sourceResourceGroup`.
      * 
      */
     @Export(name="sourceResourceGroup", refs={TemplateScratchSourceResourceGroup.class}, tree="[0]")
     private Output</* @Nullable */ TemplateScratchSourceResourceGroup> sourceResourceGroup;
 
     /**
-     * @return Source resource grouping. See the following `Block source_resource_group`.
+     * @return Source resource grouping. See the following `Block sourceResourceGroup`.
      * 
      */
     public Output<Optional<TemplateScratchSourceResourceGroup>> sourceResourceGroup() {
         return Codegen.optional(this.sourceResourceGroup);
     }
     /**
-     * Source resource. See the following `Block source_resources`.
+     * Source resource. See the following `Block sourceResources`.
      * 
      */
     @Export(name="sourceResources", refs={List.class,TemplateScratchSourceResource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TemplateScratchSourceResource>> sourceResources;
 
     /**
-     * @return Source resource. See the following `Block source_resources`.
+     * @return Source resource. See the following `Block sourceResources`.
      * 
      */
     public Output<Optional<List<TemplateScratchSourceResource>>> sourceResources() {
         return Codegen.optional(this.sourceResources);
     }
     /**
-     * Source tag. See the following `Block source_tag`.
+     * Source tag. See the following `Block sourceTag`.
      * 
      */
     @Export(name="sourceTag", refs={TemplateScratchSourceTag.class}, tree="[0]")
     private Output</* @Nullable */ TemplateScratchSourceTag> sourceTag;
 
     /**
-     * @return Source tag. See the following `Block source_tag`.
+     * @return Source tag. See the following `Block sourceTag`.
      * 
      */
     public Output<Optional<TemplateScratchSourceTag>> sourceTag() {

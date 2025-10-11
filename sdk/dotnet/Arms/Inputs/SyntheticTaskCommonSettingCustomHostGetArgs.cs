@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         private InputList<Inputs.SyntheticTaskCommonSettingCustomHostHostGetArgs>? _hosts;
 
         /// <summary>
-        /// The host list. See `hosts` below.
+        /// The host list. See `Hosts` below.
         /// </summary>
         public InputList<Inputs.SyntheticTaskCommonSettingCustomHostHostGetArgs> Hosts
         {

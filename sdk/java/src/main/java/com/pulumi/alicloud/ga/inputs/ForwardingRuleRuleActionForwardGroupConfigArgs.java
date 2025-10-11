@@ -16,14 +16,14 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
     public static final ForwardingRuleRuleActionForwardGroupConfigArgs Empty = new ForwardingRuleRuleActionForwardGroupConfigArgs();
 
     /**
-     * The information about the endpoint group. See `server_group_tuples` below.
+     * The information about the endpoint group. See `serverGroupTuples` below.
      * 
      */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The information about the endpoint group. See `server_group_tuples` below.
+     * @return The information about the endpoint group. See `serverGroupTuples` below.
      * 
      */
     public Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
@@ -55,7 +55,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
         }
 
         /**
-         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
+         * @param serverGroupTuples The information about the endpoint group. See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
         }
 
         /**
-         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
+         * @param serverGroupTuples The information about the endpoint group. See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
         }
 
         /**
-         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
+         * @param serverGroupTuples The information about the endpoint group. See `serverGroupTuples` below.
          * 
          * @return builder
          * 

@@ -94,70 +94,70 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      * @deprecated
-     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
     @Import(name="instantAccess")
     private @Nullable Output<Boolean> instantAccess;
 
     /**
-     * @return Field `instant_access` has been deprecated from provider version 1.231.0.
+     * @return Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      * @deprecated
-     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
     public Optional<Output<Boolean>> instantAccess() {
         return Optional.ofNullable(this.instantAccess);
     }
 
     /**
-     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      * @deprecated
-     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
     @Import(name="instantAccessRetentionDays")
     private @Nullable Output<Integer> instantAccessRetentionDays;
 
     /**
-     * @return Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * @return Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      * @deprecated
-     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
     public Optional<Output<Integer>> instantAccessRetentionDays() {
         return Optional.ofNullable(this.instantAccessRetentionDays);
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -178,14 +178,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -193,14 +193,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+     * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      * 
      */
     @Import(name="retentionDays")
     private @Nullable Output<Integer> retentionDays;
 
     /**
-     * @return The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+     * @return The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      * 
      */
     public Optional<Output<Integer>> retentionDays() {
@@ -395,88 +395,88 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instantAccess Field `instant_access` has been deprecated from provider version 1.231.0.
+         * @param instantAccess Field `instantAccess` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instant_access` has been deprecated from provider version 1.231.0.
+         * Field `instantAccess` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
+        @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
         public Builder instantAccess(@Nullable Output<Boolean> instantAccess) {
             $.instantAccess = instantAccess;
             return this;
         }
 
         /**
-         * @param instantAccess Field `instant_access` has been deprecated from provider version 1.231.0.
+         * @param instantAccess Field `instantAccess` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instant_access` has been deprecated from provider version 1.231.0.
+         * Field `instantAccess` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
+        @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
         public Builder instantAccess(Boolean instantAccess) {
             return instantAccess(Output.of(instantAccess));
         }
 
         /**
-         * @param instantAccessRetentionDays Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+         * @param instantAccessRetentionDays Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+         * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
+        @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
         public Builder instantAccessRetentionDays(@Nullable Output<Integer> instantAccessRetentionDays) {
             $.instantAccessRetentionDays = instantAccessRetentionDays;
             return this;
         }
 
         /**
-         * @param instantAccessRetentionDays Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+         * @param instantAccessRetentionDays Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+         * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
+        @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
         public Builder instantAccessRetentionDays(Integer instantAccessRetentionDays) {
             return instantAccessRetentionDays(Output.of(instantAccessRetentionDays));
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -503,7 +503,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
          * 
          * @return builder
          * 

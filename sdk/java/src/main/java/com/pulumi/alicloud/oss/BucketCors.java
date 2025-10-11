@@ -107,14 +107,14 @@ public class BucketCors extends com.pulumi.resources.CustomResource {
         return this.bucket;
     }
     /**
-     * The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+     * The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
      * 
      */
     @Export(name="corsRules", refs={List.class,BucketCorsCorsRule.class}, tree="[0,1]")
     private Output<List<BucketCorsCorsRule>> corsRules;
 
     /**
-     * @return The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+     * @return The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
      * 
      */
     public Output<List<BucketCorsCorsRule>> corsRules() {

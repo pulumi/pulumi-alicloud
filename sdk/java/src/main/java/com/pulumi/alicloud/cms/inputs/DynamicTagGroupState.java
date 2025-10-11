@@ -48,14 +48,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The conditional expressions used to create an application group based on the tag. See `match_express` below.
+     * The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      * 
      */
     @Import(name="matchExpresses")
     private @Nullable Output<List<DynamicTagGroupMatchExpressArgs>> matchExpresses;
 
     /**
-     * @return The conditional expressions used to create an application group based on the tag. See `match_express` below.
+     * @return The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      * 
      */
     public Optional<Output<List<DynamicTagGroupMatchExpressArgs>>> matchExpresses() {
@@ -189,7 +189,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `match_express` below.
+         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `match_express` below.
+         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `match_express` below.
+         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
          * 
          * @return builder
          * 

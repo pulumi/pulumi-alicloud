@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceClassesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `ServerlessBasic`, `ServerlessStandard`, `ServerlessHa`, `Cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
         /// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
         /// 
-        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+        /// &gt; **NOTE**: The field `DbInstanceId` will be ignored when `CommodityCode` is not a read-only type.
         /// </summary>
         [Input("commodityCode")]
         public string? CommodityCode { get; set; }
@@ -147,13 +147,13 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the instance.
         /// 
-        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+        /// &gt; **NOTE**: The field `DbInstanceId` will be ignored when `CommodityCode` is not a read-only type.
         /// </summary>
         [Input("dbInstanceId")]
         public string? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3", "general_essd".
+        /// The DB instance storage space required by the user. Valid values: "CloudSsd", "LocalSsd", "CloudEssd", "CloudEssd2", "CloudEssd3", "GeneralEssd".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public string? DbInstanceStorageType { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Rds
         public string? SortedBy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
+        /// It has been deprecated from version 1.134.0+ and using `DbInstanceStorageType` instead.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `ServerlessBasic`, `ServerlessStandard`, `ServerlessHa`, `Cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
         /// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
         /// 
-        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+        /// &gt; **NOTE**: The field `DbInstanceId` will be ignored when `CommodityCode` is not a read-only type.
         /// </summary>
         [Input("commodityCode")]
         public Input<string>? CommodityCode { get; set; }
@@ -247,13 +247,13 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The ID of the instance.
         /// 
-        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+        /// &gt; **NOTE**: The field `DbInstanceId` will be ignored when `CommodityCode` is not a read-only type.
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3", "general_essd".
+        /// The DB instance storage space required by the user. Valid values: "CloudSsd", "LocalSsd", "CloudEssd", "CloudEssd2", "CloudEssd3", "GeneralEssd".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SortedBy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
+        /// It has been deprecated from version 1.134.0+ and using `DbInstanceStorageType` instead.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

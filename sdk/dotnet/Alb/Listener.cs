@@ -221,27 +221,27 @@ namespace Pulumi.AliCloud.Alb
     public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
+        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `True`, `False`. Default Value: `False`.
         /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `Accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         /// </summary>
         [Output("accessLogRecordCustomizedHeadersEnabled")]
         public Output<bool?> AccessLogRecordCustomizedHeadersEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Xtrace Configuration Information. See `access_log_tracing_config` below.
+        /// Xtrace Configuration Information. See `AccessLogTracingConfig` below.
         /// </summary>
         [Output("accessLogTracingConfig")]
         public Output<Outputs.ListenerAccessLogTracingConfig?> AccessLogTracingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+        /// The configurations of the access control lists (ACLs). See `AclConfig` below for details. **NOTE:** Field `AclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
         /// </summary>
         [Output("aclConfig")]
         public Output<Outputs.ListenerAclConfig> AclConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The list of certificates. See `ca_certificates` below.
+        /// The list of certificates. See `CaCertificates` below.
         /// </summary>
         [Output("caCertificates")]
         public Output<ImmutableArray<Outputs.ListenerCaCertificate>> CaCertificates { get; private set; } = null!;
@@ -253,13 +253,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> CaEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The list of certificates. See `certificates` below.
+        /// The list of certificates. See `Certificates` below.
         /// </summary>
         [Output("certificates")]
         public Output<Outputs.ListenerCertificates?> Certificates { get; private set; } = null!;
 
         /// <summary>
-        /// The Default Rule Action List See `default_actions` below.
+        /// The Default Rule Action List See `DefaultActions` below.
         /// </summary>
         [Output("defaultActions")]
         public Output<ImmutableArray<Outputs.ListenerDefaultAction>> DefaultActions { get; private set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration Associated with the QuIC Listening See `quic_config` below.
+        /// Configuration Associated with the QuIC Listening See `QuicConfig` below.
         /// </summary>
         [Output("quicConfig")]
         public Output<Outputs.ListenerQuicConfig> QuicConfig { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+        /// xforwardfor Related Attribute Configuration See `XForwardedForConfig` below.
         /// </summary>
         [Output("xForwardedForConfig")]
         public Output<Outputs.ListenerXForwardedForConfig> XForwardedForConfig { get; private set; } = null!;
@@ -395,21 +395,21 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
+        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `True`, `False`. Default Value: `False`.
         /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `Accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         /// </summary>
         [Input("accessLogRecordCustomizedHeadersEnabled")]
         public Input<bool>? AccessLogRecordCustomizedHeadersEnabled { get; set; }
 
         /// <summary>
-        /// Xtrace Configuration Information. See `access_log_tracing_config` below.
+        /// Xtrace Configuration Information. See `AccessLogTracingConfig` below.
         /// </summary>
         [Input("accessLogTracingConfig")]
         public Input<Inputs.ListenerAccessLogTracingConfigArgs>? AccessLogTracingConfig { get; set; }
 
         /// <summary>
-        /// The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+        /// The configurations of the access control lists (ACLs). See `AclConfig` below for details. **NOTE:** Field `AclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
         /// </summary>
         [Input("aclConfig")]
         public Input<Inputs.ListenerAclConfigArgs>? AclConfig { get; set; }
@@ -418,7 +418,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerCaCertificateArgs>? _caCertificates;
 
         /// <summary>
-        /// The list of certificates. See `ca_certificates` below.
+        /// The list of certificates. See `CaCertificates` below.
         /// </summary>
         public InputList<Inputs.ListenerCaCertificateArgs> CaCertificates
         {
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? CaEnabled { get; set; }
 
         /// <summary>
-        /// The list of certificates. See `certificates` below.
+        /// The list of certificates. See `Certificates` below.
         /// </summary>
         [Input("certificates")]
         public Input<Inputs.ListenerCertificatesArgs>? Certificates { get; set; }
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerDefaultActionArgs>? _defaultActions;
 
         /// <summary>
-        /// The Default Rule Action List See `default_actions` below.
+        /// The Default Rule Action List See `DefaultActions` below.
         /// </summary>
         public InputList<Inputs.ListenerDefaultActionArgs> DefaultActions
         {
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// Configuration Associated with the QuIC Listening See `quic_config` below.
+        /// Configuration Associated with the QuIC Listening See `QuicConfig` below.
         /// </summary>
         [Input("quicConfig")]
         public Input<Inputs.ListenerQuicConfigArgs>? QuicConfig { get; set; }
@@ -535,7 +535,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+        /// xforwardfor Related Attribute Configuration See `XForwardedForConfig` below.
         /// </summary>
         [Input("xForwardedForConfig")]
         public Input<Inputs.ListenerXForwardedForConfigArgs>? XForwardedForConfig { get; set; }
@@ -549,21 +549,21 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
+        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `True`, `False`. Default Value: `False`.
         /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `Accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         /// </summary>
         [Input("accessLogRecordCustomizedHeadersEnabled")]
         public Input<bool>? AccessLogRecordCustomizedHeadersEnabled { get; set; }
 
         /// <summary>
-        /// Xtrace Configuration Information. See `access_log_tracing_config` below.
+        /// Xtrace Configuration Information. See `AccessLogTracingConfig` below.
         /// </summary>
         [Input("accessLogTracingConfig")]
         public Input<Inputs.ListenerAccessLogTracingConfigGetArgs>? AccessLogTracingConfig { get; set; }
 
         /// <summary>
-        /// The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+        /// The configurations of the access control lists (ACLs). See `AclConfig` below for details. **NOTE:** Field `AclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
         /// </summary>
         [Input("aclConfig")]
         public Input<Inputs.ListenerAclConfigGetArgs>? AclConfig { get; set; }
@@ -572,7 +572,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerCaCertificateGetArgs>? _caCertificates;
 
         /// <summary>
-        /// The list of certificates. See `ca_certificates` below.
+        /// The list of certificates. See `CaCertificates` below.
         /// </summary>
         public InputList<Inputs.ListenerCaCertificateGetArgs> CaCertificates
         {
@@ -587,7 +587,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? CaEnabled { get; set; }
 
         /// <summary>
-        /// The list of certificates. See `certificates` below.
+        /// The list of certificates. See `Certificates` below.
         /// </summary>
         [Input("certificates")]
         public Input<Inputs.ListenerCertificatesGetArgs>? Certificates { get; set; }
@@ -596,7 +596,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerDefaultActionGetArgs>? _defaultActions;
 
         /// <summary>
-        /// The Default Rule Action List See `default_actions` below.
+        /// The Default Rule Action List See `DefaultActions` below.
         /// </summary>
         public InputList<Inputs.ListenerDefaultActionGetArgs> DefaultActions
         {
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// Configuration Associated with the QuIC Listening See `quic_config` below.
+        /// Configuration Associated with the QuIC Listening See `QuicConfig` below.
         /// </summary>
         [Input("quicConfig")]
         public Input<Inputs.ListenerQuicConfigGetArgs>? QuicConfig { get; set; }
@@ -689,7 +689,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+        /// xforwardfor Related Attribute Configuration See `XForwardedForConfig` below.
         /// </summary>
         [Input("xForwardedForConfig")]
         public Input<Inputs.ListenerXForwardedForConfigGetArgs>? XForwardedForConfig { get; set; }

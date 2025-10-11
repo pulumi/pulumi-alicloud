@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CloudSso.Inputs
     public sealed class AccessConfigurationPermissionPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+        /// The configurations of the inline policy. **NOTE:** If `PermissionPolicyType` is set to `Inline`, `PermissionPolicyDocument` is required.
         /// </summary>
         [Input("permissionPolicyDocument")]
         public Input<string>? PermissionPolicyDocument { get; set; }

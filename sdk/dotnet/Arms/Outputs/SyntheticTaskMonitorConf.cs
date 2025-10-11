@@ -14,31 +14,31 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class SyntheticTaskMonitorConf
     {
         /// <summary>
-        /// HTTP(S) task configuration information. See `api_http` below.
+        /// HTTP(S) task configuration information. See `ApiHttp` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfApiHttp? ApiHttp;
         /// <summary>
-        /// File download type task configuration. See `file_download` below.
+        /// File download type task configuration. See `FileDownload` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfFileDownload? FileDownload;
         /// <summary>
-        /// The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+        /// The configuration parameters of the DNS dial test. Required when TaskType is 3. See `NetDns` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfNetDns? NetDns;
         /// <summary>
-        /// ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+        /// ICMP dialing configuration parameters. Required when TaskType is 1. See `NetIcmp` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfNetIcmp? NetIcmp;
         /// <summary>
-        /// The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+        /// The configuration parameters of TCP dial test. Required when TaskType is 2. See `NetTcp` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfNetTcp? NetTcp;
         /// <summary>
-        /// Streaming Media Dial Test Configuration. See `stream` below.
+        /// Streaming Media Dial Test Configuration. See `Stream` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfStream? Stream;
         /// <summary>
-        /// Website speed measurement type task configuration. See `website` below.
+        /// Website speed measurement type task configuration. See `Website` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfWebsite? Website;
 

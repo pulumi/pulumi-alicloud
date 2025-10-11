@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         }
 
         /// <summary>
-        /// The conditions that are used to filter logs imported from Log Service. See `filter` below.
+        /// The conditions that are used to filter logs imported from Log Service. See `Filter` below.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterGetArgs>? Filter { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         private InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigGroupByGetArgs>? _groupBies;
 
         /// <summary>
-        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `GroupBy` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigGroupByGetArgs> GroupBies
         {
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         private InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigStatisticGetArgs>? _statistics;
 
         /// <summary>
-        /// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
+        /// The method that is used to aggregate logs imported from Log Service. See `Statistics` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigStatisticGetArgs> Statistics
         {

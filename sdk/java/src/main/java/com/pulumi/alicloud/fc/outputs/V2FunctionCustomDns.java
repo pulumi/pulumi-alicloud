@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V2FunctionCustomDns {
     /**
-     * @return DNS resolver configuration parameter list. See `dns_options` below.
+     * @return DNS resolver configuration parameter list. See `dnsOptions` below.
      * 
      */
     private @Nullable List<V2FunctionCustomDnsDnsOption> dnsOptions;
@@ -30,7 +30,7 @@ public final class V2FunctionCustomDns {
 
     private V2FunctionCustomDns() {}
     /**
-     * @return DNS resolver configuration parameter list. See `dns_options` below.
+     * @return DNS resolver configuration parameter list. See `dnsOptions` below.
      * 
      */
     public List<V2FunctionCustomDnsDnsOption> dnsOptions() {

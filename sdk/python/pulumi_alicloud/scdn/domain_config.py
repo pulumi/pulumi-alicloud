@@ -180,6 +180,10 @@ class DomainConfig(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
 
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         SCDN domain config can be imported using the id, e.g.
@@ -210,6 +214,10 @@ class DomainConfig(pulumi.CustomResource):
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
         > **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
+
+        ## Example Usage
+
+        Basic Usage
 
         ## Import
 

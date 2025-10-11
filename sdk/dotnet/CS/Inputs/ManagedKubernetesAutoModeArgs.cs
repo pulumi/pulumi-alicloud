@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesAutoModeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+        /// Whether to enable auto mode. Valid values: `True`, `False`. Only ACK managed Pro clusters support Auto Mode.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

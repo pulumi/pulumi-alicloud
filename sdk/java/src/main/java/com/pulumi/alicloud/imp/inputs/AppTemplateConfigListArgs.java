@@ -33,7 +33,7 @@ public final class AppTemplateConfigListArgs extends com.pulumi.resources.Resour
     /**
      * Configuration item content.
      * 
-     * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+     * &gt; **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
      * 
      */
     @Import(name="value")
@@ -42,7 +42,7 @@ public final class AppTemplateConfigListArgs extends com.pulumi.resources.Resour
     /**
      * @return Configuration item content.
      * 
-     * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+     * &gt; **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
      * 
      */
     public Optional<Output<String>> value() {
@@ -98,7 +98,7 @@ public final class AppTemplateConfigListArgs extends com.pulumi.resources.Resour
         /**
          * @param value Configuration item content.
          * 
-         * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+         * &gt; **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class AppTemplateConfigListArgs extends com.pulumi.resources.Resour
         /**
          * @param value Configuration item content.
          * 
-         * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+         * &gt; **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
          * 
          * @return builder
          * 

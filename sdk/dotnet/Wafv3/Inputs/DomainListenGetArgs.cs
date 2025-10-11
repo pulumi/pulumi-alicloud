@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         public Input<bool>? EnableTlsv3 { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
+        /// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `Share`. Valid values:
         /// </summary>
         [Input("exclusiveIp")]
         public Input<bool>? ExclusiveIp { get; set; }

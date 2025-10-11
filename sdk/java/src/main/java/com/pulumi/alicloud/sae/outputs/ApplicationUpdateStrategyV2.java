@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationUpdateStrategyV2 {
     /**
-     * @return The phased release policy. See `batch_update` below.
+     * @return The phased release policy. See `batchUpdate` below.
      * 
      */
     private @Nullable ApplicationUpdateStrategyV2BatchUpdate batchUpdate;
@@ -25,7 +25,7 @@ public final class ApplicationUpdateStrategyV2 {
 
     private ApplicationUpdateStrategyV2() {}
     /**
-     * @return The phased release policy. See `batch_update` below.
+     * @return The phased release policy. See `batchUpdate` below.
      * 
      */
     public Optional<ApplicationUpdateStrategyV2BatchUpdate> batchUpdate() {

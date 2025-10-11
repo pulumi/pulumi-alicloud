@@ -28,7 +28,7 @@ public final class GetDynamicTagGroupsGroup {
      */
     private String matchExpressFilterRelation;
     /**
-     * @return The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+     * @return The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
      * 
      */
     private List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses;
@@ -66,7 +66,7 @@ public final class GetDynamicTagGroupsGroup {
         return this.matchExpressFilterRelation;
     }
     /**
-     * @return The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+     * @return The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
      * 
      */
     public List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses() {

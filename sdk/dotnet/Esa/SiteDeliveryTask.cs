@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Esa
     {
         /// <summary>
         /// Real-time log type. Valid values:
-        /// - `dcdn_log_access_l1 (default)`: access log.
+        /// - `DcdnLogAccessL1 (default)`: access log.
         /// </summary>
         [Output("businessType")]
         public Output<string> BusinessType { get; private set; } = null!;
@@ -118,25 +118,25 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> FieldName { get; private set; } = null!;
 
         /// <summary>
-        /// HTTP delivery configuration parameters. See `http_delivery` below.
+        /// HTTP delivery configuration parameters. See `HttpDelivery` below.
         /// </summary>
         [Output("httpDelivery")]
         public Output<Outputs.SiteDeliveryTaskHttpDelivery?> HttpDelivery { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka delivery configuration parameters. See `kafka_delivery` below.
+        /// Kafka delivery configuration parameters. See `KafkaDelivery` below.
         /// </summary>
         [Output("kafkaDelivery")]
         public Output<Outputs.SiteDeliveryTaskKafkaDelivery?> KafkaDelivery { get; private set; } = null!;
 
         /// <summary>
-        /// OSS delivery configuration. See `oss_delivery` below.
+        /// OSS delivery configuration. See `OssDelivery` below.
         /// </summary>
         [Output("ossDelivery")]
         public Output<Outputs.SiteDeliveryTaskOssDelivery?> OssDelivery { get; private set; } = null!;
 
         /// <summary>
-        /// S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+        /// S3/S3 compatible delivery configuration parameters. See `S3Delivery` below.
         /// </summary>
         [Output("s3Delivery")]
         public Output<Outputs.SiteDeliveryTaskS3Delivery?> S3Delivery { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// SLS delivery configuration. See `sls_delivery` below.
+        /// SLS delivery configuration. See `SlsDelivery` below.
         /// </summary>
         [Output("slsDelivery")]
         public Output<Outputs.SiteDeliveryTaskSlsDelivery?> SlsDelivery { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Esa
     {
         /// <summary>
         /// Real-time log type. Valid values:
-        /// - `dcdn_log_access_l1 (default)`: access log.
+        /// - `DcdnLogAccessL1 (default)`: access log.
         /// </summary>
         [Input("businessType", required: true)]
         public Input<string> BusinessType { get; set; } = null!;
@@ -243,25 +243,25 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> FieldName { get; set; } = null!;
 
         /// <summary>
-        /// HTTP delivery configuration parameters. See `http_delivery` below.
+        /// HTTP delivery configuration parameters. See `HttpDelivery` below.
         /// </summary>
         [Input("httpDelivery")]
         public Input<Inputs.SiteDeliveryTaskHttpDeliveryArgs>? HttpDelivery { get; set; }
 
         /// <summary>
-        /// Kafka delivery configuration parameters. See `kafka_delivery` below.
+        /// Kafka delivery configuration parameters. See `KafkaDelivery` below.
         /// </summary>
         [Input("kafkaDelivery")]
         public Input<Inputs.SiteDeliveryTaskKafkaDeliveryArgs>? KafkaDelivery { get; set; }
 
         /// <summary>
-        /// OSS delivery configuration. See `oss_delivery` below.
+        /// OSS delivery configuration. See `OssDelivery` below.
         /// </summary>
         [Input("ossDelivery")]
         public Input<Inputs.SiteDeliveryTaskOssDeliveryArgs>? OssDelivery { get; set; }
 
         /// <summary>
-        /// S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+        /// S3/S3 compatible delivery configuration parameters. See `S3Delivery` below.
         /// </summary>
         [Input("s3Delivery")]
         public Input<Inputs.SiteDeliveryTaskS3DeliveryArgs>? S3Delivery { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// SLS delivery configuration. See `sls_delivery` below.
+        /// SLS delivery configuration. See `SlsDelivery` below.
         /// </summary>
         [Input("slsDelivery")]
         public Input<Inputs.SiteDeliveryTaskSlsDeliveryArgs>? SlsDelivery { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Esa
     {
         /// <summary>
         /// Real-time log type. Valid values:
-        /// - `dcdn_log_access_l1 (default)`: access log.
+        /// - `DcdnLogAccessL1 (default)`: access log.
         /// </summary>
         [Input("businessType")]
         public Input<string>? BusinessType { get; set; }
@@ -330,25 +330,25 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? FieldName { get; set; }
 
         /// <summary>
-        /// HTTP delivery configuration parameters. See `http_delivery` below.
+        /// HTTP delivery configuration parameters. See `HttpDelivery` below.
         /// </summary>
         [Input("httpDelivery")]
         public Input<Inputs.SiteDeliveryTaskHttpDeliveryGetArgs>? HttpDelivery { get; set; }
 
         /// <summary>
-        /// Kafka delivery configuration parameters. See `kafka_delivery` below.
+        /// Kafka delivery configuration parameters. See `KafkaDelivery` below.
         /// </summary>
         [Input("kafkaDelivery")]
         public Input<Inputs.SiteDeliveryTaskKafkaDeliveryGetArgs>? KafkaDelivery { get; set; }
 
         /// <summary>
-        /// OSS delivery configuration. See `oss_delivery` below.
+        /// OSS delivery configuration. See `OssDelivery` below.
         /// </summary>
         [Input("ossDelivery")]
         public Input<Inputs.SiteDeliveryTaskOssDeliveryGetArgs>? OssDelivery { get; set; }
 
         /// <summary>
-        /// S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+        /// S3/S3 compatible delivery configuration parameters. See `S3Delivery` below.
         /// </summary>
         [Input("s3Delivery")]
         public Input<Inputs.SiteDeliveryTaskS3DeliveryGetArgs>? S3Delivery { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// SLS delivery configuration. See `sls_delivery` below.
+        /// SLS delivery configuration. See `SlsDelivery` below.
         /// </summary>
         [Input("slsDelivery")]
         public Input<Inputs.SiteDeliveryTaskSlsDeliveryGetArgs>? SlsDelivery { get; set; }

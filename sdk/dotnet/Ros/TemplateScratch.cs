@@ -85,25 +85,25 @@ namespace Pulumi.AliCloud.Ros
         public Output<string> LogicalIdStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Priority parameter. See the following `Block preference_parameters`.
+        /// Priority parameter. See the following `Block PreferenceParameters`.
         /// </summary>
         [Output("preferenceParameters")]
         public Output<ImmutableArray<Outputs.TemplateScratchPreferenceParameter>> PreferenceParameters { get; private set; } = null!;
 
         /// <summary>
-        /// Source resource grouping. See the following `Block source_resource_group`.
+        /// Source resource grouping. See the following `Block SourceResourceGroup`.
         /// </summary>
         [Output("sourceResourceGroup")]
         public Output<Outputs.TemplateScratchSourceResourceGroup?> SourceResourceGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Source resource. See the following `Block source_resources`.
+        /// Source resource. See the following `Block SourceResources`.
         /// </summary>
         [Output("sourceResources")]
         public Output<ImmutableArray<Outputs.TemplateScratchSourceResource>> SourceResources { get; private set; } = null!;
 
         /// <summary>
-        /// Source tag. See the following `Block source_tag`.
+        /// Source tag. See the following `Block SourceTag`.
         /// </summary>
         [Output("sourceTag")]
         public Output<Outputs.TemplateScratchSourceTag?> SourceTag { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.TemplateScratchPreferenceParameterArgs>? _preferenceParameters;
 
         /// <summary>
-        /// Priority parameter. See the following `Block preference_parameters`.
+        /// Priority parameter. See the following `Block PreferenceParameters`.
         /// </summary>
         public InputList<Inputs.TemplateScratchPreferenceParameterArgs> PreferenceParameters
         {
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// Source resource grouping. See the following `Block source_resource_group`.
+        /// Source resource grouping. See the following `Block SourceResourceGroup`.
         /// </summary>
         [Input("sourceResourceGroup")]
         public Input<Inputs.TemplateScratchSourceResourceGroupArgs>? SourceResourceGroup { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.TemplateScratchSourceResourceArgs>? _sourceResources;
 
         /// <summary>
-        /// Source resource. See the following `Block source_resources`.
+        /// Source resource. See the following `Block SourceResources`.
         /// </summary>
         public InputList<Inputs.TemplateScratchSourceResourceArgs> SourceResources
         {
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// Source tag. See the following `Block source_tag`.
+        /// Source tag. See the following `Block SourceTag`.
         /// </summary>
         [Input("sourceTag")]
         public Input<Inputs.TemplateScratchSourceTagArgs>? SourceTag { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.TemplateScratchPreferenceParameterGetArgs>? _preferenceParameters;
 
         /// <summary>
-        /// Priority parameter. See the following `Block preference_parameters`.
+        /// Priority parameter. See the following `Block PreferenceParameters`.
         /// </summary>
         public InputList<Inputs.TemplateScratchPreferenceParameterGetArgs> PreferenceParameters
         {
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// Source resource grouping. See the following `Block source_resource_group`.
+        /// Source resource grouping. See the following `Block SourceResourceGroup`.
         /// </summary>
         [Input("sourceResourceGroup")]
         public Input<Inputs.TemplateScratchSourceResourceGroupGetArgs>? SourceResourceGroup { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.TemplateScratchSourceResourceGetArgs>? _sourceResources;
 
         /// <summary>
-        /// Source resource. See the following `Block source_resources`.
+        /// Source resource. See the following `Block SourceResources`.
         /// </summary>
         public InputList<Inputs.TemplateScratchSourceResourceGetArgs> SourceResources
         {
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// Source tag. See the following `Block source_tag`.
+        /// Source tag. See the following `Block SourceTag`.
         /// </summary>
         [Input("sourceTag")]
         public Input<Inputs.TemplateScratchSourceTagGetArgs>? SourceTag { get; set; }

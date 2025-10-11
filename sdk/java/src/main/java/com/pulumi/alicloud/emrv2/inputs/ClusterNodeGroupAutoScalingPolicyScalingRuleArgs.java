@@ -65,14 +65,14 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
     }
 
     /**
-     * The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
      * 
      */
     @Import(name="metricsTrigger")
     private @Nullable Output<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs> metricsTrigger;
 
     /**
-     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs>> metricsTrigger() {
@@ -110,14 +110,14 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
     }
 
     /**
-     * The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
      * 
      */
     @Import(name="timeTrigger")
     private @Nullable Output<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs> timeTrigger;
 
     /**
-     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs>> timeTrigger() {
@@ -234,7 +234,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
         }
 
         /**
-         * @param metricsTrigger The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+         * @param metricsTrigger The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
         }
 
         /**
-         * @param metricsTrigger The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+         * @param metricsTrigger The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
         }
 
         /**
-         * @param timeTrigger The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+         * @param timeTrigger The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
         }
 
         /**
-         * @param timeTrigger The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+         * @param timeTrigger The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
          * 
          * @return builder
          * 

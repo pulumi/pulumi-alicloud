@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class GetMetricRuleTemplatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Valid values: `True` or `False`. Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class GetMetricRuleTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Valid values: `True` or `False`. Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

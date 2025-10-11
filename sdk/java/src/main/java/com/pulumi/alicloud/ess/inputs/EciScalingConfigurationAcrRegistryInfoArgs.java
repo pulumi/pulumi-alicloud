@@ -18,7 +18,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
     /**
      * Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     @Import(name="domains")
@@ -26,7 +26,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
     /**
      * @return Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     public Optional<Output<List<String>>> domains() {
@@ -35,7 +35,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
     /**
      * The ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     @Import(name="instanceId")
@@ -43,7 +43,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
     /**
      * @return The ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -51,7 +51,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
     }
 
     /**
-     * The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+     * The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
      * configured.
      * 
      */
@@ -59,7 +59,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+     * @return The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
      * configured.
      * 
      */
@@ -69,7 +69,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
     /**
      * The region ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     @Import(name="regionId")
@@ -77,7 +77,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
     /**
      * @return The region ID of Container Registry Enterprise Edition instance. It is required
-     * when `acr_registry_info` is configured.
+     * when `acrRegistryInfo` is configured.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -113,7 +113,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param domains Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param domains Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param domains Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param instanceId The ID of Container Registry Enterprise Edition instance. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param instanceId The ID of Container Registry Enterprise Edition instance. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
         }
 
         /**
-         * @param instanceName The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+         * @param instanceName The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
          * configured.
          * 
          * @return builder
@@ -181,7 +181,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
         }
 
         /**
-         * @param instanceName The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+         * @param instanceName The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
          * configured.
          * 
          * @return builder
@@ -193,7 +193,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param regionId The region ID of Container Registry Enterprise Edition instance. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class EciScalingConfigurationAcrRegistryInfoArgs extends com.pulumi
 
         /**
          * @param regionId The region ID of Container Registry Enterprise Edition instance. It is required
-         * when `acr_registry_info` is configured.
+         * when `acrRegistryInfo` is configured.
          * 
          * @return builder
          * 

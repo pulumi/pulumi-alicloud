@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Spec;
         /// <summary>
-        /// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
+        /// The status of the GA instance. Valid values: `Active`, `Binding`, `Configuring`, `Deleting`, `finacialLocked`, `Init`, `Unbinding`.
         /// </summary>
         public readonly string Status;
 

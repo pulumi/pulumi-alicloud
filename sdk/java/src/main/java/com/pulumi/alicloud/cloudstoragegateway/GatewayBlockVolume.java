@@ -196,28 +196,28 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
         return this.chapEnabled;
     }
     /**
-     * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     @Export(name="chapInPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chapInPassword;
 
     /**
-     * @return The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * @return The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     public Output<Optional<String>> chapInPassword() {
         return Codegen.optional(this.chapInPassword);
     }
     /**
-     * The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     @Export(name="chapInUser", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chapInUser;
 
     /**
-     * @return The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * @return The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     public Output<Optional<String>> chapInUser() {
@@ -280,28 +280,28 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
         return this.indexId;
     }
     /**
-     * Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+     * Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      * 
      */
     @Export(name="isSourceDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isSourceDeletion;
 
     /**
-     * @return Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+     * @return Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      * 
      */
     public Output<Optional<Boolean>> isSourceDeletion() {
         return Codegen.optional(this.isSourceDeletion);
     }
     /**
-     * The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+     * The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      * 
      */
     @Export(name="localPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localPath;
 
     /**
-     * @return The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+     * @return The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      * 
      */
     public Output<Optional<String>> localPath() {

@@ -246,24 +246,24 @@ public final class EcsBackupPlanState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
      * @deprecated
-     * Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      * 
      */
-    @Deprecated /* Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+    @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
     @Import(name="updatePaths")
     private @Nullable Output<Boolean> updatePaths;
 
     /**
-     * @return Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     * @return Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
      * @deprecated
-     * Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      * 
      */
-    @Deprecated /* Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+    @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
     public Optional<Output<Boolean>> updatePaths() {
         return Optional.ofNullable(this.updatePaths);
     }
@@ -651,30 +651,30 @@ public final class EcsBackupPlanState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updatePaths Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+         * @param updatePaths Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+         * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
          * 
          */
-        @Deprecated /* Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+        @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
         public Builder updatePaths(@Nullable Output<Boolean> updatePaths) {
             $.updatePaths = updatePaths;
             return this;
         }
 
         /**
-         * @param updatePaths Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+         * @param updatePaths Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+         * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
          * 
          */
-        @Deprecated /* Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+        @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
         public Builder updatePaths(Boolean updatePaths) {
             return updatePaths(Output.of(updatePaths));
         }

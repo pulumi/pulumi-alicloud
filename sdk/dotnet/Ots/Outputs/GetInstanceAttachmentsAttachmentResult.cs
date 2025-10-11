@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ots.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// The resource ID, the value is same as "instance_name".
+        /// The resource ID, the value is same as "InstanceName".
         /// </summary>
         public readonly string Id;
         /// <summary>

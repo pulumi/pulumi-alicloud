@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+        /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `SubDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         /// </summary>
         [Output("subDomainDnsAddresses")]
         public Output<ImmutableArray<string>> SubDomainDnsAddresses { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<string>? _subDomainDnsAddresses;
 
         /// <summary>
-        /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+        /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `SubDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         /// </summary>
         public InputList<string> SubDomainDnsAddresses
         {
@@ -519,7 +519,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<string>? _subDomainDnsAddresses;
 
         /// <summary>
-        /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+        /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `SubDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         /// </summary>
         public InputList<string> SubDomainDnsAddresses
         {

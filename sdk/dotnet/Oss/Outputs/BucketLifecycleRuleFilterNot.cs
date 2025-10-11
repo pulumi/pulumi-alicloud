@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string? Prefix;
         /// <summary>
-        /// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+        /// The tag of the objects to which the lifecycle rule does not apply. See `Tag` below.
         /// </summary>
         public readonly Outputs.BucketLifecycleRuleFilterNotTag? Tag;
 

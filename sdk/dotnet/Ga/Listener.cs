@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> AcceleratorId { get; private set; } = null!;
 
         /// <summary>
-        /// The certificates of the listener. See `certificates` below.
+        /// The certificates of the listener. See `Certificates` below.
         /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         /// </summary>
         [Output("certificates")]
@@ -106,23 +106,23 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The XForward headers. See `forwarded_for_config` below.
+        /// The XForward headers. See `ForwardedForConfig` below.
         /// </summary>
         [Output("forwardedForConfig")]
         public Output<Outputs.ListenerForwardedForConfig?> ForwardedForConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-        /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        /// The maximum version of the HTTP protocol. Default Value: `Http2`. Valid values: `http1.1`, `Http2`, `Http3`.
+        /// &gt; **NOTE:** `HttpVersion` is only valid when `Protocol` is `HTTPS`.
         /// </summary>
         [Output("httpVersion")]
         public Output<string> HttpVersion { get; private set; } = null!;
 
         /// <summary>
         /// The timeout period of idle connections. Unit: seconds. Valid values:
-        /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
-        /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
-        /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        /// - If you set `Protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        /// - If you set `Protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        /// - If you set `Protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int> IdleTimeout { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The portRanges of the listener. See `port_ranges` below.
+        /// The portRanges of the listener. See `PortRanges` below.
         /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         [Output("portRanges")]
@@ -155,14 +155,14 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The proxy protocol of the listener. Default value: `false`. Valid values:
+        /// The proxy protocol of the listener. Default value: `False`. Valid values:
         /// </summary>
         [Output("proxyProtocol")]
         public Output<bool?> ProxyProtocol { get; private set; } = null!;
 
         /// <summary>
         /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-        /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        /// &gt; **NOTE:** `RequestTimeout` is only valid when `Protocol` is `HTTP` or `HTTPS`.
         /// </summary>
         [Output("requestTimeout")]
         public Output<int> RequestTimeout { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ListenerCertificateArgs>? _certificates;
 
         /// <summary>
-        /// The certificates of the listener. See `certificates` below.
+        /// The certificates of the listener. See `Certificates` below.
         /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         /// </summary>
         public InputList<Inputs.ListenerCertificateArgs> Certificates
@@ -259,23 +259,23 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The XForward headers. See `forwarded_for_config` below.
+        /// The XForward headers. See `ForwardedForConfig` below.
         /// </summary>
         [Input("forwardedForConfig")]
         public Input<Inputs.ListenerForwardedForConfigArgs>? ForwardedForConfig { get; set; }
 
         /// <summary>
-        /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-        /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        /// The maximum version of the HTTP protocol. Default Value: `Http2`. Valid values: `http1.1`, `Http2`, `Http3`.
+        /// &gt; **NOTE:** `HttpVersion` is only valid when `Protocol` is `HTTPS`.
         /// </summary>
         [Input("httpVersion")]
         public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
         /// The timeout period of idle connections. Unit: seconds. Valid values:
-        /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
-        /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
-        /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        /// - If you set `Protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        /// - If you set `Protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        /// - If you set `Protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ListenerPortRangeArgs>? _portRanges;
 
         /// <summary>
-        /// The portRanges of the listener. See `port_ranges` below.
+        /// The portRanges of the listener. See `PortRanges` below.
         /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         public InputList<Inputs.ListenerPortRangeArgs> PortRanges
@@ -314,14 +314,14 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The proxy protocol of the listener. Default value: `false`. Valid values:
+        /// The proxy protocol of the listener. Default value: `False`. Valid values:
         /// </summary>
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }
 
         /// <summary>
         /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-        /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        /// &gt; **NOTE:** `RequestTimeout` is only valid when `Protocol` is `HTTP` or `HTTPS`.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ListenerCertificateGetArgs>? _certificates;
 
         /// <summary>
-        /// The certificates of the listener. See `certificates` below.
+        /// The certificates of the listener. See `Certificates` below.
         /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         /// </summary>
         public InputList<Inputs.ListenerCertificateGetArgs> Certificates
@@ -374,23 +374,23 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The XForward headers. See `forwarded_for_config` below.
+        /// The XForward headers. See `ForwardedForConfig` below.
         /// </summary>
         [Input("forwardedForConfig")]
         public Input<Inputs.ListenerForwardedForConfigGetArgs>? ForwardedForConfig { get; set; }
 
         /// <summary>
-        /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-        /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        /// The maximum version of the HTTP protocol. Default Value: `Http2`. Valid values: `http1.1`, `Http2`, `Http3`.
+        /// &gt; **NOTE:** `HttpVersion` is only valid when `Protocol` is `HTTPS`.
         /// </summary>
         [Input("httpVersion")]
         public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
         /// The timeout period of idle connections. Unit: seconds. Valid values:
-        /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
-        /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
-        /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        /// - If you set `Protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        /// - If you set `Protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        /// - If you set `Protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -413,7 +413,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ListenerPortRangeGetArgs>? _portRanges;
 
         /// <summary>
-        /// The portRanges of the listener. See `port_ranges` below.
+        /// The portRanges of the listener. See `PortRanges` below.
         /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         public InputList<Inputs.ListenerPortRangeGetArgs> PortRanges
@@ -429,14 +429,14 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The proxy protocol of the listener. Default value: `false`. Valid values:
+        /// The proxy protocol of the listener. Default value: `False`. Valid values:
         /// </summary>
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }
 
         /// <summary>
         /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-        /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        /// &gt; **NOTE:** `RequestTimeout` is only valid when `Protocol` is `HTTP` or `HTTPS`.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }

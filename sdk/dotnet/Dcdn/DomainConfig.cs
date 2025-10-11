@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The args of the domain config. See `function_args` below.
+        /// The args of the domain config. See `FunctionArgs` below.
         /// </summary>
         [Output("functionArgs")]
         public Output<ImmutableArray<Outputs.DomainConfigFunctionArg>> FunctionArgs { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainConfigFunctionArgArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config. See `function_args` below.
+        /// The args of the domain config. See `FunctionArgs` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgArgs> FunctionArgs
         {
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainConfigFunctionArgGetArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config. See `function_args` below.
+        /// The args of the domain config. See `FunctionArgs` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgGetArgs> FunctionArgs
         {

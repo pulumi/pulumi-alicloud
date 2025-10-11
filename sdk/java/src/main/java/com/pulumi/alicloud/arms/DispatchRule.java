@@ -165,14 +165,14 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dispatchType);
     }
     /**
-     * Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     @Export(name="groupRules", refs={List.class,DispatchRuleGroupRule.class}, tree="[0,1]")
     private Output<List<DispatchRuleGroupRule>> groupRules;
 
     /**
-     * @return Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * @return Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     public Output<List<DispatchRuleGroupRule>> groupRules() {
@@ -193,42 +193,42 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isRecover);
     }
     /**
-     * Sets the dispatch rule. See `label_match_expression_grid` below.
+     * Sets the dispatch rule. See `labelMatchExpressionGrid` below.
      * 
      */
     @Export(name="labelMatchExpressionGrids", refs={List.class,DispatchRuleLabelMatchExpressionGrid.class}, tree="[0,1]")
     private Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids;
 
     /**
-     * @return Sets the dispatch rule. See `label_match_expression_grid` below.
+     * @return Sets the dispatch rule. See `labelMatchExpressionGrid` below.
      * 
      */
     public Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids() {
         return this.labelMatchExpressionGrids;
     }
     /**
-     * Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     @Export(name="notifyRules", refs={List.class,DispatchRuleNotifyRule.class}, tree="[0,1]")
     private Output<List<DispatchRuleNotifyRule>> notifyRules;
 
     /**
-     * @return Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * @return Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     public Output<List<DispatchRuleNotifyRule>> notifyRules() {
         return this.notifyRules;
     }
     /**
-     * Sets the notification template. See `notify_template` below.
+     * Sets the notification template. See `notifyTemplate` below.
      * 
      */
     @Export(name="notifyTemplates", refs={List.class,DispatchRuleNotifyTemplate.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DispatchRuleNotifyTemplate>> notifyTemplates;
 
     /**
-     * @return Sets the notification template. See `notify_template` below.
+     * @return Sets the notification template. See `notifyTemplate` below.
      * 
      */
     public Output<Optional<List<DispatchRuleNotifyTemplate>>> notifyTemplates() {

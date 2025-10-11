@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string CacheMode;
         /// <summary>
-        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+        /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `False`.
         /// </summary>
         public readonly bool ChapEnabled;
         /// <summary>
-        /// The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        /// The Inbound CHAP user.**NOTE:** When the `ChapEnabled` is  `True` is,The `ChapInPassword` is valid.
         /// </summary>
         public readonly string ChapInUser;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string IndexId;
         /// <summary>
-        /// CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+        /// CThe Cache disk to local path. **NOTE:**  When the `CacheMode` is  `Cache` is,The `ChapInPassword` is valid.
         /// </summary>
         public readonly string LocalPath;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string OssBucketName;
         /// <summary>
-        /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+        /// Whether to enable SSL access your OSS Buckets. Default value: `True`.
         /// </summary>
         public readonly bool OssBucketSsl;
         /// <summary>

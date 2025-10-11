@@ -52,14 +52,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of primary address pool collections. See `default_addr_pools` below for details.
+     * List of primary address pool collections. See `defaultAddrPools` below for details.
      * 
      */
     @Import(name="defaultAddrPools", required=true)
     private Output<List<AccessStrategyDefaultAddrPoolArgs>> defaultAddrPools;
 
     /**
-     * @return List of primary address pool collections. See `default_addr_pools` below for details.
+     * @return List of primary address pool collections. See `defaultAddrPools` below for details.
      * 
      */
     public Output<List<AccessStrategyDefaultAddrPoolArgs>> defaultAddrPools() {
@@ -82,14 +82,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+     * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     @Import(name="defaultLbaStrategy")
     private @Nullable Output<String> defaultLbaStrategy;
 
     /**
-     * @return The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+     * @return The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     public Optional<Output<String>> defaultLbaStrategy() {
@@ -97,14 +97,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+     * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      * 
      */
     @Import(name="defaultMaxReturnAddrNum")
     private @Nullable Output<Integer> defaultMaxReturnAddrNum;
 
     /**
-     * @return The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+     * @return The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      * 
      */
     public Optional<Output<Integer>> defaultMaxReturnAddrNum() {
@@ -142,14 +142,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of backup address pool sets. See `failover_addr_pools` below for details.
+     * List of backup address pool sets. See `failoverAddrPools` below for details.
      * 
      */
     @Import(name="failoverAddrPools")
     private @Nullable Output<List<AccessStrategyFailoverAddrPoolArgs>> failoverAddrPools;
 
     /**
-     * @return List of backup address pool sets. See `failover_addr_pools` below for details.
+     * @return List of backup address pool sets. See `failoverAddrPools` below for details.
      * 
      */
     public Optional<Output<List<AccessStrategyFailoverAddrPoolArgs>>> failoverAddrPools() {
@@ -247,14 +247,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     @Import(name="lines")
     private @Nullable Output<List<AccessStrategyLineArgs>> lines;
 
     /**
-     * @return The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * @return The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     public Optional<Output<List<AccessStrategyLineArgs>>> lines() {
@@ -375,7 +375,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultAddrPools List of primary address pool collections. See `default_addr_pools` below for details.
+         * @param defaultAddrPools List of primary address pool collections. See `defaultAddrPools` below for details.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultAddrPools List of primary address pool collections. See `default_addr_pools` below for details.
+         * @param defaultAddrPools List of primary address pool collections. See `defaultAddrPools` below for details.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultAddrPools List of primary address pool collections. See `default_addr_pools` below for details.
+         * @param defaultAddrPools List of primary address pool collections. See `defaultAddrPools` below for details.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultLbaStrategy The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+         * @param defaultLbaStrategy The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultLbaStrategy The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+         * @param defaultLbaStrategy The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultMaxReturnAddrNum The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+         * @param defaultMaxReturnAddrNum The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultMaxReturnAddrNum The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+         * @param defaultMaxReturnAddrNum The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param failoverAddrPools List of backup address pool sets. See `failover_addr_pools` below for details.
+         * @param failoverAddrPools List of backup address pool sets. See `failoverAddrPools` below for details.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param failoverAddrPools List of backup address pool sets. See `failover_addr_pools` below for details.
+         * @param failoverAddrPools List of backup address pool sets. See `failoverAddrPools` below for details.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param failoverAddrPools List of backup address pool sets. See `failover_addr_pools` below for details.
+         * @param failoverAddrPools List of backup address pool sets. See `failoverAddrPools` below for details.
          * 
          * @return builder
          * 
@@ -668,7 +668,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
          * 
          * @return builder
          * 
@@ -679,7 +679,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
          * 
          * @return builder
          * 

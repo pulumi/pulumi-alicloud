@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.AckOne
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `Profile` is 'Default'. It has to be false when cluster is deleted.
         /// </summary>
         [Output("argocdEnabled")]
         public Output<bool> ArgocdEnabled { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.AckOne
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster network information. See `network` below.
+        /// Cluster network information. See `Network` below.
         /// </summary>
         [Output("network")]
         public Output<Outputs.ClusterNetwork> Network { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.AckOne
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `Profile` is 'Default'. It has to be false when cluster is deleted.
         /// </summary>
         [Input("argocdEnabled")]
         public Input<bool>? ArgocdEnabled { get; set; }
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.AckOne
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// Cluster network information. See `network` below.
+        /// Cluster network information. See `Network` below.
         /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.ClusterNetworkArgs> Network { get; set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.AckOne
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `Profile` is 'Default'. It has to be false when cluster is deleted.
         /// </summary>
         [Input("argocdEnabled")]
         public Input<bool>? ArgocdEnabled { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.AckOne
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Cluster network information. See `network` below.
+        /// Cluster network information. See `Network` below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterNetworkGetArgs>? Network { get; set; }

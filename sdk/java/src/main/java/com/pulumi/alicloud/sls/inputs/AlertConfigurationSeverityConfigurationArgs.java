@@ -17,14 +17,14 @@ public final class AlertConfigurationSeverityConfigurationArgs extends com.pulum
     public static final AlertConfigurationSeverityConfigurationArgs Empty = new AlertConfigurationSeverityConfigurationArgs();
 
     /**
-     * Trigger condition. See `eval_condition` below.
+     * Trigger condition. See `evalCondition` below.
      * 
      */
     @Import(name="evalCondition")
     private @Nullable Output<AlertConfigurationSeverityConfigurationEvalConditionArgs> evalCondition;
 
     /**
-     * @return Trigger condition. See `eval_condition` below.
+     * @return Trigger condition. See `evalCondition` below.
      * 
      */
     public Optional<Output<AlertConfigurationSeverityConfigurationEvalConditionArgs>> evalCondition() {
@@ -72,7 +72,7 @@ public final class AlertConfigurationSeverityConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param evalCondition Trigger condition. See `eval_condition` below.
+         * @param evalCondition Trigger condition. See `evalCondition` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AlertConfigurationSeverityConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param evalCondition Trigger condition. See `eval_condition` below.
+         * @param evalCondition Trigger condition. See `evalCondition` below.
          * 
          * @return builder
          * 

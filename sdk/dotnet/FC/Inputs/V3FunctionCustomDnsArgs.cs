@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3FunctionCustomDnsDnsOptionArgs>? _dnsOptions;
 
         /// <summary>
-        /// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+        /// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `DnsOptions` below.
         /// </summary>
         public InputList<Inputs.V3FunctionCustomDnsDnsOptionArgs> DnsOptions
         {

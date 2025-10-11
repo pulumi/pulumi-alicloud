@@ -25,7 +25,7 @@ public final class GetVpcFirewallsFirewall {
      */
     private String connectType;
     /**
-     * @return The name of the VPC firewall instance and the value same as `vpc_firewall_id`.
+     * @return The name of the VPC firewall instance and the value same as `vpcFirewallId`.
      * 
      */
     private String id;
@@ -76,7 +76,7 @@ public final class GetVpcFirewallsFirewall {
         return this.connectType;
     }
     /**
-     * @return The name of the VPC firewall instance and the value same as `vpc_firewall_id`.
+     * @return The name of the VPC firewall instance and the value same as `vpcFirewallId`.
      * 
      */
     public String id() {

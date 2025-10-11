@@ -18,14 +18,14 @@ public final class GetSecretVersionsPlainArgs extends com.pulumi.resources.Invok
     public static final GetSecretVersionsPlainArgs Empty = new GetSecretVersionsPlainArgs();
 
     /**
-     * Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+     * Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+     * @return Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -137,7 +137,7 @@ public final class GetSecretVersionsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param enableDetails Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
+         * @param enableDetails Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
          * 
          * @return builder
          * 

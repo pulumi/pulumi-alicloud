@@ -27,12 +27,12 @@ public final class GetEcsDisksDisk {
      */
     private String autoSnapshotPolicyId;
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      */
     private String availabilityZone;
     /**
-     * @return Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
      * 
      */
     private String category;
@@ -157,7 +157,7 @@ public final class GetEcsDisksDisk {
      */
     private String name;
     /**
-     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * @return The reasons why the disk was locked. See `operationLocks` below for details.
      * 
      */
     private List<GetEcsDisksDiskOperationLock> operationLocks;
@@ -212,7 +212,7 @@ public final class GetEcsDisksDisk {
      */
     private Map<String,String> tags;
     /**
-     * @return Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+     * @return Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      * 
      */
     private String type;
@@ -238,14 +238,14 @@ public final class GetEcsDisksDisk {
         return this.autoSnapshotPolicyId;
     }
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      */
     public String availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * @return Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
      * 
      */
     public String category() {
@@ -420,7 +420,7 @@ public final class GetEcsDisksDisk {
         return this.name;
     }
     /**
-     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * @return The reasons why the disk was locked. See `operationLocks` below for details.
      * 
      */
     public List<GetEcsDisksDiskOperationLock> operationLocks() {
@@ -497,7 +497,7 @@ public final class GetEcsDisksDisk {
         return this.tags;
     }
     /**
-     * @return Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+     * @return Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      * 
      */
     public String type() {

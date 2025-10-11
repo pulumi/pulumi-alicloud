@@ -38,7 +38,7 @@ public final class ContainerGroupContainer {
      */
     private @Nullable Double cpu;
     /**
-     * @return The structure of environmentVars. See `environment_vars` below.
+     * @return The structure of environmentVars. See `environmentVars` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerEnvironmentVar> environmentVars;
@@ -63,7 +63,7 @@ public final class ContainerGroupContainer {
      */
     private @Nullable List<String> lifecyclePreStopHandlerExecs;
     /**
-     * @return The health check of the container. See `liveness_probe` below.
+     * @return The health check of the container. See `livenessProbe` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes;
@@ -83,7 +83,7 @@ public final class ContainerGroupContainer {
      */
     private @Nullable List<ContainerGroupContainerPort> ports;
     /**
-     * @return The health check of the container. See `readiness_probe` below.
+     * @return The health check of the container. See `readinessProbe` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
@@ -98,12 +98,12 @@ public final class ContainerGroupContainer {
      */
     private @Nullable Integer restartCount;
     /**
-     * @return The security context of the container. See `security_context` below.
+     * @return The security context of the container. See `securityContext` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerSecurityContext> securityContexts;
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below.
+     * @return The structure of volumeMounts. See `volumeMounts` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts;
@@ -136,7 +136,7 @@ public final class ContainerGroupContainer {
         return Optional.ofNullable(this.cpu);
     }
     /**
-     * @return The structure of environmentVars. See `environment_vars` below.
+     * @return The structure of environmentVars. See `environmentVars` below.
      * 
      */
     public List<ContainerGroupContainerEnvironmentVar> environmentVars() {
@@ -171,7 +171,7 @@ public final class ContainerGroupContainer {
         return this.lifecyclePreStopHandlerExecs == null ? List.of() : this.lifecyclePreStopHandlerExecs;
     }
     /**
-     * @return The health check of the container. See `liveness_probe` below.
+     * @return The health check of the container. See `livenessProbe` below.
      * 
      */
     public List<ContainerGroupContainerLivenessProbe> livenessProbes() {
@@ -199,7 +199,7 @@ public final class ContainerGroupContainer {
         return this.ports == null ? List.of() : this.ports;
     }
     /**
-     * @return The health check of the container. See `readiness_probe` below.
+     * @return The health check of the container. See `readinessProbe` below.
      * 
      */
     public List<ContainerGroupContainerReadinessProbe> readinessProbes() {
@@ -220,14 +220,14 @@ public final class ContainerGroupContainer {
         return Optional.ofNullable(this.restartCount);
     }
     /**
-     * @return The security context of the container. See `security_context` below.
+     * @return The security context of the container. See `securityContext` below.
      * 
      */
     public List<ContainerGroupContainerSecurityContext> securityContexts() {
         return this.securityContexts == null ? List.of() : this.securityContexts;
     }
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below.
+     * @return The structure of volumeMounts. See `volumeMounts` below.
      * 
      */
     public List<ContainerGroupContainerVolumeMount> volumeMounts() {

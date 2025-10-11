@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class MetricRuleTemplateAlertTemplateEscalationsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The condition for triggering critical-level alerts. See `critical` below.
+        /// The condition for triggering critical-level alerts. See `Critical` below.
         /// </summary>
         [Input("critical")]
         public Input<Inputs.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs>? Critical { get; set; }
 
         /// <summary>
-        /// The condition for triggering info-level alerts. See `info` below.
+        /// The condition for triggering info-level alerts. See `Info` below.
         /// </summary>
         [Input("info")]
         public Input<Inputs.MetricRuleTemplateAlertTemplateEscalationsInfoArgs>? Info { get; set; }
 
         /// <summary>
-        /// The condition for triggering warn-level alerts. See `warn` below.
+        /// The condition for triggering warn-level alerts. See `Warn` below.
         /// </summary>
         [Input("warn")]
         public Input<Inputs.MetricRuleTemplateAlertTemplateEscalationsWarnArgs>? Warn { get; set; }

@@ -36,14 +36,14 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+     * The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
      * 
      */
     @Import(name="accountIdentifiers")
     private @Nullable Output<List<DefenseRuleConfigAccountIdentifierArgs>> accountIdentifiers;
 
     /**
-     * @return The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+     * @return The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
      * 
      */
     public Optional<Output<List<DefenseRuleConfigAccountIdentifierArgs>>> accountIdentifiers() {
@@ -272,14 +272,14 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+     * The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
      * 
      */
     @Import(name="rateLimit")
     private @Nullable Output<DefenseRuleConfigRateLimitArgs> rateLimit;
 
     /**
-     * @return The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+     * @return The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
      * 
      */
     public Optional<Output<DefenseRuleConfigRateLimitArgs>> rateLimit() {
@@ -463,7 +463,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountIdentifiers The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+         * @param accountIdentifiers The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountIdentifiers The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+         * @param accountIdentifiers The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountIdentifiers The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+         * @param accountIdentifiers The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
          * 
          * @return builder
          * 
@@ -846,7 +846,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rateLimit The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+         * @param rateLimit The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rateLimit The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+         * @param rateLimit The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
          * 
          * @return builder
          * 

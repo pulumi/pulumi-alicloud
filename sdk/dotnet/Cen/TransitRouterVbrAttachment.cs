@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterVbrAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `False`. Valid values:
         /// </summary>
         [Output("autoPublishRouteEnabled")]
         public Output<bool?> AutoPublishRouteEnabled { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to perform a dry run. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -107,13 +107,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// Whether to enabled route table association. **NOTE:** "Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// Whether to enabled route table propagation. **NOTE:** "Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         /// 
         /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVbrAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to perform a dry run. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -239,13 +239,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// Whether to enabled route table association. **NOTE:** "Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// Whether to enabled route table propagation. **NOTE:** "Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         /// 
         /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVbrAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to perform a dry run. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -327,13 +327,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// Whether to enabled route table association. **NOTE:** "Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// Whether to enabled route table propagation. **NOTE:** "Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         /// 
         /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>

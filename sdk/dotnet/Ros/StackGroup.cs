@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ros
 
         /// <summary>
         /// Automatic deployment setting information. Description
-        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `AutoDeployment` below.
         /// </summary>
         [Output("autoDeployment")]
         public Output<Outputs.StackGroupAutoDeployment?> AutoDeployment { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string> ExecutionRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters See `parameters` below.
+        /// Parameters See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.StackGroupParameter>> Parameters { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Ros
 
         /// <summary>
         /// Automatic deployment setting information. Description
-        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `AutoDeployment` below.
         /// </summary>
         [Input("autoDeployment")]
         public Input<Inputs.StackGroupAutoDeploymentArgs>? AutoDeployment { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackGroupParameterArgs>? _parameters;
 
         /// <summary>
-        /// Parameters See `parameters` below.
+        /// Parameters See `Parameters` below.
         /// </summary>
         public InputList<Inputs.StackGroupParameterArgs> Parameters
         {
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Ros
 
         /// <summary>
         /// Automatic deployment setting information. Description
-        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `AutoDeployment` below.
         /// </summary>
         [Input("autoDeployment")]
         public Input<Inputs.StackGroupAutoDeploymentGetArgs>? AutoDeployment { get; set; }
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackGroupParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Parameters See `parameters` below.
+        /// Parameters See `Parameters` below.
         /// </summary>
         public InputList<Inputs.StackGroupParameterGetArgs> Parameters
         {

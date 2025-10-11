@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.GreyTagRouteDubboRuleItemGetArgs>? _items;
 
         /// <summary>
-        /// A list of conditions items. See `items` below.
+        /// A list of conditions items. See `Items` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteDubboRuleItemGetArgs> Items
         {

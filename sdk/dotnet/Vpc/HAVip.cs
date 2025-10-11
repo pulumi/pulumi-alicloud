@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch_id of the HaVip, the field can't be changed.
+        /// The VswitchId of the HaVip, the field can't be changed.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The vswitch_id of the HaVip, the field can't be changed.
+        /// The VswitchId of the HaVip, the field can't be changed.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vswitch_id of the HaVip, the field can't be changed.
+        /// The VswitchId of the HaVip, the field can't be changed.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

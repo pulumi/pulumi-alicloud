@@ -108,14 +108,14 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      * 
      */
     @Import(name="syncStatus")
     private @Nullable Output<String> syncStatus;
 
     /**
-     * @return The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+     * @return The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      * 
      */
     public Optional<Output<String>> syncStatus() {
@@ -153,14 +153,14 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user information of the host synchronization task. See `user_info` below.
+     * The user information of the host synchronization task. See `userInfo` below.
      * 
      */
     @Import(name="userInfos")
     private @Nullable Output<List<ZoneUserInfoArgs>> userInfos;
 
     /**
-     * @return The user information of the host synchronization task. See `user_info` below.
+     * @return The user information of the host synchronization task. See `userInfo` below.
      * 
      */
     public Optional<Output<List<ZoneUserInfoArgs>>> userInfos() {
@@ -168,14 +168,14 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+     * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      * 
      */
     @Import(name="zoneName")
     private @Nullable Output<String> zoneName;
 
     /**
-     * @return The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+     * @return The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      * 
      */
     public Optional<Output<String>> zoneName() {
@@ -335,7 +335,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncStatus The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+         * @param syncStatus The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncStatus The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+         * @param syncStatus The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userInfos The user information of the host synchronization task. See `user_info` below.
+         * @param userInfos The user information of the host synchronization task. See `userInfo` below.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userInfos The user information of the host synchronization task. See `user_info` below.
+         * @param userInfos The user information of the host synchronization task. See `userInfo` below.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userInfos The user information of the host synchronization task. See `user_info` below.
+         * @param userInfos The user information of the host synchronization task. See `userInfo` below.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+         * @param zoneName The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+         * @param zoneName The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
          * 
          * @return builder
          * 

@@ -49,14 +49,14 @@ public final class RdsParameterGroupArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Parameter list. See `param_detail` below.
+     * Parameter list. See `paramDetail` below.
      * 
      */
     @Import(name="paramDetails", required=true)
     private Output<List<RdsParameterGroupParamDetailArgs>> paramDetails;
 
     /**
-     * @return Parameter list. See `param_detail` below.
+     * @return Parameter list. See `paramDetail` below.
      * 
      */
     public Output<List<RdsParameterGroupParamDetailArgs>> paramDetails() {
@@ -164,7 +164,7 @@ public final class RdsParameterGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paramDetails Parameter list. See `param_detail` below.
+         * @param paramDetails Parameter list. See `paramDetail` below.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class RdsParameterGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paramDetails Parameter list. See `param_detail` below.
+         * @param paramDetails Parameter list. See `paramDetail` below.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class RdsParameterGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paramDetails Parameter list. See `param_detail` below.
+         * @param paramDetails Parameter list. See `paramDetail` below.
          * 
          * @return builder
          * 

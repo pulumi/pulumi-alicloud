@@ -26,14 +26,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     public static final ServiceMeshMeshConfigArgs Empty = new ServiceMeshMeshConfigArgs();
 
     /**
-     * The access logging configuration See `access_log` below.
+     * The access logging configuration See `accessLog` below.
      * 
      */
     @Import(name="accessLog")
     private @Nullable Output<ServiceMeshMeshConfigAccessLogArgs> accessLog;
 
     /**
-     * @return The access logging configuration See `access_log` below.
+     * @return The access logging configuration See `accessLog` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigAccessLogArgs>> accessLog() {
@@ -56,14 +56,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Control plane log collection configuration. See `control_plane_log` below.
+     * Control plane log collection configuration. See `controlPlaneLog` below.
      * 
      */
     @Import(name="controlPlaneLog")
     private @Nullable Output<ServiceMeshMeshConfigControlPlaneLogArgs> controlPlaneLog;
 
     /**
-     * @return Control plane log collection configuration. See `control_plane_log` below.
+     * @return Control plane log collection configuration. See `controlPlaneLog` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigControlPlaneLogArgs>> controlPlaneLog() {
@@ -206,14 +206,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Sidecar injector configuration See `sidecar_injector` below.
+     * Sidecar injector configuration See `sidecarInjector` below.
      * 
      */
     @Import(name="sidecarInjector")
     private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorArgs> sidecarInjector;
 
     /**
-     * @return Sidecar injector configuration See `sidecar_injector` below.
+     * @return Sidecar injector configuration See `sidecarInjector` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigSidecarInjectorArgs>> sidecarInjector() {
@@ -289,7 +289,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLog The access logging configuration See `access_log` below.
+         * @param accessLog The access logging configuration See `accessLog` below.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLog The access logging configuration See `access_log` below.
+         * @param accessLog The access logging configuration See `accessLog` below.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param controlPlaneLog Control plane log collection configuration. See `control_plane_log` below.
+         * @param controlPlaneLog Control plane log collection configuration. See `controlPlaneLog` below.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param controlPlaneLog Control plane log collection configuration. See `control_plane_log` below.
+         * @param controlPlaneLog Control plane log collection configuration. See `controlPlaneLog` below.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sidecarInjector Sidecar injector configuration See `sidecar_injector` below.
+         * @param sidecarInjector Sidecar injector configuration See `sidecarInjector` below.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sidecarInjector Sidecar injector configuration See `sidecar_injector` below.
+         * @param sidecarInjector Sidecar injector configuration See `sidecarInjector` below.
          * 
          * @return builder
          * 

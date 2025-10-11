@@ -350,14 +350,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
+     * The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `paymentType` is `Subscription`.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
-     * @return The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
+     * @return The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<String>> period() {

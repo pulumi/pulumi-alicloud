@@ -70,14 +70,14 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ECS specifications. See `ecs_class_list` below.
+     * ECS specifications. See `ecsClassList` below.
      * 
      */
     @Import(name="ecsClassLists")
     private @Nullable Output<List<DedicatedPropreHostEcsClassListArgs>> ecsClassLists;
 
     /**
-     * @return ECS specifications. See `ecs_class_list` below.
+     * @return ECS specifications. See `ecsClassList` below.
      * 
      */
     public Optional<Output<List<DedicatedPropreHostEcsClassListArgs>>> ecsClassLists() {
@@ -148,7 +148,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      * 
      */
     @Import(name="ecsUniqueSuffix")
@@ -158,7 +158,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
      * @return Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      * 
      */
     public Optional<Output<String>> ecsUniqueSuffix() {
@@ -577,7 +577,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsClassLists ECS specifications. See `ecs_class_list` below.
+         * @param ecsClassLists ECS specifications. See `ecsClassList` below.
          * 
          * @return builder
          * 
@@ -588,7 +588,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsClassLists ECS specifications. See `ecs_class_list` below.
+         * @param ecsClassLists ECS specifications. See `ecsClassList` below.
          * 
          * @return builder
          * 
@@ -598,7 +598,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsClassLists ECS specifications. See `ecs_class_list` below.
+         * @param ecsClassLists ECS specifications. See `ecsClassList` below.
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
          * @param ecsUniqueSuffix Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
          * - **true**: added.
          * - **false** (default): Do not add.
-         *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+         *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
          * 
          * @return builder
          * 
@@ -709,7 +709,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
          * @param ecsUniqueSuffix Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
          * - **true**: added.
          * - **false** (default): Do not add.
-         *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+         *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
          * 
          * @return builder
          * 

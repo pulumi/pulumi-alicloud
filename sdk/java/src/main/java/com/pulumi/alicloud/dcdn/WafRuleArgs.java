@@ -35,14 +35,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+     * Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
      * 
      */
     @Import(name="ccStatus")
     private @Nullable Output<String> ccStatus;
 
     /**
-     * @return Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+     * @return Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
      * 
      */
     public Optional<Output<String>> ccStatus() {
@@ -65,14 +65,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      * 
      */
     @Import(name="conditions")
     private @Nullable Output<List<WafRuleConditionArgs>> conditions;
 
     /**
-     * @return Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+     * @return Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      * 
      */
     public Optional<Output<List<WafRuleConditionArgs>>> conditions() {
@@ -125,14 +125,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      * 
      */
     @Import(name="rateLimit")
     private @Nullable Output<WafRuleRateLimitArgs> rateLimit;
 
     /**
-     * @return The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+     * @return The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      * 
      */
     public Optional<Output<WafRuleRateLimitArgs>> rateLimit() {
@@ -140,14 +140,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+     * The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
      * 
      */
     @Import(name="regularRules")
     private @Nullable Output<List<String>> regularRules;
 
     /**
-     * @return The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+     * @return The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
      * 
      */
     public Optional<Output<List<String>>> regularRules() {
@@ -155,14 +155,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;code_exec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
+     * Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;codeExec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
      * 
      */
     @Import(name="regularTypes")
     private @Nullable Output<List<String>> regularTypes;
 
     /**
-     * @return Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;code_exec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
+     * @return Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;codeExec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
      * 
      */
     public Optional<Output<List<String>>> regularTypes() {
@@ -185,14 +185,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+     * The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
      * 
      */
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
     /**
-     * @return The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+     * @return The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
      * 
      */
     public Output<String> ruleName() {
@@ -230,14 +230,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+     * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      * 
      */
     @Import(name="wafGroupIds")
     private @Nullable Output<String> wafGroupIds;
 
     /**
-     * @return The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+     * @return The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      * 
      */
     public Optional<Output<String>> wafGroupIds() {
@@ -304,7 +304,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ccStatus Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+         * @param ccStatus Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ccStatus Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+         * @param ccStatus Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimit The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+         * @param rateLimit The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimit The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+         * @param rateLimit The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regularRules The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+         * @param regularRules The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regularRules The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+         * @param regularRules The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regularRules The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+         * @param regularRules The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regularTypes Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;code_exec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
+         * @param regularTypes Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;codeExec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regularTypes Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;code_exec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
+         * @param regularTypes Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;codeExec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regularTypes Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;code_exec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
+         * @param regularTypes Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;codeExec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+         * @param ruleName The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+         * @param ruleName The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
          * 
          * @return builder
          * 

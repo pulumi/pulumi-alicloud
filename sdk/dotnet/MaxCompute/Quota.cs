@@ -29,9 +29,9 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> CommodityCode { get; private set; } = null!;
 
         /// <summary>
-        /// Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
+        /// Define quota rules when creating quotas, for example:{"CU":50,"OrdTime":"1:Month","autoRenew":false}.
         /// CU (minimum quota resource size is 50)
-        /// ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
+        /// OrdTime 1:Month/Year (1 means quantity: Month/Year is the unit)
         /// autoRenew (whether to enable automatic renewal)
         /// If PaymentType is PayAsYouGo, you do not need to fill in
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// Secondary Quota list
         /// 
         /// &gt; **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
-        /// See `sub_quota_info_list` below.
+        /// See `SubQuotaInfoList` below.
         /// </summary>
         [Output("subQuotaInfoLists")]
         public Output<ImmutableArray<Outputs.QuotaSubQuotaInfoList>> SubQuotaInfoLists { get; private set; } = null!;
@@ -117,9 +117,9 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string> CommodityCode { get; set; } = null!;
 
         /// <summary>
-        /// Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
+        /// Define quota rules when creating quotas, for example:{"CU":50,"OrdTime":"1:Month","autoRenew":false}.
         /// CU (minimum quota resource size is 50)
-        /// ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
+        /// OrdTime 1:Month/Year (1 means quantity: Month/Year is the unit)
         /// autoRenew (whether to enable automatic renewal)
         /// If PaymentType is PayAsYouGo, you do not need to fill in
         /// </summary>
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// Secondary Quota list
         /// 
         /// &gt; **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
-        /// See `sub_quota_info_list` below.
+        /// See `SubQuotaInfoList` below.
         /// </summary>
         public InputList<Inputs.QuotaSubQuotaInfoListArgs> SubQuotaInfoLists
         {
@@ -173,9 +173,9 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? CommodityCode { get; set; }
 
         /// <summary>
-        /// Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
+        /// Define quota rules when creating quotas, for example:{"CU":50,"OrdTime":"1:Month","autoRenew":false}.
         /// CU (minimum quota resource size is 50)
-        /// ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
+        /// OrdTime 1:Month/Year (1 means quantity: Month/Year is the unit)
         /// autoRenew (whether to enable automatic renewal)
         /// If PaymentType is PayAsYouGo, you do not need to fill in
         /// </summary>
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// Secondary Quota list
         /// 
         /// &gt; **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
-        /// See `sub_quota_info_list` below.
+        /// See `SubQuotaInfoList` below.
         /// </summary>
         public InputList<Inputs.QuotaSubQuotaInfoListGetArgs> SubQuotaInfoLists
         {

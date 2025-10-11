@@ -296,14 +296,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.dataSynchronization;
     }
     /**
-     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      * 
      */
     @Export(name="dbList", refs={String.class}, tree="[0]")
     private Output<String> dbList;
 
     /**
-     * @return Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+     * @return Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      * 
      */
     public Output<String> dbList() {
@@ -352,14 +352,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.delayPhone);
     }
     /**
-     * The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+     * The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
     @Export(name="delayRuleTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delayRuleTime;
 
     /**
-     * @return The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+     * @return The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
     public Output<Optional<String>> delayRuleTime() {
@@ -394,7 +394,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.destinationEndpointEngineName;
     }
     /**
-     * The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+     * The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
      * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
      * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
      * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
@@ -404,7 +404,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> destinationEndpointInstanceId;
 
     /**
-     * @return The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+     * @return The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
      * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
      * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
      * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
@@ -428,14 +428,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.destinationEndpointInstanceType;
     }
     /**
-     * The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+     * The IP of source endpoint. When `destinationEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
      * 
      */
     @Export(name="destinationEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointIp;
 
     /**
-     * @return The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+     * @return The IP of source endpoint. When `destinationEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
      * 
      */
     public Output<Optional<String>> destinationEndpointIp() {
@@ -544,7 +544,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
      * 
-     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
+     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it&#39;s instance to keep them consistent.
      * 
      */
     @Export(name="dtsBisLabel", refs={String.class}, tree="[0]")
@@ -555,7 +555,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
      * 
-     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
+     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it&#39;s instance to keep them consistent.
      * 
      */
     public Output<Optional<String>> dtsBisLabel() {
@@ -674,7 +674,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.sourceEndpointEngineName;
     }
     /**
-     * The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+     * The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
      * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
      * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
      * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
@@ -684,7 +684,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> sourceEndpointInstanceId;
 
     /**
-     * @return The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+     * @return The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
      * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
      * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
      * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
@@ -708,14 +708,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.sourceEndpointInstanceType;
     }
     /**
-     * The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+     * The IP of source endpoint. When `sourceEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
      * 
      */
     @Export(name="sourceEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointIp;
 
     /**
-     * @return The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+     * @return The IP of source endpoint. When `sourceEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
      * 
      */
     public Output<Optional<String>> sourceEndpointIp() {
@@ -736,14 +736,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceEndpointOracleSid);
     }
     /**
-     * The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
+     * The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `sourceEndpointRole` parameter.
      * 
      */
     @Export(name="sourceEndpointOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOwnerId;
 
     /**
-     * @return The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
+     * @return The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `sourceEndpointRole` parameter.
      * 
      */
     public Output<Optional<String>> sourceEndpointOwnerId() {
@@ -862,14 +862,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.structureInitialization;
     }
     /**
-     * Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+     * Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      * 
      */
     @Export(name="synchronizationDirection", refs={String.class}, tree="[0]")
     private Output<String> synchronizationDirection;
 
     /**
-     * @return Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+     * @return Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      * 
      */
     public Output<String> synchronizationDirection() {

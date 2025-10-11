@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         }
 
         /// <summary>
-        /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+        /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `On`, `Off`.
         /// </summary>
         [Input("sslProtocol")]
         public Input<string>? SslProtocol { get; set; }

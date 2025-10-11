@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string Action;
         /// <summary>
-        /// Matching Condition. See `condition_list` below.
+        /// Matching Condition. See `ConditionList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BgpPolicyContentLayer4RuleListConditionList> ConditionLists;
         /// <summary>

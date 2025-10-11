@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string HoneypotImageVersion;
         /// <summary>
-        /// The image ID of the honeypot.The value is the same as `honeypot_image_id`.
+        /// The image ID of the honeypot.The value is the same as `HoneypotImageId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

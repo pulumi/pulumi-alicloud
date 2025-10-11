@@ -89,9 +89,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-     * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
      * 
      * Default value: `5` Mbit /s.
      * 
@@ -101,9 +101,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-     * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
      * 
      * Default value: `5` Mbit /s.
      * 
@@ -212,9 +212,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      * - `PayByBandwidth` (default): pay-by-bandwidth.
      * - `PayByTraffic`: pay-by-data-transfer.
      * 
-     * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+     * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
      * 
-     * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+     * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     @Import(name="internetChargeType")
@@ -225,9 +225,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      * - `PayByBandwidth` (default): pay-by-bandwidth.
      * - `PayByTraffic`: pay-by-data-transfer.
      * 
-     * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+     * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
      * 
-     * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+     * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -386,7 +386,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      * - `Subscription`: subscription
      * - `PayAsYouGo` (default): pay-as-you-go
      * 
-     * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+     * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     @Import(name="paymentType")
@@ -397,7 +397,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      * - `Subscription`: subscription
      * - `PayAsYouGo` (default): pay-as-you-go
      * 
-     * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+     * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -405,14 +405,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+     * @return Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -424,7 +424,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      * - `Month` (default)
      * - `Year`
      * 
-     * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+     * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
      * 
      */
     @Import(name="pricingCycle")
@@ -435,7 +435,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      * - `Month` (default)
      * - `Year`
      * 
-     * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+     * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -479,7 +479,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     @Import(name="securityProtectionTypes")
@@ -488,7 +488,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     public Optional<Output<List<String>>> securityProtectionTypes() {
@@ -688,9 +688,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bandwidth The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-         * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+         * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+         * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+         * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
          * 
          * Default value: `5` Mbit /s.
          * 
@@ -704,9 +704,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bandwidth The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-         * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+         * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+         * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+         * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
          * 
          * Default value: `5` Mbit /s.
          * 
@@ -847,9 +847,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          * - `PayByBandwidth` (default): pay-by-bandwidth.
          * - `PayByTraffic`: pay-by-data-transfer.
          * 
-         * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+         * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
          * 
-         * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+         * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -864,9 +864,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          * - `PayByBandwidth` (default): pay-by-bandwidth.
          * - `PayByTraffic`: pay-by-data-transfer.
          * 
-         * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+         * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
          * 
-         * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+         * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -1069,7 +1069,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          * - `Subscription`: subscription
          * - `PayAsYouGo` (default): pay-as-you-go
          * 
-         * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+         * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          * - `Subscription`: subscription
          * - `PayAsYouGo` (default): pay-as-you-go
          * 
-         * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+         * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -1094,7 +1094,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+         * @param period Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
          * 
          * @return builder
          * 
@@ -1105,7 +1105,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+         * @param period Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
          * 
          * @return builder
          * 
@@ -1119,7 +1119,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          * - `Month` (default)
          * - `Year`
          * 
-         * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+         * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
          * 
          * @return builder
          * 
@@ -1134,7 +1134,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          * - `Month` (default)
          * - `Year`
          * 
-         * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+         * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
          * 
          * @return builder
          * 
@@ -1192,7 +1192,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityProtectionTypes Security protection level.
          * - When the return is empty, the basic DDoS protection is specified.
-         * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+         * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -1205,7 +1205,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityProtectionTypes Security protection level.
          * - When the return is empty, the basic DDoS protection is specified.
-         * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+         * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -1217,7 +1217,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityProtectionTypes Security protection level.
          * - When the return is empty, the basic DDoS protection is specified.
-         * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+         * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 

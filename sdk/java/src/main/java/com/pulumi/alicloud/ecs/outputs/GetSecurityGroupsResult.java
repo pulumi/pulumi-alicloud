@@ -43,7 +43,7 @@ public final class GetSecurityGroupsResult {
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The Id of resource group which the securityGroup belongs.
      * 
      */
     private @Nullable String resourceGroupId;
@@ -104,7 +104,7 @@ public final class GetSecurityGroupsResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The Id of resource group which the securityGroup belongs.
      * 
      */
     public Optional<String> resourceGroupId() {

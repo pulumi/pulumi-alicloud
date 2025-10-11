@@ -35,14 +35,14 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The cool_down_duration option of cluster-autoscaler.
+     * The coolDownDuration option of cluster-autoscaler.
      * 
      */
     @Import(name="coolDownDuration", required=true)
     private Output<String> coolDownDuration;
 
     /**
-     * @return The cool_down_duration option of cluster-autoscaler.
+     * @return The coolDownDuration option of cluster-autoscaler.
      * 
      */
     public Output<String> coolDownDuration() {
@@ -50,14 +50,14 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The defer_scale_in_duration option of cluster-autoscaler.
+     * The deferScaleInDuration option of cluster-autoscaler.
      * 
      */
     @Import(name="deferScaleInDuration", required=true)
     private Output<String> deferScaleInDuration;
 
     /**
-     * @return The defer_scale_in_duration option of cluster-autoscaler.
+     * @return The deferScaleInDuration option of cluster-autoscaler.
      * 
      */
     public Output<String> deferScaleInDuration() {
@@ -160,7 +160,7 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param coolDownDuration The cool_down_duration option of cluster-autoscaler.
+         * @param coolDownDuration The coolDownDuration option of cluster-autoscaler.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param coolDownDuration The cool_down_duration option of cluster-autoscaler.
+         * @param coolDownDuration The coolDownDuration option of cluster-autoscaler.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param deferScaleInDuration The defer_scale_in_duration option of cluster-autoscaler.
+         * @param deferScaleInDuration The deferScaleInDuration option of cluster-autoscaler.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param deferScaleInDuration The defer_scale_in_duration option of cluster-autoscaler.
+         * @param deferScaleInDuration The deferScaleInDuration option of cluster-autoscaler.
          * 
          * @return builder
          * 

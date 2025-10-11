@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.SelectDB.Inputs
         public Input<string>? SecurityIpList { get; set; }
 
         /// <summary>
-        /// The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
+        /// The IP address type. Valid values: `Ipv4`, `Ipv6` (not supported).
         /// </summary>
         [Input("securityIpType")]
         public Input<string>? SecurityIpType { get; set; }

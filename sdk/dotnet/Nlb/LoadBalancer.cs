@@ -227,19 +227,19 @@ namespace Pulumi.AliCloud.Nlb
         public Output<bool> CrossZoneEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+        /// Specifies whether to enable deletion protection. Default value: `False`. See `DeletionProtectionConfig` below.
         /// </summary>
         [Output("deletionProtectionConfig")]
         public Output<Outputs.LoadBalancerDeletionProtectionConfig> DeletionProtectionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
         /// </summary>
         [Output("deletionProtectionEnabled")]
         public Output<bool> DeletionProtectionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        /// The reason why the deletion protection feature is enabled or disabled. The `DeletionProtectionReason` takes effect only when `DeletionProtectionEnabled` is set to `True`.
         /// </summary>
         [Output("deletionProtectionReason")]
         public Output<string> DeletionProtectionReason { get; private set; } = null!;
@@ -272,27 +272,27 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string?> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
+        /// The type of the Server Load Balancer (SLB) instance. Set the value to `Network`, which specifies NLB.
         /// </summary>
         [Output("loadBalancerType")]
         public Output<string> LoadBalancerType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `ModificationProtectionConfig` below.
         /// </summary>
         [Output("modificationProtectionConfig")]
         public Output<Outputs.LoadBalancerModificationProtectionConfig> ModificationProtectionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        /// The reason why the configuration read-only mode is enabled. The `ModificationProtectionReason` takes effect only when `ModificationProtectionStatus` is set to `ConsoleProtection`.
         /// </summary>
         [Output("modificationProtectionReason")]
         public Output<string> ModificationProtectionReason { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `ModificationProtectionReason`. If the `ModificationProtectionReason` is set, the value is cleared.
+        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `ModificationProtectionReason`.
         /// </summary>
         [Output("modificationProtectionStatus")]
         public Output<string> ModificationProtectionStatus { get; private set; } = null!;
@@ -341,7 +341,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `ZoneMappings` below.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -432,19 +432,19 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? CrossZoneEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+        /// Specifies whether to enable deletion protection. Default value: `False`. See `DeletionProtectionConfig` below.
         /// </summary>
         [Input("deletionProtectionConfig")]
         public Input<Inputs.LoadBalancerDeletionProtectionConfigArgs>? DeletionProtectionConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
-        /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        /// The reason why the deletion protection feature is enabled or disabled. The `DeletionProtectionReason` takes effect only when `DeletionProtectionEnabled` is set to `True`.
         /// </summary>
         [Input("deletionProtectionReason")]
         public Input<string>? DeletionProtectionReason { get; set; }
@@ -465,27 +465,27 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
+        /// The type of the Server Load Balancer (SLB) instance. Set the value to `Network`, which specifies NLB.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `ModificationProtectionConfig` below.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigArgs>? ModificationProtectionConfig { get; set; }
 
         /// <summary>
-        /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        /// The reason why the configuration read-only mode is enabled. The `ModificationProtectionReason` takes effect only when `ModificationProtectionStatus` is set to `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `ModificationProtectionReason`. If the `ModificationProtectionReason` is set, the value is cleared.
+        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `ModificationProtectionReason`.
         /// </summary>
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
@@ -537,7 +537,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `ZoneMappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -599,19 +599,19 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? CrossZoneEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
+        /// Specifies whether to enable deletion protection. Default value: `False`. See `DeletionProtectionConfig` below.
         /// </summary>
         [Input("deletionProtectionConfig")]
         public Input<Inputs.LoadBalancerDeletionProtectionConfigGetArgs>? DeletionProtectionConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
-        /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        /// The reason why the deletion protection feature is enabled or disabled. The `DeletionProtectionReason` takes effect only when `DeletionProtectionEnabled` is set to `True`.
         /// </summary>
         [Input("deletionProtectionReason")]
         public Input<string>? DeletionProtectionReason { get; set; }
@@ -644,27 +644,27 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
+        /// The type of the Server Load Balancer (SLB) instance. Set the value to `Network`, which specifies NLB.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
+        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `ModificationProtectionConfig` below.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigGetArgs>? ModificationProtectionConfig { get; set; }
 
         /// <summary>
-        /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        /// The reason why the configuration read-only mode is enabled. The `ModificationProtectionReason` takes effect only when `ModificationProtectionStatus` is set to `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `ModificationProtectionReason`. If the `ModificationProtectionReason` is set, the value is cleared.
+        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `ModificationProtectionReason`.
         /// </summary>
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
@@ -728,7 +728,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `ZoneMappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

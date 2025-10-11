@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> RuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The List of the VPC. See `vpcs` below.
+        /// The List of the VPC. See `Vpcs` below.
         /// </summary>
         [Output("vpcs")]
         public Output<ImmutableArray<Outputs.RuleAttachmentVpc>> Vpcs { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleAttachmentVpcArgs>? _vpcs;
 
         /// <summary>
-        /// The List of the VPC. See `vpcs` below.
+        /// The List of the VPC. See `Vpcs` below.
         /// </summary>
         public InputList<Inputs.RuleAttachmentVpcArgs> Vpcs
         {
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleAttachmentVpcGetArgs>? _vpcs;
 
         /// <summary>
-        /// The List of the VPC. See `vpcs` below.
+        /// The List of the VPC. See `Vpcs` below.
         /// </summary>
         public InputList<Inputs.RuleAttachmentVpcGetArgs> Vpcs
         {

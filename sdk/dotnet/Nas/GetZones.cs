@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Nas
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+        /// The type of the file system.  Valid values: `Standard`, `Extreme`, `Cpfs`.
         /// </summary>
         [Input("fileSystemType")]
         public string? FileSystemType { get; set; }
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Nas
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+        /// The type of the file system.  Valid values: `Standard`, `Extreme`, `Cpfs`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Esa.Inputs
     public sealed class OriginPoolOriginAuthConfArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccessKey to be passed when AuthType is set to private_cross_account or private.
+        /// The AccessKey to be passed when AuthType is set to PrivateCrossAccount or private.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Esa.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// The SecretKey to be passed when AuthType is set to private_cross_account or private.
+        /// The SecretKey to be passed when AuthType is set to PrivateCrossAccount or private.
         /// </summary>
         public Input<string>? SecretKey
         {

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Slb.Inputs
         }
 
         /// <summary>
-        /// Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
+        /// Specify the type of the backend server. Default value: `Ecs`. Valid values: `Ecs`, `Eni`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

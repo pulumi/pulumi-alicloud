@@ -18,14 +18,14 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
     public static final BgpPeerState Empty = new BgpPeerState();
 
     /**
-     * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+     * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      * 
      */
     @Import(name="bfdMultiHop")
     private @Nullable Output<Integer> bfdMultiHop;
 
     /**
-     * @return The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+     * @return The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      * 
      */
     public Optional<Output<Integer>> bfdMultiHop() {
@@ -153,7 +153,7 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bfdMultiHop The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+         * @param bfdMultiHop The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bfdMultiHop The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+         * @param bfdMultiHop The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
          * 
          * @return builder
          * 

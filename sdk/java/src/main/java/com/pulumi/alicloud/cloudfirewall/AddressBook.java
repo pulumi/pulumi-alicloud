@@ -122,14 +122,14 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * A list of ECS tags. See `ecs_tags` below.
+     * A list of ECS tags. See `ecsTags` below.
      * 
      */
     @Export(name="ecsTags", refs={List.class,AddressBookEcsTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AddressBookEcsTag>> ecsTags;
 
     /**
-     * @return A list of ECS tags. See `ecs_tags` below.
+     * @return A list of ECS tags. See `ecsTags` below.
      * 
      */
     public Output<Optional<List<AddressBookEcsTag>>> ecsTags() {
@@ -151,7 +151,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     @Export(name="groupType", refs={String.class}, tree="[0]")
@@ -159,7 +159,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     public Output<String> groupType() {

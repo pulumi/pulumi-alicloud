@@ -49,14 +49,14 @@ public final class GetCustomRoutingEndpointGroupDestinationsArgs extends com.pul
     }
 
     /**
-     * The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     @Import(name="fromPort")
     private @Nullable Output<Integer> fromPort;
 
     /**
-     * @return The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     public Optional<Output<Integer>> fromPort() {
@@ -138,14 +138,14 @@ public final class GetCustomRoutingEndpointGroupDestinationsArgs extends com.pul
     }
 
     /**
-     * The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     @Import(name="toPort")
     private @Nullable Output<Integer> toPort;
 
     /**
-     * @return The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     public Optional<Output<Integer>> toPort() {
@@ -228,7 +228,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsArgs extends com.pul
         }
 
         /**
-         * @param fromPort The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+         * @param fromPort The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsArgs extends com.pul
         }
 
         /**
-         * @param fromPort The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+         * @param fromPort The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsArgs extends com.pul
         }
 
         /**
-         * @param toPort The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+         * @param toPort The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsArgs extends com.pul
         }
 
         /**
-         * @param toPort The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+         * @param toPort The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
          * 
          * @return builder
          * 

@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public partial class ImageEventOperation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `Conditions` can be modified.
         /// </summary>
         [Output("conditions")]
         public Output<string> Conditions { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class ImageEventOperationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `Conditions` can be modified.
         /// </summary>
         [Input("conditions", required: true)]
         public Input<string> Conditions { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class ImageEventOperationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `Conditions` can be modified.
         /// </summary>
         [Input("conditions")]
         public Input<string>? Conditions { get; set; }

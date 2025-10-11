@@ -117,7 +117,7 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * The group name. You must specify at least one of the `group_name` and `name`.
+     * The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -127,7 +127,7 @@ public class Group extends com.pulumi.resources.CustomResource {
     private Output<String> groupName;
 
     /**
-     * @return The group name. You must specify at least one of the `group_name` and `name`.
+     * @return The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -140,10 +140,10 @@ public class Group extends com.pulumi.resources.CustomResource {
      * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+     * Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

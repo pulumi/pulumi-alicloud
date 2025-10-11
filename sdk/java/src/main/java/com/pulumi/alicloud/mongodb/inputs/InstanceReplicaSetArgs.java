@@ -106,14 +106,14 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -293,7 +293,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
          * 
          * @return builder
          * 

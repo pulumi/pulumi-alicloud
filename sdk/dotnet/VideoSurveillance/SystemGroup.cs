@@ -106,19 +106,19 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
+        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `Gb28181`, `Rtmp`.
         /// </summary>
         [Output("inProtocol")]
         public Output<string> InProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable on-demand streaming. Default value:`false`.
+        /// Whether to enable on-demand streaming. Default value:`False`.
         /// </summary>
         [Output("lazyPull")]
         public Output<bool> LazyPull { get; private set; } = null!;
 
         /// <summary>
-        /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
+        /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `Flv`,`Hls`, `Rtmp`.
         /// </summary>
         [Output("outProtocol")]
         public Output<string> OutProtocol { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public Output<string> PushDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to open Group. Valid values: `on`,`off`.
+        /// Whether to open Group. Valid values: `On`,`Off`.
         /// </summary>
         [Output("status")]
         public Output<bool> Status { get; private set; } = null!;
@@ -212,13 +212,13 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
+        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `Gb28181`, `Rtmp`.
         /// </summary>
         [Input("inProtocol", required: true)]
         public Input<string> InProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
+        /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `Flv`,`Hls`, `Rtmp`.
         /// </summary>
         [Input("outProtocol", required: true)]
         public Input<string> OutProtocol { get; set; } = null!;
@@ -298,19 +298,19 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
+        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `Gb28181`, `Rtmp`.
         /// </summary>
         [Input("inProtocol")]
         public Input<string>? InProtocol { get; set; }
 
         /// <summary>
-        /// Whether to enable on-demand streaming. Default value:`false`.
+        /// Whether to enable on-demand streaming. Default value:`False`.
         /// </summary>
         [Input("lazyPull")]
         public Input<bool>? LazyPull { get; set; }
 
         /// <summary>
-        /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
+        /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `Flv`,`Hls`, `Rtmp`.
         /// </summary>
         [Input("outProtocol")]
         public Input<string>? OutProtocol { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public Input<string>? PushDomain { get; set; }
 
         /// <summary>
-        /// Whether to open Group. Valid values: `on`,`off`.
+        /// Whether to open Group. Valid values: `On`,`Off`.
         /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }

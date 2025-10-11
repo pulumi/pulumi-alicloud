@@ -292,14 +292,14 @@ public class V3ProvisionConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.qualifier);
     }
     /**
-     * Timing policy configuration See `scheduled_actions` below.
+     * Timing policy configuration See `scheduledActions` below.
      * 
      */
     @Export(name="scheduledActions", refs={List.class,V3ProvisionConfigScheduledAction.class}, tree="[0,1]")
     private Output</* @Nullable */ List<V3ProvisionConfigScheduledAction>> scheduledActions;
 
     /**
-     * @return Timing policy configuration See `scheduled_actions` below.
+     * @return Timing policy configuration See `scheduledActions` below.
      * 
      */
     public Output<Optional<List<V3ProvisionConfigScheduledAction>>> scheduledActions() {
@@ -320,14 +320,14 @@ public class V3ProvisionConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.target);
     }
     /**
-     * Metric tracking scaling policy configuration See `target_tracking_policies` below.
+     * Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      * 
      */
     @Export(name="targetTrackingPolicies", refs={List.class,V3ProvisionConfigTargetTrackingPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<V3ProvisionConfigTargetTrackingPolicy>> targetTrackingPolicies;
 
     /**
-     * @return Metric tracking scaling policy configuration See `target_tracking_policies` below.
+     * @return Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      * 
      */
     public Output<Optional<List<V3ProvisionConfigTargetTrackingPolicy>>> targetTrackingPolicies() {

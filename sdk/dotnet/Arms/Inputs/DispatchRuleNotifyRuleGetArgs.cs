@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         private InputList<Inputs.DispatchRuleNotifyRuleNotifyObjectGetArgs>? _notifyObjects;
 
         /// <summary>
-        /// Sets the notification object. See `notify_objects` below.
+        /// Sets the notification object. See `NotifyObjects` below.
         /// </summary>
         public InputList<Inputs.DispatchRuleNotifyRuleNotifyObjectGetArgs> NotifyObjects
         {

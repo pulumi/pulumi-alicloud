@@ -122,7 +122,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
         return this.caCertificateName;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;ca_certificate_name&#39; instead
@@ -133,21 +133,21 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The Id of resource group which the slb_ca certificate belongs.
+     * The Id of resource group which the slbCa certificate belongs.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the slb_ca certificate belongs.
+     * @return The Id of resource group which the slbCa certificate belongs.
      * 
      */
     public Output<String> resourceGroupId() {

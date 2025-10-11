@@ -70,13 +70,13 @@ namespace Pulumi.AliCloud.Cdn
     public partial class DomainNew : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
+        /// Cdn type of the accelerated domain. Valid values are `Web`, `Download`, `Video`.
         /// </summary>
         [Output("cdnType")]
         public Output<string> CdnType { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate configuration See `certificate_config` below.
+        /// Certificate configuration See `CertificateConfig` below.
         /// </summary>
         [Output("certificateConfig")]
         public Output<Outputs.DomainNewCertificateConfig> CertificateConfig { get; private set; } = null!;
@@ -112,19 +112,19 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+        /// Scope of the accelerated domain. Valid values are `Domestic`, `Overseas`, `Global`. Default value is `Domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        /// The source address list of the accelerated domain. Defaults to null. See `Sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainNewSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource, valid values: `online`, `offline`.
+        /// The status of the resource, valid values: `Online`, `Offline`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -182,13 +182,13 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class DomainNewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
+        /// Cdn type of the accelerated domain. Valid values are `Web`, `Download`, `Video`.
         /// </summary>
         [Input("cdnType", required: true)]
         public Input<string> CdnType { get; set; } = null!;
 
         /// <summary>
-        /// Certificate configuration See `certificate_config` below.
+        /// Certificate configuration See `CertificateConfig` below.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigArgs>? CertificateConfig { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+        /// Scope of the accelerated domain. Valid values are `Domestic`, `Overseas`, `Global`. Default value is `Domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainNewSourceArgs>? _sources;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        /// The source address list of the accelerated domain. Defaults to null. See `Sources` below.
         /// </summary>
         public InputList<Inputs.DomainNewSourceArgs> Sources
         {
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Cdn
         }
 
         /// <summary>
-        /// The status of the resource, valid values: `online`, `offline`.
+        /// The status of the resource, valid values: `Online`, `Offline`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -262,13 +262,13 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class DomainNewState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
+        /// Cdn type of the accelerated domain. Valid values are `Web`, `Download`, `Video`.
         /// </summary>
         [Input("cdnType")]
         public Input<string>? CdnType { get; set; }
 
         /// <summary>
-        /// Certificate configuration See `certificate_config` below.
+        /// Certificate configuration See `CertificateConfig` below.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigGetArgs>? CertificateConfig { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+        /// Scope of the accelerated domain. Valid values are `Domestic`, `Overseas`, `Global`. Default value is `Domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainNewSourceGetArgs>? _sources;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        /// The source address list of the accelerated domain. Defaults to null. See `Sources` below.
         /// </summary>
         public InputList<Inputs.DomainNewSourceGetArgs> Sources
         {
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Cdn
         }
 
         /// <summary>
-        /// The status of the resource, valid values: `online`, `offline`.
+        /// The status of the resource, valid values: `Online`, `Offline`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

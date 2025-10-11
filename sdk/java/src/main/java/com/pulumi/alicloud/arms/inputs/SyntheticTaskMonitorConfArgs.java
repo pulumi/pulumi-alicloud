@@ -22,14 +22,14 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
     public static final SyntheticTaskMonitorConfArgs Empty = new SyntheticTaskMonitorConfArgs();
 
     /**
-     * HTTP(S) task configuration information. See `api_http` below.
+     * HTTP(S) task configuration information. See `apiHttp` below.
      * 
      */
     @Import(name="apiHttp")
     private @Nullable Output<SyntheticTaskMonitorConfApiHttpArgs> apiHttp;
 
     /**
-     * @return HTTP(S) task configuration information. See `api_http` below.
+     * @return HTTP(S) task configuration information. See `apiHttp` below.
      * 
      */
     public Optional<Output<SyntheticTaskMonitorConfApiHttpArgs>> apiHttp() {
@@ -37,14 +37,14 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * File download type task configuration. See `file_download` below.
+     * File download type task configuration. See `fileDownload` below.
      * 
      */
     @Import(name="fileDownload")
     private @Nullable Output<SyntheticTaskMonitorConfFileDownloadArgs> fileDownload;
 
     /**
-     * @return File download type task configuration. See `file_download` below.
+     * @return File download type task configuration. See `fileDownload` below.
      * 
      */
     public Optional<Output<SyntheticTaskMonitorConfFileDownloadArgs>> fileDownload() {
@@ -52,14 +52,14 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+     * The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
      * 
      */
     @Import(name="netDns")
     private @Nullable Output<SyntheticTaskMonitorConfNetDnsArgs> netDns;
 
     /**
-     * @return The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+     * @return The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
      * 
      */
     public Optional<Output<SyntheticTaskMonitorConfNetDnsArgs>> netDns() {
@@ -67,14 +67,14 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+     * ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
      * 
      */
     @Import(name="netIcmp")
     private @Nullable Output<SyntheticTaskMonitorConfNetIcmpArgs> netIcmp;
 
     /**
-     * @return ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+     * @return ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
      * 
      */
     public Optional<Output<SyntheticTaskMonitorConfNetIcmpArgs>> netIcmp() {
@@ -82,14 +82,14 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+     * The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
      * 
      */
     @Import(name="netTcp")
     private @Nullable Output<SyntheticTaskMonitorConfNetTcpArgs> netTcp;
 
     /**
-     * @return The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+     * @return The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
      * 
      */
     public Optional<Output<SyntheticTaskMonitorConfNetTcpArgs>> netTcp() {
@@ -157,7 +157,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param apiHttp HTTP(S) task configuration information. See `api_http` below.
+         * @param apiHttp HTTP(S) task configuration information. See `apiHttp` below.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param apiHttp HTTP(S) task configuration information. See `api_http` below.
+         * @param apiHttp HTTP(S) task configuration information. See `apiHttp` below.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param fileDownload File download type task configuration. See `file_download` below.
+         * @param fileDownload File download type task configuration. See `fileDownload` below.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param fileDownload File download type task configuration. See `file_download` below.
+         * @param fileDownload File download type task configuration. See `fileDownload` below.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netDns The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+         * @param netDns The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netDns The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+         * @param netDns The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netIcmp ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+         * @param netIcmp ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netIcmp ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+         * @param netIcmp ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netTcp The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+         * @param netTcp The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class SyntheticTaskMonitorConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netTcp The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+         * @param netTcp The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
          * 
          * @return builder
          * 

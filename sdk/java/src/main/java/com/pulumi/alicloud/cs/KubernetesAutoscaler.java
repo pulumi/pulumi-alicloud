@@ -34,28 +34,28 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The cool_down_duration option of cluster-autoscaler.
+     * The coolDownDuration option of cluster-autoscaler.
      * 
      */
     @Export(name="coolDownDuration", refs={String.class}, tree="[0]")
     private Output<String> coolDownDuration;
 
     /**
-     * @return The cool_down_duration option of cluster-autoscaler.
+     * @return The coolDownDuration option of cluster-autoscaler.
      * 
      */
     public Output<String> coolDownDuration() {
         return this.coolDownDuration;
     }
     /**
-     * The defer_scale_in_duration option of cluster-autoscaler.
+     * The deferScaleInDuration option of cluster-autoscaler.
      * 
      */
     @Export(name="deferScaleInDuration", refs={String.class}, tree="[0]")
     private Output<String> deferScaleInDuration;
 
     /**
-     * @return The defer_scale_in_duration option of cluster-autoscaler.
+     * @return The deferScaleInDuration option of cluster-autoscaler.
      * 
      */
     public Output<String> deferScaleInDuration() {

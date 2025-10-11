@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
         /// </summary>
         public readonly string? HealthCheckProtocol;
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `Fail` to `Success`.
         /// 
         /// Valid values: `2` to `10`.
         /// 
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
         /// </summary>
         public readonly int? HealthyThreshold;
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `Success` to `Fail`.
         /// 
         /// Valid values: `2` to `10`.
         /// 

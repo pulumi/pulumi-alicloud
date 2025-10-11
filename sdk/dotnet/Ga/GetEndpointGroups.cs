@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Ga
         public string AcceleratorId { get; set; } = null!;
 
         /// <summary>
-        /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+        /// The endpoint group type. Default value: `Default`. Valid values: `Default`, `Virtual`.
         /// </summary>
         [Input("endpointGroupType")]
         public string? EndpointGroupType { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
+        /// The status of the endpoint group. Valid values: `Active`, `Configuring`, `Creating`, `Init`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AcceleratorId { get; set; } = null!;
 
         /// <summary>
-        /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+        /// The endpoint group type. Default value: `Default`. Valid values: `Default`, `Virtual`.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
+        /// The status of the endpoint group. Valid values: `Active`, `Configuring`, `Creating`, `Init`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

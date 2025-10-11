@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        /// platform of the capacity reservation , value range `Windows`, `Linux`, `All`.
         /// </summary>
         public readonly string Platform;
         /// <summary>

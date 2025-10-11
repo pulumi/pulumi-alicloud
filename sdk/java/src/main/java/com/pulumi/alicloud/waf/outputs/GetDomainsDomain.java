@@ -29,7 +29,7 @@ public final class GetDomainsDomain {
      */
     private Integer connectionTime;
     /**
-     * @return Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+     * @return Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
      */
     private String domain;
@@ -64,7 +64,7 @@ public final class GetDomainsDomain {
      */
     private String httpsRedirect;
     /**
-     * @return The ID of domain self ID, value as `domain_name`.
+     * @return The ID of domain self ID, value as `domainName`.
      * 
      */
     private String id;
@@ -132,7 +132,7 @@ public final class GetDomainsDomain {
         return this.connectionTime;
     }
     /**
-     * @return Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+     * @return Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
      */
     public String domain() {
@@ -181,7 +181,7 @@ public final class GetDomainsDomain {
         return this.httpsRedirect;
     }
     /**
-     * @return The ID of domain self ID, value as `domain_name`.
+     * @return The ID of domain self ID, value as `domainName`.
      * 
      */
     public String id() {

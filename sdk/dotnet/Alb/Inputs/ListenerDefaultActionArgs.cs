@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ListenerDefaultActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Forwarding Action Configurations See `forward_group_config` below.
+        /// Forwarding Action Configurations See `ForwardGroupConfig` below.
         /// </summary>
         [Input("forwardGroupConfig")]
         public Input<Inputs.ListenerDefaultActionForwardGroupConfigArgs>? ForwardGroupConfig { get; set; }

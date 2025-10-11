@@ -120,14 +120,14 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.lang);
     }
     /**
-     * The details of the VPC. See `local_vpc` below.
+     * The details of the VPC. See `localVpc` below.
      * 
      */
     @Export(name="localVpc", refs={FirewallVpcFirewallCenLocalVpc.class}, tree="[0]")
     private Output<FirewallVpcFirewallCenLocalVpc> localVpc;
 
     /**
-     * @return The details of the VPC. See `local_vpc` below.
+     * @return The details of the VPC. See `localVpc` below.
      * 
      */
     public Output<FirewallVpcFirewallCenLocalVpc> localVpc() {

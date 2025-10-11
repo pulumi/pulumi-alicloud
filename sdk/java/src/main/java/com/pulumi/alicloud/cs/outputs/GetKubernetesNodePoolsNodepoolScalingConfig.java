@@ -18,12 +18,12 @@ public final class GetKubernetesNodePoolsNodepoolScalingConfig {
      */
     private Integer eipBandwidth;
     /**
-     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
      * 
      */
     private String eipInternetChargeType;
     /**
-     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
      * 
      */
     private Boolean enable;
@@ -33,7 +33,7 @@ public final class GetKubernetesNodePoolsNodepoolScalingConfig {
      */
     private Boolean isBondEip;
     /**
-     * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+     * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
      * 
      */
     private Integer maxSize;
@@ -43,7 +43,7 @@ public final class GetKubernetesNodePoolsNodepoolScalingConfig {
      */
     private Integer minSize;
     /**
-     * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+     * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
      * 
      */
     private String type;
@@ -57,14 +57,14 @@ public final class GetKubernetesNodePoolsNodepoolScalingConfig {
         return this.eipBandwidth;
     }
     /**
-     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
      * 
      */
     public String eipInternetChargeType() {
         return this.eipInternetChargeType;
     }
     /**
-     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+     * @return Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
      * 
      */
     public Boolean enable() {
@@ -78,7 +78,7 @@ public final class GetKubernetesNodePoolsNodepoolScalingConfig {
         return this.isBondEip;
     }
     /**
-     * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+     * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
      * 
      */
     public Integer maxSize() {
@@ -92,7 +92,7 @@ public final class GetKubernetesNodePoolsNodepoolScalingConfig {
         return this.minSize;
     }
     /**
-     * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+     * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
      * 
      */
     public String type() {

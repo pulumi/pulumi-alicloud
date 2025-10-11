@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
     public sealed class ClusterNetworksIpAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bond policy See `bond_policy` below.
+        /// Bond policy See `BondPolicy` below.
         /// </summary>
         [Input("bondPolicy")]
         public Input<Inputs.ClusterNetworksIpAllocationPolicyBondPolicyArgs>? BondPolicy { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs>? _machineTypePolicies;
 
         /// <summary>
-        /// Model Assignment Policy See `machine_type_policy` below.
+        /// Model Assignment Policy See `MachineTypePolicy` below.
         /// </summary>
         public InputList<Inputs.ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs> MachineTypePolicies
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.ClusterNetworksIpAllocationPolicyNodePolicyArgs>? _nodePolicies;
 
         /// <summary>
-        /// Node allocation policy See `node_policy` below.
+        /// Node allocation policy See `NodePolicy` below.
         /// </summary>
         public InputList<Inputs.ClusterNetworksIpAllocationPolicyNodePolicyArgs> NodePolicies
         {

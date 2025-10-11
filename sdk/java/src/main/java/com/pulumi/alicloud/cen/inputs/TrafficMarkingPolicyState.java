@@ -141,7 +141,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
 
     /**
      * List of stream classification rules.
-     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      * 
      */
     @Import(name="trafficMatchRules")
@@ -149,7 +149,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
 
     /**
      * @return List of stream classification rules.
-     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      * 
      */
     public Optional<Output<List<TrafficMarkingPolicyTrafficMatchRuleArgs>>> trafficMatchRules() {
@@ -374,7 +374,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
 
         /**
          * @param trafficMatchRules List of stream classification rules.
-         * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+         * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
 
         /**
          * @param trafficMatchRules List of stream classification rules.
-         * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+         * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
 
         /**
          * @param trafficMatchRules List of stream classification rules.
-         * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+         * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
          * 
          * @return builder
          * 

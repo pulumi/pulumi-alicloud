@@ -110,14 +110,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:apigateway/appAttachment:AppAttachment")
 public class AppAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The api_id that app apply to access.
+     * The apiId that app apply to access.
      * 
      */
     @Export(name="apiId", refs={String.class}, tree="[0]")
     private Output<String> apiId;
 
     /**
-     * @return The api_id that app apply to access.
+     * @return The apiId that app apply to access.
      * 
      */
     public Output<String> apiId() {

@@ -113,14 +113,14 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
         return this.createTime;
     }
     /**
-     * Snapshot replication information. See `cross_region_copy_info` below.
+     * Snapshot replication information. See `crossRegionCopyInfo` below.
      * 
      */
     @Export(name="crossRegionCopyInfo", refs={EnterpriseSnapshotPolicyCrossRegionCopyInfo.class}, tree="[0]")
     private Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo> crossRegionCopyInfo;
 
     /**
-     * @return Snapshot replication information. See `cross_region_copy_info` below.
+     * @return Snapshot replication information. See `crossRegionCopyInfo` below.
      * 
      */
     public Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo> crossRegionCopyInfo() {
@@ -169,14 +169,14 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
         return this.resourceGroupId;
     }
     /**
-     * Snapshot retention policy representing resources. See `retain_rule` below.
+     * Snapshot retention policy representing resources. See `retainRule` below.
      * 
      */
     @Export(name="retainRule", refs={EnterpriseSnapshotPolicyRetainRule.class}, tree="[0]")
     private Output<EnterpriseSnapshotPolicyRetainRule> retainRule;
 
     /**
-     * @return Snapshot retention policy representing resources. See `retain_rule` below.
+     * @return Snapshot retention policy representing resources. See `retainRule` below.
      * 
      */
     public Output<EnterpriseSnapshotPolicyRetainRule> retainRule() {
@@ -197,14 +197,14 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
         return this.schedule;
     }
     /**
-     * Snapshot special retention rules. See `special_retain_rules` below.
+     * Snapshot special retention rules. See `specialRetainRules` below.
      * 
      */
     @Export(name="specialRetainRules", refs={EnterpriseSnapshotPolicySpecialRetainRules.class}, tree="[0]")
     private Output<EnterpriseSnapshotPolicySpecialRetainRules> specialRetainRules;
 
     /**
-     * @return Snapshot special retention rules. See `special_retain_rules` below.
+     * @return Snapshot special retention rules. See `specialRetainRules` below.
      * 
      */
     public Output<EnterpriseSnapshotPolicySpecialRetainRules> specialRetainRules() {
@@ -225,14 +225,14 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
         return this.status;
     }
     /**
-     * Snapshot storage policy. See `storage_rule` below.
+     * Snapshot storage policy. See `storageRule` below.
      * 
      */
     @Export(name="storageRule", refs={EnterpriseSnapshotPolicyStorageRule.class}, tree="[0]")
     private Output</* @Nullable */ EnterpriseSnapshotPolicyStorageRule> storageRule;
 
     /**
-     * @return Snapshot storage policy. See `storage_rule` below.
+     * @return Snapshot storage policy. See `storageRule` below.
      * 
      */
     public Output<Optional<EnterpriseSnapshotPolicyStorageRule>> storageRule() {

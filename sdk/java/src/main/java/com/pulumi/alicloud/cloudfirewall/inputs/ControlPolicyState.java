@@ -49,7 +49,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
      * 
      */
     @Import(name="applicationName")
@@ -57,7 +57,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
      * 
      */
     public Optional<Output<String>> applicationName() {
@@ -66,7 +66,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The application types supported by the access control policy.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
     @Import(name="applicationNameLists")
@@ -74,7 +74,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The application types supported by the access control policy.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
     public Optional<Output<List<String>>> applicationNameLists() {
@@ -112,14 +112,14 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
      * 
      */
     @Import(name="destPort")
     private @Nullable Output<String> destPort;
 
     /**
-     * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+     * @return The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
      * 
      */
     public Optional<Output<String>> destPort() {
@@ -127,14 +127,14 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+     * The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
      * 
      */
     @Import(name="destPortGroup")
     private @Nullable Output<String> destPortGroup;
 
     /**
-     * @return The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+     * @return The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
      * 
      */
     public Optional<Output<String>> destPortGroup() {
@@ -224,7 +224,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
      * 
      */
     @Import(name="endTime")
@@ -232,7 +232,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -301,9 +301,9 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The days of a week or of a month on which the access control policy takes effect. Valid values:
-     * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-     * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-     * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
      * 
      */
     @Import(name="repeatDays")
@@ -311,9 +311,9 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The days of a week or of a month on which the access control policy takes effect. Valid values:
-     * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-     * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-     * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
      * 
      */
     public Optional<Output<List<Integer>>> repeatDays() {
@@ -322,7 +322,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
      * 
      */
     @Import(name="repeatEndTime")
@@ -330,7 +330,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
      * 
      */
     public Optional<Output<String>> repeatEndTime() {
@@ -530,7 +530,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param applicationName The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param applicationName The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param applicationNameLists The application types supported by the access control policy.
-         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param applicationNameLists The application types supported by the access control policy.
-         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param applicationNameLists The application types supported by the access control policy.
-         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param destPort The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+         * @param destPort The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param destPort The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+         * @param destPort The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param destPortGroup The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+         * @param destPortGroup The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param destPortGroup The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+         * @param destPortGroup The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endTime The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-         * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+         * &gt; **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
          * 
          * @return builder
          * 
@@ -794,7 +794,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endTime The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-         * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+         * &gt; **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
          * 
          * @return builder
          * 
@@ -889,9 +889,9 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param repeatDays The days of a week or of a month on which the access control policy takes effect. Valid values:
-         * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-         * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-         * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+         * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+         * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
          * 
          * @return builder
          * 
@@ -903,9 +903,9 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param repeatDays The days of a week or of a month on which the access control policy takes effect. Valid values:
-         * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-         * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-         * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+         * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+         * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
          * 
          * @return builder
          * 
@@ -916,9 +916,9 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param repeatDays The days of a week or of a month on which the access control policy takes effect. Valid values:
-         * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-         * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-         * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+         * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+         * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param repeatEndTime The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-         * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+         * &gt; **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
          * 
          * @return builder
          * 
@@ -941,7 +941,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param repeatEndTime The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-         * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+         * &gt; **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
          * 
          * @return builder
          * 

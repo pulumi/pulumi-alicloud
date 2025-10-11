@@ -16,14 +16,14 @@ public final class PluginAttachmentState extends com.pulumi.resources.ResourceAr
     public static final PluginAttachmentState Empty = new PluginAttachmentState();
 
     /**
-     * The api_id that plugin attaches to.
+     * The apiId that plugin attaches to.
      * 
      */
     @Import(name="apiId")
     private @Nullable Output<String> apiId;
 
     /**
-     * @return The api_id that plugin attaches to.
+     * @return The apiId that plugin attaches to.
      * 
      */
     public Optional<Output<String>> apiId() {
@@ -103,7 +103,7 @@ public final class PluginAttachmentState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param apiId The api_id that plugin attaches to.
+         * @param apiId The apiId that plugin attaches to.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class PluginAttachmentState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param apiId The api_id that plugin attaches to.
+         * @param apiId The apiId that plugin attaches to.
          * 
          * @return builder
          * 

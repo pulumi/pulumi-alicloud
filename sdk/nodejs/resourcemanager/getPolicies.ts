@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
+ *
+ * ## Example Usage
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
@@ -75,6 +77,8 @@ export interface GetPoliciesResult {
  * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
+ *
+ * ## Example Usage
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoliciesResult> {
     args = args || {};

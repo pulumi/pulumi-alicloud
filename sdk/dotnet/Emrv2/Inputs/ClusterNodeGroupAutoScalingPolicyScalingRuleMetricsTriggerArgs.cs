@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs>? _conditions;
 
         /// <summary>
-        /// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+        /// The conditions for this scaling rule specific metrics trigger. See `Conditions` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs> Conditions
         {
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs>? _timeConstraints;
 
         /// <summary>
-        /// The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+        /// The time constraints for this scaling rule specific metrics trigger. See `TimeConstraints` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs> TimeConstraints
         {

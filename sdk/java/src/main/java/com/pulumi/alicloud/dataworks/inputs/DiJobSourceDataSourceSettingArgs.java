@@ -32,14 +32,14 @@ public final class DiJobSourceDataSourceSettingArgs extends com.pulumi.resources
     }
 
     /**
-     * Single Source Data Source Properties See `data_source_properties` below.
+     * Single Source Data Source Properties See `dataSourceProperties` below.
      * 
      */
     @Import(name="dataSourceProperties")
     private @Nullable Output<DiJobSourceDataSourceSettingDataSourcePropertiesArgs> dataSourceProperties;
 
     /**
-     * @return Single Source Data Source Properties See `data_source_properties` below.
+     * @return Single Source Data Source Properties See `dataSourceProperties` below.
      * 
      */
     public Optional<Output<DiJobSourceDataSourceSettingDataSourcePropertiesArgs>> dataSourceProperties() {
@@ -93,7 +93,7 @@ public final class DiJobSourceDataSourceSettingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dataSourceProperties Single Source Data Source Properties See `data_source_properties` below.
+         * @param dataSourceProperties Single Source Data Source Properties See `dataSourceProperties` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DiJobSourceDataSourceSettingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dataSourceProperties Single Source Data Source Properties See `data_source_properties` below.
+         * @param dataSourceProperties Single Source Data Source Properties See `dataSourceProperties` below.
          * 
          * @return builder
          * 

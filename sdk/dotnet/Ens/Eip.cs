@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
+        /// The Internet service provider. Valid value: `Cmcc`, `Unicom`, `Telecom`.
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string> InternetChargeType { get; set; } = null!;
 
         /// <summary>
-        /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
+        /// The Internet service provider. Valid value: `Cmcc`, `Unicom`, `Telecom`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
+        /// The Internet service provider. Valid value: `Cmcc`, `Unicom`, `Telecom`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }

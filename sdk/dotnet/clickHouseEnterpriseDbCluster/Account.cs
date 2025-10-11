@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Authorization information. See `dml_auth_setting` below.
+        /// Authorization information. See `DmlAuthSetting` below.
         /// </summary>
         [Output("dmlAuthSetting")]
         public Output<Outputs.AccountDmlAuthSetting?> DmlAuthSetting { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Authorization information. See `dml_auth_setting` below.
+        /// Authorization information. See `DmlAuthSetting` below.
         /// </summary>
         [Input("dmlAuthSetting")]
         public Input<Inputs.AccountDmlAuthSettingArgs>? DmlAuthSetting { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Authorization information. See `dml_auth_setting` below.
+        /// Authorization information. See `DmlAuthSetting` below.
         /// </summary>
         [Input("dmlAuthSetting")]
         public Input<Inputs.AccountDmlAuthSettingGetArgs>? DmlAuthSetting { get; set; }

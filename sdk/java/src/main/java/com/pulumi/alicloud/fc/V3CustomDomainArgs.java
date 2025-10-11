@@ -21,14 +21,14 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     public static final V3CustomDomainArgs Empty = new V3CustomDomainArgs();
 
     /**
-     * Permission authentication configuration See `auth_config` below.
+     * Permission authentication configuration See `authConfig` below.
      * 
      */
     @Import(name="authConfig")
     private @Nullable Output<V3CustomDomainAuthConfigArgs> authConfig;
 
     /**
-     * @return Permission authentication configuration See `auth_config` below.
+     * @return Permission authentication configuration See `authConfig` below.
      * 
      */
     public Optional<Output<V3CustomDomainAuthConfigArgs>> authConfig() {
@@ -36,14 +36,14 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * HTTPS certificate information See `cert_config` below.
+     * HTTPS certificate information See `certConfig` below.
      * 
      */
     @Import(name="certConfig")
     private @Nullable Output<V3CustomDomainCertConfigArgs> certConfig;
 
     /**
-     * @return HTTPS certificate information See `cert_config` below.
+     * @return HTTPS certificate information See `certConfig` below.
      * 
      */
     public Optional<Output<V3CustomDomainCertConfigArgs>> certConfig() {
@@ -81,14 +81,14 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Route matching rule configuration See `route_config` below.
+     * Route matching rule configuration See `routeConfig` below.
      * 
      */
     @Import(name="routeConfig")
     private @Nullable Output<V3CustomDomainRouteConfigArgs> routeConfig;
 
     /**
-     * @return Route matching rule configuration See `route_config` below.
+     * @return Route matching rule configuration See `routeConfig` below.
      * 
      */
     public Optional<Output<V3CustomDomainRouteConfigArgs>> routeConfig() {
@@ -96,14 +96,14 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * TLS configuration information See `tls_config` below.
+     * TLS configuration information See `tlsConfig` below.
      * 
      */
     @Import(name="tlsConfig")
     private @Nullable Output<V3CustomDomainTlsConfigArgs> tlsConfig;
 
     /**
-     * @return TLS configuration information See `tls_config` below.
+     * @return TLS configuration information See `tlsConfig` below.
      * 
      */
     public Optional<Output<V3CustomDomainTlsConfigArgs>> tlsConfig() {
@@ -111,14 +111,14 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Web application firewall configuration information See `waf_config` below.
+     * Web application firewall configuration information See `wafConfig` below.
      * 
      */
     @Import(name="wafConfig")
     private @Nullable Output<V3CustomDomainWafConfigArgs> wafConfig;
 
     /**
-     * @return Web application firewall configuration information See `waf_config` below.
+     * @return Web application firewall configuration information See `wafConfig` below.
      * 
      */
     public Optional<Output<V3CustomDomainWafConfigArgs>> wafConfig() {
@@ -156,7 +156,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authConfig Permission authentication configuration See `auth_config` below.
+         * @param authConfig Permission authentication configuration See `authConfig` below.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authConfig Permission authentication configuration See `auth_config` below.
+         * @param authConfig Permission authentication configuration See `authConfig` below.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param certConfig HTTPS certificate information See `cert_config` below.
+         * @param certConfig HTTPS certificate information See `certConfig` below.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param certConfig HTTPS certificate information See `cert_config` below.
+         * @param certConfig HTTPS certificate information See `certConfig` below.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routeConfig Route matching rule configuration See `route_config` below.
+         * @param routeConfig Route matching rule configuration See `routeConfig` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routeConfig Route matching rule configuration See `route_config` below.
+         * @param routeConfig Route matching rule configuration See `routeConfig` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tlsConfig TLS configuration information See `tls_config` below.
+         * @param tlsConfig TLS configuration information See `tlsConfig` below.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tlsConfig TLS configuration information See `tls_config` below.
+         * @param tlsConfig TLS configuration information See `tlsConfig` below.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param wafConfig Web application firewall configuration information See `waf_config` below.
+         * @param wafConfig Web application firewall configuration information See `wafConfig` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param wafConfig Web application firewall configuration information See `waf_config` below.
+         * @param wafConfig Web application firewall configuration information See `wafConfig` below.
          * 
          * @return builder
          * 

@@ -110,28 +110,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cassandra/dataCenter:DataCenter")
 public class DataCenter extends com.pulumi.resources.CustomResource {
     /**
-     * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+     * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+     * @return Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+     * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+     * @return Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
@@ -190,14 +190,14 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskSize);
     }
     /**
-     * The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+     * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      * 
      */
     @Export(name="diskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskType;
 
     /**
-     * @return The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+     * @return The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      * 
      */
     public Output<Optional<String>> diskType() {
@@ -276,32 +276,32 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      * 
-     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     * @return The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      * 
-     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      * 
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
     }
     /**
-     * The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * @return The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     public Output<String> zoneId() {

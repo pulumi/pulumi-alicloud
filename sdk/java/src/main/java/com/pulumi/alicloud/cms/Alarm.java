@@ -160,14 +160,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/alarm:Alarm")
 public class Alarm extends com.pulumi.resources.CustomResource {
     /**
-     * The trigger conditions for multiple metrics. See `composite_expression` below.
+     * The trigger conditions for multiple metrics. See `compositeExpression` below.
      * 
      */
     @Export(name="compositeExpression", refs={AlarmCompositeExpression.class}, tree="[0]")
     private Output</* @Nullable */ AlarmCompositeExpression> compositeExpression;
 
     /**
-     * @return The trigger conditions for multiple metrics. See `composite_expression` below.
+     * @return The trigger conditions for multiple metrics. See `compositeExpression` below.
      * 
      */
     public Output<Optional<AlarmCompositeExpression>> compositeExpression() {
@@ -188,18 +188,18 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.contactGroups;
     }
     /**
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      * @deprecated
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
-    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
+    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
     @Export(name="dimensions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> dimensions;
 
     /**
-     * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
     public Output<Map<String,String>> dimensions() {
@@ -234,74 +234,74 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      * @deprecated
-     * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+    @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @return Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
     public Output<Optional<Integer>> endTime() {
         return Codegen.optional(this.endTime);
     }
     /**
-     * A configuration of critical alarm. See `escalations_critical` below.
+     * A configuration of critical alarm. See `escalationsCritical` below.
      * 
      */
     @Export(name="escalationsCritical", refs={AlarmEscalationsCritical.class}, tree="[0]")
     private Output<AlarmEscalationsCritical> escalationsCritical;
 
     /**
-     * @return A configuration of critical alarm. See `escalations_critical` below.
+     * @return A configuration of critical alarm. See `escalationsCritical` below.
      * 
      */
     public Output<AlarmEscalationsCritical> escalationsCritical() {
         return this.escalationsCritical;
     }
     /**
-     * A configuration of critical info. See `escalations_info` below.
+     * A configuration of critical info. See `escalationsInfo` below.
      * 
      */
     @Export(name="escalationsInfo", refs={AlarmEscalationsInfo.class}, tree="[0]")
     private Output<AlarmEscalationsInfo> escalationsInfo;
 
     /**
-     * @return A configuration of critical info. See `escalations_info` below.
+     * @return A configuration of critical info. See `escalationsInfo` below.
      * 
      */
     public Output<AlarmEscalationsInfo> escalationsInfo() {
         return this.escalationsInfo;
     }
     /**
-     * A configuration of critical warn. See `escalations_warn` below.
+     * A configuration of critical warn. See `escalationsWarn` below.
      * 
      */
     @Export(name="escalationsWarn", refs={AlarmEscalationsWarn.class}, tree="[0]")
     private Output<AlarmEscalationsWarn> escalationsWarn;
 
     /**
-     * @return A configuration of critical warn. See `escalations_warn` below.
+     * @return A configuration of critical warn. See `escalationsWarn` below.
      * 
      */
     public Output<AlarmEscalationsWarn> escalationsWarn() {
         return this.escalationsWarn;
     }
     /**
-     * The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     @Export(name="metric", refs={String.class}, tree="[0]")
     private Output<String> metric;
 
     /**
-     * @return The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * @return The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     public Output<String> metric() {
@@ -350,16 +350,16 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+     * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+     * @return The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      * 
      */
     public Output<String> project() {
@@ -394,18 +394,18 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.silenceTime);
     }
     /**
-     * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      * @deprecated
-     * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+    @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @return Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
     public Output<Optional<Integer>> startTime() {

@@ -12,110 +12,110 @@ import java.util.Objects;
 @CustomType
 public final class GetClustersClusterDbNode {
     /**
-     * @return The create_time of the db_nodes.
+     * @return The createTime of the db_nodes.
      * 
      */
     private String createTime;
     /**
-     * @return The db_node_class of the db_nodes.
+     * @return The dbNodeClass of the db_nodes.
      * 
      */
     private String dbNodeClass;
     /**
-     * @return The db_node_id of the db_nodes.
+     * @return The dbNodeId of the db_nodes.
      * 
      */
     private String dbNodeId;
     /**
-     * @return The db_node_role of the db_nodes.
+     * @return The dbNodeRole of the db_nodes.
      * 
      */
     private String dbNodeRole;
     /**
-     * @return The db_node_status of the db_nodes.
+     * @return The dbNodeStatus of the db_nodes.
      * 
      */
     private String dbNodeStatus;
     /**
-     * @return The max_connections of the db_nodes.
+     * @return The maxConnections of the db_nodes.
      * 
      */
     private Integer maxConnections;
     /**
-     * @return The max_iops of the db_nodes.
+     * @return The maxIops of the db_nodes.
      * 
      */
     private Integer maxIops;
     /**
-     * @return The region_id of the db_nodes.
+     * @return The regionId of the db_nodes.
      * 
      */
     private String regionId;
     /**
-     * @return The zone_id of the db_nodes.
+     * @return The zoneId of the db_nodes.
      * 
      */
     private String zoneId;
 
     private GetClustersClusterDbNode() {}
     /**
-     * @return The create_time of the db_nodes.
+     * @return The createTime of the db_nodes.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The db_node_class of the db_nodes.
+     * @return The dbNodeClass of the db_nodes.
      * 
      */
     public String dbNodeClass() {
         return this.dbNodeClass;
     }
     /**
-     * @return The db_node_id of the db_nodes.
+     * @return The dbNodeId of the db_nodes.
      * 
      */
     public String dbNodeId() {
         return this.dbNodeId;
     }
     /**
-     * @return The db_node_role of the db_nodes.
+     * @return The dbNodeRole of the db_nodes.
      * 
      */
     public String dbNodeRole() {
         return this.dbNodeRole;
     }
     /**
-     * @return The db_node_status of the db_nodes.
+     * @return The dbNodeStatus of the db_nodes.
      * 
      */
     public String dbNodeStatus() {
         return this.dbNodeStatus;
     }
     /**
-     * @return The max_connections of the db_nodes.
+     * @return The maxConnections of the db_nodes.
      * 
      */
     public Integer maxConnections() {
         return this.maxConnections;
     }
     /**
-     * @return The max_iops of the db_nodes.
+     * @return The maxIops of the db_nodes.
      * 
      */
     public Integer maxIops() {
         return this.maxIops;
     }
     /**
-     * @return The region_id of the db_nodes.
+     * @return The regionId of the db_nodes.
      * 
      */
     public String regionId() {
         return this.regionId;
     }
     /**
-     * @return The zone_id of the db_nodes.
+     * @return The zoneId of the db_nodes.
      * 
      */
     public String zoneId() {

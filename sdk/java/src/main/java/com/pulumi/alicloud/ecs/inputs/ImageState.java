@@ -135,14 +135,14 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Snapshot information for the image See `disk_device_mapping` below.
+     * Snapshot information for the image See `diskDeviceMapping` below.
      * 
      */
     @Import(name="diskDeviceMappings")
     private @Nullable Output<List<ImageDiskDeviceMappingArgs>> diskDeviceMappings;
 
     /**
-     * @return Snapshot information for the image See `disk_device_mapping` below.
+     * @return Snapshot information for the image See `diskDeviceMapping` below.
      * 
      */
     public Optional<Output<List<ImageDiskDeviceMappingArgs>>> diskDeviceMappings() {
@@ -566,7 +566,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Snapshot information for the image See `disk_device_mapping` below.
+         * @param diskDeviceMappings Snapshot information for the image See `diskDeviceMapping` below.
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Snapshot information for the image See `disk_device_mapping` below.
+         * @param diskDeviceMappings Snapshot information for the image See `diskDeviceMapping` below.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Snapshot information for the image See `disk_device_mapping` below.
+         * @param diskDeviceMappings Snapshot information for the image See `diskDeviceMapping` below.
          * 
          * @return builder
          * 

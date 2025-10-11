@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// Port rangeSee the following. See `port_ranges` below.
+        /// Port rangeSee the following. See `PortRanges` below.
         /// </summary>
         [Output("portRanges")]
         public Output<ImmutableArray<Outputs.CustomRoutingEndpointTrafficPolicyPortRange>> PortRanges { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs>? _portRanges;
 
         /// <summary>
-        /// Port rangeSee the following. See `port_ranges` below.
+        /// Port rangeSee the following. See `PortRanges` below.
         /// </summary>
         public InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs> PortRanges
         {
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeGetArgs>? _portRanges;
 
         /// <summary>
-        /// Port rangeSee the following. See `port_ranges` below.
+        /// Port rangeSee the following. See `PortRanges` below.
         /// </summary>
         public InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeGetArgs> PortRanges
         {

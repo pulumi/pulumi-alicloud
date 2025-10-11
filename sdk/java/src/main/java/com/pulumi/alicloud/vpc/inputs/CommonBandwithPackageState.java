@@ -277,14 +277,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      * 
      */
     @Import(name="securityProtectionTypes")
     private @Nullable Output<List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      * 
      */
     public Optional<Output<List<String>>> securityProtectionTypes() {
@@ -716,7 +716,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
          * 
          * @return builder
          * 
@@ -727,7 +727,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
          * 
          * @return builder
          * 

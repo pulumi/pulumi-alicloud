@@ -30,7 +30,7 @@ public final class InstanceDataDisk {
      */
     private @Nullable String category;
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
      * 
      */
     private @Nullable Boolean deleteWithInstance;
@@ -113,7 +113,7 @@ public final class InstanceDataDisk {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
      * 
      */
     public Optional<Boolean> deleteWithInstance() {

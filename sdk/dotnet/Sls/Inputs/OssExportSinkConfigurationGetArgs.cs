@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<string> RoleArn { get; set; } = null!;
 
         /// <summary>
-        /// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+        /// The configurations of the Object Storage Service (OSS) data shipping job. See `Sink` below.
         /// </summary>
         [Input("sink", required: true)]
         public Input<Inputs.OssExportSinkConfigurationSinkGetArgs> Sink { get; set; } = null!;

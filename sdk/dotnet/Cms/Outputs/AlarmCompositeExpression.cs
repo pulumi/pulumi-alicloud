@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? ExpressionListJoin;
         /// <summary>
-        /// The trigger conditions that are created in standard mode. See `expression_list` below.
+        /// The trigger conditions that are created in standard mode. See `ExpressionList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlarmCompositeExpressionExpressionList> ExpressionLists;
         /// <summary>

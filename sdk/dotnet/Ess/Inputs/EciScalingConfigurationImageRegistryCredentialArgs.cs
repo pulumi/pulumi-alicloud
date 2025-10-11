@@ -14,13 +14,13 @@ namespace Pulumi.AliCloud.Ess.Inputs
     {
         /// <summary>
         /// The password used to log on to the image repository. It is required
-        /// when `image_registry_credential` is configured.
+        /// when `ImageRegistryCredential` is configured.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The address of the image repository. It is required when `image_registry_credential` is
+        /// The address of the image repository. It is required when `ImageRegistryCredential` is
         /// configured.
         /// </summary>
         [Input("server")]
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The username used to log on to the image repository. It is required
-        /// when `image_registry_credential` is configured.
+        /// when `ImageRegistryCredential` is configured.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

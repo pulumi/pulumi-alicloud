@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Ebs.Inputs
         private InputList<Inputs.EnterpriseSnapshotPolicySpecialRetainRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of special retention rules. See `rules` below.
+        /// List of special retention rules. See `Rules` below.
         /// </summary>
         public InputList<Inputs.EnterpriseSnapshotPolicySpecialRetainRulesRuleGetArgs> Rules
         {

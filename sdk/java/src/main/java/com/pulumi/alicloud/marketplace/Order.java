@@ -154,14 +154,14 @@ public class Order extends com.pulumi.resources.CustomResource {
         return this.pricingCycle;
     }
     /**
-     * The product_code of market place product.
+     * The productCode of market place product.
      * 
      */
     @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
     /**
-     * @return The product_code of market place product.
+     * @return The productCode of market place product.
      * 
      */
     public Output<String> productCode() {

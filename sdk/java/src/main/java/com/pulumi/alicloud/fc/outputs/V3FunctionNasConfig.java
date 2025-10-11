@@ -19,7 +19,7 @@ public final class V3FunctionNasConfig {
      */
     private @Nullable Integer groupId;
     /**
-     * @return Mount point list See `mount_points` below.
+     * @return Mount point list See `mountPoints` below.
      * 
      */
     private @Nullable List<V3FunctionNasConfigMountPoint> mountPoints;
@@ -38,7 +38,7 @@ public final class V3FunctionNasConfig {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return Mount point list See `mount_points` below.
+     * @return Mount point list See `mountPoints` below.
      * 
      */
     public List<V3FunctionNasConfigMountPoint> mountPoints() {

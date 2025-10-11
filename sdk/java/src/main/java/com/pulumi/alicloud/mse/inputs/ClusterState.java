@@ -19,14 +19,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
-     * The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+     * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      * 
      */
     @Import(name="aclEntryLists")
     private @Nullable Output<List<String>> aclEntryLists;
 
     /**
-     * @return The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+     * @return The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      * 
      */
     public Optional<Output<List<String>>> aclEntryLists() {
@@ -79,7 +79,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
      * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
@@ -104,7 +104,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> clusterSpecification;
 
     /**
-     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
      * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
@@ -160,14 +160,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
+     * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mseVersion is `mseDev`,please use `singleEni`.
      * 
      */
     @Import(name="connectionType")
     private @Nullable Output<String> connectionType;
 
     /**
-     * @return The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
+     * @return The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mseVersion is `mseDev`,please use `singleEni`.
      * 
      */
     public Optional<Output<String>> connectionType() {
@@ -190,14 +190,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
+     * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      * 
      */
     @Import(name="instanceCount")
     private @Nullable Output<Integer> instanceCount;
 
     /**
-     * @return The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
+     * @return The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      * 
      */
     public Optional<Output<Integer>> instanceCount() {
@@ -205,14 +205,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+     * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      * 
      */
     @Import(name="mseVersion")
     private @Nullable Output<String> mseVersion;
 
     /**
-     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+     * @return The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      * 
      */
     public Optional<Output<String>> mseVersion() {
@@ -446,7 +446,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntryLists The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+         * @param aclEntryLists The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntryLists The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+         * @param aclEntryLists The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntryLists The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+         * @param aclEntryLists The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
          * - Professional Edition
          * - `MSE_SC_1_2_60_c`: 1C2G
          * - `MSE_SC_2_4_60_c`: 2C4G
@@ -569,7 +569,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
          * - Professional Edition
          * - `MSE_SC_1_2_60_c`: 1C2G
          * - `MSE_SC_2_4_60_c`: 2C4G
@@ -639,7 +639,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
+         * @param connectionType The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mseVersion is `mseDev`,please use `singleEni`.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
+         * @param connectionType The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mseVersion is `mseDev`,please use `singleEni`.
          * 
          * @return builder
          * 
@@ -681,7 +681,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceCount The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
+         * @param instanceCount The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
          * 
          * @return builder
          * 
@@ -692,7 +692,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceCount The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
+         * @param instanceCount The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+         * @param mseVersion The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
          * 
          * @return builder
          * 
@@ -713,7 +713,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+         * @param mseVersion The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
          * 
          * @return builder
          * 

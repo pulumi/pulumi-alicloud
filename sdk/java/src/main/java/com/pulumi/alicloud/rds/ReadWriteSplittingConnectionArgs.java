@@ -94,14 +94,14 @@ public final class ReadWriteSplittingConnectionArgs extends com.pulumi.resources
     }
 
     /**
-     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
+     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distributionType is set to Custom.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Map<String,String>> weight;
 
     /**
-     * @return Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
+     * @return Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distributionType is set to Custom.
      * 
      */
     public Optional<Output<Map<String,String>>> weight() {
@@ -243,7 +243,7 @@ public final class ReadWriteSplittingConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param weight Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
+         * @param weight Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distributionType is set to Custom.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class ReadWriteSplittingConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param weight Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
+         * @param weight Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distributionType is set to Custom.
          * 
          * @return builder
          * 

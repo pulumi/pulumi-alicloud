@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Engine List See `engine_list` below.
+        /// Engine List See `EngineList` below.
         /// </summary>
         [Output("engineLists")]
         public Output<ImmutableArray<Outputs.InstanceV2EngineList>> EngineLists { get; private set; } = null!;
@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Lindorm
         private InputList<Inputs.InstanceV2EngineListArgs>? _engineLists;
 
         /// <summary>
-        /// Engine List See `engine_list` below.
+        /// Engine List See `EngineList` below.
         /// </summary>
         public InputList<Inputs.InstanceV2EngineListArgs> EngineLists
         {
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.Lindorm
         private InputList<Inputs.InstanceV2EngineListGetArgs>? _engineLists;
 
         /// <summary>
-        /// Engine List See `engine_list` below.
+        /// Engine List See `EngineList` below.
         /// </summary>
         public InputList<Inputs.InstanceV2EngineListGetArgs> EngineLists
         {

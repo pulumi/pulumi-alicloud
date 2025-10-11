@@ -17,14 +17,14 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     public static final PrometheusState Empty = new PrometheusState();
 
     /**
-     * The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+     * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+     * @return The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -32,14 +32,14 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+     * The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
      * 
      */
     @Import(name="clusterName")
     private @Nullable Output<String> clusterName;
 
     /**
-     * @return The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+     * @return The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
      * 
      */
     public Optional<Output<String>> clusterName() {
@@ -62,14 +62,14 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+     * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      * 
      */
     @Import(name="grafanaInstanceId")
     private @Nullable Output<String> grafanaInstanceId;
 
     /**
-     * @return The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+     * @return The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      * 
      */
     public Optional<Output<String>> grafanaInstanceId() {
@@ -92,14 +92,14 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * @return The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -137,14 +137,14 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * @return The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -152,14 +152,14 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+     * @return The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -200,7 +200,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+         * @param clusterId The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+         * @param clusterId The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterName The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+         * @param clusterName The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterName The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+         * @param clusterName The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grafanaInstanceId The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+         * @param grafanaInstanceId The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grafanaInstanceId The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+         * @param grafanaInstanceId The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+         * @param securityGroupId The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+         * @param securityGroupId The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+         * @param vpcId The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+         * @param vpcId The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+         * @param vswitchId The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+         * @param vswitchId The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
          * 
          * @return builder
          * 

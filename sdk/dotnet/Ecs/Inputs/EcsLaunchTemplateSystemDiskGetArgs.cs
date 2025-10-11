@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class EcsLaunchTemplateSystemDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        /// The category of the system disk. System disk type. Valid values: `All`, `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `LocalDisk`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Specifies whether to release the system disk when the instance is released. Default to `true`.
+        /// Specifies whether to release the system disk when the instance is released. Default to `True`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }

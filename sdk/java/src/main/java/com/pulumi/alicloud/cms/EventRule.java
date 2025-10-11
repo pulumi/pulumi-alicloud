@@ -97,14 +97,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/eventRule:EventRule")
 public class EventRule extends com.pulumi.resources.CustomResource {
     /**
-     * The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+     * The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      * 
      */
     @Export(name="contactParameters", refs={List.class,EventRuleContactParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleContactParameter>> contactParameters;
 
     /**
-     * @return The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+     * @return The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      * 
      */
     public Output<Optional<List<EventRuleContactParameter>>> contactParameters() {
@@ -125,28 +125,28 @@ public class EventRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+     * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      * 
      */
     @Export(name="eventPattern", refs={EventRuleEventPattern.class}, tree="[0]")
     private Output<EventRuleEventPattern> eventPattern;
 
     /**
-     * @return Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+     * @return Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      * 
      */
     public Output<EventRuleEventPattern> eventPattern() {
         return this.eventPattern;
     }
     /**
-     * The information about the recipients in Function Compute. See `fc_parameters` below.
+     * The information about the recipients in Function Compute. See `fcParameters` below.
      * 
      */
     @Export(name="fcParameters", refs={List.class,EventRuleFcParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleFcParameter>> fcParameters;
 
     /**
-     * @return The information about the recipients in Function Compute. See `fc_parameters` below.
+     * @return The information about the recipients in Function Compute. See `fcParameters` below.
      * 
      */
     public Output<Optional<List<EventRuleFcParameter>>> fcParameters() {
@@ -167,28 +167,28 @@ public class EventRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.groupId);
     }
     /**
-     * The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+     * The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      * 
      */
     @Export(name="mnsParameters", refs={List.class,EventRuleMnsParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleMnsParameter>> mnsParameters;
 
     /**
-     * @return The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+     * @return The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      * 
      */
     public Output<Optional<List<EventRuleMnsParameter>>> mnsParameters() {
         return Codegen.optional(this.mnsParameters);
     }
     /**
-     * The parameters of API callback notification. See `open_api_parameters` below.
+     * The parameters of API callback notification. See `openApiParameters` below.
      * 
      */
     @Export(name="openApiParameters", refs={List.class,EventRuleOpenApiParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleOpenApiParameter>> openApiParameters;
 
     /**
-     * @return The parameters of API callback notification. See `open_api_parameters` below.
+     * @return The parameters of API callback notification. See `openApiParameters` below.
      * 
      */
     public Output<Optional<List<EventRuleOpenApiParameter>>> openApiParameters() {
@@ -223,14 +223,14 @@ public class EventRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.silenceTime);
     }
     /**
-     * The information about the recipients in Simple Log Service. See `sls_parameters` below.
+     * The information about the recipients in Simple Log Service. See `slsParameters` below.
      * 
      */
     @Export(name="slsParameters", refs={List.class,EventRuleSlsParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleSlsParameter>> slsParameters;
 
     /**
-     * @return The information about the recipients in Simple Log Service. See `sls_parameters` below.
+     * @return The information about the recipients in Simple Log Service. See `slsParameters` below.
      * 
      */
     public Output<Optional<List<EventRuleSlsParameter>>> slsParameters() {
@@ -251,14 +251,14 @@ public class EventRule extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+     * The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      * 
      */
     @Export(name="webhookParameters", refs={List.class,EventRuleWebhookParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleWebhookParameter>> webhookParameters;
 
     /**
-     * @return The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+     * @return The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      * 
      */
     public Output<Optional<List<EventRuleWebhookParameter>>> webhookParameters() {

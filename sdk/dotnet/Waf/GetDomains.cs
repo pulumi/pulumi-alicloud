@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+        /// Default to false and only output `Id`, `DomainName`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+        /// Default to false and only output `Id`, `DomainName`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of WAF domain self ID, value as `domain_name`.
+        /// A list of WAF domain self ID, value as `DomainName`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceId;

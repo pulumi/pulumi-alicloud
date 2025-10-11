@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class LoadBalancerIntranetIntranetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        /// The SSL certificate. `HttpsCertId` is required when HTTPS is selected
         /// </summary>
         [Input("httpsCertId")]
         public Input<string>? HttpsCertId { get; set; }

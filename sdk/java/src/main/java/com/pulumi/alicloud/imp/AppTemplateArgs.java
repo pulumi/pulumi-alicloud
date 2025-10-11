@@ -49,14 +49,14 @@ public final class AppTemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+     * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      * 
      */
     @Import(name="configLists")
     private @Nullable Output<List<AppTemplateConfigListArgs>> configLists;
 
     /**
-     * @return Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+     * @return Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      * 
      */
     public Optional<Output<List<AppTemplateConfigListArgs>>> configLists() {
@@ -178,7 +178,7 @@ public final class AppTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configLists Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+         * @param configLists Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class AppTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configLists Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+         * @param configLists Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class AppTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configLists Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+         * @param configLists Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
          * 
          * @return builder
          * 

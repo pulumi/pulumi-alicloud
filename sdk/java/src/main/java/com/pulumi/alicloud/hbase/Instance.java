@@ -129,28 +129,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.account);
     }
     /**
-     * Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+     * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     /**
-     * @return Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+     * @return Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      * 
      */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
     /**
-     * 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+     * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      * 
      */
     @Export(name="coldStorageSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coldStorageSize;
 
     /**
-     * @return 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
+     * @return 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      * 
      */
     public Output<Optional<Integer>> coldStorageSize() {
@@ -177,28 +177,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.coreDiskSize);
     }
     /**
-     * Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      * 
      */
     @Export(name="coreDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coreDiskType;
 
     /**
-     * @return Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * @return Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      * 
      */
     public Output<Optional<String>> coreDiskType() {
         return Codegen.optional(this.coreDiskType);
     }
     /**
-     * Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
+     * Default=2, [1-200]. If coreInstanceQuantity &gt; 1, this is cluster&#39;s instance. If coreInstanceQuantity = 1, this is a single instance.
      * 
      */
     @Export(name="coreInstanceQuantity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreInstanceQuantity;
 
     /**
-     * @return Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
+     * @return Default=2, [1-200]. If coreInstanceQuantity &gt; 1, this is cluster&#39;s instance. If coreInstanceQuantity = 1, this is a single instance.
      * 
      */
     public Output<Optional<Integer>> coreInstanceQuantity() {
@@ -233,14 +233,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      * 
      */
     @Export(name="duration", refs={Integer.class}, tree="[0]")
     private Output<Integer> duration;
 
     /**
-     * @return 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+     * @return 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      * 
      */
     public Output<Integer> duration() {
@@ -415,18 +415,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityGroups;
     }
     /**
-     * The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * The slb service addresses of the cluster. See `slbConnAddrs` below.
      * 
-     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      * 
      */
     @Export(name="slbConnAddrs", refs={List.class,InstanceSlbConnAddr.class}, tree="[0,1]")
     private Output<List<InstanceSlbConnAddr>> slbConnAddrs;
 
     /**
-     * @return The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * @return The slb service addresses of the cluster. See `slbConnAddrs` below.
      * 
-     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      * 
      */
     public Output<List<InstanceSlbConnAddr>> slbConnAddrs() {
@@ -447,14 +447,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+     * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      * 
      */
     @Export(name="uiProxyConnAddrs", refs={List.class,InstanceUiProxyConnAddr.class}, tree="[0,1]")
     private Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs;
 
     /**
-     * @return The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+     * @return The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      * 
      */
     public Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs() {
@@ -475,42 +475,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vpcId);
     }
     /**
-     * If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+     * @return If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      * 
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+     * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      * 
      */
     @Export(name="zkConnAddrs", refs={List.class,InstanceZkConnAddr.class}, tree="[0,1]")
     private Output<List<InstanceZkConnAddr>> zkConnAddrs;
 
     /**
-     * @return The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+     * @return The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      * 
      */
     public Output<List<InstanceZkConnAddr>> zkConnAddrs() {
         return this.zkConnAddrs;
     }
     /**
-     * The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * @return The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     public Output<String> zoneId() {

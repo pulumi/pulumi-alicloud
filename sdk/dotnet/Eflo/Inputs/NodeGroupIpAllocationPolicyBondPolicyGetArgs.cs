@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.NodeGroupIpAllocationPolicyBondPolicyBondGetArgs>? _bonds;
 
         /// <summary>
-        /// Bond information See `bonds` below.
+        /// Bond information See `Bonds` below.
         /// </summary>
         public InputList<Inputs.NodeGroupIpAllocationPolicyBondPolicyBondGetArgs> Bonds
         {

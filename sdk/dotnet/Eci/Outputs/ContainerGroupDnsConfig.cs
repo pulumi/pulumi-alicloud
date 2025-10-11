@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NameServers;
         /// <summary>
-        /// The structure of options. See `options` below.
+        /// The structure of options. See `Options` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupDnsConfigOption> Options;
         /// <summary>

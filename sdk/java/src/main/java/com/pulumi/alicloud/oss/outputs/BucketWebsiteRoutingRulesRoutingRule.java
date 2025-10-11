@@ -20,7 +20,7 @@ public final class BucketWebsiteRoutingRulesRoutingRule {
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleCondition condition;
     /**
-     * @return The Lua script configuration to be executed. See `lua_config` below.
+     * @return The Lua script configuration to be executed. See `luaConfig` below.
      * 
      */
     private @Nullable BucketWebsiteRoutingRulesRoutingRuleLuaConfig luaConfig;
@@ -44,7 +44,7 @@ public final class BucketWebsiteRoutingRulesRoutingRule {
         return Optional.ofNullable(this.condition);
     }
     /**
-     * @return The Lua script configuration to be executed. See `lua_config` below.
+     * @return The Lua script configuration to be executed. See `luaConfig` below.
      * 
      */
     public Optional<BucketWebsiteRoutingRulesRoutingRuleLuaConfig> luaConfig() {

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
     public sealed class QuotaPlanQuotaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Level 2 Quota CU configuration See `parameter` below.
+        /// Level 2 Quota CU configuration See `Parameter` below.
         /// </summary>
         [Input("parameter")]
         public Input<Inputs.QuotaPlanQuotaParameterGetArgs>? Parameter { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         /// Secondary Quota list
         /// 
         /// &gt; **NOTE:** need to list all secondary Quota
-        /// See `sub_quota_info_list` below.
+        /// See `SubQuotaInfoList` below.
         /// </summary>
         public InputList<Inputs.QuotaPlanQuotaSubQuotaInfoListGetArgs> SubQuotaInfoLists
         {

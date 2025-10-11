@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetZnodesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh` or `en`.
+        /// The language type of the returned information. Valid values: `Zh` or `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public string? AcceptLanguage { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetZnodesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh` or `en`.
+        /// The language type of the returned information. Valid values: `Zh` or `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }

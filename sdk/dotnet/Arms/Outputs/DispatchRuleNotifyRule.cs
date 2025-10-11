@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string NotifyEndTime;
         /// <summary>
-        /// Sets the notification object. See `notify_objects` below.
+        /// Sets the notification object. See `NotifyObjects` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DispatchRuleNotifyRuleNotifyObject> NotifyObjects;
         /// <summary>

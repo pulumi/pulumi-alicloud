@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class ForwardEntry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+        /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `BandwidthPackages`.
         /// </summary>
         [Output("externalIp")]
         public Output<string> ExternalIp { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ForwardEntryName { get; private set; } = null!;
 
         /// <summary>
-        /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
+        /// The value can get from `alicloud.vpc.NatGateway` Attributes "ForwardTableIds".
         /// </summary>
         [Output("forwardTableId")]
         public Output<string> ForwardTableId { get; private set; } = null!;
@@ -140,15 +140,15 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.119.1. New field `ForwardEntryName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// Specifies whether to remove limits on the port range. Default value is `False`.
         /// 
-        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `PortBreak` to true.
         /// </summary>
         [Output("portBreak")]
         public Output<bool?> PortBreak { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class ForwardEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+        /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `BandwidthPackages`.
         /// </summary>
         [Input("externalIp", required: true)]
         public Input<string> ExternalIp { get; set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ForwardEntryName { get; set; }
 
         /// <summary>
-        /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
+        /// The value can get from `alicloud.vpc.NatGateway` Attributes "ForwardTableIds".
         /// </summary>
         [Input("forwardTableId", required: true)]
         public Input<string> ForwardTableId { get; set; } = null!;
@@ -248,15 +248,15 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> IpProtocol { get; set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.119.1. New field `ForwardEntryName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// Specifies whether to remove limits on the port range. Default value is `False`.
         /// 
-        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `PortBreak` to true.
         /// </summary>
         [Input("portBreak")]
         public Input<bool>? PortBreak { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class ForwardEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+        /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `BandwidthPackages`.
         /// </summary>
         [Input("externalIp")]
         public Input<string>? ExternalIp { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ForwardEntryName { get; set; }
 
         /// <summary>
-        /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
+        /// The value can get from `alicloud.vpc.NatGateway` Attributes "ForwardTableIds".
         /// </summary>
         [Input("forwardTableId")]
         public Input<string>? ForwardTableId { get; set; }
@@ -318,15 +318,15 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.119.1. New field `ForwardEntryName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// Specifies whether to remove limits on the port range. Default value is `False`.
         /// 
-        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `PortBreak` to true.
         /// </summary>
         [Input("portBreak")]
         public Input<bool>? PortBreak { get; set; }

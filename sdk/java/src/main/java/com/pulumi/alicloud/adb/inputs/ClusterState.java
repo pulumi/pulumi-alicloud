@@ -20,14 +20,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -73,19 +73,19 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
+    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
     @Import(name="dbClusterClass")
     private @Nullable Output<String> dbClusterClass;
 
     /**
      * @deprecated
-     * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
+    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
     public Optional<Output<String>> dbClusterClass() {
         return Optional.ofNullable(this.dbClusterClass);
     }
@@ -106,14 +106,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db_node_class of cluster node.
+     * The dbNodeClass of cluster node.
      * 
      */
     @Import(name="dbNodeClass")
     private @Nullable Output<String> dbNodeClass;
 
     /**
-     * @return The db_node_class of cluster node.
+     * @return The dbNodeClass of cluster node.
      * 
      */
     public Optional<Output<String>> dbNodeClass() {
@@ -121,14 +121,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db_node_count of cluster node.
+     * The dbNodeCount of cluster node.
      * 
      */
     @Import(name="dbNodeCount")
     private @Nullable Output<Integer> dbNodeCount;
 
     /**
-     * @return The db_node_count of cluster node.
+     * @return The dbNodeCount of cluster node.
      * 
      */
     public Optional<Output<Integer>> dbNodeCount() {
@@ -136,14 +136,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db_node_storage of cluster node.
+     * The dbNodeStorage of cluster node.
      * 
      */
     @Import(name="dbNodeStorage")
     private @Nullable Output<Integer> dbNodeStorage;
 
     /**
-     * @return The db_node_storage of cluster node.
+     * @return The dbNodeStorage of cluster node.
      * 
      */
     public Optional<Output<Integer>> dbNodeStorage() {
@@ -244,7 +244,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * Field `payType` has been deprecated. New field `paymentType` instead.
      * 
      * @deprecated
      * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
@@ -255,7 +255,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> payType;
 
     /**
-     * @return Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * @return Field `payType` has been deprecated. New field `paymentType` instead.
      * 
      * @deprecated
      * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
@@ -267,14 +267,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -282,14 +282,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * @return The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -479,7 +479,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
          * 
          * @return builder
          * 
@@ -554,10 +554,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+         * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
          * 
          */
-        @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
+        @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
         public Builder dbClusterClass(@Nullable Output<String> dbClusterClass) {
             $.dbClusterClass = dbClusterClass;
             return this;
@@ -567,10 +567,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+         * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
          * 
          */
-        @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
+        @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
         public Builder dbClusterClass(String dbClusterClass) {
             return dbClusterClass(Output.of(dbClusterClass));
         }
@@ -597,7 +597,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The db_node_class of cluster node.
+         * @param dbNodeClass The dbNodeClass of cluster node.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The db_node_class of cluster node.
+         * @param dbNodeClass The dbNodeClass of cluster node.
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeCount The db_node_count of cluster node.
+         * @param dbNodeCount The dbNodeCount of cluster node.
          * 
          * @return builder
          * 
@@ -629,7 +629,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeCount The db_node_count of cluster node.
+         * @param dbNodeCount The dbNodeCount of cluster node.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeStorage The db_node_storage of cluster node.
+         * @param dbNodeStorage The dbNodeStorage of cluster node.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeStorage The db_node_storage of cluster node.
+         * @param dbNodeStorage The dbNodeStorage of cluster node.
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payType Field `pay_type` has been deprecated. New field `payment_type` instead.
+         * @param payType Field `payType` has been deprecated. New field `paymentType` instead.
          * 
          * @return builder
          * 
@@ -798,7 +798,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payType Field `pay_type` has been deprecated. New field `payment_type` instead.
+         * @param payType Field `payType` has been deprecated. New field `paymentType` instead.
          * 
          * @return builder
          * 
@@ -812,7 +812,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
          * 
          * @return builder
          * 
@@ -833,7 +833,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+         * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+         * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
          * 
          * @return builder
          * 

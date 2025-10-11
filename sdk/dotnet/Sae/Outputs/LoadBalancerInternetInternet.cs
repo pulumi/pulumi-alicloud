@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class LoadBalancerInternetInternet
     {
         /// <summary>
-        /// The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        /// The SSL certificate. `HttpsCertId` is required when HTTPS is selected
         /// </summary>
         public readonly string? HttpsCertId;
         /// <summary>

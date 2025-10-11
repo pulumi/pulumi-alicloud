@@ -20,11 +20,11 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// <summary>
         /// Whether to enable statistics. default to true.
         /// 
-        /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
+        /// &gt; **Note:** At least one of the "FullText" and "FieldSearch" should be specified.
         /// </summary>
         public readonly bool? DocValue;
         /// <summary>
-        /// When using the json_keys field, this field is required.
+        /// When using the JsonKeys field, this field is required.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -125,7 +125,7 @@ public final class DedicatedHostGroupArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-     * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
+     * **NOTE:** The `openPermission` should be `true` when `engine = &#34;SQLServer&#34;`
      * 
      */
     @Import(name="openPermission")
@@ -133,7 +133,7 @@ public final class DedicatedHostGroupArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-     * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
+     * **NOTE:** The `openPermission` should be `true` when `engine = &#34;SQLServer&#34;`
      * 
      */
     public Optional<Output<Boolean>> openPermission() {
@@ -336,7 +336,7 @@ public final class DedicatedHostGroupArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param openPermission Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-         * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
+         * **NOTE:** The `openPermission` should be `true` when `engine = &#34;SQLServer&#34;`
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class DedicatedHostGroupArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param openPermission Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-         * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
+         * **NOTE:** The `openPermission` should be `true` when `engine = &#34;SQLServer&#34;`
          * 
          * @return builder
          * 

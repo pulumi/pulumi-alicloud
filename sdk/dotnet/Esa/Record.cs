@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Esa
     public partial class Record : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The origin authentication information of the CNAME record. See `auth_conf` below.
+        /// The origin authentication information of the CNAME record. See `AuthConf` below.
         /// </summary>
         [Output("authConf")]
         public Output<Outputs.RecordAuthConf?> AuthConf { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `Data` below.
         /// </summary>
         [Output("data")]
         public Output<Outputs.RecordData> Data { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class RecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The origin authentication information of the CNAME record. See `auth_conf` below.
+        /// The origin authentication information of the CNAME record. See `AuthConf` below.
         /// </summary>
         [Input("authConf")]
         public Input<Inputs.RecordAuthConfArgs>? AuthConf { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `Data` below.
         /// </summary>
         [Input("data", required: true)]
         public Input<Inputs.RecordDataArgs> Data { get; set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class RecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The origin authentication information of the CNAME record. See `auth_conf` below.
+        /// The origin authentication information of the CNAME record. See `AuthConf` below.
         /// </summary>
         [Input("authConf")]
         public Input<Inputs.RecordAuthConfGetArgs>? AuthConf { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `Data` below.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataGetArgs>? Data { get; set; }

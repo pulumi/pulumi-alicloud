@@ -31,10 +31,10 @@ public final class GetEcsKeyPairsResult {
      * @return (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
      * 
      * @deprecated
-     * Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
+     * Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
      */
-    @Deprecated /* Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
+    @Deprecated /* Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
     private List<GetEcsKeyPairsKeyPair> keyPairs;
     private @Nullable String nameRegex;
     /**
@@ -81,10 +81,10 @@ public final class GetEcsKeyPairsResult {
      * @return (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
      * 
      * @deprecated
-     * Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
+     * Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
      */
-    @Deprecated /* Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
+    @Deprecated /* Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
     public List<GetEcsKeyPairsKeyPair> keyPairs() {
         return this.keyPairs;
     }

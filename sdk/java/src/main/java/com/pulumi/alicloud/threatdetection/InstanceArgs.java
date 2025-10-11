@@ -82,7 +82,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+     * &gt; **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      * 
      */
     @Import(name="honeypot")
@@ -91,7 +91,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Number of cloud honeypot licenses. Interval type, value interval:[20,500].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+     * &gt; **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      * 
      */
     public Optional<Output<String>> honeypot() {
@@ -322,7 +322,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
      * 
-     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+     * &gt; **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      * 
      */
     @Import(name="sasCspm")
@@ -331,7 +331,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
      * 
-     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+     * &gt; **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      * 
      */
     public Optional<Output<String>> sasCspm() {
@@ -379,7 +379,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     @Import(name="sasSdk")
@@ -388,7 +388,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Optional<Output<String>> sasSdk() {
@@ -624,7 +624,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      * 
      */
     @Import(name="vulCount")
@@ -633,7 +633,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Vulnerability repair times, interval type, value range:[20,100000000].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      * 
      */
     public Optional<Output<String>> vulCount() {
@@ -645,7 +645,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - 0: No.
      * - 1: Yes.
      * 
-     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      * 
      */
     @Import(name="vulSwitch")
@@ -656,7 +656,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - 0: No.
      * - 1: Yes.
      * 
-     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      * 
      */
     public Optional<Output<String>> vulSwitch() {
@@ -801,7 +801,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param honeypot Number of cloud honeypot licenses. Interval type, value interval:[20,500].
          * 
-         * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+         * &gt; **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param honeypot Number of cloud honeypot licenses. Interval type, value interval:[20,500].
          * 
-         * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+         * &gt; **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
          * 
          * @return builder
          * 
@@ -1113,7 +1113,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sasCspm Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
          * 
-         * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+         * &gt; **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
          * 
          * @return builder
          * 
@@ -1126,7 +1126,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sasCspm Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
          * 
-         * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+         * &gt; **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
          * 
          * @return builder
          * 
@@ -1188,7 +1188,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sasSdk Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
          * 
-         * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+         * &gt; **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -1201,7 +1201,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sasSdk Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
          * 
-         * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+         * &gt; **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -1511,7 +1511,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vulCount Vulnerability repair times, interval type, value range:[20,100000000].
          * 
-         * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+         * &gt; **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
          * 
          * @return builder
          * 
@@ -1524,7 +1524,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vulCount Vulnerability repair times, interval type, value range:[20,100000000].
          * 
-         * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+         * &gt; **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
          * 
          * @return builder
          * 
@@ -1538,7 +1538,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - 0: No.
          * - 1: Yes.
          * 
-         * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+         * &gt; **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
          * 
          * @return builder
          * 
@@ -1553,7 +1553,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - 0: No.
          * - 1: Yes.
          * 
-         * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+         * &gt; **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
          * 
          * @return builder
          * 

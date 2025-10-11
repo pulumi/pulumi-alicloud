@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Alb
         public string? AclName { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Alb
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The state of the ACL. Valid values:`Provisioning`,`Available`And`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? AclName { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The state of the ACL. Valid values:`Provisioning`,`Available`And`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

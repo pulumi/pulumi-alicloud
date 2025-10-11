@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerDefaultAction {
     /**
-     * @return Forwarding Action Configurations See `forward_group_config` below.
+     * @return Forwarding Action Configurations See `forwardGroupConfig` below.
      * 
      */
     private @Nullable ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
@@ -26,7 +26,7 @@ public final class ListenerDefaultAction {
 
     private ListenerDefaultAction() {}
     /**
-     * @return Forwarding Action Configurations See `forward_group_config` below.
+     * @return Forwarding Action Configurations See `forwardGroupConfig` below.
      * 
      */
     public Optional<ListenerDefaultActionForwardGroupConfig> forwardGroupConfig() {

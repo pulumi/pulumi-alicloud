@@ -21,7 +21,7 @@ public final class GetAccessRulesResult {
      */
     private String id;
     /**
-     * @return A list of rule IDs, Each element set to `access_rule_id` (Each element formats as `&lt;access_group_name&gt;:&lt;access_rule_id&gt;` before 1.53.0).
+     * @return A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `&lt;access_group_name&gt;:&lt;access_rule_id&gt;` before 1.53.0).
      * 
      */
     private List<String> ids;
@@ -59,7 +59,7 @@ public final class GetAccessRulesResult {
         return this.id;
     }
     /**
-     * @return A list of rule IDs, Each element set to `access_rule_id` (Each element formats as `&lt;access_group_name&gt;:&lt;access_rule_id&gt;` before 1.53.0).
+     * @return A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `&lt;access_group_name&gt;:&lt;access_rule_id&gt;` before 1.53.0).
      * 
      */
     public List<String> ids() {

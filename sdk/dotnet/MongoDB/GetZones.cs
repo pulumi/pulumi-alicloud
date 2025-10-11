@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch MongoDB instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch MongoDB instances.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch MongoDB instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch MongoDB instances.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }

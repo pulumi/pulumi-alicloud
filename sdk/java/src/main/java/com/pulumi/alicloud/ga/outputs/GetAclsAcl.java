@@ -33,7 +33,7 @@ public final class GetAclsAcl {
      */
     private String addressIpVersion;
     /**
-     * @return The ID of the Acl. Its value is same as `acl_id`.
+     * @return The ID of the Acl. Its value is same as `aclId`.
      * 
      */
     private String id;
@@ -73,7 +73,7 @@ public final class GetAclsAcl {
         return this.addressIpVersion;
     }
     /**
-     * @return The ID of the Acl. Its value is same as `acl_id`.
+     * @return The ID of the Acl. Its value is same as `aclId`.
      * 
      */
     public String id() {

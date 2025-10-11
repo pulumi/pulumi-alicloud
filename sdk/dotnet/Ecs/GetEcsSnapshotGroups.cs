@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotGroupName { get; set; }
 
         /// <summary>
-        /// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+        /// The state of snapshot-consistent group. Valid Values: `Accomplished`, `Failed` and `Progressing`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotGroupName { get; set; }
 
         /// <summary>
-        /// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+        /// The state of snapshot-consistent group. Valid Values: `Accomplished`, `Failed` and `Progressing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

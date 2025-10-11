@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
     public sealed class GetGatewayFileSharesShareResult
     {
         /// <summary>
-        /// The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
+        /// The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         public readonly bool AccessBasedEnumeration;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly int BackendLimit;
         /// <summary>
-        /// The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+        /// The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `True`.
         /// </summary>
         public readonly bool Browsable;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string ClientSideCmk;
         /// <summary>
-        /// Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+        /// Whether to enabled to client-side encryption of the gateway file share. Default value: `False`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
         /// </summary>
         public readonly bool ClientSideEncryption;
         /// <summary>
-        /// Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+        /// Whether directio (direct I/O data transfer) is enabled for file share. Default: `False`.
         /// </summary>
         public readonly bool DirectIo;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string DiskId;
         /// <summary>
-        /// The cache disk type. Valid values: `cloud_efficiency`: Ultra cloud disk. `cloud_ssd`:SSD cloud disk.
+        /// The cache disk type. Valid values: `CloudEfficiency`: Ultra cloud disk. `CloudSsd`:SSD cloud disk.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string ExpressSyncId;
         /// <summary>
-        /// The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
+        /// The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
         /// </summary>
         public readonly bool FastReclaim;
         /// <summary>
@@ -106,11 +106,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.40 above support.
+        /// Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.40 above support.
         /// </summary>
         public readonly bool IgnoreDelete;
         /// <summary>
-        /// Whether debris optimization of the gateway file share. Default value: `false`.
+        /// Whether debris optimization of the gateway file share. Default value: `False`.
         /// </summary>
         public readonly bool InPlace;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string MnsHealth;
         /// <summary>
-        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version &gt;= 1.2.0 above support.
+        /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `False`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version &gt;= 1.2.0 above support.
         /// </summary>
         public readonly bool NfsV4Optimization;
         /// <summary>
@@ -190,11 +190,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string RemainingMetaSpace;
         /// <summary>
-        /// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+        /// Whether to enable reverse synchronization of the gateway file share. Default value: `False`.
         /// </summary>
         public readonly bool RemoteSync;
         /// <summary>
-        /// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+        /// Copy mode, whether to download the file data. Default value: `False`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
         /// </summary>
         public readonly bool RemoteSyncDownload;
         /// <summary>
@@ -226,11 +226,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string Size;
         /// <summary>
-        /// The set up gateway file share NFS protocol user mapping. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`.
+        /// The set up gateway file share NFS protocol user mapping. Valid values: `None`, `RootSquash`, `AllSquash`, `AllAnonymous`. Default value: `None`.
         /// </summary>
         public readonly string Squash;
         /// <summary>
-        /// File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+        /// File synchronization types. Valid values: `Clean`, `Dirty`. `Clean`: synchronization is complete. `Dirty`: synchronization has not been completed.
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string Used;
         /// <summary>
-        /// The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
+        /// The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `False`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
         /// </summary>
         public readonly bool WindowsAcl;
 

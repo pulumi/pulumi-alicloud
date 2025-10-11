@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `route_map_id`.
+        /// A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `RouteMapId`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
     public sealed class LakeAccountAccountPrivilege
     {
         /// <summary>
-        /// Object associated to privileges. See `privilege_object` below.
+        /// Object associated to privileges. See `PrivilegeObject` below.
         /// </summary>
         public readonly Outputs.LakeAccountAccountPrivilegePrivilegeObject? PrivilegeObject;
         /// <summary>

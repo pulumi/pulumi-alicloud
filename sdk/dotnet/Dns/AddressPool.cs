@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> AddressPoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The address lists of the Address Pool. See `address` below for details.
+        /// The address lists of the Address Pool. See `Address` below for details.
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<Outputs.AddressPoolAddress>> Addresses { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AddressPoolAddressArgs>? _addresses;
 
         /// <summary>
-        /// The address lists of the Address Pool. See `address` below for details.
+        /// The address lists of the Address Pool. See `Address` below for details.
         /// </summary>
         public InputList<Inputs.AddressPoolAddressArgs> Addresses
         {
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AddressPoolAddressGetArgs>? _addresses;
 
         /// <summary>
-        /// The address lists of the Address Pool. See `address` below for details.
+        /// The address lists of the Address Pool. See `Address` below for details.
         /// </summary>
         public InputList<Inputs.AddressPoolAddressGetArgs> Addresses
         {

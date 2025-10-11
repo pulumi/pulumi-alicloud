@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Output<int> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// List of roles owned by members. See `roles` below.
+        /// List of roles owned by members. See `Roles` below.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<Outputs.ProjectMemberRole>> Roles { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.ProjectMemberRoleArgs>? _roles;
 
         /// <summary>
-        /// List of roles owned by members. See `roles` below.
+        /// List of roles owned by members. See `Roles` below.
         /// </summary>
         public InputList<Inputs.ProjectMemberRoleArgs> Roles
         {
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.ProjectMemberRoleGetArgs>? _roles;
 
         /// <summary>
-        /// List of roles owned by members. See `roles` below.
+        /// List of roles owned by members. See `Roles` below.
         /// </summary>
         public InputList<Inputs.ProjectMemberRoleGetArgs> Roles
         {

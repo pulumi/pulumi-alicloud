@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DiJobResourceSettings {
     /**
-     * @return Offline Resource Group configuration See `offline_resource_settings` below.
+     * @return Offline Resource Group configuration See `offlineResourceSettings` below.
      * 
      */
     private @Nullable DiJobResourceSettingsOfflineResourceSettings offlineResourceSettings;
     /**
-     * @return Real-time Resource Group See `realtime_resource_settings` below.
+     * @return Real-time Resource Group See `realtimeResourceSettings` below.
      * 
      */
     private @Nullable DiJobResourceSettingsRealtimeResourceSettings realtimeResourceSettings;
     /**
-     * @return Scheduling Resource Groups See `schedule_resource_settings` below.
+     * @return Scheduling Resource Groups See `scheduleResourceSettings` below.
      * 
      */
     private @Nullable DiJobResourceSettingsScheduleResourceSettings scheduleResourceSettings;
 
     private DiJobResourceSettings() {}
     /**
-     * @return Offline Resource Group configuration See `offline_resource_settings` below.
+     * @return Offline Resource Group configuration See `offlineResourceSettings` below.
      * 
      */
     public Optional<DiJobResourceSettingsOfflineResourceSettings> offlineResourceSettings() {
         return Optional.ofNullable(this.offlineResourceSettings);
     }
     /**
-     * @return Real-time Resource Group See `realtime_resource_settings` below.
+     * @return Real-time Resource Group See `realtimeResourceSettings` below.
      * 
      */
     public Optional<DiJobResourceSettingsRealtimeResourceSettings> realtimeResourceSettings() {
         return Optional.ofNullable(this.realtimeResourceSettings);
     }
     /**
-     * @return Scheduling Resource Groups See `schedule_resource_settings` below.
+     * @return Scheduling Resource Groups See `scheduleResourceSettings` below.
      * 
      */
     public Optional<DiJobResourceSettingsScheduleResourceSettings> scheduleResourceSettings() {

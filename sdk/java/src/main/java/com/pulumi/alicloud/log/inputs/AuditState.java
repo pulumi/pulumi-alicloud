@@ -63,14 +63,14 @@ public final class AuditState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      * 
      */
     @Import(name="resourceDirectoryType")
     private @Nullable Output<String> resourceDirectoryType;
 
     /**
-     * @return Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+     * @return Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      * 
      */
     public Optional<Output<String>> resourceDirectoryType() {
@@ -194,7 +194,7 @@ public final class AuditState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceDirectoryType Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+         * @param resourceDirectoryType Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class AuditState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceDirectoryType Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+         * @param resourceDirectoryType Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
          * 
          * @return builder
          * 

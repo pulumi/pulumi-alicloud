@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        /// Database file system state. Valid values: `Attached`, `Attaching`, `Creating`, `Deleted`, `Deleting`, `Detaching`, `Resizing`, `Snapshotting`, `Unattached`, `Upgrading`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        /// Database file system state. Valid values: `Attached`, `Attaching`, `Creating`, `Deleted`, `Deleting`, `Detaching`, `Resizing`, `Snapshotting`, `Unattached`, `Upgrading`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

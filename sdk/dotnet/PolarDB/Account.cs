@@ -109,13 +109,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbClusterId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {

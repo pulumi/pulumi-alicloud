@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CR.Outputs
     public sealed class ChainChainConfigNode
     {
         /// <summary>
-        /// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        /// Whether to enable the delivery chain node. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// The configuration of delivery chain node. See `node_config` below.
+        /// The configuration of delivery chain node. See `NodeConfig` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigNodeNodeConfig> NodeConfigs;
         /// <summary>

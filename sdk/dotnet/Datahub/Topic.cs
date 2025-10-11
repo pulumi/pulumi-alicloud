@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Datahub
         /// <summary>
         /// Comment of the datahub topic. It cannot be longer than 255 characters.
         /// 
-        /// **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+        /// **Notes:** Currently `LifeCycle` can not be modified and it will be supported in the next future.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Datahub
         /// <summary>
         /// Comment of the datahub topic. It cannot be longer than 255 characters.
         /// 
-        /// **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+        /// **Notes:** Currently `LifeCycle` can not be modified and it will be supported in the next future.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Datahub
         /// <summary>
         /// Comment of the datahub topic. It cannot be longer than 255 characters.
         /// 
-        /// **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
+        /// **Notes:** Currently `LifeCycle` can not be modified and it will be supported in the next future.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }

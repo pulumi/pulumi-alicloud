@@ -217,14 +217,14 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.policy;
     }
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      * 
      */
     @Export(name="recoveryWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> recoveryWindowInDays;
 
     /**
-     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      * 
      */
     public Output<Optional<Integer>> recoveryWindowInDays() {
@@ -245,14 +245,14 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
     private Output<String> secretData;
 
     /**
-     * @return The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      * 
      */
     public Output<String> secretData() {

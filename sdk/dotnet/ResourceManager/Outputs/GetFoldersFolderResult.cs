@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+        /// The ID of the parent folder. **NOTE:** If `ParentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
         /// </summary>
         public readonly string ParentFolderId;
 

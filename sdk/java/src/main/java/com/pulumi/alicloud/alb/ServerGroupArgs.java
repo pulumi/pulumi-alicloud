@@ -26,14 +26,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupArgs Empty = new ServerGroupArgs();
 
     /**
-     * Elegant interrupt configuration. See `connection_drain_config` below.
+     * Elegant interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     @Import(name="connectionDrainConfig")
     private @Nullable Output<ServerGroupConnectionDrainConfigArgs> connectionDrainConfig;
 
     /**
-     * @return Elegant interrupt configuration. See `connection_drain_config` below.
+     * @return Elegant interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     public Optional<Output<ServerGroupConnectionDrainConfigArgs>> connectionDrainConfig() {
@@ -75,14 +75,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of health checks See `health_check_config` below.
+     * The configuration of health checks See `healthCheckConfig` below.
      * 
      */
     @Import(name="healthCheckConfig", required=true)
     private Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks See `health_check_config` below.
+     * @return The configuration of health checks See `healthCheckConfig` below.
      * 
      */
     public Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig() {
@@ -269,14 +269,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Slow start configuration. See `slow_start_config` below.
+     * Slow start configuration. See `slowStartConfig` below.
      * 
      */
     @Import(name="slowStartConfig")
     private @Nullable Output<ServerGroupSlowStartConfigArgs> slowStartConfig;
 
     /**
-     * @return Slow start configuration. See `slow_start_config` below.
+     * @return Slow start configuration. See `slowStartConfig` below.
      * 
      */
     public Optional<Output<ServerGroupSlowStartConfigArgs>> slowStartConfig() {
@@ -284,14 +284,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of health checks See `sticky_session_config` below.
+     * The configuration of health checks See `stickySessionConfig` below.
      * 
      */
     @Import(name="stickySessionConfig")
     private @Nullable Output<ServerGroupStickySessionConfigArgs> stickySessionConfig;
 
     /**
-     * @return The configuration of health checks See `sticky_session_config` below.
+     * @return The configuration of health checks See `stickySessionConfig` below.
      * 
      */
     public Optional<Output<ServerGroupStickySessionConfigArgs>> stickySessionConfig() {
@@ -314,14 +314,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Url consistency hash parameter configuration See `uch_config` below.
+     * Url consistency hash parameter configuration See `uchConfig` below.
      * 
      */
     @Import(name="uchConfig")
     private @Nullable Output<ServerGroupUchConfigArgs> uchConfig;
 
     /**
-     * @return Url consistency hash parameter configuration See `uch_config` below.
+     * @return Url consistency hash parameter configuration See `uchConfig` below.
      * 
      */
     public Optional<Output<ServerGroupUchConfigArgs>> uchConfig() {
@@ -405,7 +405,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainConfig Elegant interrupt configuration. See `connection_drain_config` below.
+         * @param connectionDrainConfig Elegant interrupt configuration. See `connectionDrainConfig` below.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainConfig Elegant interrupt configuration. See `connection_drain_config` below.
+         * @param connectionDrainConfig Elegant interrupt configuration. See `connectionDrainConfig` below.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks See `health_check_config` below.
+         * @param healthCheckConfig The configuration of health checks See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks See `health_check_config` below.
+         * @param healthCheckConfig The configuration of health checks See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slowStartConfig Slow start configuration. See `slow_start_config` below.
+         * @param slowStartConfig Slow start configuration. See `slowStartConfig` below.
          * 
          * @return builder
          * 
@@ -747,7 +747,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slowStartConfig Slow start configuration. See `slow_start_config` below.
+         * @param slowStartConfig Slow start configuration. See `slowStartConfig` below.
          * 
          * @return builder
          * 
@@ -757,7 +757,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of health checks See `sticky_session_config` below.
+         * @param stickySessionConfig The configuration of health checks See `stickySessionConfig` below.
          * 
          * @return builder
          * 
@@ -768,7 +768,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of health checks See `sticky_session_config` below.
+         * @param stickySessionConfig The configuration of health checks See `stickySessionConfig` below.
          * 
          * @return builder
          * 
@@ -799,7 +799,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uchConfig Url consistency hash parameter configuration See `uch_config` below.
+         * @param uchConfig Url consistency hash parameter configuration See `uchConfig` below.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uchConfig Url consistency hash parameter configuration See `uch_config` below.
+         * @param uchConfig Url consistency hash parameter configuration See `uchConfig` below.
          * 
          * @return builder
          * 

@@ -64,14 +64,14 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+     * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      * 
      */
     @Import(name="dbInstanceIpArrays")
     private @Nullable Output<List<DbInstanceDbInstanceIpArrayArgs>> dbInstanceIpArrays;
 
     /**
-     * @return IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+     * @return IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      * 
      */
     public Optional<Output<List<DbInstanceDbInstanceIpArrayArgs>>> dbInstanceIpArrays() {
@@ -94,14 +94,14 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+     * Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      * 
      */
     @Import(name="dbInstanceStorageType")
     private @Nullable Output<String> dbInstanceStorageType;
 
     /**
-     * @return Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+     * @return Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      * 
      */
     public Optional<Output<String>> dbInstanceStorageType() {
@@ -345,7 +345,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceStorageType Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+         * @param dbInstanceStorageType Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceStorageType Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+         * @param dbInstanceStorageType Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
          * 
          * @return builder
          * 

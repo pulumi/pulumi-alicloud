@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class AlertConfigurationSeverityConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Trigger condition. See `eval_condition` below.
+        /// Trigger condition. See `EvalCondition` below.
         /// </summary>
         [Input("evalCondition")]
         public Input<Inputs.AlertConfigurationSeverityConfigurationEvalConditionArgs>? EvalCondition { get; set; }

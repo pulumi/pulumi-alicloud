@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServerGroupsGroup {
     /**
-     * @return The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of health checks. **Note:** `healthCheckConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs;
@@ -46,7 +46,7 @@ public final class GetServerGroupsGroup {
      */
     private String serverGroupName;
     /**
-     * @return The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
+     * @return The backend server. **Note:** `servers` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServerGroupsGroupServer> servers;
@@ -56,7 +56,7 @@ public final class GetServerGroupsGroup {
      */
     private String status;
     /**
-     * @return The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the sticky session. **Note:** `stickySessionConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
@@ -73,7 +73,7 @@ public final class GetServerGroupsGroup {
 
     private GetServerGroupsGroup() {}
     /**
-     * @return The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of health checks. **Note:** `healthCheckConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs() {
@@ -115,7 +115,7 @@ public final class GetServerGroupsGroup {
         return this.serverGroupName;
     }
     /**
-     * @return The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
+     * @return The backend server. **Note:** `servers` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServerGroupsGroupServer> servers() {
@@ -129,7 +129,7 @@ public final class GetServerGroupsGroup {
         return this.status;
     }
     /**
-     * @return The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the sticky session. **Note:** `stickySessionConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs() {

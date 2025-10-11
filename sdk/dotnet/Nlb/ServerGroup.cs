@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<int> ConnectionDrainTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Health check configuration information. See `health_check` below.
+        /// Health check configuration information. See `HealthCheck` below.
         /// </summary>
         [Output("healthCheck")]
         public Output<Outputs.ServerGroupHealthCheck> HealthCheck { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? ConnectionDrainTimeout { get; set; }
 
         /// <summary>
-        /// Health check configuration information. See `health_check` below.
+        /// Health check configuration information. See `HealthCheck` below.
         /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ServerGroupHealthCheckArgs>? HealthCheck { get; set; }
@@ -398,7 +398,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? ConnectionDrainTimeout { get; set; }
 
         /// <summary>
-        /// Health check configuration information. See `health_check` below.
+        /// Health check configuration information. See `HealthCheck` below.
         /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ServerGroupHealthCheckGetArgs>? HealthCheck { get; set; }

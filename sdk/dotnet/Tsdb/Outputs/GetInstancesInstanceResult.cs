@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Tsdb.Outputs
         /// </summary>
         public readonly string CpuNumber;
         /// <summary>
-        /// The disk type of instance. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
+        /// The disk type of instance. `CloudSsd` refers to SSD disk, `CloudEfficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
         /// </summary>
         public readonly string DiskCategory;
         /// <summary>
-        /// The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+        /// The engine type of instance. Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
         /// </summary>
         public readonly string EngineType;
         /// <summary>

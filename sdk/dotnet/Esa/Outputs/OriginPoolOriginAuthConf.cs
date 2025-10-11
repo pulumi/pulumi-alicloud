@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
     public sealed class OriginPoolOriginAuthConf
     {
         /// <summary>
-        /// The AccessKey to be passed when AuthType is set to private_cross_account or private.
+        /// The AccessKey to be passed when AuthType is set to PrivateCrossAccount or private.
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The SecretKey to be passed when AuthType is set to private_cross_account or private.
+        /// The SecretKey to be passed when AuthType is set to PrivateCrossAccount or private.
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>

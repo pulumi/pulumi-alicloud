@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Rds
     public partial class RdsParameterGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        /// The database engine. Valid values: `Mysql`, `Mariadb`, `PostgreSQL`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Parameter list. See `param_detail` below.
+        /// Parameter list. See `ParamDetail` below.
         /// </summary>
         [Output("paramDetails")]
         public Output<ImmutableArray<Outputs.RdsParameterGroupParamDetail>> ParamDetails { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsParameterGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        /// The database engine. Valid values: `Mysql`, `Mariadb`, `PostgreSQL`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsParameterGroupParamDetailArgs>? _paramDetails;
 
         /// <summary>
-        /// Parameter list. See `param_detail` below.
+        /// Parameter list. See `ParamDetail` below.
         /// </summary>
         public InputList<Inputs.RdsParameterGroupParamDetailArgs> ParamDetails
         {
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsParameterGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        /// The database engine. Valid values: `Mysql`, `Mariadb`, `PostgreSQL`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsParameterGroupParamDetailGetArgs>? _paramDetails;
 
         /// <summary>
-        /// Parameter list. See `param_detail` below.
+        /// Parameter list. See `ParamDetail` below.
         /// </summary>
         public InputList<Inputs.RdsParameterGroupParamDetailGetArgs> ParamDetails
         {

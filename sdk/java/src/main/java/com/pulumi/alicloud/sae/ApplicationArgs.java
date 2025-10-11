@@ -33,14 +33,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApplicationArgs Empty = new ApplicationArgs();
 
     /**
-     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
      * 
      */
     @Import(name="acrAssumeRoleArn")
     private @Nullable Output<String> acrAssumeRoleArn;
 
     /**
-     * @return The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+     * @return The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
      * 
      */
     public Optional<Output<String>> acrAssumeRoleArn() {
@@ -48,14 +48,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+     * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
      * 
      */
     @Import(name="acrInstanceId")
     private @Nullable Output<String> acrInstanceId;
 
     /**
-     * @return The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+     * @return The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
      * 
      */
     public Optional<Output<String>> acrInstanceId() {
@@ -63,14 +63,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+     * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
      * 
      */
     @Import(name="appDescription")
     private @Nullable Output<String> appDescription;
 
     /**
-     * @return Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+     * @return Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
      * 
      */
     public Optional<Output<String>> appDescription() {
@@ -168,24 +168,24 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      * @deprecated
-     * Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+     * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      */
-    @Deprecated /* Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead. */
+    @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
     @Import(name="commandArgs")
     private @Nullable Output<String> commandArgs;
 
     /**
-     * @return Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+     * @return Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      * @deprecated
-     * Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+     * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      */
-    @Deprecated /* Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead. */
+    @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
     public Optional<Output<String>> commandArgs() {
         return Optional.ofNullable(this.commandArgs);
     }
@@ -206,37 +206,37 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      * @deprecated
-     * Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+     * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      */
-    @Deprecated /* Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead. */
+    @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
     @Import(name="configMapMountDesc")
     private @Nullable Output<String> configMapMountDesc;
 
     /**
-     * @return ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+     * @return ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      * @deprecated
-     * Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+     * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      */
-    @Deprecated /* Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead. */
+    @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
     public Optional<Output<String>> configMapMountDesc() {
         return Optional.ofNullable(this.configMapMountDesc);
     }
 
     /**
-     * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+     * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
      * 
      */
     @Import(name="configMapMountDescV2s")
     private @Nullable Output<List<ApplicationConfigMapMountDescV2Args>> configMapMountDescV2s;
 
     /**
-     * @return The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+     * @return The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
      * 
      */
     public Optional<Output<List<ApplicationConfigMapMountDescV2Args>>> configMapMountDescV2s() {
@@ -259,37 +259,37 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      * @deprecated
-     * Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+     * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      */
-    @Deprecated /* Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead. */
+    @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
     @Import(name="customHostAlias")
     private @Nullable Output<String> customHostAlias;
 
     /**
-     * @return Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+     * @return Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      * @deprecated
-     * Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+     * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      */
-    @Deprecated /* Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead. */
+    @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
     public Optional<Output<String>> customHostAlias() {
         return Optional.ofNullable(this.customHostAlias);
     }
 
     /**
-     * The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+     * The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
      * 
      */
     @Import(name="customHostAliasV2s")
     private @Nullable Output<List<ApplicationCustomHostAliasV2Args>> customHostAliasV2s;
 
     /**
-     * @return The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+     * @return The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
      * 
      */
     public Optional<Output<List<ApplicationCustomHostAliasV2Args>>> customHostAliasV2s() {
@@ -447,14 +447,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      * 
      */
     @Import(name="kafkaConfigs")
     private @Nullable Output<ApplicationKafkaConfigsArgs> kafkaConfigs;
 
     /**
-     * @return The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * @return The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      * 
      */
     public Optional<Output<ApplicationKafkaConfigsArgs>> kafkaConfigs() {
@@ -463,38 +463,38 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      * @deprecated
-     * Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      */
-    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead. */
+    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
     @Import(name="liveness")
     private @Nullable Output<String> liveness;
 
     /**
      * @return Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      * @deprecated
-     * Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      */
-    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead. */
+    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
     public Optional<Output<String>> liveness() {
         return Optional.ofNullable(this.liveness);
     }
 
     /**
-     * The liveness check settings of the container. See `liveness_v2` below.
+     * The liveness check settings of the container. See `livenessV2` below.
      * 
      */
     @Import(name="livenessV2")
     private @Nullable Output<ApplicationLivenessV2Args> livenessV2;
 
     /**
-     * @return The liveness check settings of the container. See `liveness_v2` below.
+     * @return The liveness check settings of the container. See `livenessV2` below.
      * 
      */
     public Optional<Output<ApplicationLivenessV2Args>> livenessV2() {
@@ -532,7 +532,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      * 
@@ -541,7 +541,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> minReadyInstanceRatio;
 
     /**
-     * @return Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+     * @return Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      * 
@@ -581,14 +581,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations for mounting the NAS file system. See `nas_configs` below.
+     * The configurations for mounting the NAS file system. See `nasConfigs` below.
      * 
      */
     @Import(name="nasConfigs")
     private @Nullable Output<List<ApplicationNasConfigArgs>> nasConfigs;
 
     /**
-     * @return The configurations for mounting the NAS file system. See `nas_configs` below.
+     * @return The configurations for mounting the NAS file system. See `nasConfigs` below.
      * 
      */
     public Optional<Output<List<ApplicationNasConfigArgs>>> nasConfigs() {
@@ -626,37 +626,37 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      * @deprecated
-     * Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+     * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      */
-    @Deprecated /* Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead. */
+    @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
     @Import(name="ossMountDescs")
     private @Nullable Output<String> ossMountDescs;
 
     /**
-     * @return OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+     * @return OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      * @deprecated
-     * Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+     * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      */
-    @Deprecated /* Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead. */
+    @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
     public Optional<Output<String>> ossMountDescs() {
         return Optional.ofNullable(this.ossMountDescs);
     }
 
     /**
-     * The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+     * The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
      * 
      */
     @Import(name="ossMountDescsV2s")
     private @Nullable Output<List<ApplicationOssMountDescsV2Args>> ossMountDescsV2s;
 
     /**
-     * @return The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+     * @return The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
      * 
      */
     public Optional<Output<List<ApplicationOssMountDescsV2Args>>> ossMountDescsV2s() {
@@ -769,37 +769,37 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      * @deprecated
-     * Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+     * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      */
-    @Deprecated /* Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead. */
+    @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
     @Import(name="postStart")
     private @Nullable Output<String> postStart;
 
     /**
-     * @return Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+     * @return Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      * @deprecated
-     * Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+     * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      */
-    @Deprecated /* Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead. */
+    @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
     public Optional<Output<String>> postStart() {
         return Optional.ofNullable(this.postStart);
     }
 
     /**
-     * The script that is run immediately after the container is started. See `post_start_v2` below.
+     * The script that is run immediately after the container is started. See `postStartV2` below.
      * 
      */
     @Import(name="postStartV2")
     private @Nullable Output<ApplicationPostStartV2Args> postStartV2;
 
     /**
-     * @return The script that is run immediately after the container is started. See `post_start_v2` below.
+     * @return The script that is run immediately after the container is started. See `postStartV2` below.
      * 
      */
     public Optional<Output<ApplicationPostStartV2Args>> postStartV2() {
@@ -807,37 +807,37 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      * @deprecated
-     * Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      */
-    @Deprecated /* Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead. */
+    @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
     @Import(name="preStop")
     private @Nullable Output<String> preStop;
 
     /**
-     * @return Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * @return Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      * @deprecated
-     * Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      */
-    @Deprecated /* Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead. */
+    @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
     public Optional<Output<String>> preStop() {
         return Optional.ofNullable(this.preStop);
     }
 
     /**
-     * The script that is run before the container is stopped. See `pre_stop_v2` below.
+     * The script that is run before the container is stopped. See `preStopV2` below.
      * 
      */
     @Import(name="preStopV2")
     private @Nullable Output<ApplicationPreStopV2Args> preStopV2;
 
     /**
-     * @return The script that is run before the container is stopped. See `pre_stop_v2` below.
+     * @return The script that is run before the container is stopped. See `preStopV2` below.
      * 
      */
     public Optional<Output<ApplicationPreStopV2Args>> preStopV2() {
@@ -860,14 +860,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+     * The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
      * 
      */
     @Import(name="pvtzDiscoverySvc")
     private @Nullable Output<ApplicationPvtzDiscoverySvcArgs> pvtzDiscoverySvc;
 
     /**
-     * @return The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+     * @return The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
      * 
      */
     public Optional<Output<ApplicationPvtzDiscoverySvcArgs>> pvtzDiscoverySvc() {
@@ -876,38 +876,38 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      * @deprecated
-     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      */
-    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead. */
+    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
     @Import(name="readiness")
     private @Nullable Output<String> readiness;
 
     /**
      * @return Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      * @deprecated
-     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      */
-    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead. */
+    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
     public Optional<Output<String>> readiness() {
         return Optional.ofNullable(this.readiness);
     }
 
     /**
-     * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+     * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
      * 
      */
     @Import(name="readinessV2")
     private @Nullable Output<ApplicationReadinessV2Args> readinessV2;
 
     /**
-     * @return The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+     * @return The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
      * 
      */
     public Optional<Output<ApplicationReadinessV2Args>> readinessV2() {
@@ -1043,38 +1043,38 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-     * **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+     * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      * @deprecated
-     * Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+     * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      */
-    @Deprecated /* Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead. */
+    @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
     @Import(name="tomcatConfig")
     private @Nullable Output<String> tomcatConfig;
 
     /**
      * @return Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-     * **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+     * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      * @deprecated
-     * Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+     * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      */
-    @Deprecated /* Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead. */
+    @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
     public Optional<Output<String>> tomcatConfig() {
         return Optional.ofNullable(this.tomcatConfig);
     }
 
     /**
-     * The Tomcat configuration. See `tomcat_config_v2` below.
+     * The Tomcat configuration. See `tomcatConfigV2` below.
      * 
      */
     @Import(name="tomcatConfigV2")
     private @Nullable Output<ApplicationTomcatConfigV2Args> tomcatConfigV2;
 
     /**
-     * @return The Tomcat configuration. See `tomcat_config_v2` below.
+     * @return The Tomcat configuration. See `tomcatConfigV2` below.
      * 
      */
     public Optional<Output<ApplicationTomcatConfigV2Args>> tomcatConfigV2() {
@@ -1082,37 +1082,37 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      * @deprecated
-     * Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+     * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      */
-    @Deprecated /* Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead. */
+    @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
     @Import(name="updateStrategy")
     private @Nullable Output<String> updateStrategy;
 
     /**
-     * @return The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+     * @return The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      * @deprecated
-     * Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+     * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      */
-    @Deprecated /* Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead. */
+    @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
     public Optional<Output<String>> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
 
     /**
-     * The release policy. See `update_strategy_v2` below.
+     * The release policy. See `updateStrategyV2` below.
      * 
      */
     @Import(name="updateStrategyV2")
     private @Nullable Output<ApplicationUpdateStrategyV2Args> updateStrategyV2;
 
     /**
-     * @return The release policy. See `update_strategy_v2` below.
+     * @return The release policy. See `updateStrategyV2` below.
      * 
      */
     public Optional<Output<ApplicationUpdateStrategyV2Args>> updateStrategyV2() {
@@ -1135,14 +1135,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+     * The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+     * @return The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -1272,7 +1272,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acrAssumeRoleArn The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+         * @param acrAssumeRoleArn The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
          * 
          * @return builder
          * 
@@ -1283,7 +1283,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acrAssumeRoleArn The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+         * @param acrAssumeRoleArn The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
          * 
          * @return builder
          * 
@@ -1293,7 +1293,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acrInstanceId The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+         * @param acrInstanceId The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
          * 
          * @return builder
          * 
@@ -1304,7 +1304,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acrInstanceId The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+         * @param acrInstanceId The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
          * 
          * @return builder
          * 
@@ -1314,7 +1314,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appDescription Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+         * @param appDescription Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
          * 
          * @return builder
          * 
@@ -1325,7 +1325,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appDescription Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+         * @param appDescription Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
          * 
          * @return builder
          * 
@@ -1461,30 +1461,30 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param commandArgs Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+         * @param commandArgs Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+         * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
          * 
          */
-        @Deprecated /* Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead. */
+        @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
         public Builder commandArgs(@Nullable Output<String> commandArgs) {
             $.commandArgs = commandArgs;
             return this;
         }
 
         /**
-         * @param commandArgs Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+         * @param commandArgs Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+         * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
          * 
          */
-        @Deprecated /* Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead. */
+        @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
         public Builder commandArgs(String commandArgs) {
             return commandArgs(Output.of(commandArgs));
         }
@@ -1521,36 +1521,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configMapMountDesc ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+         * @param configMapMountDesc ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+         * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
          * 
          */
-        @Deprecated /* Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead. */
+        @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
         public Builder configMapMountDesc(@Nullable Output<String> configMapMountDesc) {
             $.configMapMountDesc = configMapMountDesc;
             return this;
         }
 
         /**
-         * @param configMapMountDesc ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+         * @param configMapMountDesc ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+         * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
          * 
          */
-        @Deprecated /* Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead. */
+        @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
         public Builder configMapMountDesc(String configMapMountDesc) {
             return configMapMountDesc(Output.of(configMapMountDesc));
         }
 
         /**
-         * @param configMapMountDescV2s The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+         * @param configMapMountDescV2s The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
          * 
          * @return builder
          * 
@@ -1561,7 +1561,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configMapMountDescV2s The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+         * @param configMapMountDescV2s The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
          * 
          * @return builder
          * 
@@ -1571,7 +1571,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configMapMountDescV2s The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+         * @param configMapMountDescV2s The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
          * 
          * @return builder
          * 
@@ -1602,36 +1602,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHostAlias Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+         * @param customHostAlias Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+         * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
          * 
          */
-        @Deprecated /* Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead. */
+        @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
         public Builder customHostAlias(@Nullable Output<String> customHostAlias) {
             $.customHostAlias = customHostAlias;
             return this;
         }
 
         /**
-         * @param customHostAlias Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+         * @param customHostAlias Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+         * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
          * 
          */
-        @Deprecated /* Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead. */
+        @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
         public Builder customHostAlias(String customHostAlias) {
             return customHostAlias(Output.of(customHostAlias));
         }
 
         /**
-         * @param customHostAliasV2s The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+         * @param customHostAliasV2s The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
          * 
          * @return builder
          * 
@@ -1642,7 +1642,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHostAliasV2s The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+         * @param customHostAliasV2s The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
          * 
          * @return builder
          * 
@@ -1652,7 +1652,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHostAliasV2s The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+         * @param customHostAliasV2s The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
          * 
          * @return builder
          * 
@@ -1872,7 +1872,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaConfigs The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+         * @param kafkaConfigs The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
          * 
          * @return builder
          * 
@@ -1883,7 +1883,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaConfigs The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+         * @param kafkaConfigs The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
          * 
          * @return builder
          * 
@@ -1894,15 +1894,15 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param liveness Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-         * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+         * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+         * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
          * 
          */
-        @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead. */
+        @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
         public Builder liveness(@Nullable Output<String> liveness) {
             $.liveness = liveness;
             return this;
@@ -1910,21 +1910,21 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param liveness Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-         * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+         * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+         * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
          * 
          */
-        @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead. */
+        @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
         public Builder liveness(String liveness) {
             return liveness(Output.of(liveness));
         }
 
         /**
-         * @param livenessV2 The liveness check settings of the container. See `liveness_v2` below.
+         * @param livenessV2 The liveness check settings of the container. See `livenessV2` below.
          * 
          * @return builder
          * 
@@ -1935,7 +1935,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param livenessV2 The liveness check settings of the container. See `liveness_v2` below.
+         * @param livenessV2 The liveness check settings of the container. See `livenessV2` below.
          * 
          * @return builder
          * 
@@ -1987,7 +1987,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minReadyInstanceRatio Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+         * @param minReadyInstanceRatio Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
          * * `-1`: Initialization value, indicating that percentages are not used.
          * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
          * 
@@ -2000,7 +2000,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minReadyInstanceRatio Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+         * @param minReadyInstanceRatio Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
          * * `-1`: Initialization value, indicating that percentages are not used.
          * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
          * 
@@ -2054,7 +2054,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nasConfigs The configurations for mounting the NAS file system. See `nas_configs` below.
+         * @param nasConfigs The configurations for mounting the NAS file system. See `nasConfigs` below.
          * 
          * @return builder
          * 
@@ -2065,7 +2065,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nasConfigs The configurations for mounting the NAS file system. See `nas_configs` below.
+         * @param nasConfigs The configurations for mounting the NAS file system. See `nasConfigs` below.
          * 
          * @return builder
          * 
@@ -2075,7 +2075,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nasConfigs The configurations for mounting the NAS file system. See `nas_configs` below.
+         * @param nasConfigs The configurations for mounting the NAS file system. See `nasConfigs` below.
          * 
          * @return builder
          * 
@@ -2127,36 +2127,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ossMountDescs OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+         * @param ossMountDescs OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+         * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
          * 
          */
-        @Deprecated /* Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead. */
+        @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
         public Builder ossMountDescs(@Nullable Output<String> ossMountDescs) {
             $.ossMountDescs = ossMountDescs;
             return this;
         }
 
         /**
-         * @param ossMountDescs OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+         * @param ossMountDescs OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+         * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
          * 
          */
-        @Deprecated /* Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead. */
+        @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
         public Builder ossMountDescs(String ossMountDescs) {
             return ossMountDescs(Output.of(ossMountDescs));
         }
 
         /**
-         * @param ossMountDescsV2s The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+         * @param ossMountDescsV2s The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
          * 
          * @return builder
          * 
@@ -2167,7 +2167,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ossMountDescsV2s The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+         * @param ossMountDescsV2s The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
          * 
          * @return builder
          * 
@@ -2177,7 +2177,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ossMountDescsV2s The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+         * @param ossMountDescsV2s The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
          * 
          * @return builder
          * 
@@ -2334,36 +2334,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postStart Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+         * @param postStart Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+         * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
          * 
          */
-        @Deprecated /* Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead. */
+        @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
         public Builder postStart(@Nullable Output<String> postStart) {
             $.postStart = postStart;
             return this;
         }
 
         /**
-         * @param postStart Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+         * @param postStart Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+         * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
          * 
          */
-        @Deprecated /* Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead. */
+        @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
         public Builder postStart(String postStart) {
             return postStart(Output.of(postStart));
         }
 
         /**
-         * @param postStartV2 The script that is run immediately after the container is started. See `post_start_v2` below.
+         * @param postStartV2 The script that is run immediately after the container is started. See `postStartV2` below.
          * 
          * @return builder
          * 
@@ -2374,7 +2374,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postStartV2 The script that is run immediately after the container is started. See `post_start_v2` below.
+         * @param postStartV2 The script that is run immediately after the container is started. See `postStartV2` below.
          * 
          * @return builder
          * 
@@ -2384,36 +2384,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preStop Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+         * @param preStop Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+         * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
          * 
          */
-        @Deprecated /* Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead. */
+        @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
         public Builder preStop(@Nullable Output<String> preStop) {
             $.preStop = preStop;
             return this;
         }
 
         /**
-         * @param preStop Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+         * @param preStop Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+         * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
          * 
          */
-        @Deprecated /* Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead. */
+        @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
         public Builder preStop(String preStop) {
             return preStop(Output.of(preStop));
         }
 
         /**
-         * @param preStopV2 The script that is run before the container is stopped. See `pre_stop_v2` below.
+         * @param preStopV2 The script that is run before the container is stopped. See `preStopV2` below.
          * 
          * @return builder
          * 
@@ -2424,7 +2424,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preStopV2 The script that is run before the container is stopped. See `pre_stop_v2` below.
+         * @param preStopV2 The script that is run before the container is stopped. See `preStopV2` below.
          * 
          * @return builder
          * 
@@ -2455,7 +2455,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pvtzDiscoverySvc The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+         * @param pvtzDiscoverySvc The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
          * 
          * @return builder
          * 
@@ -2466,7 +2466,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pvtzDiscoverySvc The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+         * @param pvtzDiscoverySvc The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
          * 
          * @return builder
          * 
@@ -2477,15 +2477,15 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param readiness Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-         * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+         * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+         * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
          * 
          */
-        @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead. */
+        @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
         public Builder readiness(@Nullable Output<String> readiness) {
             $.readiness = readiness;
             return this;
@@ -2493,21 +2493,21 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param readiness Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-         * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+         * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+         * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
          * 
          */
-        @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead. */
+        @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
         public Builder readiness(String readiness) {
             return readiness(Output.of(readiness));
         }
 
         /**
-         * @param readinessV2 The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+         * @param readinessV2 The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
          * 
          * @return builder
          * 
@@ -2518,7 +2518,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readinessV2 The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+         * @param readinessV2 The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
          * 
          * @return builder
          * 
@@ -2698,15 +2698,15 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tomcatConfig Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-         * **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+         * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+         * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
          * 
          */
-        @Deprecated /* Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead. */
+        @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
         public Builder tomcatConfig(@Nullable Output<String> tomcatConfig) {
             $.tomcatConfig = tomcatConfig;
             return this;
@@ -2714,21 +2714,21 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tomcatConfig Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-         * **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+         * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+         * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
          * 
          */
-        @Deprecated /* Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead. */
+        @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
         public Builder tomcatConfig(String tomcatConfig) {
             return tomcatConfig(Output.of(tomcatConfig));
         }
 
         /**
-         * @param tomcatConfigV2 The Tomcat configuration. See `tomcat_config_v2` below.
+         * @param tomcatConfigV2 The Tomcat configuration. See `tomcatConfigV2` below.
          * 
          * @return builder
          * 
@@ -2739,7 +2739,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tomcatConfigV2 The Tomcat configuration. See `tomcat_config_v2` below.
+         * @param tomcatConfigV2 The Tomcat configuration. See `tomcatConfigV2` below.
          * 
          * @return builder
          * 
@@ -2749,36 +2749,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateStrategy The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+         * @param updateStrategy The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+         * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
          * 
          */
-        @Deprecated /* Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead. */
+        @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
         public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
             $.updateStrategy = updateStrategy;
             return this;
         }
 
         /**
-         * @param updateStrategy The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+         * @param updateStrategy The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+         * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
          * 
          */
-        @Deprecated /* Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead. */
+        @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
         public Builder updateStrategy(String updateStrategy) {
             return updateStrategy(Output.of(updateStrategy));
         }
 
         /**
-         * @param updateStrategyV2 The release policy. See `update_strategy_v2` below.
+         * @param updateStrategyV2 The release policy. See `updateStrategyV2` below.
          * 
          * @return builder
          * 
@@ -2789,7 +2789,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateStrategyV2 The release policy. See `update_strategy_v2` below.
+         * @param updateStrategyV2 The release policy. See `updateStrategyV2` below.
          * 
          * @return builder
          * 
@@ -2820,7 +2820,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+         * @param vswitchId The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
          * 
          * @return builder
          * 
@@ -2831,7 +2831,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+         * @param vswitchId The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
          * 
          * @return builder
          * 

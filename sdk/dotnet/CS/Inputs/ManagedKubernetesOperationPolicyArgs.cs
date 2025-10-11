@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesOperationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+        /// Automatic cluster upgrade policy. See `ClusterAutoUpgrade` below.
         /// </summary>
         [Input("clusterAutoUpgrade")]
         public Input<Inputs.ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs>? ClusterAutoUpgrade { get; set; }

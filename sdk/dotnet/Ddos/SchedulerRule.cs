@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<int> RuleType { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the scheduling rules. See `rules` below.
+        /// The information about the scheduling rules. See `Rules` below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SchedulerRuleRule>> Rules { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.SchedulerRuleRuleArgs>? _rules;
 
         /// <summary>
-        /// The information about the scheduling rules. See `rules` below.
+        /// The information about the scheduling rules. See `Rules` below.
         /// </summary>
         public InputList<Inputs.SchedulerRuleRuleArgs> Rules
         {
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.SchedulerRuleRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The information about the scheduling rules. See `rules` below.
+        /// The information about the scheduling rules. See `Rules` below.
         /// </summary>
         public InputList<Inputs.SchedulerRuleRuleGetArgs> Rules
         {

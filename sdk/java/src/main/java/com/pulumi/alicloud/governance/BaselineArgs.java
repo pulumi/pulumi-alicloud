@@ -20,7 +20,7 @@ public final class BaselineArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * List of baseline items.
      * 
-     * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+     * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
      * 
      */
     @Import(name="baselineItems")
@@ -29,7 +29,7 @@ public final class BaselineArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return List of baseline items.
      * 
-     * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+     * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
      * 
      */
     public Optional<Output<List<BaselineBaselineItemArgs>>> baselineItems() {
@@ -95,7 +95,7 @@ public final class BaselineArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param baselineItems List of baseline items.
          * 
-         * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+         * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class BaselineArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param baselineItems List of baseline items.
          * 
-         * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+         * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class BaselineArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param baselineItems List of baseline items.
          * 
-         * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+         * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
          * 
          * @return builder
          * 

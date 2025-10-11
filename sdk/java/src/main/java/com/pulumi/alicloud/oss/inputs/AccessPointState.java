@@ -67,14 +67,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+     * Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      * 
      */
     @Import(name="publicAccessBlockConfiguration")
     private @Nullable Output<AccessPointPublicAccessBlockConfigurationArgs> publicAccessBlockConfiguration;
 
     /**
-     * @return Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+     * @return Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      * 
      */
     public Optional<Output<AccessPointPublicAccessBlockConfigurationArgs>> publicAccessBlockConfiguration() {
@@ -97,14 +97,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+     * If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      * 
      */
     @Import(name="vpcConfiguration")
     private @Nullable Output<AccessPointVpcConfigurationArgs> vpcConfiguration;
 
     /**
-     * @return If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+     * @return If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      * 
      */
     public Optional<Output<AccessPointVpcConfigurationArgs>> vpcConfiguration() {
@@ -208,7 +208,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicAccessBlockConfiguration Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+         * @param publicAccessBlockConfiguration Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicAccessBlockConfiguration Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+         * @param publicAccessBlockConfiguration Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcConfiguration If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+         * @param vpcConfiguration If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcConfiguration If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+         * @param vpcConfiguration If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
          * 
          * @return builder
          * 

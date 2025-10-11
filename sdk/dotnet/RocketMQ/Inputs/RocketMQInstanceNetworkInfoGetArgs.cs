@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
         }
 
         /// <summary>
-        /// instance internet info. See `internet_info` below.
+        /// instance internet info. See `InternetInfo` below.
         /// </summary>
         [Input("internetInfo", required: true)]
         public Input<Inputs.RocketMQInstanceNetworkInfoInternetInfoGetArgs> InternetInfo { get; set; } = null!;
 
         /// <summary>
-        /// Proprietary network information. See `vpc_info` below.
+        /// Proprietary network information. See `VpcInfo` below.
         /// </summary>
         [Input("vpcInfo", required: true)]
         public Input<Inputs.RocketMQInstanceNetworkInfoVpcInfoGetArgs> VpcInfo { get; set; } = null!;

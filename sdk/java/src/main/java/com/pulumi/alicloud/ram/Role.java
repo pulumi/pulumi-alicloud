@@ -155,7 +155,7 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+     * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
@@ -166,7 +166,7 @@ public class Role extends com.pulumi.resources.CustomResource {
     private Output<String> document;
 
     /**
-     * @return Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+     * @return Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
      */
     public Output<String> document() {
@@ -201,7 +201,7 @@ public class Role extends com.pulumi.resources.CustomResource {
         return this.maxSessionDuration;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+     * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
@@ -212,14 +212,14 @@ public class Role extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+     * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
      * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
@@ -230,7 +230,7 @@ public class Role extends com.pulumi.resources.CustomResource {
     private Output<List<String>> ramUsers;
 
     /**
-     * @return Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+     * @return Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      */
     public Output<List<String>> ramUsers() {

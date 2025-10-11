@@ -111,14 +111,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      * 
      */
     @Import(name="billingType")
     private @Nullable Output<String> billingType;
 
     /**
-     * @return The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+     * @return The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> billingType() {
@@ -171,14 +171,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+     * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+     * @return The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      * 
      */
     public Optional<Output<String>> duration() {
@@ -201,14 +201,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     @Import(name="promotionOptionNo")
     private @Nullable Output<String> promotionOptionNo;
 
     /**
-     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * @return The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     public Optional<Output<String>> promotionOptionNo() {
@@ -216,14 +216,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      * 
      */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
     /**
-     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      * 
      */
     public Optional<Output<Integer>> ratio() {
@@ -482,7 +482,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
+         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param duration The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+         * @param duration The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param duration The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
+         * @param duration The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
          * 
          * @return builder
          * 
@@ -629,7 +629,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
+         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
          * 
          * @return builder
          * 

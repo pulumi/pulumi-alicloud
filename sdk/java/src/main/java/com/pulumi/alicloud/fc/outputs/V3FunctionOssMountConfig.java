@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionOssMountConfig {
     /**
-     * @return OSS mount point list See `mount_points` below.
+     * @return OSS mount point list See `mountPoints` below.
      * 
      */
     private @Nullable List<V3FunctionOssMountConfigMountPoint> mountPoints;
 
     private V3FunctionOssMountConfig() {}
     /**
-     * @return OSS mount point list See `mount_points` below.
+     * @return OSS mount point list See `mountPoints` below.
      * 
      */
     public List<V3FunctionOssMountConfigMountPoint> mountPoints() {

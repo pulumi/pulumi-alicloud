@@ -19,14 +19,14 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
     public static final NodeGroupIpAllocationPolicyArgs Empty = new NodeGroupIpAllocationPolicyArgs();
 
     /**
-     * Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+     * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
      * 
      */
     @Import(name="bondPolicy")
     private @Nullable Output<NodeGroupIpAllocationPolicyBondPolicyArgs> bondPolicy;
 
     /**
-     * @return Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+     * @return Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
      * 
      */
     public Optional<Output<NodeGroupIpAllocationPolicyBondPolicyArgs>> bondPolicy() {
@@ -34,14 +34,14 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * Model Assignment Policy See `machine_type_policy` below.
+     * Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     @Import(name="machineTypePolicies")
     private @Nullable Output<List<NodeGroupIpAllocationPolicyMachineTypePolicyArgs>> machineTypePolicies;
 
     /**
-     * @return Model Assignment Policy See `machine_type_policy` below.
+     * @return Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     public Optional<Output<List<NodeGroupIpAllocationPolicyMachineTypePolicyArgs>>> machineTypePolicies() {
@@ -49,14 +49,14 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * Node allocation policy See `node_policy` below.
+     * Node allocation policy See `nodePolicy` below.
      * 
      */
     @Import(name="nodePolicies")
     private @Nullable Output<List<NodeGroupIpAllocationPolicyNodePolicyArgs>> nodePolicies;
 
     /**
-     * @return Node allocation policy See `node_policy` below.
+     * @return Node allocation policy See `nodePolicy` below.
      * 
      */
     public Optional<Output<List<NodeGroupIpAllocationPolicyNodePolicyArgs>>> nodePolicies() {
@@ -90,7 +90,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bondPolicy Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+         * @param bondPolicy Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bondPolicy Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+         * @param bondPolicy Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param machineTypePolicies Model Assignment Policy See `machine_type_policy` below.
+         * @param machineTypePolicies Model Assignment Policy See `machineTypePolicy` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param machineTypePolicies Model Assignment Policy See `machine_type_policy` below.
+         * @param machineTypePolicies Model Assignment Policy See `machineTypePolicy` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param machineTypePolicies Model Assignment Policy See `machine_type_policy` below.
+         * @param machineTypePolicies Model Assignment Policy See `machineTypePolicy` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nodePolicies Node allocation policy See `node_policy` below.
+         * @param nodePolicies Node allocation policy See `nodePolicy` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nodePolicies Node allocation policy See `node_policy` below.
+         * @param nodePolicies Node allocation policy See `nodePolicy` below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class NodeGroupIpAllocationPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nodePolicies Node allocation policy See `node_policy` below.
+         * @param nodePolicies Node allocation policy See `nodePolicy` below.
          * 
          * @return builder
          * 

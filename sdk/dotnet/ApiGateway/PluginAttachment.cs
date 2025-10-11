@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public partial class PluginAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The api_id that plugin attaches to.
+        /// The ApiId that plugin attaches to.
         /// </summary>
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class PluginAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The api_id that plugin attaches to.
+        /// The ApiId that plugin attaches to.
         /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class PluginAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The api_id that plugin attaches to.
+        /// The ApiId that plugin attaches to.
         /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }

@@ -127,19 +127,19 @@ namespace Pulumi.AliCloud.Dcdn
         public string? ChangeStartTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
+        /// Specifies whether to display the domains in the checking, check_failed, or ConfigureFailed status. Valid values: `True` or `False`.
         /// </summary>
         [Input("checkDomainShow")]
         public bool? CheckDomainShow { get; set; }
 
         /// <summary>
-        /// The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
+        /// The search method. Default value: `FuzzyMatch`. Valid values: `FuzzyMatch`, `PreMatch`, `SufMatch`, `FullMatch`.
         /// </summary>
         [Input("domainSearchType")]
         public string? DomainSearchType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -204,19 +204,19 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? ChangeStartTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
+        /// Specifies whether to display the domains in the checking, check_failed, or ConfigureFailed status. Valid values: `True` or `False`.
         /// </summary>
         [Input("checkDomainShow")]
         public Input<bool>? CheckDomainShow { get; set; }
 
         /// <summary>
-        /// The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
+        /// The search method. Default value: `FuzzyMatch`. Valid values: `FuzzyMatch`, `PreMatch`, `SufMatch`, `FullMatch`.
         /// </summary>
         [Input("domainSearchType")]
         public Input<string>? DomainSearchType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.AliCloud.Dcdn
         public readonly string? ResourceGroupId;
         public readonly string? SecurityToken;
         /// <summary>
-        /// The status of DCDN Domain. Valid values: `online`, `offline`, `check_failed`, `checking`, `configure_failed`, `configuring`.
+        /// The status of DCDN Domain. Valid values: `Online`, `Offline`, `CheckFailed`, `Checking`, `ConfigureFailed`, `Configuring`.
         /// </summary>
         public readonly string? Status;
 

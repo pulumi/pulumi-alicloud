@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public string? GroupIdRegex { get; set; }
 
         /// <summary>
-        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// Specify the protocol applicable to the created Group ID. Valid values: `Tcp`, `Http`. Default to `Tcp`.
         /// </summary>
         [Input("groupType")]
         public string? GroupType { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? GroupIdRegex { get; set; }
 
         /// <summary>
-        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// Specify the protocol applicable to the created Group ID. Valid values: `Tcp`, `Http`. Default to `Tcp`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }

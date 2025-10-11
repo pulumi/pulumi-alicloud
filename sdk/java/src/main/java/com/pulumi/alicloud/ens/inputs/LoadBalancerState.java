@@ -18,14 +18,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerState Empty = new LoadBalancerState();
 
     /**
-     * The list of backend servers. See `backend_servers` below.
+     * The list of backend servers. See `backendServers` below.
      * 
      */
     @Import(name="backendServers")
     private @Nullable Output<List<LoadBalancerBackendServerArgs>> backendServers;
 
     /**
-     * @return The list of backend servers. See `backend_servers` below.
+     * @return The list of backend servers. See `backendServers` below.
      * 
      */
     public Optional<Output<List<LoadBalancerBackendServerArgs>>> backendServers() {
@@ -185,7 +185,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendServers The list of backend servers. See `backend_servers` below.
+         * @param backendServers The list of backend servers. See `backendServers` below.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendServers The list of backend servers. See `backend_servers` below.
+         * @param backendServers The list of backend servers. See `backendServers` below.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendServers The list of backend servers. See `backend_servers` below.
+         * @param backendServers The list of backend servers. See `backendServers` below.
          * 
          * @return builder
          * 

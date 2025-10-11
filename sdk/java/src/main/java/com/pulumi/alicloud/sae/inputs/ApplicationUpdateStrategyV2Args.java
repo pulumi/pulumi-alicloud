@@ -17,14 +17,14 @@ public final class ApplicationUpdateStrategyV2Args extends com.pulumi.resources.
     public static final ApplicationUpdateStrategyV2Args Empty = new ApplicationUpdateStrategyV2Args();
 
     /**
-     * The phased release policy. See `batch_update` below.
+     * The phased release policy. See `batchUpdate` below.
      * 
      */
     @Import(name="batchUpdate")
     private @Nullable Output<ApplicationUpdateStrategyV2BatchUpdateArgs> batchUpdate;
 
     /**
-     * @return The phased release policy. See `batch_update` below.
+     * @return The phased release policy. See `batchUpdate` below.
      * 
      */
     public Optional<Output<ApplicationUpdateStrategyV2BatchUpdateArgs>> batchUpdate() {
@@ -72,7 +72,7 @@ public final class ApplicationUpdateStrategyV2Args extends com.pulumi.resources.
         }
 
         /**
-         * @param batchUpdate The phased release policy. See `batch_update` below.
+         * @param batchUpdate The phased release policy. See `batchUpdate` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ApplicationUpdateStrategyV2Args extends com.pulumi.resources.
         }
 
         /**
-         * @param batchUpdate The phased release policy. See `batch_update` below.
+         * @param batchUpdate The phased release policy. See `batchUpdate` below.
          * 
          * @return builder
          * 

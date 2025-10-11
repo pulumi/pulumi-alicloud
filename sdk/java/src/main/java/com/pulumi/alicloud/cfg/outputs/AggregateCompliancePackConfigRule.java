@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AggregateCompliancePackConfigRule {
     /**
-     * @return A list of parameter rules. See `config_rule_parameters` below.
+     * @return A list of parameter rules. See `configRuleParameters` below.
      * 
      */
     private @Nullable List<AggregateCompliancePackConfigRuleConfigRuleParameter> configRuleParameters;
@@ -26,7 +26,7 @@ public final class AggregateCompliancePackConfigRule {
 
     private AggregateCompliancePackConfigRule() {}
     /**
-     * @return A list of parameter rules. See `config_rule_parameters` below.
+     * @return A list of parameter rules. See `configRuleParameters` below.
      * 
      */
     public List<AggregateCompliancePackConfigRuleConfigRuleParameter> configRuleParameters() {

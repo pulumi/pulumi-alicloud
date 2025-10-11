@@ -39,8 +39,8 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// }
         /// ```
         /// 
-        /// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
-        /// If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
+        /// In order to fix the diff, from version 1.160.0, this resource has removed the param which `ResourceKey = "IsBase64Encode"` and `value = "false"`.
+        /// If you want to set `ResourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
         /// </summary>
         public readonly string? Value;
 

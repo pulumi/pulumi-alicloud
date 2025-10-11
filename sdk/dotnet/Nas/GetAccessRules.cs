@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of rule IDs, Each element set to `access_rule_id` (Each element formats as `&lt;access_group_name&gt;:&lt;access_rule_id&gt;` before 1.53.0).
+        /// A list of rule IDs, Each element set to `AccessRuleId` (Each element formats as `&lt;access_group_name&gt;:&lt;access_rule_id&gt;` before 1.53.0).
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;

@@ -31,7 +31,7 @@ public final class GetRouteMapsResult {
      */
     private String id;
     /**
-     * @return A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `route_map_id`.
+     * @return A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `routeMapId`.
      * 
      */
     private List<String> ids;
@@ -78,7 +78,7 @@ public final class GetRouteMapsResult {
         return this.id;
     }
     /**
-     * @return A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `route_map_id`.
+     * @return A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `routeMapId`.
      * 
      */
     public List<String> ids() {

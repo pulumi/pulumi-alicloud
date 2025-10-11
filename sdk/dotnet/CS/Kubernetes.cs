@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
     /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
-    /// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+    /// VPC, you can set `NewNatGateway` to "true" to create one automatically.
     /// 
     /// &gt; **NOTE:** Each kubernetes cluster contains 3 master nodes and those number cannot be changed at now.
     /// 
@@ -27,9 +27,9 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
     /// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
     /// 
-    /// &gt; **NOTE:** From version 1.16.0, the provider supports Multiple Availability Zones Kubernetes Cluster. To create a cluster of this kind, you must specify 3 or 5 items in `master_vswitch_ids` and `master_instance_types`.
+    /// &gt; **NOTE:** From version 1.16.0, the provider supports Multiple Availability Zones Kubernetes Cluster. To create a cluster of this kind, you must specify 3 or 5 items in `MasterVswitchIds` and `MasterInstanceTypes`.
     /// 
-    /// &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+    /// &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `False` to `SlbInternetEnabled`.
     /// 
     /// &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
     /// 
@@ -38,13 +38,15 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
     /// 
-    /// &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `cluster_spec`.
+    /// &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `ClusterSpec`.
     /// 
-    /// &gt; **NOTE:** From version 1.177.0+, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id` are deprecated.
+    /// &gt; **NOTE:** From version 1.177.0+, `ExcludeAutoscalerNodes`,`WorkerNumber`,`WorkerVswitchIds`,`WorkerInstanceTypes`,`WorkerInstanceChargeType`,`WorkerPeriod`,`WorkerPeriodUnit`,`WorkerAutoRenew`,`WorkerAutoRenewPeriod`,`WorkerDiskCategory`,`WorkerDiskSize`,`WorkerDataDisks`,`NodePortRange`,`CpuPolicy`,`UserData`,`Taints`,`WorkerDiskPerformanceLevel`,`WorkerDiskSnapshotPolicyId` are deprecated.
     /// We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
     /// 
-    /// &gt; **NOTE:** From version 1.212.0, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`kube_config`,`availability_zone` are removed.
+    /// &gt; **NOTE:** From version 1.212.0, `ExcludeAutoscalerNodes`,`WorkerNumber`,`WorkerVswitchIds`,`WorkerInstanceTypes`,`WorkerInstanceChargeType`,`WorkerPeriod`,`WorkerPeriodUnit`,`WorkerAutoRenew`,`WorkerAutoRenewPeriod`,`WorkerDiskCategory`,`WorkerDiskSize`,`WorkerDataDisks`,`NodePortRange`,`CpuPolicy`,`UserData`,`Taints`,`WorkerDiskPerformanceLevel`,`WorkerDiskSnapshotPolicyId`,`KubeConfig`,`AvailabilityZone` are removed.
     /// Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
+    /// 
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -58,19 +60,19 @@ namespace Pulumi.AliCloud.CS
     public partial class Kubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.KubernetesAddon>> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `ServiceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Output("apiAudiences")]
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.KubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -114,7 +116,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CustomSan { get; private set; } = null!;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         [Output("deleteOptions")]
         public Output<ImmutableArray<Outputs.KubernetesDeleteOption>> DeleteOptions { get; private set; } = null!;
@@ -126,7 +128,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Enable login to the node through SSH. Default to `false`.
+        /// Enable login to the node through SSH. Default to `False`.
         /// </summary>
         [Output("enableSsh")]
         public Output<bool?> EnableSsh { get; private set; } = null!;
@@ -138,7 +140,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. Default to `true`.
+        /// Install cloud monitor agent on ECS. Default to `True`.
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -150,19 +152,19 @@ namespace Pulumi.AliCloud.CS
         public Output<bool> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("keyName")]
         public Output<string?> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a cs kubernetes with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
@@ -186,13 +188,13 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> MasterAutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of master node. Its valid value are `CloudSsd`, `CloudEssd` and `CloudEfficiency`. Default to `CloudEfficiency`.
         /// </summary>
         [Output("masterDiskCategory")]
         public Output<string?> MasterDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Master node system disk performance level. When `MasterDiskCategory` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Output("masterDiskPerformanceLevel")]
         public Output<string?> MasterDiskPerformanceLevel { get; private set; } = null!;
@@ -212,7 +214,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> MasterDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `MasterPeriod`, `MasterPeriodUnit`, `MasterAutoRenew` and `MasterAutoRenewPeriod` are required.
         /// </summary>
         [Output("masterInstanceChargeType")]
         public Output<string?> MasterInstanceChargeType { get; private set; } = null!;
@@ -224,7 +226,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> MasterInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The master nodes. See `master_nodes` below.
+        /// (Optional) The master nodes. See `MasterNodes` below.
         /// </summary>
         [Output("masterNodes")]
         public Output<ImmutableArray<Outputs.KubernetesMasterNode>> MasterNodes { get; private set; } = null!;
@@ -287,7 +289,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -305,7 +307,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PodCidr { get; private set; } = null!;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `PodVswitchIds` is not belong to `WorkerVswitchIds` and `MasterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
@@ -332,7 +334,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.KubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -344,7 +346,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `Iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `ApiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Output("serviceAccountIssuer")]
         public Output<string?> ServiceAccountIssuer { get; private set; } = null!;
@@ -356,7 +358,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`.For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -378,8 +380,8 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
         /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
         /// 
         /// *Master params*
         /// </summary>
@@ -482,7 +484,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.KubernetesAddonArgs> Addons
         {
@@ -494,7 +496,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _apiAudiences;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `ServiceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         public InputList<string> ApiAudiences
         {
@@ -538,7 +540,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesDeleteOptionArgs>? _deleteOptions;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         public InputList<Inputs.KubernetesDeleteOptionArgs> DeleteOptions
         {
@@ -553,7 +555,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Enable login to the node through SSH. Default to `false`.
+        /// Enable login to the node through SSH. Default to `False`.
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
@@ -565,7 +567,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. Default to `true`.
+        /// Install cloud monitor agent on ECS. Default to `True`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -577,13 +579,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -592,7 +594,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a cs kubernetes with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -619,13 +621,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? MasterAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of master node. Its valid value are `CloudSsd`, `CloudEssd` and `CloudEfficiency`. Default to `CloudEfficiency`.
         /// </summary>
         [Input("masterDiskCategory")]
         public Input<string>? MasterDiskCategory { get; set; }
 
         /// <summary>
-        /// Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Master node system disk performance level. When `MasterDiskCategory` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("masterDiskPerformanceLevel")]
         public Input<string>? MasterDiskPerformanceLevel { get; set; }
@@ -645,7 +647,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? MasterDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `MasterPeriod`, `MasterPeriodUnit`, `MasterAutoRenew` and `MasterAutoRenewPeriod` are required.
         /// </summary>
         [Input("masterInstanceChargeType")]
         public Input<string>? MasterInstanceChargeType { get; set; }
@@ -723,7 +725,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -751,7 +753,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `PodVswitchIds` is not belong to `WorkerVswitchIds` and `MasterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -792,7 +794,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.KubernetesRuntimeArgs>? Runtime { get; set; }
@@ -804,7 +806,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `Iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `ApiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Input("serviceAccountIssuer")]
         public Input<string>? ServiceAccountIssuer { get; set; }
@@ -816,7 +818,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`.For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -826,8 +828,8 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
         /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
         /// 
         /// *Master params*
         /// </summary>
@@ -876,7 +878,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.KubernetesAddonGetArgs> Addons
         {
@@ -888,7 +890,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _apiAudiences;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `ServiceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         public InputList<string> ApiAudiences
         {
@@ -897,7 +899,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.KubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -944,7 +946,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesDeleteOptionGetArgs>? _deleteOptions;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         public InputList<Inputs.KubernetesDeleteOptionGetArgs> DeleteOptions
         {
@@ -959,7 +961,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Enable login to the node through SSH. Default to `false`.
+        /// Enable login to the node through SSH. Default to `False`.
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
@@ -971,7 +973,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. Default to `true`.
+        /// Install cloud monitor agent on ECS. Default to `True`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -983,13 +985,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -998,7 +1000,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a cs kubernetes with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1025,13 +1027,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? MasterAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of master node. Its valid value are `CloudSsd`, `CloudEssd` and `CloudEfficiency`. Default to `CloudEfficiency`.
         /// </summary>
         [Input("masterDiskCategory")]
         public Input<string>? MasterDiskCategory { get; set; }
 
         /// <summary>
-        /// Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Master node system disk performance level. When `MasterDiskCategory` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("masterDiskPerformanceLevel")]
         public Input<string>? MasterDiskPerformanceLevel { get; set; }
@@ -1051,7 +1053,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? MasterDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
+        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `MasterPeriod`, `MasterPeriodUnit`, `MasterAutoRenew` and `MasterAutoRenewPeriod` are required.
         /// </summary>
         [Input("masterInstanceChargeType")]
         public Input<string>? MasterInstanceChargeType { get; set; }
@@ -1072,7 +1074,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesMasterNodeGetArgs>? _masterNodes;
 
         /// <summary>
-        /// (Optional) The master nodes. See `master_nodes` below.
+        /// (Optional) The master nodes. See `MasterNodes` below.
         /// </summary>
         public InputList<Inputs.KubernetesMasterNodeGetArgs> MasterNodes
         {
@@ -1147,7 +1149,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -1175,7 +1177,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `PodVswitchIds` is not belong to `WorkerVswitchIds` and `MasterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -1216,7 +1218,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.KubernetesRuntimeGetArgs>? Runtime { get; set; }
@@ -1228,7 +1230,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `Iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `ApiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Input("serviceAccountIssuer")]
         public Input<string>? ServiceAccountIssuer { get; set; }
@@ -1240,7 +1242,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`.For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
         /// *Network params*
         /// </summary>
@@ -1262,8 +1264,8 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
         /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
         /// 
         /// *Master params*
         /// </summary>

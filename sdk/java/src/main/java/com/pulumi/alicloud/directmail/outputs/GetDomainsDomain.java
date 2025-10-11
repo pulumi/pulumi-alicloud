@@ -16,12 +16,12 @@ public final class GetDomainsDomain {
      */
     private String cnameAuthStatus;
     /**
-     * @return Indicates whether the CNAME record is successfully verified. **Note:** `cname_confirm_status` takes effect only if `enable_details` is set to `true`.
+     * @return Indicates whether the CNAME record is successfully verified. **Note:** `cnameConfirmStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String cnameConfirmStatus;
     /**
-     * @return The value of the CNAME record. **Note:** `cname_record` takes effect only if `enable_details` is set to `true`.
+     * @return The value of the CNAME record. **Note:** `cnameRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String cnameRecord;
@@ -31,57 +31,57 @@ public final class GetDomainsDomain {
      */
     private String createTime;
     /**
-     * @return The default domain name. **Note:** `default_domain` takes effect only if `enable_details` is set to `true`.
+     * @return The default domain name. **Note:** `defaultDomain` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String defaultDomain;
     /**
-     * @return (Available since v1.227.1) The DKIM validation flag. **Note:** `dkim_auth_status` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DKIM validation flag. **Note:** `dkimAuthStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dkimAuthStatus;
     /**
-     * @return (Available since v1.227.1) The DKIM public key. **Note:** `dkim_public_key` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DKIM public key. **Note:** `dkimPublicKey` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dkimPublicKey;
     /**
-     * @return (Available since v1.227.1) The DKIM Host Record. **Note:** `dkim_rr` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DKIM Host Record. **Note:** `dkimRr` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dkimRr;
     /**
-     * @return (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarc_auth_status` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarcAuthStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dmarcAuthStatus;
     /**
-     * @return (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarc_host_record` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarcHostRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dmarcHostRecord;
     /**
-     * @return (Available since v1.227.1) The DMARC record. **Note:** `dmarc_record` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC record. **Note:** `dmarcRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dmarcRecord;
     /**
-     * @return (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dns_dmarc` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dnsDmarc` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dnsDmarc;
     /**
-     * @return The MX record value resolved through public DNS. **Note:** `dns_mx` takes effect only if `enable_details` is set to `true`.
+     * @return The MX record value resolved through public DNS. **Note:** `dnsMx` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dnsMx;
     /**
-     * @return The SPF record value resolved through public DNS. **Note:** `dns_spf` takes effect only if `enable_details` is set to `true`.
+     * @return The SPF record value resolved through public DNS. **Note:** `dnsSpf` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dnsSpf;
     /**
-     * @return The TXT record value resolved through public DNS. **Note:** `dns_txt` takes effect only if `enable_details` is set to `true`.
+     * @return The TXT record value resolved through public DNS. **Note:** `dnsTxt` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String dnsTxt;
@@ -101,12 +101,12 @@ public final class GetDomainsDomain {
      */
     private String domainRecord;
     /**
-     * @return The type of the domain. **Note:** `domain_type` takes effect only if `enable_details` is set to `true`.
+     * @return The type of the domain. **Note:** `domainType` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String domainType;
     /**
-     * @return (Available since v1.227.1) The value of the host record. **Note:** `host_record` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The value of the host record. **Note:** `hostRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String hostRecord;
@@ -126,7 +126,7 @@ public final class GetDomainsDomain {
      */
     private String mxAuthStatus;
     /**
-     * @return The MX verification record provided by the Direct Mail console. **Note:** `mx_record` takes effect only if `enable_details` is set to `true`.
+     * @return The MX verification record provided by the Direct Mail console. **Note:** `mxRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String mxRecord;
@@ -136,7 +136,7 @@ public final class GetDomainsDomain {
      */
     private String spfAuthStatus;
     /**
-     * @return The SPF verification record provided by the Direct Mail console. **Note:** `spf_record` takes effect only if `enable_details` is set to `true`.
+     * @return The SPF verification record provided by the Direct Mail console. **Note:** `spfRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String spfRecord;
@@ -146,12 +146,12 @@ public final class GetDomainsDomain {
      */
     private String status;
     /**
-     * @return The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
+     * @return The primary domain name. **Note:** `tlDomainName` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String tlDomainName;
     /**
-     * @return The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
+     * @return The CNAME verification record provided by the Direct Mail console. **Note:** `tracefRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String tracefRecord;
@@ -165,14 +165,14 @@ public final class GetDomainsDomain {
         return this.cnameAuthStatus;
     }
     /**
-     * @return Indicates whether the CNAME record is successfully verified. **Note:** `cname_confirm_status` takes effect only if `enable_details` is set to `true`.
+     * @return Indicates whether the CNAME record is successfully verified. **Note:** `cnameConfirmStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String cnameConfirmStatus() {
         return this.cnameConfirmStatus;
     }
     /**
-     * @return The value of the CNAME record. **Note:** `cname_record` takes effect only if `enable_details` is set to `true`.
+     * @return The value of the CNAME record. **Note:** `cnameRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String cnameRecord() {
@@ -186,77 +186,77 @@ public final class GetDomainsDomain {
         return this.createTime;
     }
     /**
-     * @return The default domain name. **Note:** `default_domain` takes effect only if `enable_details` is set to `true`.
+     * @return The default domain name. **Note:** `defaultDomain` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String defaultDomain() {
         return this.defaultDomain;
     }
     /**
-     * @return (Available since v1.227.1) The DKIM validation flag. **Note:** `dkim_auth_status` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DKIM validation flag. **Note:** `dkimAuthStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dkimAuthStatus() {
         return this.dkimAuthStatus;
     }
     /**
-     * @return (Available since v1.227.1) The DKIM public key. **Note:** `dkim_public_key` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DKIM public key. **Note:** `dkimPublicKey` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dkimPublicKey() {
         return this.dkimPublicKey;
     }
     /**
-     * @return (Available since v1.227.1) The DKIM Host Record. **Note:** `dkim_rr` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DKIM Host Record. **Note:** `dkimRr` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dkimRr() {
         return this.dkimRr;
     }
     /**
-     * @return (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarc_auth_status` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarcAuthStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dmarcAuthStatus() {
         return this.dmarcAuthStatus;
     }
     /**
-     * @return (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarc_host_record` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarcHostRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dmarcHostRecord() {
         return this.dmarcHostRecord;
     }
     /**
-     * @return (Available since v1.227.1) The DMARC record. **Note:** `dmarc_record` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC record. **Note:** `dmarcRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dmarcRecord() {
         return this.dmarcRecord;
     }
     /**
-     * @return (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dns_dmarc` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dnsDmarc` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dnsDmarc() {
         return this.dnsDmarc;
     }
     /**
-     * @return The MX record value resolved through public DNS. **Note:** `dns_mx` takes effect only if `enable_details` is set to `true`.
+     * @return The MX record value resolved through public DNS. **Note:** `dnsMx` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dnsMx() {
         return this.dnsMx;
     }
     /**
-     * @return The SPF record value resolved through public DNS. **Note:** `dns_spf` takes effect only if `enable_details` is set to `true`.
+     * @return The SPF record value resolved through public DNS. **Note:** `dnsSpf` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dnsSpf() {
         return this.dnsSpf;
     }
     /**
-     * @return The TXT record value resolved through public DNS. **Note:** `dns_txt` takes effect only if `enable_details` is set to `true`.
+     * @return The TXT record value resolved through public DNS. **Note:** `dnsTxt` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String dnsTxt() {
@@ -284,14 +284,14 @@ public final class GetDomainsDomain {
         return this.domainRecord;
     }
     /**
-     * @return The type of the domain. **Note:** `domain_type` takes effect only if `enable_details` is set to `true`.
+     * @return The type of the domain. **Note:** `domainType` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String domainType() {
         return this.domainType;
     }
     /**
-     * @return (Available since v1.227.1) The value of the host record. **Note:** `host_record` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.227.1) The value of the host record. **Note:** `hostRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String hostRecord() {
@@ -319,7 +319,7 @@ public final class GetDomainsDomain {
         return this.mxAuthStatus;
     }
     /**
-     * @return The MX verification record provided by the Direct Mail console. **Note:** `mx_record` takes effect only if `enable_details` is set to `true`.
+     * @return The MX verification record provided by the Direct Mail console. **Note:** `mxRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String mxRecord() {
@@ -333,7 +333,7 @@ public final class GetDomainsDomain {
         return this.spfAuthStatus;
     }
     /**
-     * @return The SPF verification record provided by the Direct Mail console. **Note:** `spf_record` takes effect only if `enable_details` is set to `true`.
+     * @return The SPF verification record provided by the Direct Mail console. **Note:** `spfRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String spfRecord() {
@@ -347,14 +347,14 @@ public final class GetDomainsDomain {
         return this.status;
     }
     /**
-     * @return The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
+     * @return The primary domain name. **Note:** `tlDomainName` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String tlDomainName() {
         return this.tlDomainName;
     }
     /**
-     * @return The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
+     * @return The CNAME verification record provided by the Direct Mail console. **Note:** `tracefRecord` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String tracefRecord() {

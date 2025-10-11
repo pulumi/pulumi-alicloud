@@ -187,7 +187,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-     * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
+     * **NOTE:** The `openPermission` should be `true` when `engine = &#34;SQLServer&#34;`
      * 
      */
     @Export(name="openPermission", refs={Boolean.class}, tree="[0]")
@@ -195,7 +195,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-     * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
+     * **NOTE:** The `openPermission` should be `true` when `engine = &#34;SQLServer&#34;`
      * 
      */
     public Output<Boolean> openPermission() {

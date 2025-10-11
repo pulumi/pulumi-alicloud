@@ -19,7 +19,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleCondition {
      */
     private @Nullable String httpErrorCodeReturnedEquals;
     /**
-     * @return This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+     * @return This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
      * 
      */
     private @Nullable List<BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader> includeHeaders;
@@ -43,7 +43,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleCondition {
         return Optional.ofNullable(this.httpErrorCodeReturnedEquals);
     }
     /**
-     * @return This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+     * @return This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
      * 
      */
     public List<BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader> includeHeaders() {

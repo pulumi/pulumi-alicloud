@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Governance
         /// <summary>
         /// List of baseline items.
         /// 
-        /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+        /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `BaselineItems` below.
         /// </summary>
         [Output("baselineItems")]
         public Output<ImmutableArray<Outputs.BaselineBaselineItem>> BaselineItems { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Governance
         /// <summary>
         /// List of baseline items.
         /// 
-        /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+        /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `BaselineItems` below.
         /// </summary>
         public InputList<Inputs.BaselineBaselineItemArgs> BaselineItems
         {
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Governance
         /// <summary>
         /// List of baseline items.
         /// 
-        /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
+        /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `BaselineItems` below.
         /// </summary>
         public InputList<Inputs.BaselineBaselineItemGetArgs> BaselineItems
         {

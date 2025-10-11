@@ -170,14 +170,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      * 
      */
     @Export(name="eipBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> eipBandwidth;
 
     /**
-     * @return The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+     * @return The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      * 
      */
     public Output<Optional<Integer>> eipBandwidth() {
@@ -254,14 +254,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyPairName);
     }
     /**
-     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+     * @return The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      * 
      */
     public Output<String> paymentType() {
@@ -269,8 +269,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The subscription duration. Default value: `1`. Valid values:
-     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
@@ -278,8 +278,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The subscription duration. Default value: `1`. Valid values:
-     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
-     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     public Output<Optional<String>> period() {

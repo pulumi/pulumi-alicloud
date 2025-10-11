@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetResourceGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set it to true can output more details. Default value: `false`.
+        /// Set it to true can output more details. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
+        /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `Status` can be set to `Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetResourceGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set it to true can output more details. Default value: `false`.
+        /// Set it to true can output more details. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
+        /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `Status` can be set to `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Cfg
     public partial class ConfigurationRecorder : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+        /// Whether to use the enterprise version configuration audit. Valid values: `True` and `False`. Default value `False`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         /// </summary>
         [Output("enterpriseEdition")]
         public Output<bool> EnterpriseEdition { get; private set; } = null!;
@@ -70,8 +70,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-        /// * If you use an enterprise account, the `resource_types` does not support updating.
+        /// * If you use an ordinary account, the `ResourceTypes` supports the update operation after the process of creation is completed.
+        /// * If you use an enterprise account, the `ResourceTypes` does not support updating.
         /// </summary>
         [Output("resourceTypes")]
         public Output<ImmutableArray<string>> ResourceTypes { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class ConfigurationRecorderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+        /// Whether to use the enterprise version configuration audit. Valid values: `True` and `False`. Default value `False`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         /// </summary>
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
@@ -139,8 +139,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-        /// * If you use an enterprise account, the `resource_types` does not support updating.
+        /// * If you use an ordinary account, the `ResourceTypes` supports the update operation after the process of creation is completed.
+        /// * If you use an enterprise account, the `ResourceTypes` does not support updating.
         /// </summary>
         public InputList<string> ResourceTypes
         {
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class ConfigurationRecorderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+        /// Whether to use the enterprise version configuration audit. Valid values: `True` and `False`. Default value `False`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         /// </summary>
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
@@ -179,8 +179,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-        /// * If you use an enterprise account, the `resource_types` does not support updating.
+        /// * If you use an ordinary account, the `ResourceTypes` supports the update operation after the process of creation is completed.
+        /// * If you use an enterprise account, the `ResourceTypes` does not support updating.
         /// </summary>
         public InputList<string> ResourceTypes
         {

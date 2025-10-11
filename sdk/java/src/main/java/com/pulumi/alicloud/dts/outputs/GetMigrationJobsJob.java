@@ -87,7 +87,7 @@ public final class GetMigrationJobsJob {
      */
     private String dtsJobName;
     /**
-     * @return The ID of the Migration Job. Its value is same as `dts_job_id`.
+     * @return The ID of the Migration Job. Its value is same as `dtsJobId`.
      * 
      */
     private String id;
@@ -269,7 +269,7 @@ public final class GetMigrationJobsJob {
         return this.dtsJobName;
     }
     /**
-     * @return The ID of the Migration Job. Its value is same as `dts_job_id`.
+     * @return The ID of the Migration Job. Its value is same as `dtsJobId`.
      * 
      */
     public String id() {

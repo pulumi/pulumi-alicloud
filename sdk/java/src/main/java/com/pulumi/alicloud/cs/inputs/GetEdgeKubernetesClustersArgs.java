@@ -18,14 +18,14 @@ public final class GetEdgeKubernetesClustersArgs extends com.pulumi.resources.In
     public static final GetEdgeKubernetesClustersArgs Empty = new GetEdgeKubernetesClustersArgs();
 
     /**
-     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -105,7 +105,7 @@ public final class GetEdgeKubernetesClustersArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GetEdgeKubernetesClustersArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
          * 
          * @return builder
          * 

@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetNacosConfigsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public string? AcceptLanguage { get; set; }
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Mse
         public string? DataId { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetNacosConfigsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? DataId { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.GraphDatabase.Outputs
         /// </summary>
         public readonly string DbInstanceNetworkType;
         /// <summary>
-        /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`.
+        /// Disk storage type. Valid values: `CloudEssd`, `CloudSsd`.
         /// </summary>
         public readonly string DbInstanceStorageType;
         /// <summary>

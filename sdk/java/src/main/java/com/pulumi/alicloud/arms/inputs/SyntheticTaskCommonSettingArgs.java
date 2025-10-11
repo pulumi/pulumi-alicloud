@@ -19,14 +19,14 @@ public final class SyntheticTaskCommonSettingArgs extends com.pulumi.resources.R
     public static final SyntheticTaskCommonSettingArgs Empty = new SyntheticTaskCommonSettingArgs();
 
     /**
-     * Custom host. See `custom_host` below.
+     * Custom host. See `customHost` below.
      * 
      */
     @Import(name="customHost")
     private @Nullable Output<SyntheticTaskCommonSettingCustomHostArgs> customHost;
 
     /**
-     * @return Custom host. See `custom_host` below.
+     * @return Custom host. See `customHost` below.
      * 
      */
     public Optional<Output<SyntheticTaskCommonSettingCustomHostArgs>> customHost() {
@@ -148,7 +148,7 @@ public final class SyntheticTaskCommonSettingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customHost Custom host. See `custom_host` below.
+         * @param customHost Custom host. See `customHost` below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class SyntheticTaskCommonSettingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customHost Custom host. See `custom_host` below.
+         * @param customHost Custom host. See `customHost` below.
          * 
          * @return builder
          * 

@@ -78,14 +78,14 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
     }
 
     /**
-     * Override Configuration See `rewrite_config` below.
+     * Override Configuration See `rewriteConfig` below.
      * 
      */
     @Import(name="rewriteConfig")
     private @Nullable Output<V3CustomDomainRouteConfigRouteRewriteConfigArgs> rewriteConfig;
 
     /**
-     * @return Override Configuration See `rewrite_config` below.
+     * @return Override Configuration See `rewriteConfig` below.
      * 
      */
     public Optional<Output<V3CustomDomainRouteConfigRouteRewriteConfigArgs>> rewriteConfig() {
@@ -215,7 +215,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rewriteConfig Override Configuration See `rewrite_config` below.
+         * @param rewriteConfig Override Configuration See `rewriteConfig` below.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rewriteConfig Override Configuration See `rewrite_config` below.
+         * @param rewriteConfig Override Configuration See `rewriteConfig` below.
          * 
          * @return builder
          * 

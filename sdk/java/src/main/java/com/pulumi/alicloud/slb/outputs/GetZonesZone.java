@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesZone {
     /**
-     * @return ID of the zone. It is same as `master_zone_id`.
+     * @return ID of the zone. It is same as `masterZoneId`.
      * 
      */
     private String id;
@@ -29,13 +29,13 @@ public final class GetZonesZone {
     private String slaveZoneId;
     /**
      * @return (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
-     * It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
+     * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
      * 
      * @deprecated
-     * the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
+     * the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
      * 
      */
-    @Deprecated /* the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead. */
+    @Deprecated /* the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead. */
     private List<String> slbSlaveZoneIds;
     /**
      * @return (Available in 1.154.0+)A list of available resource which the slb master zone supported.
@@ -45,7 +45,7 @@ public final class GetZonesZone {
 
     private GetZonesZone() {}
     /**
-     * @return ID of the zone. It is same as `master_zone_id`.
+     * @return ID of the zone. It is same as `masterZoneId`.
      * 
      */
     public String id() {
@@ -67,13 +67,13 @@ public final class GetZonesZone {
     }
     /**
      * @return (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
-     * It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
+     * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
      * 
      * @deprecated
-     * the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
+     * the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
      * 
      */
-    @Deprecated /* the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead. */
+    @Deprecated /* the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead. */
     public List<String> slbSlaveZoneIds() {
         return this.slbSlaveZoneIds;
     }

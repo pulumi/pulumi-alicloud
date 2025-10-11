@@ -109,14 +109,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+     * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
      * 
      */
     @Import(name="deletionProtectionDescription")
     private @Nullable Output<String> deletionProtectionDescription;
 
     /**
-     * @return The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+     * @return The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
      * 
      */
     public Optional<Output<String>> deletionProtectionDescription() {
@@ -124,24 +124,24 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      * @deprecated
-     * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      */
-    @Deprecated /* Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead. */
+    @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
     @Import(name="deletionWindowInDays")
     private @Nullable Output<Integer> deletionWindowInDays;
 
     /**
-     * @return Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * @return Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      * @deprecated
-     * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      */
-    @Deprecated /* Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead. */
+    @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
     public Optional<Output<Integer>> deletionWindowInDays() {
         return Optional.ofNullable(this.deletionWindowInDays);
     }
@@ -177,36 +177,36 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
-     * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      * 
      * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
      * @deprecated
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      * 
      */
-    @Deprecated /* Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead. */
+    @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * @return Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
-     * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      * 
      * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
      * @deprecated
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      * 
      */
-    @Deprecated /* Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead. */
+    @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
@@ -227,24 +227,24 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      * @deprecated
-     * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead. */
+    @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
     @Import(name="keyState")
     private @Nullable Output<String> keyState;
 
     /**
-     * @return Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * @return Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      * @deprecated
-     * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead. */
+    @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
     public Optional<Output<String>> keyState() {
         return Optional.ofNullable(this.keyState);
     }
@@ -329,14 +329,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      * 
      */
     @Import(name="pendingWindowInDays")
     private @Nullable Output<Integer> pendingWindowInDays;
 
     /**
-     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      * 
      */
     public Optional<Output<Integer>> pendingWindowInDays() {
@@ -389,14 +389,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      * 
      */
     @Import(name="rotationInterval")
     private @Nullable Output<String> rotationInterval;
 
     /**
-     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      * 
      */
     public Optional<Output<String>> rotationInterval() {
@@ -608,7 +608,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionDescription The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+         * @param deletionProtectionDescription The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionDescription The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+         * @param deletionProtectionDescription The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
          * 
          * @return builder
          * 
@@ -629,30 +629,30 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionWindowInDays Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+         * @param deletionWindowInDays Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+         * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
          * 
          */
-        @Deprecated /* Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead. */
+        @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
         public Builder deletionWindowInDays(@Nullable Output<Integer> deletionWindowInDays) {
             $.deletionWindowInDays = deletionWindowInDays;
             return this;
         }
 
         /**
-         * @param deletionWindowInDays Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+         * @param deletionWindowInDays Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+         * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
          * 
          */
-        @Deprecated /* Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead. */
+        @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
         public Builder deletionWindowInDays(Integer deletionWindowInDays) {
             return deletionWindowInDays(Output.of(deletionWindowInDays));
         }
@@ -700,9 +700,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+         * @param isEnabled Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
          * 
-         * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+         * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
          * 
          * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
          * 
@@ -711,19 +711,19 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+         * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
          * 
          */
-        @Deprecated /* Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead. */
+        @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
         /**
-         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+         * @param isEnabled Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
          * 
-         * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+         * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
          * 
          * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
          * 
@@ -732,10 +732,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+         * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
          * 
          */
-        @Deprecated /* Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead. */
+        @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
@@ -762,30 +762,30 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyState Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * @param keyState Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          */
-        @Deprecated /* Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead. */
+        @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
         public Builder keyState(@Nullable Output<String> keyState) {
             $.keyState = keyState;
             return this;
         }
 
         /**
-         * @param keyState Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * @param keyState Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          */
-        @Deprecated /* Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead. */
+        @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
         public Builder keyState(String keyState) {
             return keyState(Output.of(keyState));
         }
@@ -900,7 +900,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
          * 
          * @return builder
          * 
@@ -911,7 +911,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
          * 
          * @return builder
          * 
@@ -984,7 +984,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
          * 
          * @return builder
          * 
@@ -995,7 +995,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
          * 
          * @return builder
          * 

@@ -77,14 +77,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The first name of user. The first_name can be up to `64` characters long.
+     * The first name of user. The firstName can be up to `64` characters long.
      * 
      */
     @Import(name="firstName")
     private @Nullable Output<String> firstName;
 
     /**
-     * @return The first name of user. The first_name can be up to `64` characters long.
+     * @return The first name of user. The firstName can be up to `64` characters long.
      * 
      */
     public Optional<Output<String>> firstName() {
@@ -92,14 +92,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The last name of user. The last_name can be up to `64` characters long.
+     * The last name of user. The lastName can be up to `64` characters long.
      * 
      */
     @Import(name="lastName")
     private @Nullable Output<String> lastName;
 
     /**
-     * @return The last name of user. The last_name can be up to `64` characters long.
+     * @return The last name of user. The lastName can be up to `64` characters long.
      * 
      */
     public Optional<Output<String>> lastName() {
@@ -252,7 +252,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName The first name of user. The first_name can be up to `64` characters long.
+         * @param firstName The first name of user. The firstName can be up to `64` characters long.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName The first name of user. The first_name can be up to `64` characters long.
+         * @param firstName The first name of user. The firstName can be up to `64` characters long.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName The last name of user. The last_name can be up to `64` characters long.
+         * @param lastName The last name of user. The lastName can be up to `64` characters long.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName The last name of user. The last_name can be up to `64` characters long.
+         * @param lastName The last name of user. The lastName can be up to `64` characters long.
          * 
          * @return builder
          * 

@@ -176,14 +176,14 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.permissions);
     }
     /**
-     * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+     * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+     * @return The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      * 
      */
     public Output<String> uid() {

@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sddp/config:Config")
 public class Config extends com.pulumi.resources.CustomResource {
     /**
-     * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+     * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      * 
      */
     @Export(name="code", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> code;
 
     /**
-     * @return Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+     * @return Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      * 
      */
     public Output<Optional<String>> code() {

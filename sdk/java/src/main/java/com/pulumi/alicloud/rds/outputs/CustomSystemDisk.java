@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomSystemDisk {
     /**
-     * @return The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+     * @return The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
      * 
      */
     private @Nullable String category;
@@ -24,7 +24,7 @@ public final class CustomSystemDisk {
 
     private CustomSystemDisk() {}
     /**
-     * @return The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+     * @return The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
      * 
      */
     public Optional<String> category() {

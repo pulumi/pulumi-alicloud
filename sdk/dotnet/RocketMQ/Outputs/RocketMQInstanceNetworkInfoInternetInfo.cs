@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// </summary>
         public readonly string InternetSpec;
         /// <summary>
-        /// Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+        /// Field `IpWhitelist` has been deprecated from provider version 1.245.0. New field `IpWhitelists` instead.
         /// </summary>
         public readonly ImmutableArray<string> IpWhitelists;
 

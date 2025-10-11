@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class ServiceGroupMonitoringAgentProcessMatchExpress
     {
         /// <summary>
-        /// The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+        /// The matching condition. Valid values: `All`, `startWith`, `endWith`, `Contains`, `notContains`, `Equals`.
         /// </summary>
         public readonly string? Function;
         /// <summary>

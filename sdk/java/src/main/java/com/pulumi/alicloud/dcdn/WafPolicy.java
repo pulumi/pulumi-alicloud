@@ -79,14 +79,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dcdn/wafPolicy:WafPolicy")
 public class WafPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      * 
      */
     @Export(name="defenseScene", refs={String.class}, tree="[0]")
     private Output<String> defenseScene;
 
     /**
-     * @return The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+     * @return The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      * 
      */
     public Output<String> defenseScene() {

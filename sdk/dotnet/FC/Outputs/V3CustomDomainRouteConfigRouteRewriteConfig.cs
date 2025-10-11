@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainRouteConfigRouteRewriteConfig
     {
         /// <summary>
-        /// Exact Match Rule List See `equal_rules` below.
+        /// Exact Match Rule List See `EqualRules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule> EqualRules;
         /// <summary>
-        /// Regular match rule list See `regex_rules` below.
+        /// Regular match rule list See `RegexRules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule> RegexRules;
         /// <summary>
-        /// List of wildcard matching rules See `wildcard_rules` below.
+        /// List of wildcard matching rules See `WildcardRules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule> WildcardRules;
 

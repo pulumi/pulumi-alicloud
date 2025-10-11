@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// The name of the certificate.
         /// 
-        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `CertIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `CertIdentifier` is `123-cn-hangzhou`.
         /// </summary>
         [Output("certIdentifier")]
         public Output<string?> CertIdentifier { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `Https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         /// 
         /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
         /// 
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<bool?> OcspEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Protocol type and port number information. See `proxy_types` below.
+        /// Protocol type and port number information. See `ProxyTypes` below.
         /// </summary>
         [Output("proxyTypes")]
         public Output<ImmutableArray<Outputs.DomainResourceProxyType>> ProxyTypes { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// The name of the certificate.
         /// 
-        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `CertIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `CertIdentifier` is `123-cn-hangzhou`.
         /// </summary>
         [Input("certIdentifier")]
         public Input<string>? CertIdentifier { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `Https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         /// 
         /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
         /// 
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.DomainResourceProxyTypeArgs>? _proxyTypes;
 
         /// <summary>
-        /// Protocol type and port number information. See `proxy_types` below.
+        /// Protocol type and port number information. See `ProxyTypes` below.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeArgs> ProxyTypes
         {
@@ -411,7 +411,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// The name of the certificate.
         /// 
-        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `CertIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `CertIdentifier` is `123-cn-hangzhou`.
         /// </summary>
         [Input("certIdentifier")]
         public Input<string>? CertIdentifier { get; set; }
@@ -455,7 +455,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `Https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         /// 
         /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
         /// 
@@ -512,7 +512,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.DomainResourceProxyTypeGetArgs>? _proxyTypes;
 
         /// <summary>
-        /// Protocol type and port number information. See `proxy_types` below.
+        /// Protocol type and port number information. See `ProxyTypes` below.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeGetArgs> ProxyTypes
         {

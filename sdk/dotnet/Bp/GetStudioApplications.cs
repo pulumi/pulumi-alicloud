@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Bp
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Application. Valid values: `success`, `release`.
+        /// The status of the Application. Valid values: `Success`, `Release`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Bp
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Application. Valid values: `success`, `release`.
+        /// The status of the Application. Valid values: `Success`, `Release`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

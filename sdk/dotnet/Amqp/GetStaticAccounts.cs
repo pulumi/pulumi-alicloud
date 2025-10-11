@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Amqp
         private List<string>? _ids;
 
         /// <summary>
-        /// The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
+        /// The `Key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
         /// </summary>
         public List<string> Ids
         {
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Amqp
         private InputList<string>? _ids;
 
         /// <summary>
-        /// The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
+        /// The `Key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
         /// </summary>
         public InputList<string> Ids
         {

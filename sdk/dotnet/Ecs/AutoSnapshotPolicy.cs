@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> CopiedSnapshotsRetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        /// The encryption parameters for cross-region snapshot replication. See `CopyEncryptionConfiguration` below.
         /// </summary>
         [Output("copyEncryptionConfiguration")]
         public Output<Outputs.AutoSnapshotPolicyCopyEncryptionConfiguration?> CopyEncryptionConfiguration { get; private set; } = null!;
@@ -86,13 +86,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableCrossRegionCopy")]
         public Output<bool?> EnableCrossRegionCopy { get; private set; } = null!;
 
         /// <summary>
-        /// . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        /// . Field `Name` has been deprecated from provider version 1.236.0. New field `AutoSnapshotPolicyName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -212,19 +212,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
 
         /// <summary>
-        /// The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        /// The encryption parameters for cross-region snapshot replication. See `CopyEncryptionConfiguration` below.
         /// </summary>
         [Input("copyEncryptionConfiguration")]
         public Input<Inputs.AutoSnapshotPolicyCopyEncryptionConfigurationArgs>? CopyEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
 
         /// <summary>
-        /// . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        /// . Field `Name` has been deprecated from provider version 1.236.0. New field `AutoSnapshotPolicyName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
 
         /// <summary>
-        /// The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        /// The encryption parameters for cross-region snapshot replication. See `CopyEncryptionConfiguration` below.
         /// </summary>
         [Input("copyEncryptionConfiguration")]
         public Input<Inputs.AutoSnapshotPolicyCopyEncryptionConfigurationGetArgs>? CopyEncryptionConfiguration { get; set; }
@@ -330,13 +330,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
 
         /// <summary>
-        /// . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        /// . Field `Name` has been deprecated from provider version 1.236.0. New field `AutoSnapshotPolicyName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

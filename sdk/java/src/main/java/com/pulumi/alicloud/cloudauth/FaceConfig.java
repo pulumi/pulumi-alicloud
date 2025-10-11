@@ -101,14 +101,14 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
         return this.bizName;
     }
     /**
-     * Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+     * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
     @Export(name="bizType", refs={String.class}, tree="[0]")
     private Output<String> bizType;
 
     /**
-     * @return Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+     * @return Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
     public Output<String> bizType() {

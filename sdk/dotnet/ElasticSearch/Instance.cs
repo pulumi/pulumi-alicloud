@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `InstanceChargeType` is `PrePaid` and `RenewStatus` is `AutoRenewal`.
         /// </summary>
         [Output("autoRenewDuration")]
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
@@ -46,13 +46,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> DataNodeAmount { get; private set; } = null!;
 
         /// <summary>
-        /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Output("dataNodeDiskEncrypted")]
         public Output<bool?> DataNodeDiskEncrypted { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `DataNodeDiskType` muse be `CloudEssd`.
         /// </summary>
         [Output("dataNodeDiskPerformanceLevel")]
         public Output<string?> DataNodeDiskPerformanceLevel { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<bool?> EnablePublic { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -130,13 +130,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> KibanaPort { get; private set; } = null!;
 
         /// <summary>
-        /// the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        /// the security group id associated with Kibana private network, this param is required when `EnableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `VswitchId`
         /// </summary>
         [Output("kibanaPrivateSecurityGroupId")]
         public Output<string?> KibanaPrivateSecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `KibanaPrivateSecurityGroupId` instead
         /// </summary>
         [Output("kibanaPrivateWhitelists")]
         public Output<ImmutableArray<string>> KibanaPrivateWhitelists { get; private set; } = null!;
@@ -148,13 +148,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableArray<string>> KibanaWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored, but you have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        /// The duration that you will buy Elasticsearch instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableArray<string>> PublicWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `InstanceChargeType` must be `PrePaid`.
         /// </summary>
         [Output("renewStatus")]
         public Output<string?> RenewStatus { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableDictionary<string, string>> SettingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+        /// The Elasticsearch instance status. Includes `Active`, `Activating`, `Inactive`. Some operations are denied when status is not `Active`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int?> WarmNodeAmount { get; private set; } = null!;
 
         /// <summary>
-        /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Output("warmNodeDiskEncrypted")]
         public Output<bool?> WarmNodeDiskEncrypted { get; private set; } = null!;
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string?> WarmNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `DataNodeAmount` value must be an integral multiple of the `ZoneCount` value.
         /// </summary>
         [Output("zoneCount")]
         public Output<int?> ZoneCount { get; private set; } = null!;
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `InstanceChargeType` is `PrePaid` and `RenewStatus` is `AutoRenewal`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -378,13 +378,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int> DataNodeAmount { get; set; } = null!;
 
         /// <summary>
-        /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Input("dataNodeDiskEncrypted")]
         public Input<bool>? DataNodeDiskEncrypted { get; set; }
 
         /// <summary>
-        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `DataNodeDiskType` muse be `CloudEssd`.
         /// </summary>
         [Input("dataNodeDiskPerformanceLevel")]
         public Input<string>? DataNodeDiskPerformanceLevel { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? KibanaNodeSpec { get; set; }
 
         /// <summary>
-        /// the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        /// the security group id associated with Kibana private network, this param is required when `EnableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `VswitchId`
         /// </summary>
         [Input("kibanaPrivateSecurityGroupId")]
         public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `KibanaPrivateSecurityGroupId` instead
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored, but you have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -483,7 +483,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -520,7 +520,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        /// The duration that you will buy Elasticsearch instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -556,7 +556,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `InstanceChargeType` must be `PrePaid`.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
@@ -616,7 +616,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? WarmNodeAmount { get; set; }
 
         /// <summary>
-        /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Input("warmNodeDiskEncrypted")]
         public Input<bool>? WarmNodeDiskEncrypted { get; set; }
@@ -640,7 +640,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `DataNodeAmount` value must be an integral multiple of the `ZoneCount` value.
         /// </summary>
         [Input("zoneCount")]
         public Input<int>? ZoneCount { get; set; }
@@ -654,7 +654,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `InstanceChargeType` is `PrePaid` and `RenewStatus` is `AutoRenewal`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -678,13 +678,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? DataNodeAmount { get; set; }
 
         /// <summary>
-        /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Input("dataNodeDiskEncrypted")]
         public Input<bool>? DataNodeDiskEncrypted { get; set; }
 
         /// <summary>
-        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `DataNodeDiskType` muse be `CloudEssd`.
         /// </summary>
         [Input("dataNodeDiskPerformanceLevel")]
         public Input<string>? DataNodeDiskPerformanceLevel { get; set; }
@@ -738,7 +738,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -762,7 +762,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? KibanaPort { get; set; }
 
         /// <summary>
-        /// the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        /// the security group id associated with Kibana private network, this param is required when `EnableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `VswitchId`
         /// </summary>
         [Input("kibanaPrivateSecurityGroupId")]
         public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
@@ -771,7 +771,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `KibanaPrivateSecurityGroupId` instead
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -792,7 +792,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored, but you have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -801,7 +801,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -838,7 +838,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        /// The duration that you will buy Elasticsearch instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -892,7 +892,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `InstanceChargeType` must be `PrePaid`.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
@@ -922,7 +922,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+        /// The Elasticsearch instance status. Includes `Active`, `Activating`, `Inactive`. Some operations are denied when status is not `Active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -958,7 +958,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? WarmNodeAmount { get; set; }
 
         /// <summary>
-        /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Input("warmNodeDiskEncrypted")]
         public Input<bool>? WarmNodeDiskEncrypted { get; set; }
@@ -982,7 +982,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `DataNodeAmount` value must be an integral multiple of the `ZoneCount` value.
         /// </summary>
         [Input("zoneCount")]
         public Input<int>? ZoneCount { get; set; }

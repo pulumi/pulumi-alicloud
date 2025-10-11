@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> EndpointSubAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
+        /// The sub address type of the Basic Endpoint. Valid values: `Primary`, `Secondary`.
         /// </summary>
         [Output("endpointSubAddressType")]
         public Output<string?> EndpointSubAddressType { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointSubAddress { get; set; }
 
         /// <summary>
-        /// The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
+        /// The sub address type of the Basic Endpoint. Valid values: `Primary`, `Secondary`.
         /// </summary>
         [Input("endpointSubAddressType")]
         public Input<string>? EndpointSubAddressType { get; set; }
@@ -307,7 +307,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointSubAddress { get; set; }
 
         /// <summary>
-        /// The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
+        /// The sub address type of the Basic Endpoint. Valid values: `Primary`, `Secondary`.
         /// </summary>
         [Input("endpointSubAddressType")]
         public Input<string>? EndpointSubAddressType { get; set; }

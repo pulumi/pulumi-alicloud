@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class SlsGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+        /// The Config of the Sls Group. You can specify up to 25 Config. See `SlsGroupConfig` below.
         /// </summary>
         [Output("slsGroupConfigs")]
         public Output<ImmutableArray<Outputs.SlsGroupSlsGroupConfig>> SlsGroupConfigs { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.SlsGroupSlsGroupConfigArgs>? _slsGroupConfigs;
 
         /// <summary>
-        /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+        /// The Config of the Sls Group. You can specify up to 25 Config. See `SlsGroupConfig` below.
         /// </summary>
         public InputList<Inputs.SlsGroupSlsGroupConfigArgs> SlsGroupConfigs
         {
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.SlsGroupSlsGroupConfigGetArgs>? _slsGroupConfigs;
 
         /// <summary>
-        /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+        /// The Config of the Sls Group. You can specify up to 25 Config. See `SlsGroupConfig` below.
         /// </summary>
         public InputList<Inputs.SlsGroupSlsGroupConfigGetArgs> SlsGroupConfigs
         {

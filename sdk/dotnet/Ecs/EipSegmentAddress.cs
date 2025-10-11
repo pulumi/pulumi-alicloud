@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Isp { get; private set; } = null!;
 
         /// <summary>
-        /// The network type. Set the value to `public`, which specifies the public network type.
+        /// The network type. Set the value to `Public`, which specifies the public network type.
         /// </summary>
         [Output("netmode")]
         public Output<string?> Netmode { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// The network type. Set the value to `public`, which specifies the public network type.
+        /// The network type. Set the value to `Public`, which specifies the public network type.
         /// </summary>
         [Input("netmode")]
         public Input<string>? Netmode { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// The network type. Set the value to `public`, which specifies the public network type.
+        /// The network type. Set the value to `Public`, which specifies the public network type.
         /// </summary>
         [Input("netmode")]
         public Input<string>? Netmode { get; set; }

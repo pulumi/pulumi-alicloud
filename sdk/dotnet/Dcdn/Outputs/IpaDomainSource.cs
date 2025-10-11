@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+        /// The type of the origin server. Valid values: `Ipaddr`, `Domain`, `Oss`.
         /// </summary>
         public readonly string Type;
         /// <summary>

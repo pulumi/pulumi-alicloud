@@ -168,14 +168,14 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ping);
     }
     /**
-     * Probe type, support `host_probe` and `vpc_black_hole_probe`.
+     * Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      * 
      */
     @Export(name="probeType", refs={String.class}, tree="[0]")
     private Output<String> probeType;
 
     /**
-     * @return Probe type, support `host_probe` and `vpc_black_hole_probe`.
+     * @return Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      * 
      */
     public Output<String> probeType() {
@@ -238,28 +238,28 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> uuid;
 
     /**
-     * @return Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * @return Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      * 
      */
     public Output<Optional<String>> uuid() {
         return Codegen.optional(this.uuid);
     }
     /**
-     * The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * @return The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      * 
      */
     public Output<Optional<String>> vpcId() {

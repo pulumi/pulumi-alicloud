@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Output<string> AppGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Billing model. Valid values:`compute_resource` and `qps`.
+        /// Billing model. Valid values:`ComputeResource` and `Qps`.
         /// </summary>
         [Output("chargeWay")]
         public Output<string> ChargeWay { get; private set; } = null!;
@@ -112,13 +112,13 @@ namespace Pulumi.AliCloud.OpenSearch
         public Output<Outputs.AppGroupQuota> Quota { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+        /// The status of the resource. Valid values: `Producing`,`ReviewPending`,`ConfigPending`,`Normal`,`Frozen`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<string> AppGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Billing model. Valid values:`compute_resource` and `qps`.
+        /// Billing model. Valid values:`ComputeResource` and `Qps`.
         /// </summary>
         [Input("chargeWay")]
         public Input<string>? ChargeWay { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<Inputs.AppGroupQuotaArgs> Quota { get; set; } = null!;
 
         /// <summary>
-        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<string>? AppGroupName { get; set; }
 
         /// <summary>
-        /// Billing model. Valid values:`compute_resource` and `qps`.
+        /// Billing model. Valid values:`ComputeResource` and `Qps`.
         /// </summary>
         [Input("chargeWay")]
         public Input<string>? ChargeWay { get; set; }
@@ -298,13 +298,13 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<Inputs.AppGroupQuotaGetArgs>? Quota { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+        /// The status of the resource. Valid values: `Producing`,`ReviewPending`,`ConfigPending`,`Normal`,`Frozen`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

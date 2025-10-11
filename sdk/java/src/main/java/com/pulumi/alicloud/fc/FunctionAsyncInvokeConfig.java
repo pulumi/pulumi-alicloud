@@ -221,14 +221,14 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
         return this.createdTime;
     }
     /**
-     * Configuration block with destination configuration. See `destination_config` below.
+     * Configuration block with destination configuration. See `destinationConfig` below.
      * 
      */
     @Export(name="destinationConfig", refs={FunctionAsyncInvokeConfigDestinationConfig.class}, tree="[0]")
     private Output</* @Nullable */ FunctionAsyncInvokeConfigDestinationConfig> destinationConfig;
 
     /**
-     * @return Configuration block with destination configuration. See `destination_config` below.
+     * @return Configuration block with destination configuration. See `destinationConfig` below.
      * 
      */
     public Output<Optional<FunctionAsyncInvokeConfigDestinationConfig>> destinationConfig() {

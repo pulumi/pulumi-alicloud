@@ -155,32 +155,32 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
         return this.directoryId;
     }
     /**
-     * This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      * 
-     * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
      */
     @Export(name="forceRemovePermissionPolicies", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceRemovePermissionPolicies;
 
     /**
-     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
+     * @return This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      * 
-     * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
      */
     public Output<Optional<Boolean>> forceRemovePermissionPolicies() {
         return Codegen.optional(this.forceRemovePermissionPolicies);
     }
     /**
-     * The Policy List. See `permission_policies` below.
+     * The Policy List. See `permissionPolicies` below.
      * 
      */
     @Export(name="permissionPolicies", refs={List.class,AccessConfigurationPermissionPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessConfigurationPermissionPolicy>> permissionPolicies;
 
     /**
-     * @return The Policy List. See `permission_policies` below.
+     * @return The Policy List. See `permissionPolicies` below.
      * 
      */
     public Output<Optional<List<AccessConfigurationPermissionPolicy>>> permissionPolicies() {

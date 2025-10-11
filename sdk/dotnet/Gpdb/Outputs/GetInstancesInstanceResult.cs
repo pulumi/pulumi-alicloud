@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly int StorageSize;
         /// <summary>
-        /// The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+        /// The type of disks. Valid values: `CloudEssd`, `CloudEfficiency`.
         /// </summary>
         public readonly string StorageType;
         /// <summary>

@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet")
 public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
     /**
-     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      * 
      * @deprecated
      * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0. Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
@@ -92,7 +92,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
     private Output<List<DhcpOptionsSetAssociateVpc>> associateVpcs;
 
     /**
-     * @return Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+     * @return Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      * 
      */
     public Output<List<DhcpOptionsSetAssociateVpc>> associateVpcs() {

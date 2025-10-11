@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OriginPoolOriginAuthConf {
     /**
-     * @return The AccessKey to be passed when AuthType is set to private_cross_account or private.
+     * @return The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     private @Nullable String accessKey;
@@ -27,7 +27,7 @@ public final class OriginPoolOriginAuthConf {
      */
     private @Nullable String region;
     /**
-     * @return The SecretKey to be passed when AuthType is set to private_cross_account or private.
+     * @return The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     private @Nullable String secretKey;
@@ -39,7 +39,7 @@ public final class OriginPoolOriginAuthConf {
 
     private OriginPoolOriginAuthConf() {}
     /**
-     * @return The AccessKey to be passed when AuthType is set to private_cross_account or private.
+     * @return The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     public Optional<String> accessKey() {
@@ -60,7 +60,7 @@ public final class OriginPoolOriginAuthConf {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return The SecretKey to be passed when AuthType is set to private_cross_account or private.
+     * @return The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     public Optional<String> secretKey() {

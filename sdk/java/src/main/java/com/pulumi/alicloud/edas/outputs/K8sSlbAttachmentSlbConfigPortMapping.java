@@ -24,7 +24,7 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
      */
     private String loadbalancerProtocol;
     /**
-     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
+     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
      * 
      */
     private K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort;
@@ -45,7 +45,7 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
         return this.loadbalancerProtocol;
     }
     /**
-     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
+     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
      * 
      */
     public K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort() {

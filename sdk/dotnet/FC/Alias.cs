@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute alias' route configuration settings. See `routing_config` below.
+        /// The Function Compute alias' route configuration settings. See `RoutingConfig` below.
         /// </summary>
         [Output("routingConfig")]
         public Output<Outputs.AliasRoutingConfig?> RoutingConfig { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Function Compute alias' route configuration settings. See `routing_config` below.
+        /// The Function Compute alias' route configuration settings. See `RoutingConfig` below.
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.AliasRoutingConfigArgs>? RoutingConfig { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Function Compute alias' route configuration settings. See `routing_config` below.
+        /// The Function Compute alias' route configuration settings. See `RoutingConfig` below.
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.AliasRoutingConfigGetArgs>? RoutingConfig { get; set; }

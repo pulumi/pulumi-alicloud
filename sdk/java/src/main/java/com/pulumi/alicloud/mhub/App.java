@@ -95,14 +95,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.appName;
     }
     /**
-     * The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     @Export(name="bundleId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bundleId;
 
     /**
-     * @return The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     public Output<Optional<String>> bundleId() {
@@ -137,14 +137,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.industryId;
     }
     /**
-     * Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     @Export(name="packageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageName;
 
     /**
-     * @return Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     public Output<Optional<String>> packageName() {

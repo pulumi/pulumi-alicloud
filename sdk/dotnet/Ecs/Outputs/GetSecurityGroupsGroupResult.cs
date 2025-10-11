@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The Id of resource group which the SecurityGroup belongs.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>

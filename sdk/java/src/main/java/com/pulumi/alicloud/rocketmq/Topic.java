@@ -154,7 +154,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
-     * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+     * &gt; **NOTE:** At least one of `topicName` and `topic` should be set.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -165,14 +165,14 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
-     * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+     * &gt; **NOTE:** At least one of `topicName` and `topic` should be set.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Replaced by `topic_name` after version 1.97.0.
+     * Replaced by `topicName` after version 1.97.0.
      * 
      * @deprecated
      * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
@@ -183,7 +183,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
     private Output<String> topic;
 
     /**
-     * @return Replaced by `topic_name` after version 1.97.0.
+     * @return Replaced by `topicName` after version 1.97.0.
      * 
      */
     public Output<String> topic() {

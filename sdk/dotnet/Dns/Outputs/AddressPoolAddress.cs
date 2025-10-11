@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string AttributeInfo;
         /// <summary>
-        /// The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+        /// The weight of the address. **NOTE:** The attribute is valid when the attribute `LbaStrategy` is `RATIO`.
         /// </summary>
         public readonly int? LbaWeight;
         /// <summary>

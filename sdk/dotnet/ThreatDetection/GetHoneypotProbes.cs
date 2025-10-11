@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public readonly string? OutputFile;
         public readonly string? ProbeStatus;
         /// <summary>
-        /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
+        /// Probe type, support `HostProbe` and `VpcBlackHoleProbe`.
         /// </summary>
         public readonly string? ProbeType;
         /// <summary>

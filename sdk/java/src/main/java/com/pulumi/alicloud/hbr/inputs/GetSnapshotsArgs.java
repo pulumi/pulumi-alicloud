@@ -19,14 +19,14 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSnapshotsArgs Empty = new GetSnapshotsArgs();
 
     /**
-     * The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
+     * The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
-     * @return The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
+     * @return The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -34,14 +34,14 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+     * Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      * 
      */
     @Import(name="completeTime")
     private @Nullable Output<String> completeTime;
 
     /**
-     * @return Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+     * @return Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      * 
      */
     public Optional<Output<String>> completeTime() {
@@ -64,14 +64,14 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * @return File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -79,14 +79,14 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
+     * The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      * 
      */
     @Import(name="fileSystemId")
     private @Nullable Output<String> fileSystemId;
 
     /**
-     * @return The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
+     * @return The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      * 
      */
     public Optional<Output<String>> fileSystemId() {
@@ -109,14 +109,14 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+     * The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+     * @return The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -234,7 +234,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param bucket The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
+         * @param bucket The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param bucket The bucket name of OSS. While source_type equals `OSS`, this parameter must be set.
+         * @param bucket The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param completeTime Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+         * @param completeTime Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param completeTime Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `complete_time_checker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
+         * @param completeTime Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param createTime File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+         * @param createTime File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param createTime File system creation timestamp of Nas. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+         * @param createTime File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param fileSystemId The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
+         * @param fileSystemId The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param fileSystemId The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
+         * @param fileSystemId The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+         * @param instanceId The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+         * @param instanceId The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
          * 
          * @return builder
          * 

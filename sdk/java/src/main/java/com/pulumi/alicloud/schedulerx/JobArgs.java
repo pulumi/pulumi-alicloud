@@ -131,14 +131,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Task monitoring information See `job_monitor_info` below.
+     * Task monitoring information See `jobMonitorInfo` below.
      * 
      */
     @Import(name="jobMonitorInfo")
     private @Nullable Output<JobJobMonitorInfoArgs> jobMonitorInfo;
 
     /**
-     * @return Task monitoring information See `job_monitor_info` below.
+     * @return Task monitoring information See `jobMonitorInfo` below.
      * 
      */
     public Optional<Output<JobJobMonitorInfoArgs>> jobMonitorInfo() {
@@ -176,14 +176,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+     * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      * 
      */
     @Import(name="mapTaskXattrs")
     private @Nullable Output<JobMapTaskXattrsArgs> mapTaskXattrs;
 
     /**
-     * @return Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+     * @return Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      * 
      */
     public Optional<Output<JobMapTaskXattrsArgs>> mapTaskXattrs() {
@@ -326,14 +326,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time configuration information See `time_config` below.
+     * Time configuration information See `timeConfig` below.
      * 
      */
     @Import(name="timeConfig", required=true)
     private Output<JobTimeConfigArgs> timeConfig;
 
     /**
-     * @return Time configuration information See `time_config` below.
+     * @return Time configuration information See `timeConfig` below.
      * 
      */
     public Output<JobTimeConfigArgs> timeConfig() {
@@ -568,7 +568,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobMonitorInfo Task monitoring information See `job_monitor_info` below.
+         * @param jobMonitorInfo Task monitoring information See `jobMonitorInfo` below.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobMonitorInfo Task monitoring information See `job_monitor_info` below.
+         * @param jobMonitorInfo Task monitoring information See `jobMonitorInfo` below.
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mapTaskXattrs Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+         * @param mapTaskXattrs Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
          * 
          * @return builder
          * 
@@ -642,7 +642,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mapTaskXattrs Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+         * @param mapTaskXattrs Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
          * 
          * @return builder
          * 
@@ -841,7 +841,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeConfig Time configuration information See `time_config` below.
+         * @param timeConfig Time configuration information See `timeConfig` below.
          * 
          * @return builder
          * 
@@ -852,7 +852,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeConfig Time configuration information See `time_config` below.
+         * @param timeConfig Time configuration information See `timeConfig` below.
          * 
          * @return builder
          * 

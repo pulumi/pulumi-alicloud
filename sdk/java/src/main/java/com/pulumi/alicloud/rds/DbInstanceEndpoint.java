@@ -243,14 +243,14 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
         return this.ipType;
     }
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      * 
      */
     @Export(name="nodeItems", refs={List.class,DbInstanceEndpointNodeItem.class}, tree="[0,1]")
     private Output<List<DbInstanceEndpointNodeItem>> nodeItems;
 
     /**
-     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      * 
      */
     public Output<List<DbInstanceEndpointNodeItem>> nodeItems() {

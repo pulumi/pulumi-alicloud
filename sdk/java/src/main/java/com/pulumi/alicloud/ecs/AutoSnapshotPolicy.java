@@ -112,14 +112,14 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
         return this.copiedSnapshotsRetentionDays;
     }
     /**
-     * The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+     * The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      * 
      */
     @Export(name="copyEncryptionConfiguration", refs={AutoSnapshotPolicyCopyEncryptionConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AutoSnapshotPolicyCopyEncryptionConfiguration> copyEncryptionConfiguration;
 
     /**
-     * @return The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+     * @return The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      * 
      */
     public Output<Optional<AutoSnapshotPolicyCopyEncryptionConfiguration>> copyEncryptionConfiguration() {
@@ -154,18 +154,18 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableCrossRegionCopy);
     }
     /**
-     * . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * @return . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
     public Output<String> name() {

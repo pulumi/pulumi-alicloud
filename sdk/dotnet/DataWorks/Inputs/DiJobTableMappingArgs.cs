@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiJobTableMappingSourceObjectSelectionRuleArgs>? _sourceObjectSelectionRules;
 
         /// <summary>
-        /// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+        /// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `SourceObjectSelectionRules` below.
         /// </summary>
         public InputList<Inputs.DiJobTableMappingSourceObjectSelectionRuleArgs> SourceObjectSelectionRules
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiJobTableMappingTransformationRuleArgs>? _transformationRules;
 
         /// <summary>
-        /// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+        /// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `TransformationRules` below.
         /// </summary>
         public InputList<Inputs.DiJobTableMappingTransformationRuleArgs> TransformationRules
         {

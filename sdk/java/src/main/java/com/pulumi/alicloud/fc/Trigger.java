@@ -825,28 +825,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:fc/trigger:Trigger")
 public class Trigger extends com.pulumi.resources.CustomResource {
     /**
-     * The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * The config of Function Compute trigger.It is valid when `type` is not &#34;mnsTopic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
      */
     @Export(name="config", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> config;
 
     /**
-     * @return The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * @return The config of Function Compute trigger.It is valid when `type` is not &#34;mnsTopic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
      */
     public Output<Optional<String>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
+     * The config of Function Compute trigger when the type is &#34;mnsTopic&#34;.It is conflict with `config`.
      * 
      */
     @Export(name="configMns", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configMns;
 
     /**
-     * @return The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
+     * @return The config of Function Compute trigger when the type is &#34;mnsTopic&#34;.It is conflict with `config`.
      * 
      */
     public Output<Optional<String>> configMns() {
@@ -881,14 +881,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.lastModified;
     }
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * The Function Compute trigger name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * @return The Function Compute trigger name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     public Output<String> name() {
@@ -965,7 +965,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.triggerId;
     }
     /**
-     * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+     * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
      * **NOTE:** type = cdn_events, available in 1.47.0+.
@@ -976,7 +976,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+     * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
      * **NOTE:** type = cdn_events, available in 1.47.0+.

@@ -265,28 +265,28 @@ public class DiAlarmRule extends com.pulumi.resources.CustomResource {
         return this.metricType;
     }
     /**
-     * Alarm notification settings See `notification_settings` below.
+     * Alarm notification settings See `notificationSettings` below.
      * 
      */
     @Export(name="notificationSettings", refs={DiAlarmRuleNotificationSettings.class}, tree="[0]")
     private Output<DiAlarmRuleNotificationSettings> notificationSettings;
 
     /**
-     * @return Alarm notification settings See `notification_settings` below.
+     * @return Alarm notification settings See `notificationSettings` below.
      * 
      */
     public Output<DiAlarmRuleNotificationSettings> notificationSettings() {
         return this.notificationSettings;
     }
     /**
-     * Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+     * Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
      * 
      */
     @Export(name="triggerConditions", refs={List.class,DiAlarmRuleTriggerCondition.class}, tree="[0,1]")
     private Output<List<DiAlarmRuleTriggerCondition>> triggerConditions;
 
     /**
-     * @return Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+     * @return Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
      * 
      */
     public Output<List<DiAlarmRuleTriggerCondition>> triggerConditions() {

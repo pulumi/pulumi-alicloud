@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs>? _vserverAttributes;
 
         /// <summary>
-        /// A list of VServer Group attributes. See `vserver_attributes` below.
+        /// A list of VServer Group attributes. See `VserverAttributes` below.
         /// </summary>
         public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs> VserverAttributes
         {

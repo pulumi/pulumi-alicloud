@@ -48,14 +48,14 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     @Import(name="chapInPassword")
     private @Nullable Output<String> chapInPassword;
 
     /**
-     * @return The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * @return The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     public Optional<Output<String>> chapInPassword() {
@@ -63,14 +63,14 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     @Import(name="chapInUser")
     private @Nullable Output<String> chapInUser;
 
     /**
-     * @return The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+     * @return The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      * 
      */
     public Optional<Output<String>> chapInUser() {
@@ -138,14 +138,14 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+     * Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      * 
      */
     @Import(name="isSourceDeletion")
     private @Nullable Output<Boolean> isSourceDeletion;
 
     /**
-     * @return Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+     * @return Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      * 
      */
     public Optional<Output<Boolean>> isSourceDeletion() {
@@ -153,14 +153,14 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+     * The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      * 
      */
     @Import(name="localPath")
     private @Nullable Output<String> localPath;
 
     /**
-     * @return The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+     * @return The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      * 
      */
     public Optional<Output<String>> localPath() {
@@ -355,7 +355,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param chapInPassword The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+         * @param chapInPassword The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param chapInPassword The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+         * @param chapInPassword The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param chapInUser The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+         * @param chapInUser The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param chapInUser The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+         * @param chapInUser The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param isSourceDeletion Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+         * @param isSourceDeletion Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param isSourceDeletion Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+         * @param isSourceDeletion Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localPath The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+         * @param localPath The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localPath The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+         * @param localPath The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
          * 
          * @return builder
          * 

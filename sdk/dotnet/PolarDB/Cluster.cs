@@ -22,13 +22,13 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `True`, `False`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("allowShutDown")]
         public Output<string?> AllowShutDown { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-        /// &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        /// &gt; **NOTE:** When the value of DbType is not MySQL, the value of CreationOption is neither empty nor Normal, and the value of StorageType is not PSL4, this field will be ignored.
         /// </summary>
         [Output("compressStorage")]
         public Output<string> CompressStorage { get; private set; } = null!;
@@ -73,35 +73,35 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `CreationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `CreationCategory` can be set to `SENormal`.
         /// </summary>
         [Output("creationCategory")]
         public Output<string> CreationCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-        /// * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `CreationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `CreationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+        /// * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `CreationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         /// </summary>
         [Output("creationOption")]
         public Output<string> CreationOption { get; private set; } = null!;
 
         /// <summary>
-        /// db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        /// db_cluster_ip_array defines how users can send requests to your API. See `DbClusterIpArray` below.
         /// </summary>
         [Output("dbClusterIpArrays")]
         public Output<ImmutableArray<Outputs.ClusterDbClusterIpArray>> DbClusterIpArrays { get; private set; } = null!;
 
         /// <summary>
-        /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+        /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `DbType` is MySQL and `DbVersion` is 8.0.
         /// </summary>
         [Output("dbMinorVersion")]
         public Output<string> DbMinorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The db_node_class of cluster node.
+        /// The DbNodeClass of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small`.
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `DbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> DbNodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.216.0) The db_revision_version_list supports the following:
+        /// (Available since v1.216.0) The DbRevisionVersionList supports the following:
         /// </summary>
         [Output("dbRevisionVersionLists")]
         public Output<ImmutableArray<Outputs.ClusterDbRevisionVersionList>> DbRevisionVersionLists { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `Prepaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `Postpaid`.
         /// </summary>
         [Output("deletionLock")]
         public Output<int?> DeletionLock { get; private set; } = null!;
@@ -165,19 +165,19 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
-        /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Output("encryptNewTables")]
         public Output<string?> EncryptNewTables { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        /// The ID of the custom key. `EncryptionKey` cannot be modified after TDE is opened.
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        /// Immediate or scheduled kernel version upgrade. Valid values are `True`, `False`. True means immediate execution, False means scheduled execution.
         /// </summary>
         [Output("fromTimeService")]
         public Output<string?> FromTimeService { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-        /// &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+        /// &gt; **NOTE:** From version 1.249.0, `HotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         /// </summary>
         [Output("hotStandbyCluster")]
         public Output<string> HotStandbyCluster { get; private set; } = null!;
@@ -219,14 +219,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-        /// &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        /// &gt; **NOTE:** This parameter takes effect only if you do not set `CreationOption` to CreateGdnStandby and you set `DbType` to MySQL and `DbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
         /// </summary>
         [Output("looseXengine")]
         public Output<string> LooseXengine { get; private set; } = null!;
 
         /// <summary>
         /// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-        /// &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        /// &gt; **NOTE:** When the parameter `LooseXengine` is ON, `LooseXengineUseMemoryPct` takes effect.
         /// </summary>
         [Output("looseXengineUseMemoryPct")]
         public Output<int> LooseXengineUseMemoryPct { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Use as `DbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> ParameterGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ClusterParameter>> Parameters { get; private set; } = null!;
@@ -270,8 +270,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> PayType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -325,7 +325,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-        /// &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+        /// &gt; **NOTE:** From version 1.250.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -349,25 +349,25 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int> ScaleApRoNumMin { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when ServerlessType is `AgileServerless` and 0 PCU to 8 PCUs when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleMax")]
         public Output<int?> ScaleMax { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when ServerlessType is `AgileServerless` and 0 PCU to 8 PCUs when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleMin")]
         public Output<int?> ScaleMin { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when ServerlessType is `AgileServerless` and 0 to 7 when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleRoNumMax")]
         public Output<int?> ScaleRoNumMax { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when ServerlessType is `AgileServerless` and 0 to 7 when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleRoNumMin")]
         public Output<int?> ScaleRoNumMin { get; private set; } = null!;
@@ -386,15 +386,15 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        /// This attribute has been deprecated from v1.130.0 and using `DbClusterIpArray` sub-element `SecurityIps` instead.
+        /// Its value is same as `DbClusterIpArray` sub-element `SecurityIps` value and its DbClusterIpArrayName is "default".
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
         /// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-        /// &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        /// &gt; **NOTE:** `ServerlessRuleCpuEnlargeThreshold` should be at least 30 greater than `ServerlessRuleCpuShrinkThreshold`.
         /// </summary>
         [Output("serverlessRuleCpuEnlargeThreshold")]
         public Output<int> ServerlessRuleCpuEnlargeThreshold { get; private set; } = null!;
@@ -406,14 +406,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int> ServerlessRuleCpuShrinkThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        /// Elasticity sensitivity. Valid values: `Normal` for standard and `Flexible` for sensitive. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("serverlessRuleMode")]
         public Output<string> ServerlessRuleMode { get; private set; } = null!;
 
         /// <summary>
         /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-        /// &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+        /// &gt; **NOTE:** When ServerlessSteadySwitch is `ON` and ServerlessType is `SteadyServerless`, parameters `ScaleMin`, `ScaleMax`, `ScaleRoNumMin` and `ScaleRoNumMax` are all required.
         /// </summary>
         [Output("serverlessSteadySwitch")]
         public Output<string?> ServerlessSteadySwitch { get; private set; } = null!;
@@ -431,8 +431,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> SourceResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-        /// &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        /// The availability zone where the hot standby cluster is stored, takes effect when `HotStandbyCluster` is `ON` or `EQUAL`.
+        /// &gt; **NOTE:** `StandbyAz` is required when `HotStandbyCluster` is `EQUAL`.
         /// </summary>
         [Output("standbyAz")]
         public Output<string> StandbyAz { get; private set; } = null!;
@@ -451,8 +451,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
         /// </summary>
         [Output("storageSpace")]
         public Output<int> StorageSpace { get; private set; } = null!;
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
-        /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
-        /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+        /// &gt; **NOTE:** If VswitchId is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -576,13 +576,13 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `True`, `False`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("allowShutDown")]
         public Input<string>? AllowShutDown { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -608,21 +608,21 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-        /// &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        /// &gt; **NOTE:** When the value of DbType is not MySQL, the value of CreationOption is neither empty nor Normal, and the value of StorageType is not PSL4, this field will be ignored.
         /// </summary>
         [Input("compressStorage")]
         public Input<string>? CompressStorage { get; set; }
 
         /// <summary>
         /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `CreationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `CreationCategory` can be set to `SENormal`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
 
         /// <summary>
-        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-        /// * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `CreationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `CreationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+        /// * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `CreationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         /// </summary>
         [Input("creationOption")]
         public Input<string>? CreationOption { get; set; }
@@ -631,7 +631,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterDbClusterIpArrayArgs>? _dbClusterIpArrays;
 
         /// <summary>
-        /// db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        /// db_cluster_ip_array defines how users can send requests to your API. See `DbClusterIpArray` below.
         /// </summary>
         public InputList<Inputs.ClusterDbClusterIpArrayArgs> DbClusterIpArrays
         {
@@ -640,16 +640,16 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+        /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `DbType` is MySQL and `DbVersion` is 8.0.
         /// </summary>
         [Input("dbMinorVersion")]
         public Input<string>? DbMinorVersion { get; set; }
 
         /// <summary>
-        /// The db_node_class of cluster node.
+        /// The DbNodeClass of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small`.
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `DbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
@@ -694,7 +694,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `Prepaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `Postpaid`.
         /// </summary>
         [Input("deletionLock")]
         public Input<int>? DeletionLock { get; set; }
@@ -707,19 +707,19 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
-        /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
 
         /// <summary>
-        /// The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        /// The ID of the custom key. `EncryptionKey` cannot be modified after TDE is opened.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        /// Immediate or scheduled kernel version upgrade. Valid values are `True`, `False`. True means immediate execution, False means scheduled execution.
         /// </summary>
         [Input("fromTimeService")]
         public Input<string>? FromTimeService { get; set; }
@@ -739,7 +739,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-        /// &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+        /// &gt; **NOTE:** From version 1.249.0, `HotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         /// </summary>
         [Input("hotStandbyCluster")]
         public Input<string>? HotStandbyCluster { get; set; }
@@ -761,14 +761,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-        /// &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        /// &gt; **NOTE:** This parameter takes effect only if you do not set `CreationOption` to CreateGdnStandby and you set `DbType` to MySQL and `DbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
         /// </summary>
         [Input("looseXengine")]
         public Input<string>? LooseXengine { get; set; }
 
         /// <summary>
         /// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-        /// &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        /// &gt; **NOTE:** When the parameter `LooseXengine` is ON, `LooseXengineUseMemoryPct` takes effect.
         /// </summary>
         [Input("looseXengineUseMemoryPct")]
         public Input<int>? LooseXengineUseMemoryPct { get; set; }
@@ -787,7 +787,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Use as `DbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -803,7 +803,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ClusterParameterArgs> Parameters
         {
@@ -818,8 +818,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -867,7 +867,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-        /// &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+        /// &gt; **NOTE:** From version 1.250.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -891,25 +891,25 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? ScaleApRoNumMin { get; set; }
 
         /// <summary>
-        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when ServerlessType is `AgileServerless` and 0 PCU to 8 PCUs when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMax")]
         public Input<int>? ScaleMax { get; set; }
 
         /// <summary>
-        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when ServerlessType is `AgileServerless` and 0 PCU to 8 PCUs when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMin")]
         public Input<int>? ScaleMin { get; set; }
 
         /// <summary>
-        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when ServerlessType is `AgileServerless` and 0 to 7 when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMax")]
         public Input<int>? ScaleRoNumMax { get; set; }
 
         /// <summary>
-        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when ServerlessType is `AgileServerless` and 0 to 7 when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMin")]
         public Input<int>? ScaleRoNumMin { get; set; }
@@ -937,8 +937,8 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        /// This attribute has been deprecated from v1.130.0 and using `DbClusterIpArray` sub-element `SecurityIps` instead.
+        /// Its value is same as `DbClusterIpArray` sub-element `SecurityIps` value and its DbClusterIpArrayName is "default".
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -948,7 +948,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-        /// &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        /// &gt; **NOTE:** `ServerlessRuleCpuEnlargeThreshold` should be at least 30 greater than `ServerlessRuleCpuShrinkThreshold`.
         /// </summary>
         [Input("serverlessRuleCpuEnlargeThreshold")]
         public Input<int>? ServerlessRuleCpuEnlargeThreshold { get; set; }
@@ -960,14 +960,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? ServerlessRuleCpuShrinkThreshold { get; set; }
 
         /// <summary>
-        /// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        /// Elasticity sensitivity. Valid values: `Normal` for standard and `Flexible` for sensitive. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("serverlessRuleMode")]
         public Input<string>? ServerlessRuleMode { get; set; }
 
         /// <summary>
         /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-        /// &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+        /// &gt; **NOTE:** When ServerlessSteadySwitch is `ON` and ServerlessType is `SteadyServerless`, parameters `ScaleMin`, `ScaleMax`, `ScaleRoNumMin` and `ScaleRoNumMax` are all required.
         /// </summary>
         [Input("serverlessSteadySwitch")]
         public Input<string>? ServerlessSteadySwitch { get; set; }
@@ -985,8 +985,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
-        /// The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-        /// &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        /// The availability zone where the hot standby cluster is stored, takes effect when `HotStandbyCluster` is `ON` or `EQUAL`.
+        /// &gt; **NOTE:** `StandbyAz` is required when `HotStandbyCluster` is `EQUAL`.
         /// </summary>
         [Input("standbyAz")]
         public Input<string>? StandbyAz { get; set; }
@@ -999,8 +999,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
         /// </summary>
         [Input("storageSpace")]
         public Input<int>? StorageSpace { get; set; }
@@ -1045,7 +1045,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
-        /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -1064,7 +1064,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
-        /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+        /// &gt; **NOTE:** If VswitchId is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -1084,13 +1084,13 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `True`, `False`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("allowShutDown")]
         public Input<string>? AllowShutDown { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -1116,7 +1116,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
-        /// &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        /// &gt; **NOTE:** When the value of DbType is not MySQL, the value of CreationOption is neither empty nor Normal, and the value of StorageType is not PSL4, this field will be ignored.
         /// </summary>
         [Input("compressStorage")]
         public Input<string>? CompressStorage { get; set; }
@@ -1135,14 +1135,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `CreationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `CreationCategory` can be set to `SENormal`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
 
         /// <summary>
-        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
-        /// * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `CreationOption` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `CreationOption` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
+        /// * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `CreationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         /// </summary>
         [Input("creationOption")]
         public Input<string>? CreationOption { get; set; }
@@ -1151,7 +1151,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterDbClusterIpArrayGetArgs>? _dbClusterIpArrays;
 
         /// <summary>
-        /// db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        /// db_cluster_ip_array defines how users can send requests to your API. See `DbClusterIpArray` below.
         /// </summary>
         public InputList<Inputs.ClusterDbClusterIpArrayGetArgs> DbClusterIpArrays
         {
@@ -1160,16 +1160,16 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+        /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `DbType` is MySQL and `DbVersion` is 8.0.
         /// </summary>
         [Input("dbMinorVersion")]
         public Input<string>? DbMinorVersion { get; set; }
 
         /// <summary>
-        /// The db_node_class of cluster node.
+        /// The DbNodeClass of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small`.
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `DbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
@@ -1197,7 +1197,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterDbRevisionVersionListGetArgs>? _dbRevisionVersionLists;
 
         /// <summary>
-        /// (Available since v1.216.0) The db_revision_version_list supports the following:
+        /// (Available since v1.216.0) The DbRevisionVersionList supports the following:
         /// </summary>
         public InputList<Inputs.ClusterDbRevisionVersionListGetArgs> DbRevisionVersionLists
         {
@@ -1226,7 +1226,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `Prepaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `Postpaid`.
         /// </summary>
         [Input("deletionLock")]
         public Input<int>? DeletionLock { get; set; }
@@ -1239,19 +1239,19 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
-        /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
 
         /// <summary>
-        /// The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        /// The ID of the custom key. `EncryptionKey` cannot be modified after TDE is opened.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        /// Immediate or scheduled kernel version upgrade. Valid values are `True`, `False`. True means immediate execution, False means scheduled execution.
         /// </summary>
         [Input("fromTimeService")]
         public Input<string>? FromTimeService { get; set; }
@@ -1271,7 +1271,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
-        /// &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+        /// &gt; **NOTE:** From version 1.249.0, `HotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         /// </summary>
         [Input("hotStandbyCluster")]
         public Input<string>? HotStandbyCluster { get; set; }
@@ -1293,14 +1293,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
-        /// &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        /// &gt; **NOTE:** This parameter takes effect only if you do not set `CreationOption` to CreateGdnStandby and you set `DbType` to MySQL and `DbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
         /// </summary>
         [Input("looseXengine")]
         public Input<string>? LooseXengine { get; set; }
 
         /// <summary>
         /// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
-        /// &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        /// &gt; **NOTE:** When the parameter `LooseXengine` is ON, `LooseXengineUseMemoryPct` takes effect.
         /// </summary>
         [Input("looseXengineUseMemoryPct")]
         public Input<int>? LooseXengineUseMemoryPct { get; set; }
@@ -1319,7 +1319,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Use as `DbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -1335,7 +1335,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ClusterParameterGetArgs> Parameters
         {
@@ -1350,8 +1350,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1405,7 +1405,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
-        /// &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
+        /// &gt; **NOTE:** From version 1.250.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -1429,25 +1429,25 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? ScaleApRoNumMin { get; set; }
 
         /// <summary>
-        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when ServerlessType is `AgileServerless` and 0 PCU to 8 PCUs when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMax")]
         public Input<int>? ScaleMax { get; set; }
 
         /// <summary>
-        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when ServerlessType is `AgileServerless` and 0 PCU to 8 PCUs when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMin")]
         public Input<int>? ScaleMin { get; set; }
 
         /// <summary>
-        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when ServerlessType is `AgileServerless` and 0 to 7 when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMax")]
         public Input<int>? ScaleRoNumMax { get; set; }
 
         /// <summary>
-        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when ServerlessType is `AgileServerless` and 0 to 7 when ServerlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMin")]
         public Input<int>? ScaleRoNumMin { get; set; }
@@ -1475,8 +1475,8 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
-        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        /// This attribute has been deprecated from v1.130.0 and using `DbClusterIpArray` sub-element `SecurityIps` instead.
+        /// Its value is same as `DbClusterIpArray` sub-element `SecurityIps` value and its DbClusterIpArrayName is "default".
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -1486,7 +1486,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
-        /// &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        /// &gt; **NOTE:** `ServerlessRuleCpuEnlargeThreshold` should be at least 30 greater than `ServerlessRuleCpuShrinkThreshold`.
         /// </summary>
         [Input("serverlessRuleCpuEnlargeThreshold")]
         public Input<int>? ServerlessRuleCpuEnlargeThreshold { get; set; }
@@ -1498,14 +1498,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? ServerlessRuleCpuShrinkThreshold { get; set; }
 
         /// <summary>
-        /// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        /// Elasticity sensitivity. Valid values: `Normal` for standard and `Flexible` for sensitive. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("serverlessRuleMode")]
         public Input<string>? ServerlessRuleMode { get; set; }
 
         /// <summary>
         /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
-        /// &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+        /// &gt; **NOTE:** When ServerlessSteadySwitch is `ON` and ServerlessType is `SteadyServerless`, parameters `ScaleMin`, `ScaleMax`, `ScaleRoNumMin` and `ScaleRoNumMax` are all required.
         /// </summary>
         [Input("serverlessSteadySwitch")]
         public Input<string>? ServerlessSteadySwitch { get; set; }
@@ -1523,8 +1523,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
-        /// The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
-        /// &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        /// The availability zone where the hot standby cluster is stored, takes effect when `HotStandbyCluster` is `ON` or `EQUAL`.
+        /// &gt; **NOTE:** `StandbyAz` is required when `HotStandbyCluster` is `EQUAL`.
         /// </summary>
         [Input("standbyAz")]
         public Input<string>? StandbyAz { get; set; }
@@ -1543,8 +1543,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
         /// </summary>
         [Input("storageSpace")]
         public Input<int>? StorageSpace { get; set; }
@@ -1597,7 +1597,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
-        /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -1616,7 +1616,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
-        /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+        /// &gt; **NOTE:** If VswitchId is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

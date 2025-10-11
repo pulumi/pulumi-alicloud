@@ -145,14 +145,14 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
         return this.quotaAlarmName;
     }
     /**
-     * The Quota Dimensions. See `quota_dimensions` below.
+     * The Quota Dimensions. See `quotaDimensions` below.
      * 
      */
     @Export(name="quotaDimensions", refs={List.class,QuotaAlarmQuotaDimension.class}, tree="[0,1]")
     private Output</* @Nullable */ List<QuotaAlarmQuotaDimension>> quotaDimensions;
 
     /**
-     * @return The Quota Dimensions. See `quota_dimensions` below.
+     * @return The Quota Dimensions. See `quotaDimensions` below.
      * 
      */
     public Output<Optional<List<QuotaAlarmQuotaDimension>>> quotaDimensions() {

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerInternetInternet {
     /**
-     * @return The SSL certificate. `https_cert_id` is required when HTTPS is selected
+     * @return The SSL certificate. `httpsCertId` is required when HTTPS is selected
      * 
      */
     private @Nullable String httpsCertId;
@@ -35,7 +35,7 @@ public final class LoadBalancerInternetInternet {
 
     private LoadBalancerInternetInternet() {}
     /**
-     * @return The SSL certificate. `https_cert_id` is required when HTTPS is selected
+     * @return The SSL certificate. `httpsCertId` is required when HTTPS is selected
      * 
      */
     public Optional<String> httpsCertId() {

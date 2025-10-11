@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionCustomDns {
     /**
-     * @return List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+     * @return List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
      * 
      */
     private @Nullable List<V3FunctionCustomDnsDnsOption> dnsOptions;
@@ -30,7 +30,7 @@ public final class V3FunctionCustomDns {
 
     private V3FunctionCustomDns() {}
     /**
-     * @return List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+     * @return List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
      * 
      */
     public List<V3FunctionCustomDnsDnsOption> dnsOptions() {

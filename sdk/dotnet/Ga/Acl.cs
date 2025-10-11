@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ga
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `AclEntries` below. **NOTE:** "Field `AclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
         [Output("aclEntries")]
         public Output<ImmutableArray<Outputs.AclAclEntry>> AclEntries { get; private set; } = null!;
@@ -147,9 +147,9 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `AclEntries` below. **NOTE:** "Field `AclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
-        [Obsolete(@"Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.")]
+        [Obsolete(@"Field `AclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.")]
         public InputList<Inputs.AclAclEntryArgs> AclEntries
         {
             get => _aclEntries ?? (_aclEntries = new InputList<Inputs.AclAclEntryArgs>());
@@ -204,9 +204,9 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `AclEntries` below. **NOTE:** "Field `AclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
-        [Obsolete(@"Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.")]
+        [Obsolete(@"Field `AclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.")]
         public InputList<Inputs.AclAclEntryGetArgs> AclEntries
         {
             get => _aclEntries ?? (_aclEntries = new InputList<Inputs.AclAclEntryGetArgs>());

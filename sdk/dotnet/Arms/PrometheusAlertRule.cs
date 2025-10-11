@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Arms
     public partial class PrometheusAlertRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The annotations of the alert rule. See `annotations` below.
+        /// The annotations of the alert rule. See `Annotations` below.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableArray<Outputs.PrometheusAlertRuleAnnotation>> Annotations { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+        /// The ID of the notification policy. This parameter is required when the `NotifyType` parameter is set to `DISPATCH_RULE`.
         /// </summary>
         [Output("dispatchRuleId")]
         public Output<string?> DispatchRuleId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
-        /// The labels of the resource. See `labels` below.
+        /// The labels of the resource. See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.PrometheusAlertRuleLabel>> Labels { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleAnnotationArgs>? _annotations;
 
         /// <summary>
-        /// The annotations of the alert rule. See `annotations` below.
+        /// The annotations of the alert rule. See `Annotations` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleAnnotationArgs> Annotations
         {
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+        /// The ID of the notification policy. This parameter is required when the `NotifyType` parameter is set to `DISPATCH_RULE`.
         /// </summary>
         [Input("dispatchRuleId")]
         public Input<string>? DispatchRuleId { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleLabelArgs>? _labels;
 
         /// <summary>
-        /// The labels of the resource. See `labels` below.
+        /// The labels of the resource. See `Labels` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleLabelArgs> Labels
         {
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleAnnotationGetArgs>? _annotations;
 
         /// <summary>
-        /// The annotations of the alert rule. See `annotations` below.
+        /// The annotations of the alert rule. See `Annotations` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleAnnotationGetArgs> Annotations
         {
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+        /// The ID of the notification policy. This parameter is required when the `NotifyType` parameter is set to `DISPATCH_RULE`.
         /// </summary>
         [Input("dispatchRuleId")]
         public Input<string>? DispatchRuleId { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleLabelGetArgs>? _labels;
 
         /// <summary>
-        /// The labels of the resource. See `labels` below.
+        /// The labels of the resource. See `Labels` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleLabelGetArgs> Labels
         {

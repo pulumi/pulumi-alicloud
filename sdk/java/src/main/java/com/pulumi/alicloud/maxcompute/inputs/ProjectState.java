@@ -68,14 +68,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP whitelist See `ip_white_list` below.
+     * IP whitelist See `ipWhiteList` below.
      * 
      */
     @Import(name="ipWhiteList")
     private @Nullable Output<ProjectIpWhiteListArgs> ipWhiteList;
 
     /**
-     * @return IP whitelist See `ip_white_list` below.
+     * @return IP whitelist See `ipWhiteList` below.
      * 
      */
     public Optional<Output<ProjectIpWhiteListArgs>> ipWhiteList() {
@@ -169,14 +169,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security-related attributes See `security_properties` below.
+     * Security-related attributes See `securityProperties` below.
      * 
      */
     @Import(name="securityProperties")
     private @Nullable Output<ProjectSecurityPropertiesArgs> securityProperties;
 
     /**
-     * @return Security-related attributes See `security_properties` below.
+     * @return Security-related attributes See `securityProperties` below.
      * 
      */
     public Optional<Output<ProjectSecurityPropertiesArgs>> securityProperties() {
@@ -347,7 +347,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhiteList IP whitelist See `ip_white_list` below.
+         * @param ipWhiteList IP whitelist See `ipWhiteList` below.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhiteList IP whitelist See `ip_white_list` below.
+         * @param ipWhiteList IP whitelist See `ipWhiteList` below.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProperties Security-related attributes See `security_properties` below.
+         * @param securityProperties Security-related attributes See `securityProperties` below.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProperties Security-related attributes See `security_properties` below.
+         * @param securityProperties Security-related attributes See `securityProperties` below.
          * 
          * @return builder
          * 

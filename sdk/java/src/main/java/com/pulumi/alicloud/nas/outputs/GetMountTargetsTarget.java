@@ -21,7 +21,7 @@ public final class GetMountTargetsTarget {
      */
     private String id;
     /**
-     * @return Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+     * @return Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
      */
     private String mountTargetDomain;
@@ -36,7 +36,7 @@ public final class GetMountTargetsTarget {
      */
     private String status;
     /**
-     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
      */
     private String type;
@@ -67,7 +67,7 @@ public final class GetMountTargetsTarget {
         return this.id;
     }
     /**
-     * @return Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+     * @return Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
      */
     public String mountTargetDomain() {
@@ -88,7 +88,7 @@ public final class GetMountTargetsTarget {
         return this.status;
     }
     /**
-     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
      */
     public String type() {

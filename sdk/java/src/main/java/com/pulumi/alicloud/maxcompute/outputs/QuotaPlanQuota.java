@@ -22,7 +22,7 @@ public final class QuotaPlanQuota {
      * @return Secondary Quota list
      * 
      * &gt; **NOTE:** need to list all secondary Quota
-     * See `sub_quota_info_list` below.
+     * See `subQuotaInfoList` below.
      * 
      */
     private @Nullable List<QuotaPlanQuotaSubQuotaInfoList> subQuotaInfoLists;
@@ -39,7 +39,7 @@ public final class QuotaPlanQuota {
      * @return Secondary Quota list
      * 
      * &gt; **NOTE:** need to list all secondary Quota
-     * See `sub_quota_info_list` below.
+     * See `subQuotaInfoList` below.
      * 
      */
     public List<QuotaPlanQuotaSubQuotaInfoList> subQuotaInfoLists() {

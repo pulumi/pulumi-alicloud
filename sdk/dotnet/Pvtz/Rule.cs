@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding target. See `forward_ips` below.
+        /// Forwarding target. See `ForwardIps` below.
         /// </summary>
         [Output("forwardIps")]
         public Output<ImmutableArray<Outputs.RuleForwardIp>> ForwardIps { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleForwardIpArgs>? _forwardIps;
 
         /// <summary>
-        /// Forwarding target. See `forward_ips` below.
+        /// Forwarding target. See `ForwardIps` below.
         /// </summary>
         public InputList<Inputs.RuleForwardIpArgs> ForwardIps
         {
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleForwardIpGetArgs>? _forwardIps;
 
         /// <summary>
-        /// Forwarding target. See `forward_ips` below.
+        /// Forwarding target. See `ForwardIps` below.
         /// </summary>
         public InputList<Inputs.RuleForwardIpGetArgs> ForwardIps
         {

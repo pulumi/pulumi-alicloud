@@ -64,14 +64,14 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+     * The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      * 
      */
     @Import(name="encryptionKey")
     private @Nullable Output<String> encryptionKey;
 
     /**
-     * @return The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+     * @return The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      * 
      */
     public Optional<Output<String>> encryptionKey() {
@@ -140,8 +140,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
 
     /**
      * The specification of segment nodes.
-     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * 
      */
     @Import(name="instanceSpec")
@@ -149,8 +149,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The specification of segment nodes.
-     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * 
      */
     public Optional<Output<String>> instanceSpec() {
@@ -158,16 +158,16 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Import(name="paymentDuration")
     private @Nullable Output<Integer> paymentDuration;
 
     /**
-     * @return The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Optional<Output<Integer>> paymentDuration() {
@@ -175,16 +175,16 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Import(name="paymentDurationUnit")
     private @Nullable Output<String> paymentDurationUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Optional<Output<String>> paymentDurationUnit() {
@@ -252,14 +252,14 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      * 
      */
     @Import(name="segStorageType")
     private @Nullable Output<String> segStorageType;
 
     /**
-     * @return The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * @return The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      * 
      */
     public Optional<Output<String>> segStorageType() {
@@ -449,7 +449,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryptionKey The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+         * @param encryptionKey The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryptionKey The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+         * @param encryptionKey The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
          * 
          * @return builder
          * 
@@ -555,8 +555,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param instanceSpec The specification of segment nodes.
-         * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-         * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+         * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+         * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
          * 
          * @return builder
          * 
@@ -568,8 +568,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param instanceSpec The specification of segment nodes.
-         * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-         * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+         * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+         * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
          * 
          * @return builder
          * 
@@ -579,8 +579,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+         * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -591,8 +591,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+         * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -602,8 +602,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+         * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -614,8 +614,8 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+         * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segStorageType The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+         * @param segStorageType The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segStorageType The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+         * @param segStorageType The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
          * 
          * @return builder
          * 

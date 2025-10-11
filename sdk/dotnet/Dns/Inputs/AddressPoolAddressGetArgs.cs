@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public Input<string> AttributeInfo { get; set; } = null!;
 
         /// <summary>
-        /// The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+        /// The weight of the address. **NOTE:** The attribute is valid when the attribute `LbaStrategy` is `RATIO`.
         /// </summary>
         [Input("lbaWeight")]
         public Input<int>? LbaWeight { get; set; }

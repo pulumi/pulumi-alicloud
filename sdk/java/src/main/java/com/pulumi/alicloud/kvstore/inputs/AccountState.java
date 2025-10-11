@@ -38,14 +38,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+     * @return The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> accountPassword() {
@@ -121,14 +121,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -136,14 +136,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
@@ -225,7 +225,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 

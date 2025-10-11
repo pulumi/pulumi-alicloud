@@ -167,14 +167,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The XForward headers. See `forwarded_for_config` below.
+     * The XForward headers. See `forwardedForConfig` below.
      * 
      */
     @Export(name="forwardedForConfig", refs={ListenerForwardedForConfig.class}, tree="[0]")
     private Output</* @Nullable */ ListenerForwardedForConfig> forwardedForConfig;
 
     /**
-     * @return The XForward headers. See `forwarded_for_config` below.
+     * @return The XForward headers. See `forwardedForConfig` below.
      * 
      */
     public Output<Optional<ListenerForwardedForConfig>> forwardedForConfig() {
@@ -182,7 +182,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      * 
      */
     @Export(name="httpVersion", refs={String.class}, tree="[0]")
@@ -190,7 +190,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      * 
      */
     public Output<String> httpVersion() {
@@ -249,7 +249,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The portRanges of the listener. See `port_ranges` below.
+     * The portRanges of the listener. See `portRanges` below.
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
@@ -257,7 +257,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output<List<ListenerPortRange>> portRanges;
 
     /**
-     * @return The portRanges of the listener. See `port_ranges` below.
+     * @return The portRanges of the listener. See `portRanges` below.
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
@@ -294,7 +294,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      * 
      */
     @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
@@ -302,7 +302,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      * 
      */
     public Output<Integer> requestTimeout() {

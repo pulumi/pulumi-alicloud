@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Entry. The details see Block `entry`.
+        /// The Entry. The details see Block `Entry`.
         /// </summary>
         [Output("entries")]
         public Output<ImmutableArray<Outputs.EcsPrefixListEntry>> Entries { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsPrefixListEntryArgs>? _entries;
 
         /// <summary>
-        /// The Entry. The details see Block `entry`.
+        /// The Entry. The details see Block `Entry`.
         /// </summary>
         public InputList<Inputs.EcsPrefixListEntryArgs> Entries
         {
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsPrefixListEntryGetArgs>? _entries;
 
         /// <summary>
-        /// The Entry. The details see Block `entry`.
+        /// The Entry. The details see Block `Entry`.
         /// </summary>
         public InputList<Inputs.EcsPrefixListEntryGetArgs> Entries
         {

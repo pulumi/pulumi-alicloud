@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class GetZonesZoneResult
     {
         /// <summary>
-        /// ID of the zone. It is same as `master_zone_id`.
+        /// ID of the zone. It is same as `MasterZoneId`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         public readonly string SlaveZoneId;
         /// <summary>
         /// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
-        /// It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
+        /// It has been deprecated from v1.157.0 and use `SlaveZoneId` instead.
         /// </summary>
         public readonly ImmutableArray<string> SlbSlaveZoneIds;
         /// <summary>

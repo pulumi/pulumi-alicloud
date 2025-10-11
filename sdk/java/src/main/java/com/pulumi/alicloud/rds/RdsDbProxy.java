@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+ * &gt; **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
  * 
  * ## Import
  * 
@@ -440,14 +440,14 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
         return this.readOnlyInstanceMaxDelayTime;
     }
     /**
-     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
+     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      * 
      */
     @Export(name="readOnlyInstanceWeights", refs={List.class,RdsDbProxyReadOnlyInstanceWeight.class}, tree="[0,1]")
     private Output<List<RdsDbProxyReadOnlyInstanceWeight>> readOnlyInstanceWeights;
 
     /**
-     * @return A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
+     * @return A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      * 
      */
     public Output<List<RdsDbProxyReadOnlyInstanceWeight>> readOnlyInstanceWeights() {

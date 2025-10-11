@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
     public sealed class ShardingNetworkPublicAddressNetworkAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The remaining duration of the classic network address. Unit: `seconds`.
+        /// The remaining duration of the classic network address. Unit: `Seconds`.
         /// </summary>
         [Input("expiredTime")]
         public Input<string>? ExpiredTime { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }

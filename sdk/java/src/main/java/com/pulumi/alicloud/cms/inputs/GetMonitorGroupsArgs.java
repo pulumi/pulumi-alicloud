@@ -146,14 +146,14 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
+     * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
+     * @return The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -381,7 +381,7 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
+         * @param type The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
+         * @param type The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
          * 
          * @return builder
          * 

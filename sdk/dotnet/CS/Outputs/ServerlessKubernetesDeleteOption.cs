@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ServerlessKubernetesDeleteOption
     {
         /// <summary>
-        /// The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        /// The deletion mode of the cluster. Different resources may have different default behavior, see `ResourceType` for details. Valid values:
         /// </summary>
         public readonly string? DeleteMode;
         /// <summary>

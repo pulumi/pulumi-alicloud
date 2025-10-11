@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         private InputList<Inputs.PolicyRuleRetentionRuleArgs>? _retentionRules;
 
         /// <summary>
-        /// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+        /// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `RetentionRules` below.
         /// </summary>
         public InputList<Inputs.PolicyRuleRetentionRuleArgs> RetentionRules
         {

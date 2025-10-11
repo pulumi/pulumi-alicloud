@@ -160,19 +160,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instant_access` has been deprecated from provider version 1.231.0.
+        /// Field `InstantAccess` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Output("instantAccess")]
         public Output<bool?> InstantAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+        /// Field `InstantAccessRetentionDays` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Output("instantAccessRetentionDays")]
         public Output<int?> InstantAccessRetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.120.0. New field `SnapshotName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -184,13 +184,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+        /// The ID of the resource group. **NOTE:** From version 1.239.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `RetentionDays` can be modified.
         /// </summary>
         [Output("retentionDays")]
         public Output<int?> RetentionDays { get; private set; } = null!;
@@ -284,31 +284,31 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Field `instant_access` has been deprecated from provider version 1.231.0.
+        /// Field `InstantAccess` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccess")]
         public Input<bool>? InstantAccess { get; set; }
 
         /// <summary>
-        /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+        /// Field `InstantAccessRetentionDays` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.120.0. New field `SnapshotName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+        /// The ID of the resource group. **NOTE:** From version 1.239.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `RetentionDays` can be modified.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
@@ -370,19 +370,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Field `instant_access` has been deprecated from provider version 1.231.0.
+        /// Field `InstantAccess` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccess")]
         public Input<bool>? InstantAccess { get; set; }
 
         /// <summary>
-        /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+        /// Field `InstantAccessRetentionDays` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.120.0. New field `SnapshotName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -394,13 +394,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+        /// The ID of the resource group. **NOTE:** From version 1.239.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `RetentionDays` can be modified.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }

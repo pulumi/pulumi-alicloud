@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<int> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Replaced by `instance_name` after version 1.97.0.
+        /// Replaced by `InstanceName` after version 1.97.0.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Replaced by `instance_name` after version 1.97.0.
+        /// Replaced by `InstanceName` after version 1.97.0.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<int>? InstanceType { get; set; }
 
         /// <summary>
-        /// Replaced by `instance_name` after version 1.97.0.
+        /// Replaced by `InstanceName` after version 1.97.0.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

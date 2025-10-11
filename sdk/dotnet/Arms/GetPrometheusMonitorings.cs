@@ -175,13 +175,13 @@ namespace Pulumi.AliCloud.Arms
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the monitoring configuration. Valid values: `run`, `stop`.
+        /// The status of the monitoring configuration. Valid values: `Run`, `Stop`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `Probe`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -225,13 +225,13 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the monitoring configuration. Valid values: `run`, `stop`.
+        /// The status of the monitoring configuration. Valid values: `Run`, `Stop`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `Probe`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

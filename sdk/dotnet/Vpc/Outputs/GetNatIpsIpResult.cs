@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+        /// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `True`: is the default NAT IP ADDRESS. `False`: it is not the default NAT IP ADDRESS.
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>

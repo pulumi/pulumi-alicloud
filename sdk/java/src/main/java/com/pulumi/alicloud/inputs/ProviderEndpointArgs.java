@@ -240,14 +240,14 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brainIndustrial endpoints.
      * 
      */
     @Import(name="brainIndustrial")
     private @Nullable Output<String> brainIndustrial;
 
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brainIndustrial endpoints.
      * 
      */
     public Optional<Output<String>> brainIndustrial() {
@@ -802,14 +802,14 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsEnterprise endpoints.
      * 
      */
     @Import(name="dmsEnterprise")
     private @Nullable Output<String> dmsEnterprise;
 
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsEnterprise endpoints.
      * 
      */
     public Optional<Output<String>> dmsEnterprise() {
@@ -1183,14 +1183,14 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridgeShare endpoints.
      * 
      */
     @Import(name="eventbridge")
     private @Nullable Output<String> eventbridge;
 
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridgeShare endpoints.
      * 
      */
     public Optional<Output<String>> eventbridge() {
@@ -1355,14 +1355,14 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcsSgw endpoints.
      * 
      */
     @Import(name="hcsSgw")
     private @Nullable Output<String> hcsSgw;
 
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcsSgw endpoints.
      * 
      */
     public Optional<Output<String>> hcsSgw() {
@@ -1865,14 +1865,14 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom rKvstore endpoints.
      * 
      */
     @Import(name="rKvstore")
     private @Nullable Output<String> rKvstore;
 
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom rKvstore endpoints.
      * 
      */
     public Optional<Output<String>> rKvstore() {
@@ -2321,14 +2321,14 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom wafOpenapi endpoints.
      * 
      */
     @Import(name="wafOpenapi")
     private @Nullable Output<String> wafOpenapi;
 
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom wafOpenapi endpoints.
      * 
      */
     public Optional<Output<String>> wafOpenapi() {
@@ -2831,7 +2831,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param brainIndustrial Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+         * @param brainIndustrial Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brainIndustrial endpoints.
          * 
          * @return builder
          * 
@@ -2842,7 +2842,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param brainIndustrial Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+         * @param brainIndustrial Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brainIndustrial endpoints.
          * 
          * @return builder
          * 
@@ -3617,7 +3617,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dmsEnterprise Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+         * @param dmsEnterprise Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsEnterprise endpoints.
          * 
          * @return builder
          * 
@@ -3628,7 +3628,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dmsEnterprise Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+         * @param dmsEnterprise Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsEnterprise endpoints.
          * 
          * @return builder
          * 
@@ -4148,7 +4148,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param eventbridge Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+         * @param eventbridge Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridgeShare endpoints.
          * 
          * @return builder
          * 
@@ -4159,7 +4159,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param eventbridge Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+         * @param eventbridge Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridgeShare endpoints.
          * 
          * @return builder
          * 
@@ -4388,7 +4388,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hcsSgw Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+         * @param hcsSgw Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcsSgw endpoints.
          * 
          * @return builder
          * 
@@ -4399,7 +4399,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hcsSgw Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+         * @param hcsSgw Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcsSgw endpoints.
          * 
          * @return builder
          * 
@@ -5102,7 +5102,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rKvstore Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+         * @param rKvstore Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom rKvstore endpoints.
          * 
          * @return builder
          * 
@@ -5113,7 +5113,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rKvstore Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+         * @param rKvstore Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom rKvstore endpoints.
          * 
          * @return builder
          * 
@@ -5738,7 +5738,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param wafOpenapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+         * @param wafOpenapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom wafOpenapi endpoints.
          * 
          * @return builder
          * 
@@ -5749,7 +5749,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param wafOpenapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+         * @param wafOpenapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom wafOpenapi endpoints.
          * 
          * @return builder
          * 

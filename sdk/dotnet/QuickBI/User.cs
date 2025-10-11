@@ -64,13 +64,13 @@ namespace Pulumi.AliCloud.QuickBI
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether it is the administrator. Valid values: `true` and `false`.
+        /// Whether it is the administrator. Valid values: `True` and `False`.
         /// </summary>
         [Output("adminUser")]
         public Output<bool> AdminUser { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this is a permissions administrator. Valid values: `false`, `true`.
+        /// Whether this is a permissions administrator. Valid values: `False`, `True`.
         /// </summary>
         [Output("authAdminUser")]
         public Output<bool> AuthAdminUser { get; private set; } = null!;
@@ -146,13 +146,13 @@ namespace Pulumi.AliCloud.QuickBI
         public Input<string> AccountName { get; set; } = null!;
 
         /// <summary>
-        /// Whether it is the administrator. Valid values: `true` and `false`.
+        /// Whether it is the administrator. Valid values: `True` and `False`.
         /// </summary>
         [Input("adminUser", required: true)]
         public Input<bool> AdminUser { get; set; } = null!;
 
         /// <summary>
-        /// Whether this is a permissions administrator. Valid values: `false`, `true`.
+        /// Whether this is a permissions administrator. Valid values: `False`, `True`.
         /// </summary>
         [Input("authAdminUser", required: true)]
         public Input<bool> AuthAdminUser { get; set; } = null!;
@@ -190,13 +190,13 @@ namespace Pulumi.AliCloud.QuickBI
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Whether it is the administrator. Valid values: `true` and `false`.
+        /// Whether it is the administrator. Valid values: `True` and `False`.
         /// </summary>
         [Input("adminUser")]
         public Input<bool>? AdminUser { get; set; }
 
         /// <summary>
-        /// Whether this is a permissions administrator. Valid values: `false`, `true`.
+        /// Whether this is a permissions administrator. Valid values: `False`, `True`.
         /// </summary>
         [Input("authAdminUser")]
         public Input<bool>? AuthAdminUser { get; set; }

@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.MongoDB
     public partial class AuditPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The status of the audit log. Valid values: `disabled`, `enable`.
+        /// The status of the audit log. Valid values: `Disabled`, `Enable`.
         /// </summary>
         [Output("auditStatus")]
         public Output<string> AuditStatus { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AuditPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the audit log. Valid values: `disabled`, `enable`.
+        /// The status of the audit log. Valid values: `Disabled`, `Enable`.
         /// </summary>
         [Input("auditStatus", required: true)]
         public Input<string> AuditStatus { get; set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AuditPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the audit log. Valid values: `disabled`, `enable`.
+        /// The status of the audit log. Valid values: `Disabled`, `Enable`.
         /// </summary>
         [Input("auditStatus")]
         public Input<string>? AuditStatus { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3FunctionNasConfigMountPointArgs>? _mountPoints;
 
         /// <summary>
-        /// Mount point list See `mount_points` below.
+        /// Mount point list See `MountPoints` below.
         /// </summary>
         public InputList<Inputs.V3FunctionNasConfigMountPointArgs> MountPoints
         {

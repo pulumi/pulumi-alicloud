@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public partial class ControlPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Output("aclAction")]
         public Output<string> AclAction { get; private set; } = null!;
@@ -71,14 +71,14 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationName` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationName` to `ANY`.
         /// </summary>
         [Output("applicationName")]
         public Output<string?> ApplicationName { get; private set; } = null!;
 
         /// <summary>
         /// The application types supported by the access control policy.
-        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         [Output("applicationNameLists")]
         public Output<ImmutableArray<string>> ApplicationNameLists { get; private set; } = null!;
@@ -96,19 +96,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify `DestPort`.
         /// </summary>
         [Output("destPort")]
         public Output<string> DestPort { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        /// The name of the destination port address book in the access control policy. **Note:** If `DestPortType` is set to `Group`, you must specify `DestPortGroup`.
         /// </summary>
         [Output("destPortGroup")]
         public Output<string?> DestPortGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        /// The type of the destination port in the access control policy. Valid values: `Port`, `Group`.
         /// </summary>
         [Output("destPortType")]
         public Output<string> DestPortType { get; private set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy. Valid values: `Net`, `Group`, `Domain`, `Location`.
         /// </summary>
         [Output("destinationType")]
         public Output<string> DestinationType { get; private set; } = null!;
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+        /// &gt; **NOTE:** If `RepeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `StartTime` and `EndTime` must be set.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -166,23 +166,23 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Proto { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the access control policy. Valid values: `true`, `false`.
+        /// The status of the access control policy. Valid values: `True`, `False`.
         /// </summary>
         [Output("release")]
         public Output<string> Release { get; private set; } = null!;
 
         /// <summary>
         /// The days of a week or of a month on which the access control policy takes effect. Valid values:
-        /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-        /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-        /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+        /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// &gt; **NOTE:** If `RepeatType` is set to `Weekly`, or `Monthly`, `RepeatDays` must be set.
         /// </summary>
         [Output("repeatDays")]
         public Output<ImmutableArray<int>> RepeatDays { get; private set; } = null!;
 
         /// <summary>
         /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+        /// &gt; **NOTE:** If `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`, `RepeatStartTime` and `RepeatEndTime` must be set.
         /// </summary>
         [Output("repeatEndTime")]
         public Output<string?> RepeatEndTime { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> SourceIp { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
+        /// The type of the source address in the access control policy. Valid values: `Net`, `Group`, `Location`.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -275,14 +275,14 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class ControlPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction", required: true)]
         public Input<string> AclAction { get; set; } = null!;
 
         /// <summary>
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationName` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationName` to `ANY`.
         /// </summary>
         [Input("applicationName")]
         public Input<string>? ApplicationName { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application types supported by the access control policy.
-        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         public InputList<string> ApplicationNameLists
         {
@@ -307,19 +307,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify `DestPort`.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        /// The name of the destination port address book in the access control policy. **Note:** If `DestPortType` is set to `Group`, you must specify `DestPortGroup`.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
 
         /// <summary>
-        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        /// The type of the destination port in the access control policy. Valid values: `Port`, `Group`.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
@@ -331,13 +331,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
-        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy. Valid values: `Net`, `Group`, `Domain`, `Location`.
         /// </summary>
         [Input("destinationType", required: true)]
         public Input<string> DestinationType { get; set; } = null!;
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+        /// &gt; **NOTE:** If `RepeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `StartTime` and `EndTime` must be set.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Proto { get; set; } = null!;
 
         /// <summary>
-        /// The status of the access control policy. Valid values: `true`, `false`.
+        /// The status of the access control policy. Valid values: `True`, `False`.
         /// </summary>
         [Input("release")]
         public Input<string>? Release { get; set; }
@@ -387,9 +387,9 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The days of a week or of a month on which the access control policy takes effect. Valid values:
-        /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-        /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-        /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+        /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// &gt; **NOTE:** If `RepeatType` is set to `Weekly`, or `Monthly`, `RepeatDays` must be set.
         /// </summary>
         public InputList<int> RepeatDays
         {
@@ -399,7 +399,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+        /// &gt; **NOTE:** If `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`, `RepeatStartTime` and `RepeatEndTime` must be set.
         /// </summary>
         [Input("repeatEndTime")]
         public Input<string>? RepeatEndTime { get; set; }
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? SourceIp { get; set; }
 
         /// <summary>
-        /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
+        /// The type of the source address in the access control policy. Valid values: `Net`, `Group`, `Location`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
@@ -454,7 +454,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class ControlPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction")]
         public Input<string>? AclAction { get; set; }
@@ -467,7 +467,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationName` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationName` to `ANY`.
         /// </summary>
         [Input("applicationName")]
         public Input<string>? ApplicationName { get; set; }
@@ -477,7 +477,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application types supported by the access control policy.
-        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         public InputList<string> ApplicationNameLists
         {
@@ -498,19 +498,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify `DestPort`.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        /// The name of the destination port address book in the access control policy. **Note:** If `DestPortType` is set to `Group`, you must specify `DestPortGroup`.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
 
         /// <summary>
-        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        /// The type of the destination port in the access control policy. Valid values: `Port`, `Group`.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
@@ -522,13 +522,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy. Valid values: `Net`, `Group`, `Domain`, `Location`.
         /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -544,7 +544,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+        /// &gt; **NOTE:** If `RepeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `StartTime` and `EndTime` must be set.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -556,7 +556,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -568,7 +568,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Proto { get; set; }
 
         /// <summary>
-        /// The status of the access control policy. Valid values: `true`, `false`.
+        /// The status of the access control policy. Valid values: `True`, `False`.
         /// </summary>
         [Input("release")]
         public Input<string>? Release { get; set; }
@@ -578,9 +578,9 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The days of a week or of a month on which the access control policy takes effect. Valid values:
-        /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-        /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-        /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+        /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// &gt; **NOTE:** If `RepeatType` is set to `Weekly`, or `Monthly`, `RepeatDays` must be set.
         /// </summary>
         public InputList<int> RepeatDays
         {
@@ -590,7 +590,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+        /// &gt; **NOTE:** If `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`, `RepeatStartTime` and `RepeatEndTime` must be set.
         /// </summary>
         [Input("repeatEndTime")]
         public Input<string>? RepeatEndTime { get; set; }
@@ -625,7 +625,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? SourceIp { get; set; }
 
         /// <summary>
-        /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
+        /// The type of the source address in the access control policy. Valid values: `Net`, `Group`, `Location`.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }

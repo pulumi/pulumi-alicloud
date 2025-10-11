@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Alb
     public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Elegant interrupt configuration. See `connection_drain_config` below.
+        /// Elegant interrupt configuration. See `ConnectionDrainConfig` below.
         /// </summary>
         [Output("connectionDrainConfig")]
         public Output<Outputs.ServerGroupConnectionDrainConfig> ConnectionDrainConfig { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of health checks See `health_check_config` below.
+        /// The configuration of health checks See `HealthCheckConfig` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ServerGroupHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ServerGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// List of servers. See `servers` below.
+        /// List of servers. See `Servers` below.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Slow start configuration. See `slow_start_config` below.
+        /// Slow start configuration. See `SlowStartConfig` below.
         /// </summary>
         [Output("slowStartConfig")]
         public Output<Outputs.ServerGroupSlowStartConfig> SlowStartConfig { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of health checks See `sticky_session_config` below.
+        /// The configuration of health checks See `StickySessionConfig` below.
         /// </summary>
         [Output("stickySessionConfig")]
         public Output<Outputs.ServerGroupStickySessionConfig?> StickySessionConfig { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Url consistency hash parameter configuration See `uch_config` below.
+        /// Url consistency hash parameter configuration See `UchConfig` below.
         /// </summary>
         [Output("uchConfig")]
         public Output<Outputs.ServerGroupUchConfig?> UchConfig { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elegant interrupt configuration. See `connection_drain_config` below.
+        /// Elegant interrupt configuration. See `ConnectionDrainConfig` below.
         /// </summary>
         [Input("connectionDrainConfig")]
         public Input<Inputs.ServerGroupConnectionDrainConfigArgs>? ConnectionDrainConfig { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of health checks See `health_check_config` below.
+        /// The configuration of health checks See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig", required: true)]
         public Input<Inputs.ServerGroupHealthCheckConfigArgs> HealthCheckConfig { get; set; } = null!;
@@ -440,7 +440,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// List of servers. See `servers` below.
+        /// List of servers. See `Servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -455,13 +455,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Slow start configuration. See `slow_start_config` below.
+        /// Slow start configuration. See `SlowStartConfig` below.
         /// </summary>
         [Input("slowStartConfig")]
         public Input<Inputs.ServerGroupSlowStartConfigArgs>? SlowStartConfig { get; set; }
 
         /// <summary>
-        /// The configuration of health checks See `sticky_session_config` below.
+        /// The configuration of health checks See `StickySessionConfig` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigArgs>? StickySessionConfig { get; set; }
@@ -479,7 +479,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Url consistency hash parameter configuration See `uch_config` below.
+        /// Url consistency hash parameter configuration See `UchConfig` below.
         /// </summary>
         [Input("uchConfig")]
         public Input<Inputs.ServerGroupUchConfigArgs>? UchConfig { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elegant interrupt configuration. See `connection_drain_config` below.
+        /// Elegant interrupt configuration. See `ConnectionDrainConfig` below.
         /// </summary>
         [Input("connectionDrainConfig")]
         public Input<Inputs.ServerGroupConnectionDrainConfigGetArgs>? ConnectionDrainConfig { get; set; }
@@ -533,7 +533,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of health checks See `health_check_config` below.
+        /// The configuration of health checks See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
@@ -606,7 +606,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// List of servers. See `servers` below.
+        /// List of servers. See `Servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
@@ -621,7 +621,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Slow start configuration. See `slow_start_config` below.
+        /// Slow start configuration. See `SlowStartConfig` below.
         /// </summary>
         [Input("slowStartConfig")]
         public Input<Inputs.ServerGroupSlowStartConfigGetArgs>? SlowStartConfig { get; set; }
@@ -633,7 +633,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The configuration of health checks See `sticky_session_config` below.
+        /// The configuration of health checks See `StickySessionConfig` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigGetArgs>? StickySessionConfig { get; set; }
@@ -651,7 +651,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Url consistency hash parameter configuration See `uch_config` below.
+        /// Url consistency hash parameter configuration See `UchConfig` below.
         /// </summary>
         [Input("uchConfig")]
         public Input<Inputs.ServerGroupUchConfigGetArgs>? UchConfig { get; set; }

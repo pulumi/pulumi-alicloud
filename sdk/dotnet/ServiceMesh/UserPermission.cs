@@ -16,6 +16,10 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// 
     /// &gt; **NOTE:** Available since v1.174.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
     /// ## Import
     /// 
     /// Service Mesh User Permission can be imported using the id, e.g.
@@ -28,13 +32,13 @@ namespace Pulumi.AliCloud.ServiceMesh
     public partial class UserPermission : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
+        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `Permissions` below.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.UserPermissionPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the Load Balancer. See the following `Block load_balancer`.
+        /// The configuration of the Load Balancer. See the following `Block LoadBalancer`.
         /// </summary>
         [Output("subAccountUserId")]
         public Output<string> SubAccountUserId { get; private set; } = null!;
@@ -89,7 +93,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         private InputList<Inputs.UserPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
+        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `Permissions` below.
         /// </summary>
         public InputList<Inputs.UserPermissionPermissionArgs> Permissions
         {
@@ -98,7 +102,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         }
 
         /// <summary>
-        /// The configuration of the Load Balancer. See the following `Block load_balancer`.
+        /// The configuration of the Load Balancer. See the following `Block LoadBalancer`.
         /// </summary>
         [Input("subAccountUserId", required: true)]
         public Input<string> SubAccountUserId { get; set; } = null!;
@@ -115,7 +119,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         private InputList<Inputs.UserPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
+        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `Permissions` below.
         /// </summary>
         public InputList<Inputs.UserPermissionPermissionGetArgs> Permissions
         {
@@ -124,7 +128,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         }
 
         /// <summary>
-        /// The configuration of the Load Balancer. See the following `Block load_balancer`.
+        /// The configuration of the Load Balancer. See the following `Block LoadBalancer`.
         /// </summary>
         [Input("subAccountUserId")]
         public Input<string>? SubAccountUserId { get; set; }

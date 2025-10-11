@@ -451,7 +451,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsLaunchTemplatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -513,7 +513,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsLaunchTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -595,7 +595,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? TemplateResourceGroupId;
         /// <summary>
         /// The tags of the launch template.
-        /// &gt; **NOTE:** Except for the fields `id`, `launch_template_id`, `launch_template_name`, `default_version_number`, `latest_version_number`, `created_by`, `modified_time`, `resource_group_id`, `template_tags`, all other fields take effect only if `enable_details` is set to `true`.
+        /// &gt; **NOTE:** Except for the fields `Id`, `LaunchTemplateId`, `LaunchTemplateName`, `DefaultVersionNumber`, `LatestVersionNumber`, `CreatedBy`, `ModifiedTime`, `ResourceGroupId`, `TemplateTags`, all other fields take effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? TemplateTags;
         /// <summary>

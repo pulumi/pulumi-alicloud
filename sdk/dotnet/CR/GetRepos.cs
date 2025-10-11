@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetReposArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
+        /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `Tags` in attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetReposInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
+        /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `Tags` in attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of matched Container Registry Repositories. Its element is set to `names`.
+        /// A list of matched Container Registry Repositories. Its element is set to `Names`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;

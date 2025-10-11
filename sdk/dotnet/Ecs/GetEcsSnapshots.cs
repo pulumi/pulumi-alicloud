@@ -418,7 +418,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The category of the snapshot. Valid Values: `flash` and `standard`.
+        /// The category of the snapshot. Valid Values: `Flash` and `Standard`.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotName { get; set; }
 
         /// <summary>
-        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// The type of the snapshot. Valid Values: `Auto`, `User` and `All`. Default to: `All`.
         /// </summary>
         [Input("snapshotType")]
         public string? SnapshotType { get; set; }
@@ -496,7 +496,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SourceDiskType { get; set; }
 
         /// <summary>
-        /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
+        /// The status of the snapshot. Valid Values: `Accomplished`, `Failed`, `Progressing` and `All`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -514,13 +514,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// The type of the snapshot. Valid Values: `Auto`, `User` and `All`. Default to: `All`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+        /// A resource type that has a reference relationship. Valid Values: `Image`, `Disk`, `ImageDisk` and `None`.
         /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
@@ -534,7 +534,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The category of the snapshot. Valid Values: `flash` and `standard`.
+        /// The category of the snapshot. Valid Values: `Flash` and `Standard`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -600,7 +600,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotName { get; set; }
 
         /// <summary>
-        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// The type of the snapshot. Valid Values: `Auto`, `User` and `All`. Default to: `All`.
         /// </summary>
         [Input("snapshotType")]
         public Input<string>? SnapshotType { get; set; }
@@ -612,7 +612,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SourceDiskType { get; set; }
 
         /// <summary>
-        /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
+        /// The status of the snapshot. Valid Values: `Accomplished`, `Failed`, `Progressing` and `All`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -630,13 +630,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// The type of the snapshot. Valid Values: `Auto`, `User` and `All`. Default to: `All`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+        /// A resource type that has a reference relationship. Valid Values: `Image`, `Disk`, `ImageDisk` and `None`.
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }

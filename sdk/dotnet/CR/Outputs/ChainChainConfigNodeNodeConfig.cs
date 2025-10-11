@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CR.Outputs
     public sealed class ChainChainConfigNodeNodeConfig
     {
         /// <summary>
-        /// Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        /// Blocking rules for scanning nodes in delivery chain nodes. See `DenyPolicy` below. **Note:** When `NodeName` is `VULNERABILITY_SCANNING`, the parameters in `DenyPolicy` need to be filled in.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigNodeNodeConfigDenyPolicy> DenyPolicies;
 

@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
     {
         /// <summary>
         /// The value of this parameter is empty by default. The attribute of the whitelist group. 
-        /// If the value contains `hidden`, this white list item will not output.
+        /// If the value contains `Hidden`, this white list item will not output.
         /// </summary>
         public readonly string? IpGroupAttribute;
         /// <summary>

@@ -16,8 +16,8 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs>? _configFileVolumeConfigFileToPaths;
 
         /// <summary>
-        /// The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
-        /// &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
+        /// The paths of the ConfigFile volume. See `ConfigFileVolumeConfigFileToPaths` below.
+        /// &gt; **NOTE:** Every volumes mounted must have `Name` and `Type` attributes.
         /// </summary>
         public InputList<Inputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs> ConfigFileVolumeConfigFileToPaths
         {
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? NfsVolumePath { get; set; }
 
         /// <summary>
-        /// The nfs volume read only. Default value: `false`.
+        /// The nfs volume read only. Default value: `False`.
         /// </summary>
         [Input("nfsVolumeReadOnly")]
         public Input<bool>? NfsVolumeReadOnly { get; set; }

@@ -39,7 +39,7 @@ public final class GetSecurityGroupsGroup {
      */
     private String name;
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The Id of resource group which the securityGroup belongs.
      * 
      */
     private String resourceGroupId;
@@ -129,7 +129,7 @@ public final class GetSecurityGroupsGroup {
         return this.name;
     }
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The Id of resource group which the securityGroup belongs.
      * 
      */
     public String resourceGroupId() {

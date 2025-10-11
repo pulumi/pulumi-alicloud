@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `AccountName` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string AccountName;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ModifyTime;
         /// <summary>
-        /// (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.124.3) The ID of the settlement account. **Note:** `PayerAccountId` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string PayerAccountId;
         /// <summary>

@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
         public Input<double>? SendReceiveRatio { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+        /// Specifies whether to enable the encryption at rest feature. Valid values: `True`, `False`.
         /// </summary>
         [Input("storageEncryption")]
         public Input<bool>? StorageEncryption { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
         public Input<bool>? SupportAutoScaling { get; set; }
 
         /// <summary>
-        /// Whether to enable the message trace function. Valid values: `true`, `false`.
+        /// Whether to enable the message trace function. Valid values: `True`, `False`.
         /// </summary>
         [Input("traceOn")]
         public Input<bool>? TraceOn { get; set; }

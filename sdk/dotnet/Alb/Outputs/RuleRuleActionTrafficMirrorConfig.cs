@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleActionTrafficMirrorConfig
     {
         /// <summary>
-        /// The Traffic is mirrored to the server group. See `mirror_group_config` below.
+        /// The Traffic is mirrored to the server group. See `MirrorGroupConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig? MirrorGroupConfig;
         /// <summary>

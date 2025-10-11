@@ -19,14 +19,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleArgs Empty = new RuleArgs();
 
     /**
-     * The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      * 
      */
     @Import(name="cookie")
     private @Nullable Output<String> cookie;
 
     /**
-     * @return The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * @return The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      * 
      */
     public Optional<Output<String>> cookie() {
@@ -34,14 +34,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+     * Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
      * 
      */
     @Import(name="cookieTimeout")
     private @Nullable Output<Integer> cookieTimeout;
 
     /**
-     * @return Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+     * @return Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
      * 
      */
     public Optional<Output<Integer>> cookieTimeout() {
@@ -100,14 +100,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+     * Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     @Import(name="healthCheck")
     private @Nullable Output<String> healthCheck;
 
     /**
-     * @return Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+     * @return Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     public Optional<Output<String>> healthCheck() {
@@ -130,14 +130,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      * 
      */
     @Import(name="healthCheckDomain")
     private @Nullable Output<String> healthCheckDomain;
 
     /**
-     * @return Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * @return Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      * 
      */
     public Optional<Output<String>> healthCheckDomain() {
@@ -145,14 +145,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+     * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
      * 
      */
     @Import(name="healthCheckHttpCode")
     private @Nullable Output<String> healthCheckHttpCode;
 
     /**
-     * @return Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+     * @return Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
      * 
      */
     public Optional<Output<String>> healthCheckHttpCode() {
@@ -160,14 +160,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+     * Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
      * 
      */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
     /**
-     * @return Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+     * @return Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
      * 
      */
     public Optional<Output<Integer>> healthCheckInterval() {
@@ -175,14 +175,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` &lt; `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      * 
      */
     @Import(name="healthCheckTimeout")
     private @Nullable Output<Integer> healthCheckTimeout;
 
     /**
-     * @return Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * @return Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` &lt; `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      * 
      */
     public Optional<Output<Integer>> healthCheckTimeout() {
@@ -190,14 +190,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     @Import(name="healthCheckUri")
     private @Nullable Output<String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     public Optional<Output<String>> healthCheckUri() {
@@ -205,14 +205,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
     /**
-     * @return Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * @return Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     public Optional<Output<Integer>> healthyThreshold() {
@@ -265,14 +265,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+     * Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+     * @return Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -295,14 +295,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+     * Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     @Import(name="stickySession")
     private @Nullable Output<String> stickySession;
 
     /**
-     * @return Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+     * @return Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     public Optional<Output<String>> stickySession() {
@@ -310,14 +310,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      * 
      */
     @Import(name="stickySessionType")
     private @Nullable Output<String> stickySessionType;
 
     /**
-     * @return Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * @return Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      * 
      */
     public Optional<Output<String>> stickySessionType() {
@@ -325,14 +325,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     @Import(name="unhealthyThreshold")
     private @Nullable Output<Integer> unhealthyThreshold;
 
     /**
-     * @return Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * @return Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     public Optional<Output<Integer>> unhealthyThreshold() {
@@ -400,7 +400,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookie The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+         * @param cookie The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookie The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+         * @param cookie The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookieTimeout Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+         * @param cookieTimeout Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookieTimeout Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+         * @param cookieTimeout Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+         * @param healthCheck Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+         * @param healthCheck Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckDomain Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+         * @param healthCheckDomain Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckDomain Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+         * @param healthCheckDomain Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckHttpCode Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+         * @param healthCheckHttpCode Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckHttpCode Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+         * @param healthCheckHttpCode Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckInterval Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+         * @param healthCheckInterval Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckInterval Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+         * @param healthCheckInterval Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTimeout Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+         * @param healthCheckTimeout Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` &lt; `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTimeout Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+         * @param healthCheckTimeout Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` &lt; `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthyThreshold Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+         * @param healthyThreshold Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthyThreshold Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+         * @param healthyThreshold Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+         * @param scheduler Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+         * @param scheduler Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySession Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+         * @param stickySession Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
          * 
          * @return builder
          * 
@@ -795,7 +795,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySession Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+         * @param stickySession Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionType Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+         * @param stickySessionType Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionType Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+         * @param stickySessionType Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unhealthyThreshold Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+         * @param unhealthyThreshold Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unhealthyThreshold Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+         * @param unhealthyThreshold Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
          * 
          * @return builder
          * 

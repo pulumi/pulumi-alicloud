@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly int CpuSize;
         /// <summary>
-        /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+        /// The engine name, `Singlehbase`, `Hbase`, `Hbaseue`, `Bds`.
         /// </summary>
         public readonly string Engine;
         /// <summary>

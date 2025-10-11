@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Gpdb
         public string? Description { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

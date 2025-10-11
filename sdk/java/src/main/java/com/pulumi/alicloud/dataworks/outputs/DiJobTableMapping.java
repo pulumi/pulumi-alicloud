@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DiJobTableMapping {
     /**
-     * @return Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+     * @return Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
      * 
      */
     private @Nullable List<DiJobTableMappingSourceObjectSelectionRule> sourceObjectSelectionRules;
     /**
-     * @return A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+     * @return A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
      * 
      */
     private @Nullable List<DiJobTableMappingTransformationRule> transformationRules;
 
     private DiJobTableMapping() {}
     /**
-     * @return Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+     * @return Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
      * 
      */
     public List<DiJobTableMappingSourceObjectSelectionRule> sourceObjectSelectionRules() {
         return this.sourceObjectSelectionRules == null ? List.of() : this.sourceObjectSelectionRules;
     }
     /**
-     * @return A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+     * @return A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
      * 
      */
     public List<DiJobTableMappingTransformationRule> transformationRules() {

@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// List of permissions granted. See `account_privileges` below.
+        /// List of permissions granted. See `AccountPrivileges` below.
         /// </summary>
         [Output("accountPrivileges")]
         public Output<ImmutableArray<Outputs.LakeAccountAccountPrivilege>> AccountPrivileges { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Adb
         private InputList<Inputs.LakeAccountAccountPrivilegeArgs>? _accountPrivileges;
 
         /// <summary>
-        /// List of permissions granted. See `account_privileges` below.
+        /// List of permissions granted. See `AccountPrivileges` below.
         /// </summary>
         public InputList<Inputs.LakeAccountAccountPrivilegeArgs> AccountPrivileges
         {
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Adb
         private InputList<Inputs.LakeAccountAccountPrivilegeGetArgs>? _accountPrivileges;
 
         /// <summary>
-        /// List of permissions granted. See `account_privileges` below.
+        /// List of permissions granted. See `AccountPrivileges` below.
         /// </summary>
         public InputList<Inputs.LakeAccountAccountPrivilegeGetArgs> AccountPrivileges
         {

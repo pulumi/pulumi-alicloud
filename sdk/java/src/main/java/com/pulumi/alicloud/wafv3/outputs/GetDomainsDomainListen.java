@@ -39,7 +39,7 @@ public final class GetDomainsDomainListen {
      */
     private Boolean exclusiveIp;
     /**
-     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
+     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
      * 
      */
     private Boolean focusHttps;
@@ -121,7 +121,7 @@ public final class GetDomainsDomainListen {
         return this.exclusiveIp;
     }
     /**
-     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
+     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
      * 
      */
     public Boolean focusHttps() {

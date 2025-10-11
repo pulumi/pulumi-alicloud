@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
  * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
- * VPC, you can set `new_nat_gateway` to &#34;true&#34; to create one automatically.
+ * VPC, you can set `newNatGateway` to &#34;true&#34; to create one automatically.
  * 
  * &gt; **NOTE:** Creating serverless kubernetes cluster need to install several packages and it will cost about 5 minutes. Please be patient.
  * 
@@ -128,14 +128,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/serverlessKubernetes:ServerlessKubernetes")
 public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     @Export(name="addons", refs={List.class,ServerlessKubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerlessKubernetesAddon>> addons;
 
     /**
-     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     public Output<Optional<List<ServerlessKubernetesAddon>>> addons() {
@@ -230,14 +230,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customSan);
     }
     /**
-     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     @Export(name="deleteOptions", refs={List.class,ServerlessKubernetesDeleteOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerlessKubernetesDeleteOption>> deleteOptions;
 
     /**
-     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     public Output<Optional<List<ServerlessKubernetesDeleteOption>>> deleteOptions() {
@@ -290,7 +290,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.endpointPublicAccessEnabled);
     }
     /**
-     * The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -301,7 +301,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> kubeConfig;
 
     /**
-     * @return The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      */
     public Output<Optional<String>> kubeConfig() {
@@ -344,14 +344,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loggingType);
     }
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      * 
      */
     @Export(name="maintenanceWindow", refs={ServerlessKubernetesMaintenanceWindow.class}, tree="[0]")
     private Output<ServerlessKubernetesMaintenanceWindow> maintenanceWindow;
 
     /**
-     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      * 
      */
     public Output<ServerlessKubernetesMaintenanceWindow> maintenanceWindow() {
@@ -392,7 +392,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.newNatGateway);
     }
     /**
-     * The cluster automatic operation policy. See `operation_policy` below.
+     * The cluster automatic operation policy. See `operationPolicy` below.
      * 
      * *Removed params*
      * 
@@ -401,7 +401,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output<ServerlessKubernetesOperationPolicy> operationPolicy;
 
     /**
-     * @return The cluster automatic operation policy. See `operation_policy` below.
+     * @return The cluster automatic operation policy. See `operationPolicy` below.
      * 
      * *Removed params*
      * 
@@ -410,7 +410,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.operationPolicy;
     }
     /**
-     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -421,7 +421,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> privateZone;
 
     /**
-     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      * 
      */
     public Output<Optional<Boolean>> privateZone() {
@@ -504,7 +504,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceDiscoveryTypes);
     }
     /**
-     * If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+     * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      * 
      * @deprecated
      * Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
@@ -515,7 +515,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output<String> slsProjectName;
 
     /**
-     * @return If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+     * @return If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      * 
      */
     public Output<String> slsProjectName() {
@@ -550,14 +550,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.timeZone;
     }
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      * 
      */
     public Output<String> version() {

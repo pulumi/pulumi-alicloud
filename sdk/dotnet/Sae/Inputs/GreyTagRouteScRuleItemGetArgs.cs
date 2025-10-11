@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// The compare types. Valid values: `param`, `cookie`, `header`.
+        /// The compare types. Valid values: `Param`, `Cookie`, `Header`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

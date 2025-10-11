@@ -145,14 +145,14 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cert);
     }
     /**
-     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      * 
      */
     @Export(name="certificateName", refs={String.class}, tree="[0]")
     private Output<String> certificateName;
 
     /**
-     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
+     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      * 
      */
     public Output<String> certificateName() {
@@ -219,7 +219,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
@@ -230,7 +230,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      */
     public Output<String> name() {

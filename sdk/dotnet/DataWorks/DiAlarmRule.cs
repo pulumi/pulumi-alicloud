@@ -241,13 +241,13 @@ namespace Pulumi.AliCloud.DataWorks
         public Output<string> MetricType { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm notification settings See `notification_settings` below.
+        /// Alarm notification settings See `NotificationSettings` below.
         /// </summary>
         [Output("notificationSettings")]
         public Output<Outputs.DiAlarmRuleNotificationSettings> NotificationSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+        /// Alarm trigger condition list, supporting multiple conditions See `TriggerConditions` below.
         /// </summary>
         [Output("triggerConditions")]
         public Output<ImmutableArray<Outputs.DiAlarmRuleTriggerCondition>> TriggerConditions { get; private set; } = null!;
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Input<string> MetricType { get; set; } = null!;
 
         /// <summary>
-        /// Alarm notification settings See `notification_settings` below.
+        /// Alarm notification settings See `NotificationSettings` below.
         /// </summary>
         [Input("notificationSettings", required: true)]
         public Input<Inputs.DiAlarmRuleNotificationSettingsArgs> NotificationSettings { get; set; } = null!;
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiAlarmRuleTriggerConditionArgs>? _triggerConditions;
 
         /// <summary>
-        /// Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+        /// Alarm trigger condition list, supporting multiple conditions See `TriggerConditions` below.
         /// </summary>
         public InputList<Inputs.DiAlarmRuleTriggerConditionArgs> TriggerConditions
         {
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.DataWorks
         public Input<string>? MetricType { get; set; }
 
         /// <summary>
-        /// Alarm notification settings See `notification_settings` below.
+        /// Alarm notification settings See `NotificationSettings` below.
         /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.DiAlarmRuleNotificationSettingsGetArgs>? NotificationSettings { get; set; }
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.DataWorks
         private InputList<Inputs.DiAlarmRuleTriggerConditionGetArgs>? _triggerConditions;
 
         /// <summary>
-        /// Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+        /// Alarm trigger condition list, supporting multiple conditions See `TriggerConditions` below.
         /// </summary>
         public InputList<Inputs.DiAlarmRuleTriggerConditionGetArgs> TriggerConditions
         {

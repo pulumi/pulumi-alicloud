@@ -18,14 +18,14 @@ public final class ApplicationKafkaConfigsArgs extends com.pulumi.resources.Reso
     public static final ApplicationKafkaConfigsArgs Empty = new ApplicationKafkaConfigsArgs();
 
     /**
-     * One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      * 
      */
     @Import(name="kafkaConfigs")
     private @Nullable Output<List<ApplicationKafkaConfigsKafkaConfigArgs>> kafkaConfigs;
 
     /**
-     * @return One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * @return One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      * 
      */
     public Optional<Output<List<ApplicationKafkaConfigsKafkaConfigArgs>>> kafkaConfigs() {
@@ -89,7 +89,7 @@ public final class ApplicationKafkaConfigsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param kafkaConfigs One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+         * @param kafkaConfigs One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ApplicationKafkaConfigsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param kafkaConfigs One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+         * @param kafkaConfigs One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ApplicationKafkaConfigsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param kafkaConfigs One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+         * @param kafkaConfigs One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
          * 
          * @return builder
          * 

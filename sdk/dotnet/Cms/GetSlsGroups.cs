@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
+        /// The keywords of the `SlsGroupName` or `SlsGroupDescription` of the Sls Group.
         /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
+        /// The keywords of the `SlsGroupName` or `SlsGroupDescription` of the Sls Group.
         /// </summary>
         [Input("keyword")]
         public Input<string>? Keyword { get; set; }

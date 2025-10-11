@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleActionCorsConfig
     {
         /// <summary>
-        /// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        /// Specifies whether credentials can be passed during CORS operations. Valid values: `On`, `Off`.
         /// </summary>
         public readonly string? AllowCredentials;
         /// <summary>

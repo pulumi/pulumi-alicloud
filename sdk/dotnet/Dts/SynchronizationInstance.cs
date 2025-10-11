@@ -59,13 +59,13 @@ namespace Pulumi.AliCloud.Dts
     public partial class SynchronizationInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        /// Whether to automatically renew when it expires. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoPay")]
         public Output<string?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        /// Whether to automatically start the task after the purchase completed. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoStart")]
         public Output<string?> AutoStart { get; private set; } = null!;
@@ -77,13 +77,13 @@ namespace Pulumi.AliCloud.Dts
         public Output<int?> ComputeUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `SourceEndpointEngineName` equals `Drds`.
         /// </summary>
         [Output("databaseCount")]
         public Output<int?> DatabaseCount { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+        /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
@@ -95,19 +95,19 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> DestinationEndpointRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+        /// The duration of prepaid instance purchase. this parameter is required When `PaymentType` equals `Subscription`.
         /// </summary>
         [Output("paymentDuration")]
         public Output<int?> PaymentDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The payment duration unit. Valid values: `Month`, `Year`. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Output("paymentDurationUnit")]
         public Output<string?> PaymentDurationUnit { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<int?> Quantity { get; private set; } = null!;
 
         /// <summary>
-        /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+        /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         /// </summary>
         [Output("sourceEndpointEngineName")]
         public Output<string> SourceEndpointEngineName { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The sync architecture. Valid values: `oneway`, `bidirectional`.
+        /// The sync architecture. Valid values: `Oneway`, `Bidirectional`.
         /// </summary>
         [Output("syncArchitecture")]
         public Output<string?> SyncArchitecture { get; private set; } = null!;
@@ -195,13 +195,13 @@ namespace Pulumi.AliCloud.Dts
     public sealed class SynchronizationInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        /// Whether to automatically renew when it expires. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoPay")]
         public Input<string>? AutoPay { get; set; }
 
         /// <summary>
-        /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        /// Whether to automatically start the task after the purchase completed. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoStart")]
         public Input<string>? AutoStart { get; set; }
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? ComputeUnit { get; set; }
 
         /// <summary>
-        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `SourceEndpointEngineName` equals `Drds`.
         /// </summary>
         [Input("databaseCount")]
         public Input<int>? DatabaseCount { get; set; }
 
         /// <summary>
-        /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+        /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         /// </summary>
         [Input("destinationEndpointEngineName", required: true)]
         public Input<string> DestinationEndpointEngineName { get; set; } = null!;
@@ -231,19 +231,19 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> DestinationEndpointRegion { get; set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+        /// The duration of prepaid instance purchase. this parameter is required When `PaymentType` equals `Subscription`.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The payment duration unit. Valid values: `Month`, `Year`. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? Quantity { get; set; }
 
         /// <summary>
-        /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+        /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         /// </summary>
         [Input("sourceEndpointEngineName", required: true)]
         public Input<string> SourceEndpointEngineName { get; set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> SourceEndpointRegion { get; set; } = null!;
 
         /// <summary>
-        /// The sync architecture. Valid values: `oneway`, `bidirectional`.
+        /// The sync architecture. Valid values: `Oneway`, `Bidirectional`.
         /// </summary>
         [Input("syncArchitecture")]
         public Input<string>? SyncArchitecture { get; set; }
@@ -287,13 +287,13 @@ namespace Pulumi.AliCloud.Dts
     public sealed class SynchronizationInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        /// Whether to automatically renew when it expires. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoPay")]
         public Input<string>? AutoPay { get; set; }
 
         /// <summary>
-        /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        /// Whether to automatically start the task after the purchase completed. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoStart")]
         public Input<string>? AutoStart { get; set; }
@@ -305,13 +305,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? ComputeUnit { get; set; }
 
         /// <summary>
-        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+        /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `SourceEndpointEngineName` equals `Drds`.
         /// </summary>
         [Input("databaseCount")]
         public Input<int>? DatabaseCount { get; set; }
 
         /// <summary>
-        /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+        /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -323,19 +323,19 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRegion { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
+        /// The duration of prepaid instance purchase. this parameter is required When `PaymentType` equals `Subscription`.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The payment duration unit. Valid values: `Month`, `Year`. When `PaymentType` is `Subscription`, this parameter is valid and must be passed in.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? Quantity { get; set; }
 
         /// <summary>
-        /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+        /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `As400`, `Clickhouse`, `Kafka`, `Mongodb`, `Odps`, `Oracle`, `PolardbO`, `PolardbPg`, `Tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         /// </summary>
         [Input("sourceEndpointEngineName")]
         public Input<string>? SourceEndpointEngineName { get; set; }
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The sync architecture. Valid values: `oneway`, `bidirectional`.
+        /// The sync architecture. Valid values: `Oneway`, `Bidirectional`.
         /// </summary>
         [Input("syncArchitecture")]
         public Input<string>? SyncArchitecture { get; set; }

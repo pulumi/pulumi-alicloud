@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketReplicationProgressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        /// The percentage of the replicated historical data. This element is valid only when HistoricalObjectReplication is set to enabled.
         /// </summary>
         [Input("historicalObject")]
         public Input<string>? HistoricalObject { get; set; }

@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Detach action will be executed before attach action.
  * 
- * &gt; **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.
+ * &gt; **NOTE:** Vserver group is defined uniquely by `loadbalancerId`, `vserverGroupId`, `port`.
  * 
  * &gt; **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
  * 
@@ -78,14 +78,14 @@ public class ScalingGroupVServerGroups extends com.pulumi.resources.CustomResour
         return this.scalingGroupId;
     }
     /**
-     * A list of vserver groups attached on scaling group. See `vserver_groups` below.
+     * A list of vserver groups attached on scaling group. See `vserverGroups` below.
      * 
      */
     @Export(name="vserverGroups", refs={List.class,ScalingGroupVServerGroupsVserverGroup.class}, tree="[0,1]")
     private Output<List<ScalingGroupVServerGroupsVserverGroup>> vserverGroups;
 
     /**
-     * @return A list of vserver groups attached on scaling group. See `vserver_groups` below.
+     * @return A list of vserver groups attached on scaling group. See `vserverGroups` below.
      * 
      */
     public Output<List<ScalingGroupVServerGroupsVserverGroup>> vserverGroups() {

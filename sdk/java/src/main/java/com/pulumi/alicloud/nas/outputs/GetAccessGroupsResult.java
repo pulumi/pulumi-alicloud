@@ -54,7 +54,7 @@ public final class GetAccessGroupsResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
+     * @return (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `accessGroupType` after version 1.95.0.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
@@ -124,7 +124,7 @@ public final class GetAccessGroupsResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
+     * @return (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `accessGroupType` after version 1.95.0.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.

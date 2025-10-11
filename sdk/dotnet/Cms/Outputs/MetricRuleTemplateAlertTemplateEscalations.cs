@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class MetricRuleTemplateAlertTemplateEscalations
     {
         /// <summary>
-        /// The condition for triggering critical-level alerts. See `critical` below.
+        /// The condition for triggering critical-level alerts. See `Critical` below.
         /// </summary>
         public readonly Outputs.MetricRuleTemplateAlertTemplateEscalationsCritical? Critical;
         /// <summary>
-        /// The condition for triggering info-level alerts. See `info` below.
+        /// The condition for triggering info-level alerts. See `Info` below.
         /// </summary>
         public readonly Outputs.MetricRuleTemplateAlertTemplateEscalationsInfo? Info;
         /// <summary>
-        /// The condition for triggering warn-level alerts. See `warn` below.
+        /// The condition for triggering warn-level alerts. See `Warn` below.
         /// </summary>
         public readonly Outputs.MetricRuleTemplateAlertTemplateEscalationsWarn? Warn;
 

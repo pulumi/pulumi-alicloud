@@ -20,14 +20,14 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     public static final DiskArgs Empty = new DiskArgs();
 
     /**
-     * The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+     * The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      * 
      */
     @Import(name="category", required=true)
     private Output<String> category;
 
     /**
-     * @return The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+     * @return The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      * 
      */
     public Output<String> category() {
@@ -128,8 +128,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * The ID of the snapshot used to create the cloud disk.
      * 
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      * 
      */
     @Import(name="snapshotId")
@@ -139,8 +139,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * @return The ID of the snapshot used to create the cloud disk.
      * 
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -195,7 +195,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+         * @param category The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+         * @param category The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
          * 
          * @return builder
          * 
@@ -345,8 +345,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @param snapshotId The ID of the snapshot used to create the cloud disk.
          * 
          * The SnapshotId and Size parameters have the following limitations:
-         * - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-         * - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+         * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+         * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
          * 
          * @return builder
          * 
@@ -360,8 +360,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @param snapshotId The ID of the snapshot used to create the cloud disk.
          * 
          * The SnapshotId and Size parameters have the following limitations:
-         * - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-         * - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+         * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+         * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
          * 
          * @return builder
          * 

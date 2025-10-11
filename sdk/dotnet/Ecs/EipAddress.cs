@@ -51,9 +51,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-        /// - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-        /// - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-        /// - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+        /// - When `PaymentType` is set to `PayAsYouGo` and `InternetChargeType` is set to `PayByBandwidth`, valid values for `Bandwidth` are `1` to `500`.
+        /// - When `PaymentType` is set to `PayAsYouGo` and `InternetChargeType` is set to `PayByTraffic`, valid values for `Bandwidth` are `1` to `200`.
+        /// - When `PaymentType` is set to `Subscription`, valid values for `Bandwidth` are `1` to `1000`.
         /// 
         /// Default value: `5` Mbit /s.
         /// </summary>
@@ -101,9 +101,9 @@ namespace Pulumi.AliCloud.Ecs
         /// - `PayByBandwidth` (default): pay-by-bandwidth.
         /// - `PayByTraffic`: pay-by-data-transfer.
         /// 
-        /// When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+        /// When `PaymentType` is set to `Subscription`, you must set `InternetChargeType` to `PayByBandwidth`.
         /// 
-        /// When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+        /// When `PaymentType` is set to `PayAsYouGo`, set `InternetChargeType` to `PayByBandwidth` or `PayByTraffic`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network type. By default, this value is set to `public`, which specifies the public network type.
+        /// The network type. By default, this value is set to `Public`, which specifies the public network type.
         /// </summary>
         [Output("netmode")]
         public Output<string> Netmode { get; private set; } = null!;
@@ -172,13 +172,13 @@ namespace Pulumi.AliCloud.Ecs
         /// - `Subscription`: subscription
         /// - `PayAsYouGo` (default): pay-as-you-go
         /// 
-        /// If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+        /// If `PaymentType` is set to `Subscription`, set `InternetChargeType` to `PayByBandwidth`. If `PaymentType` is set to `PayAsYouGo`, set `InternetChargeType` to `PayByBandwidth` or `PayByTraffic`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        /// Duration of purchase. When the value of `PricingCycle` is `Month`, the value range of `Period` is `1` to `9`. When the value of `PricingCycle` is `Year`, the value range of `Period` is `1` to `5`. If the value of the `PaymentType` parameter is `Subscription`, this parameter is required. If the value of the `PaymentType` parameter is `PayAsYouGo`, this parameter is left blank.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `Month` (default)
         /// - `Year`
         /// 
-        /// If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+        /// If `PaymentType` is set to `Subscription`, this parameter is required. If `PaymentType` is set to `PayAsYouGo`, this parameter is not required.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// Security protection level.
         /// - When the return is empty, the basic DDoS protection is specified.
-        /// - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        /// - When `AntidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
         /// </summary>
         [Output("securityProtectionTypes")]
         public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
@@ -311,9 +311,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-        /// - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-        /// - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-        /// - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+        /// - When `PaymentType` is set to `PayAsYouGo` and `InternetChargeType` is set to `PayByBandwidth`, valid values for `Bandwidth` are `1` to `500`.
+        /// - When `PaymentType` is set to `PayAsYouGo` and `InternetChargeType` is set to `PayByTraffic`, valid values for `Bandwidth` are `1` to `200`.
+        /// - When `PaymentType` is set to `Subscription`, valid values for `Bandwidth` are `1` to `1000`.
         /// 
         /// Default value: `5` Mbit /s.
         /// </summary>
@@ -355,9 +355,9 @@ namespace Pulumi.AliCloud.Ecs
         /// - `PayByBandwidth` (default): pay-by-bandwidth.
         /// - `PayByTraffic`: pay-by-data-transfer.
         /// 
-        /// When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+        /// When `PaymentType` is set to `Subscription`, you must set `InternetChargeType` to `PayByBandwidth`.
         /// 
-        /// When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+        /// When `PaymentType` is set to `PayAsYouGo`, set `InternetChargeType` to `PayByBandwidth` or `PayByTraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -416,7 +416,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type. By default, this value is set to `public`, which specifies the public network type.
+        /// The network type. By default, this value is set to `Public`, which specifies the public network type.
         /// </summary>
         [Input("netmode")]
         public Input<string>? Netmode { get; set; }
@@ -426,13 +426,13 @@ namespace Pulumi.AliCloud.Ecs
         /// - `Subscription`: subscription
         /// - `PayAsYouGo` (default): pay-as-you-go
         /// 
-        /// If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+        /// If `PaymentType` is set to `Subscription`, set `InternetChargeType` to `PayByBandwidth`. If `PaymentType` is set to `PayAsYouGo`, set `InternetChargeType` to `PayByBandwidth` or `PayByTraffic`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        /// Duration of purchase. When the value of `PricingCycle` is `Month`, the value range of `Period` is `1` to `9`. When the value of `PricingCycle` is `Year`, the value range of `Period` is `1` to `5`. If the value of the `PaymentType` parameter is `Subscription`, this parameter is required. If the value of the `PaymentType` parameter is `PayAsYouGo`, this parameter is left blank.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `Month` (default)
         /// - `Year`
         /// 
-        /// If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+        /// If `PaymentType` is set to `Subscription`, this parameter is required. If `PaymentType` is set to `PayAsYouGo`, this parameter is not required.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
@@ -467,7 +467,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// Security protection level.
         /// - When the return is empty, the basic DDoS protection is specified.
-        /// - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        /// - When `AntidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
@@ -533,9 +533,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
-        /// - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
-        /// - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
-        /// - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+        /// - When `PaymentType` is set to `PayAsYouGo` and `InternetChargeType` is set to `PayByBandwidth`, valid values for `Bandwidth` are `1` to `500`.
+        /// - When `PaymentType` is set to `PayAsYouGo` and `InternetChargeType` is set to `PayByTraffic`, valid values for `Bandwidth` are `1` to `200`.
+        /// - When `PaymentType` is set to `Subscription`, valid values for `Bandwidth` are `1` to `1000`.
         /// 
         /// Default value: `5` Mbit /s.
         /// </summary>
@@ -583,9 +583,9 @@ namespace Pulumi.AliCloud.Ecs
         /// - `PayByBandwidth` (default): pay-by-bandwidth.
         /// - `PayByTraffic`: pay-by-data-transfer.
         /// 
-        /// When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+        /// When `PaymentType` is set to `Subscription`, you must set `InternetChargeType` to `PayByBandwidth`.
         /// 
-        /// When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+        /// When `PaymentType` is set to `PayAsYouGo`, set `InternetChargeType` to `PayByBandwidth` or `PayByTraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -644,7 +644,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type. By default, this value is set to `public`, which specifies the public network type.
+        /// The network type. By default, this value is set to `Public`, which specifies the public network type.
         /// </summary>
         [Input("netmode")]
         public Input<string>? Netmode { get; set; }
@@ -654,13 +654,13 @@ namespace Pulumi.AliCloud.Ecs
         /// - `Subscription`: subscription
         /// - `PayAsYouGo` (default): pay-as-you-go
         /// 
-        /// If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
+        /// If `PaymentType` is set to `Subscription`, set `InternetChargeType` to `PayByBandwidth`. If `PaymentType` is set to `PayAsYouGo`, set `InternetChargeType` to `PayByBandwidth` or `PayByTraffic`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        /// Duration of purchase. When the value of `PricingCycle` is `Month`, the value range of `Period` is `1` to `9`. When the value of `PricingCycle` is `Year`, the value range of `Period` is `1` to `5`. If the value of the `PaymentType` parameter is `Subscription`, this parameter is required. If the value of the `PaymentType` parameter is `PayAsYouGo`, this parameter is left blank.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -670,7 +670,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `Month` (default)
         /// - `Year`
         /// 
-        /// If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
+        /// If `PaymentType` is set to `Subscription`, this parameter is required. If `PaymentType` is set to `PayAsYouGo`, this parameter is not required.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
@@ -695,7 +695,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// Security protection level.
         /// - When the return is empty, the basic DDoS protection is specified.
-        /// - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        /// - When `AntidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {

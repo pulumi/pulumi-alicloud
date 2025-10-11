@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Ots.Outputs
         /// </summary>
         public readonly string? Analyzer;
         /// <summary>
-        /// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+        /// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which EnableSortAndAgg is set to true.
         /// </summary>
         public readonly bool? EnableSortAndAgg;
         /// <summary>
-        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        /// The name of the field that is used to sort data. only required if SorterType is FieldSort.
         /// </summary>
         public readonly string FieldName;
         /// <summary>

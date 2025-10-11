@@ -243,14 +243,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
+     * The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scalingGroup&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
     @Export(name="dimensions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> dimensions;
 
     /**
-     * @return The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
+     * @return The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scalingGroup&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
     public Output<Map<String,String>> dimensions() {

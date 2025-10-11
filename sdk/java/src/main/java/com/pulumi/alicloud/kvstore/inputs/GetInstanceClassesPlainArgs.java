@@ -187,14 +187,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      * 
      */
     @Import(name="seriesType")
     private @Nullable String seriesType;
 
     /**
-     * @return The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+     * @return The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      * 
      */
     public Optional<String> seriesType() {
@@ -420,7 +420,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param seriesType The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+         * @param seriesType The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
          * 
          * @return builder
          * 

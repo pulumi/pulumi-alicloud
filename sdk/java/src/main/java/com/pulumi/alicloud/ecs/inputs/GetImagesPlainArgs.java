@@ -36,14 +36,14 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The image architecture. Valid values: `i386` and `x86_64`.
+     * The image architecture. Valid values: `i386` and `x8664`.
      * 
      */
     @Import(name="architecture")
     private @Nullable String architecture;
 
     /**
-     * @return The image architecture. Valid values: `i386` and `x86_64`.
+     * @return The image architecture. Valid values: `i386` and `x8664`.
      * 
      */
     public Optional<String> architecture() {
@@ -218,7 +218,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
-     * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+     * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
      * 
      */
     @Import(name="outputFile")
@@ -227,7 +227,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return File name where to save data source results (after running `pulumi preview`).
      * 
-     * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+     * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
      * 
      */
     public Optional<String> outputFile() {
@@ -393,7 +393,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param architecture The image architecture. Valid values: `i386` and `x86_64`.
+         * @param architecture The image architecture. Valid values: `i386` and `x8664`.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
-         * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+         * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
          * 
          * @return builder
          * 

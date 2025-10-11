@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<int>? BatchWaitTime { get; set; }
 
         /// <summary>
-        /// The processing method for the batches. Valid values: `auto` and `manual`.
+        /// The processing method for the batches. Valid values: `Auto` and `Manual`.
         /// </summary>
         [Input("releaseType")]
         public Input<string>? ReleaseType { get; set; }

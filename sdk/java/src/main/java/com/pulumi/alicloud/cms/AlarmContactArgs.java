@@ -109,7 +109,7 @@ public final class AlarmContactArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
      * 
-     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      * 
      */
     @Import(name="lang")
@@ -118,7 +118,7 @@ public final class AlarmContactArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The language type of the alarm. Valid values: `en`, `zh-cn`.
      * 
-     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+     * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      * 
      */
     public Optional<Output<String>> lang() {
@@ -284,7 +284,7 @@ public final class AlarmContactArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param lang The language type of the alarm. Valid values: `en`, `zh-cn`.
          * 
-         * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+         * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class AlarmContactArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param lang The language type of the alarm. Valid values: `en`, `zh-cn`.
          * 
-         * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+         * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
          * 
          * @return builder
          * 

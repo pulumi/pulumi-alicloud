@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V2FunctionInstanceLifecycleConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PreFreeze function configuration. See `pre_freeze` below.
+        /// PreFreeze function configuration. See `PreFreeze` below.
         /// </summary>
         [Input("preFreeze")]
         public Input<Inputs.V2FunctionInstanceLifecycleConfigPreFreezeGetArgs>? PreFreeze { get; set; }
 
         /// <summary>
-        /// PreStop function configuration. See `pre_stop` below.
+        /// PreStop function configuration. See `PreStop` below.
         /// </summary>
         [Input("preStop")]
         public Input<Inputs.V2FunctionInstanceLifecycleConfigPreStopGetArgs>? PreStop { get; set; }

@@ -187,13 +187,13 @@ namespace Pulumi.AliCloud.Sae
         public Output<int?> MinReadyInstances { get; private set; } = null!;
 
         /// <summary>
-        /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
+        /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `False`, `True`.
         /// </summary>
         [Output("scalingRuleEnable")]
         public Output<bool> ScalingRuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        /// Monitor the configuration of the indicator elasticity strategy. See `ScalingRuleMetric` below.
         /// </summary>
         [Output("scalingRuleMetric")]
         public Output<Outputs.ApplicationScalingRuleScalingRuleMetric?> ScalingRuleMetric { get; private set; } = null!;
@@ -205,13 +205,13 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> ScalingRuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        /// Configuration of Timing Resilient Policies. See `ScalingRuleTimer` below.
         /// </summary>
         [Output("scalingRuleTimer")]
         public Output<Outputs.ApplicationScalingRuleScalingRuleTimer?> ScalingRuleTimer { get; private set; } = null!;
 
         /// <summary>
-        /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
+        /// Flexible strategy type. Valid values: `Mix`, `Timing` and `Metric`.
         /// </summary>
         [Output("scalingRuleType")]
         public Output<string> ScalingRuleType { get; private set; } = null!;
@@ -281,13 +281,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<int>? MinReadyInstances { get; set; }
 
         /// <summary>
-        /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
+        /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `False`, `True`.
         /// </summary>
         [Input("scalingRuleEnable")]
         public Input<bool>? ScalingRuleEnable { get; set; }
 
         /// <summary>
-        /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        /// Monitor the configuration of the indicator elasticity strategy. See `ScalingRuleMetric` below.
         /// </summary>
         [Input("scalingRuleMetric")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricArgs>? ScalingRuleMetric { get; set; }
@@ -299,13 +299,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<string> ScalingRuleName { get; set; } = null!;
 
         /// <summary>
-        /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        /// Configuration of Timing Resilient Policies. See `ScalingRuleTimer` below.
         /// </summary>
         [Input("scalingRuleTimer")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleTimerArgs>? ScalingRuleTimer { get; set; }
 
         /// <summary>
-        /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
+        /// Flexible strategy type. Valid values: `Mix`, `Timing` and `Metric`.
         /// </summary>
         [Input("scalingRuleType", required: true)]
         public Input<string> ScalingRuleType { get; set; } = null!;
@@ -337,13 +337,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<int>? MinReadyInstances { get; set; }
 
         /// <summary>
-        /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
+        /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `False`, `True`.
         /// </summary>
         [Input("scalingRuleEnable")]
         public Input<bool>? ScalingRuleEnable { get; set; }
 
         /// <summary>
-        /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        /// Monitor the configuration of the indicator elasticity strategy. See `ScalingRuleMetric` below.
         /// </summary>
         [Input("scalingRuleMetric")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricGetArgs>? ScalingRuleMetric { get; set; }
@@ -355,13 +355,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? ScalingRuleName { get; set; }
 
         /// <summary>
-        /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        /// Configuration of Timing Resilient Policies. See `ScalingRuleTimer` below.
         /// </summary>
         [Input("scalingRuleTimer")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleTimerGetArgs>? ScalingRuleTimer { get; set; }
 
         /// <summary>
-        /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
+        /// Flexible strategy type. Valid values: `Mix`, `Timing` and `Metric`.
         /// </summary>
         [Input("scalingRuleType")]
         public Input<string>? ScalingRuleType { get; set; }

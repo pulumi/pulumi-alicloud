@@ -46,7 +46,7 @@ public final class GetTriggersTrigger {
      */
     private String sourceArn;
     /**
-     * @return Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
+     * @return Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
      * 
      */
     private String type;
@@ -102,7 +102,7 @@ public final class GetTriggersTrigger {
         return this.sourceArn;
     }
     /**
-     * @return Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
+     * @return Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
      * 
      */
     public String type() {

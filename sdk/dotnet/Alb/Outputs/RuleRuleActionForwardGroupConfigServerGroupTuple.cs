@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? ServerGroupId;
         /// <summary>
-        /// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+        /// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `ServerGroupTuples` is greater than 2.
         /// </summary>
         public readonly int? Weight;
 

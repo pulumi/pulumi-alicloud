@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly string Script;
         /// <summary>
-        /// Processing result output target list See `sink` below.
+        /// Processing result output target list See `Sink` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EtlConfigurationSink> Sinks;
         /// <summary>

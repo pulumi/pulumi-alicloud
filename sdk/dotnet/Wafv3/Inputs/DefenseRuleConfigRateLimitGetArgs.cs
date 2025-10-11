@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// Response code frequency setting. The description is in the JSON string format. See `status` below.
+        /// Response code frequency setting. The description is in the JSON string format. See `Status` below.
         /// </summary>
         [Input("status")]
         public Input<Inputs.DefenseRuleConfigRateLimitStatusGetArgs>? Status { get; set; }
@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
 
         /// <summary>
         /// The type of the statistical object. Valid values:
-        /// - remote_addr (default): indicates IP.
+        /// - RemoteAddr (default): indicates IP.
         /// - cookie.acw_tc: indicates session.
         /// - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
         /// - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.

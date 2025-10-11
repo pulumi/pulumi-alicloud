@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
         /// - `BINDED`: cut-network interface controller mode
         /// 
-        /// &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        /// &gt; **NOTE:**   This parameter is required only when `InstanceType` is set to `NetworkInterface`.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
         /// 
-        /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+        /// &gt; **NOTE:**   This parameter is required if `InstanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string?> PrivateIpAddress { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
         /// 
-        /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+        /// &gt; **NOTE:**   This parameter is required if `InstanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
         /// - `BINDED`: cut-network interface controller mode
         /// 
-        /// &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        /// &gt; **NOTE:**   This parameter is required only when `InstanceType` is set to `NetworkInterface`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
         /// 
-        /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+        /// &gt; **NOTE:**   This parameter is required if `InstanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
         /// 
-        /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+        /// &gt; **NOTE:**   This parameter is required if `InstanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -336,7 +336,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
         /// - `BINDED`: cut-network interface controller mode
         /// 
-        /// &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        /// &gt; **NOTE:**   This parameter is required only when `InstanceType` is set to `NetworkInterface`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
         /// 
-        /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+        /// &gt; **NOTE:**   This parameter is required if `InstanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
         /// 
-        /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+        /// &gt; **NOTE:**   This parameter is required if `InstanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

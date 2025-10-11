@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> Nickname { get; private set; } = null!;
 
         /// <summary>
-        /// schedule list See `schedule_list` below.
+        /// schedule list See `ScheduleList` below.
         /// </summary>
         [Output("scheduleLists")]
         public Output<ImmutableArray<Outputs.QuotaScheduleScheduleList>> ScheduleLists { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.MaxCompute
         private InputList<Inputs.QuotaScheduleScheduleListArgs>? _scheduleLists;
 
         /// <summary>
-        /// schedule list See `schedule_list` below.
+        /// schedule list See `ScheduleList` below.
         /// </summary>
         public InputList<Inputs.QuotaScheduleScheduleListArgs> ScheduleLists
         {
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.MaxCompute
         private InputList<Inputs.QuotaScheduleScheduleListGetArgs>? _scheduleLists;
 
         /// <summary>
-        /// schedule list See `schedule_list` below.
+        /// schedule list See `ScheduleList` below.
         /// </summary>
         public InputList<Inputs.QuotaScheduleScheduleListGetArgs> ScheduleLists
         {

@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetParametersParameter {
     /**
-     * @return The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
+     * @return The constraints of the common parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String constraints;
@@ -33,7 +33,7 @@ public final class GetParametersParameter {
      */
     private String description;
     /**
-     * @return The ID of the Parameter. Its value is same as `parameter_name`.
+     * @return The ID of the Parameter. Its value is same as `parameterName`.
      * 
      */
     private String id;
@@ -83,14 +83,14 @@ public final class GetParametersParameter {
      */
     private String updatedDate;
     /**
-     * @return (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String value;
 
     private GetParametersParameter() {}
     /**
-     * @return The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
+     * @return The constraints of the common parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String constraints() {
@@ -118,7 +118,7 @@ public final class GetParametersParameter {
         return this.description;
     }
     /**
-     * @return The ID of the Parameter. Its value is same as `parameter_name`.
+     * @return The ID of the Parameter. Its value is same as `parameterName`.
      * 
      */
     public String id() {
@@ -188,7 +188,7 @@ public final class GetParametersParameter {
         return this.updatedDate;
     }
     /**
-     * @return (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String value() {

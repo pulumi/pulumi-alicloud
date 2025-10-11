@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetConfigsConfig {
     /**
-     * @return Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+     * @return Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      * 
      */
     private String code;
@@ -43,7 +43,7 @@ public final class GetConfigsConfig {
 
     private GetConfigsConfig() {}
     /**
-     * @return Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+     * @return Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      * 
      */
     public String code() {

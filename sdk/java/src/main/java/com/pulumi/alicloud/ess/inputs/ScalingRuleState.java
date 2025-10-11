@@ -65,14 +65,14 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * AlarmDimension for StepScalingRule. See `alarmDimension` below.
      * 
      */
     @Import(name="alarmDimension")
     private @Nullable Output<ScalingRuleAlarmDimensionArgs> alarmDimension;
 
     /**
-     * @return AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * @return AlarmDimension for StepScalingRule. See `alarmDimension` below.
      * 
      */
     public Optional<Output<ScalingRuleAlarmDimensionArgs>> alarmDimension() {
@@ -140,14 +140,14 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      * 
      */
     @Import(name="hybridMetrics")
     private @Nullable Output<List<ScalingRuleHybridMetricArgs>> hybridMetrics;
 
     /**
-     * @return The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * @return The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      * 
      */
     public Optional<Output<List<ScalingRuleHybridMetricArgs>>> hybridMetrics() {
@@ -365,14 +365,14 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Steps for StepScalingRule. See `step_adjustment` below.
+     * Steps for StepScalingRule. See `stepAdjustment` below.
      * 
      */
     @Import(name="stepAdjustments")
     private @Nullable Output<List<ScalingRuleStepAdjustmentArgs>> stepAdjustments;
 
     /**
-     * @return Steps for StepScalingRule. See `step_adjustment` below.
+     * @return Steps for StepScalingRule. See `stepAdjustment` below.
      * 
      */
     public Optional<Output<List<ScalingRuleStepAdjustmentArgs>>> stepAdjustments() {
@@ -496,7 +496,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alarmDimension AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+         * @param alarmDimension AlarmDimension for StepScalingRule. See `alarmDimension` below.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alarmDimension AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+         * @param alarmDimension AlarmDimension for StepScalingRule. See `alarmDimension` below.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
          * 
          * @return builder
          * 
@@ -926,7 +926,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stepAdjustments Steps for StepScalingRule. See `step_adjustment` below.
+         * @param stepAdjustments Steps for StepScalingRule. See `stepAdjustment` below.
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stepAdjustments Steps for StepScalingRule. See `step_adjustment` below.
+         * @param stepAdjustments Steps for StepScalingRule. See `stepAdjustment` below.
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stepAdjustments Steps for StepScalingRule. See `step_adjustment` below.
+         * @param stepAdjustments Steps for StepScalingRule. See `stepAdjustment` below.
          * 
          * @return builder
          * 

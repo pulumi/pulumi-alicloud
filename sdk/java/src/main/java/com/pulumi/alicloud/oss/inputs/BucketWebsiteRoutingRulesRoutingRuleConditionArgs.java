@@ -33,14 +33,14 @@ public final class BucketWebsiteRoutingRulesRoutingRuleConditionArgs extends com
     }
 
     /**
-     * This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+     * This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
      * 
      */
     @Import(name="includeHeaders")
     private @Nullable Output<List<BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs>> includeHeaders;
 
     /**
-     * @return This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+     * @return This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
      * 
      */
     public Optional<Output<List<BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs>>> includeHeaders() {
@@ -126,7 +126,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleConditionArgs extends com
         }
 
         /**
-         * @param includeHeaders This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+         * @param includeHeaders This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleConditionArgs extends com
         }
 
         /**
-         * @param includeHeaders This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+         * @param includeHeaders This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleConditionArgs extends com
         }
 
         /**
-         * @param includeHeaders This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+         * @param includeHeaders This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
          * 
          * @return builder
          * 

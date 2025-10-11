@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterMulticastDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The function options of the multicast domain. See `options` below.
+        /// The function options of the multicast domain. See `Options` below.
         /// </summary>
         [Output("options")]
         public Output<Outputs.TransitRouterMulticastDomainOptions> Options { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterMulticastDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The function options of the multicast domain. See `options` below.
+        /// The function options of the multicast domain. See `Options` below.
         /// </summary>
         [Input("options")]
         public Input<Inputs.TransitRouterMulticastDomainOptionsArgs>? Options { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterMulticastDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The function options of the multicast domain. See `options` below.
+        /// The function options of the multicast domain. See `Options` below.
         /// </summary>
         [Input("options")]
         public Input<Inputs.TransitRouterMulticastDomainOptionsGetArgs>? Options { get; set; }

@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.Sls
     public partial class CollectionPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Centralized transfer configuration. See `centralize_config` below.
+        /// Centralized transfer configuration. See `CentralizeConfig` below.
         /// </summary>
         [Output("centralizeConfig")]
         public Output<Outputs.CollectionPolicyCentralizeConfig> CentralizeConfig { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> DataCode { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `DataConfig` below.
         /// </summary>
         [Output("dataConfig")]
         public Output<Outputs.CollectionPolicyDataConfig> DataConfig { get; private set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Collection rule configuration. See `policy_config` below.
+        /// Collection rule configuration. See `PolicyConfig` below.
         /// </summary>
         [Output("policyConfig")]
         public Output<Outputs.CollectionPolicyPolicyConfig> PolicyConfig { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> ProductCode { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `ResourceDirectory` below.
         /// </summary>
         [Output("resourceDirectory")]
         public Output<Outputs.CollectionPolicyResourceDirectory> ResourceDirectory { get; private set; } = null!;
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class CollectionPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Centralized transfer configuration. See `centralize_config` below.
+        /// Centralized transfer configuration. See `CentralizeConfig` below.
         /// </summary>
         [Input("centralizeConfig")]
         public Input<Inputs.CollectionPolicyCentralizeConfigArgs>? CentralizeConfig { get; set; }
@@ -382,7 +382,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string> DataCode { get; set; } = null!;
 
         /// <summary>
-        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `DataConfig` below.
         /// </summary>
         [Input("dataConfig")]
         public Input<Inputs.CollectionPolicyDataConfigArgs>? DataConfig { get; set; }
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Collection rule configuration. See `policy_config` below.
+        /// Collection rule configuration. See `PolicyConfig` below.
         /// </summary>
         [Input("policyConfig", required: true)]
         public Input<Inputs.CollectionPolicyPolicyConfigArgs> PolicyConfig { get; set; } = null!;
@@ -412,7 +412,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string> ProductCode { get; set; } = null!;
 
         /// <summary>
-        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `ResourceDirectory` below.
         /// </summary>
         [Input("resourceDirectory")]
         public Input<Inputs.CollectionPolicyResourceDirectoryArgs>? ResourceDirectory { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.AliCloud.Sls
     public sealed class CollectionPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Centralized transfer configuration. See `centralize_config` below.
+        /// Centralized transfer configuration. See `CentralizeConfig` below.
         /// </summary>
         [Input("centralizeConfig")]
         public Input<Inputs.CollectionPolicyCentralizeConfigGetArgs>? CentralizeConfig { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? DataCode { get; set; }
 
         /// <summary>
-        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `DataConfig` below.
         /// </summary>
         [Input("dataConfig")]
         public Input<Inputs.CollectionPolicyDataConfigGetArgs>? DataConfig { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Collection rule configuration. See `policy_config` below.
+        /// Collection rule configuration. See `PolicyConfig` below.
         /// </summary>
         [Input("policyConfig")]
         public Input<Inputs.CollectionPolicyPolicyConfigGetArgs>? PolicyConfig { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? ProductCode { get; set; }
 
         /// <summary>
-        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `ResourceDirectory` below.
         /// </summary>
         [Input("resourceDirectory")]
         public Input<Inputs.CollectionPolicyResourceDirectoryGetArgs>? ResourceDirectory { get; set; }

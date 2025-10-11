@@ -79,14 +79,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      * 
      */
     @Import(name="extAttributes")
     private @Nullable Output<List<AScriptExtAttributeArgs>> extAttributes;
 
     /**
-     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      * 
      */
     public Optional<Output<List<AScriptExtAttributeArgs>>> extAttributes() {
@@ -270,7 +270,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
          * 
          * @return builder
          * 

@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
+        /// The name of the Private Zone. The `Name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `SyncStatus` to enable/disable the host synchronization task.
         /// </summary>
         [Output("syncStatus")]
         public Output<string?> SyncStatus { get; private set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> UserClientIp { get; private set; } = null!;
 
         /// <summary>
-        /// The user information of the host synchronization task. See `user_info` below.
+        /// The user information of the host synchronization task. See `UserInfo` below.
         /// </summary>
         [Output("userInfos")]
         public Output<ImmutableArray<Outputs.ZoneUserInfo>> UserInfos { get; private set; } = null!;
 
         /// <summary>
-        /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+        /// The ZoneName of the Private Zone. The `ZoneName` is required when the value of the `Name`  is Empty.
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
+        /// The name of the Private Zone. The `Name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `SyncStatus` to enable/disable the host synchronization task.
         /// </summary>
         [Input("syncStatus")]
         public Input<string>? SyncStatus { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneUserInfoArgs>? _userInfos;
 
         /// <summary>
-        /// The user information of the host synchronization task. See `user_info` below.
+        /// The user information of the host synchronization task. See `UserInfo` below.
         /// </summary>
         public InputList<Inputs.ZoneUserInfoArgs> UserInfos
         {
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         /// <summary>
-        /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+        /// The ZoneName of the Private Zone. The `ZoneName` is required when the value of the `Name`  is Empty.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
+        /// The name of the Private Zone. The `Name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `SyncStatus` to enable/disable the host synchronization task.
         /// </summary>
         [Input("syncStatus")]
         public Input<string>? SyncStatus { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneUserInfoGetArgs>? _userInfos;
 
         /// <summary>
-        /// The user information of the host synchronization task. See `user_info` below.
+        /// The user information of the host synchronization task. See `UserInfo` below.
         /// </summary>
         public InputList<Inputs.ZoneUserInfoGetArgs> UserInfos
         {
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         /// <summary>
-        /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
+        /// The ZoneName of the Private Zone. The `ZoneName` is required when the value of the `Name`  is Empty.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

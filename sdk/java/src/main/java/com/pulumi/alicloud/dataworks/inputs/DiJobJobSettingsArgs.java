@@ -42,14 +42,14 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Column type mapping of the synchronization task See `column_data_type_settings` below.
+     * Column type mapping of the synchronization task See `columnDataTypeSettings` below.
      * 
      */
     @Import(name="columnDataTypeSettings")
     private @Nullable Output<List<DiJobJobSettingsColumnDataTypeSettingArgs>> columnDataTypeSettings;
 
     /**
-     * @return Column type mapping of the synchronization task See `column_data_type_settings` below.
+     * @return Column type mapping of the synchronization task See `columnDataTypeSettings` below.
      * 
      */
     public Optional<Output<List<DiJobJobSettingsColumnDataTypeSettingArgs>>> columnDataTypeSettings() {
@@ -57,14 +57,14 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Periodic scheduling settings See `cycle_schedule_settings` below.
+     * Periodic scheduling settings See `cycleScheduleSettings` below.
      * 
      */
     @Import(name="cycleScheduleSettings")
     private @Nullable Output<DiJobJobSettingsCycleScheduleSettingsArgs> cycleScheduleSettings;
 
     /**
-     * @return Periodic scheduling settings See `cycle_schedule_settings` below.
+     * @return Periodic scheduling settings See `cycleScheduleSettings` below.
      * 
      */
     public Optional<Output<DiJobJobSettingsCycleScheduleSettingsArgs>> cycleScheduleSettings() {
@@ -72,14 +72,14 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+     * List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
      * 
      */
     @Import(name="ddlHandlingSettings")
     private @Nullable Output<List<DiJobJobSettingsDdlHandlingSettingArgs>> ddlHandlingSettings;
 
     /**
-     * @return List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+     * @return List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
      * 
      */
     public Optional<Output<List<DiJobJobSettingsDdlHandlingSettingArgs>>> ddlHandlingSettings() {
@@ -87,14 +87,14 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Run-time setting parameter list See `runtime_settings` below.
+     * Run-time setting parameter list See `runtimeSettings` below.
      * 
      */
     @Import(name="runtimeSettings")
     private @Nullable Output<List<DiJobJobSettingsRuntimeSettingArgs>> runtimeSettings;
 
     /**
-     * @return Run-time setting parameter list See `runtime_settings` below.
+     * @return Run-time setting parameter list See `runtimeSettings` below.
      * 
      */
     public Optional<Output<List<DiJobJobSettingsRuntimeSettingArgs>>> runtimeSettings() {
@@ -157,7 +157,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param columnDataTypeSettings Column type mapping of the synchronization task See `column_data_type_settings` below.
+         * @param columnDataTypeSettings Column type mapping of the synchronization task See `columnDataTypeSettings` below.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param columnDataTypeSettings Column type mapping of the synchronization task See `column_data_type_settings` below.
+         * @param columnDataTypeSettings Column type mapping of the synchronization task See `columnDataTypeSettings` below.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param columnDataTypeSettings Column type mapping of the synchronization task See `column_data_type_settings` below.
+         * @param columnDataTypeSettings Column type mapping of the synchronization task See `columnDataTypeSettings` below.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cycleScheduleSettings Periodic scheduling settings See `cycle_schedule_settings` below.
+         * @param cycleScheduleSettings Periodic scheduling settings See `cycleScheduleSettings` below.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cycleScheduleSettings Periodic scheduling settings See `cycle_schedule_settings` below.
+         * @param cycleScheduleSettings Periodic scheduling settings See `cycleScheduleSettings` below.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ddlHandlingSettings List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+         * @param ddlHandlingSettings List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ddlHandlingSettings List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+         * @param ddlHandlingSettings List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ddlHandlingSettings List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+         * @param ddlHandlingSettings List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param runtimeSettings Run-time setting parameter list See `runtime_settings` below.
+         * @param runtimeSettings Run-time setting parameter list See `runtimeSettings` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param runtimeSettings Run-time setting parameter list See `runtime_settings` below.
+         * @param runtimeSettings Run-time setting parameter list See `runtimeSettings` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class DiJobJobSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param runtimeSettings Run-time setting parameter list See `runtime_settings` below.
+         * @param runtimeSettings Run-time setting parameter list See `runtimeSettings` below.
          * 
          * @return builder
          * 

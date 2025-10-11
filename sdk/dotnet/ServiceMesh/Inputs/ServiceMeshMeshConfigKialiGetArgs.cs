@@ -67,19 +67,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? KialiServiceAnnotations { get; set; }
 
         /// <summary>
-        /// When the mesh topology's authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+        /// When the mesh topology's authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `OpenIdConfig` below.
         /// </summary>
         [Input("openIdConfig")]
         public Input<Inputs.ServiceMeshMeshConfigKialiOpenIdConfigGetArgs>? OpenIdConfig { get; set; }
 
         /// <summary>
-        /// When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+        /// When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `RamOauthConfig` below.
         /// </summary>
         [Input("ramOauthConfig")]
         public Input<Inputs.ServiceMeshMeshConfigKialiRamOauthConfigGetArgs>? RamOauthConfig { get; set; }
 
         /// <summary>
-        /// When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+        /// When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `ServerConfig` below.
         /// </summary>
         [Input("serverConfig")]
         public Input<Inputs.ServiceMeshMeshConfigKialiServerConfigGetArgs>? ServerConfig { get; set; }

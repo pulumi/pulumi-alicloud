@@ -16,14 +16,14 @@ public final class ServerlessKubernetesOperationPolicyArgs extends com.pulumi.re
     public static final ServerlessKubernetesOperationPolicyArgs Empty = new ServerlessKubernetesOperationPolicyArgs();
 
     /**
-     * Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+     * Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
      * 
      */
     @Import(name="clusterAutoUpgrade")
     private @Nullable Output<ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs> clusterAutoUpgrade;
 
     /**
-     * @return Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+     * @return Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
      * 
      */
     public Optional<Output<ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs>> clusterAutoUpgrade() {
@@ -55,7 +55,7 @@ public final class ServerlessKubernetesOperationPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ServerlessKubernetesOperationPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
          * 
          * @return builder
          * 

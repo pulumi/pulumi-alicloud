@@ -58,14 +58,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tags of the account See `account_tags` below.
+     * The tags of the account See `accountTags` below.
      * 
      */
     @Import(name="accountTags")
     private @Nullable Output<List<AccountAccountTagArgs>> accountTags;
 
     /**
-     * @return The tags of the account See `account_tags` below.
+     * @return The tags of the account See `accountTags` below.
      * 
      */
     public Optional<Output<List<AccountAccountTagArgs>>> accountTags() {
@@ -245,7 +245,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountTags The tags of the account See `account_tags` below.
+         * @param accountTags The tags of the account See `accountTags` below.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountTags The tags of the account See `account_tags` below.
+         * @param accountTags The tags of the account See `accountTags` below.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountTags The tags of the account See `account_tags` below.
+         * @param accountTags The tags of the account See `accountTags` below.
          * 
          * @return builder
          * 

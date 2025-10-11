@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketReplicationProgress
     {
         /// <summary>
-        /// The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        /// The percentage of the replicated historical data. This element is valid only when HistoricalObjectReplication is set to enabled.
         /// </summary>
         public readonly string? HistoricalObject;
         /// <summary>

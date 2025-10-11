@@ -167,7 +167,7 @@ public final class GetDbClustersCluster {
      */
     private String status;
     /**
-     * @return Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+     * @return Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      * 
      */
     private String storageType;
@@ -422,7 +422,7 @@ public final class GetDbClustersCluster {
         return this.status;
     }
     /**
-     * @return Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+     * @return Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      * 
      */
     public String storageType() {

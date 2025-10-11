@@ -122,14 +122,14 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+     * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      * 
      */
     @Export(name="dispatchRuleId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dispatchRuleId;
 
     /**
-     * @return The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+     * @return The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      * 
      */
     public Output<Optional<String>> dispatchRuleId() {

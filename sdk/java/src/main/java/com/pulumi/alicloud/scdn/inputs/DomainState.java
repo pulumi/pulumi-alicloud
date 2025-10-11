@@ -22,10 +22,10 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
      * Attribute perm has been deprecated and suggest removing it from your template.
      * 
      * @deprecated
-     * Attribute biz_name has been deprecated and suggest removing it from your template.
+     * Attribute bizName has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute biz_name has been deprecated and suggest removing it from your template. */
+    @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
     @Import(name="bizName")
     private @Nullable Output<String> bizName;
 
@@ -33,23 +33,23 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
      * @return Attribute perm has been deprecated and suggest removing it from your template.
      * 
      * @deprecated
-     * Attribute biz_name has been deprecated and suggest removing it from your template.
+     * Attribute bizName has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute biz_name has been deprecated and suggest removing it from your template. */
+    @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
     public Optional<Output<String>> bizName() {
         return Optional.ofNullable(this.bizName);
     }
 
     /**
-     * Certificate Information. See the following `Block cert_infos`.
+     * Certificate Information. See the following `Block certInfos`.
      * 
      */
     @Import(name="certInfos")
     private @Nullable Output<List<DomainCertInfoArgs>> certInfos;
 
     /**
-     * @return Certificate Information. See the following `Block cert_infos`.
+     * @return Certificate Information. See the following `Block certInfos`.
      * 
      */
     public Optional<Output<List<DomainCertInfoArgs>>> certInfos() {
@@ -183,10 +183,10 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute biz_name has been deprecated and suggest removing it from your template.
+         * Attribute bizName has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute biz_name has been deprecated and suggest removing it from your template. */
+        @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
         public Builder bizName(@Nullable Output<String> bizName) {
             $.bizName = bizName;
             return this;
@@ -198,16 +198,16 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute biz_name has been deprecated and suggest removing it from your template.
+         * Attribute bizName has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute biz_name has been deprecated and suggest removing it from your template. */
+        @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
         public Builder bizName(String bizName) {
             return bizName(Output.of(bizName));
         }
 
         /**
-         * @param certInfos Certificate Information. See the following `Block cert_infos`.
+         * @param certInfos Certificate Information. See the following `Block certInfos`.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certInfos Certificate Information. See the following `Block cert_infos`.
+         * @param certInfos Certificate Information. See the following `Block certInfos`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certInfos Certificate Information. See the following `Block cert_infos`.
+         * @param certInfos Certificate Information. See the following `Block certInfos`.
          * 
          * @return builder
          * 

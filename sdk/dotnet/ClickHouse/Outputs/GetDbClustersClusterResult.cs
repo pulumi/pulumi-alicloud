@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+        /// Storage type of DBCluster. Valid values: `CloudEssd`, `CloudEfficiency`, `CloudEssdPl2`, `CloudEssdPl3`.
         /// </summary>
         public readonly string StorageType;
         /// <summary>

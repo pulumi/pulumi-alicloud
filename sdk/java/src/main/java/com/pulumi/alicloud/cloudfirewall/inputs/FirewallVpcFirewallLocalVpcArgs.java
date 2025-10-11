@@ -49,14 +49,14 @@ public final class FirewallVpcFirewallLocalVpcArgs extends com.pulumi.resources.
     }
 
     /**
-     * The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+     * The network segment list of the local VPC. See `localVpcCidrTableList` below.
      * 
      */
     @Import(name="localVpcCidrTableLists", required=true)
     private Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs>> localVpcCidrTableLists;
 
     /**
-     * @return The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+     * @return The network segment list of the local VPC. See `localVpcCidrTableList` below.
      * 
      */
     public Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs>> localVpcCidrTableLists() {
@@ -196,7 +196,7 @@ public final class FirewallVpcFirewallLocalVpcArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param localVpcCidrTableLists The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+         * @param localVpcCidrTableLists The network segment list of the local VPC. See `localVpcCidrTableList` below.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class FirewallVpcFirewallLocalVpcArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param localVpcCidrTableLists The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+         * @param localVpcCidrTableLists The network segment list of the local VPC. See `localVpcCidrTableList` below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class FirewallVpcFirewallLocalVpcArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param localVpcCidrTableLists The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+         * @param localVpcCidrTableLists The network segment list of the local VPC. See `localVpcCidrTableList` below.
          * 
          * @return builder
          * 

@@ -65,14 +65,14 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of ECS tags. See `ecs_tags` below.
+     * A list of ECS tags. See `ecsTags` below.
      * 
      */
     @Import(name="ecsTags")
     private @Nullable Output<List<AddressBookEcsTagArgs>> ecsTags;
 
     /**
-     * @return A list of ECS tags. See `ecs_tags` below.
+     * @return A list of ECS tags. See `ecsTags` below.
      * 
      */
     public Optional<Output<List<AddressBookEcsTagArgs>>> ecsTags() {
@@ -96,7 +96,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     @Import(name="groupType", required=true)
@@ -104,7 +104,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     public Output<String> groupType() {
@@ -246,7 +246,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsTags A list of ECS tags. See `ecs_tags` below.
+         * @param ecsTags A list of ECS tags. See `ecsTags` below.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsTags A list of ECS tags. See `ecs_tags` below.
+         * @param ecsTags A list of ECS tags. See `ecsTags` below.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsTags A list of ECS tags. See `ecs_tags` below.
+         * @param ecsTags A list of ECS tags. See `ecsTags` below.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-         * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-         * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
          * 
          * @return builder
          * 

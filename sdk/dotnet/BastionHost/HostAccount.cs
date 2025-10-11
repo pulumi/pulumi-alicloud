@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+        /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `ProtocolName` is `SSH`.
         /// </summary>
         [Output("passPhrase")]
         public Output<string?> PassPhrase { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+        /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `ProtocolName` is `SSH`
         /// </summary>
         [Output("privateKey")]
         public Output<string?> PrivateKey { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Input<string>? _passPhrase;
 
         /// <summary>
-        /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+        /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `ProtocolName` is `SSH`.
         /// </summary>
         public Input<string>? PassPhrase
         {
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+        /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `ProtocolName` is `SSH`
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Input<string>? _passPhrase;
 
         /// <summary>
-        /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+        /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `ProtocolName` is `SSH`.
         /// </summary>
         public Input<string>? PassPhrase
         {
@@ -341,7 +341,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+        /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `ProtocolName` is `SSH`
         /// </summary>
         public Input<string>? PrivateKey
         {

@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> AddAccounts { get; private set; } = null!;
 
         /// <summary>
-        /// The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+        /// The source image. When you set `BaseImageType` to `IMAGE`, set `BaseImage` to the ID of a custom image. When you set `BaseImageType` to `IMAGE_FAMILY`, set `BaseImage` to the name of an image family.
         /// </summary>
         [Output("baseImage")]
         public Output<string> BaseImage { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+        /// The source image. When you set `BaseImageType` to `IMAGE`, set `BaseImage` to the ID of a custom image. When you set `BaseImageType` to `IMAGE_FAMILY`, set `BaseImage` to the name of an image family.
         /// </summary>
         [Input("baseImage", required: true)]
         public Input<string> BaseImage { get; set; } = null!;
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+        /// The source image. When you set `BaseImageType` to `IMAGE`, set `BaseImage` to the ID of a custom image. When you set `BaseImageType` to `IMAGE_FAMILY`, set `BaseImage` to the name of an image family.
         /// </summary>
         [Input("baseImage")]
         public Input<string>? BaseImage { get; set; }

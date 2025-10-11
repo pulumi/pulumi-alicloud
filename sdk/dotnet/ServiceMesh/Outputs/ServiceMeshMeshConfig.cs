@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfig
     {
         /// <summary>
-        /// The access logging configuration See `access_log` below.
+        /// The access logging configuration See `AccessLog` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAccessLog? AccessLog;
         /// <summary>
-        /// Audit information See `audit` below.
+        /// Audit information See `Audit` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAudit? Audit;
         /// <summary>
-        /// Control plane log collection configuration. See `control_plane_log` below.
+        /// Control plane log collection configuration. See `ControlPlaneLog` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigControlPlaneLog? ControlPlaneLog;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string? IncludeIpRanges;
         /// <summary>
-        /// Kiali configuration See `kiali` below.
+        /// Kiali configuration See `Kiali` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigKiali? Kiali;
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information See `opa` below.
+        /// The open-door policy of agent (OPA) plug-in information See `Opa` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigOpa? Opa;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string? OutboundTrafficPolicy;
         /// <summary>
-        /// Link trace sampling information See `pilot` below.
+        /// Link trace sampling information See `Pilot` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigPilot? Pilot;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigPrometheus? Prometheus;
         /// <summary>
-        /// Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `proxy` below.
+        /// Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `Proxy` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigProxy? Proxy;
         /// <summary>
-        /// Sidecar injector configuration See `sidecar_injector` below.
+        /// Sidecar injector configuration See `SidecarInjector` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigSidecarInjector? SidecarInjector;
         /// <summary>

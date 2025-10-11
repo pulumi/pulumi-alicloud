@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Hbr
     public partial class PolicyBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup Advanced Options See `advanced_options` below.
+        /// Backup Advanced Options See `AdvancedOptions` below.
         /// </summary>
         [Output("advancedOptions")]
         public Output<Outputs.PolicyBindingAdvancedOptions> AdvancedOptions { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class PolicyBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Advanced Options See `advanced_options` below.
+        /// Backup Advanced Options See `AdvancedOptions` below.
         /// </summary>
         [Input("advancedOptions")]
         public Input<Inputs.PolicyBindingAdvancedOptionsArgs>? AdvancedOptions { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class PolicyBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Advanced Options See `advanced_options` below.
+        /// Backup Advanced Options See `AdvancedOptions` below.
         /// </summary>
         [Input("advancedOptions")]
         public Input<Inputs.PolicyBindingAdvancedOptionsGetArgs>? AdvancedOptions { get; set; }

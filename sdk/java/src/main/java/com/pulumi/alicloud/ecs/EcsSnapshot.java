@@ -225,54 +225,54 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      * @deprecated
-     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
     @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
     /**
-     * @return Field `instant_access` has been deprecated from provider version 1.231.0.
+     * @return Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
     public Output<Optional<Boolean>> instantAccess() {
         return Codegen.optional(this.instantAccess);
     }
     /**
-     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      * @deprecated
-     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
     @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
     /**
-     * @return Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * @return Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
     public Output<Optional<Integer>> instantAccessRetentionDays() {
         return Codegen.optional(this.instantAccessRetentionDays);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
     public Output<String> name() {
@@ -293,28 +293,28 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
         return this.regionId;
     }
     /**
-     * The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
+     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+     * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      * 
      */
     @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
-     * @return The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
+     * @return The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      * 
      */
     public Output<Optional<Integer>> retentionDays() {

@@ -16,14 +16,14 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesPlainArgs Empty = new GetZonesPlainArgs();
 
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     @Import(name="category")
     private @Nullable String category;
 
     /**
-     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     public Optional<String> category() {
@@ -31,14 +31,14 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+     * The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;.
      * 
      */
     @Import(name="dbInstanceStorageType")
     private @Nullable String dbInstanceStorageType;
 
     /**
-     * @return The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+     * @return The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;.
      * 
      */
     public Optional<String> dbInstanceStorageType() {
@@ -91,24 +91,24 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      * @deprecated
-     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      */
-    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
     @Import(name="multi")
     private @Nullable Boolean multi;
 
     /**
-     * @return It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * @return It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      * @deprecated
-     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      */
-    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
     public Optional<Boolean> multi() {
         return Optional.ofNullable(this.multi);
     }
@@ -175,7 +175,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;.
          * 
          * @return builder
          * 
@@ -230,15 +230,15 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param multi It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+         * @param multi It has been deprecated from version 1.137.0 and using `multiZone` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+         * It has been deprecated from version 1.137.0 and using `multiZone` instead.
          * 
          */
-        @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
+        @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
         public Builder multi(@Nullable Boolean multi) {
             $.multi = multi;
             return this;

@@ -17,14 +17,14 @@ public final class ConnectionNetworkParametersArgs extends com.pulumi.resources.
     public static final ConnectionNetworkParametersArgs Empty = new ConnectionNetworkParametersArgs();
 
     /**
-     * The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+     * The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
      * 
      */
     @Import(name="networkType", required=true)
     private Output<String> networkType;
 
     /**
-     * @return The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+     * @return The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
      * 
      */
     public Output<String> networkType() {
@@ -104,7 +104,7 @@ public final class ConnectionNetworkParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkType The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+         * @param networkType The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ConnectionNetworkParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkType The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+         * @param networkType The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
          * 
          * @return builder
          * 

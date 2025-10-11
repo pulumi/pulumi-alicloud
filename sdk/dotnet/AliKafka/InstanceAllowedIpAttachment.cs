@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> AllowedIp { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// The type of the whitelist. Valid Value: `Vpc`, `Internet`. **NOTE:** From version 1.179.0, `AllowedType` can be set to `Internet`.
         /// </summary>
         [Output("allowedType")]
         public Output<string> AllowedType { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `PortRange` can be set to `9093/9093`. From version 1.219.0, `PortRange` can be set to `9094/9094`, `9095/9095`.
         /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
         /// - `9093/9093`: The port range for access from the Internet.
         /// - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> AllowedIp { get; set; } = null!;
 
         /// <summary>
-        /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// The type of the whitelist. Valid Value: `Vpc`, `Internet`. **NOTE:** From version 1.179.0, `AllowedType` can be set to `Internet`.
         /// </summary>
         [Input("allowedType", required: true)]
         public Input<string> AllowedType { get; set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `PortRange` can be set to `9093/9093`. From version 1.219.0, `PortRange` can be set to `9094/9094`, `9095/9095`.
         /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
         /// - `9093/9093`: The port range for access from the Internet.
         /// - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? AllowedIp { get; set; }
 
         /// <summary>
-        /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// The type of the whitelist. Valid Value: `Vpc`, `Internet`. **NOTE:** From version 1.179.0, `AllowedType` can be set to `Internet`.
         /// </summary>
         [Input("allowedType")]
         public Input<string>? AllowedType { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `PortRange` can be set to `9093/9093`. From version 1.219.0, `PortRange` can be set to `9094/9094`, `9095/9095`.
         /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
         /// - `9093/9093`: The port range for access from the Internet.
         /// - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.

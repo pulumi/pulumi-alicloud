@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`. Default values: `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        /// The name of the backup rule.**Note:** Required while SourceType equals `OTS_TABLE`. `RuleName` should be unique for the specific user.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }

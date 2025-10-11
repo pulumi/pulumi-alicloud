@@ -105,14 +105,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation")
 public class TransitRouterPrefixListAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+     * The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      * 
      */
     @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
-     * @return The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
+     * @return The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      * 
      */
     public Output<String> nextHop() {

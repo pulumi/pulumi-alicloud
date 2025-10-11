@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesAutoMode
     {
         /// <summary>
-        /// Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+        /// Whether to enable auto mode. Valid values: `True`, `False`. Only ACK managed Pro clusters support Auto Mode.
         /// </summary>
         public readonly bool? Enabled;
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class GetHoneypotProbesProbeResult
     {
         /// <summary>
-        /// ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
+        /// ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `EnableDetails` is on.
         /// </summary>
         public readonly bool Arp;
         /// <summary>
@@ -31,11 +31,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string HoneypotProbeId;
         /// <summary>
-        /// The ID of the honeypot probe. Its value is the same as `honeypot_probe_id`.
+        /// The ID of the honeypot probe. Its value is the same as `HoneypotProbeId`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enable_details` is on.
+        /// Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `EnableDetails` is on.
         /// </summary>
         public readonly bool Ping;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string ProbeType;
         /// <summary>
-        /// Listen to the IP address list. Available when `enable_details` is on.
+        /// Listen to the IP address list. Available when `EnableDetails` is on.
         /// </summary>
         public readonly ImmutableArray<string> ServiceIpLists;
         /// <summary>
@@ -51,11 +51,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Machine uuid. Has a value when the type is `host_probe`.
+        /// Machine uuid. Has a value when the type is `HostProbe`.
         /// </summary>
         public readonly string Uuid;
         /// <summary>
-        /// The ID of the VPC. Has a value when the type is `vpc_black_hole_probe`.
+        /// The ID of the VPC. Has a value when the type is `VpcBlackHoleProbe`.
         /// </summary>
         public readonly string VpcId;
 

@@ -176,14 +176,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/serverGroup:ServerGroup")
 public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Elegant interrupt configuration. See `connection_drain_config` below.
+     * Elegant interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     @Export(name="connectionDrainConfig", refs={ServerGroupConnectionDrainConfig.class}, tree="[0]")
     private Output<ServerGroupConnectionDrainConfig> connectionDrainConfig;
 
     /**
-     * @return Elegant interrupt configuration. See `connection_drain_config` below.
+     * @return Elegant interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     public Output<ServerGroupConnectionDrainConfig> connectionDrainConfig() {
@@ -236,14 +236,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The configuration of health checks See `health_check_config` below.
+     * The configuration of health checks See `healthCheckConfig` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ServerGroupHealthCheckConfig.class}, tree="[0]")
     private Output<ServerGroupHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks See `health_check_config` below.
+     * @return The configuration of health checks See `healthCheckConfig` below.
      * 
      */
     public Output<ServerGroupHealthCheckConfig> healthCheckConfig() {
@@ -420,14 +420,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceName);
     }
     /**
-     * Slow start configuration. See `slow_start_config` below.
+     * Slow start configuration. See `slowStartConfig` below.
      * 
      */
     @Export(name="slowStartConfig", refs={ServerGroupSlowStartConfig.class}, tree="[0]")
     private Output<ServerGroupSlowStartConfig> slowStartConfig;
 
     /**
-     * @return Slow start configuration. See `slow_start_config` below.
+     * @return Slow start configuration. See `slowStartConfig` below.
      * 
      */
     public Output<ServerGroupSlowStartConfig> slowStartConfig() {
@@ -448,14 +448,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The configuration of health checks See `sticky_session_config` below.
+     * The configuration of health checks See `stickySessionConfig` below.
      * 
      */
     @Export(name="stickySessionConfig", refs={ServerGroupStickySessionConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServerGroupStickySessionConfig> stickySessionConfig;
 
     /**
-     * @return The configuration of health checks See `sticky_session_config` below.
+     * @return The configuration of health checks See `stickySessionConfig` below.
      * 
      */
     public Output<Optional<ServerGroupStickySessionConfig>> stickySessionConfig() {
@@ -476,14 +476,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Url consistency hash parameter configuration See `uch_config` below.
+     * Url consistency hash parameter configuration See `uchConfig` below.
      * 
      */
     @Export(name="uchConfig", refs={ServerGroupUchConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServerGroupUchConfig> uchConfig;
 
     /**
-     * @return Url consistency hash parameter configuration See `uch_config` below.
+     * @return Url consistency hash parameter configuration See `uchConfig` below.
      * 
      */
     public Output<Optional<ServerGroupUchConfig>> uchConfig() {

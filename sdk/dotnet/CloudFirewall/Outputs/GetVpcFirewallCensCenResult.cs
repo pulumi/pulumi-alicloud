@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string CenId;
         /// <summary>
-        /// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
+        /// Intercommunication type, value: `Expressconnect`: Express Channel `Cen`: Cloud Enterprise Network
         /// </summary>
         public readonly string ConnectType;
         /// <summary>

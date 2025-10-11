@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> LogtailConfigName { get; private set; } = null!;
 
         /// <summary>
-        /// Detailed configuration of logtail output See `output_detail` below.
+        /// Detailed configuration of logtail output See `OutputDetail` below.
         /// </summary>
         [Output("outputDetail")]
         public Output<Outputs.LogtailConfigOutputDetail?> OutputDetail { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? LogtailConfigName { get; set; }
 
         /// <summary>
-        /// Detailed configuration of logtail output See `output_detail` below.
+        /// Detailed configuration of logtail output See `OutputDetail` below.
         /// </summary>
         [Input("outputDetail")]
         public Input<Inputs.LogtailConfigOutputDetailArgs>? OutputDetail { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? LogtailConfigName { get; set; }
 
         /// <summary>
-        /// Detailed configuration of logtail output See `output_detail` below.
+        /// Detailed configuration of logtail output See `OutputDetail` below.
         /// </summary>
         [Input("outputDetail")]
         public Input<Inputs.LogtailConfigOutputDetailGetArgs>? OutputDetail { get; set; }

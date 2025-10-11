@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<Inputs.EtlConfigurationSinkGetArgs>? _sinks;
 
         /// <summary>
-        /// Processing result output target list See `sink` below.
+        /// Processing result output target list See `Sink` below.
         /// </summary>
         public InputList<Inputs.EtlConfigurationSinkGetArgs> Sinks
         {

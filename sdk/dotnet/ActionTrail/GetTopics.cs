@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// The instance_id of the instance.
+        /// The InstanceId of the instance.
         /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;

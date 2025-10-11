@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
     {
         /// <summary>
         /// The structure of volumeMounts.
-        /// See `dimensions` below for details.
+        /// See `Dimensions` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.ScalingRuleHybridMetricDimension> Dimensions;
         /// <summary>

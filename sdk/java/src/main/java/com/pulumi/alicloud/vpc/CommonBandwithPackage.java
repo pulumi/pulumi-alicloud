@@ -271,14 +271,14 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      * 
      */
     @Export(name="securityProtectionTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      * 
      */
     public Output<Optional<List<String>>> securityProtectionTypes() {

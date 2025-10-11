@@ -20,14 +20,14 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
     public static final EcdPolicyGroupArgs Empty = new EcdPolicyGroupArgs();
 
     /**
-     * The rule of authorize access rule. See `authorize_access_policy_rules` below.
+     * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      * 
      */
     @Import(name="authorizeAccessPolicyRules")
     private @Nullable Output<List<EcdPolicyGroupAuthorizeAccessPolicyRuleArgs>> authorizeAccessPolicyRules;
 
     /**
-     * @return The rule of authorize access rule. See `authorize_access_policy_rules` below.
+     * @return The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      * 
      */
     public Optional<Output<List<EcdPolicyGroupAuthorizeAccessPolicyRuleArgs>>> authorizeAccessPolicyRules() {
@@ -35,14 +35,14 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The policy rule. See `authorize_security_policy_rules` below.
+     * The policy rule. See `authorizeSecurityPolicyRules` below.
      * 
      */
     @Import(name="authorizeSecurityPolicyRules")
     private @Nullable Output<List<EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs>> authorizeSecurityPolicyRules;
 
     /**
-     * @return The policy rule. See `authorize_security_policy_rules` below.
+     * @return The policy rule. See `authorizeSecurityPolicyRules` below.
      * 
      */
     public Optional<Output<List<EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs>>> authorizeSecurityPolicyRules() {
@@ -347,7 +347,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorize_access_policy_rules` below.
+         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorize_access_policy_rules` below.
+         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorize_access_policy_rules` below.
+         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizeSecurityPolicyRules The policy rule. See `authorize_security_policy_rules` below.
+         * @param authorizeSecurityPolicyRules The policy rule. See `authorizeSecurityPolicyRules` below.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizeSecurityPolicyRules The policy rule. See `authorize_security_policy_rules` below.
+         * @param authorizeSecurityPolicyRules The policy rule. See `authorizeSecurityPolicyRules` below.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizeSecurityPolicyRules The policy rule. See `authorize_security_policy_rules` below.
+         * @param authorizeSecurityPolicyRules The policy rule. See `authorizeSecurityPolicyRules` below.
          * 
          * @return builder
          * 

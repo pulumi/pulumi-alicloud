@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates
     {
         /// <summary>
-        /// Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+        /// Mirror back-to-source multi-source station configuration list See `MirrorMultiAlternate` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate> MirrorMultiAlternates;
 

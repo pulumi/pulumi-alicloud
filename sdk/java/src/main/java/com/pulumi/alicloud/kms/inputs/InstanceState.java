@@ -20,14 +20,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      * 
      */
     @Import(name="bindVpcs")
     private @Nullable Output<List<InstanceBindVpcArgs>> bindVpcs;
 
     /**
-     * @return Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+     * @return Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      * 
      */
     public Optional<Output<List<InstanceBindVpcArgs>>> bindVpcs() {
@@ -110,14 +110,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="keyNum")
     private @Nullable Output<Integer> keyNum;
 
     /**
-     * @return Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> keyNum() {
@@ -125,14 +125,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="log")
     private @Nullable Output<String> log;
 
     /**
-     * @return Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<String>> log() {
@@ -140,14 +140,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="logStorage")
     private @Nullable Output<Integer> logStorage;
 
     /**
-     * @return Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> logStorage() {
@@ -174,14 +174,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -204,14 +204,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -219,14 +219,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="renewStatus")
     private @Nullable Output<String> renewStatus;
 
     /**
-     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<String>> renewStatus() {
@@ -253,14 +253,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="secretNum")
     private @Nullable Output<Integer> secretNum;
 
     /**
-     * @return Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> secretNum() {
@@ -268,14 +268,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="spec")
     private @Nullable Output<Integer> spec;
 
     /**
-     * @return The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> spec() {
@@ -328,14 +328,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Import(name="vpcNum")
     private @Nullable Output<Integer> vpcNum;
 
     /**
-     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> vpcNum() {
@@ -419,7 +419,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyNum Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param keyNum Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyNum Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param keyNum Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStorage Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param logStorage Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStorage Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param logStorage Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param period Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param period Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -773,7 +773,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param spec The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param spec The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
          * 
          * @return builder
          * 

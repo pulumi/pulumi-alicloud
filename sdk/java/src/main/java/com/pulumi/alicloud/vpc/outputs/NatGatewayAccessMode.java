@@ -17,7 +17,7 @@ public final class NatGatewayAccessMode {
      */
     private @Nullable String modeValue;
     /**
-     * @return The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+     * @return The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
      * 
      */
     private @Nullable String tunnelType;
@@ -31,7 +31,7 @@ public final class NatGatewayAccessMode {
         return Optional.ofNullable(this.modeValue);
     }
     /**
-     * @return The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+     * @return The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
      * 
      */
     public Optional<String> tunnelType() {

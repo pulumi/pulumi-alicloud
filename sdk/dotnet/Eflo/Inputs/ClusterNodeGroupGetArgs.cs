@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.ClusterNodeGroupNodeGetArgs>? _nodes;
 
         /// <summary>
-        /// Node List See `nodes` below.
+        /// Node List See `Nodes` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupNodeGetArgs> Nodes
         {

@@ -18,14 +18,14 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
     public static final ServiceSubscriptionArgs Empty = new ServiceSubscriptionArgs();
 
     /**
-     * The dead-letter queue policy. See `dlq_policy` below.
+     * The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     @Import(name="dlqPolicy")
     private @Nullable Output<ServiceSubscriptionDlqPolicyArgs> dlqPolicy;
 
     /**
-     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * @return The dead-letter queue policy. See `dlqPolicy` below.
      * 
      */
     public Optional<Output<ServiceSubscriptionDlqPolicyArgs>> dlqPolicy() {
@@ -199,7 +199,7 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * @param dlqPolicy The dead-letter queue policy. See `dlqPolicy` below.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * @param dlqPolicy The dead-letter queue policy. See `dlqPolicy` below.
          * 
          * @return builder
          * 

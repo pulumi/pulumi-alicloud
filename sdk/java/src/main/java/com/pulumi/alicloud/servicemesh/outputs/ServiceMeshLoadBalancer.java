@@ -23,7 +23,7 @@ public final class ServiceMeshLoadBalancer {
      */
     private @Nullable Boolean apiServerPublicEip;
     /**
-     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
      * 
      */
     private @Nullable Boolean pilotPublicEip;
@@ -54,7 +54,7 @@ public final class ServiceMeshLoadBalancer {
         return Optional.ofNullable(this.apiServerPublicEip);
     }
     /**
-     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
      * 
      */
     public Optional<Boolean> pilotPublicEip() {

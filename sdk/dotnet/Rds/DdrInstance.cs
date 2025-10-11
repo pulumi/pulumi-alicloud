@@ -32,13 +32,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Acl { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when PaymentType is `Subscription`. Default to `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when PaymentType is `Subscription`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `PaymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool> DeletionProtection { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// DB Instance type.
         /// 
-        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `InstanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `InstanceStorage`has changed. You need to manually revise the `InstanceStorage` in the template value.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> MonitoringPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.DdrInstanceParameter>> Parameters { get; private set; } = null!;
@@ -269,14 +269,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `PgHbaConf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.DdrInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -341,7 +341,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+        /// Valid values are `Normal`, `Safety`, Default to `Normal`. support `Safety` switch to high security access mode.
         /// </summary>
         [Output("securityIpMode")]
         public Output<string> SecurityIpMode { get; private set; } = null!;
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> StorageUpperBound { get; private set; } = null!;
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `UpgradeDbInstanceKernelVersion = true`. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -454,7 +454,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `UpgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
         /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
         /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
         /// - rds: The instance runs RDS Basic or High-availability Edition.
@@ -490,7 +490,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> UpgradeDbInstanceKernelVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `UpgradeDbInstanceKernelVersion = true`. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -525,8 +525,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Zone to launch the DB instance. It supports multiple zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in the one of them.
+        /// The multiple zone ID can be retrieved by setting `Multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -600,13 +600,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when PaymentType is `Subscription`. Default to `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when PaymentType is `Subscription`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -704,7 +704,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `PaymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -778,7 +778,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// DB Instance type.
         /// 
-        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `InstanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `InstanceStorage`has changed. You need to manually revise the `InstanceStorage` in the template value.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -816,7 +816,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `Parameters` below.
         /// </summary>
         public InputList<Inputs.DdrInstanceParameterArgs> Parameters
         {
@@ -831,8 +831,8 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -841,7 +841,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `PgHbaConf` below.
         /// </summary>
         public InputList<Inputs.DdrInstancePgHbaConfArgs> PgHbaConfs
         {
@@ -915,7 +915,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+        /// Valid values are `Normal`, `Safety`, Default to `Normal`. support `Safety` switch to high security access mode.
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -1012,7 +1012,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `UpgradeDbInstanceKernelVersion = true`. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -1034,7 +1034,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `UpgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
         /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
         /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
         /// - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1070,7 +1070,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `UpgradeDbInstanceKernelVersion = true`. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1105,8 +1105,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Zone to launch the DB instance. It supports multiple zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in the one of them.
+        /// The multiple zone ID can be retrieved by setting `Multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -1130,13 +1130,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
+        /// Whether to renewal a DB instance automatically or not. It is valid when PaymentType is `Subscription`. Default to `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when PaymentType is `Subscription`. Valid value:[1~12], Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -1246,7 +1246,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `DeletionProtection` is valid only when attribute `PaymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1320,7 +1320,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// DB Instance type.
         /// 
-        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `InstanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `InstanceStorage`has changed. You need to manually revise the `InstanceStorage` in the template value.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1358,7 +1358,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `Parameters` below.
         /// </summary>
         public InputList<Inputs.DdrInstanceParameterGetArgs> Parameters
         {
@@ -1373,8 +1373,8 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy DB instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1383,7 +1383,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `PgHbaConf` below.
         /// </summary>
         public InputList<Inputs.DdrInstancePgHbaConfGetArgs> PgHbaConfs
         {
@@ -1457,7 +1457,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+        /// Valid values are `Normal`, `Safety`, Default to `Normal`. support `Safety` switch to high security access mode.
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -1560,7 +1560,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
-        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `UpgradeDbInstanceKernelVersion = true`. The time must be in UTC.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
@@ -1582,7 +1582,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `UpgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
         /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
         /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
         /// - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1618,7 +1618,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? UpgradeDbInstanceKernelVersion { get; set; }
 
         /// <summary>
-        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        /// The method to update the minor engine version. Default value: Immediate. It is valid only when `UpgradeDbInstanceKernelVersion = true`. Valid values:
         /// - Immediate: The minor engine version is immediately updated.
         /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
         /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1653,8 +1653,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Zone to launch the DB instance. It supports multiple zone.
-        /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+        /// If it is a multi-zone and `VswitchId` is specified, the vswitch must in the one of them.
+        /// The multiple zone ID can be retrieved by setting `Multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

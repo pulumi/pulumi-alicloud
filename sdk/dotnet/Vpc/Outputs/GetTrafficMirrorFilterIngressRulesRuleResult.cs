@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// The collection policy of the inbound rule. Valid values: `Accept` or `Drop`. `Accept`: collects network traffic. `Drop`: does not collect network traffic.
         /// </summary>
         public readonly string RuleAction;
         /// <summary>

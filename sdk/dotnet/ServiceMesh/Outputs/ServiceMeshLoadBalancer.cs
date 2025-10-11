@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? ApiServerPublicEip;
         /// <summary>
-        /// Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
+        /// Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use PilotPublicEipId instead.
         /// </summary>
         public readonly bool? PilotPublicEip;
         /// <summary>

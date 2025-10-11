@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string HoneypotName;
         /// <summary>
-        /// Honeypot ID. The value is the same as `honeypot_id`.
+        /// Honeypot ID. The value is the same as `HoneypotId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

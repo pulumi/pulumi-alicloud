@@ -22,11 +22,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.127.0.
  * 
- * &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+ * &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scaleDownEnabled`.
  * 
  * &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
  * 
- * &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+ * &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scalerType`.
  * 
  * &gt; **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
  * 

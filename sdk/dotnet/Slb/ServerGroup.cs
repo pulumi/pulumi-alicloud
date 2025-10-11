@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Slb
     public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        /// Checking DeleteProtection of SLB instance before deleting. Default value: `False`. If `DeleteProtectionValidation` is set to `True`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         /// </summary>
         [Output("deleteProtectionValidation")]
         public Output<bool?> DeleteProtectionValidation { get; private set; } = null!;
@@ -105,8 +105,8 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of backend servers to be added. See `servers` below.
-        /// &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+        /// The list of backend servers to be added. See `Servers` below.
+        /// &gt; **NOTE:** Field `Servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        /// Checking DeleteProtection of SLB instance before deleting. Default value: `False`. If `DeleteProtectionValidation` is set to `True`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
@@ -185,10 +185,10 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// The list of backend servers to be added. See `servers` below.
-        /// &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+        /// The list of backend servers to be added. See `Servers` below.
+        /// &gt; **NOTE:** Field `Servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
         /// </summary>
-        [Obsolete(@"Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.")]
+        [Obsolete(@"Field `Servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.")]
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
             get => _servers ?? (_servers = new InputList<Inputs.ServerGroupServerArgs>());
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        /// Checking DeleteProtection of SLB instance before deleting. Default value: `False`. If `DeleteProtectionValidation` is set to `True`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
@@ -237,10 +237,10 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// The list of backend servers to be added. See `servers` below.
-        /// &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+        /// The list of backend servers to be added. See `Servers` below.
+        /// &gt; **NOTE:** Field `Servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
         /// </summary>
-        [Obsolete(@"Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.")]
+        [Obsolete(@"Field `Servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.")]
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
             get => _servers ?? (_servers = new InputList<Inputs.ServerGroupServerGetArgs>());

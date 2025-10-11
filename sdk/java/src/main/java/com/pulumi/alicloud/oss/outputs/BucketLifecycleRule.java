@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRule {
     /**
-     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
+     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
@@ -39,7 +39,7 @@ public final class BucketLifecycleRule {
     /**
      * @return Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
      * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
      * 
      */
     private @Nullable BucketLifecycleRuleFilter filter;
@@ -49,12 +49,12 @@ public final class BucketLifecycleRule {
      */
     private @Nullable String id;
     /**
-     * @return Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
+     * @return Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations;
     /**
-     * @return Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
+     * @return Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
@@ -76,7 +76,7 @@ public final class BucketLifecycleRule {
 
     private BucketLifecycleRule() {}
     /**
-     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
+     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
      * 
      */
     public List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads() {
@@ -99,7 +99,7 @@ public final class BucketLifecycleRule {
     /**
      * @return Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
      * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
      * 
      */
     public Optional<BucketLifecycleRuleFilter> filter() {
@@ -113,14 +113,14 @@ public final class BucketLifecycleRule {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
+     * @return Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
      * 
      */
     public List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations() {
         return this.noncurrentVersionExpirations == null ? List.of() : this.noncurrentVersionExpirations;
     }
     /**
-     * @return Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
+     * @return Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
      * 
      */
     public List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions() {

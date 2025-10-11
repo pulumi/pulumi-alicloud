@@ -20,7 +20,7 @@ public final class ChainChainConfigNode {
      */
     private @Nullable Boolean enable;
     /**
-     * @return The configuration of delivery chain node. See `node_config` below.
+     * @return The configuration of delivery chain node. See `nodeConfig` below.
      * 
      */
     private @Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs;
@@ -39,7 +39,7 @@ public final class ChainChainConfigNode {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The configuration of delivery chain node. See `node_config` below.
+     * @return The configuration of delivery chain node. See `nodeConfig` below.
      * 
      */
     public List<ChainChainConfigNodeNodeConfig> nodeConfigs() {

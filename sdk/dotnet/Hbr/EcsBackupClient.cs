@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `True`, `False`.
         /// </summary>
         [Output("useHttps")]
         public Output<bool> UseHttps { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `True`, `False`.
         /// </summary>
         [Input("useHttps")]
         public Input<bool>? UseHttps { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `True`, `False`.
         /// </summary>
         [Input("useHttps")]
         public Input<bool>? UseHttps { get; set; }

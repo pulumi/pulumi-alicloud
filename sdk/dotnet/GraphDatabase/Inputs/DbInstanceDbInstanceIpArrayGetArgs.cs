@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.GraphDatabase.Inputs
     public sealed class DbInstanceDbInstanceIpArrayGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
+        /// The default is empty. To distinguish between the different property console does not display a `Hidden` label grouping.
         /// </summary>
         [Input("dbInstanceIpArrayAttribute")]
         public Input<string>? DbInstanceIpArrayAttribute { get; set; }

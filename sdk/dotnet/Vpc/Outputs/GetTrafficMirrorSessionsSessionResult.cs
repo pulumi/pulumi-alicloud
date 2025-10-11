@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetTrafficMirrorSessionsSessionResult
     {
         /// <summary>
-        /// Indicates whether traffic mirror sessions are enabled. default to `false`.
+        /// Indicates whether traffic mirror sessions are enabled. default to `False`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

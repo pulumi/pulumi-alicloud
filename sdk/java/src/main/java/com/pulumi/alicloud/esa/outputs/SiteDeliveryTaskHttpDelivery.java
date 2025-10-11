@@ -26,7 +26,7 @@ public final class SiteDeliveryTaskHttpDelivery {
     private @Nullable Map<String,String> queryParam;
     private @Nullable Boolean standardAuthOn;
     /**
-     * @return See `standard_auth_param` below.
+     * @return See `standardAuthParam` below.
      * 
      */
     private @Nullable SiteDeliveryTaskHttpDeliveryStandardAuthParam standardAuthParam;
@@ -64,7 +64,7 @@ public final class SiteDeliveryTaskHttpDelivery {
         return Optional.ofNullable(this.standardAuthOn);
     }
     /**
-     * @return See `standard_auth_param` below.
+     * @return See `standardAuthParam` below.
      * 
      */
     public Optional<SiteDeliveryTaskHttpDeliveryStandardAuthParam> standardAuthParam() {

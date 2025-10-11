@@ -135,14 +135,14 @@ public class HttpResponseHeaderModificationRule extends com.pulumi.resources.Cus
         return this.configId;
     }
     /**
-     * Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      * 
      */
     @Export(name="responseHeaderModifications", refs={List.class,HttpResponseHeaderModificationRuleResponseHeaderModification.class}, tree="[0,1]")
     private Output<List<HttpResponseHeaderModificationRuleResponseHeaderModification>> responseHeaderModifications;
 
     /**
-     * @return Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+     * @return Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      * 
      */
     public Output<List<HttpResponseHeaderModificationRuleResponseHeaderModification>> responseHeaderModifications() {

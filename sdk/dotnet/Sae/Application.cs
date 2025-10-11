@@ -106,19 +106,19 @@ namespace Pulumi.AliCloud.Sae
     public partial class Application : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Output("acrAssumeRoleArn")]
         public Output<string?> AcrAssumeRoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// The ID of the ACR EE instance. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Output("acrInstanceId")]
         public Output<string?> AcrInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+        /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `AppDescription` can be modified.
         /// </summary>
         [Output("appDescription")]
         public Output<string?> AppDescription { get; private set; } = null!;
@@ -130,13 +130,13 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> AppName { get; private set; } = null!;
 
         /// <summary>
-        /// The auto config. Valid values: `true`, `false`.
+        /// The auto config. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoConfig")]
         public Output<bool?> AutoConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The auto enable application scaling rule. Valid values: `true`, `false`.
+        /// The auto enable application scaling rule. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoEnableApplicationScalingRule")]
         public Output<bool?> AutoEnableApplicationScalingRule { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> Command { get; private set; } = null!;
 
         /// <summary>
-        /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `CommandArgs` has been deprecated from provider version 1.211.0. New field `CommandArgsV2` instead.
         /// </summary>
         [Output("commandArgs")]
         public Output<string> CommandArgs { get; private set; } = null!;
@@ -172,13 +172,13 @@ namespace Pulumi.AliCloud.Sae
         public Output<ImmutableArray<string>> CommandArgsV2s { get; private set; } = null!;
 
         /// <summary>
-        /// ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        /// ConfigMap mount description. **NOTE:** Field `ConfigMapMountDesc` has been deprecated from provider version 1.211.0. New field `ConfigMapMountDescV2` instead.
         /// </summary>
         [Output("configMapMountDesc")]
         public Output<string> ConfigMapMountDesc { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `ConfigMapMountDescV2` below.
         /// </summary>
         [Output("configMapMountDescV2s")]
         public Output<ImmutableArray<Outputs.ApplicationConfigMapMountDescV2>> ConfigMapMountDescV2s { get; private set; } = null!;
@@ -190,19 +190,19 @@ namespace Pulumi.AliCloud.Sae
         public Output<int?> Cpu { get; private set; } = null!;
 
         /// <summary>
-        /// Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        /// Custom host mapping in the container. For example: [{`hostName`:`Samplehost`,`Ip`:`127.0.0.1`}]. **NOTE:** Field `CustomHostAlias` has been deprecated from provider version 1.211.0. New field `CustomHostAliasV2` instead.
         /// </summary>
         [Output("customHostAlias")]
         public Output<string> CustomHostAlias { get; private set; } = null!;
 
         /// <summary>
-        /// The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        /// The custom mapping between the hostname and IP address in the container. See `CustomHostAliasV2` below.
         /// </summary>
         [Output("customHostAliasV2s")]
         public Output<ImmutableArray<Outputs.ApplicationCustomHostAliasV2>> CustomHostAliasV2s { get; private set; } = null!;
 
         /// <summary>
-        /// The deploy. Valid values: `true`, `false`.
+        /// The deploy. Valid values: `True`, `False`.
         /// </summary>
         [Output("deploy")]
         public Output<bool?> Deploy { get; private set; } = null!;
@@ -214,13 +214,13 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> EdasContainerVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The enable ahas. Valid values: `true`, `false`.
+        /// The enable ahas. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableAhas")]
         public Output<string> EnableAhas { get; private set; } = null!;
 
         /// <summary>
-        /// The enable grey tag route. Default value: `false`. Valid values:
+        /// The enable grey tag route. Default value: `False`. Valid values:
         /// </summary>
         [Output("enableGreyTagRoute")]
         public Output<bool> EnableGreyTagRoute { get; private set; } = null!;
@@ -262,20 +262,20 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> Jdk { get; private set; } = null!;
 
         /// <summary>
-        /// The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        /// The logging configurations of ApsaraMQ for Kafka. See `KafkaConfigs` below.
         /// </summary>
         [Output("kafkaConfigs")]
         public Output<Outputs.ApplicationKafkaConfigs?> KafkaConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        /// **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        /// **NOTE:** Field `Liveness` has been deprecated from provider version 1.211.0. New field `LivenessV2` instead.
         /// </summary>
         [Output("liveness")]
         public Output<string> Liveness { get; private set; } = null!;
 
         /// <summary>
-        /// The liveness check settings of the container. See `liveness_v2` below.
+        /// The liveness check settings of the container. See `LivenessV2` below.
         /// </summary>
         [Output("livenessV2")]
         public Output<Outputs.ApplicationLivenessV2> LivenessV2 { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> MicroRegistration { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+        /// Minimum Survival Instance Percentage. **NOTE:** When `MinReadyInstances` and `MinReadyInstanceRatio` are passed at the same time, and the value of `MinReadyInstanceRatio` is not -1, the `MinReadyInstanceRatio` parameter shall prevail. Assuming that `MinReadyInstances` is 5 and `MinReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         /// * `-1`: Initialization value, indicating that percentages are not used.
         /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         /// </summary>
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations for mounting the NAS file system. See `nas_configs` below.
+        /// The configurations for mounting the NAS file system. See `NasConfigs` below.
         /// </summary>
         [Output("nasConfigs")]
         public Output<ImmutableArray<Outputs.ApplicationNasConfig>> NasConfigs { get; private set; } = null!;
@@ -331,13 +331,13 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> OssAkSecret { get; private set; } = null!;
 
         /// <summary>
-        /// OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        /// OSS mount description information. **NOTE:** Field `OssMountDescs` has been deprecated from provider version 1.211.0. New field `OssMountDescsV2` instead.
         /// </summary>
         [Output("ossMountDescs")]
         public Output<string> OssMountDescs { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        /// The description of the mounted Object Storage Service (OSS) bucket. See `OssMountDescsV2` below.
         /// </summary>
         [Output("ossMountDescsV2s")]
         public Output<ImmutableArray<Outputs.ApplicationOssMountDescsV2>> OssMountDescsV2s { get; private set; } = null!;
@@ -385,50 +385,50 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> PhpConfigLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        /// Execute the script after startup, the format is like: {`Exec`:{`Command`:[`Cat`,"/etc/group"]}}. **NOTE:** Field `PostStart` has been deprecated from provider version 1.211.0. New field `PostStartV2` instead.
         /// </summary>
         [Output("postStart")]
         public Output<string> PostStart { get; private set; } = null!;
 
         /// <summary>
-        /// The script that is run immediately after the container is started. See `post_start_v2` below.
+        /// The script that is run immediately after the container is started. See `PostStartV2` below.
         /// </summary>
         [Output("postStartV2")]
         public Output<Outputs.ApplicationPostStartV2> PostStartV2 { get; private set; } = null!;
 
         /// <summary>
-        /// Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        /// Execute the script before stopping, the format is like: {`Exec`:{`Command`:[`Cat`,"/etc/group"]}}. **NOTE:** Field `PreStop` has been deprecated from provider version 1.211.0. New field `PreStopV2` instead.
         /// </summary>
         [Output("preStop")]
         public Output<string> PreStop { get; private set; } = null!;
 
         /// <summary>
-        /// The script that is run before the container is stopped. See `pre_stop_v2` below.
+        /// The script that is run before the container is stopped. See `PreStopV2` below.
         /// </summary>
         [Output("preStopV2")]
         public Output<Outputs.ApplicationPreStopV2> PreStopV2 { get; private set; } = null!;
 
         /// <summary>
-        /// The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        /// The programming language that is used to create the application. Valid values: `Java`, `Php`, `Other`.
         /// </summary>
         [Output("programmingLanguage")]
         public Output<string> ProgrammingLanguage { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+        /// The configurations of Kubernetes Service-based service registration and discovery. See `PvtzDiscoverySvc` below.
         /// </summary>
         [Output("pvtzDiscoverySvc")]
         public Output<Outputs.ApplicationPvtzDiscoverySvc?> PvtzDiscoverySvc { get; private set; } = null!;
 
         /// <summary>
-        /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        /// **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`Exec`:{`Command`:[`Sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `Command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+        /// **NOTE:** Field `Readiness` has been deprecated from provider version 1.211.0. New field `ReadinessV2` instead.
         /// </summary>
         [Output("readiness")]
         public Output<string> Readiness { get; private set; } = null!;
 
         /// <summary>
-        /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+        /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `ReadinessV2` below.
         /// </summary>
         [Output("readinessV2")]
         public Output<Outputs.ApplicationReadinessV2> ReadinessV2 { get; private set; } = null!;
@@ -488,25 +488,25 @@ namespace Pulumi.AliCloud.Sae
 
         /// <summary>
         /// Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        /// **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        /// **NOTE:** Field `TomcatConfig` has been deprecated from provider version 1.211.0. New field `TomcatConfigV2` instead.
         /// </summary>
         [Output("tomcatConfig")]
         public Output<string> TomcatConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Tomcat configuration. See `tomcat_config_v2` below.
+        /// The Tomcat configuration. See `TomcatConfigV2` below.
         /// </summary>
         [Output("tomcatConfigV2")]
         public Output<Outputs.ApplicationTomcatConfigV2> TomcatConfigV2 { get; private set; } = null!;
 
         /// <summary>
-        /// The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        /// The update strategy. **NOTE:** Field `UpdateStrategy` has been deprecated from provider version 1.211.0. New field `UpdateStrategyV2` instead.
         /// </summary>
         [Output("updateStrategy")]
         public Output<string> UpdateStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The release policy. See `update_strategy_v2` below.
+        /// The release policy. See `UpdateStrategyV2` below.
         /// </summary>
         [Output("updateStrategyV2")]
         public Output<Outputs.ApplicationUpdateStrategyV2> UpdateStrategyV2 { get; private set; } = null!;
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+        /// The vswitch id. **NOTE:** From version 1.211.0, `VswitchId` can be modified.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -587,19 +587,19 @@ namespace Pulumi.AliCloud.Sae
     public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Input("acrAssumeRoleArn")]
         public Input<string>? AcrAssumeRoleArn { get; set; }
 
         /// <summary>
-        /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// The ID of the ACR EE instance. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Input("acrInstanceId")]
         public Input<string>? AcrInstanceId { get; set; }
 
         /// <summary>
-        /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+        /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `AppDescription` can be modified.
         /// </summary>
         [Input("appDescription")]
         public Input<string>? AppDescription { get; set; }
@@ -611,13 +611,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<string> AppName { get; set; } = null!;
 
         /// <summary>
-        /// The auto config. Valid values: `true`, `false`.
+        /// The auto config. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoConfig")]
         public Input<bool>? AutoConfig { get; set; }
 
         /// <summary>
-        /// The auto enable application scaling rule. Valid values: `true`, `false`.
+        /// The auto enable application scaling rule. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoEnableApplicationScalingRule")]
         public Input<bool>? AutoEnableApplicationScalingRule { get; set; }
@@ -641,7 +641,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Command { get; set; }
 
         /// <summary>
-        /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `CommandArgs` has been deprecated from provider version 1.211.0. New field `CommandArgsV2` instead.
         /// </summary>
         [Input("commandArgs")]
         public Input<string>? CommandArgs { get; set; }
@@ -659,7 +659,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        /// ConfigMap mount description. **NOTE:** Field `ConfigMapMountDesc` has been deprecated from provider version 1.211.0. New field `ConfigMapMountDescV2` instead.
         /// </summary>
         [Input("configMapMountDesc")]
         public Input<string>? ConfigMapMountDesc { get; set; }
@@ -668,7 +668,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationConfigMapMountDescV2Args>? _configMapMountDescV2s;
 
         /// <summary>
-        /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `ConfigMapMountDescV2` below.
         /// </summary>
         public InputList<Inputs.ApplicationConfigMapMountDescV2Args> ConfigMapMountDescV2s
         {
@@ -683,7 +683,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<int>? Cpu { get; set; }
 
         /// <summary>
-        /// Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        /// Custom host mapping in the container. For example: [{`hostName`:`Samplehost`,`Ip`:`127.0.0.1`}]. **NOTE:** Field `CustomHostAlias` has been deprecated from provider version 1.211.0. New field `CustomHostAliasV2` instead.
         /// </summary>
         [Input("customHostAlias")]
         public Input<string>? CustomHostAlias { get; set; }
@@ -692,7 +692,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationCustomHostAliasV2Args>? _customHostAliasV2s;
 
         /// <summary>
-        /// The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        /// The custom mapping between the hostname and IP address in the container. See `CustomHostAliasV2` below.
         /// </summary>
         public InputList<Inputs.ApplicationCustomHostAliasV2Args> CustomHostAliasV2s
         {
@@ -701,7 +701,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// The deploy. Valid values: `true`, `false`.
+        /// The deploy. Valid values: `True`, `False`.
         /// </summary>
         [Input("deploy")]
         public Input<bool>? Deploy { get; set; }
@@ -713,13 +713,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? EdasContainerVersion { get; set; }
 
         /// <summary>
-        /// The enable ahas. Valid values: `true`, `false`.
+        /// The enable ahas. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableAhas")]
         public Input<string>? EnableAhas { get; set; }
 
         /// <summary>
-        /// The enable grey tag route. Default value: `false`. Valid values:
+        /// The enable grey tag route. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableGreyTagRoute")]
         public Input<bool>? EnableGreyTagRoute { get; set; }
@@ -761,20 +761,20 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Jdk { get; set; }
 
         /// <summary>
-        /// The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        /// The logging configurations of ApsaraMQ for Kafka. See `KafkaConfigs` below.
         /// </summary>
         [Input("kafkaConfigs")]
         public Input<Inputs.ApplicationKafkaConfigsArgs>? KafkaConfigs { get; set; }
 
         /// <summary>
         /// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        /// **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        /// **NOTE:** Field `Liveness` has been deprecated from provider version 1.211.0. New field `LivenessV2` instead.
         /// </summary>
         [Input("liveness")]
         public Input<string>? Liveness { get; set; }
 
         /// <summary>
-        /// The liveness check settings of the container. See `liveness_v2` below.
+        /// The liveness check settings of the container. See `LivenessV2` below.
         /// </summary>
         [Input("livenessV2")]
         public Input<Inputs.ApplicationLivenessV2Args>? LivenessV2 { get; set; }
@@ -792,7 +792,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? MicroRegistration { get; set; }
 
         /// <summary>
-        /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+        /// Minimum Survival Instance Percentage. **NOTE:** When `MinReadyInstances` and `MinReadyInstanceRatio` are passed at the same time, and the value of `MinReadyInstanceRatio` is not -1, the `MinReadyInstanceRatio` parameter shall prevail. Assuming that `MinReadyInstances` is 5 and `MinReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         /// * `-1`: Initialization value, indicating that percentages are not used.
         /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         /// </summary>
@@ -815,7 +815,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationNasConfigArgs>? _nasConfigs;
 
         /// <summary>
-        /// The configurations for mounting the NAS file system. See `nas_configs` below.
+        /// The configurations for mounting the NAS file system. See `NasConfigs` below.
         /// </summary>
         public InputList<Inputs.ApplicationNasConfigArgs> NasConfigs
         {
@@ -856,7 +856,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        /// OSS mount description information. **NOTE:** Field `OssMountDescs` has been deprecated from provider version 1.211.0. New field `OssMountDescsV2` instead.
         /// </summary>
         [Input("ossMountDescs")]
         public Input<string>? OssMountDescs { get; set; }
@@ -865,7 +865,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationOssMountDescsV2Args>? _ossMountDescsV2s;
 
         /// <summary>
-        /// The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        /// The description of the mounted Object Storage Service (OSS) bucket. See `OssMountDescsV2` below.
         /// </summary>
         public InputList<Inputs.ApplicationOssMountDescsV2Args> OssMountDescsV2s
         {
@@ -916,50 +916,50 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? PhpConfigLocation { get; set; }
 
         /// <summary>
-        /// Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        /// Execute the script after startup, the format is like: {`Exec`:{`Command`:[`Cat`,"/etc/group"]}}. **NOTE:** Field `PostStart` has been deprecated from provider version 1.211.0. New field `PostStartV2` instead.
         /// </summary>
         [Input("postStart")]
         public Input<string>? PostStart { get; set; }
 
         /// <summary>
-        /// The script that is run immediately after the container is started. See `post_start_v2` below.
+        /// The script that is run immediately after the container is started. See `PostStartV2` below.
         /// </summary>
         [Input("postStartV2")]
         public Input<Inputs.ApplicationPostStartV2Args>? PostStartV2 { get; set; }
 
         /// <summary>
-        /// Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        /// Execute the script before stopping, the format is like: {`Exec`:{`Command`:[`Cat`,"/etc/group"]}}. **NOTE:** Field `PreStop` has been deprecated from provider version 1.211.0. New field `PreStopV2` instead.
         /// </summary>
         [Input("preStop")]
         public Input<string>? PreStop { get; set; }
 
         /// <summary>
-        /// The script that is run before the container is stopped. See `pre_stop_v2` below.
+        /// The script that is run before the container is stopped. See `PreStopV2` below.
         /// </summary>
         [Input("preStopV2")]
         public Input<Inputs.ApplicationPreStopV2Args>? PreStopV2 { get; set; }
 
         /// <summary>
-        /// The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        /// The programming language that is used to create the application. Valid values: `Java`, `Php`, `Other`.
         /// </summary>
         [Input("programmingLanguage")]
         public Input<string>? ProgrammingLanguage { get; set; }
 
         /// <summary>
-        /// The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+        /// The configurations of Kubernetes Service-based service registration and discovery. See `PvtzDiscoverySvc` below.
         /// </summary>
         [Input("pvtzDiscoverySvc")]
         public Input<Inputs.ApplicationPvtzDiscoverySvcArgs>? PvtzDiscoverySvc { get; set; }
 
         /// <summary>
-        /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        /// **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`Exec`:{`Command`:[`Sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `Command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+        /// **NOTE:** Field `Readiness` has been deprecated from provider version 1.211.0. New field `ReadinessV2` instead.
         /// </summary>
         [Input("readiness")]
         public Input<string>? Readiness { get; set; }
 
         /// <summary>
-        /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+        /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `ReadinessV2` below.
         /// </summary>
         [Input("readinessV2")]
         public Input<Inputs.ApplicationReadinessV2Args>? ReadinessV2 { get; set; }
@@ -1025,25 +1025,25 @@ namespace Pulumi.AliCloud.Sae
 
         /// <summary>
         /// Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        /// **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        /// **NOTE:** Field `TomcatConfig` has been deprecated from provider version 1.211.0. New field `TomcatConfigV2` instead.
         /// </summary>
         [Input("tomcatConfig")]
         public Input<string>? TomcatConfig { get; set; }
 
         /// <summary>
-        /// The Tomcat configuration. See `tomcat_config_v2` below.
+        /// The Tomcat configuration. See `TomcatConfigV2` below.
         /// </summary>
         [Input("tomcatConfigV2")]
         public Input<Inputs.ApplicationTomcatConfigV2Args>? TomcatConfigV2 { get; set; }
 
         /// <summary>
-        /// The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        /// The update strategy. **NOTE:** Field `UpdateStrategy` has been deprecated from provider version 1.211.0. New field `UpdateStrategyV2` instead.
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
 
         /// <summary>
-        /// The release policy. See `update_strategy_v2` below.
+        /// The release policy. See `UpdateStrategyV2` below.
         /// </summary>
         [Input("updateStrategyV2")]
         public Input<Inputs.ApplicationUpdateStrategyV2Args>? UpdateStrategyV2 { get; set; }
@@ -1055,7 +1055,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+        /// The vswitch id. **NOTE:** From version 1.211.0, `VswitchId` can be modified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -1081,19 +1081,19 @@ namespace Pulumi.AliCloud.Sae
     public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Input("acrAssumeRoleArn")]
         public Input<string>? AcrAssumeRoleArn { get; set; }
 
         /// <summary>
-        /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// The ID of the ACR EE instance. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Input("acrInstanceId")]
         public Input<string>? AcrInstanceId { get; set; }
 
         /// <summary>
-        /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+        /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `AppDescription` can be modified.
         /// </summary>
         [Input("appDescription")]
         public Input<string>? AppDescription { get; set; }
@@ -1105,13 +1105,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? AppName { get; set; }
 
         /// <summary>
-        /// The auto config. Valid values: `true`, `false`.
+        /// The auto config. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoConfig")]
         public Input<bool>? AutoConfig { get; set; }
 
         /// <summary>
-        /// The auto enable application scaling rule. Valid values: `true`, `false`.
+        /// The auto enable application scaling rule. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoEnableApplicationScalingRule")]
         public Input<bool>? AutoEnableApplicationScalingRule { get; set; }
@@ -1135,7 +1135,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Command { get; set; }
 
         /// <summary>
-        /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `CommandArgs` has been deprecated from provider version 1.211.0. New field `CommandArgsV2` instead.
         /// </summary>
         [Input("commandArgs")]
         public Input<string>? CommandArgs { get; set; }
@@ -1153,7 +1153,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        /// ConfigMap mount description. **NOTE:** Field `ConfigMapMountDesc` has been deprecated from provider version 1.211.0. New field `ConfigMapMountDescV2` instead.
         /// </summary>
         [Input("configMapMountDesc")]
         public Input<string>? ConfigMapMountDesc { get; set; }
@@ -1162,7 +1162,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationConfigMapMountDescV2GetArgs>? _configMapMountDescV2s;
 
         /// <summary>
-        /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `ConfigMapMountDescV2` below.
         /// </summary>
         public InputList<Inputs.ApplicationConfigMapMountDescV2GetArgs> ConfigMapMountDescV2s
         {
@@ -1177,7 +1177,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<int>? Cpu { get; set; }
 
         /// <summary>
-        /// Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        /// Custom host mapping in the container. For example: [{`hostName`:`Samplehost`,`Ip`:`127.0.0.1`}]. **NOTE:** Field `CustomHostAlias` has been deprecated from provider version 1.211.0. New field `CustomHostAliasV2` instead.
         /// </summary>
         [Input("customHostAlias")]
         public Input<string>? CustomHostAlias { get; set; }
@@ -1186,7 +1186,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationCustomHostAliasV2GetArgs>? _customHostAliasV2s;
 
         /// <summary>
-        /// The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        /// The custom mapping between the hostname and IP address in the container. See `CustomHostAliasV2` below.
         /// </summary>
         public InputList<Inputs.ApplicationCustomHostAliasV2GetArgs> CustomHostAliasV2s
         {
@@ -1195,7 +1195,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// The deploy. Valid values: `true`, `false`.
+        /// The deploy. Valid values: `True`, `False`.
         /// </summary>
         [Input("deploy")]
         public Input<bool>? Deploy { get; set; }
@@ -1207,13 +1207,13 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? EdasContainerVersion { get; set; }
 
         /// <summary>
-        /// The enable ahas. Valid values: `true`, `false`.
+        /// The enable ahas. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableAhas")]
         public Input<string>? EnableAhas { get; set; }
 
         /// <summary>
-        /// The enable grey tag route. Default value: `false`. Valid values:
+        /// The enable grey tag route. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableGreyTagRoute")]
         public Input<bool>? EnableGreyTagRoute { get; set; }
@@ -1255,20 +1255,20 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Jdk { get; set; }
 
         /// <summary>
-        /// The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        /// The logging configurations of ApsaraMQ for Kafka. See `KafkaConfigs` below.
         /// </summary>
         [Input("kafkaConfigs")]
         public Input<Inputs.ApplicationKafkaConfigsGetArgs>? KafkaConfigs { get; set; }
 
         /// <summary>
         /// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        /// **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        /// **NOTE:** Field `Liveness` has been deprecated from provider version 1.211.0. New field `LivenessV2` instead.
         /// </summary>
         [Input("liveness")]
         public Input<string>? Liveness { get; set; }
 
         /// <summary>
-        /// The liveness check settings of the container. See `liveness_v2` below.
+        /// The liveness check settings of the container. See `LivenessV2` below.
         /// </summary>
         [Input("livenessV2")]
         public Input<Inputs.ApplicationLivenessV2GetArgs>? LivenessV2 { get; set; }
@@ -1286,7 +1286,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? MicroRegistration { get; set; }
 
         /// <summary>
-        /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+        /// Minimum Survival Instance Percentage. **NOTE:** When `MinReadyInstances` and `MinReadyInstanceRatio` are passed at the same time, and the value of `MinReadyInstanceRatio` is not -1, the `MinReadyInstanceRatio` parameter shall prevail. Assuming that `MinReadyInstances` is 5 and `MinReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         /// * `-1`: Initialization value, indicating that percentages are not used.
         /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         /// </summary>
@@ -1309,7 +1309,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationNasConfigGetArgs>? _nasConfigs;
 
         /// <summary>
-        /// The configurations for mounting the NAS file system. See `nas_configs` below.
+        /// The configurations for mounting the NAS file system. See `NasConfigs` below.
         /// </summary>
         public InputList<Inputs.ApplicationNasConfigGetArgs> NasConfigs
         {
@@ -1350,7 +1350,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        /// OSS mount description information. **NOTE:** Field `OssMountDescs` has been deprecated from provider version 1.211.0. New field `OssMountDescsV2` instead.
         /// </summary>
         [Input("ossMountDescs")]
         public Input<string>? OssMountDescs { get; set; }
@@ -1359,7 +1359,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.ApplicationOssMountDescsV2GetArgs>? _ossMountDescsV2s;
 
         /// <summary>
-        /// The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        /// The description of the mounted Object Storage Service (OSS) bucket. See `OssMountDescsV2` below.
         /// </summary>
         public InputList<Inputs.ApplicationOssMountDescsV2GetArgs> OssMountDescsV2s
         {
@@ -1410,50 +1410,50 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? PhpConfigLocation { get; set; }
 
         /// <summary>
-        /// Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        /// Execute the script after startup, the format is like: {`Exec`:{`Command`:[`Cat`,"/etc/group"]}}. **NOTE:** Field `PostStart` has been deprecated from provider version 1.211.0. New field `PostStartV2` instead.
         /// </summary>
         [Input("postStart")]
         public Input<string>? PostStart { get; set; }
 
         /// <summary>
-        /// The script that is run immediately after the container is started. See `post_start_v2` below.
+        /// The script that is run immediately after the container is started. See `PostStartV2` below.
         /// </summary>
         [Input("postStartV2")]
         public Input<Inputs.ApplicationPostStartV2GetArgs>? PostStartV2 { get; set; }
 
         /// <summary>
-        /// Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        /// Execute the script before stopping, the format is like: {`Exec`:{`Command`:[`Cat`,"/etc/group"]}}. **NOTE:** Field `PreStop` has been deprecated from provider version 1.211.0. New field `PreStopV2` instead.
         /// </summary>
         [Input("preStop")]
         public Input<string>? PreStop { get; set; }
 
         /// <summary>
-        /// The script that is run before the container is stopped. See `pre_stop_v2` below.
+        /// The script that is run before the container is stopped. See `PreStopV2` below.
         /// </summary>
         [Input("preStopV2")]
         public Input<Inputs.ApplicationPreStopV2GetArgs>? PreStopV2 { get; set; }
 
         /// <summary>
-        /// The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        /// The programming language that is used to create the application. Valid values: `Java`, `Php`, `Other`.
         /// </summary>
         [Input("programmingLanguage")]
         public Input<string>? ProgrammingLanguage { get; set; }
 
         /// <summary>
-        /// The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+        /// The configurations of Kubernetes Service-based service registration and discovery. See `PvtzDiscoverySvc` below.
         /// </summary>
         [Input("pvtzDiscoverySvc")]
         public Input<Inputs.ApplicationPvtzDiscoverySvcGetArgs>? PvtzDiscoverySvc { get; set; }
 
         /// <summary>
-        /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        /// **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`Exec`:{`Command`:[`Sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `Command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+        /// **NOTE:** Field `Readiness` has been deprecated from provider version 1.211.0. New field `ReadinessV2` instead.
         /// </summary>
         [Input("readiness")]
         public Input<string>? Readiness { get; set; }
 
         /// <summary>
-        /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+        /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `ReadinessV2` below.
         /// </summary>
         [Input("readinessV2")]
         public Input<Inputs.ApplicationReadinessV2GetArgs>? ReadinessV2 { get; set; }
@@ -1519,25 +1519,25 @@ namespace Pulumi.AliCloud.Sae
 
         /// <summary>
         /// Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        /// **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        /// **NOTE:** Field `TomcatConfig` has been deprecated from provider version 1.211.0. New field `TomcatConfigV2` instead.
         /// </summary>
         [Input("tomcatConfig")]
         public Input<string>? TomcatConfig { get; set; }
 
         /// <summary>
-        /// The Tomcat configuration. See `tomcat_config_v2` below.
+        /// The Tomcat configuration. See `TomcatConfigV2` below.
         /// </summary>
         [Input("tomcatConfigV2")]
         public Input<Inputs.ApplicationTomcatConfigV2GetArgs>? TomcatConfigV2 { get; set; }
 
         /// <summary>
-        /// The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        /// The update strategy. **NOTE:** Field `UpdateStrategy` has been deprecated from provider version 1.211.0. New field `UpdateStrategyV2` instead.
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
 
         /// <summary>
-        /// The release policy. See `update_strategy_v2` below.
+        /// The release policy. See `UpdateStrategyV2` below.
         /// </summary>
         [Input("updateStrategyV2")]
         public Input<Inputs.ApplicationUpdateStrategyV2GetArgs>? UpdateStrategyV2 { get; set; }
@@ -1549,7 +1549,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
+        /// The vswitch id. **NOTE:** From version 1.211.0, `VswitchId` can be modified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

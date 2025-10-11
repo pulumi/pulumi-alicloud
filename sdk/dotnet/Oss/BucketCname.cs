@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// The container for the certificate configuration. See `certificate` below.
+        /// The container for the certificate configuration. See `Certificate` below.
         /// </summary>
         [Output("certificate")]
         public Output<Outputs.BucketCnameCertificate?> Certificate { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// The container for the certificate configuration. See `certificate` below.
+        /// The container for the certificate configuration. See `Certificate` below.
         /// </summary>
         [Input("certificate")]
         public Input<Inputs.BucketCnameCertificateArgs>? Certificate { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// The container for the certificate configuration. See `certificate` below.
+        /// The container for the certificate configuration. See `Certificate` below.
         /// </summary>
         [Input("certificate")]
         public Input<Inputs.BucketCnameCertificateGetArgs>? Certificate { get; set; }

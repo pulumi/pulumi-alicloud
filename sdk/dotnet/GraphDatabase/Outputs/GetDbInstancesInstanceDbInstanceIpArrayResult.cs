@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.GraphDatabase.Outputs
     public sealed class GetDbInstancesInstanceDbInstanceIpArrayResult
     {
         /// <summary>
-        /// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
+        /// The default is empty. To distinguish between the different property console does not display a `Hidden` label grouping.
         /// </summary>
         public readonly string? DbInstanceIpArrayAttribute;
         /// <summary>

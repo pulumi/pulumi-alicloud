@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
  * 
  * &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
- * and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
+ * and the `alicloud.slb.Listener` block should use `dependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
  * 
  * ## Example Usage
  * 

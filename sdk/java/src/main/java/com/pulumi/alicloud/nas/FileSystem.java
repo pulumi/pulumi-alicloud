@@ -262,14 +262,14 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return this.kmsKeyId;
     }
     /**
-     * NFS ACL See `nfs_acl` below.
+     * NFS ACL See `nfsAcl` below.
      * 
      */
     @Export(name="nfsAcl", refs={FileSystemNfsAcl.class}, tree="[0]")
     private Output<FileSystemNfsAcl> nfsAcl;
 
     /**
-     * @return NFS ACL See `nfs_acl` below.
+     * @return NFS ACL See `nfsAcl` below.
      * 
      */
     public Output<FileSystemNfsAcl> nfsAcl() {
@@ -310,14 +310,14 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return this.protocolType;
     }
     /**
-     * Recycle Bin See `recycle_bin` below.
+     * Recycle Bin See `recycleBin` below.
      * 
      */
     @Export(name="recycleBin", refs={FileSystemRecycleBin.class}, tree="[0]")
     private Output<FileSystemRecycleBin> recycleBin;
 
     /**
-     * @return Recycle Bin See `recycle_bin` below.
+     * @return Recycle Bin See `recycleBin` below.
      * 
      */
     public Output<FileSystemRecycleBin> recycleBin() {
@@ -352,14 +352,14 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * SMB ACL See `smb_acl` below.
+     * SMB ACL See `smbAcl` below.
      * 
      */
     @Export(name="smbAcl", refs={FileSystemSmbAcl.class}, tree="[0]")
     private Output<FileSystemSmbAcl> smbAcl;
 
     /**
-     * @return SMB ACL See `smb_acl` below.
+     * @return SMB ACL See `smbAcl` below.
      * 
      */
     public Output<FileSystemSmbAcl> smbAcl() {

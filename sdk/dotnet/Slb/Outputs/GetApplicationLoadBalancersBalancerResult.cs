@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// The address ip version. Valid values `ipv4` and `ipv6`.
+        /// The address ip version. Valid values `Ipv4` and `Ipv6`.
         /// </summary>
         public readonly string AddressIpVersion;
         /// <summary>
-        /// The address type of the SLB. Valid values `internet` and `intranet`.
+        /// The address type of the SLB. Valid values `Internet` and `Intranet`.
         /// </summary>
         public readonly string AddressType;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string ModificationProtectionStatus;
         /// <summary>
-        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
@@ -126,11 +126,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string SlaveZoneId;
         /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

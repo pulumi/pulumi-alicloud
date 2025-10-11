@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rocketmq/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
     /**
-     * Replaced by `group_name` after version 1.98.0.
+     * Replaced by `groupName` after version 1.98.0.
      * 
      * @deprecated
      * Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
@@ -99,21 +99,21 @@ public class Group extends com.pulumi.resources.CustomResource {
     private Output<String> groupId;
 
     /**
-     * @return Replaced by `group_name` after version 1.98.0.
+     * @return Replaced by `groupName` after version 1.98.0.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with &#34;GID_&#34; or &#34;GID-&#34;, and contains letters, numbers, hyphens (-), and underscores (_).
+     * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with &#34;GID_&#34; or &#34;GID-&#34;, and contains letters, numbers, hyphens (-), and underscores (_).
      * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
-     * @return Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with &#34;GID_&#34; or &#34;GID-&#34;, and contains letters, numbers, hyphens (-), and underscores (_).
+     * @return Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with &#34;GID_&#34; or &#34;GID-&#34;, and contains letters, numbers, hyphens (-), and underscores (_).
      * 
      */
     public Output<String> groupName() {

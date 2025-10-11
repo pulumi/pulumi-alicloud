@@ -20,7 +20,7 @@ public final class GetDbClustersCluster {
      */
     private Integer cacheSize;
     /**
-     * @return The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     private Integer cpu;
@@ -30,7 +30,7 @@ public final class GetDbClustersCluster {
      */
     private String createTime;
     /**
-     * @return The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     private String dbClusterClass;
@@ -61,7 +61,7 @@ public final class GetDbClustersCluster {
     private String engineVersion;
     private String id;
     /**
-     * @return The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     private Integer memory;
@@ -110,7 +110,7 @@ public final class GetDbClustersCluster {
         return this.cacheSize;
     }
     /**
-     * @return The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     public Integer cpu() {
@@ -124,7 +124,7 @@ public final class GetDbClustersCluster {
         return this.createTime;
     }
     /**
-     * @return The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     public String dbClusterClass() {
@@ -169,7 +169,7 @@ public final class GetDbClustersCluster {
         return this.id;
     }
     /**
-     * @return The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     public Integer memory() {

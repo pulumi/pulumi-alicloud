@@ -25,7 +25,7 @@ public final class ClusterBootstrapScript {
      */
     private String executionMoment;
     /**
-     * @return The bootstrap scripts execution target. See `node_selector` below.
+     * @return The bootstrap scripts execution target. See `nodeSelector` below.
      * 
      */
     private ClusterBootstrapScriptNodeSelector nodeSelector;
@@ -70,7 +70,7 @@ public final class ClusterBootstrapScript {
         return this.executionMoment;
     }
     /**
-     * @return The bootstrap scripts execution target. See `node_selector` below.
+     * @return The bootstrap scripts execution target. See `nodeSelector` below.
      * 
      */
     public ClusterBootstrapScriptNodeSelector nodeSelector() {

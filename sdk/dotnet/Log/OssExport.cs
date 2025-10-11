@@ -111,19 +111,19 @@ namespace Pulumi.AliCloud.Log
         public Output<int> BufferSize { get; private set; } = null!;
 
         /// <summary>
-        /// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        /// OSS data storage compression method, support: `None`, `Snappy`, `Zstd`, `Gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
         /// </summary>
         [Output("compressType")]
         public Output<string> CompressType { get; private set; } = null!;
 
         /// <summary>
-        /// Configure columns when `content_type` is `parquet` or `orc`.
+        /// Configure columns when `ContentType` is `Parquet` or `Orc`.
         /// </summary>
         [Output("configColumns")]
         public Output<ImmutableArray<Outputs.OssExportConfigColumn>> ConfigColumns { get; private set; } = null!;
 
         /// <summary>
-        /// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
+        /// Storage format, only supports three types: `Json`, `Parquet`, `Orc`, `Csv`.
         /// **According to the different format, please select the following parameters**
         /// </summary>
         [Output("contentType")]
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> CsvConfigEscape { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to write the field name to the CSV file, the default value is `false`.
+        /// Indicates whether to write the field name to the CSV file, the default value is `False`.
         /// </summary>
         [Output("csvConfigHeader")]
         public Output<bool?> CsvConfigHeader { get; private set; } = null!;
@@ -190,13 +190,13 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> FromTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to deliver the label when `content_type` = `json`.
+        /// Whether to deliver the label when `ContentType` = `Json`.
         /// </summary>
         [Output("jsonEnableTag")]
         public Output<bool?> JsonEnableTag { get; private set; } = null!;
 
         /// <summary>
-        /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+        /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `LogReadRoleArn` is not set, `RoleArn` is used to read logstore.
         /// </summary>
         [Output("logReadRoleArn")]
         public Output<string?> LogReadRoleArn { get; private set; } = null!;
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int> BufferSize { get; set; } = null!;
 
         /// <summary>
-        /// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        /// OSS data storage compression method, support: `None`, `Snappy`, `Zstd`, `Gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
         /// </summary>
         [Input("compressType")]
         public Input<string>? CompressType { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.OssExportConfigColumnArgs>? _configColumns;
 
         /// <summary>
-        /// Configure columns when `content_type` is `parquet` or `orc`.
+        /// Configure columns when `ContentType` is `Parquet` or `Orc`.
         /// </summary>
         public InputList<Inputs.OssExportConfigColumnArgs> ConfigColumns
         {
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
+        /// Storage format, only supports three types: `Json`, `Parquet`, `Orc`, `Csv`.
         /// **According to the different format, please select the following parameters**
         /// </summary>
         [Input("contentType", required: true)]
@@ -357,7 +357,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? CsvConfigEscape { get; set; }
 
         /// <summary>
-        /// Indicates whether to write the field name to the CSV file, the default value is `false`.
+        /// Indicates whether to write the field name to the CSV file, the default value is `False`.
         /// </summary>
         [Input("csvConfigHeader")]
         public Input<bool>? CsvConfigHeader { get; set; }
@@ -399,13 +399,13 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? FromTime { get; set; }
 
         /// <summary>
-        /// Whether to deliver the label when `content_type` = `json`.
+        /// Whether to deliver the label when `ContentType` = `Json`.
         /// </summary>
         [Input("jsonEnableTag")]
         public Input<bool>? JsonEnableTag { get; set; }
 
         /// <summary>
-        /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+        /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `LogReadRoleArn` is not set, `RoleArn` is used to read logstore.
         /// </summary>
         [Input("logReadRoleArn")]
         public Input<string>? LogReadRoleArn { get; set; }
@@ -479,7 +479,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? BufferSize { get; set; }
 
         /// <summary>
-        /// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+        /// OSS data storage compression method, support: `None`, `Snappy`, `Zstd`, `Gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
         /// </summary>
         [Input("compressType")]
         public Input<string>? CompressType { get; set; }
@@ -488,7 +488,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.OssExportConfigColumnGetArgs>? _configColumns;
 
         /// <summary>
-        /// Configure columns when `content_type` is `parquet` or `orc`.
+        /// Configure columns when `ContentType` is `Parquet` or `Orc`.
         /// </summary>
         public InputList<Inputs.OssExportConfigColumnGetArgs> ConfigColumns
         {
@@ -497,7 +497,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
+        /// Storage format, only supports three types: `Json`, `Parquet`, `Orc`, `Csv`.
         /// **According to the different format, please select the following parameters**
         /// </summary>
         [Input("contentType")]
@@ -528,7 +528,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? CsvConfigEscape { get; set; }
 
         /// <summary>
-        /// Indicates whether to write the field name to the CSV file, the default value is `false`.
+        /// Indicates whether to write the field name to the CSV file, the default value is `False`.
         /// </summary>
         [Input("csvConfigHeader")]
         public Input<bool>? CsvConfigHeader { get; set; }
@@ -570,13 +570,13 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? FromTime { get; set; }
 
         /// <summary>
-        /// Whether to deliver the label when `content_type` = `json`.
+        /// Whether to deliver the label when `ContentType` = `Json`.
         /// </summary>
         [Input("jsonEnableTag")]
         public Input<bool>? JsonEnableTag { get; set; }
 
         /// <summary>
-        /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+        /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `LogReadRoleArn` is not set, `RoleArn` is used to read logstore.
         /// </summary>
         [Input("logReadRoleArn")]
         public Input<string>? LogReadRoleArn { get; set; }

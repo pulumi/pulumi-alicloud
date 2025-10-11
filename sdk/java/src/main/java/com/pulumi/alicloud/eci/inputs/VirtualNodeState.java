@@ -35,14 +35,14 @@ public final class VirtualNodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+     * Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      * 
      */
     @Import(name="enablePublicNetwork")
     private @Nullable Output<Boolean> enablePublicNetwork;
 
     /**
-     * @return Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+     * @return Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      * 
      */
     public Optional<Output<Boolean>> enablePublicNetwork() {
@@ -240,7 +240,7 @@ public final class VirtualNodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicNetwork Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+         * @param enablePublicNetwork Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class VirtualNodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicNetwork Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+         * @param enablePublicNetwork Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
          * 
          * @return builder
          * 

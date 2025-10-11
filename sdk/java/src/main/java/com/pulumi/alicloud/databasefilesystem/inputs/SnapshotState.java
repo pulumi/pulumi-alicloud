@@ -78,14 +78,14 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+     * The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      * 
      */
     @Import(name="snapshotName")
     private @Nullable Output<String> snapshotName;
 
     /**
-     * @return The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+     * @return The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      * 
      */
     public Optional<Output<String>> snapshotName() {
@@ -221,7 +221,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotName The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+         * @param snapshotName The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotName The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+         * @param snapshotName The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
          * 
          * @return builder
          * 

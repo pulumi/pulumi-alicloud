@@ -89,14 +89,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The XForward headers. See `forwarded_for_config` below.
+     * The XForward headers. See `forwardedForConfig` below.
      * 
      */
     @Import(name="forwardedForConfig")
     private @Nullable Output<ListenerForwardedForConfigArgs> forwardedForConfig;
 
     /**
-     * @return The XForward headers. See `forwarded_for_config` below.
+     * @return The XForward headers. See `forwardedForConfig` below.
      * 
      */
     public Optional<Output<ListenerForwardedForConfigArgs>> forwardedForConfig() {
@@ -105,7 +105,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      * 
      */
     @Import(name="httpVersion")
@@ -113,7 +113,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      * 
      */
     public Optional<Output<String>> httpVersion() {
@@ -176,7 +176,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The portRanges of the listener. See `port_ranges` below.
+     * The portRanges of the listener. See `portRanges` below.
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
@@ -184,7 +184,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     private Output<List<ListenerPortRangeArgs>> portRanges;
 
     /**
-     * @return The portRanges of the listener. See `port_ranges` below.
+     * @return The portRanges of the listener. See `portRanges` below.
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
@@ -224,7 +224,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      * 
      */
     @Import(name="requestTimeout")
@@ -232,7 +232,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      * 
      */
     public Optional<Output<Integer>> requestTimeout() {
@@ -393,7 +393,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardedForConfig The XForward headers. See `forwarded_for_config` below.
+         * @param forwardedForConfig The XForward headers. See `forwardedForConfig` below.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardedForConfig The XForward headers. See `forwarded_for_config` below.
+         * @param forwardedForConfig The XForward headers. See `forwardedForConfig` below.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpVersion The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-         * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+         * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpVersion The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
-         * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+         * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRanges The portRanges of the listener. See `port_ranges` below.
+         * @param portRanges The portRanges of the listener. See `portRanges` below.
          * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
@@ -522,7 +522,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRanges The portRanges of the listener. See `port_ranges` below.
+         * @param portRanges The portRanges of the listener. See `portRanges` below.
          * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
@@ -533,7 +533,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRanges The portRanges of the listener. See `port_ranges` below.
+         * @param portRanges The portRanges of the listener. See `portRanges` below.
          * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
@@ -587,7 +587,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requestTimeout The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-         * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+         * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requestTimeout The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
-         * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+         * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
          * 
          * @return builder
          * 

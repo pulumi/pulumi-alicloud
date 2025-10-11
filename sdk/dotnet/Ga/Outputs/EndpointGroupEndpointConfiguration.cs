@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class EndpointGroupEndpointConfiguration
     {
         /// <summary>
-        /// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
+        /// Indicates whether client IP addresses are reserved. Default Value: `False`. Valid values:
         /// </summary>
         public readonly bool? EnableClientipPreservation;
         /// <summary>
-        /// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+        /// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `False`. Valid values:
         /// </summary>
         public readonly bool? EnableProxyProtocol;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         public readonly string Endpoint;
         /// <summary>
         /// The private IP address of the ENI.
-        /// &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+        /// &gt; **NOTE:** `SubAddress` is valid only when `Type` is set to `ENI`.
         /// </summary>
         public readonly string? SubAddress;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// - `NLB`: A Network Load Balancer (NLB) instance.
         /// - `ENI`: An Elastic Network Interface (ENI).
         /// - `OSS`: An Object Storage Service (OSS) bucket.
-        /// &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+        /// &gt; **NOTE:** From version 1.232.0, `Type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
         /// </summary>
         public readonly string Type;
         /// <summary>

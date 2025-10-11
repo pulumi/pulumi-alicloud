@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance information added to the Cms Group. See `instances` below.
+        /// Instance information added to the Cms Group. See `Instances` below.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<Outputs.MonitorGroupInstancesInstance>> Instances { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MonitorGroupInstancesInstanceArgs>? _instances;
 
         /// <summary>
-        /// Instance information added to the Cms Group. See `instances` below.
+        /// Instance information added to the Cms Group. See `Instances` below.
         /// </summary>
         public InputList<Inputs.MonitorGroupInstancesInstanceArgs> Instances
         {
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MonitorGroupInstancesInstanceGetArgs>? _instances;
 
         /// <summary>
-        /// Instance information added to the Cms Group. See `instances` below.
+        /// Instance information added to the Cms Group. See `Instances` below.
         /// </summary>
         public InputList<Inputs.MonitorGroupInstancesInstanceGetArgs> Instances
         {

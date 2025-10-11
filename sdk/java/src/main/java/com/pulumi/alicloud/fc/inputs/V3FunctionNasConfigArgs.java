@@ -33,14 +33,14 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Mount point list See `mount_points` below.
+     * Mount point list See `mountPoints` below.
      * 
      */
     @Import(name="mountPoints")
     private @Nullable Output<List<V3FunctionNasConfigMountPointArgs>> mountPoints;
 
     /**
-     * @return Mount point list See `mount_points` below.
+     * @return Mount point list See `mountPoints` below.
      * 
      */
     public Optional<Output<List<V3FunctionNasConfigMountPointArgs>>> mountPoints() {
@@ -110,7 +110,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mountPoints Mount point list See `mount_points` below.
+         * @param mountPoints Mount point list See `mountPoints` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mountPoints Mount point list See `mount_points` below.
+         * @param mountPoints Mount point list See `mountPoints` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mountPoints Mount point list See `mount_points` below.
+         * @param mountPoints Mount point list See `mountPoints` below.
          * 
          * @return builder
          * 

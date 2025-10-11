@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly bool ExclusiveIp;
         /// <summary>
-        /// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
+        /// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `HttpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
         /// </summary>
         public readonly bool FocusHttps;
         /// <summary>

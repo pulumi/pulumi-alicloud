@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Ots.Inputs
         public Input<string>? Analyzer { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+        /// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which EnableSortAndAgg is set to true.
         /// </summary>
         [Input("enableSortAndAgg")]
         public Input<bool>? EnableSortAndAgg { get; set; }
 
         /// <summary>
-        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        /// The name of the field that is used to sort data. only required if SorterType is FieldSort.
         /// </summary>
         [Input("fieldName", required: true)]
         public Input<string> FieldName { get; set; } = null!;

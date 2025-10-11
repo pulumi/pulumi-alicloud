@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string ExclusiveDir;
         /// <summary>
-        /// The file that has web tamper proofing disabled. **Note:** If the value of `mode` is `blacklist`, this parameter is returned.
+        /// The file that has web tamper proofing disabled. **Note:** If the value of `Mode` is `Blacklist`, this parameter is returned.
         /// </summary>
         public readonly string ExclusiveFile;
         /// <summary>
-        /// The type of the file that has web tamper proofing disabled. **Note:** If the value of `mode` is `blacklist`, this parameter is returned.
+        /// The type of the file that has web tamper proofing disabled. **Note:** If the value of `Mode` is `Blacklist`, this parameter is returned.
         /// </summary>
         public readonly string ExclusiveFileType;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of the file that has web tamper proofing enabled. **Note:** If the value of `mode` is `whitelist`, this parameter is returned.
+        /// The type of the file that has web tamper proofing enabled. **Note:** If the value of `Mode` is `Whitelist`, this parameter is returned.
         /// </summary>
         public readonly string InclusiveFileType;
         /// <summary>

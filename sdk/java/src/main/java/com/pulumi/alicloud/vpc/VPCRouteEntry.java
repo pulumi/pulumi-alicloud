@@ -164,14 +164,14 @@ public class VPCRouteEntry extends com.pulumi.resources.CustomResource {
         return this.destinationCidrBlock;
     }
     /**
-     * Next jump See `next_hops` below.
+     * Next jump See `nextHops` below.
      * 
      */
     @Export(name="nextHops", refs={List.class,VPCRouteEntryNextHop.class}, tree="[0,1]")
     private Output<List<VPCRouteEntryNextHop>> nextHops;
 
     /**
-     * @return Next jump See `next_hops` below.
+     * @return Next jump See `nextHops` below.
      * 
      */
     public Output<List<VPCRouteEntryNextHop>> nextHops() {
@@ -246,14 +246,14 @@ public class VPCRouteEntry extends com.pulumi.resources.CustomResource {
         return this.routeEntryName;
     }
     /**
-     * Route publish status and publish target type See `route_publish_targets` below.
+     * Route publish status and publish target type See `routePublishTargets` below.
      * 
      */
     @Export(name="routePublishTargets", refs={List.class,VPCRouteEntryRoutePublishTarget.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VPCRouteEntryRoutePublishTarget>> routePublishTargets;
 
     /**
-     * @return Route publish status and publish target type See `route_publish_targets` below.
+     * @return Route publish status and publish target type See `routePublishTargets` below.
      * 
      */
     public Output<Optional<List<VPCRouteEntryRoutePublishTarget>>> routePublishTargets() {

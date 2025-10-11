@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
         /// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
-        /// If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+        /// If the `RecurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
         /// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         /// </summary>
         [Output("launchTime")]
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> RecurrenceType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
+        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `RecurrenceType`
         /// - Daily: You can enter one value. Valid values: 1 to 31.
         /// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
         /// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -94,13 +94,13 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> RecurrenceValue { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         /// </summary>
         [Output("scalingGroupId")]
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         /// </summary>
         [Output("scheduledAction")]
         public Output<string?> ScheduledAction { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
         /// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
-        /// If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+        /// If the `RecurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
         /// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         /// </summary>
         [Input("launchTime")]
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceType { get; set; }
 
         /// <summary>
-        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
+        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `RecurrenceType`
         /// - Daily: You can enter one value. Valid values: 1 to 31.
         /// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
         /// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -230,13 +230,13 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceValue { get; set; }
 
         /// <summary>
-        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         /// </summary>
         [Input("scalingGroupId")]
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         /// </summary>
         [Input("scheduledAction")]
         public Input<string>? ScheduledAction { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
         /// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
-        /// If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+        /// If the `RecurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
         /// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         /// </summary>
         [Input("launchTime")]
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceType { get; set; }
 
         /// <summary>
-        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
+        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `RecurrenceType`
         /// - Daily: You can enter one value. Valid values: 1 to 31.
         /// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
         /// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -328,13 +328,13 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceValue { get; set; }
 
         /// <summary>
-        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         /// </summary>
         [Input("scalingGroupId")]
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         /// </summary>
         [Input("scheduledAction")]
         public Input<string>? ScheduledAction { get; set; }

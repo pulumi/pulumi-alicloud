@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Lindorm.Outputs
         /// </summary>
         public readonly bool DeletionProection;
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `CapacityCloudStorage`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`.
         /// </summary>
         public readonly string DiskCategory;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Lindorm.Outputs
         /// </summary>
         public readonly string SearchEngineSpecification;
         /// <summary>
-        /// The service type of Instance, Valid values:  `lindorm`, `serverless_lindorm`, `lindorm_standalone`.
+        /// The service type of Instance, Valid values:  `Lindorm`, `ServerlessLindorm`, `LindormStandalone`.
         /// </summary>
         public readonly string ServiceType;
         /// <summary>

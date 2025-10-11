@@ -22,15 +22,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
-        /// ID of the CA certificate (only required when two-way authentication is used). Only available when the protocol is `https`.
+        /// ID of the CA certificate (only required when two-way authentication is used). Only available when the protocol is `Https`.
         /// </summary>
         public readonly string CaCertificateId;
         /// <summary>
-        /// Cookie configured by the backend server. Only available when the sticky_session_type is `server`.
+        /// Cookie configured by the backend server. Only available when the StickySessionType is `Server`.
         /// </summary>
         public readonly string Cookie;
         /// <summary>
-        /// Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
+        /// Cookie timeout in seconds. Only available when the StickySessionType is `Insert`.
         /// </summary>
         public readonly int CookieTimeout;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        /// Whether to enable https listener support http2 or not. Valid values are `On` and `Off`. Default to `On`.
         /// </summary>
         public readonly string EnableHttp2;
         /// <summary>
-        /// Connection timeout in seconds for the Layer 4 TCP listener. Only available when the protocol is `tcp`.
+        /// Connection timeout in seconds for the Layer 4 TCP listener. Only available when the protocol is `Tcp`.
         /// </summary>
         public readonly int EstablishedTimeout;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int FrontendPort;
         /// <summary>
-        /// Indicate whether Gzip compression is enabled or not. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
+        /// Indicate whether Gzip compression is enabled or not. Possible values are `On` and `Off`. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly string Gzip;
         /// <summary>
-        /// Indicate whether health check is enabled of not. Possible values are `on` and `off`.
+        /// Indicate whether health check is enabled of not. Possible values are `On` and `Off`.
         /// </summary>
         public readonly string HealthCheck;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int HealthCheckConnectTimeout;
         /// <summary>
-        /// Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+        /// Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `Http`, `Https` or `Tcp` (in this case HealthCheckType must be `Http`).
         /// </summary>
         public readonly string HealthCheckDomain;
         /// <summary>
-        /// HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as "http_2xx,http_3xx". Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+        /// HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as "http_2xx,http_3xx". Only available when the protocol is `Http`, `Https` or `Tcp` (in this case HealthCheckType must be `Http`).
         /// </summary>
         public readonly string HealthCheckHttpCode;
         /// <summary>
@@ -78,15 +78,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int HealthCheckInterval;
         /// <summary>
-        /// Amount of time in seconds to wait for the response from a health check. If an ECS instance sends no response within the specified timeout period, the health check fails. Only available when the protocol is `http` or `https`.
+        /// Amount of time in seconds to wait for the response from a health check. If an ECS instance sends no response within the specified timeout period, the health check fails. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly int HealthCheckTimeout;
         /// <summary>
-        /// Health check method. Possible values are `tcp` and `http`. Only available when the protocol is `tcp`.
+        /// Health check method. Possible values are `Tcp` and `Http`. Only available when the protocol is `Tcp`.
         /// </summary>
         public readonly string HealthCheckType;
         /// <summary>
-        /// URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+        /// URI used for health check. Only available when the protocol is `Http`, `Https` or `Tcp` (in this case HealthCheckType must be `Http`).
         /// </summary>
         public readonly string HealthCheckUri;
         /// <summary>
@@ -102,15 +102,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string MasterSlaveServerGroupId;
         /// <summary>
-        /// Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
+        /// Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `Tcp`.
         /// </summary>
         public readonly int PersistenceTimeout;
         /// <summary>
-        /// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+        /// Filter listeners by the specified protocol. Valid values: `Http`, `Https`, `Tcp` and `Udp`.
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `True` and `False`. Default to `False`.
         /// </summary>
         public readonly bool ProxyProtocolV2Enabled;
         /// <summary>
@@ -118,11 +118,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int RequestTimeout;
         /// <summary>
-        /// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
+        /// Algorithm used to distribute traffic. Possible values: `Wrr` (weighted round robin), `Wlc` (weighted least connection) and `Rr` (round robin).
         /// </summary>
         public readonly string Scheduler;
         /// <summary>
-        /// Security status. Only available when the protocol is `https`.
+        /// Security status. Only available when the protocol is `Https`.
         /// </summary>
         public readonly string SecurityStatus;
         public readonly string ServerCertificateId;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string ServerGroupId;
         /// <summary>
-        /// ID of the server certificate. Only available when the protocol is `https`.
+        /// ID of the server certificate. Only available when the protocol is `Https`.
         /// </summary>
         public readonly string SslCertificateId;
         /// <summary>
@@ -139,15 +139,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Indicate whether session persistence is enabled or not. If enabled, all session requests from the same client are sent to the same backend server. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
+        /// Indicate whether session persistence is enabled or not. If enabled, all session requests from the same client are sent to the same backend server. Possible values are `On` and `Off`. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly string StickySession;
         /// <summary>
-        /// Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and sticky_session is `on`.
+        /// Method used to handle the cookie. Possible values are `Insert` (cookie added to the response) and `Server` (cookie set by the backend server). Only available when the protocol is `Http` or `Https` and StickySession is `On`.
         /// </summary>
         public readonly string StickySessionType;
         /// <summary>
-        /// Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`.
+        /// Https listener TLS cipher policy. Valid values are `TlsCipherPolicy10`, `TlsCipherPolicy11`, `TlsCipherPolicy12`, `TlsCipherPolicy12Strict`. Default to `TlsCipherPolicy10`.
         /// </summary>
         public readonly string TlsCipherPolicy;
         /// <summary>
@@ -155,19 +155,19 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int UnhealthyThreshold;
         /// <summary>
-        /// Indicate whether the HTTP header field "X-Forwarded-For" is added or not; it allows the backend server to know about the user's IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
+        /// Indicate whether the HTTP header field "X-Forwarded-For" is added or not; it allows the backend server to know about the user's IP address. Possible values are `On` and `Off`. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly string XForwardedFor;
         /// <summary>
-        /// Indicate whether the HTTP header field "X-Forwarded-For_SLBID" is added or not; it allows the backend server to know about the SLB ID. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
+        /// Indicate whether the HTTP header field "X-Forwarded-For_SLBID" is added or not; it allows the backend server to know about the SLB ID. Possible values are `On` and `Off`. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly string XForwardedForSlbId;
         /// <summary>
-        /// Indicate whether the HTTP header field "X-Forwarded-For_SLBIP" is added or not; it allows the backend server to know about the SLB IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
+        /// Indicate whether the HTTP header field "X-Forwarded-For_SLBIP" is added or not; it allows the backend server to know about the SLB IP address. Possible values are `On` and `Off`. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly string XForwardedForSlbIp;
         /// <summary>
-        /// Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
+        /// Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `On` and `Off`. Only available when the protocol is `Http` or `Https`.
         /// </summary>
         public readonly string XForwardedForSlbProto;
 

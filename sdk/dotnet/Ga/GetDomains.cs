@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Ga
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        /// The status of the resource. Valid values: `Illegal`, `Inactive`, `Active`, `Unknown`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        /// The status of the resource. Valid values: `Illegal`, `Inactive`, `Active`, `Unknown`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

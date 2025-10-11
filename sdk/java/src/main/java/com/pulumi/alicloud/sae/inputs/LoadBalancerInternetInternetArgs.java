@@ -17,14 +17,14 @@ public final class LoadBalancerInternetInternetArgs extends com.pulumi.resources
     public static final LoadBalancerInternetInternetArgs Empty = new LoadBalancerInternetInternetArgs();
 
     /**
-     * The SSL certificate. `https_cert_id` is required when HTTPS is selected
+     * The SSL certificate. `httpsCertId` is required when HTTPS is selected
      * 
      */
     @Import(name="httpsCertId")
     private @Nullable Output<String> httpsCertId;
 
     /**
-     * @return The SSL certificate. `https_cert_id` is required when HTTPS is selected
+     * @return The SSL certificate. `httpsCertId` is required when HTTPS is selected
      * 
      */
     public Optional<Output<String>> httpsCertId() {
@@ -104,7 +104,7 @@ public final class LoadBalancerInternetInternetArgs extends com.pulumi.resources
         }
 
         /**
-         * @param httpsCertId The SSL certificate. `https_cert_id` is required when HTTPS is selected
+         * @param httpsCertId The SSL certificate. `httpsCertId` is required when HTTPS is selected
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class LoadBalancerInternetInternetArgs extends com.pulumi.resources
         }
 
         /**
-         * @param httpsCertId The SSL certificate. `https_cert_id` is required when HTTPS is selected
+         * @param httpsCertId The SSL certificate. `httpsCertId` is required when HTTPS is selected
          * 
          * @return builder
          * 

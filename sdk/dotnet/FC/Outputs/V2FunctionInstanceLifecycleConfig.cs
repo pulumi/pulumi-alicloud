@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V2FunctionInstanceLifecycleConfig
     {
         /// <summary>
-        /// PreFreeze function configuration. See `pre_freeze` below.
+        /// PreFreeze function configuration. See `PreFreeze` below.
         /// </summary>
         public readonly Outputs.V2FunctionInstanceLifecycleConfigPreFreeze? PreFreeze;
         /// <summary>
-        /// PreStop function configuration. See `pre_stop` below.
+        /// PreStop function configuration. See `PreStop` below.
         /// </summary>
         public readonly Outputs.V2FunctionInstanceLifecycleConfigPreStop? PreStop;
 

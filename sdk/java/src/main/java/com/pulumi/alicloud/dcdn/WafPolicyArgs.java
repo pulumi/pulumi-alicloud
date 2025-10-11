@@ -15,14 +15,14 @@ public final class WafPolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final WafPolicyArgs Empty = new WafPolicyArgs();
 
     /**
-     * The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      * 
      */
     @Import(name="defenseScene", required=true)
     private Output<String> defenseScene;
 
     /**
-     * @return The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+     * @return The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      * 
      */
     public Output<String> defenseScene() {
@@ -102,7 +102,7 @@ public final class WafPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defenseScene The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+         * @param defenseScene The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class WafPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defenseScene The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
+         * @param defenseScene The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
          * 
          * @return builder
          * 

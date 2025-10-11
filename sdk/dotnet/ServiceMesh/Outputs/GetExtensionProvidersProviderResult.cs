@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string ServiceMeshId;
         /// <summary>
-        /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
+        /// The type of the Service Mesh Extension Provider. Valid values: `Httpextauth`, `Grpcextauth`.
         /// </summary>
         public readonly string Type;
 

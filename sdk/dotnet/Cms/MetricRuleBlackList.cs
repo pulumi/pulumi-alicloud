@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> MetricRuleBlackListName { get; private set; } = null!;
 
         /// <summary>
-        /// Monitoring metrics in the instance. See `metrics` below.
+        /// Monitoring metrics in the instance. See `Metrics` below.
         /// </summary>
         [Output("metrics")]
         public Output<ImmutableArray<Outputs.MetricRuleBlackListMetric>> Metrics { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MetricRuleBlackListMetricArgs>? _metrics;
 
         /// <summary>
-        /// Monitoring metrics in the instance. See `metrics` below.
+        /// Monitoring metrics in the instance. See `Metrics` below.
         /// </summary>
         public InputList<Inputs.MetricRuleBlackListMetricArgs> Metrics
         {
@@ -401,7 +401,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MetricRuleBlackListMetricGetArgs>? _metrics;
 
         /// <summary>
-        /// Monitoring metrics in the instance. See `metrics` below.
+        /// Monitoring metrics in the instance. See `Metrics` below.
         /// </summary>
         public InputList<Inputs.MetricRuleBlackListMetricGetArgs> Metrics
         {

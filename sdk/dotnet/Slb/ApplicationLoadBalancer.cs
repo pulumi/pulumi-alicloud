@@ -28,13 +28,13 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
+        /// The IP version of the SLB instance to be created, which can be set to `Ipv4` or `Ipv6` . Default to `Ipv4`. Now, only internet instance support `Ipv6` address.
         /// </summary>
         [Output("addressIpVersion")]
         public Output<string?> AddressIpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
+        /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `Intranet`.
         /// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
         /// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+        /// Valid value is between 1 and 5120, If argument `InternetChargeType` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Output("bandwidth")]
         public Output<int?> Bandwidth { get; private set; } = null!;
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        /// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `AddressType` must be `Internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `Paybybandwidth` and `Paybytraffic`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         /// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
+        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `InstanceChargeType = "PayByCLCU"`.
         /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> MasterZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `ModificationProtectionStatus` is `ConsoleProtection`.
         /// </summary>
         [Output("modificationProtectionReason")]
         public Output<string?> ModificationProtectionReason { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> ModificationProtectionStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.123.1 New field `LoadBalancerName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -125,25 +125,25 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> SlaveZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        /// Field `Specification` has been deprecated from provider version 1.123.1 New field `LoadBalancerSpec` instead.
         /// </summary>
         [Output("specification")]
         public Output<string> Specification { get; private set; } = null!;
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `Active` and `Inactice`. The system default value is `Active`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
+        /// A mapping of tags to assign to the resource. The `Tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `AddressType` is internet, it will be ignored.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -201,13 +201,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
+        /// The IP version of the SLB instance to be created, which can be set to `Ipv4` or `Ipv6` . Default to `Ipv4`. Now, only internet instance support `Ipv6` address.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
+        /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `Intranet`.
         /// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
         /// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+        /// Valid value is between 1 and 5120, If argument `InternetChargeType` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        /// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `AddressType` must be `Internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `Paybybandwidth` and `Paybytraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         /// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
+        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `InstanceChargeType = "PayByCLCU"`.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? MasterZoneId { get; set; }
 
         /// <summary>
-        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `ModificationProtectionStatus` is `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ModificationProtectionStatus { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.123.1 New field `LoadBalancerName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -298,13 +298,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? SlaveZoneId { get; set; }
 
         /// <summary>
-        /// Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        /// Field `Specification` has been deprecated from provider version 1.123.1 New field `LoadBalancerSpec` instead.
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `Active` and `Inactice`. The system default value is `Active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
+        /// A mapping of tags to assign to the resource. The `Tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `AddressType` is internet, it will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -342,13 +342,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
+        /// The IP version of the SLB instance to be created, which can be set to `Ipv4` or `Ipv6` . Default to `Ipv4`. Now, only internet instance support `Ipv6` address.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
+        /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `Intranet`.
         /// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
         /// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         /// </summary>
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+        /// Valid value is between 1 and 5120, If argument `InternetChargeType` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        /// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `AddressType` must be `Internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `Paybybandwidth` and `Paybytraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         /// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
+        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `InstanceChargeType = "PayByCLCU"`.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? MasterZoneId { get; set; }
 
         /// <summary>
-        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `ModificationProtectionStatus` is `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ModificationProtectionStatus { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.123.1 New field `LoadBalancerName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -439,13 +439,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? SlaveZoneId { get; set; }
 
         /// <summary>
-        /// Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        /// Field `Specification` has been deprecated from provider version 1.123.1 New field `LoadBalancerSpec` instead.
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `Active` and `Inactice`. The system default value is `Active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -454,7 +454,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
+        /// A mapping of tags to assign to the resource. The `Tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -463,7 +463,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `AddressType` is internet, it will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

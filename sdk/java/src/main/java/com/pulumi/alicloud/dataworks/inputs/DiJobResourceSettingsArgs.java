@@ -18,14 +18,14 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
     public static final DiJobResourceSettingsArgs Empty = new DiJobResourceSettingsArgs();
 
     /**
-     * Offline Resource Group configuration See `offline_resource_settings` below.
+     * Offline Resource Group configuration See `offlineResourceSettings` below.
      * 
      */
     @Import(name="offlineResourceSettings")
     private @Nullable Output<DiJobResourceSettingsOfflineResourceSettingsArgs> offlineResourceSettings;
 
     /**
-     * @return Offline Resource Group configuration See `offline_resource_settings` below.
+     * @return Offline Resource Group configuration See `offlineResourceSettings` below.
      * 
      */
     public Optional<Output<DiJobResourceSettingsOfflineResourceSettingsArgs>> offlineResourceSettings() {
@@ -33,14 +33,14 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Real-time Resource Group See `realtime_resource_settings` below.
+     * Real-time Resource Group See `realtimeResourceSettings` below.
      * 
      */
     @Import(name="realtimeResourceSettings")
     private @Nullable Output<DiJobResourceSettingsRealtimeResourceSettingsArgs> realtimeResourceSettings;
 
     /**
-     * @return Real-time Resource Group See `realtime_resource_settings` below.
+     * @return Real-time Resource Group See `realtimeResourceSettings` below.
      * 
      */
     public Optional<Output<DiJobResourceSettingsRealtimeResourceSettingsArgs>> realtimeResourceSettings() {
@@ -48,14 +48,14 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Scheduling Resource Groups See `schedule_resource_settings` below.
+     * Scheduling Resource Groups See `scheduleResourceSettings` below.
      * 
      */
     @Import(name="scheduleResourceSettings")
     private @Nullable Output<DiJobResourceSettingsScheduleResourceSettingsArgs> scheduleResourceSettings;
 
     /**
-     * @return Scheduling Resource Groups See `schedule_resource_settings` below.
+     * @return Scheduling Resource Groups See `scheduleResourceSettings` below.
      * 
      */
     public Optional<Output<DiJobResourceSettingsScheduleResourceSettingsArgs>> scheduleResourceSettings() {
@@ -89,7 +89,7 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param offlineResourceSettings Offline Resource Group configuration See `offline_resource_settings` below.
+         * @param offlineResourceSettings Offline Resource Group configuration See `offlineResourceSettings` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param offlineResourceSettings Offline Resource Group configuration See `offline_resource_settings` below.
+         * @param offlineResourceSettings Offline Resource Group configuration See `offlineResourceSettings` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param realtimeResourceSettings Real-time Resource Group See `realtime_resource_settings` below.
+         * @param realtimeResourceSettings Real-time Resource Group See `realtimeResourceSettings` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param realtimeResourceSettings Real-time Resource Group See `realtime_resource_settings` below.
+         * @param realtimeResourceSettings Real-time Resource Group See `realtimeResourceSettings` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scheduleResourceSettings Scheduling Resource Groups See `schedule_resource_settings` below.
+         * @param scheduleResourceSettings Scheduling Resource Groups See `scheduleResourceSettings` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DiJobResourceSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scheduleResourceSettings Scheduling Resource Groups See `schedule_resource_settings` below.
+         * @param scheduleResourceSettings Scheduling Resource Groups See `scheduleResourceSettings` below.
          * 
          * @return builder
          * 

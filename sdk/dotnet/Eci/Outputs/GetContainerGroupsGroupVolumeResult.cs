@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string NfsVolumePath;
         /// <summary>
-        /// Default value: `false`.
+        /// Default value: `False`.
         /// </summary>
         public readonly bool NfsVolumeReadOnly;
         /// <summary>

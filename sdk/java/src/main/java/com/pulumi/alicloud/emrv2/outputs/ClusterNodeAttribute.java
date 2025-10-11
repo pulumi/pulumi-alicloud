@@ -19,7 +19,7 @@ public final class ClusterNodeAttribute {
      */
     private @Nullable Boolean dataDiskEncrypted;
     /**
-     * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * @return The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
      * 
      */
     private @Nullable String dataDiskKmsKeyId;
@@ -44,7 +44,7 @@ public final class ClusterNodeAttribute {
      */
     private @Nullable Boolean systemDiskEncrypted;
     /**
-     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * @return The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
      * 
      */
     private @Nullable String systemDiskKmsKeyId;
@@ -68,7 +68,7 @@ public final class ClusterNodeAttribute {
         return Optional.ofNullable(this.dataDiskEncrypted);
     }
     /**
-     * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * @return The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
      * 
      */
     public Optional<String> dataDiskKmsKeyId() {
@@ -103,7 +103,7 @@ public final class ClusterNodeAttribute {
         return Optional.ofNullable(this.systemDiskEncrypted);
     }
     /**
-     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * @return The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
      * 
      */
     public Optional<String> systemDiskKmsKeyId() {

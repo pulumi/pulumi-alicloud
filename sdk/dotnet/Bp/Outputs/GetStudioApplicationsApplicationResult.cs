@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Bp.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The status of the Application. Valid values: `success`, `release`.
+        /// The status of the Application. Valid values: `Success`, `Release`.
         /// </summary>
         public readonly string Status;
         /// <summary>

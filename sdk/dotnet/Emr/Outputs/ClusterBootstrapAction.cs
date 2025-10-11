@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string? ExecutionMoment;
         /// <summary>
-        /// bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
+        /// bootstrap action execution target, you can specify the host group name, e.g. "CoreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
         /// </summary>
         public readonly string? ExecutionTarget;
         /// <summary>

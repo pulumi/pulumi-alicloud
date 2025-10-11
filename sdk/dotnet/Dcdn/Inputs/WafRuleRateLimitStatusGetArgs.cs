@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public Input<string>? Code { get; set; }
 
         /// <summary>
-        /// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+        /// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `Ratio` and `Count` fields.
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
 
         /// <summary>
-        /// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+        /// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `Ratio` and `Count` fields.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }

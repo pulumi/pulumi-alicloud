@@ -203,14 +203,14 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.inputParameters);
     }
     /**
-     * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+     * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      * 
      */
     @Export(name="maximumExecutionFrequency", refs={String.class}, tree="[0]")
     private Output<String> maximumExecutionFrequency;
 
     /**
-     * @return The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+     * @return The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      * 
      */
     public Output<String> maximumExecutionFrequency() {
@@ -329,14 +329,14 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tagKeyScope);
     }
     /**
-     * The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      * 
      */
     @Export(name="tagValueScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagValueScope;
 
     /**
-     * @return The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * @return The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      * 
      */
     public Output<Optional<String>> tagValueScope() {

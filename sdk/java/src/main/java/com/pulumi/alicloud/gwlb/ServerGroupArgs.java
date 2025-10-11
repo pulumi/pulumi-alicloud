@@ -23,14 +23,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupArgs Empty = new ServerGroupArgs();
 
     /**
-     * Connected graceful interrupt configuration. See `connection_drain_config` below.
+     * Connected graceful interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     @Import(name="connectionDrainConfig")
     private @Nullable Output<ServerGroupConnectionDrainConfigArgs> connectionDrainConfig;
 
     /**
-     * @return Connected graceful interrupt configuration. See `connection_drain_config` below.
+     * @return Connected graceful interrupt configuration. See `connectionDrainConfig` below.
      * 
      */
     public Optional<Output<ServerGroupConnectionDrainConfigArgs>> connectionDrainConfig() {
@@ -53,14 +53,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Health check configurations. See `health_check_config` below.
+     * Health check configurations. See `healthCheckConfig` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return Health check configurations. See `health_check_config` below.
+     * @return Health check configurations. See `healthCheckConfig` below.
      * 
      */
     public Optional<Output<ServerGroupHealthCheckConfigArgs>> healthCheckConfig() {
@@ -258,7 +258,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainConfig Connected graceful interrupt configuration. See `connection_drain_config` below.
+         * @param connectionDrainConfig Connected graceful interrupt configuration. See `connectionDrainConfig` below.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainConfig Connected graceful interrupt configuration. See `connection_drain_config` below.
+         * @param connectionDrainConfig Connected graceful interrupt configuration. See `connectionDrainConfig` below.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig Health check configurations. See `health_check_config` below.
+         * @param healthCheckConfig Health check configurations. See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig Health check configurations. See `health_check_config` below.
+         * @param healthCheckConfig Health check configurations. See `healthCheckConfig` below.
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `InternetChargeType`. EIP and public network IP can only choose one.
         /// </summary>
         [Input("eipInternetChargeType")]
         public Input<string>? EipInternetChargeType { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Whether to bind EIP for an instance. Default: `false`.
+        /// Whether to bind EIP for an instance. Default: `False`.
         /// </summary>
         [Input("isBondEip")]
         public Input<bool>? IsBondEip { get; set; }
 
         /// <summary>
-        /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `MaxSize` has to be greater than `MinSize`.
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+        /// Instance classification, not required. Vaild value: `Cpu`, `Gpu`, `Gpushare` and `Spot`. Default: `Cpu`. The actual instance type is determined by `InstanceTypes`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// A regex string to filter results by `prefix_list_name`.
+        /// A regex string to filter results by `PrefixListName`.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// A regex string to filter results by `prefix_list_name`.
+        /// A regex string to filter results by `PrefixListName`.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }

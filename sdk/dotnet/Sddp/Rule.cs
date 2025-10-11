@@ -72,31 +72,31 @@ namespace Pulumi.AliCloud.Sddp
         public Output<int> Category { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `Content` can be modified.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `ContentCategory` cannot be modified.
         /// </summary>
         [Output("contentCategory")]
         public Output<string> ContentCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+        /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `CustomType` cannot be specified when create Rule.
         /// </summary>
         [Output("customType")]
         public Output<int> CustomType { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        /// The description of the rule. **NOTE:** From version 1.222.0, `Description` cannot be modified.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: `zh`. Valid values:
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values:
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string?> RiskLevelId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `RuleName` can be modified.
         /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<int?> RuleType { get; private set; } = null!;
 
         /// <summary>
-        /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        /// The statistical expression. **NOTE:** From version 1.222.0, `StatExpress` cannot be modified.
         /// </summary>
         [Output("statExpress")]
         public Output<string?> StatExpress { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<int> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `Target` cannot be modified.
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
@@ -208,25 +208,25 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int> Category { get; set; } = null!;
 
         /// <summary>
-        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `Content` can be modified.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `ContentCategory` cannot be modified.
         /// </summary>
         [Input("contentCategory")]
         public Input<string>? ContentCategory { get; set; }
 
         /// <summary>
-        /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        /// The description of the rule. **NOTE:** From version 1.222.0, `Description` cannot be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: `zh`. Valid values:
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? RiskLevelId { get; set; }
 
         /// <summary>
-        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `RuleName` can be modified.
         /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int>? RuleType { get; set; }
 
         /// <summary>
-        /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        /// The statistical expression. **NOTE:** From version 1.222.0, `StatExpress` cannot be modified.
         /// </summary>
         [Input("statExpress")]
         public Input<string>? StatExpress { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `Target` cannot be modified.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
@@ -300,31 +300,31 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int>? Category { get; set; }
 
         /// <summary>
-        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `Content` can be modified.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `ContentCategory` cannot be modified.
         /// </summary>
         [Input("contentCategory")]
         public Input<string>? ContentCategory { get; set; }
 
         /// <summary>
-        /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+        /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `CustomType` cannot be specified when create Rule.
         /// </summary>
         [Input("customType")]
         public Input<int>? CustomType { get; set; }
 
         /// <summary>
-        /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        /// The description of the rule. **NOTE:** From version 1.222.0, `Description` cannot be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: `zh`. Valid values:
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -348,7 +348,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? RiskLevelId { get; set; }
 
         /// <summary>
-        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `RuleName` can be modified.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int>? RuleType { get; set; }
 
         /// <summary>
-        /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        /// The statistical expression. **NOTE:** From version 1.222.0, `StatExpress` cannot be modified.
         /// </summary>
         [Input("statExpress")]
         public Input<string>? StatExpress { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `Target` cannot be modified.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

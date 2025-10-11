@@ -104,13 +104,13 @@ namespace Pulumi.AliCloud.Oos
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+        /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `ImportTagKey` and `ImportTagValue` are left empty, the default is app-{ApplicationName} (application name).
         /// </summary>
         [Output("importTagKey")]
         public Output<string> ImportTagKey { get; private set; } = null!;
 
         /// <summary>
-        /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+        /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `ImportTagKey` and `ImportTagValue` are left empty, the default is application group name.
         /// .
         /// </summary>
         [Output("importTagValue")]
@@ -187,13 +187,13 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+        /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `ImportTagKey` and `ImportTagValue` are left empty, the default is app-{ApplicationName} (application name).
         /// </summary>
         [Input("importTagKey")]
         public Input<string>? ImportTagKey { get; set; }
 
         /// <summary>
-        /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+        /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `ImportTagKey` and `ImportTagValue` are left empty, the default is application group name.
         /// .
         /// </summary>
         [Input("importTagValue")]
@@ -232,13 +232,13 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
+        /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `ImportTagKey` and `ImportTagValue` are left empty, the default is app-{ApplicationName} (application name).
         /// </summary>
         [Input("importTagKey")]
         public Input<string>? ImportTagKey { get; set; }
 
         /// <summary>
-        /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
+        /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `ImportTagKey` and `ImportTagValue` are left empty, the default is application group name.
         /// .
         /// </summary>
         [Input("importTagValue")]

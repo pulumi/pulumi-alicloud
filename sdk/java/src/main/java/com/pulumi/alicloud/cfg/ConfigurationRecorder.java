@@ -114,8 +114,8 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-     * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-     * * If you use an enterprise account, the `resource_types` does not support updating.
+     * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+     * * If you use an enterprise account, the `resourceTypes` does not support updating.
      * 
      */
     @Export(name="resourceTypes", refs={List.class,String.class}, tree="[0,1]")
@@ -123,8 +123,8 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-     * * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
-     * * If you use an enterprise account, the `resource_types` does not support updating.
+     * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+     * * If you use an enterprise account, the `resourceTypes` does not support updating.
      * 
      */
     public Output<List<String>> resourceTypes() {

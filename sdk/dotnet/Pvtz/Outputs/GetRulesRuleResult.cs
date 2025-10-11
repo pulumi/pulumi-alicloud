@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetRulesRuleResult
     {
         /// <summary>
-        /// The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+        /// The List of the VPC. See the following `Block BindVpcs`. **NOTE:** Available in v1.158.0+.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleBindVpcResult> BindVpcs;
         /// <summary>

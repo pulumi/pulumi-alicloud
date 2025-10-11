@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.0.0
  * 
- * &gt; **NOTE:** From version v1.213.0, you can specify `launch_template_id` and `launch_template_version` to use a launch template. This eliminates the need to configure a large number of parameters every time you create instances.
+ * &gt; **NOTE:** From version v1.213.0, you can specify `launchTemplateId` and `launchTemplateVersion` to use a launch template. This eliminates the need to configure a large number of parameters every time you create instances.
  * 
  * ## Example Usage
  * 
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+     * It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
      * 
      * @deprecated
      * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
@@ -155,7 +155,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> allocatePublicIp;
 
     /**
-     * @return It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+     * @return It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public ip address for an instance.
      * 
      */
     public Output<Optional<Boolean>> allocatePublicIp() {
@@ -180,32 +180,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoReleaseTime);
     }
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in &#34;Month&#34;
-     * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in &#34;Month&#34;
+     * - [1, 2, 3] when `periodUnit` in &#34;Week&#34;
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in &#34;Month&#34;
-     * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
+     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in &#34;Month&#34;
+     * - [1, 2, 3] when `periodUnit` in &#34;Week&#34;
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      * 
      */
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
-     * @return The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * @return The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      * 
      */
     public Output<String> availabilityZone() {
@@ -254,28 +254,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.creditSpecification;
     }
     /**
-     * The list of data disks created with instance. See `data_disks` below.
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `data_disks` below.
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Output<Optional<List<InstanceDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
     /**
-     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     @Export(name="dedicatedHostId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostId;
 
     /**
-     * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     public Output<Optional<String>> dedicatedHostId() {
@@ -476,32 +476,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.httpTokens;
     }
     /**
-     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
-     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
      * 
      */
     public Output<String> imageId() {
         return this.imageId;
     }
     /**
-     * The options of images. See `image_options` below.
+     * The options of images. See `imageOptions` below.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
      * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
      * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -511,18 +511,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<InstanceImageOptions> imageOptions;
 
     /**
-     * @return The options of images. See `image_options` below.
+     * @return The options of images. See `imageOptions` below.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
      * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
      * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
@@ -549,7 +549,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
+     * there strongly recommends that `Don&#39;t change instanceChargeType frequentlly in one month`.
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
@@ -559,35 +559,35 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
-     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
+     * there strongly recommends that `Don&#39;t change instanceChargeType frequentlly in one month`.
      * 
      */
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
     }
     /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * @return The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
+     * @return The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      * 
      */
     public Output<String> instanceType() {
@@ -640,28 +640,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.internetMaxBandwidthOut;
     }
     /**
-     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      * 
      */
     @Export(name="ipv6AddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6AddressCount;
 
     /**
-     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      * 
      */
     public Output<Integer> ipv6AddressCount() {
         return this.ipv6AddressCount;
     }
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      * 
      */
     @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
     /**
-     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      * 
      */
     public Output<List<String>> ipv6Addresses() {
@@ -710,28 +710,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     @Export(name="launchTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateId;
 
     /**
-     * @return The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * @return The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     public Output<Optional<String>> launchTemplateId() {
@@ -752,14 +752,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateName);
     }
     /**
-     * The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+     * The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
      * 
      */
     @Export(name="launchTemplateVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateVersion;
 
     /**
-     * @return The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+     * @return The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
      * 
      */
     public Output<Optional<String>> launchTemplateVersion() {
@@ -800,14 +800,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceNotify);
     }
     /**
-     * The time of maintenance. See `maintenance_time` below.
+     * The time of maintenance. See `maintenanceTime` below.
      * 
      */
     @Export(name="maintenanceTime", refs={InstanceMaintenanceTime.class}, tree="[0]")
     private Output</* @Nullable */ InstanceMaintenanceTime> maintenanceTime;
 
     /**
-     * @return The time of maintenance. See `maintenance_time` below.
+     * @return The time of maintenance. See `maintenanceTime` below.
      * 
      */
     public Output<Optional<InstanceMaintenanceTime>> maintenanceTime() {
@@ -874,28 +874,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.networkInterfaceTrafficMode;
     }
     /**
-     * The list of network interfaces created with instance. See `network_interfaces` below.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     @Export(name="networkInterfaces", refs={InstanceNetworkInterfaces.class}, tree="[0]")
     private Output<InstanceNetworkInterfaces> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance. See `network_interfaces` below.
+     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     public Output<InstanceNetworkInterfaces> networkInterfaces() {
         return this.networkInterfaces;
     }
     /**
-     * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+     * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      * 
      */
     @Export(name="operatorType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> operatorType;
 
     /**
-     * @return The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+     * @return The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      * 
      */
     public Output<Optional<String>> operatorType() {
@@ -958,9 +958,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordInherit);
     }
     /**
-     * The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
-     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in &#34;Month&#34;
+     * - [1-3] when `periodUnit` in &#34;Week&#34;
      * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
@@ -969,9 +969,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
-     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * @return The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in &#34;Month&#34;
+     * - [1-3] when `periodUnit` in &#34;Week&#34;
      * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
@@ -980,14 +980,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.period;
     }
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
+     * @return The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -1008,14 +1008,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.primaryIpAddress;
     }
     /**
-     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output<String> privateIp;
 
     /**
-     * @return Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+     * @return Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<String> privateIp() {
@@ -1038,7 +1038,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The type of the private pool. Default value: `None`. Valid values:
      * - `Open`: Open private pool.
-     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
      * - `None`: No private pool. The capacity in private pools is not used.
      * 
      */
@@ -1048,7 +1048,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of the private pool. Default value: `None`. Valid values:
      * - `Open`: Open private pool.
-     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
      * - `None`: No private pool. The capacity in private pools is not used.
      * 
      */
@@ -1084,7 +1084,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.queuePairNumber);
     }
     /**
-     * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+     * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1094,7 +1094,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> renewalStatus;
 
     /**
-     * @return Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+     * @return Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1118,28 +1118,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
      * 
      */
     @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
-     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `role_name`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
+     * @return The name of the Resource Access Management (RAM) role. **NOTE:** From version 1.250.0, If you want to use `roleName`, We recommend you to use the resource alicloud_ecs_ram_role_attachment.
      * 
      */
     public Output<String> roleName() {
         return this.roleName;
     }
     /**
-     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
      * 
      */
     @Export(name="secondaryPrivateIpAddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> secondaryPrivateIpAddressCount;
 
     /**
-     * @return The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+     * @return The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
      * 
      */
     public Output<Integer> secondaryPrivateIpAddressCount() {
@@ -1178,14 +1178,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityEnhancementStrategy;
     }
     /**
-     * A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+     * @return A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     public Output<List<String>> securityGroups() {
@@ -1220,7 +1220,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.spotPriceLimit;
     }
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -1232,7 +1232,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> spotStrategy;
 
     /**
-     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
+     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -1318,14 +1318,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskBurstingEnabled);
     }
     /**
-     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
+     * @return Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      * 
      */
     public Output<String> systemDiskCategory() {

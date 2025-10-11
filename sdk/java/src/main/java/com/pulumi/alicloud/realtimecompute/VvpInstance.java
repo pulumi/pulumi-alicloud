@@ -102,14 +102,14 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Resource specifications. See `resource_spec` below.
+     * Resource specifications. See `resourceSpec` below.
      * 
      */
     @Export(name="resourceSpec", refs={VvpInstanceResourceSpec.class}, tree="[0]")
     private Output<VvpInstanceResourceSpec> resourceSpec;
 
     /**
-     * @return Resource specifications. See `resource_spec` below.
+     * @return Resource specifications. See `resourceSpec` below.
      * 
      */
     public Output<VvpInstanceResourceSpec> resourceSpec() {

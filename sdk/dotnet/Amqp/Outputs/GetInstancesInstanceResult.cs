@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
+        /// The billing method of the instance. **Note:** `PaymentType` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
@@ -50,15 +50,15 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// </summary>
         public readonly string PublicEndpoint;
         /// <summary>
-        /// Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
+        /// Auto renewal period of an instance. **Note:** `RenewalDuration` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly int RenewalDuration;
         /// <summary>
-        /// Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
+        /// Automatic renewal period unit. **Note:** `RenewalDurationUnit` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string RenewalDurationUnit;
         /// <summary>
-        /// Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
+        /// Whether to renew an instance automatically or not. **Note:** `RenewalStatus` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string RenewalStatus;
         /// <summary>

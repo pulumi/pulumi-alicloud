@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V2FunctionInstanceLifecycleConfig {
     /**
-     * @return PreFreeze function configuration. See `pre_freeze` below.
+     * @return PreFreeze function configuration. See `preFreeze` below.
      * 
      */
     private @Nullable V2FunctionInstanceLifecycleConfigPreFreeze preFreeze;
     /**
-     * @return PreStop function configuration. See `pre_stop` below.
+     * @return PreStop function configuration. See `preStop` below.
      * 
      */
     private @Nullable V2FunctionInstanceLifecycleConfigPreStop preStop;
 
     private V2FunctionInstanceLifecycleConfig() {}
     /**
-     * @return PreFreeze function configuration. See `pre_freeze` below.
+     * @return PreFreeze function configuration. See `preFreeze` below.
      * 
      */
     public Optional<V2FunctionInstanceLifecycleConfigPreFreeze> preFreeze() {
         return Optional.ofNullable(this.preFreeze);
     }
     /**
-     * @return PreStop function configuration. See `pre_stop` below.
+     * @return PreStop function configuration. See `preStop` below.
      * 
      */
     public Optional<V2FunctionInstanceLifecycleConfigPreStop> preStop() {

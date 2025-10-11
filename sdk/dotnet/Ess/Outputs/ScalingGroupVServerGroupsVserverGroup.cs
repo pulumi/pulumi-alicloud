@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string LoadbalancerId;
         /// <summary>
-        /// A list of VServer Group attributes. See `vserver_attributes` below.
+        /// A list of VServer Group attributes. See `VserverAttributes` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute> VserverAttributes;
 

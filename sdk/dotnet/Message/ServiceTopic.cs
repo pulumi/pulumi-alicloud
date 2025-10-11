@@ -58,13 +58,13 @@ namespace Pulumi.AliCloud.Message
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Output("enableLogging")]
         public Output<bool> EnableLogging { get; private set; } = null!;
 
         /// <summary>
-        /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        /// . Field `LoggingEnabled` has been deprecated from provider version 1.241.0. New field `EnableLogging` instead.
         /// </summary>
         [Output("loggingEnabled")]
         public Output<bool> LoggingEnabled { get; private set; } = null!;
@@ -136,13 +136,13 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
-        /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        /// . Field `LoggingEnabled` has been deprecated from provider version 1.241.0. New field `EnableLogging` instead.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
@@ -188,13 +188,13 @@ namespace Pulumi.AliCloud.Message
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
-        /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        /// . Field `LoggingEnabled` has been deprecated from provider version 1.241.0. New field `EnableLogging` instead.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }

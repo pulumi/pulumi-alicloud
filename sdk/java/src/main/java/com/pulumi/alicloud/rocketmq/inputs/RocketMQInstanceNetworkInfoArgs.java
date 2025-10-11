@@ -35,14 +35,14 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
     }
 
     /**
-     * instance internet info. See `internet_info` below.
+     * instance internet info. See `internetInfo` below.
      * 
      */
     @Import(name="internetInfo", required=true)
     private Output<RocketMQInstanceNetworkInfoInternetInfoArgs> internetInfo;
 
     /**
-     * @return instance internet info. See `internet_info` below.
+     * @return instance internet info. See `internetInfo` below.
      * 
      */
     public Output<RocketMQInstanceNetworkInfoInternetInfoArgs> internetInfo() {
@@ -50,14 +50,14 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
     }
 
     /**
-     * Proprietary network information. See `vpc_info` below.
+     * Proprietary network information. See `vpcInfo` below.
      * 
      */
     @Import(name="vpcInfo", required=true)
     private Output<RocketMQInstanceNetworkInfoVpcInfoArgs> vpcInfo;
 
     /**
-     * @return Proprietary network information. See `vpc_info` below.
+     * @return Proprietary network information. See `vpcInfo` below.
      * 
      */
     public Output<RocketMQInstanceNetworkInfoVpcInfoArgs> vpcInfo() {
@@ -122,7 +122,7 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param internetInfo instance internet info. See `internet_info` below.
+         * @param internetInfo instance internet info. See `internetInfo` below.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param internetInfo instance internet info. See `internet_info` below.
+         * @param internetInfo instance internet info. See `internetInfo` below.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcInfo Proprietary network information. See `vpc_info` below.
+         * @param vpcInfo Proprietary network information. See `vpcInfo` below.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcInfo Proprietary network information. See `vpc_info` below.
+         * @param vpcInfo Proprietary network information. See `vpcInfo` below.
          * 
          * @return builder
          * 

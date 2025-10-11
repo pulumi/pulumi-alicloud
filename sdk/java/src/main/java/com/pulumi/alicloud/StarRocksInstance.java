@@ -180,14 +180,14 @@ public class StarRocksInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * BackendNodeGroups See `backend_node_groups` below.
+     * BackendNodeGroups See `backendNodeGroups` below.
      * 
      */
     @Export(name="backendNodeGroups", refs={List.class,StarRocksInstanceBackendNodeGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StarRocksInstanceBackendNodeGroup>> backendNodeGroups;
 
     /**
-     * @return BackendNodeGroups See `backend_node_groups` below.
+     * @return BackendNodeGroups See `backendNodeGroups` below.
      * 
      */
     public Output<Optional<List<StarRocksInstanceBackendNodeGroup>>> backendNodeGroups() {
@@ -250,14 +250,14 @@ public class StarRocksInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encrypted);
     }
     /**
-     * FrontendNodeGroups See `frontend_node_groups` below.
+     * FrontendNodeGroups See `frontendNodeGroups` below.
      * 
      */
     @Export(name="frontendNodeGroups", refs={List.class,StarRocksInstanceFrontendNodeGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StarRocksInstanceFrontendNodeGroup>> frontendNodeGroups;
 
     /**
-     * @return FrontendNodeGroups See `frontend_node_groups` below.
+     * @return FrontendNodeGroups See `frontendNodeGroups` below.
      * 
      */
     public Output<Optional<List<StarRocksInstanceFrontendNodeGroup>>> frontendNodeGroups() {
@@ -292,14 +292,14 @@ public class StarRocksInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
-     * ObserverNodeGroups See `observer_node_groups` below.
+     * ObserverNodeGroups See `observerNodeGroups` below.
      * 
      */
     @Export(name="observerNodeGroups", refs={List.class,StarRocksInstanceObserverNodeGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StarRocksInstanceObserverNodeGroup>> observerNodeGroups;
 
     /**
-     * @return ObserverNodeGroups See `observer_node_groups` below.
+     * @return ObserverNodeGroups See `observerNodeGroups` below.
      * 
      */
     public Output<Optional<List<StarRocksInstanceObserverNodeGroup>>> observerNodeGroups() {
@@ -419,8 +419,8 @@ public class StarRocksInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The run mode of the instance:
-     * - shared_nothing
-     * - shared_data
+     * - sharedNothing
+     * - sharedData
      * - lakehouse
      * 
      */
@@ -429,8 +429,8 @@ public class StarRocksInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The run mode of the instance:
-     * - shared_nothing
-     * - shared_data
+     * - sharedNothing
+     * - sharedData
      * - lakehouse
      * 
      */

@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetRegistryEnterpriseReposArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+        /// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `Tags` in attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetRegistryEnterpriseReposInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+        /// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `Tags` in attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

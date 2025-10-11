@@ -266,14 +266,14 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+     * The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
      * 
      */
     @Import(name="subDomainDnsAddresses")
     private @Nullable Output<List<String>> subDomainDnsAddresses;
 
     /**
-     * @return The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+     * @return The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
      * 
      */
     public Optional<Output<List<String>>> subDomainDnsAddresses() {
@@ -705,7 +705,7 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param subDomainDnsAddresses The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+         * @param subDomainDnsAddresses The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
          * 
          * @return builder
          * 
@@ -716,7 +716,7 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param subDomainDnsAddresses The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+         * @param subDomainDnsAddresses The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param subDomainDnsAddresses The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+         * @param subDomainDnsAddresses The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
          * 
          * @return builder
          * 

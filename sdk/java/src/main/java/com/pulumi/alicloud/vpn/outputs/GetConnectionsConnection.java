@@ -46,12 +46,12 @@ public final class GetConnectionsConnection {
      */
     private String id;
     /**
-     * @return The ike_config mapping supports the following:
+     * @return The ikeConfig mapping supports the following:
      * 
      */
     private @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
     /**
-     * @return The ipsec_config mapping supports the following:
+     * @return The ipsecConfig mapping supports the following:
      * 
      */
     private @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
@@ -76,13 +76,13 @@ public final class GetConnectionsConnection {
      */
     private String status;
     /**
-     * @return The tunnel_options_specification supports the following:
+     * @return The tunnelOptionsSpecification supports the following:
      * 
      */
     private List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications;
     private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
     /**
-     * @return The vpn_bgp_config mapping supports the following:
+     * @return The vpnBgpConfig mapping supports the following:
      * 
      */
     private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
@@ -135,14 +135,14 @@ public final class GetConnectionsConnection {
         return this.id;
     }
     /**
-     * @return The ike_config mapping supports the following:
+     * @return The ikeConfig mapping supports the following:
      * 
      */
     public List<GetConnectionsConnectionIkeConfig> ikeConfigs() {
         return this.ikeConfigs == null ? List.of() : this.ikeConfigs;
     }
     /**
-     * @return The ipsec_config mapping supports the following:
+     * @return The ipsecConfig mapping supports the following:
      * 
      */
     public List<GetConnectionsConnectionIpsecConfig> ipsecConfigs() {
@@ -177,7 +177,7 @@ public final class GetConnectionsConnection {
         return this.status;
     }
     /**
-     * @return The tunnel_options_specification supports the following:
+     * @return The tunnelOptionsSpecification supports the following:
      * 
      */
     public List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications() {
@@ -187,7 +187,7 @@ public final class GetConnectionsConnection {
         return this.vcoHealthChecks == null ? List.of() : this.vcoHealthChecks;
     }
     /**
-     * @return The vpn_bgp_config mapping supports the following:
+     * @return The vpnBgpConfig mapping supports the following:
      * 
      */
     public List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs() {

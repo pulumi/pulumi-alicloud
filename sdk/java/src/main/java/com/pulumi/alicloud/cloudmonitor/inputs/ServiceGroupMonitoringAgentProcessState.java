@@ -19,14 +19,14 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
     public static final ServiceGroupMonitoringAgentProcessState Empty = new ServiceGroupMonitoringAgentProcessState();
 
     /**
-     * The alert rule configurations. See `alert_config` below.
+     * The alert rule configurations. See `alertConfig` below.
      * 
      */
     @Import(name="alertConfigs")
     private @Nullable Output<List<ServiceGroupMonitoringAgentProcessAlertConfigArgs>> alertConfigs;
 
     /**
-     * @return The alert rule configurations. See `alert_config` below.
+     * @return The alert rule configurations. See `alertConfig` below.
      * 
      */
     public Optional<Output<List<ServiceGroupMonitoringAgentProcessAlertConfigArgs>>> alertConfigs() {
@@ -79,14 +79,14 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
     }
 
     /**
-     * The expressions used to match instances. See `match_express` below.
+     * The expressions used to match instances. See `matchExpress` below.
      * 
      */
     @Import(name="matchExpresses")
     private @Nullable Output<List<ServiceGroupMonitoringAgentProcessMatchExpressArgs>> matchExpresses;
 
     /**
-     * @return The expressions used to match instances. See `match_express` below.
+     * @return The expressions used to match instances. See `matchExpress` below.
      * 
      */
     public Optional<Output<List<ServiceGroupMonitoringAgentProcessMatchExpressArgs>>> matchExpresses() {
@@ -138,7 +138,7 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
         }
 
         /**
-         * @param alertConfigs The alert rule configurations. See `alert_config` below.
+         * @param alertConfigs The alert rule configurations. See `alertConfig` below.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
         }
 
         /**
-         * @param alertConfigs The alert rule configurations. See `alert_config` below.
+         * @param alertConfigs The alert rule configurations. See `alertConfig` below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
         }
 
         /**
-         * @param alertConfigs The alert rule configurations. See `alert_config` below.
+         * @param alertConfigs The alert rule configurations. See `alertConfig` below.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
         }
 
         /**
-         * @param matchExpresses The expressions used to match instances. See `match_express` below.
+         * @param matchExpresses The expressions used to match instances. See `matchExpress` below.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
         }
 
         /**
-         * @param matchExpresses The expressions used to match instances. See `match_express` below.
+         * @param matchExpresses The expressions used to match instances. See `matchExpress` below.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ServiceGroupMonitoringAgentProcessState extends com.pulumi.re
         }
 
         /**
-         * @param matchExpresses The expressions used to match instances. See `match_express` below.
+         * @param matchExpresses The expressions used to match instances. See `matchExpress` below.
          * 
          * @return builder
          * 

@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CodeCheckSum { get; private set; } = null!;
 
         /// <summary>
-        /// The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
+        /// The list of runtime environments that are supported by the layer. Valid values: `Nodejs14`, `Nodejs12`, `Nodejs10`, `Nodejs8`, `Nodejs6`, `python3.9`, `Python3`, `python2.7`, `Java11`, `Java8`, `php7.2`, `Go1`,`dotnetcore2.1`, `Custom`.
         /// </summary>
         [Output("compatibleRuntimes")]
         public Output<ImmutableArray<string>> CompatibleRuntimes { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> OssObjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+        /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `False`. When this is not set to `True`, changing any of `CompatibleRuntimes`, `Description`, `LayerName`, `OssBucketName`,  `OssObjectName`, or `ZipFile` forces deletion of the existing layer version and creation of a new layer version.
         /// </summary>
         [Output("skipDestroy")]
         public Output<bool?> SkipDestroy { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// The ZIP package of the function code that is encoded in the Base64 format.
         /// 
-        /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+        /// &gt; **NOTE:** `ZipFile` and `OssBucketName`, `OssObjectName` cannot be used together.
         /// </summary>
         [Output("zipFile")]
         public Output<string?> ZipFile { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<string>? _compatibleRuntimes;
 
         /// <summary>
-        /// The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
+        /// The list of runtime environments that are supported by the layer. Valid values: `Nodejs14`, `Nodejs12`, `Nodejs10`, `Nodejs8`, `Nodejs6`, `python3.9`, `Python3`, `python2.7`, `Java11`, `Java8`, `php7.2`, `Go1`,`dotnetcore2.1`, `Custom`.
         /// </summary>
         public InputList<string> CompatibleRuntimes
         {
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? OssObjectName { get; set; }
 
         /// <summary>
-        /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+        /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `False`. When this is not set to `True`, changing any of `CompatibleRuntimes`, `Description`, `LayerName`, `OssBucketName`,  `OssObjectName`, or `ZipFile` forces deletion of the existing layer version and creation of a new layer version.
         /// </summary>
         [Input("skipDestroy")]
         public Input<bool>? SkipDestroy { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// The ZIP package of the function code that is encoded in the Base64 format.
         /// 
-        /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+        /// &gt; **NOTE:** `ZipFile` and `OssBucketName`, `OssObjectName` cannot be used together.
         /// </summary>
         [Input("zipFile")]
         public Input<string>? ZipFile { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<string>? _compatibleRuntimes;
 
         /// <summary>
-        /// The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
+        /// The list of runtime environments that are supported by the layer. Valid values: `Nodejs14`, `Nodejs12`, `Nodejs10`, `Nodejs8`, `Nodejs6`, `python3.9`, `Python3`, `python2.7`, `Java11`, `Java8`, `php7.2`, `Go1`,`dotnetcore2.1`, `Custom`.
         /// </summary>
         public InputList<string> CompatibleRuntimes
         {
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? OssObjectName { get; set; }
 
         /// <summary>
-        /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+        /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `False`. When this is not set to `True`, changing any of `CompatibleRuntimes`, `Description`, `LayerName`, `OssBucketName`,  `OssObjectName`, or `ZipFile` forces deletion of the existing layer version and creation of a new layer version.
         /// </summary>
         [Input("skipDestroy")]
         public Input<bool>? SkipDestroy { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// The ZIP package of the function code that is encoded in the Base64 format.
         /// 
-        /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+        /// &gt; **NOTE:** `ZipFile` and `OssBucketName`, `OssObjectName` cannot be used together.
         /// </summary>
         [Input("zipFile")]
         public Input<string>? ZipFile { get; set; }

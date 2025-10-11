@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. `International`: Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation")]
         public string? ServiceLocation { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. `International`: Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation")]
         public Input<string>? ServiceLocation { get; set; }

@@ -109,13 +109,13 @@ namespace Pulumi.AliCloud.Eds
         public Output<int?> Amount { get; private set; } = null!;
 
         /// <summary>
-        /// The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
+        /// The auto-pay of the Desktop whether to pay automatically. values: `True`, `False`.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
+        /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `True`, `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -269,13 +269,13 @@ namespace Pulumi.AliCloud.Eds
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
+        /// The auto-pay of the Desktop whether to pay automatically. values: `True`, `False`.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
+        /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `True`, `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -403,13 +403,13 @@ namespace Pulumi.AliCloud.Eds
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
+        /// The auto-pay of the Desktop whether to pay automatically. values: `True`, `False`.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
+        /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `True`, `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }

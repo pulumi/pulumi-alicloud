@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Pai
         public Output<ImmutableDictionary<string, string>?> InferenceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// List of model version labels. See `labels` below.
+        /// List of model version labels. See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.WorkspaceModelVersionLabel>> Labels { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceModelVersionLabelArgs>? _labels;
 
         /// <summary>
-        /// List of model version labels. See `labels` below.
+        /// List of model version labels. See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceModelVersionLabelArgs> Labels
         {
@@ -498,7 +498,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceModelVersionLabelGetArgs>? _labels;
 
         /// <summary>
-        /// List of model version labels. See `labels` below.
+        /// List of model version labels. See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceModelVersionLabelGetArgs> Labels
         {

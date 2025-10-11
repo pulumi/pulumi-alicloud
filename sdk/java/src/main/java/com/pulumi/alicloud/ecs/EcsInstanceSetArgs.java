@@ -55,14 +55,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+     * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+     * @return Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -70,18 +70,18 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -104,14 +104,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of data disks created with instance. See `data_disks` below..
+     * The list of data disks created with instance. See `dataDisks` below..
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<EcsInstanceSetDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `data_disks` below..
+     * @return The list of data disks created with instance. See `dataDisks` below..
      * 
      */
     public Optional<Output<List<EcsInstanceSetDataDiskArgs>>> dataDisks() {
@@ -119,14 +119,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+     * The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     @Import(name="dedicatedHostId")
     private @Nullable Output<String> dedicatedHostId;
 
     /**
-     * @return The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+     * @return The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     public Optional<Output<String>> dedicatedHostId() {
@@ -179,14 +179,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+     * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      * 
      */
     @Import(name="excludeInstanceFilter")
     private @Nullable Output<EcsInstanceSetExcludeInstanceFilterArgs> excludeInstanceFilter;
 
     /**
-     * @return The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+     * @return The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      * 
      */
     public Optional<Output<EcsInstanceSetExcludeInstanceFilterArgs>> excludeInstanceFilter() {
@@ -254,14 +254,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+     * @return The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -344,14 +344,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     @Import(name="launchTemplateName")
     private @Nullable Output<String> launchTemplateName;
 
     /**
-     * @return The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * @return The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     public Optional<Output<String>> launchTemplateName() {
@@ -374,14 +374,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A list of NetworkInterface. See `network_interfaces` below..
+     * A list of NetworkInterface. See `networkInterfaces` below..
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<EcsInstanceSetNetworkInterfaceArgs>> networkInterfaces;
 
     /**
-     * @return A list of NetworkInterface. See `network_interfaces` below..
+     * @return A list of NetworkInterface. See `networkInterfaces` below..
      * 
      */
     public Optional<Output<List<EcsInstanceSetNetworkInterfaceArgs>>> networkInterfaces() {
@@ -419,18 +419,18 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -438,14 +438,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * @return The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -532,7 +532,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -542,7 +542,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> spotStrategy;
 
     /**
-     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -568,14 +568,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+     * The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+     * @return The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -812,7 +812,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoRenew Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+         * @param autoRenew Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoRenew Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+         * @param autoRenew Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -833,9 +833,9 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-         * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-         * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+         * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+         * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
          * 
          * @return builder
          * 
@@ -846,9 +846,9 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-         * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-         * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+         * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+         * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
          * 
          * @return builder
          * 
@@ -879,7 +879,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below..
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below..
          * 
          * @return builder
          * 
@@ -890,7 +890,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below..
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below..
          * 
          * @return builder
          * 
@@ -900,7 +900,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below..
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below..
          * 
          * @return builder
          * 
@@ -910,7 +910,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
          * 
          * @return builder
          * 
@@ -921,7 +921,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
          * 
          * @return builder
          * 
@@ -994,7 +994,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
          * 
          * @return builder
          * 
@@ -1005,7 +1005,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
          * 
          * @return builder
          * 
@@ -1099,7 +1099,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceName The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+         * @param instanceName The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -1110,7 +1110,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceName The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+         * @param instanceName The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -1225,7 +1225,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param launchTemplateName The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+         * @param launchTemplateName The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
          * 
          * @return builder
          * 
@@ -1236,7 +1236,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param launchTemplateName The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+         * @param launchTemplateName The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
          * 
          * @return builder
          * 
@@ -1267,7 +1267,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See `network_interfaces` below..
+         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below..
          * 
          * @return builder
          * 
@@ -1278,7 +1278,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See `network_interfaces` below..
+         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below..
          * 
          * @return builder
          * 
@@ -1288,7 +1288,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See `network_interfaces` below..
+         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below..
          * 
          * @return builder
          * 
@@ -1340,9 +1340,9 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-         * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-         * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+         * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+         * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
          * 
          * @return builder
          * 
@@ -1353,9 +1353,9 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-         * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-         * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+         * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+         * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
          * 
          * @return builder
          * 
@@ -1365,7 +1365,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
          * 
          * @return builder
          * 
@@ -1376,7 +1376,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
          * 
          * @return builder
          * 
@@ -1505,7 +1505,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
          * - `NoSpot`: A regular Pay-As-You-Go instance.
          * - `SpotWithPriceLimit`: A price threshold for a spot instance.
          * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -1519,7 +1519,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
          * - `NoSpot`: A regular Pay-As-You-Go instance.
          * - `SpotWithPriceLimit`: A price threshold for a spot instance.
          * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -1553,7 +1553,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param systemDiskCategory The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+         * @param systemDiskCategory The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
          * 
          * @return builder
          * 
@@ -1564,7 +1564,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param systemDiskCategory The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+         * @param systemDiskCategory The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
          * 
          * @return builder
          * 

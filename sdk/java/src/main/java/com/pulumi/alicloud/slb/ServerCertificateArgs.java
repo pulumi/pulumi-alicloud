@@ -70,14 +70,14 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+     * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      * 
      */
     @Import(name="alicloudCertificateName")
     private @Nullable Output<String> alicloudCertificateName;
 
     /**
-     * @return the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+     * @return the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      * 
      */
     public Optional<Output<String>> alicloudCertificateName() {
@@ -85,14 +85,14 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+     * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      * 
      */
     @Import(name="alicloudCertificateRegionId")
     private @Nullable Output<String> alicloudCertificateRegionId;
 
     /**
-     * @return the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+     * @return the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      * 
      */
     public Optional<Output<String>> alicloudCertificateRegionId() {
@@ -115,14 +115,14 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * @return the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -145,14 +145,14 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     @Import(name="serverCertificate")
     private @Nullable Output<String> serverCertificate;
 
     /**
-     * @return the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+     * @return the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      * 
      */
     public Optional<Output<String>> serverCertificate() {
@@ -279,7 +279,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alicloudCertificateName the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+         * @param alicloudCertificateName the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alicloudCertificateName the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+         * @param alicloudCertificateName the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alicloudCertificateRegionId the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+         * @param alicloudCertificateRegionId the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alicloudCertificateRegionId the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+         * @param alicloudCertificateRegionId the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateKey the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+         * @param privateKey the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateKey the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+         * @param privateKey the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverCertificate the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+         * @param serverCertificate the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverCertificate the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+         * @param serverCertificate the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
          * 
          * @return builder
          * 

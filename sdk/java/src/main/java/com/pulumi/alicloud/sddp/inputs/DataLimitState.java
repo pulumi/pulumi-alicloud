@@ -62,14 +62,14 @@ public final class DataLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+     * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      * 
      */
     @Import(name="logStoreDay")
     private @Nullable Output<Integer> logStoreDay;
 
     /**
-     * @return The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+     * @return The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      * 
      */
     public Optional<Output<Integer>> logStoreDay() {
@@ -263,7 +263,7 @@ public final class DataLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreDay The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+         * @param logStoreDay The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class DataLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreDay The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+         * @param logStoreDay The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
          * 
          * @return builder
          * 

@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string HostClass;
         /// <summary>
-        /// The number of CPU cores specified for the host. Unit: `core`.
+        /// The number of CPU cores specified for the host. Unit: `Core`.
         /// </summary>
         public readonly string HostCpu;
         /// <summary>

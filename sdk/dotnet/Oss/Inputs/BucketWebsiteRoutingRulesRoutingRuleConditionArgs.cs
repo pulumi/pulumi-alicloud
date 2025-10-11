@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs>? _includeHeaders;
 
         /// <summary>
-        /// This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+        /// This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `IncludeHeaders` below.
         /// </summary>
         public InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs> IncludeHeaders
         {

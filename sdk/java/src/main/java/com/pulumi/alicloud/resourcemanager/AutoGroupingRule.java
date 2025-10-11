@@ -221,14 +221,14 @@ public class AutoGroupingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceTypesScope);
     }
     /**
-     * The content records of the rule. See `rule_contents` below.
+     * The content records of the rule. See `ruleContents` below.
      * 
      */
     @Export(name="ruleContents", refs={List.class,AutoGroupingRuleRuleContent.class}, tree="[0,1]")
     private Output<List<AutoGroupingRuleRuleContent>> ruleContents;
 
     /**
-     * @return The content records of the rule. See `rule_contents` below.
+     * @return The content records of the rule. See `ruleContents` below.
      * 
      */
     public Output<List<AutoGroupingRuleRuleContent>> ruleContents() {

@@ -206,14 +206,14 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskEncryption);
     }
     /**
-     * Whether to enable default allocation of resources to user_default resource groups.
+     * Whether to enable default allocation of resources to userDefault resource groups.
      * 
      */
     @Export(name="enableDefaultResourceGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDefaultResourceGroup;
 
     /**
-     * @return Whether to enable default allocation of resources to user_default resource groups.
+     * @return Whether to enable default allocation of resources to userDefault resource groups.
      * 
      */
     public Output<Optional<Boolean>> enableDefaultResourceGroup() {
@@ -290,14 +290,14 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.expired;
     }
     /**
-     * The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      * 
      */
     @Export(name="kmsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsId;
 
     /**
-     * @return The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * @return The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      * 
      */
     public Output<Optional<String>> kmsId() {
@@ -332,14 +332,14 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.lockReason;
     }
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      * 
      */
     public Output<String> paymentType() {
@@ -395,7 +395,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
-     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
     @Export(name="productVersion", refs={String.class}, tree="[0]")
@@ -405,7 +405,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * @return The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
-     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
     public Output<String> productVersion() {

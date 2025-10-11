@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
     public sealed class DiJobResourceSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Offline Resource Group configuration See `offline_resource_settings` below.
+        /// Offline Resource Group configuration See `OfflineResourceSettings` below.
         /// </summary>
         [Input("offlineResourceSettings")]
         public Input<Inputs.DiJobResourceSettingsOfflineResourceSettingsArgs>? OfflineResourceSettings { get; set; }
 
         /// <summary>
-        /// Real-time Resource Group See `realtime_resource_settings` below.
+        /// Real-time Resource Group See `RealtimeResourceSettings` below.
         /// </summary>
         [Input("realtimeResourceSettings")]
         public Input<Inputs.DiJobResourceSettingsRealtimeResourceSettingsArgs>? RealtimeResourceSettings { get; set; }
 
         /// <summary>
-        /// Scheduling Resource Groups See `schedule_resource_settings` below.
+        /// Scheduling Resource Groups See `ScheduleResourceSettings` below.
         /// </summary>
         [Input("scheduleResourceSettings")]
         public Input<Inputs.DiJobResourceSettingsScheduleResourceSettingsArgs>? ScheduleResourceSettings { get; set; }

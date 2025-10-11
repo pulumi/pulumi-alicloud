@@ -25,7 +25,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
      * 
-     * Default to `cloud_efficiency`.
+     * Default to `cloudEfficiency`.
      * 
      */
     @Import(name="category")
@@ -39,7 +39,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
      * 
-     * Default to `cloud_efficiency`.
+     * Default to `cloudEfficiency`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -47,7 +47,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
      * 
      * Default to true
      * 
@@ -56,7 +56,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
      * 
      * Default to true
      * 
@@ -216,7 +216,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
          * - ephemeral_ssd: local SSD Disks
          * - cloud_essd: ESSD cloud Disks.
          * 
-         * Default to `cloud_efficiency`.
+         * Default to `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
          * - ephemeral_ssd: local SSD Disks
          * - cloud_essd: ESSD cloud Disks.
          * 
-         * Default to `cloud_efficiency`.
+         * Default to `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
          * 
          * Default to true
          * 
@@ -257,7 +257,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
          * 
          * Default to true
          * 

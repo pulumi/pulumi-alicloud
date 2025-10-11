@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Qualifier { get; private set; } = null!;
 
         /// <summary>
-        /// Timing policy configuration See `scheduled_actions` below.
+        /// Timing policy configuration See `ScheduledActions` below.
         /// </summary>
         [Output("scheduledActions")]
         public Output<ImmutableArray<Outputs.V3ProvisionConfigScheduledAction>> ScheduledActions { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.FC
         public Output<int?> Target { get; private set; } = null!;
 
         /// <summary>
-        /// Metric tracking scaling policy configuration See `target_tracking_policies` below.
+        /// Metric tracking scaling policy configuration See `TargetTrackingPolicies` below.
         /// </summary>
         [Output("targetTrackingPolicies")]
         public Output<ImmutableArray<Outputs.V3ProvisionConfigTargetTrackingPolicy>> TargetTrackingPolicies { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.V3ProvisionConfigScheduledActionArgs>? _scheduledActions;
 
         /// <summary>
-        /// Timing policy configuration See `scheduled_actions` below.
+        /// Timing policy configuration See `ScheduledActions` below.
         /// </summary>
         public InputList<Inputs.V3ProvisionConfigScheduledActionArgs> ScheduledActions
         {
@@ -332,7 +332,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.V3ProvisionConfigTargetTrackingPolicyArgs>? _targetTrackingPolicies;
 
         /// <summary>
-        /// Metric tracking scaling policy configuration See `target_tracking_policies` below.
+        /// Metric tracking scaling policy configuration See `TargetTrackingPolicies` below.
         /// </summary>
         public InputList<Inputs.V3ProvisionConfigTargetTrackingPolicyArgs> TargetTrackingPolicies
         {
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.V3ProvisionConfigScheduledActionGetArgs>? _scheduledActions;
 
         /// <summary>
-        /// Timing policy configuration See `scheduled_actions` below.
+        /// Timing policy configuration See `ScheduledActions` below.
         /// </summary>
         public InputList<Inputs.V3ProvisionConfigScheduledActionGetArgs> ScheduledActions
         {
@@ -412,7 +412,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.V3ProvisionConfigTargetTrackingPolicyGetArgs>? _targetTrackingPolicies;
 
         /// <summary>
-        /// Metric tracking scaling policy configuration See `target_tracking_policies` below.
+        /// Metric tracking scaling policy configuration See `TargetTrackingPolicies` below.
         /// </summary>
         public InputList<Inputs.V3ProvisionConfigTargetTrackingPolicyGetArgs> TargetTrackingPolicies
         {

@@ -109,14 +109,14 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Probe type, support `host_probe` and `vpc_black_hole_probe`.
+     * Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      * 
      */
     @Import(name="probeType")
     private @Nullable Output<String> probeType;
 
     /**
-     * @return Probe type, support `host_probe` and `vpc_black_hole_probe`.
+     * @return Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      * 
      */
     public Optional<Output<String>> probeType() {
@@ -184,14 +184,14 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * @return Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -199,14 +199,14 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * @return The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -386,7 +386,7 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param probeType Probe type, support `host_probe` and `vpc_black_hole_probe`.
+         * @param probeType Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param probeType Probe type, support `host_probe` and `vpc_black_hole_probe`.
+         * @param probeType Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param uuid Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+         * @param uuid Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param uuid Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+         * @param uuid Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+         * @param vpcId The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class HoneypotProbeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+         * @param vpcId The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
          * 
          * @return builder
          * 

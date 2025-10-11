@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.MongoDB
         public string? InstanceClass { get; set; }
 
         /// <summary>
-        /// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+        /// Type of the instance to be queried. If it is set to `Sharding`, the sharded cluster instances are listed. If it is set to `Replicate`, replica set instances are listed. Default value `Replicate`.
         /// </summary>
         [Input("instanceType")]
         public string? InstanceType { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+        /// Type of the instance to be queried. If it is set to `Sharding`, the sharded cluster instances are listed. If it is set to `Replicate`, replica set instances are listed. Default value `Replicate`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         public readonly string? InstanceClass;
         /// <summary>
-        /// Instance type. Optional values `sharding` or `replicate`.
+        /// Instance type. Optional values `Sharding` or `Replicate`.
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>

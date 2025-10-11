@@ -29,14 +29,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     public static final ManagedKubernetesState Empty = new ManagedKubernetesState();
 
     /**
-     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<ManagedKubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     public Optional<Output<List<ManagedKubernetesAddonArgs>>> addons() {
@@ -44,14 +44,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     @Import(name="apiAudiences")
     private @Nullable Output<List<String>> apiAudiences;
 
     /**
-     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     public Optional<Output<List<String>>> apiAudiences() {
@@ -59,14 +59,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Audit log configuration. See `audit_log_config` below.
+     * Audit log configuration. See `auditLogConfig` below.
      * 
      */
     @Import(name="auditLogConfig")
     private @Nullable Output<ManagedKubernetesAuditLogConfigArgs> auditLogConfig;
 
     /**
-     * @return Audit log configuration. See `audit_log_config` below.
+     * @return Audit log configuration. See `auditLogConfig` below.
      * 
      */
     public Optional<Output<ManagedKubernetesAuditLogConfigArgs>> auditLogConfig() {
@@ -74,14 +74,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Auto mode cluster configuration. See `auto_mode` below.
+     * Auto mode cluster configuration. See `autoMode` below.
      * 
      */
     @Import(name="autoMode")
     private @Nullable Output<ManagedKubernetesAutoModeArgs> autoMode;
 
     /**
-     * @return Auto mode cluster configuration. See `auto_mode` below.
+     * @return Auto mode cluster configuration. See `autoMode` below.
      * 
      */
     public Optional<Output<ManagedKubernetesAutoModeArgs>> autoMode() {
@@ -89,7 +89,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -100,7 +100,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     private @Nullable Output<ManagedKubernetesCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -264,14 +264,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+     * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      * 
      */
     @Import(name="controlPlaneLogTtl")
     private @Nullable Output<String> controlPlaneLogTtl;
 
     /**
-     * @return Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+     * @return Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      * 
      */
     public Optional<Output<String>> controlPlaneLogTtl() {
@@ -296,14 +296,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     @Import(name="deleteOptions")
     private @Nullable Output<List<ManagedKubernetesDeleteOptionArgs>> deleteOptions;
 
     /**
-     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     public Optional<Output<List<ManagedKubernetesDeleteOptionArgs>>> deleteOptions() {
@@ -409,14 +409,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+     * The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      * 
      */
     @Import(name="maintenanceWindow")
     private @Nullable Output<ManagedKubernetesMaintenanceWindowArgs> maintenanceWindow;
 
     /**
-     * @return The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+     * @return The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      * 
      */
     public Optional<Output<ManagedKubernetesMaintenanceWindowArgs>> maintenanceWindow() {
@@ -491,14 +491,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+     * The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      * 
      */
     @Import(name="operationPolicy")
     private @Nullable Output<ManagedKubernetesOperationPolicyArgs> operationPolicy;
 
     /**
-     * @return The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+     * @return The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      * 
      */
     public Optional<Output<ManagedKubernetesOperationPolicyArgs>> operationPolicy() {
@@ -521,14 +521,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     @Import(name="podVswitchIds")
     private @Nullable Output<List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     public Optional<Output<List<String>>> podVswitchIds() {
@@ -612,7 +612,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-     * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+     * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
      * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -623,7 +623,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-     * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+     * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
      * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -634,14 +634,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     @Import(name="serviceAccountIssuer")
     private @Nullable Output<String> serviceAccountIssuer;
 
     /**
-     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      * 
      */
     public Optional<Output<String>> serviceAccountIssuer() {
@@ -664,7 +664,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -673,7 +673,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     private @Nullable Output<Boolean> skipSetCertificateAuthority;
 
     /**
-     * @return Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -796,14 +796,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      * 
      */
     public Optional<Output<String>> version() {
@@ -827,7 +827,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * The vSwitches of the control plane.
-     * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+     * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
      * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
      * * The control plane restarts during the change process. Exercise caution when you perform this operation.
      * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -839,7 +839,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The vSwitches of the control plane.
-     * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+     * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
      * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
      * * The control plane restarts during the change process. Exercise caution when you perform this operation.
      * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -866,7 +866,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+     * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      * 
      * @deprecated
      * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
@@ -877,7 +877,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<String>> workerVswitchIds;
 
     /**
-     * @return The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+     * @return The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      * 
      * @deprecated
      * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
@@ -889,14 +889,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+     * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
      * 
      */
     @Import(name="zoneIds")
     private @Nullable Output<List<String>> zoneIds;
 
     /**
-     * @return The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+     * @return The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
      * 
      */
     public Optional<Output<List<String>>> zoneIds() {
@@ -980,7 +980,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -991,7 +991,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -1001,7 +1001,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -1011,7 +1011,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1022,7 +1022,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1032,7 +1032,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+         * @param apiAudiences A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1042,7 +1042,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param auditLogConfig Audit log configuration. See `audit_log_config` below.
+         * @param auditLogConfig Audit log configuration. See `auditLogConfig` below.
          * 
          * @return builder
          * 
@@ -1053,7 +1053,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param auditLogConfig Audit log configuration. See `audit_log_config` below.
+         * @param auditLogConfig Audit log configuration. See `auditLogConfig` below.
          * 
          * @return builder
          * 
@@ -1063,7 +1063,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoMode Auto mode cluster configuration. See `auto_mode` below.
+         * @param autoMode Auto mode cluster configuration. See `autoMode` below.
          * 
          * @return builder
          * 
@@ -1074,7 +1074,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoMode Auto mode cluster configuration. See `auto_mode` below.
+         * @param autoMode Auto mode cluster configuration. See `autoMode` below.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1099,7 +1099,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1323,7 +1323,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param controlPlaneLogTtl Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+         * @param controlPlaneLogTtl Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
          * 
          * @return builder
          * 
@@ -1334,7 +1334,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param controlPlaneLogTtl Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+         * @param controlPlaneLogTtl Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
          * 
          * @return builder
          * 
@@ -1367,7 +1367,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -1378,7 +1378,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -1388,7 +1388,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -1532,7 +1532,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+         * @param maintenanceWindow The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
          * 
          * @return builder
          * 
@@ -1543,7 +1543,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
+         * @param maintenanceWindow The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
          * 
          * @return builder
          * 
@@ -1646,7 +1646,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param operationPolicy The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+         * @param operationPolicy The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
          * 
          * @return builder
          * 
@@ -1657,7 +1657,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param operationPolicy The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
+         * @param operationPolicy The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
          * 
          * @return builder
          * 
@@ -1688,7 +1688,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1699,7 +1699,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1709,7 +1709,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1825,7 +1825,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityGroupId The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-         * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+         * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
          * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
          * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
          * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1840,7 +1840,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityGroupId The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-         * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+         * * &gt; **NOTE:** Please take of note before updating the `securityGroupId`:
          * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
          * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
          * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
@@ -1853,7 +1853,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1864,7 +1864,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+         * @param serviceAccountIssuer The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
          * 
          * @return builder
          * 
@@ -1895,7 +1895,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
          * *Network params*
          * 
@@ -1908,7 +1908,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
          * *Network params*
          * 
@@ -2075,7 +2075,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
          * 
          * @return builder
          * 
@@ -2086,7 +2086,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
          * 
          * @return builder
          * 
@@ -2118,7 +2118,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vswitchIds The vSwitches of the control plane.
-         * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+         * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
          * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
          * * The control plane restarts during the change process. Exercise caution when you perform this operation.
          * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -2134,7 +2134,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vswitchIds The vSwitches of the control plane.
-         * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+         * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
          * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
          * * The control plane restarts during the change process. Exercise caution when you perform this operation.
          * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -2149,7 +2149,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vswitchIds The vSwitches of the control plane.
-         * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+         * &gt; **NOTE:** Please take of note before updating the `vswitchIds`:
          * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
          * * The control plane restarts during the change process. Exercise caution when you perform this operation.
          * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
@@ -2184,7 +2184,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
          * 
          * @return builder
          * 
@@ -2199,7 +2199,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
          * 
          * @return builder
          * 
@@ -2213,7 +2213,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
          * 
          * @return builder
          * 
@@ -2227,7 +2227,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
          * 
          * @return builder
          * 
@@ -2238,7 +2238,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
          * 
          * @return builder
          * 
@@ -2248,7 +2248,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
          * 
          * @return builder
          * 

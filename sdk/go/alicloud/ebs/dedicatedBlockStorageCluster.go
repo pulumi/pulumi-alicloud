@@ -18,6 +18,10 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
 // ## Import
 //
 // Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.

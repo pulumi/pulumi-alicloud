@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
         private InputList<string>? _ipWhitelists;
 
         /// <summary>
-        /// Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+        /// Field `IpWhitelist` has been deprecated from provider version 1.245.0. New field `IpWhitelists` instead.
         /// </summary>
         [Obsolete(@"Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.")]
         public InputList<string> IpWhitelists

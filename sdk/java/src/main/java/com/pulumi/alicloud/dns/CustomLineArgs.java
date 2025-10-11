@@ -49,14 +49,14 @@ public final class CustomLineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP segment list. See `ip_segment_list` below for details.
+     * The IP segment list. See `ipSegmentList` below for details.
      * 
      */
     @Import(name="ipSegmentLists", required=true)
     private Output<List<CustomLineIpSegmentListArgs>> ipSegmentLists;
 
     /**
-     * @return The IP segment list. See `ip_segment_list` below for details.
+     * @return The IP segment list. See `ipSegmentList` below for details.
      * 
      */
     public Output<List<CustomLineIpSegmentListArgs>> ipSegmentLists() {
@@ -148,7 +148,7 @@ public final class CustomLineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipSegmentLists The IP segment list. See `ip_segment_list` below for details.
+         * @param ipSegmentLists The IP segment list. See `ipSegmentList` below for details.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class CustomLineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipSegmentLists The IP segment list. See `ip_segment_list` below for details.
+         * @param ipSegmentLists The IP segment list. See `ipSegmentList` below for details.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class CustomLineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipSegmentLists The IP segment list. See `ip_segment_list` below for details.
+         * @param ipSegmentLists The IP segment list. See `ipSegmentList` below for details.
          * 
          * @return builder
          * 

@@ -15,22 +15,22 @@ namespace Pulumi.AliCloud.Ess.Outputs
     {
         /// <summary>
         /// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
-        /// when `acr_registry_info` is configured.
+        /// when `AcrRegistryInfo` is configured.
         /// </summary>
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// The ID of Container Registry Enterprise Edition instance. It is required
-        /// when `acr_registry_info` is configured.
+        /// when `AcrRegistryInfo` is configured.
         /// </summary>
         public readonly string? InstanceId;
         /// <summary>
-        /// The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+        /// The name of Container Registry Enterprise Edition instance. It is required when `AcrRegistryInfo` is
         /// configured.
         /// </summary>
         public readonly string? InstanceName;
         /// <summary>
         /// The region ID of Container Registry Enterprise Edition instance. It is required
-        /// when `acr_registry_info` is configured.
+        /// when `AcrRegistryInfo` is configured.
         /// </summary>
         public readonly string? RegionId;
 

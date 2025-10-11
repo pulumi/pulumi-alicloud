@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         }
 
         /// <summary>
-        /// Function custom health check configuration. See `health_check_config` below.
+        /// Function custom health check configuration. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.V3FunctionCustomRuntimeConfigHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }

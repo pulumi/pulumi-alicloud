@@ -78,14 +78,14 @@ public final class GetFoldersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+     * The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     @Import(name="parentFolderId")
     private @Nullable Output<String> parentFolderId;
 
     /**
-     * @return The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+     * @return The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     public Optional<Output<String>> parentFolderId() {
@@ -231,7 +231,7 @@ public final class GetFoldersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentFolderId The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+         * @param parentFolderId The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GetFoldersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentFolderId The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+         * @param parentFolderId The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
          * 
          * @return builder
          * 

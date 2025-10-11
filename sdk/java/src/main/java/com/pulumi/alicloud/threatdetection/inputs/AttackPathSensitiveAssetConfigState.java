@@ -17,14 +17,14 @@ public final class AttackPathSensitiveAssetConfigState extends com.pulumi.resour
     public static final AttackPathSensitiveAssetConfigState Empty = new AttackPathSensitiveAssetConfigState();
 
     /**
-     * The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+     * The attack path sensitive asset configuration list. See `attackPathAssetList` below.
      * 
      */
     @Import(name="attackPathAssetLists")
     private @Nullable Output<List<AttackPathSensitiveAssetConfigAttackPathAssetListArgs>> attackPathAssetLists;
 
     /**
-     * @return The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+     * @return The attack path sensitive asset configuration list. See `attackPathAssetList` below.
      * 
      */
     public Optional<Output<List<AttackPathSensitiveAssetConfigAttackPathAssetListArgs>>> attackPathAssetLists() {
@@ -56,7 +56,7 @@ public final class AttackPathSensitiveAssetConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param attackPathAssetLists The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+         * @param attackPathAssetLists The attack path sensitive asset configuration list. See `attackPathAssetList` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class AttackPathSensitiveAssetConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param attackPathAssetLists The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+         * @param attackPathAssetLists The attack path sensitive asset configuration list. See `attackPathAssetList` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class AttackPathSensitiveAssetConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param attackPathAssetLists The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+         * @param attackPathAssetLists The attack path sensitive asset configuration list. See `attackPathAssetList` below.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
-        /// Mount point list See `mount_points` below.
+        /// Mount point list See `MountPoints` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3FunctionNasConfigMountPoint> MountPoints;
         /// <summary>

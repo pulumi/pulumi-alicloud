@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// 
         /// If you set the value to `0`, the backend port is used for health checks.
         /// 
-        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `True`.
         /// </summary>
         public readonly int? HealthCheckConnectPort;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// 
         /// Valid values: `1` to `50`.
         /// 
-        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `True`.
         /// </summary>
         public readonly int? HealthCheckInterval;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// 
         /// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
         /// 
-        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `True` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
         /// </summary>
         public readonly string? HealthCheckPath;
         /// <summary>
@@ -99,11 +99,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// 
         /// Valid values: `1` to `300`.
         /// 
-        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+        /// &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `True`.
         /// </summary>
         public readonly int? HealthCheckTimeout;
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `Fail` to `Success`.
         /// 
         /// Valid values: `2` to `10`.
         /// 
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly int? HealthyThreshold;
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `Success` to `Fail`.
         /// 
         /// Valid values: `2` to `10`.
         /// 

@@ -13,31 +13,31 @@ namespace Pulumi.AliCloud.Ga.Inputs
     public sealed class ListenerForwardedForConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+        /// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `False`. Valid values:
         /// </summary>
         [Input("forwardedForGaApEnabled")]
         public Input<bool>? ForwardedForGaApEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+        /// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("forwardedForGaIdEnabled")]
         public Input<bool>? ForwardedForGaIdEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+        /// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("forwardedForPortEnabled")]
         public Input<bool>? ForwardedForPortEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+        /// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `False`. Valid values:
         /// </summary>
         [Input("forwardedForProtoEnabled")]
         public Input<bool>? ForwardedForProtoEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+        /// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `False`. Valid values:
         /// </summary>
         [Input("realIpEnabled")]
         public Input<bool>? RealIpEnabled { get; set; }

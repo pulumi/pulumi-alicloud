@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `CorsRule` below.
         /// </summary>
         [Output("corsRules")]
         public Output<ImmutableArray<Outputs.BucketCorsCorsRule>> CorsRules { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Oss
         private InputList<Inputs.BucketCorsCorsRuleArgs>? _corsRules;
 
         /// <summary>
-        /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `CorsRule` below.
         /// </summary>
         public InputList<Inputs.BucketCorsCorsRuleArgs> CorsRules
         {
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Oss
         private InputList<Inputs.BucketCorsCorsRuleGetArgs>? _corsRules;
 
         /// <summary>
-        /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `CorsRule` below.
         /// </summary>
         public InputList<Inputs.BucketCorsCorsRuleGetArgs> CorsRules
         {

@@ -33,14 +33,14 @@ public final class ClusterNodeGroupAutoScalingPolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * The scaling rules of auto scaling policy. See `scalingRules` below.
      * 
      */
     @Import(name="scalingRules")
     private @Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleArgs>> scalingRules;
 
     /**
-     * @return The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * @return The scaling rules of auto scaling policy. See `scalingRules` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleArgs>>> scalingRules() {
@@ -94,7 +94,7 @@ public final class ClusterNodeGroupAutoScalingPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scalingRules The scaling rules of auto scaling policy. See `scaling_rules` below.
+         * @param scalingRules The scaling rules of auto scaling policy. See `scalingRules` below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterNodeGroupAutoScalingPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scalingRules The scaling rules of auto scaling policy. See `scaling_rules` below.
+         * @param scalingRules The scaling rules of auto scaling policy. See `scalingRules` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterNodeGroupAutoScalingPolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scalingRules The scaling rules of auto scaling policy. See `scaling_rules` below.
+         * @param scalingRules The scaling rules of auto scaling policy. See `scalingRules` below.
          * 
          * @return builder
          * 

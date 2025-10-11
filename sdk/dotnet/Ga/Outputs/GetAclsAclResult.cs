@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string AddressIpVersion;
         /// <summary>
-        /// The ID of the Acl. Its value is same as `acl_id`.
+        /// The ID of the Acl. Its value is same as `AclId`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
+        /// The status of the resource. Valid values: `Active`, `Configuring`, `Deleting`, `Init`.
         /// </summary>
         public readonly string Status;
 

@@ -33,14 +33,14 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+     * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+     * @return The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -104,7 +104,7 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param uid The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+         * @param uid The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param uid The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+         * @param uid The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
          * 
          * @return builder
          * 

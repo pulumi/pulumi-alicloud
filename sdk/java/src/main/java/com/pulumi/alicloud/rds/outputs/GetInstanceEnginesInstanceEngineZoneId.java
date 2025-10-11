@@ -17,7 +17,7 @@ public final class GetInstanceEnginesInstanceEngineZoneId {
      */
     private String id;
     /**
-     * @return A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `[&#34;cn-beijing-a&#34;, &#34;cn-beijing-b&#34;]`.
+     * @return A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `subZoneIds` will be `[&#34;cn-beijing-a&#34;, &#34;cn-beijing-b&#34;]`.
      * 
      */
     private List<String> subZoneIds;
@@ -31,7 +31,7 @@ public final class GetInstanceEnginesInstanceEngineZoneId {
         return this.id;
     }
     /**
-     * @return A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `[&#34;cn-beijing-a&#34;, &#34;cn-beijing-b&#34;]`.
+     * @return A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `subZoneIds` will be `[&#34;cn-beijing-a&#34;, &#34;cn-beijing-b&#34;]`.
      * 
      */
     public List<String> subZoneIds() {

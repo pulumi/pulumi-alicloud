@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetPrefixListsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `true`. Set it to `false` can hide the `entrys` to output.
+        /// Default to `True`. Set it to `False` can hide the `Entrys` to output.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetPrefixListsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `true`. Set it to `false` can hide the `entrys` to output.
+        /// Default to `True`. Set it to `False` can hide the `Entrys` to output.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

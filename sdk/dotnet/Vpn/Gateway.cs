@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpn
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to pay automatically. Default value: `true`. Valid values:
+        /// Whether to pay automatically. Default value: `True`. Valid values:
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to pay automatically. Default value: `true`. Valid values:
+        /// Whether to pay automatically. Default value: `True`. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to pay automatically. Default value: `true`. Valid values:
+        /// Whether to pay automatically. Default value: `True`. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }

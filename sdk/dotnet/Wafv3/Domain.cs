@@ -53,13 +53,13 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Configure listening information. See `listen` below.
+        /// Configure listening information. See `Listen` below.
         /// </summary>
         [Output("listen")]
         public Output<Outputs.DomainListen> Listen { get; private set; } = null!;
 
         /// <summary>
-        /// Configure forwarding information. See `redirect` below.
+        /// Configure forwarding information. See `Redirect` below.
         /// </summary>
         [Output("redirect")]
         public Output<Outputs.DomainRedirect> Redirect { get; private set; } = null!;
@@ -148,13 +148,13 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Configure listening information. See `listen` below.
+        /// Configure listening information. See `Listen` below.
         /// </summary>
         [Input("listen", required: true)]
         public Input<Inputs.DomainListenArgs> Listen { get; set; } = null!;
 
         /// <summary>
-        /// Configure forwarding information. See `redirect` below.
+        /// Configure forwarding information. See `Redirect` below.
         /// </summary>
         [Input("redirect", required: true)]
         public Input<Inputs.DomainRedirectArgs> Redirect { get; set; } = null!;
@@ -211,13 +211,13 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Configure listening information. See `listen` below.
+        /// Configure listening information. See `Listen` below.
         /// </summary>
         [Input("listen")]
         public Input<Inputs.DomainListenGetArgs>? Listen { get; set; }
 
         /// <summary>
-        /// Configure forwarding information. See `redirect` below.
+        /// Configure forwarding information. See `Redirect` below.
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.DomainRedirectGetArgs>? Redirect { get; set; }

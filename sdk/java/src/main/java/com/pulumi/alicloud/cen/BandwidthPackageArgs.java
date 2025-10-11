@@ -57,7 +57,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+     * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
      * @deprecated
      * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
@@ -68,7 +68,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> chargeType;
 
     /**
-     * @return Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+     * @return Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
      * @deprecated
      * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
@@ -125,7 +125,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+     * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
      * @deprecated
      * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
@@ -136,7 +136,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<List<String>> geographicRegionIds;
 
     /**
-     * @return Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+     * @return Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
      * @deprecated
      * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
@@ -148,7 +148,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+     * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
@@ -159,7 +159,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+     * @return Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
@@ -286,7 +286,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param chargeType Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+         * @param chargeType Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param chargeType Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+         * @param chargeType Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionIds Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+         * @param geographicRegionIds Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionIds Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+         * @param geographicRegionIds Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionIds Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+         * @param geographicRegionIds Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+         * @param name Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+         * @param name Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
          * 
          * @return builder
          * 

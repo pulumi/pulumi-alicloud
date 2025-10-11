@@ -31,7 +31,7 @@ public final class GetPrivateZonesResult {
     private String id;
     /**
      * @return A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
-     * **NOTE:** Before 1.162.0, each element same as `access_region_id`.
+     * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
      * 
      */
     private List<String> ids;
@@ -71,7 +71,7 @@ public final class GetPrivateZonesResult {
     }
     /**
      * @return A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
-     * **NOTE:** Before 1.162.0, each element same as `access_region_id`.
+     * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
      * 
      */
     public List<String> ids() {

@@ -133,10 +133,10 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      * @deprecated
-     * Attribute router_id has been deprecated and suggest removing it from your template.
+     * Attribute routerId has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute router_id has been deprecated and suggest removing it from your template. */
+    @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
@@ -144,10 +144,10 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
      * @return This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      * @deprecated
-     * Attribute router_id has been deprecated and suggest removing it from your template.
+     * Attribute routerId has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute router_id has been deprecated and suggest removing it from your template. */
+    @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
     public Optional<Output<String>> routerId() {
         return Optional.ofNullable(this.routerId);
     }
@@ -338,10 +338,10 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute router_id has been deprecated and suggest removing it from your template.
+         * Attribute routerId has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute router_id has been deprecated and suggest removing it from your template. */
+        @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
         public Builder routerId(@Nullable Output<String> routerId) {
             $.routerId = routerId;
             return this;
@@ -353,10 +353,10 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute router_id has been deprecated and suggest removing it from your template.
+         * Attribute routerId has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute router_id has been deprecated and suggest removing it from your template. */
+        @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
         public Builder routerId(String routerId) {
             return routerId(Output.of(routerId));
         }

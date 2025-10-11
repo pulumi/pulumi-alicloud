@@ -18,7 +18,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     @Import(name="engine")
@@ -26,7 +26,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -115,7 +115,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param engine Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-         * * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+         * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param engine Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-         * * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+         * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
          * 
          * @return builder
          * 

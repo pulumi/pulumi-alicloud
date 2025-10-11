@@ -93,25 +93,25 @@ namespace Pulumi.AliCloud.Arms
     public partial class Prometheus : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+        /// The ID of the Kubernetes cluster. This parameter is required, if you set `ClusterType` to `aliyun-cs`.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+        /// The name of the created cluster. This parameter is required, if you set `ClusterType` to `remote-write`, `Ecs` or `global-view`.
         /// </summary>
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
+        /// The type of the Prometheus instance. Valid values: `remote-write`, `Ecs`, `global-view`, `aliyun-cs`.
         /// </summary>
         [Output("clusterType")]
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `GrafanaInstanceId` to `Free`.
         /// </summary>
         [Output("grafanaInstanceId")]
         public Output<string> GrafanaInstanceId { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the security group. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
@@ -141,13 +141,13 @@ namespace Pulumi.AliCloud.Arms
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the VPC. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the VSwitch. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -199,25 +199,25 @@ namespace Pulumi.AliCloud.Arms
     public sealed class PrometheusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+        /// The ID of the Kubernetes cluster. This parameter is required, if you set `ClusterType` to `aliyun-cs`.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+        /// The name of the created cluster. This parameter is required, if you set `ClusterType` to `remote-write`, `Ecs` or `global-view`.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
+        /// The type of the Prometheus instance. Valid values: `remote-write`, `Ecs`, `global-view`, `aliyun-cs`.
         /// </summary>
         [Input("clusterType", required: true)]
         public Input<string> ClusterType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `GrafanaInstanceId` to `Free`.
         /// </summary>
         [Input("grafanaInstanceId", required: true)]
         public Input<string> GrafanaInstanceId { get; set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the security group. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -253,13 +253,13 @@ namespace Pulumi.AliCloud.Arms
         }
 
         /// <summary>
-        /// The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the VPC. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the VSwitch. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -273,25 +273,25 @@ namespace Pulumi.AliCloud.Arms
     public sealed class PrometheusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
+        /// The ID of the Kubernetes cluster. This parameter is required, if you set `ClusterType` to `aliyun-cs`.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+        /// The name of the created cluster. This parameter is required, if you set `ClusterType` to `remote-write`, `Ecs` or `global-view`.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
+        /// The type of the Prometheus instance. Valid values: `remote-write`, `Ecs`, `global-view`, `aliyun-cs`.
         /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
 
         /// <summary>
-        /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `GrafanaInstanceId` to `Free`.
         /// </summary>
         [Input("grafanaInstanceId")]
         public Input<string>? GrafanaInstanceId { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the security group. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -327,13 +327,13 @@ namespace Pulumi.AliCloud.Arms
         }
 
         /// <summary>
-        /// The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the VPC. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
+        /// The ID of the VSwitch. This parameter is required, if you set `ClusterType` to `Ecs` or `aliyun-cs`(ASK instance).
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

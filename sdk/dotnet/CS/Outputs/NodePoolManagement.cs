@@ -14,31 +14,31 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolManagement
     {
         /// <summary>
-        /// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        /// Whether to enable automatic repair. Valid values: `True`: Automatic repair. `False`: not automatically repaired.
         /// </summary>
         public readonly bool? AutoRepair;
         /// <summary>
-        /// Automatic repair node policy. See `auto_repair_policy` below.
+        /// Automatic repair node policy. See `AutoRepairPolicy` below.
         /// </summary>
         public readonly Outputs.NodePoolManagementAutoRepairPolicy? AutoRepairPolicy;
         /// <summary>
-        /// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+        /// Specifies whether to enable auto update. Valid values: `True`: enables auto update. `False`: disables auto update.
         /// </summary>
         public readonly bool? AutoUpgrade;
         /// <summary>
-        /// The auto update policy. See `auto_upgrade_policy` below.
+        /// The auto update policy. See `AutoUpgradePolicy` below.
         /// </summary>
         public readonly Outputs.NodePoolManagementAutoUpgradePolicy? AutoUpgradePolicy;
         /// <summary>
-        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? AutoVulFix;
         /// <summary>
-        /// The auto CVE patching policy. See `auto_vul_fix_policy` below.
+        /// The auto CVE patching policy. See `AutoVulFixPolicy` below.
         /// </summary>
         public readonly Outputs.NodePoolManagementAutoVulFixPolicy? AutoVulFixPolicy;
         /// <summary>
-        /// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+        /// Specifies whether to enable the managed node pool feature. Valid values: `True`: enables the managed node pool feature. `False`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

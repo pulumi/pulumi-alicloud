@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class QuotaScheduleScheduleList
     {
         /// <summary>
-        /// The value of effective condition. See `condition` below.
+        /// The value of effective condition. See `Condition` below.
         /// </summary>
         public readonly Outputs.QuotaScheduleScheduleListCondition? Condition;
         /// <summary>

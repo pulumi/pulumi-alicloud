@@ -25,7 +25,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+     * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
      * - MySQL: 1~8
      * - SQLServer: 2~8
      * - PostgreSQL: 1~12
@@ -35,7 +35,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     private Output<Double> maxCapacity;
 
     /**
-     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
      * - MySQL: 1~8
      * - SQLServer: 2~8
      * - PostgreSQL: 1~12
@@ -46,7 +46,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+     * The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
      * - SQLServer: 2~8 \(Supports integers only\).
      * - PostgreSQL: 0.5~12
@@ -56,7 +56,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     private Output<Double> minCapacity;
 
     /**
-     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
      * - SQLServer: 2~8 \(Supports integers only\).
      * - PostgreSQL: 0.5~12
@@ -126,7 +126,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxCapacity The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+         * @param maxCapacity The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
          * - MySQL: 1~8
          * - SQLServer: 2~8
          * - PostgreSQL: 1~12
@@ -140,7 +140,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxCapacity The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+         * @param maxCapacity The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
          * - MySQL: 1~8
          * - SQLServer: 2~8
          * - PostgreSQL: 1~12
@@ -153,7 +153,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param minCapacity The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+         * @param minCapacity The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
          * - MySQL: 0.5~8
          * - SQLServer: 2~8 \(Supports integers only\).
          * - PostgreSQL: 0.5~12
@@ -167,7 +167,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param minCapacity The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+         * @param minCapacity The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
          * - MySQL: 0.5~8
          * - SQLServer: 2~8 \(Supports integers only\).
          * - PostgreSQL: 0.5~12

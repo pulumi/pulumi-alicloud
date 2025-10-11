@@ -27,7 +27,7 @@ public final class GetDomainsResult {
      */
     private String id;
     /**
-     * @return A list of WAF domain self ID, value as `domain_name`.
+     * @return A list of WAF domain self ID, value as `domainName`.
      * 
      */
     private List<String> ids;
@@ -64,7 +64,7 @@ public final class GetDomainsResult {
         return this.id;
     }
     /**
-     * @return A list of WAF domain self ID, value as `domain_name`.
+     * @return A list of WAF domain self ID, value as `domainName`.
      * 
      */
     public List<String> ids() {

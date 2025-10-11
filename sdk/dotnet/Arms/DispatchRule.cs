@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string?> DispatchType { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        /// Sets the event group. See `GroupRules` below. It will be ignored  when `DispatchType = "DISCARD_ALERT"`.
         /// </summary>
         [Output("groupRules")]
         public Output<ImmutableArray<Outputs.DispatchRuleGroupRule>> GroupRules { get; private set; } = null!;
@@ -165,19 +165,19 @@ namespace Pulumi.AliCloud.Arms
         public Output<bool?> IsRecover { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the dispatch rule. See `label_match_expression_grid` below.
+        /// Sets the dispatch rule. See `LabelMatchExpressionGrid` below.
         /// </summary>
         [Output("labelMatchExpressionGrids")]
         public Output<ImmutableArray<Outputs.DispatchRuleLabelMatchExpressionGrid>> LabelMatchExpressionGrids { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        /// Sets the notification rule. See `NotifyRules` below. It will be ignored  when `DispatchType = "DISCARD_ALERT"`.
         /// </summary>
         [Output("notifyRules")]
         public Output<ImmutableArray<Outputs.DispatchRuleNotifyRule>> NotifyRules { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the notification template. See `notify_template` below.
+        /// Sets the notification template. See `NotifyTemplate` below.
         /// </summary>
         [Output("notifyTemplates")]
         public Output<ImmutableArray<Outputs.DispatchRuleNotifyTemplate>> NotifyTemplates { get; private set; } = null!;
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleGroupRuleArgs>? _groupRules;
 
         /// <summary>
-        /// Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        /// Sets the event group. See `GroupRules` below. It will be ignored  when `DispatchType = "DISCARD_ALERT"`.
         /// </summary>
         public InputList<Inputs.DispatchRuleGroupRuleArgs> GroupRules
         {
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleLabelMatchExpressionGridArgs>? _labelMatchExpressionGrids;
 
         /// <summary>
-        /// Sets the dispatch rule. See `label_match_expression_grid` below.
+        /// Sets the dispatch rule. See `LabelMatchExpressionGrid` below.
         /// </summary>
         public InputList<Inputs.DispatchRuleLabelMatchExpressionGridArgs> LabelMatchExpressionGrids
         {
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleNotifyRuleArgs>? _notifyRules;
 
         /// <summary>
-        /// Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        /// Sets the notification rule. See `NotifyRules` below. It will be ignored  when `DispatchType = "DISCARD_ALERT"`.
         /// </summary>
         public InputList<Inputs.DispatchRuleNotifyRuleArgs> NotifyRules
         {
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleNotifyTemplateArgs>? _notifyTemplates;
 
         /// <summary>
-        /// Sets the notification template. See `notify_template` below.
+        /// Sets the notification template. See `NotifyTemplate` below.
         /// </summary>
         public InputList<Inputs.DispatchRuleNotifyTemplateArgs> NotifyTemplates
         {
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleGroupRuleGetArgs>? _groupRules;
 
         /// <summary>
-        /// Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        /// Sets the event group. See `GroupRules` below. It will be ignored  when `DispatchType = "DISCARD_ALERT"`.
         /// </summary>
         public InputList<Inputs.DispatchRuleGroupRuleGetArgs> GroupRules
         {
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleLabelMatchExpressionGridGetArgs>? _labelMatchExpressionGrids;
 
         /// <summary>
-        /// Sets the dispatch rule. See `label_match_expression_grid` below.
+        /// Sets the dispatch rule. See `LabelMatchExpressionGrid` below.
         /// </summary>
         public InputList<Inputs.DispatchRuleLabelMatchExpressionGridGetArgs> LabelMatchExpressionGrids
         {
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleNotifyRuleGetArgs>? _notifyRules;
 
         /// <summary>
-        /// Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        /// Sets the notification rule. See `NotifyRules` below. It will be ignored  when `DispatchType = "DISCARD_ALERT"`.
         /// </summary>
         public InputList<Inputs.DispatchRuleNotifyRuleGetArgs> NotifyRules
         {
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.DispatchRuleNotifyTemplateGetArgs>? _notifyTemplates;
 
         /// <summary>
-        /// Sets the notification template. See `notify_template` below.
+        /// Sets the notification template. See `NotifyTemplate` below.
         /// </summary>
         public InputList<Inputs.DispatchRuleNotifyTemplateGetArgs> NotifyTemplates
         {

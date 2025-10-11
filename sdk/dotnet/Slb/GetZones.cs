@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// Filter the results by a slb instance address version. Can be either `Ipv4`, or `Ipv6`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public string? AvailableSlbAddressIpVersion { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Slb
         public string? AvailableSlbAddressType { get; set; }
 
         /// <summary>
-        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// Default to false and only output `Id` in the `Zones` block. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// Filter the results by a slb instance address version. Can be either `Ipv4`, or `Ipv6`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public Input<string>? AvailableSlbAddressIpVersion { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AvailableSlbAddressType { get; set; }
 
         /// <summary>
-        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// Default to false and only output `Id` in the `Zones` block. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

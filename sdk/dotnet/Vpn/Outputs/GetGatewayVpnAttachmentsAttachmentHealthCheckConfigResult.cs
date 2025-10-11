@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Sip;
         /// <summary>
-        /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+        /// The status of the resource. Valid values: `Init`, `Active`, `Attaching`, `Attached`, `Detaching`, `financialLocked`, `Provisioning`, `Updating`, `Upgrading`, `Deleted`.
         /// </summary>
         public readonly string Status;
 

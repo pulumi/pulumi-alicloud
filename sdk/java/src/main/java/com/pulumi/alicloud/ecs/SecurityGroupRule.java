@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
  * 
- * &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+ * &gt; **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
  * 
  * ## Example Usage
  * 
@@ -107,7 +107,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * &gt; **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
@@ -116,7 +116,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * @return The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * &gt; **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -137,14 +137,14 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return this.ipProtocol;
     }
     /**
-     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
      * 
      */
     @Export(name="ipv6CidrIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6CidrIp;
 
     /**
-     * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+     * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
      * 
      */
     public Output<Optional<String>> ipv6CidrIp() {
@@ -195,14 +195,14 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portRange);
     }
     /**
-     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      * 
      */
     @Export(name="prefixListId", refs={String.class}, tree="[0]")
     private Output<String> prefixListId;
 
     /**
-     * @return The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+     * @return The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      * 
      */
     public Output<String> prefixListId() {
@@ -251,28 +251,28 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return this.securityGroupRuleId;
     }
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     @Export(name="sourceGroupOwnerAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceGroupOwnerAccount;
 
     /**
-     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     public Output<Optional<String>> sourceGroupOwnerAccount() {
         return Codegen.optional(this.sourceGroupOwnerAccount);
     }
     /**
-     * The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+     * The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      * 
      */
     @Export(name="sourceSecurityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceSecurityGroupId;
 
     /**
-     * @return The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+     * @return The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      * 
      */
     public Output<Optional<String>> sourceSecurityGroupId() {

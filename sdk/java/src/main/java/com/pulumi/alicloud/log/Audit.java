@@ -334,14 +334,14 @@ public class Audit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.multiAccounts);
     }
     /**
-     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+     * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      * 
      */
     @Export(name="resourceDirectoryType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceDirectoryType;
 
     /**
-     * @return Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
+     * @return Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      * 
      */
     public Output<Optional<String>> resourceDirectoryType() {

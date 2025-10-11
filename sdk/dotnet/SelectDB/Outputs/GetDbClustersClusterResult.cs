@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         /// </summary>
         public readonly int CacheSize;
         /// <summary>
-        /// The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+        /// The cpu resource amount of DBCluster. Depends on `DbClusterClass`.
         /// </summary>
         public readonly int Cpu;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The DBCluster class. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         public readonly string DbClusterClass;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         public readonly string EngineVersion;
         public readonly string Id;
         /// <summary>
-        /// The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+        /// The memory resource amount of DBCluster. Depends on `DbClusterClass`.
         /// </summary>
         public readonly int Memory;
         /// <summary>

@@ -13,19 +13,19 @@ import javax.annotation.Nullable;
 public final class EciScalingConfigurationImageRegistryCredential {
     /**
      * @return The password used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     private @Nullable String password;
     /**
-     * @return The address of the image repository. It is required when `image_registry_credential` is
+     * @return The address of the image repository. It is required when `imageRegistryCredential` is
      * configured.
      * 
      */
     private @Nullable String server;
     /**
      * @return The username used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     private @Nullable String username;
@@ -33,14 +33,14 @@ public final class EciScalingConfigurationImageRegistryCredential {
     private EciScalingConfigurationImageRegistryCredential() {}
     /**
      * @return The password used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return The address of the image repository. It is required when `image_registry_credential` is
+     * @return The address of the image repository. It is required when `imageRegistryCredential` is
      * configured.
      * 
      */
@@ -49,7 +49,7 @@ public final class EciScalingConfigurationImageRegistryCredential {
     }
     /**
      * @return The username used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     public Optional<String> username() {

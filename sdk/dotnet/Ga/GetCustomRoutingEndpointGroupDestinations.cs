@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Ga
         public string? EndpointGroupId { get; set; }
 
         /// <summary>
-        /// The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        /// The start port of the backend service port range of the endpoint group. The `FromPort` value must be smaller than or equal to the `ToPort` value. Valid values: `1` to `65499`.
         /// </summary>
         [Input("fromPort")]
         public int? FromPort { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        /// The end port of the backend service port range of the endpoint group. The `FromPort` value must be smaller than or equal to the `ToPort` value. Valid values: `1` to `65499`.
         /// </summary>
         [Input("toPort")]
         public int? ToPort { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointGroupId { get; set; }
 
         /// <summary>
-        /// The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        /// The start port of the backend service port range of the endpoint group. The `FromPort` value must be smaller than or equal to the `ToPort` value. Valid values: `1` to `65499`.
         /// </summary>
         [Input("fromPort")]
         public Input<int>? FromPort { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        /// The end port of the backend service port range of the endpoint group. The `FromPort` value must be smaller than or equal to the `ToPort` value. Valid values: `1` to `65499`.
         /// </summary>
         [Input("toPort")]
         public Input<int>? ToPort { get; set; }

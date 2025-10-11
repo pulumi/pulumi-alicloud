@@ -95,14 +95,14 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      * 
      */
     @Import(name="ipAllocationPolicies")
     private @Nullable Output<List<NodeGroupIpAllocationPolicyArgs>> ipAllocationPolicies;
 
     /**
-     * @return IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+     * @return IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      * 
      */
     public Optional<Output<List<NodeGroupIpAllocationPolicyArgs>>> ipAllocationPolicies() {
@@ -420,7 +420,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
          * 
          * @return builder
          * 

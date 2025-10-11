@@ -159,25 +159,25 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `InternetChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        /// The auto-renewal period of the instance. Valid values when `PeriodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.EcsLaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        /// The version number of the default launch template version. Default to 1. It is conflict with `UpdateDefaultVersionNumber`.
         /// </summary>
         [Output("defaultVersionNumber")]
         public Output<int> DefaultVersionNumber { get; private set; } = null!;
@@ -210,13 +210,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
-        /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+        /// **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
         /// </summary>
         [Output("httpEndpoint")]
         public Output<string> HttpEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `HttpPutResponseHopLimit` can be modified.
         /// </summary>
         [Output("httpPutResponseHopLimit")]
         public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+        /// **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
         /// </summary>
         [Output("httpTokens")]
         public Output<string> HttpTokens { get; private set; } = null!;
@@ -237,13 +237,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The options of images. See `image_options` below.
+        /// The options of images. See `ImageOptions` below.
         /// </summary>
         [Output("imageOptions")]
         public Output<Outputs.EcsLaunchTemplateImageOptions> ImageOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
+        /// Mirror source. Valid values: `System`, `Self`, `Others`, `Marketplace`, `""`. Default to: `""`.
         /// </summary>
         [Output("imageOwnerAlias")]
         public Output<string?> ImageOwnerAlias { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+        /// Instance type. For more information, call ResourceAlicloudInstances to obtain the latest instance type list.
         /// </summary>
         [Output("instanceType")]
         public Output<string?> InstanceType { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
-        /// Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
+        /// Whether it is an I/O-optimized instance or not. Valid values: `None`, `Optimized`.
         /// </summary>
         [Output("ioOptimized")]
         public Output<string?> IoOptimized { get; private set; } = null!;
@@ -311,19 +311,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> LaunchTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// It has been deprecated from version 1.120.0, and use field `LaunchTemplateName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `network_interfaces` below.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<Outputs.EcsLaunchTemplateNetworkInterfaces?> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// Network type of the instance. Valid values: `classic`, `vpc`.
+        /// Network type of the instance. Valid values: `Classic`, `Vpc`.
         /// </summary>
         [Output("networkType")]
         public Output<string?> NetworkType { get; private set; } = null!;
@@ -336,8 +336,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-        /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        /// - When the `PeriodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        /// - When the `PeriodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
@@ -403,31 +403,31 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The System Disk. See `system_disk` below.
+        /// The System Disk. See `SystemDisk` below.
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.EcsLaunchTemplateSystemDisk> SystemDisk { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskDescription")]
         public Output<string> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskName")]
         public Output<string> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int> SystemDiskSize { get; private set; } = null!;
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> TemplateTags { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `DefaultVersionNumber`.
         /// </summary>
         [Output("updateDefaultVersionNumber")]
         public Output<bool?> UpdateDefaultVersionNumber { get; private set; } = null!;
@@ -465,7 +465,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// It has been deprecated from version 1.120.0, and use field `UserData` instead.
         /// </summary>
         [Output("userdata")]
         public Output<string> Userdata { get; private set; } = null!;
@@ -547,13 +547,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `InternetChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        /// The auto-renewal period of the instance. Valid values when `PeriodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsLaunchTemplateDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.EcsLaunchTemplateDataDiskArgs> DataDisks
         {
@@ -571,7 +571,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        /// The version number of the default launch template version. Default to 1. It is conflict with `UpdateDefaultVersionNumber`.
         /// </summary>
         [Input("defaultVersionNumber")]
         public Input<int>? DefaultVersionNumber { get; set; }
@@ -604,13 +604,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
-        /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+        /// **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `HttpPutResponseHopLimit` can be modified.
         /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
@@ -619,7 +619,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+        /// **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
@@ -631,13 +631,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The options of images. See `image_options` below.
+        /// The options of images. See `ImageOptions` below.
         /// </summary>
         [Input("imageOptions")]
         public Input<Inputs.EcsLaunchTemplateImageOptionsArgs>? ImageOptions { get; set; }
 
         /// <summary>
-        /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
+        /// Mirror source. Valid values: `System`, `Self`, `Others`, `Marketplace`, `""`. Default to: `""`.
         /// </summary>
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
@@ -655,7 +655,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+        /// Instance type. For more information, call ResourceAlicloudInstances to obtain the latest instance type list.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -679,7 +679,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
+        /// Whether it is an I/O-optimized instance or not. Valid values: `None`, `Optimized`.
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
@@ -699,19 +699,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// It has been deprecated from version 1.120.0, and use field `LaunchTemplateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `network_interfaces` below.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.EcsLaunchTemplateNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Network type of the instance. Valid values: `classic`, `vpc`.
+        /// Network type of the instance. Valid values: `Classic`, `Vpc`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -724,8 +724,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-        /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        /// - When the `PeriodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        /// - When the `PeriodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -797,31 +797,31 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The System Disk. See `system_disk` below.
+        /// The System Disk. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.EcsLaunchTemplateSystemDiskArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -859,7 +859,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `DefaultVersionNumber`.
         /// </summary>
         [Input("updateDefaultVersionNumber")]
         public Input<bool>? UpdateDefaultVersionNumber { get; set; }
@@ -871,7 +871,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// It has been deprecated from version 1.120.0, and use field `UserData` instead.
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
@@ -915,13 +915,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `InternetChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        /// The auto-renewal period of the instance. Valid values when `PeriodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -930,7 +930,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsLaunchTemplateDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below.
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.EcsLaunchTemplateDataDiskGetArgs> DataDisks
         {
@@ -939,7 +939,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        /// The version number of the default launch template version. Default to 1. It is conflict with `UpdateDefaultVersionNumber`.
         /// </summary>
         [Input("defaultVersionNumber")]
         public Input<int>? DefaultVersionNumber { get; set; }
@@ -972,13 +972,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
-        /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+        /// **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `HttpPutResponseHopLimit` can be modified.
         /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
@@ -987,7 +987,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+        /// **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
@@ -999,13 +999,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The options of images. See `image_options` below.
+        /// The options of images. See `ImageOptions` below.
         /// </summary>
         [Input("imageOptions")]
         public Input<Inputs.EcsLaunchTemplateImageOptionsGetArgs>? ImageOptions { get; set; }
 
         /// <summary>
-        /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
+        /// Mirror source. Valid values: `System`, `Self`, `Others`, `Marketplace`, `""`. Default to: `""`.
         /// </summary>
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
@@ -1023,7 +1023,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+        /// Instance type. For more information, call ResourceAlicloudInstances to obtain the latest instance type list.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1047,7 +1047,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
+        /// Whether it is an I/O-optimized instance or not. Valid values: `None`, `Optimized`.
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
@@ -1073,19 +1073,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// It has been deprecated from version 1.120.0, and use field `LaunchTemplateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `network_interfaces` below.
+        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.EcsLaunchTemplateNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Network type of the instance. Valid values: `classic`, `vpc`.
+        /// Network type of the instance. Valid values: `Classic`, `Vpc`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -1098,8 +1098,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-        /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        /// - When the `PeriodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        /// - When the `PeriodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1171,31 +1171,31 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The System Disk. See `system_disk` below.
+        /// The System Disk. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.EcsLaunchTemplateSystemDiskGetArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// It has been deprecated from version 1.120.0, and use field `SystemDisk` instead.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -1233,7 +1233,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `DefaultVersionNumber`.
         /// </summary>
         [Input("updateDefaultVersionNumber")]
         public Input<bool>? UpdateDefaultVersionNumber { get; set; }
@@ -1245,7 +1245,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// It has been deprecated from version 1.120.0, and use field `UserData` instead.
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }

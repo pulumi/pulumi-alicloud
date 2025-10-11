@@ -215,14 +215,14 @@ public class AdditionalCertificate extends com.pulumi.resources.CustomResource {
         return this.acceleratorId;
     }
     /**
-     * The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
+     * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      * 
      */
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
-     * @return The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
+     * @return The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      * 
      */
     public Output<String> certificateId() {

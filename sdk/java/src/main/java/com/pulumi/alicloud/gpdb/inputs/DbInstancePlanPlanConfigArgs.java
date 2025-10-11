@@ -51,14 +51,14 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Scale down instance plan config. See `scale_down` below.
+     * Scale down instance plan config. See `scaleDown` below.
      * 
      */
     @Import(name="scaleDown")
     private @Nullable Output<DbInstancePlanPlanConfigScaleDownArgs> scaleDown;
 
     /**
-     * @return Scale down instance plan config. See `scale_down` below.
+     * @return Scale down instance plan config. See `scaleDown` below.
      * 
      */
     public Optional<Output<DbInstancePlanPlanConfigScaleDownArgs>> scaleDown() {
@@ -66,14 +66,14 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Scale In instance plan config. See `scale_in` below.
+     * Scale In instance plan config. See `scaleIn` below.
      * 
      */
     @Import(name="scaleIn")
     private @Nullable Output<DbInstancePlanPlanConfigScaleInArgs> scaleIn;
 
     /**
-     * @return Scale In instance plan config. See `scale_in` below.
+     * @return Scale In instance plan config. See `scaleIn` below.
      * 
      */
     public Optional<Output<DbInstancePlanPlanConfigScaleInArgs>> scaleIn() {
@@ -81,14 +81,14 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Scale out instance plan config. See `scale_out` below.
+     * Scale out instance plan config. See `scaleOut` below.
      * 
      */
     @Import(name="scaleOut")
     private @Nullable Output<DbInstancePlanPlanConfigScaleOutArgs> scaleOut;
 
     /**
-     * @return Scale out instance plan config. See `scale_out` below.
+     * @return Scale out instance plan config. See `scaleOut` below.
      * 
      */
     public Optional<Output<DbInstancePlanPlanConfigScaleOutArgs>> scaleOut() {
@@ -96,14 +96,14 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Scale up instance plan config. See `scale_up` below.
+     * Scale up instance plan config. See `scaleUp` below.
      * 
      */
     @Import(name="scaleUp")
     private @Nullable Output<DbInstancePlanPlanConfigScaleUpArgs> scaleUp;
 
     /**
-     * @return Scale up instance plan config. See `scale_up` below.
+     * @return Scale up instance plan config. See `scaleUp` below.
      * 
      */
     public Optional<Output<DbInstancePlanPlanConfigScaleUpArgs>> scaleUp() {
@@ -182,7 +182,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleDown Scale down instance plan config. See `scale_down` below.
+         * @param scaleDown Scale down instance plan config. See `scaleDown` below.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleDown Scale down instance plan config. See `scale_down` below.
+         * @param scaleDown Scale down instance plan config. See `scaleDown` below.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleIn Scale In instance plan config. See `scale_in` below.
+         * @param scaleIn Scale In instance plan config. See `scaleIn` below.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleIn Scale In instance plan config. See `scale_in` below.
+         * @param scaleIn Scale In instance plan config. See `scaleIn` below.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleOut Scale out instance plan config. See `scale_out` below.
+         * @param scaleOut Scale out instance plan config. See `scaleOut` below.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleOut Scale out instance plan config. See `scale_out` below.
+         * @param scaleOut Scale out instance plan config. See `scaleOut` below.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleUp Scale up instance plan config. See `scale_up` below.
+         * @param scaleUp Scale up instance plan config. See `scaleUp` below.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scaleUp Scale up instance plan config. See `scale_up` below.
+         * @param scaleUp Scale up instance plan config. See `scaleUp` below.
          * 
          * @return builder
          * 

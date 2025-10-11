@@ -82,28 +82,28 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.gatewayType;
     }
     /**
-     * Log Configuration See `log_config` below.
+     * Log Configuration See `logConfig` below.
      * 
      */
     @Export(name="logConfig", refs={GatewayLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayLogConfig> logConfig;
 
     /**
-     * @return Log Configuration See `log_config` below.
+     * @return Log Configuration See `logConfig` below.
      * 
      */
     public Output<Optional<GatewayLogConfig>> logConfig() {
         return Codegen.optional(this.logConfig);
     }
     /**
-     * Network Access Configuration See `network_access_config` below.
+     * Network Access Configuration See `networkAccessConfig` below.
      * 
      */
     @Export(name="networkAccessConfig", refs={GatewayNetworkAccessConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayNetworkAccessConfig> networkAccessConfig;
 
     /**
-     * @return Network Access Configuration See `network_access_config` below.
+     * @return Network Access Configuration See `networkAccessConfig` below.
      * 
      */
     public Output<Optional<GatewayNetworkAccessConfig>> networkAccessConfig() {
@@ -208,14 +208,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vswitch);
     }
     /**
-     * Availability Zone Configuration See `zone_config` below.
+     * Availability Zone Configuration See `zoneConfig` below.
      * 
      */
     @Export(name="zoneConfig", refs={GatewayZoneConfig.class}, tree="[0]")
     private Output<GatewayZoneConfig> zoneConfig;
 
     /**
-     * @return Availability Zone Configuration See `zone_config` below.
+     * @return Availability Zone Configuration See `zoneConfig` below.
      * 
      */
     public Output<GatewayZoneConfig> zoneConfig() {

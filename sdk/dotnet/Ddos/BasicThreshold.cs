@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
+        /// The type of the Instance. Valid values: `Ecs`,`Slb`,`Eip`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
+        /// The type of the Instance. Valid values: `Ecs`,`Slb`,`Eip`.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
+        /// The type of the Instance. Valid values: `Ecs`,`Slb`,`Eip`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

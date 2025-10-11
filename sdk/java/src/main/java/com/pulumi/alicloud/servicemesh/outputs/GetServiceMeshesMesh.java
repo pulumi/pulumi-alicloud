@@ -26,12 +26,12 @@ public final class GetServiceMeshesMesh {
      */
     private String createTime;
     /**
-     * @return Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
+     * @return Grid instance version type. **Note:** `edition` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String edition;
     /**
-     * @return The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
+     * @return The endpoint details. **Note:** `endpoints` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshEndpoint> endpoints;
@@ -46,27 +46,27 @@ public final class GetServiceMeshesMesh {
      */
     private String id;
     /**
-     * @return (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.170.0) The Istio Operator Version. **Note:** `istioOperatorVersion` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String istioOperatorVersion;
     /**
-     * @return The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
+     * @return The content of Kube config. **Note:** `kubeConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String kubeConfig;
     /**
-     * @return The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the Load Balancer. **Note:** `loadBalancer` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshLoadBalancer> loadBalancers;
     /**
-     * @return The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the Service grid. **Note:** `meshConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshMeshConfig> meshConfigs;
     /**
-     * @return The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the Service grid network. **Note:** `network` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshNetwork> networks;
@@ -81,7 +81,7 @@ public final class GetServiceMeshesMesh {
      */
     private String serviceMeshName;
     /**
-     * @return (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.170.0) The SideCar Version. **Note:** `sidecarVersion` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String sidecarVersion;
@@ -112,14 +112,14 @@ public final class GetServiceMeshesMesh {
         return this.createTime;
     }
     /**
-     * @return Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
+     * @return Grid instance version type. **Note:** `edition` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String edition() {
         return this.edition;
     }
     /**
-     * @return The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
+     * @return The endpoint details. **Note:** `endpoints` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshEndpoint> endpoints() {
@@ -140,35 +140,35 @@ public final class GetServiceMeshesMesh {
         return this.id;
     }
     /**
-     * @return (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.170.0) The Istio Operator Version. **Note:** `istioOperatorVersion` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String istioOperatorVersion() {
         return this.istioOperatorVersion;
     }
     /**
-     * @return The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
+     * @return The content of Kube config. **Note:** `kubeConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String kubeConfig() {
         return this.kubeConfig;
     }
     /**
-     * @return The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the Load Balancer. **Note:** `loadBalancer` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshLoadBalancer> loadBalancers() {
         return this.loadBalancers;
     }
     /**
-     * @return The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the Service grid. **Note:** `meshConfig` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshMeshConfig> meshConfigs() {
         return this.meshConfigs;
     }
     /**
-     * @return The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
+     * @return The configuration of the Service grid network. **Note:** `network` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshNetwork> networks() {
@@ -189,7 +189,7 @@ public final class GetServiceMeshesMesh {
         return this.serviceMeshName;
     }
     /**
-     * @return (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.170.0) The SideCar Version. **Note:** `sidecarVersion` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String sidecarVersion() {

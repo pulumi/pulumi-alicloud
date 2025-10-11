@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int? DiskImageSize;
         /// <summary>
-        /// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
+        /// The format of the image. Valid values: `RAW`, `VHD`, `Qcow2`.
         /// </summary>
         public readonly string? Format;
         /// <summary>

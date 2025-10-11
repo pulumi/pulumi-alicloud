@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     public sealed class GetVpcFirewallControlPoliciesPolicyResult
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         public readonly string AclAction;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestinationGroupCidrs;
         /// <summary>
-        /// The destination address book type in the access control policy. Value: `ip`, `domain`.
+        /// The destination address book type in the access control policy. Value: `Ip`, `Domain`.
         /// </summary>
         public readonly string DestinationGroupType;
         /// <summary>

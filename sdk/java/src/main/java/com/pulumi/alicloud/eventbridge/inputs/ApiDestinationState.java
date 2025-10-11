@@ -78,14 +78,14 @@ public final class ApiDestinationState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The parameters that are configured for the API destination. See `http_api_parameters` below.
+     * The parameters that are configured for the API destination. See `httpApiParameters` below.
      * 
      */
     @Import(name="httpApiParameters")
     private @Nullable Output<ApiDestinationHttpApiParametersArgs> httpApiParameters;
 
     /**
-     * @return The parameters that are configured for the API destination. See `http_api_parameters` below.
+     * @return The parameters that are configured for the API destination. See `httpApiParameters` below.
      * 
      */
     public Optional<Output<ApiDestinationHttpApiParametersArgs>> httpApiParameters() {
@@ -205,7 +205,7 @@ public final class ApiDestinationState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param httpApiParameters The parameters that are configured for the API destination. See `http_api_parameters` below.
+         * @param httpApiParameters The parameters that are configured for the API destination. See `httpApiParameters` below.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ApiDestinationState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param httpApiParameters The parameters that are configured for the API destination. See `http_api_parameters` below.
+         * @param httpApiParameters The parameters that are configured for the API destination. See `httpApiParameters` below.
          * 
          * @return builder
          * 

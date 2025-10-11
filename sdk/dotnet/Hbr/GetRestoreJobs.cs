@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _targetFileSystemIds;
 
         /// <summary>
-        /// Valid while source_type equals `NAS`. The list of destination File System IDs.
+        /// Valid while SourceType equals `NAS`. The list of destination File System IDs.
         /// </summary>
         public List<string> TargetFileSystemIds
         {
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _targetFileSystemIds;
 
         /// <summary>
-        /// Valid while source_type equals `NAS`. The list of destination File System IDs.
+        /// Valid while SourceType equals `NAS`. The list of destination File System IDs.
         /// </summary>
         public InputList<string> TargetFileSystemIds
         {

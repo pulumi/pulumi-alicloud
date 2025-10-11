@@ -339,7 +339,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
         return this.host;
     }
     /**
-     * Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+     * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
      * @deprecated
      * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
@@ -350,7 +350,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
     private Output<String> instanceAlias;
 
     /**
-     * @return Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+     * @return Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
      */
     public Output<String> instanceAlias() {

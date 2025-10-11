@@ -116,14 +116,14 @@ namespace Pulumi.AliCloud.Ess
     public partial class EciScalingConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+        /// Information about the Container Registry Enterprise Edition instance. See `AcrRegistryInfos` below for details.
         /// </summary>
         [Output("acrRegistryInfos")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationAcrRegistryInfo>> AcrRegistryInfos { get; private set; } = null!;
 
         /// <summary>
         /// Whether active current eci scaling configuration in the specified scaling group. Note that only
-        /// one configuration can be active. Default to `false`.
+        /// one configuration can be active. Default to `False`.
         /// </summary>
         [Output("active")]
         public Output<bool?> Active { get; private set; } = null!;
@@ -151,14 +151,14 @@ namespace Pulumi.AliCloud.Ess
         /// name_prefix: the prefix of the hostname.
         /// (AUTO_INCREMENT): the sort method. This is a static field.
         /// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified BeginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
         /// name_suffix: the suffix of the hostname. This field is optional.
         /// </summary>
         [Output("containerGroupName")]
         public Output<string?> ContainerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The list of containers. See `containers` below for details.
+        /// The list of containers. See `Containers` below for details.
         /// </summary>
         [Output("containers")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationContainer>> Containers { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `DnsConfigOptions` below for
         /// details.
         /// </summary>
         [Output("dnsConfigOptions")]
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// HostAliases. See `host_aliases` below.
+        /// HostAliases. See `HostAliases` below.
         /// </summary>
         [Output("hostAliases")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationHostAlias>> HostAliases { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// The image registry credential.   See `image_registry_credentials` below for
+        /// The image registry credential.   See `ImageRegistryCredentials` below for
         /// details.
         /// </summary>
         [Output("imageRegistryCredentials")]
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> IngressBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The list of initContainers. See `init_containers` below for details.
+        /// The list of initContainers. See `InitContainers` below for details.
         /// </summary>
         [Output("initContainers")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationInitContainer>> InitContainers { get; private set; } = null!;
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        /// The system information about the security context in which the elastic container instance is run.   See `SecurityContextSysctls` below for
         /// details.
         /// </summary>
         [Output("securityContextSysctls")]
@@ -347,7 +347,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// ID of the security group used to create new instance. It is conflict
-        /// with `security_group_ids`.
+        /// with `SecurityGroupIds`.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
@@ -382,7 +382,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> TerminationGracePeriodSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// The list of volumes. See `volumes` below for details.
+        /// The list of volumes. See `Volumes` below for details.
         /// </summary>
         [Output("volumes")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationVolume>> Volumes { get; private set; } = null!;
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs>? _acrRegistryInfos;
 
         /// <summary>
-        /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+        /// Information about the Container Registry Enterprise Edition instance. See `AcrRegistryInfos` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs> AcrRegistryInfos
         {
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Whether active current eci scaling configuration in the specified scaling group. Note that only
-        /// one configuration can be active. Default to `false`.
+        /// one configuration can be active. Default to `False`.
         /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
@@ -475,7 +475,7 @@ namespace Pulumi.AliCloud.Ess
         /// name_prefix: the prefix of the hostname.
         /// (AUTO_INCREMENT): the sort method. This is a static field.
         /// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified BeginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
         /// name_suffix: the suffix of the hostname. This field is optional.
         /// </summary>
         [Input("containerGroupName")]
@@ -485,7 +485,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationContainerArgs>? _containers;
 
         /// <summary>
-        /// The list of containers. See `containers` below for details.
+        /// The list of containers. See `Containers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerArgs> Containers
         {
@@ -528,7 +528,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationDnsConfigOptionArgs>? _dnsConfigOptions;
 
         /// <summary>
-        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `DnsConfigOptions` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationDnsConfigOptionArgs> DnsConfigOptions
@@ -578,7 +578,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationHostAliasArgs>? _hostAliases;
 
         /// <summary>
-        /// HostAliases. See `host_aliases` below.
+        /// HostAliases. See `HostAliases` below.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationHostAliasArgs> HostAliases
         {
@@ -596,7 +596,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationImageRegistryCredentialArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The image registry credential.   See `image_registry_credentials` below for
+        /// The image registry credential.   See `ImageRegistryCredentials` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationImageRegistryCredentialArgs> ImageRegistryCredentials
@@ -621,7 +621,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationInitContainerArgs>? _initContainers;
 
         /// <summary>
-        /// The list of initContainers. See `init_containers` below for details.
+        /// The list of initContainers. See `InitContainers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerArgs> InitContainers
         {
@@ -702,7 +702,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationSecurityContextSysctlArgs>? _securityContextSysctls;
 
         /// <summary>
-        /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        /// The system information about the security context in which the elastic container instance is run.   See `SecurityContextSysctls` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationSecurityContextSysctlArgs> SecurityContextSysctls
@@ -713,7 +713,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// ID of the security group used to create new instance. It is conflict
-        /// with `security_group_ids`.
+        /// with `SecurityGroupIds`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -757,7 +757,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationVolumeArgs>? _volumes;
 
         /// <summary>
-        /// The list of volumes. See `volumes` below for details.
+        /// The list of volumes. See `Volumes` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationVolumeArgs> Volumes
         {
@@ -777,7 +777,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs>? _acrRegistryInfos;
 
         /// <summary>
-        /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+        /// Information about the Container Registry Enterprise Edition instance. See `AcrRegistryInfos` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs> AcrRegistryInfos
         {
@@ -787,7 +787,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Whether active current eci scaling configuration in the specified scaling group. Note that only
-        /// one configuration can be active. Default to `false`.
+        /// one configuration can be active. Default to `False`.
         /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
@@ -815,7 +815,7 @@ namespace Pulumi.AliCloud.Ess
         /// name_prefix: the prefix of the hostname.
         /// (AUTO_INCREMENT): the sort method. This is a static field.
         /// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified BeginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
         /// name_suffix: the suffix of the hostname. This field is optional.
         /// </summary>
         [Input("containerGroupName")]
@@ -825,7 +825,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationContainerGetArgs>? _containers;
 
         /// <summary>
-        /// The list of containers. See `containers` below for details.
+        /// The list of containers. See `Containers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerGetArgs> Containers
         {
@@ -868,7 +868,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationDnsConfigOptionGetArgs>? _dnsConfigOptions;
 
         /// <summary>
-        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `DnsConfigOptions` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationDnsConfigOptionGetArgs> DnsConfigOptions
@@ -918,7 +918,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationHostAliasGetArgs>? _hostAliases;
 
         /// <summary>
-        /// HostAliases. See `host_aliases` below.
+        /// HostAliases. See `HostAliases` below.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationHostAliasGetArgs> HostAliases
         {
@@ -936,7 +936,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationImageRegistryCredentialGetArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The image registry credential.   See `image_registry_credentials` below for
+        /// The image registry credential.   See `ImageRegistryCredentials` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationImageRegistryCredentialGetArgs> ImageRegistryCredentials
@@ -961,7 +961,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationInitContainerGetArgs>? _initContainers;
 
         /// <summary>
-        /// The list of initContainers. See `init_containers` below for details.
+        /// The list of initContainers. See `InitContainers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerGetArgs> InitContainers
         {
@@ -1042,7 +1042,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationSecurityContextSysctlGetArgs>? _securityContextSysctls;
 
         /// <summary>
-        /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        /// The system information about the security context in which the elastic container instance is run.   See `SecurityContextSysctls` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationSecurityContextSysctlGetArgs> SecurityContextSysctls
@@ -1053,7 +1053,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// ID of the security group used to create new instance. It is conflict
-        /// with `security_group_ids`.
+        /// with `SecurityGroupIds`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1097,7 +1097,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationVolumeGetArgs>? _volumes;
 
         /// <summary>
-        /// The list of volumes. See `volumes` below for details.
+        /// The list of volumes. See `Volumes` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationVolumeGetArgs> Volumes
         {

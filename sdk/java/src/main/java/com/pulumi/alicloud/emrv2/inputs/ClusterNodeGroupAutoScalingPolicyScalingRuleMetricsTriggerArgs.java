@@ -81,14 +81,14 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArg
     }
 
     /**
-     * The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
      * 
      */
     @Import(name="timeConstraints")
     private @Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs>> timeConstraints;
 
     /**
-     * @return The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * @return The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs>>> timeConstraints() {
@@ -234,7 +234,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArg
         }
 
         /**
-         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArg
         }
 
         /**
-         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArg
         }
 
         /**
-         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
          * 
          * @return builder
          * 

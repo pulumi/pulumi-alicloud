@@ -124,13 +124,13 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+        /// Filter the results by a specific policy name. If you set this parameter without setting `PolicyType`, it will be automatically set to `System`.
         /// </summary>
         [Input("policyName")]
         public string? PolicyName { get; set; }
 
         /// <summary>
-        /// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+        /// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `PolicyName` as well.
         /// </summary>
         [Input("policyType")]
         public string? PolicyType { get; set; }
@@ -162,13 +162,13 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+        /// Filter the results by a specific policy name. If you set this parameter without setting `PolicyType`, it will be automatically set to `System`.
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+        /// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `PolicyName` as well.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

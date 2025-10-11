@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The list of multi-zone information. See `multi_zones` below.
+        /// The list of multi-zone information. See `MultiZones` below.
         /// </summary>
         [Output("multiZones")]
         public Output<ImmutableArray<Outputs.ClickHouseEnterpriseDbClusterMultiZone>> MultiZones { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         private InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneArgs>? _multiZones;
 
         /// <summary>
-        /// The list of multi-zone information. See `multi_zones` below.
+        /// The list of multi-zone information. See `MultiZones` below.
         /// </summary>
         public InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneArgs> MultiZones
         {
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         private InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneGetArgs>? _multiZones;
 
         /// <summary>
-        /// The list of multi-zone information. See `multi_zones` below.
+        /// The list of multi-zone information. See `MultiZones` below.
         /// </summary>
         public InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneGetArgs> MultiZones
         {

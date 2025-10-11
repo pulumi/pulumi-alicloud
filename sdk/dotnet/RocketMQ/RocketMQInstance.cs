@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public partial class RocketMQInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access control list for the instance. See `acl_info` below.
+        /// The access control list for the instance. See `AclInfo` below.
         /// </summary>
         [Output("aclInfo")]
         public Output<Outputs.RocketMQInstanceAclInfo> AclInfo { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<ImmutableArray<string>> IpWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// Instance network configuration information See `network_info` below.
+        /// Instance network configuration information See `NetworkInfo` below.
         /// </summary>
         [Output("networkInfo")]
         public Output<Outputs.RocketMQInstanceNetworkInfo> NetworkInfo { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// product info See `product_info` below.
+        /// product info See `ProductInfo` below.
         /// </summary>
         [Output("productInfo")]
         public Output<Outputs.RocketMQInstanceProductInfo?> ProductInfo { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string> ServiceCode { get; private set; } = null!;
 
         /// <summary>
-        /// Instance software information. See `software` below.
+        /// Instance software information. See `Software` below.
         /// </summary>
         [Output("software")]
         public Output<Outputs.RocketMQInstanceSoftware> Software { get; private set; } = null!;
@@ -178,8 +178,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
         /// - serverless：Serverless instance
-        /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+        /// **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
+        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
         /// </summary>
         [Output("subSeriesCode")]
         public Output<string> SubSeriesCode { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class RocketMQInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access control list for the instance. See `acl_info` below.
+        /// The access control list for the instance. See `AclInfo` below.
         /// </summary>
         [Input("aclInfo")]
         public Input<Inputs.RocketMQInstanceAclInfoArgs>? AclInfo { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         /// <summary>
-        /// Instance network configuration information See `network_info` below.
+        /// Instance network configuration information See `NetworkInfo` below.
         /// </summary>
         [Input("networkInfo", required: true)]
         public Input<Inputs.RocketMQInstanceNetworkInfoArgs> NetworkInfo { get; set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// product info See `product_info` below.
+        /// product info See `ProductInfo` below.
         /// </summary>
         [Input("productInfo")]
         public Input<Inputs.RocketMQInstanceProductInfoArgs>? ProductInfo { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string> ServiceCode { get; set; } = null!;
 
         /// <summary>
-        /// Instance software information. See `software` below.
+        /// Instance software information. See `Software` below.
         /// </summary>
         [Input("software")]
         public Input<Inputs.RocketMQInstanceSoftwareArgs>? Software { get; set; }
@@ -381,8 +381,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
         /// - serverless：Serverless instance
-        /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+        /// **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
+        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
         /// </summary>
         [Input("subSeriesCode", required: true)]
         public Input<string> SubSeriesCode { get; set; } = null!;
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class RocketMQInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access control list for the instance. See `acl_info` below.
+        /// The access control list for the instance. See `AclInfo` below.
         /// </summary>
         [Input("aclInfo")]
         public Input<Inputs.RocketMQInstanceAclInfoGetArgs>? AclInfo { get; set; }
@@ -473,7 +473,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         /// <summary>
-        /// Instance network configuration information See `network_info` below.
+        /// Instance network configuration information See `NetworkInfo` below.
         /// </summary>
         [Input("networkInfo")]
         public Input<Inputs.RocketMQInstanceNetworkInfoGetArgs>? NetworkInfo { get; set; }
@@ -511,7 +511,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// product info See `product_info` below.
+        /// product info See `ProductInfo` below.
         /// </summary>
         [Input("productInfo")]
         public Input<Inputs.RocketMQInstanceProductInfoGetArgs>? ProductInfo { get; set; }
@@ -552,7 +552,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? ServiceCode { get; set; }
 
         /// <summary>
-        /// Instance software information. See `software` below.
+        /// Instance software information. See `Software` below.
         /// </summary>
         [Input("software")]
         public Input<Inputs.RocketMQInstanceSoftwareGetArgs>? Software { get; set; }
@@ -570,8 +570,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
         /// - serverless：Serverless instance
-        /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+        /// **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
+        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
         /// </summary>
         [Input("subSeriesCode")]
         public Input<string>? SubSeriesCode { get; set; }

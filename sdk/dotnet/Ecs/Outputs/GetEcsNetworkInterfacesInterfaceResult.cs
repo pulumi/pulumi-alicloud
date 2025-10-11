@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `NetworkInterfaceName` instead
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PrimaryIpAddress;
         /// <summary>
-        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        /// Field `PrivateIp` has been deprecated from provider version 1.123.1. New field `PrimaryIpAddress` instead
         /// </summary>
         public readonly string PrivateIp;
         /// <summary>

@@ -21,14 +21,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     public static final RecordArgs Empty = new RecordArgs();
 
     /**
-     * The origin authentication information of the CNAME record. See `auth_conf` below.
+     * The origin authentication information of the CNAME record. See `authConf` below.
      * 
      */
     @Import(name="authConf")
     private @Nullable Output<RecordAuthConfArgs> authConf;
 
     /**
-     * @return The origin authentication information of the CNAME record. See `auth_conf` below.
+     * @return The origin authentication information of the CNAME record. See `authConf` below.
      * 
      */
     public Optional<Output<RecordAuthConfArgs>> authConf() {
@@ -232,7 +232,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authConf The origin authentication information of the CNAME record. See `auth_conf` below.
+         * @param authConf The origin authentication information of the CNAME record. See `authConf` below.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authConf The origin authentication information of the CNAME record. See `auth_conf` below.
+         * @param authConf The origin authentication information of the CNAME record. See `authConf` below.
          * 
          * @return builder
          * 

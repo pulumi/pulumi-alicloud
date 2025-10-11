@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetMetricRuleTemplatesTemplateAlertTemplate {
     /**
-     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
      * 
      */
     private String category;
@@ -46,7 +46,7 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplate {
 
     private GetMetricRuleTemplatesTemplateAlertTemplate() {}
     /**
-     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
      * 
      */
     public String category() {

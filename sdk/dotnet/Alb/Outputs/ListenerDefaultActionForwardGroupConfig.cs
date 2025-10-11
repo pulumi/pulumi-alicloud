@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerDefaultActionForwardGroupConfig
     {
         /// <summary>
-        /// The Forwarding Destination Server Group See `server_group_tuples` below.
+        /// The Forwarding Destination Server Group See `ServerGroupTuples` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ListenerDefaultActionForwardGroupConfigServerGroupTuple> ServerGroupTuples;
 

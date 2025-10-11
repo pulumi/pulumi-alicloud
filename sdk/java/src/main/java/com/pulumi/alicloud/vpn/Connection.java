@@ -219,14 +219,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoConfigRoute);
     }
     /**
-     * vpnBgp configuration. See `bgp_config` below.
+     * vpnBgp configuration. See `bgpConfig` below.
      * 
      */
     @Export(name="bgpConfig", refs={ConnectionBgpConfig.class}, tree="[0]")
     private Output<ConnectionBgpConfig> bgpConfig;
 
     /**
-     * @return vpnBgp configuration. See `bgp_config` below.
+     * @return vpnBgp configuration. See `bgpConfig` below.
      * 
      */
     public Output<ConnectionBgpConfig> bgpConfig() {
@@ -317,42 +317,42 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.enableTunnelsBgp;
     }
     /**
-     * Health Check information. See `health_check_config` below.
+     * Health Check information. See `healthCheckConfig` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ConnectionHealthCheckConfig.class}, tree="[0]")
     private Output<ConnectionHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return Health Check information. See `health_check_config` below.
+     * @return Health Check information. See `healthCheckConfig` below.
      * 
      */
     public Output<ConnectionHealthCheckConfig> healthCheckConfig() {
         return this.healthCheckConfig;
     }
     /**
-     * The configuration of Phase 1 negotiations. See `ike_config` below.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      * 
      */
     @Export(name="ikeConfig", refs={ConnectionIkeConfig.class}, tree="[0]")
     private Output<ConnectionIkeConfig> ikeConfig;
 
     /**
-     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
+     * @return The configuration of Phase 1 negotiations. See `ikeConfig` below.
      * 
      */
     public Output<ConnectionIkeConfig> ikeConfig() {
         return this.ikeConfig;
     }
     /**
-     * IPsec configuration. See `ipsec_config` below.
+     * IPsec configuration. See `ipsecConfig` below.
      * 
      */
     @Export(name="ipsecConfig", refs={ConnectionIpsecConfig.class}, tree="[0]")
     private Output<ConnectionIpsecConfig> ipsecConfig;
 
     /**
-     * @return IPsec configuration. See `ipsec_config` below.
+     * @return IPsec configuration. See `ipsecConfig` below.
      * 
      */
     public Output<ConnectionIpsecConfig> ipsecConfig() {
@@ -465,14 +465,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      * 
      */
     @Export(name="tunnelOptionsSpecifications", refs={List.class,ConnectionTunnelOptionsSpecification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ConnectionTunnelOptionsSpecification>> tunnelOptionsSpecifications;
 
     /**
-     * @return The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * @return The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      * 
      */
     public Output<Optional<List<ConnectionTunnelOptionsSpecification>>> tunnelOptionsSpecifications() {

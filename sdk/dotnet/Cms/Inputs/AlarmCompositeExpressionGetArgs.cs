@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         private InputList<Inputs.AlarmCompositeExpressionExpressionListGetArgs>? _expressionLists;
 
         /// <summary>
-        /// The trigger conditions that are created in standard mode. See `expression_list` below.
+        /// The trigger conditions that are created in standard mode. See `ExpressionList` below.
         /// </summary>
         public InputList<Inputs.AlarmCompositeExpressionExpressionListGetArgs> ExpressionLists
         {

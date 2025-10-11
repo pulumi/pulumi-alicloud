@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.CloudAuth
         public Output<string> BizName { get; private set; } = null!;
 
         /// <summary>
-        /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+        /// Scene type. **NOTE:** The BizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         /// </summary>
         [Output("bizType")]
         public Output<string> BizType { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.CloudAuth
         public Input<string> BizName { get; set; } = null!;
 
         /// <summary>
-        /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+        /// Scene type. **NOTE:** The BizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         /// </summary>
         [Input("bizType", required: true)]
         public Input<string> BizType { get; set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.CloudAuth
         public Input<string>? BizName { get; set; }
 
         /// <summary>
-        /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+        /// Scene type. **NOTE:** The BizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         /// </summary>
         [Input("bizType")]
         public Input<string>? BizType { get; set; }

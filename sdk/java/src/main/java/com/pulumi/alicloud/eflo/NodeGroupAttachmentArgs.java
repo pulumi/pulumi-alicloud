@@ -34,14 +34,14 @@ public final class NodeGroupAttachmentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<NodeGroupAttachmentDataDiskArgs>> dataDisks;
 
     /**
-     * @return The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+     * @return The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
      * 
      */
     public Optional<Output<List<NodeGroupAttachmentDataDiskArgs>>> dataDisks() {
@@ -207,7 +207,7 @@ public final class NodeGroupAttachmentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class NodeGroupAttachmentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class NodeGroupAttachmentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
          * 
          * @return builder
          * 

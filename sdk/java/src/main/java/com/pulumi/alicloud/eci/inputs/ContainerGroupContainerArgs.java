@@ -72,14 +72,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The structure of environmentVars. See `environment_vars` below.
+     * The structure of environmentVars. See `environmentVars` below.
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<List<ContainerGroupContainerEnvironmentVarArgs>> environmentVars;
 
     /**
-     * @return The structure of environmentVars. See `environment_vars` below.
+     * @return The structure of environmentVars. See `environmentVars` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerEnvironmentVarArgs>>> environmentVars() {
@@ -147,14 +147,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The health check of the container. See `liveness_probe` below.
+     * The health check of the container. See `livenessProbe` below.
      * 
      */
     @Import(name="livenessProbes")
     private @Nullable Output<List<ContainerGroupContainerLivenessProbeArgs>> livenessProbes;
 
     /**
-     * @return The health check of the container. See `liveness_probe` below.
+     * @return The health check of the container. See `livenessProbe` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerLivenessProbeArgs>>> livenessProbes() {
@@ -207,14 +207,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The health check of the container. See `readiness_probe` below.
+     * The health check of the container. See `readinessProbe` below.
      * 
      */
     @Import(name="readinessProbes")
     private @Nullable Output<List<ContainerGroupContainerReadinessProbeArgs>> readinessProbes;
 
     /**
-     * @return The health check of the container. See `readiness_probe` below.
+     * @return The health check of the container. See `readinessProbe` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerReadinessProbeArgs>>> readinessProbes() {
@@ -252,14 +252,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The security context of the container. See `security_context` below.
+     * The security context of the container. See `securityContext` below.
      * 
      */
     @Import(name="securityContexts")
     private @Nullable Output<List<ContainerGroupContainerSecurityContextArgs>> securityContexts;
 
     /**
-     * @return The security context of the container. See `security_context` below.
+     * @return The security context of the container. See `securityContext` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerSecurityContextArgs>>> securityContexts() {
@@ -267,14 +267,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The structure of volumeMounts. See `volume_mounts` below.
+     * The structure of volumeMounts. See `volumeMounts` below.
      * 
      */
     @Import(name="volumeMounts")
     private @Nullable Output<List<ContainerGroupContainerVolumeMountArgs>> volumeMounts;
 
     /**
-     * @return The structure of volumeMounts. See `volume_mounts` below.
+     * @return The structure of volumeMounts. See `volumeMounts` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerVolumeMountArgs>>> volumeMounts() {
@@ -421,7 +421,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
+         * @param environmentVars The structure of environmentVars. See `environmentVars` below.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
+         * @param environmentVars The structure of environmentVars. See `environmentVars` below.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
+         * @param environmentVars The structure of environmentVars. See `environmentVars` below.
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param livenessProbes The health check of the container. See `liveness_probe` below.
+         * @param livenessProbes The health check of the container. See `livenessProbe` below.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param livenessProbes The health check of the container. See `liveness_probe` below.
+         * @param livenessProbes The health check of the container. See `livenessProbe` below.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param livenessProbes The health check of the container. See `liveness_probe` below.
+         * @param livenessProbes The health check of the container. See `livenessProbe` below.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readinessProbes The health check of the container. See `readiness_probe` below.
+         * @param readinessProbes The health check of the container. See `readinessProbe` below.
          * 
          * @return builder
          * 
@@ -661,7 +661,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readinessProbes The health check of the container. See `readiness_probe` below.
+         * @param readinessProbes The health check of the container. See `readinessProbe` below.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readinessProbes The health check of the container. See `readiness_probe` below.
+         * @param readinessProbes The health check of the container. See `readinessProbe` below.
          * 
          * @return builder
          * 
@@ -723,7 +723,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param securityContexts The security context of the container. See `security_context` below.
+         * @param securityContexts The security context of the container. See `securityContext` below.
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param securityContexts The security context of the container. See `security_context` below.
+         * @param securityContexts The security context of the container. See `securityContext` below.
          * 
          * @return builder
          * 
@@ -744,7 +744,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param securityContexts The security context of the container. See `security_context` below.
+         * @param securityContexts The security context of the container. See `securityContext` below.
          * 
          * @return builder
          * 
@@ -754,7 +754,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
+         * @param volumeMounts The structure of volumeMounts. See `volumeMounts` below.
          * 
          * @return builder
          * 
@@ -765,7 +765,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
+         * @param volumeMounts The structure of volumeMounts. See `volumeMounts` below.
          * 
          * @return builder
          * 
@@ -775,7 +775,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
+         * @param volumeMounts The structure of volumeMounts. See `volumeMounts` below.
          * 
          * @return builder
          * 

@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
+        /// The type of the application group. Valid values: `Custom`, `EhpcCluster`, `Kubernetes`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
+        /// The type of the application group. Valid values: `Custom`, `EhpcCluster`, `Kubernetes`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

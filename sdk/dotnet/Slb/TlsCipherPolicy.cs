@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Slb
     public partial class TlsCipherPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The encryption algorithms supported. It depends on the value of `tls_versions`.
+        /// The encryption algorithms supported. It depends on the value of `TlsVersions`.
         /// </summary>
         [Output("ciphers")]
         public Output<ImmutableArray<string>> Ciphers { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<string>? _ciphers;
 
         /// <summary>
-        /// The encryption algorithms supported. It depends on the value of `tls_versions`.
+        /// The encryption algorithms supported. It depends on the value of `TlsVersions`.
         /// </summary>
         public InputList<string> Ciphers
         {
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<string>? _ciphers;
 
         /// <summary>
-        /// The encryption algorithms supported. It depends on the value of `tls_versions`.
+        /// The encryption algorithms supported. It depends on the value of `TlsVersions`.
         /// </summary>
         public InputList<string> Ciphers
         {

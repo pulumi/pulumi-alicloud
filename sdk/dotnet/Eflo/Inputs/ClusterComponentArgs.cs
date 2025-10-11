@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
     public sealed class ClusterComponentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Component Configuration See `component_config` below.
+        /// Component Configuration See `ComponentConfig` below.
         /// </summary>
         [Input("componentConfig")]
         public Input<Inputs.ClusterComponentComponentConfigArgs>? ComponentConfig { get; set; }

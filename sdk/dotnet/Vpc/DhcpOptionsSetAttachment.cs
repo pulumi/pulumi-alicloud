@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> DhcpOptionsSetId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
+        /// Specifies whether to precheck this request only. Default values: `False`. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> DhcpOptionsSetId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
+        /// Specifies whether to precheck this request only. Default values: `False`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DhcpOptionsSetId { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
+        /// Specifies whether to precheck this request only. Default values: `False`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

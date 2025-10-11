@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.Kms
     public sealed class GetSecretsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// Whether to include the predetermined resource tag in the return value. Default to `false`.
+        /// Whether to include the predetermined resource tag in the return value. Default to `False`.
         /// </summary>
         [Input("fetchTags")]
         public bool? FetchTags { get; set; }
@@ -190,13 +190,13 @@ namespace Pulumi.AliCloud.Kms
     public sealed class GetSecretsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// Whether to include the predetermined resource tag in the return value. Default to `false`.
+        /// Whether to include the predetermined resource tag in the return value. Default to `False`.
         /// </summary>
         [Input("fetchTags")]
         public Input<bool>? FetchTags { get; set; }

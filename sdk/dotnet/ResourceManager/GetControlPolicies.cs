@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetControlPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
+        /// The language. Valid value `zh-CN`, `En`, and `Ja`. Default value `zh-CN`.
         /// </summary>
         [Input("language")]
         public string? Language { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetControlPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
+        /// The language. Valid value `zh-CN`, `En`, and `Ja`. Default value `zh-CN`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

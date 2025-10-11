@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access logging configuration See `access_log` below.
+        /// The access logging configuration See `AccessLog` below.
         /// </summary>
         [Input("accessLog")]
         public Input<Inputs.ServiceMeshMeshConfigAccessLogGetArgs>? AccessLog { get; set; }
 
         /// <summary>
-        /// Audit information See `audit` below.
+        /// Audit information See `Audit` below.
         /// </summary>
         [Input("audit")]
         public Input<Inputs.ServiceMeshMeshConfigAuditGetArgs>? Audit { get; set; }
 
         /// <summary>
-        /// Control plane log collection configuration. See `control_plane_log` below.
+        /// Control plane log collection configuration. See `ControlPlaneLog` below.
         /// </summary>
         [Input("controlPlaneLog")]
         public Input<Inputs.ServiceMeshMeshConfigControlPlaneLogGetArgs>? ControlPlaneLog { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? IncludeIpRanges { get; set; }
 
         /// <summary>
-        /// Kiali configuration See `kiali` below.
+        /// Kiali configuration See `Kiali` below.
         /// </summary>
         [Input("kiali")]
         public Input<Inputs.ServiceMeshMeshConfigKialiGetArgs>? Kiali { get; set; }
 
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information See `opa` below.
+        /// The open-door policy of agent (OPA) plug-in information See `Opa` below.
         /// </summary>
         [Input("opa")]
         public Input<Inputs.ServiceMeshMeshConfigOpaGetArgs>? Opa { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? OutboundTrafficPolicy { get; set; }
 
         /// <summary>
-        /// Link trace sampling information See `pilot` below.
+        /// Link trace sampling information See `Pilot` below.
         /// </summary>
         [Input("pilot")]
         public Input<Inputs.ServiceMeshMeshConfigPilotGetArgs>? Pilot { get; set; }
@@ -79,13 +79,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<Inputs.ServiceMeshMeshConfigPrometheusGetArgs>? Prometheus { get; set; }
 
         /// <summary>
-        /// Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `proxy` below.
+        /// Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `Proxy` below.
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.ServiceMeshMeshConfigProxyGetArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// Sidecar injector configuration See `sidecar_injector` below.
+        /// Sidecar injector configuration See `SidecarInjector` below.
         /// </summary>
         [Input("sidecarInjector")]
         public Input<Inputs.ServiceMeshMeshConfigSidecarInjectorGetArgs>? SidecarInjector { get; set; }

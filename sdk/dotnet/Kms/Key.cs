@@ -86,13 +86,13 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+        /// The description of deletion protection. **NOTE:** `DeletionProtectionDescription` takes effect only if `DeletionProtection` is set to `Enabled`.
         /// </summary>
         [Output("deletionProtectionDescription")]
         public Output<string?> DeletionProtectionDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        /// Field `DeletionWindowInDays` has been deprecated from provider version 1.85.0. New field `PendingWindowInDays` instead.
         /// </summary>
         [Output("deletionWindowInDays")]
         public Output<int?> DeletionWindowInDays { get; private set; } = null!;
@@ -110,9 +110,9 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        /// Field `IsEnabled` has been deprecated from provider version 1.85.0. New field `Status` instead.
         /// 
-        /// &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        /// &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the KeySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
         /// 
         /// &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         /// 
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> KeySpec { get; private set; } = null!;
 
         /// <summary>
-        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        /// Field `KeyState` has been deprecated from provider version 1.123.1. New field `Status` instead.
         /// </summary>
         [Output("keyState")]
         public Output<string> KeyStatus { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Origin { get; private set; } = null!;
 
         /// <summary>
-        /// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        /// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `PendingWindowInDays` can be set to `366`.
         /// </summary>
         [Output("pendingWindowInDays")]
         public Output<int?> PendingWindowInDays { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        /// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `AutomaticRotation` is set to `Enabled`, `RotationInterval` is required.
         /// </summary>
         [Output("rotationInterval")]
         public Output<string?> RotationInterval { get; private set; } = null!;
@@ -266,13 +266,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+        /// The description of deletion protection. **NOTE:** `DeletionProtectionDescription` takes effect only if `DeletionProtection` is set to `Enabled`.
         /// </summary>
         [Input("deletionProtectionDescription")]
         public Input<string>? DeletionProtectionDescription { get; set; }
 
         /// <summary>
-        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        /// Field `DeletionWindowInDays` has been deprecated from provider version 1.85.0. New field `PendingWindowInDays` instead.
         /// </summary>
         [Input("deletionWindowInDays")]
         public Input<int>? DeletionWindowInDays { get; set; }
@@ -290,9 +290,9 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        /// Field `IsEnabled` has been deprecated from provider version 1.85.0. New field `Status` instead.
         /// 
-        /// &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        /// &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the KeySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
         /// 
         /// &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         /// 
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeySpec { get; set; }
 
         /// <summary>
-        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        /// Field `KeyState` has been deprecated from provider version 1.123.1. New field `Status` instead.
         /// </summary>
         [Input("keyState")]
         public Input<string>? KeyStatus { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Origin { get; set; }
 
         /// <summary>
-        /// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        /// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `PendingWindowInDays` can be set to `366`.
         /// </summary>
         [Input("pendingWindowInDays")]
         public Input<int>? PendingWindowInDays { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        /// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `AutomaticRotation` is set to `Enabled`, `RotationInterval` is required.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -414,13 +414,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+        /// The description of deletion protection. **NOTE:** `DeletionProtectionDescription` takes effect only if `DeletionProtection` is set to `Enabled`.
         /// </summary>
         [Input("deletionProtectionDescription")]
         public Input<string>? DeletionProtectionDescription { get; set; }
 
         /// <summary>
-        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        /// Field `DeletionWindowInDays` has been deprecated from provider version 1.85.0. New field `PendingWindowInDays` instead.
         /// </summary>
         [Input("deletionWindowInDays")]
         public Input<int>? DeletionWindowInDays { get; set; }
@@ -438,9 +438,9 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        /// Field `IsEnabled` has been deprecated from provider version 1.85.0. New field `Status` instead.
         /// 
-        /// &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        /// &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the KeySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
         /// 
         /// &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         /// 
@@ -456,7 +456,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeySpec { get; set; }
 
         /// <summary>
-        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        /// Field `KeyState` has been deprecated from provider version 1.123.1. New field `Status` instead.
         /// </summary>
         [Input("keyState")]
         public Input<string>? KeyStatus { get; set; }
@@ -494,7 +494,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Origin { get; set; }
 
         /// <summary>
-        /// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        /// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `PendingWindowInDays` can be set to `366`.
         /// </summary>
         [Input("pendingWindowInDays")]
         public Input<int>? PendingWindowInDays { get; set; }
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        /// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `AutomaticRotation` is set to `Enabled`, `RotationInterval` is required.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }

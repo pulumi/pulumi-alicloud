@@ -93,13 +93,13 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> AlicloudCertificateId { get; private set; } = null!;
 
         /// <summary>
-        /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        /// the name of the certificate specified by `AlicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Output("alicloudCertificateName")]
         public Output<string?> AlicloudCertificateName { get; private set; } = null!;
 
         /// <summary>
-        /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        /// the region of the certificate specified by `AlicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Output("alicloudCertificateRegionId")]
         public Output<string?> AlicloudCertificateRegionId { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        /// the content of privat key of the ssl certificate specified by `ServerCertificate`. where `AlicloudCertificateId` is null, it is required, otherwise it is ignored.
         /// </summary>
         [Output("privateKey")]
         public Output<string?> PrivateKey { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        /// the content of the ssl certificate. where `AlicloudCertificateId` is null, it is required, otherwise it is ignored.
         /// </summary>
         [Output("serverCertificate")]
         public Output<string?> Certificate { get; private set; } = null!;
@@ -193,13 +193,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AlicloudCertificateId { get; set; }
 
         /// <summary>
-        /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        /// the name of the certificate specified by `AlicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Input("alicloudCertificateName")]
         public Input<string>? AlicloudCertificateName { get; set; }
 
         /// <summary>
-        /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        /// the region of the certificate specified by `AlicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Input("alicloudCertificateRegionId")]
         public Input<string>? AlicloudCertificateRegionId { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        /// the content of privat key of the ssl certificate specified by `ServerCertificate`. where `AlicloudCertificateId` is null, it is required, otherwise it is ignored.
         /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        /// the content of the ssl certificate. where `AlicloudCertificateId` is null, it is required, otherwise it is ignored.
         /// </summary>
         [Input("serverCertificate")]
         public Input<string>? Certificate { get; set; }
@@ -261,13 +261,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AlicloudCertificateId { get; set; }
 
         /// <summary>
-        /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        /// the name of the certificate specified by `AlicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Input("alicloudCertificateName")]
         public Input<string>? AlicloudCertificateName { get; set; }
 
         /// <summary>
-        /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        /// the region of the certificate specified by `AlicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Input("alicloudCertificateRegionId")]
         public Input<string>? AlicloudCertificateRegionId { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        /// the content of privat key of the ssl certificate specified by `ServerCertificate`. where `AlicloudCertificateId` is null, it is required, otherwise it is ignored.
         /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        /// the content of the ssl certificate. where `AlicloudCertificateId` is null, it is required, otherwise it is ignored.
         /// </summary>
         [Input("serverCertificate")]
         public Input<string>? Certificate { get; set; }

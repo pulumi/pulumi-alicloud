@@ -173,13 +173,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        /// Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+        /// Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Output("routeTablePropagationEnabled")]
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
@@ -347,13 +347,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        /// Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+        /// Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
@@ -489,13 +489,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        /// Field `RouteTableAssociationEnabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+        /// Field `RouteTablePropagationEnabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }

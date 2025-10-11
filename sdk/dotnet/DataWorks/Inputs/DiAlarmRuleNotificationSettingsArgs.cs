@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiAlarmRuleNotificationSettingsNotificationChannelArgs>? _notificationChannels;
 
         /// <summary>
-        /// Alarm notification Channel See `notification_channels` below.
+        /// Alarm notification Channel See `NotificationChannels` below.
         /// </summary>
         public InputList<Inputs.DiAlarmRuleNotificationSettingsNotificationChannelArgs> NotificationChannels
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         private InputList<Inputs.DiAlarmRuleNotificationSettingsNotificationReceiverArgs>? _notificationReceivers;
 
         /// <summary>
-        /// List of alert notification recipients See `notification_receivers` below.
+        /// List of alert notification recipients See `NotificationReceivers` below.
         /// </summary>
         public InputList<Inputs.DiAlarmRuleNotificationSettingsNotificationReceiverArgs> NotificationReceivers
         {

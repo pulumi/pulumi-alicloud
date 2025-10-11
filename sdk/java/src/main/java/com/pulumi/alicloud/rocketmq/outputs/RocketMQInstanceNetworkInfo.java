@@ -20,12 +20,12 @@ public final class RocketMQInstanceNetworkInfo {
      */
     private @Nullable List<RocketMQInstanceNetworkInfoEndpoint> endpoints;
     /**
-     * @return instance internet info. See `internet_info` below.
+     * @return instance internet info. See `internetInfo` below.
      * 
      */
     private RocketMQInstanceNetworkInfoInternetInfo internetInfo;
     /**
-     * @return Proprietary network information. See `vpc_info` below.
+     * @return Proprietary network information. See `vpcInfo` below.
      * 
      */
     private RocketMQInstanceNetworkInfoVpcInfo vpcInfo;
@@ -39,14 +39,14 @@ public final class RocketMQInstanceNetworkInfo {
         return this.endpoints == null ? List.of() : this.endpoints;
     }
     /**
-     * @return instance internet info. See `internet_info` below.
+     * @return instance internet info. See `internetInfo` below.
      * 
      */
     public RocketMQInstanceNetworkInfoInternetInfo internetInfo() {
         return this.internetInfo;
     }
     /**
-     * @return Proprietary network information. See `vpc_info` below.
+     * @return Proprietary network information. See `vpcInfo` below.
      * 
      */
     public RocketMQInstanceNetworkInfoVpcInfo vpcInfo() {

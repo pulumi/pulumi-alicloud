@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
+        /// This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `AccessGroupName`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly int RuleCount;
         /// <summary>
-        /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+        /// Field `Type` has been deprecated from version 1.95.0. Use `AccessGroupType` instead.
         /// </summary>
         public readonly string Type;
 

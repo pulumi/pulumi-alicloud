@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationPreStopV2
     {
         /// <summary>
-        /// Execute. See `exec` below.
+        /// Execute. See `Exec` below.
         /// </summary>
         public readonly Outputs.ApplicationPreStopV2Exec? Exec;
 

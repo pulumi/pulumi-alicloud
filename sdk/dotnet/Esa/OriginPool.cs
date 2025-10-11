@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> OriginPoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
+        /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `Origins` below.
         /// </summary>
         [Output("origins")]
         public Output<ImmutableArray<Outputs.OriginPoolOrigin>> Origins { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.OriginPoolOriginArgs>? _origins;
 
         /// <summary>
-        /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
+        /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `Origins` below.
         /// </summary>
         public InputList<Inputs.OriginPoolOriginArgs> Origins
         {
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.OriginPoolOriginGetArgs>? _origins;
 
         /// <summary>
-        /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
+        /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `Origins` below.
         /// </summary>
         public InputList<Inputs.OriginPoolOriginGetArgs> Origins
         {

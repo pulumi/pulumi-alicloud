@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class EcsLaunchTemplateNetworkInterfacesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+        /// Specifies whether to release ENI N when the instance is released. Valid values: `True`, `False`.
         /// </summary>
         [Input("deleteOnRelease")]
         public Input<bool>? DeleteOnRelease { get; set; }

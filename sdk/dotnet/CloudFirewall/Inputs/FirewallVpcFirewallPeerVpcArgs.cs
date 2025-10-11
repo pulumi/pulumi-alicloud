@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         private InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs>? _peerVpcCidrTableLists;
 
         /// <summary>
-        /// The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+        /// The network segment list of the peer VPC. See `PeerVpcCidrTableList` below.
         /// </summary>
         public InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs> PeerVpcCidrTableLists
         {

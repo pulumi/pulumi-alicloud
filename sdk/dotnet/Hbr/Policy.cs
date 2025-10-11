@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
-        /// A list of policy rules See `rules` below.
+        /// A list of policy rules See `Rules` below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.PolicyRule>> Rules { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.PolicyRuleArgs>? _rules;
 
         /// <summary>
-        /// A list of policy rules See `rules` below.
+        /// A list of policy rules See `Rules` below.
         /// </summary>
         public InputList<Inputs.PolicyRuleArgs> Rules
         {
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.PolicyRuleGetArgs>? _rules;
 
         /// <summary>
-        /// A list of policy rules See `rules` below.
+        /// A list of policy rules See `Rules` below.
         /// </summary>
         public InputList<Inputs.PolicyRuleGetArgs> Rules
         {

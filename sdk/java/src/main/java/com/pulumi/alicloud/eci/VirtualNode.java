@@ -145,14 +145,14 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
         return this.eipInstanceId;
     }
     /**
-     * Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+     * Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      * 
      */
     @Export(name="enablePublicNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePublicNetwork;
 
     /**
-     * @return Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
+     * @return Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      * 
      */
     public Output<Optional<Boolean>> enablePublicNetwork() {

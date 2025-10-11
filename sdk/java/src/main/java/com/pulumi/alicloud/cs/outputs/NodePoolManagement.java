@@ -21,7 +21,7 @@ public final class NodePoolManagement {
      */
     private @Nullable Boolean autoRepair;
     /**
-     * @return Automatic repair node policy. See `auto_repair_policy` below.
+     * @return Automatic repair node policy. See `autoRepairPolicy` below.
      * 
      */
     private @Nullable NodePoolManagementAutoRepairPolicy autoRepairPolicy;
@@ -31,7 +31,7 @@ public final class NodePoolManagement {
      */
     private @Nullable Boolean autoUpgrade;
     /**
-     * @return The auto update policy. See `auto_upgrade_policy` below.
+     * @return The auto update policy. See `autoUpgradePolicy` below.
      * 
      */
     private @Nullable NodePoolManagementAutoUpgradePolicy autoUpgradePolicy;
@@ -41,7 +41,7 @@ public final class NodePoolManagement {
      */
     private @Nullable Boolean autoVulFix;
     /**
-     * @return The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * @return The auto CVE patching policy. See `autoVulFixPolicy` below.
      * 
      */
     private @Nullable NodePoolManagementAutoVulFixPolicy autoVulFixPolicy;
@@ -83,7 +83,7 @@ public final class NodePoolManagement {
         return Optional.ofNullable(this.autoRepair);
     }
     /**
-     * @return Automatic repair node policy. See `auto_repair_policy` below.
+     * @return Automatic repair node policy. See `autoRepairPolicy` below.
      * 
      */
     public Optional<NodePoolManagementAutoRepairPolicy> autoRepairPolicy() {
@@ -97,7 +97,7 @@ public final class NodePoolManagement {
         return Optional.ofNullable(this.autoUpgrade);
     }
     /**
-     * @return The auto update policy. See `auto_upgrade_policy` below.
+     * @return The auto update policy. See `autoUpgradePolicy` below.
      * 
      */
     public Optional<NodePoolManagementAutoUpgradePolicy> autoUpgradePolicy() {
@@ -111,7 +111,7 @@ public final class NodePoolManagement {
         return Optional.ofNullable(this.autoVulFix);
     }
     /**
-     * @return The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * @return The auto CVE patching policy. See `autoVulFixPolicy` below.
      * 
      */
     public Optional<NodePoolManagementAutoVulFixPolicy> autoVulFixPolicy() {

@@ -60,7 +60,7 @@ public final class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
      */
     private String cpuManagerPolicy;
     /**
-     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     private String eventBurst;
@@ -135,7 +135,7 @@ public final class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
      */
     private String readOnlyPort;
     /**
-     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     private String registryBurst;
@@ -235,7 +235,7 @@ public final class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
         return this.cpuManagerPolicy;
     }
     /**
-     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     public String eventBurst() {
@@ -340,7 +340,7 @@ public final class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
         return this.readOnlyPort;
     }
     /**
-     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+     * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
     public String registryBurst() {

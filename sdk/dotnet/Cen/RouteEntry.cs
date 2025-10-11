@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The destination CIDR block of the route entry to publish.
         /// 
-        /// -&gt;**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+        /// -&gt;**NOTE:** The "AlicloudCenInstanceRouteEntries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
         /// 
         /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
         /// </summary>
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The destination CIDR block of the route entry to publish.
         /// 
-        /// -&gt;**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+        /// -&gt;**NOTE:** The "AlicloudCenInstanceRouteEntries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
         /// 
         /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
         /// </summary>
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The destination CIDR block of the route entry to publish.
         /// 
-        /// -&gt;**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+        /// -&gt;**NOTE:** The "AlicloudCenInstanceRouteEntries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
         /// 
         /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
         /// </summary>

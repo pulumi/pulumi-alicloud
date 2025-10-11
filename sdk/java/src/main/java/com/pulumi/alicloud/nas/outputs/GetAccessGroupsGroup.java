@@ -27,7 +27,7 @@ public final class GetAccessGroupsGroup {
      */
     private String description;
     /**
-     * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
+     * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `accessGroupName`.
      * 
      */
     private String id;
@@ -42,7 +42,7 @@ public final class GetAccessGroupsGroup {
      */
     private Integer ruleCount;
     /**
-     * @return Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+     * @return Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      * 
      */
     private String type;
@@ -70,7 +70,7 @@ public final class GetAccessGroupsGroup {
         return this.description;
     }
     /**
-     * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
+     * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `accessGroupName`.
      * 
      */
     public String id() {
@@ -91,7 +91,7 @@ public final class GetAccessGroupsGroup {
         return this.ruleCount;
     }
     /**
-     * @return Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+     * @return Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      * 
      */
     public String type() {

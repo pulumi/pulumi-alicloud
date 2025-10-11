@@ -19,10 +19,10 @@ public final class GetZonesResult {
     private @Nullable String availableSlbAddressType;
     /**
      * @deprecated
-     * The parameter enable_details has been deprecated from version v1.154.0+
+     * The parameter enableDetails has been deprecated from version v1.154.0+
      * 
      */
-    @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
+    @Deprecated /* The parameter enableDetails has been deprecated from version v1.154.0+ */
     private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -60,10 +60,10 @@ public final class GetZonesResult {
     }
     /**
      * @deprecated
-     * The parameter enable_details has been deprecated from version v1.154.0+
+     * The parameter enableDetails has been deprecated from version v1.154.0+
      * 
      */
-    @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
+    @Deprecated /* The parameter enableDetails has been deprecated from version v1.154.0+ */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }

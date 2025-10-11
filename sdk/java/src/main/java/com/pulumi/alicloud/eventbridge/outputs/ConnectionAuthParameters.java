@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionAuthParameters {
     /**
-     * @return The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+     * @return The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
      * 
      */
     private @Nullable ConnectionAuthParametersApiKeyAuthParameters apiKeyAuthParameters;
@@ -25,19 +25,19 @@ public final class ConnectionAuthParameters {
      */
     private @Nullable String authorizationType;
     /**
-     * @return The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+     * @return The parameters that are configured for basic authentication. See `basicAuthParameters` below.
      * 
      */
     private @Nullable ConnectionAuthParametersBasicAuthParameters basicAuthParameters;
     /**
-     * @return The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+     * @return The parameters that are configured for OAuth authentication. See `oauthParameters` below.
      * 
      */
     private @Nullable ConnectionAuthParametersOauthParameters oauthParameters;
 
     private ConnectionAuthParameters() {}
     /**
-     * @return The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+     * @return The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
      * 
      */
     public Optional<ConnectionAuthParametersApiKeyAuthParameters> apiKeyAuthParameters() {
@@ -51,14 +51,14 @@ public final class ConnectionAuthParameters {
         return Optional.ofNullable(this.authorizationType);
     }
     /**
-     * @return The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+     * @return The parameters that are configured for basic authentication. See `basicAuthParameters` below.
      * 
      */
     public Optional<ConnectionAuthParametersBasicAuthParameters> basicAuthParameters() {
         return Optional.ofNullable(this.basicAuthParameters);
     }
     /**
-     * @return The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+     * @return The parameters that are configured for OAuth authentication. See `oauthParameters` below.
      * 
      */
     public Optional<ConnectionAuthParametersOauthParameters> oauthParameters() {

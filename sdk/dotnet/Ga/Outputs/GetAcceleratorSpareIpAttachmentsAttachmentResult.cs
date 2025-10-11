@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string SpareIp;
         /// <summary>
-        /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        /// The status of the standby CNAME IP address. Valid values: `Active`, `Inuse`.
         /// </summary>
         public readonly string Status;
 

@@ -20,7 +20,7 @@ public final class ApplicationReadinessV2 {
      */
     private @Nullable ApplicationReadinessV2Exec exec;
     /**
-     * @return The liveness check settings of the container. See `http_get` below.
+     * @return The liveness check settings of the container. See `httpGet` below.
      * 
      */
     private @Nullable ApplicationReadinessV2HttpGet httpGet;
@@ -35,7 +35,7 @@ public final class ApplicationReadinessV2 {
      */
     private @Nullable Integer periodSeconds;
     /**
-     * @return The liveness check settings of the container. See `tcp_socket` below.
+     * @return The liveness check settings of the container. See `tcpSocket` below.
      * 
      */
     private @Nullable ApplicationReadinessV2TcpSocket tcpSocket;
@@ -54,7 +54,7 @@ public final class ApplicationReadinessV2 {
         return Optional.ofNullable(this.exec);
     }
     /**
-     * @return The liveness check settings of the container. See `http_get` below.
+     * @return The liveness check settings of the container. See `httpGet` below.
      * 
      */
     public Optional<ApplicationReadinessV2HttpGet> httpGet() {
@@ -75,7 +75,7 @@ public final class ApplicationReadinessV2 {
         return Optional.ofNullable(this.periodSeconds);
     }
     /**
-     * @return The liveness check settings of the container. See `tcp_socket` below.
+     * @return The liveness check settings of the container. See `tcpSocket` below.
      * 
      */
     public Optional<ApplicationReadinessV2TcpSocket> tcpSocket() {

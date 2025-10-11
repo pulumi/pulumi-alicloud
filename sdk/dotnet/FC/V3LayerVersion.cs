@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Acl { get; private set; } = null!;
 
         /// <summary>
-        /// Layer code configuration See `code` below.
+        /// Layer code configuration See `Code` below.
         /// </summary>
         [Output("code")]
         public Output<Outputs.V3LayerVersionCode?> Code { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Layer code configuration See `code` below.
+        /// Layer code configuration See `Code` below.
         /// </summary>
         [Input("code")]
         public Input<Inputs.V3LayerVersionCodeArgs>? Code { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// Layer code configuration See `code` below.
+        /// Layer code configuration See `Code` below.
         /// </summary>
         [Input("code")]
         public Input<Inputs.V3LayerVersionCodeGetArgs>? Code { get; set; }

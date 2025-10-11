@@ -25,7 +25,7 @@ public final class GetPrometheusAlertRulesRule {
      */
     private String clusterId;
     /**
-     * @return The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+     * @return The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      * 
      */
     private String dispatchRuleId;
@@ -96,7 +96,7 @@ public final class GetPrometheusAlertRulesRule {
         return this.clusterId;
     }
     /**
-     * @return The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+     * @return The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      * 
      */
     public String dispatchRuleId() {

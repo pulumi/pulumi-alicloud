@@ -96,14 +96,14 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource specifications. See `resource_spec` below.
+     * Resource specifications. See `resourceSpec` below.
      * 
      */
     @Import(name="resourceSpec")
     private @Nullable Output<VvpInstanceResourceSpecArgs> resourceSpec;
 
     /**
-     * @return Resource specifications. See `resource_spec` below.
+     * @return Resource specifications. See `resourceSpec` below.
      * 
      */
     public Optional<Output<VvpInstanceResourceSpecArgs>> resourceSpec() {
@@ -357,7 +357,7 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceSpec Resource specifications. See `resource_spec` below.
+         * @param resourceSpec Resource specifications. See `resourceSpec` below.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceSpec Resource specifications. See `resource_spec` below.
+         * @param resourceSpec Resource specifications. See `resourceSpec` below.
          * 
          * @return builder
          * 

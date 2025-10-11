@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetHostEcsLevelInfosArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
+        /// The database engine of the host. Valid values: `Mysql`, `Mssql`, `Pgsql`, `Redis`.
         /// </summary>
         [Input("dbType", required: true)]
         public string DbType { get; set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Cddc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
+        /// The storage type of the host ecs level info. Valid values: `LocalSsd`, `CloudEssd`, `CloudEssd2`, `CloudEssd3`.
         /// </summary>
         [Input("storageType", required: true)]
         public string StorageType { get; set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetHostEcsLevelInfosInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
+        /// The database engine of the host. Valid values: `Mysql`, `Mssql`, `Pgsql`, `Redis`.
         /// </summary>
         [Input("dbType", required: true)]
         public Input<string> DbType { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
+        /// The storage type of the host ecs level info. Valid values: `LocalSsd`, `CloudEssd`, `CloudEssd2`, `CloudEssd3`.
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;

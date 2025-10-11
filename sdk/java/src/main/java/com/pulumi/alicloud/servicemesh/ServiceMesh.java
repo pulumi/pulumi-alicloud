@@ -118,14 +118,14 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.edition);
     }
     /**
-     * Data plane KubeAPI access capability See `extra_configuration` below.
+     * Data plane KubeAPI access capability See `extraConfiguration` below.
      * 
      */
     @Export(name="extraConfiguration", refs={ServiceMeshExtraConfiguration.class}, tree="[0]")
     private Output<ServiceMeshExtraConfiguration> extraConfiguration;
 
     /**
-     * @return Data plane KubeAPI access capability See `extra_configuration` below.
+     * @return Data plane KubeAPI access capability See `extraConfiguration` below.
      * 
      */
     public Output<ServiceMeshExtraConfiguration> extraConfiguration() {
@@ -168,28 +168,28 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return this.kubeconfig;
     }
     /**
-     * Load balancing information See `load_balancer` below.
+     * Load balancing information See `loadBalancer` below.
      * 
      */
     @Export(name="loadBalancer", refs={ServiceMeshLoadBalancer.class}, tree="[0]")
     private Output<ServiceMeshLoadBalancer> loadBalancer;
 
     /**
-     * @return Load balancing information See `load_balancer` below.
+     * @return Load balancing information See `loadBalancer` below.
      * 
      */
     public Output<ServiceMeshLoadBalancer> loadBalancer() {
         return this.loadBalancer;
     }
     /**
-     * Service grid configuration information See `mesh_config` below.
+     * Service grid configuration information See `meshConfig` below.
      * 
      */
     @Export(name="meshConfig", refs={ServiceMeshMeshConfig.class}, tree="[0]")
     private Output<ServiceMeshMeshConfig> meshConfig;
 
     /**
-     * @return Service grid configuration information See `mesh_config` below.
+     * @return Service grid configuration information See `meshConfig` below.
      * 
      */
     public Output<ServiceMeshMeshConfig> meshConfig() {

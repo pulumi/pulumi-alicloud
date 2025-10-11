@@ -150,14 +150,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.renewalStatus;
     }
     /**
-     * Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+     * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      * 
      */
     @Export(name="versionCode", refs={String.class}, tree="[0]")
     private Output<String> versionCode;
 
     /**
-     * @return Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+     * @return Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      * 
      */
     public Output<String> versionCode() {

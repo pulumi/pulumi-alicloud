@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string PolicyVersion;
         /// <summary>
-        /// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
+        /// The status of the anti-ransomware policy. Valid Value: `Enabled`, `Disabled`, `Closed`.
         /// </summary>
         public readonly string Status;
         /// <summary>

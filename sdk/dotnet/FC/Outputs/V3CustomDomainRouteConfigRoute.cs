@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string? Qualifier;
         /// <summary>
-        /// Override Configuration See `rewrite_config` below.
+        /// Override Configuration See `RewriteConfig` below.
         /// </summary>
         public readonly Outputs.V3CustomDomainRouteConfigRouteRewriteConfig? RewriteConfig;
 

@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Ga
         public string? AclName { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
+        /// The status of the resource. Valid values: `Active`, `Configuring`, `Deleting`, `Init`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AclName { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
+        /// The status of the resource. Valid values: `Active`, `Configuring`, `Deleting`, `Init`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

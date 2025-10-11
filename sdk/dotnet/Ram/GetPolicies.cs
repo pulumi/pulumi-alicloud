@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `true`. Set it to true can output more details.
+        /// Default to `True`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `true`. Set it to true can output more details.
+        /// Default to `True`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

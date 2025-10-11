@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationLivenessV2GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Execute. See `exec` below.
+        /// Execute. See `Exec` below.
         /// </summary>
         [Input("exec")]
         public Input<Inputs.ApplicationLivenessV2ExecGetArgs>? Exec { get; set; }
 
         /// <summary>
-        /// The liveness check settings of the container. See `http_get` below.
+        /// The liveness check settings of the container. See `HttpGet` below.
         /// </summary>
         [Input("httpGet")]
         public Input<Inputs.ApplicationLivenessV2HttpGetGetArgs>? HttpGet { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<int>? PeriodSeconds { get; set; }
 
         /// <summary>
-        /// The liveness check settings of the container. See `tcp_socket` below.
+        /// The liveness check settings of the container. See `TcpSocket` below.
         /// </summary>
         [Input("tcpSocket")]
         public Input<Inputs.ApplicationLivenessV2TcpSocketGetArgs>? TcpSocket { get; set; }

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationScalingRuleScalingRuleMetricMetric {
     /**
-     * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
+     * @return According to different `metricType`, set the target value of the corresponding monitoring index.
      * 
      */
     private @Nullable Integer metricTargetAverageUtilization;
@@ -28,7 +28,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
      * - SLB_RT: The average response time of public network SLB within 15 seconds.
      * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
      * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+     *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
      * 
      */
     private @Nullable String metricType;
@@ -55,7 +55,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
 
     private ApplicationScalingRuleScalingRuleMetricMetric() {}
     /**
-     * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
+     * @return According to different `metricType`, set the target value of the corresponding monitoring index.
      * 
      */
     public Optional<Integer> metricTargetAverageUtilization() {
@@ -72,7 +72,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
      * - SLB_RT: The average response time of public network SLB within 15 seconds.
      * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
      * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+     *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
      * 
      */
     public Optional<String> metricType() {

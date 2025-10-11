@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string TriggerName;
         /// <summary>
-        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, MnsTopic and eventbridge.
         /// </summary>
         public readonly string TriggerType;
 

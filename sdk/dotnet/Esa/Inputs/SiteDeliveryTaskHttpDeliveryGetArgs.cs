@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Esa.Inputs
         public Input<bool>? StandardAuthOn { get; set; }
 
         /// <summary>
-        /// See `standard_auth_param` below.
+        /// See `StandardAuthParam` below.
         /// </summary>
         [Input("standardAuthParam")]
         public Input<Inputs.SiteDeliveryTaskHttpDeliveryStandardAuthParamGetArgs>? StandardAuthParam { get; set; }

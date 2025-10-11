@@ -49,7 +49,7 @@ public final class GetDomainsResult {
     private @Nullable String resourceGroupId;
     private @Nullable String securityToken;
     /**
-     * @return The status of DCDN Domain. Valid values: `online`, `offline`, `check_failed`, `checking`, `configure_failed`, `configuring`.
+     * @return The status of DCDN Domain. Valid values: `online`, `offline`, `checkFailed`, `checking`, `configureFailed`, `configuring`.
      * 
      */
     private @Nullable String status;
@@ -115,7 +115,7 @@ public final class GetDomainsResult {
         return Optional.ofNullable(this.securityToken);
     }
     /**
-     * @return The status of DCDN Domain. Valid values: `online`, `offline`, `check_failed`, `checking`, `configure_failed`, `configuring`.
+     * @return The status of DCDN Domain. Valid values: `online`, `offline`, `checkFailed`, `checking`, `configureFailed`, `configuring`.
      * 
      */
     public Optional<String> status() {

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleArgs>? _routingRules;
 
         /// <summary>
-        /// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+        /// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `RoutingRule` below.
         /// </summary>
         public InputList<Inputs.BucketWebsiteRoutingRulesRoutingRuleArgs> RoutingRules
         {

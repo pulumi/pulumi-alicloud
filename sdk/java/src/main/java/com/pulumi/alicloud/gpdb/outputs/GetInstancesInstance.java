@@ -132,7 +132,7 @@ public final class GetInstancesInstance {
      */
     private Integer storageSize;
     /**
-     * @return The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * @return The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
      * 
      */
     private String storageType;
@@ -326,7 +326,7 @@ public final class GetInstancesInstance {
         return this.storageSize;
     }
     /**
-     * @return The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * @return The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
      * 
      */
     public String storageType() {

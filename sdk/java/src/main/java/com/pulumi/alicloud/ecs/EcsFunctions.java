@@ -10635,7 +10635,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -10748,7 +10748,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -10861,7 +10861,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -10974,7 +10974,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -11087,7 +11087,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -11200,7 +11200,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -11313,7 +11313,7 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.0.0.
      * 
-     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+     * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
@@ -12195,17 +12195,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces() {
@@ -12327,17 +12327,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static CompletableFuture<GetNetworkInterfacesResult> getNetworkInterfacesPlain() {
@@ -12459,17 +12459,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces(GetNetworkInterfacesArgs args) {
@@ -12591,17 +12591,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static CompletableFuture<GetNetworkInterfacesResult> getNetworkInterfacesPlain(GetNetworkInterfacesPlainArgs args) {
@@ -12723,17 +12723,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces(GetNetworkInterfacesArgs args, InvokeOptions options) {
@@ -12855,17 +12855,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static Output<GetNetworkInterfacesResult> getNetworkInterfaces(GetNetworkInterfacesArgs args, InvokeOutputOptions options) {
@@ -12987,17 +12987,17 @@ public final class EcsFunctions {
      * The following arguments are supported:
      * 
      * * `ids` - (Optional)  A list of ENI IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by ENI name.
-     * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-     * * `private_ip` - (Optional) The primary private IP address of the ENI.
-     * * `security_group_id` - (Optional) The security group ID linked to ENIs.
+     * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+     * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+     * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
+     * * `privateIp` - (Optional) The primary private IP address of the ENI.
+     * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
      * * `type` - (Optional) The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
-     * * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+     * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
      * * `tags` - (Optional) A map of tags assigned to ENIs.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
-     * * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
+     * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public static CompletableFuture<GetNetworkInterfacesResult> getNetworkInterfacesPlain(GetNetworkInterfacesPlainArgs args, InvokeOptions options) {
@@ -13727,11 +13727,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -13741,7 +13741,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -13750,7 +13750,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots() {
@@ -13803,11 +13803,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -13817,7 +13817,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -13826,7 +13826,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain() {
@@ -13879,11 +13879,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -13893,7 +13893,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -13902,7 +13902,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
@@ -13955,11 +13955,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -13969,7 +13969,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -13978,7 +13978,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
@@ -14031,11 +14031,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -14045,7 +14045,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -14054,7 +14054,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
@@ -14107,11 +14107,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -14121,7 +14121,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -14130,7 +14130,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOutputOptions options) {
@@ -14183,11 +14183,11 @@ public final class EcsFunctions {
      * 
      * The following arguments are supported:
      * 
-     * * `instance_id` - (Optional) The specified instance ID.
-     * * `disk_id` - (Optional) The specified disk ID.
+     * * `instanceId` - (Optional) The specified instance ID.
+     * * `diskId` - (Optional) The specified disk ID.
      * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * * `ids` - (Optional)  A list of snapshot IDs.
-     * * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+     * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
      * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
      *   * progressing: The snapshots are being created.
      *   * accomplished: The snapshots are ready to use.
@@ -14197,7 +14197,7 @@ public final class EcsFunctions {
      *   * auto: Auto snapshots.
      *   * user: Manual snapshots.
      *   * all: Auto and manual snapshots.
-     * * `source_disk_type` - (Optional) The type of source disk:
+     * * `sourceDiskType` - (Optional) The type of source disk:
      *   * System: The snapshots are created for system disks.
      *   * Data: The snapshots are created for data disks.
      * * `usage` - (Optional) The usage of the snapshot:
@@ -14206,7 +14206,7 @@ public final class EcsFunctions {
      *   * mage_disk: The snapshots are used to create custom images and data disks.
      *   * none: The snapshots are not used yet.
      * * `tags` - (Optional) A map of tags assigned to snapshots.
-     * * `output_file` - (Optional) The name of output file that saves the filter results.
+     * * `outputFile` - (Optional) The name of output file that saves the filter results.
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {

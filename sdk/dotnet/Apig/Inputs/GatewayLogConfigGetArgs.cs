@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Apig.Inputs
     public sealed class GatewayLogConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sls See `sls` below.
+        /// Sls See `Sls` below.
         /// </summary>
         [Input("sls")]
         public Input<Inputs.GatewayLogConfigSlsGetArgs>? Sls { get; set; }

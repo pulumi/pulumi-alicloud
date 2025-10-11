@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> IpType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.259.0. New field `InstanceName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> IpType { get; set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.259.0. New field `InstanceName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? IpType { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.259.0. New field `InstanceName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

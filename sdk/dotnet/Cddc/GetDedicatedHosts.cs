@@ -283,13 +283,13 @@ namespace Pulumi.AliCloud.Cddc
         public string DedicatedHostGroupId { get; set; } = null!;
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
+        /// The storage type of the host. Valid values: `DhgLocalSsd` or `DhgCloudSsd`. `DhgLocalSsd`: specifies that the host uses local SSDs. `DhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
         /// </summary>
         [Input("hostType")]
         public string? HostType { get; set; }
@@ -364,13 +364,13 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string> DedicatedHostGroupId { get; set; } = null!;
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
+        /// The storage type of the host. Valid values: `DhgLocalSsd` or `DhgCloudSsd`. `DhgLocalSsd`: specifies that the host uses local SSDs. `DhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
         /// </summary>
         [Input("hostType")]
         public Input<string>? HostType { get; set; }

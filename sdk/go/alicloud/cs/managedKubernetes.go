@@ -43,6 +43,211 @@ import (
 // > **NOTE:** From version 1.212.0, `runtime`,`enableSsh`,`rdsInstances`,`excludeAutoscalerNodes`,`workerNumber`,`workerInstanceTypes`,`password`,`keyName`,`kmsEncryptedPassword`,`kmsEncryptionContext`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodeNameMode`,`nodePortRange`,`osType`,`platform`,`imageId`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId`,`installCloudMonitor`,`kubeConfig`,`availabilityZone` are removed.
 // Please use resource **`cs.NodePool`** to manage your cluster worker nodes.
 //
+// ## Example Usage
+//
+// # ACK cluster
+//
+// # ACK Cluster with Auto Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "auto-mode"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			// Proxy mode is option of kube-proxy.
+//			proxyMode := "ipvs"
+//			if param := cfg.Get("proxyMode"); param != "" {
+//				proxyMode = param
+//			}
+//			// The kubernetes service cidr block.
+//			serviceCidr := "192.168.0.0/16"
+//			if param := cfg.Get("serviceCidr"); param != "" {
+//				serviceCidr = param
+//			}
+//			enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"ENITrunking": "true",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"NetworkPolicy": "false",
+//				"ENITrunking":   "true",
+//				"IPVlan":        "false",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"CnfsOssEnable": "false",
+//				"CnfsNasEnable": "false",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"IngressDashboardEnabled": "true",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//				"sls_project_name": "",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//				"albIngress": map[string]interface{}{
+//					"CreateDefaultALBConfig": false,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
+//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//				"prometheusMode": "default",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json6 := string(tmpJSON6)
+//			_, err = cs.NewManagedKubernetes(ctx, "auto-mode", &cs.ManagedKubernetesArgs{
+//				Name:        pulumi.String(name),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				ZoneIds: pulumi.StringArray{
+//					pulumi.String(enhanced.Zones[0].ZoneId),
+//				},
+//				NewNatGateway:               pulumi.Bool(true),
+//				IsEnterpriseSecurityGroup:   pulumi.Bool(true),
+//				SlbInternetEnabled:          pulumi.Bool(false),
+//				SkipSetCertificateAuthority: pulumi.Bool(true),
+//				ProxyMode:                   pulumi.String(proxyMode),
+//				ServiceCidr:                 pulumi.String(serviceCidr),
+//				IpStack:                     pulumi.String("ipv4"),
+//				AutoMode: &cs.ManagedKubernetesAutoModeArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//				MaintenanceWindow: &cs.ManagedKubernetesMaintenanceWindowArgs{
+//					Duration:        pulumi.String("3h"),
+//					WeeklyPeriod:    pulumi.String("Monday"),
+//					Enable:          pulumi.Bool(true),
+//					MaintenanceTime: pulumi.String("2025-07-07T00:00:00.000+08:00"),
+//				},
+//				OperationPolicy: &cs.ManagedKubernetesOperationPolicyArgs{
+//					ClusterAutoUpgrade: &cs.ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{
+//						Channel: pulumi.String("stable"),
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				ControlPlaneLogComponents: pulumi.StringArray{
+//					pulumi.String("apiserver"),
+//					pulumi.String("kcm"),
+//					pulumi.String("scheduler"),
+//					pulumi.String("ccm"),
+//					pulumi.String("controlplane-events"),
+//					pulumi.String("alb"),
+//					pulumi.String("ack-goatscaler"),
+//					pulumi.String("coredns"),
+//				},
+//				ControlPlaneLogTtl: pulumi.String("30"),
+//				AuditLogConfig: &cs.ManagedKubernetesAuditLogConfigArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//				Addons: cs.ManagedKubernetesAddonArray{
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("managed-metrics-server"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("managed-coredns"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("managed-security-inspector"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("ack-cost-exporter"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("terway-controlplane"),
+//						Config: pulumi.String(json0),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("terway-eniip"),
+//						Config: pulumi.String(json1),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("csi-plugin"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("managed-csiprovisioner"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("storage-operator"),
+//						Config: pulumi.String(json2),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("loongcollector"),
+//						Config: pulumi.String(json3),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("ack-node-problem-detector"),
+//						Config: pulumi.String(json4),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:     pulumi.String("nginx-ingress-controller"),
+//						Disabled: pulumi.Bool(true),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("alb-ingress-controller"),
+//						Config: pulumi.String(json5),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name:   pulumi.String("arms-prometheus"),
+//						Config: pulumi.String(json6),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("alicloud-monitor-controller"),
+//					},
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("managed-aliyun-acr-credential-helper"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

@@ -81,14 +81,14 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure columns when `content_type` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`.
      * 
      */
     @Import(name="configColumns")
     private @Nullable Output<List<OssExportConfigColumnArgs>> configColumns;
 
     /**
-     * @return Configure columns when `content_type` is `parquet` or `orc`.
+     * @return Configure columns when `contentType` is `parquet` or `orc`.
      * 
      */
     public Optional<Output<List<OssExportConfigColumnArgs>>> configColumns() {
@@ -263,14 +263,14 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to deliver the label when `content_type` = `json`.
+     * Whether to deliver the label when `contentType` = `json`.
      * 
      */
     @Import(name="jsonEnableTag")
     private @Nullable Output<Boolean> jsonEnableTag;
 
     /**
-     * @return Whether to deliver the label when `content_type` = `json`.
+     * @return Whether to deliver the label when `contentType` = `json`.
      * 
      */
     public Optional<Output<Boolean>> jsonEnableTag() {
@@ -278,14 +278,14 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+     * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      * 
      */
     @Import(name="logReadRoleArn")
     private @Nullable Output<String> logReadRoleArn;
 
     /**
-     * @return Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+     * @return Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      * 
      */
     public Optional<Output<String>> logReadRoleArn() {
@@ -530,7 +530,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configColumns Configure columns when `content_type` is `parquet` or `orc`.
+         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configColumns Configure columns when `content_type` is `parquet` or `orc`.
+         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`.
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configColumns Configure columns when `content_type` is `parquet` or `orc`.
+         * @param configColumns Configure columns when `contentType` is `parquet` or `orc`.
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jsonEnableTag Whether to deliver the label when `content_type` = `json`.
+         * @param jsonEnableTag Whether to deliver the label when `contentType` = `json`.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jsonEnableTag Whether to deliver the label when `content_type` = `json`.
+         * @param jsonEnableTag Whether to deliver the label when `contentType` = `json`.
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logReadRoleArn Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+         * @param logReadRoleArn Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logReadRoleArn Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
+         * @param logReadRoleArn Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
          * 
          * @return builder
          * 

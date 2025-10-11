@@ -35,14 +35,14 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Certificate configuration See `certificate_config` below.
+     * Certificate configuration See `certificateConfig` below.
      * 
      */
     @Import(name="certificateConfig")
     private @Nullable Output<DomainNewCertificateConfigArgs> certificateConfig;
 
     /**
-     * @return Certificate configuration See `certificate_config` below.
+     * @return Certificate configuration See `certificateConfig` below.
      * 
      */
     public Optional<Output<DomainNewCertificateConfigArgs>> certificateConfig() {
@@ -240,7 +240,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate configuration See `certificate_config` below.
+         * @param certificateConfig Certificate configuration See `certificateConfig` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate configuration See `certificate_config` below.
+         * @param certificateConfig Certificate configuration See `certificateConfig` below.
          * 
          * @return builder
          * 

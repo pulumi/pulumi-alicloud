@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
+        /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `PaymentType` is `Subscription`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Dts
         /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         /// - **NOTE:**
         /// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        /// - The billing method of the subscription instance. You can set the parameter `period`.
+        /// - The billing method of the subscription instance. You can set the parameter `Period`.
         /// </summary>
         [Output("usedTime")]
         public Output<int?> UsedTime { get; private set; } = null!;
@@ -424,7 +424,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
+        /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `PaymentType` is `Subscription`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -517,7 +517,7 @@ namespace Pulumi.AliCloud.Dts
         /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         /// - **NOTE:**
         /// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        /// - The billing method of the subscription instance. You can set the parameter `period`.
+        /// - The billing method of the subscription instance. You can set the parameter `Period`.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
@@ -647,7 +647,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
+        /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `PaymentType` is `Subscription`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -746,7 +746,7 @@ namespace Pulumi.AliCloud.Dts
         /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         /// - **NOTE:**
         /// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        /// - The billing method of the subscription instance. You can set the parameter `period`.
+        /// - The billing method of the subscription instance. You can set the parameter `Period`.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }

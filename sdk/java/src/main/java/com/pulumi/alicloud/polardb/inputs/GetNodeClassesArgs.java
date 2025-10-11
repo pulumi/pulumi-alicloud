@@ -47,14 +47,14 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+     * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
      * 
      */
     @Import(name="dbType")
     private @Nullable Output<String> dbType;
 
     /**
-     * @return Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+     * @return Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
      * 
      */
     public Optional<Output<String>> dbType() {
@@ -62,14 +62,14 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      * 
      */
     @Import(name="dbVersion")
     private @Nullable Output<String> dbVersion;
 
     /**
-     * @return Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+     * @return Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      * 
      */
     public Optional<Output<String>> dbVersion() {
@@ -210,7 +210,7 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dbType Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+         * @param dbType Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dbType Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+         * @param dbType Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dbVersion Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+         * @param dbVersion Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dbVersion Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+         * @param dbVersion Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
          * 
          * @return builder
          * 

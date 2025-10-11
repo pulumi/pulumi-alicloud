@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string ArnRole;
         /// <summary>
-        /// The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// The base url of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         public readonly string? FunctionBaseUrl;
         /// <summary>
-        /// The function name of function compute service. Required if `function_type` is `FCEvent`.
+        /// The function name of function compute service. Required if `FunctionType` is `FCEvent`.
         /// </summary>
         public readonly string? FunctionName;
         /// <summary>
@@ -34,15 +34,15 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? FunctionVersion;
         /// <summary>
-        /// The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// The http method of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        /// Whether to filter path in `FunctionBaseUrl`. Optional if `FunctionType` is `HttpTrigger`.
         /// </summary>
         public readonly bool? OnlyBusinessPath;
         /// <summary>
-        /// The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// The path of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         public readonly string? Path;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+        /// The service name of function compute service. Required if `FunctionType` is `FCEvent` and `FunctionVersion` is `2.0`.
         /// </summary>
         public readonly string? ServiceName;
         /// <summary>

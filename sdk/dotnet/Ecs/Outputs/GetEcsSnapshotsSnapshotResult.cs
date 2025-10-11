@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsSnapshotsSnapshotResult
     {
         /// <summary>
-        /// The category of the snapshot. Valid Values: `flash` and `standard`.
+        /// The category of the snapshot. Valid Values: `Flash` and `Standard`.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SnapshotSn;
         /// <summary>
-        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// The type of the snapshot. Valid Values: `Auto`, `User` and `All`. Default to: `All`.
         /// </summary>
         public readonly string SnapshotType;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SourceStorageType;
         /// <summary>
-        /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
+        /// The status of the snapshot. Valid Values: `Accomplished`, `Failed`, `Progressing` and `All`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -110,11 +110,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// The type of the snapshot. Valid Values: `Auto`, `User` and `All`. Default to: `All`.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
+        /// A resource type that has a reference relationship. Valid Values: `Image`, `Disk`, `ImageDisk` and `None`.
         /// </summary>
         public readonly string Usage;
 

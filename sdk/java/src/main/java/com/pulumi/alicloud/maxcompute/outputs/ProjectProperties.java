@@ -56,7 +56,7 @@ public final class ProjectProperties {
      */
     private @Nullable String sqlMeteringMax;
     /**
-     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
      * 
      */
     private @Nullable ProjectPropertiesTableLifecycle tableLifecycle;
@@ -128,7 +128,7 @@ public final class ProjectProperties {
         return Optional.ofNullable(this.sqlMeteringMax);
     }
     /**
-     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
      * 
      */
     public Optional<ProjectPropertiesTableLifecycle> tableLifecycle() {

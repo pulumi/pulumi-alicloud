@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EcsLaunchTemplateSystemDisk {
     /**
-     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
      * 
      */
     private @Nullable String category;
@@ -61,7 +61,7 @@ public final class EcsLaunchTemplateSystemDisk {
 
     private EcsLaunchTemplateSystemDisk() {}
     /**
-     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
      * 
      */
     public Optional<String> category() {

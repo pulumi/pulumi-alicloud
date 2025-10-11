@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Pai
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Labels added to the dataset See `labels` below.
+        /// Labels added to the dataset See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.WorkspaceDatasetLabel>> Labels { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceDatasetLabelArgs>? _labels;
 
         /// <summary>
-        /// Labels added to the dataset See `labels` below.
+        /// Labels added to the dataset See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceDatasetLabelArgs> Labels
         {
@@ -417,7 +417,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceDatasetLabelGetArgs>? _labels;
 
         /// <summary>
-        /// Labels added to the dataset See `labels` below.
+        /// Labels added to the dataset See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceDatasetLabelGetArgs> Labels
         {

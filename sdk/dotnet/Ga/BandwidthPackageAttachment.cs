@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<ImmutableArray<string>> Accelerators { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `BandwidthPackageId` can be modified.
         /// </summary>
         [Output("bandwidthPackageId")]
         public Output<string> BandwidthPackageId { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AcceleratorId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `BandwidthPackageId` can be modified.
         /// </summary>
         [Input("bandwidthPackageId", required: true)]
         public Input<string> BandwidthPackageId { get; set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `BandwidthPackageId` can be modified.
         /// </summary>
         [Input("bandwidthPackageId")]
         public Input<string>? BandwidthPackageId { get; set; }

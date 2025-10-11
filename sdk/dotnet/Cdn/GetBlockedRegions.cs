@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class GetBlockedRegionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language. Valid values: `zh`, `en`, `jp`.
+        /// The language. Valid values: `Zh`, `En`, `Jp`.
         /// </summary>
         [Input("language", required: true)]
         public string Language { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class GetBlockedRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language. Valid values: `zh`, `en`, `jp`.
+        /// The language. Valid values: `Zh`, `En`, `Jp`.
         /// </summary>
         [Input("language", required: true)]
         public Input<string> Language { get; set; } = null!;

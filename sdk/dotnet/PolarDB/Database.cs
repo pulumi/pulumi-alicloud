@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`Utf8mb4` only supports versions 5.5 and 5.6\).
         /// </summary>
         [Output("characterSetName")]
         public Output<string?> CharacterSetName { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`Utf8mb4` only supports versions 5.5 and 5.6\).
         /// </summary>
         [Input("characterSetName")]
         public Input<string>? CharacterSetName { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`Utf8mb4` only supports versions 5.5 and 5.6\).
         /// </summary>
         [Input("characterSetName")]
         public Input<string>? CharacterSetName { get; set; }

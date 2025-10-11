@@ -13,55 +13,55 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of the cookie. See See `cookie_config` below.
+        /// The configuration of the cookie. See See `CookieConfig` below.
         /// </summary>
         [Input("cookieConfig")]
         public Input<Inputs.RuleRuleConditionCookieConfigArgs>? CookieConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the header field. See `header_config` below.
+        /// The configuration of the header field. See `HeaderConfig` below.
         /// </summary>
         [Input("headerConfig")]
         public Input<Inputs.RuleRuleConditionHeaderConfigArgs>? HeaderConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the host field. See `host_config` below.
+        /// The configuration of the host field. See `HostConfig` below.
         /// </summary>
         [Input("hostConfig")]
         public Input<Inputs.RuleRuleConditionHostConfigArgs>? HostConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the request method. See `method_config` below.
+        /// The configuration of the request method. See `MethodConfig` below.
         /// </summary>
         [Input("methodConfig")]
         public Input<Inputs.RuleRuleConditionMethodConfigArgs>? MethodConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the path for the request to be forwarded. See `path_config` below.
+        /// The configuration of the path for the request to be forwarded. See `PathConfig` below.
         /// </summary>
         [Input("pathConfig")]
         public Input<Inputs.RuleRuleConditionPathConfigArgs>? PathConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the query string. See `query_string_config` below.
+        /// The configuration of the query string. See `QueryStringConfig` below.
         /// </summary>
         [Input("queryStringConfig")]
         public Input<Inputs.RuleRuleConditionQueryStringConfigArgs>? QueryStringConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the header field. See `response_header_config` below.
+        /// The configuration of the header field. See `ResponseHeaderConfig` below.
         /// </summary>
         [Input("responseHeaderConfig")]
         public Input<Inputs.RuleRuleConditionResponseHeaderConfigArgs>? ResponseHeaderConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the header field. See `response_status_code_config` below.
+        /// The configuration of the header field. See `ResponseStatusCodeConfig` below.
         /// </summary>
         [Input("responseStatusCodeConfig")]
         public Input<Inputs.RuleRuleConditionResponseStatusCodeConfigArgs>? ResponseStatusCodeConfig { get; set; }
 
         /// <summary>
-        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `SourceIpConfig` below.
         /// </summary>
         [Input("sourceIpConfig")]
         public Input<Inputs.RuleRuleConditionSourceIpConfigArgs>? SourceIpConfig { get; set; }

@@ -40,7 +40,7 @@ public final class GetRulesRule {
      */
     private String configRuleId;
     /**
-     * @return Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+     * @return Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
      */
     private String configRuleState;
@@ -187,7 +187,7 @@ public final class GetRulesRule {
         return this.configRuleId;
     }
     /**
-     * @return Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+     * @return Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
      */
     public String configRuleState() {

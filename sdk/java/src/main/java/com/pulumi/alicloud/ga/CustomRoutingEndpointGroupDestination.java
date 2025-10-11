@@ -164,14 +164,14 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
         return this.endpointGroupId;
     }
     /**
-     * The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     @Export(name="fromPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> fromPort;
 
     /**
-     * @return The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     public Output<Integer> fromPort() {
@@ -220,14 +220,14 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
         return this.status;
     }
     /**
-     * The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     @Export(name="toPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> toPort;
 
     /**
-     * @return The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     public Output<Integer> toPort() {

@@ -28,7 +28,7 @@ public final class GetLoadBalancersSlb {
      */
     private String id;
     /**
-     * @return SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `network_type` is `vpc`.
+     * @return SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
      * 
      */
     private Boolean internet;
@@ -134,7 +134,7 @@ public final class GetLoadBalancersSlb {
         return this.id;
     }
     /**
-     * @return SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `network_type` is `vpc`.
+     * @return SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
      * 
      */
     public Boolean internet() {

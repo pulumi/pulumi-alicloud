@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesAuditLogConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable audit logging. Valid values: `true`, `false`.
+        /// Whether to enable audit logging. Valid values: `True`, `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class GetPrometheusPrometheiResult
     {
         /// <summary>
-        /// (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The authorization token. **Note:** `AuthToken` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string AuthToken;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string GrafanaInstanceId;
         /// <summary>
-        /// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `HttpApiInterUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string HttpApiInterUrl;
         /// <summary>
-        /// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `HttpApiIntraUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string HttpApiIntraUrl;
         /// <summary>
@@ -46,27 +46,27 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `PushGateWayInterUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string PushGateWayInterUrl;
         /// <summary>
-        /// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `PushGateWayIntraUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string PushGateWayIntraUrl;
         /// <summary>
-        /// (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The public URL for remote read. **Note:** `RemoteReadInterUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string RemoteReadInterUrl;
         /// <summary>
-        /// (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The internal URL for remote read. **Note:** `RemoteReadIntraUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string RemoteReadIntraUrl;
         /// <summary>
-        /// (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The public URL for remote write. **Note:** `RemoteWriteInterUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string RemoteWriteInterUrl;
         /// <summary>
-        /// (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.214.0) The internal URL for remote write. **Note:** `RemoteWriteIntraUrl` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string RemoteWriteIntraUrl;
         /// <summary>

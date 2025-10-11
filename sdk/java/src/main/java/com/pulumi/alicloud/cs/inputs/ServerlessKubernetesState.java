@@ -24,14 +24,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     public static final ServerlessKubernetesState Empty = new ServerlessKubernetesState();
 
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<ServerlessKubernetesAddonArgs>> addons;
 
     /**
-     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      * 
      */
     public Optional<Output<List<ServerlessKubernetesAddonArgs>>> addons() {
@@ -144,14 +144,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     @Import(name="deleteOptions")
     private @Nullable Output<List<ServerlessKubernetesDeleteOptionArgs>> deleteOptions;
 
     /**
-     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      * 
      */
     public Optional<Output<List<ServerlessKubernetesDeleteOptionArgs>>> deleteOptions() {
@@ -208,7 +208,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -219,7 +219,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     private @Nullable Output<String> kubeConfig;
 
     /**
-     * @return The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -277,14 +277,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      * 
      */
     @Import(name="maintenanceWindow")
     private @Nullable Output<ServerlessKubernetesMaintenanceWindowArgs> maintenanceWindow;
 
     /**
-     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      * 
      */
     public Optional<Output<ServerlessKubernetesMaintenanceWindowArgs>> maintenanceWindow() {
@@ -329,7 +329,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The cluster automatic operation policy. See `operation_policy` below.
+     * The cluster automatic operation policy. See `operationPolicy` below.
      * 
      * *Removed params*
      * 
@@ -338,7 +338,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     private @Nullable Output<ServerlessKubernetesOperationPolicyArgs> operationPolicy;
 
     /**
-     * @return The cluster automatic operation policy. See `operation_policy` below.
+     * @return The cluster automatic operation policy. See `operationPolicy` below.
      * 
      * *Removed params*
      * 
@@ -348,7 +348,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -359,7 +359,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     private @Nullable Output<Boolean> privateZone;
 
     /**
-     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -453,7 +453,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+     * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      * 
      * @deprecated
      * Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
@@ -464,7 +464,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     private @Nullable Output<String> slsProjectName;
 
     /**
-     * @return If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+     * @return If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      * 
      * @deprecated
      * Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
@@ -506,14 +506,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      * 
      */
     public Optional<Output<String>> version() {
@@ -621,7 +621,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -642,7 +642,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -787,7 +787,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -798,7 +798,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
          * 
          * @return builder
          * 
@@ -885,7 +885,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -900,7 +900,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -972,7 +972,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maintenanceWindow The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+         * @param maintenanceWindow The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
          * 
          * @return builder
          * 
@@ -983,7 +983,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maintenanceWindow The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+         * @param maintenanceWindow The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param operationPolicy The cluster automatic operation policy. See `operation_policy` below.
+         * @param operationPolicy The cluster automatic operation policy. See `operationPolicy` below.
          * 
          * *Removed params*
          * 
@@ -1057,7 +1057,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param operationPolicy The cluster automatic operation policy. See `operation_policy` below.
+         * @param operationPolicy The cluster automatic operation policy. See `operationPolicy` below.
          * 
          * *Removed params*
          * 
@@ -1069,7 +1069,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
          * 
          * @return builder
          * 
@@ -1226,7 +1226,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param slsProjectName If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+         * @param slsProjectName If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1241,7 +1241,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param slsProjectName If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+         * @param slsProjectName If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1297,7 +1297,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
          * 
          * @return builder
          * 
@@ -1308,7 +1308,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
          * 
          * @return builder
          * 

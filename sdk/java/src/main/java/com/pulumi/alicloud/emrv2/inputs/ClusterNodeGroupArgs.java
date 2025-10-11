@@ -28,14 +28,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterNodeGroupArgs Empty = new ClusterNodeGroupArgs();
 
     /**
-     * The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
      * 
      */
     @Import(name="ackConfig")
     private @Nullable Output<ClusterNodeGroupAckConfigArgs> ackConfig;
 
     /**
-     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupAckConfigArgs>> ackConfig() {
@@ -43,14 +43,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+     * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
      * 
      */
     @Import(name="additionalSecurityGroupIds")
     private @Nullable Output<List<String>> additionalSecurityGroupIds;
 
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
      * 
      */
     public Optional<Output<List<String>>> additionalSecurityGroupIds() {
@@ -58,14 +58,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
      * 
      */
     @Import(name="autoScalingPolicy")
     private @Nullable Output<ClusterNodeGroupAutoScalingPolicyArgs> autoScalingPolicy;
 
     /**
-     * @return The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * @return The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupAutoScalingPolicyArgs>> autoScalingPolicy() {
@@ -73,14 +73,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+     * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
      * 
      */
     @Import(name="costOptimizedConfig")
     private @Nullable Output<ClusterNodeGroupCostOptimizedConfigArgs> costOptimizedConfig;
 
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+     * @return The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
      * 
      */
     public Optional<Output<ClusterNodeGroupCostOptimizedConfigArgs>> costOptimizedConfig() {
@@ -88,14 +88,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Host Ecs data disks information in this node group. See `data_disks` below.
+     * Host Ecs data disks information in this node group. See `dataDisks` below.
      * 
      */
     @Import(name="dataDisks", required=true)
     private Output<List<ClusterNodeGroupDataDiskArgs>> dataDisks;
 
     /**
-     * @return Host Ecs data disks information in this node group. See `data_disks` below.
+     * @return Host Ecs data disks information in this node group. See `dataDisks` below.
      * 
      */
     public Output<List<ClusterNodeGroupDataDiskArgs>> dataDisks() {
@@ -103,14 +103,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+     * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
      * 
      */
     @Import(name="deploymentSetStrategy")
     private @Nullable Output<String> deploymentSetStrategy;
 
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
      * 
      */
     public Optional<Output<String>> deploymentSetStrategy() {
@@ -133,14 +133,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+     * Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
      * 
      */
     @Import(name="instanceTypes", required=true)
     private Output<List<String>> instanceTypes;
 
     /**
-     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
      * 
      */
     public Output<List<String>> instanceTypes() {
@@ -223,14 +223,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The node group specific private pool resources. See `private_pool_options` below.
+     * The node group specific private pool resources. See `privatePoolOptions` below.
      * 
      */
     @Import(name="privatePoolOptions")
     private @Nullable Output<ClusterNodeGroupPrivatePoolOptionsArgs> privatePoolOptions;
 
     /**
-     * @return The node group specific private pool resources. See `private_pool_options` below.
+     * @return The node group specific private pool resources. See `privatePoolOptions` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupPrivatePoolOptionsArgs>> privatePoolOptions() {
@@ -238,14 +238,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+     * The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
      * 
      */
     @Import(name="spotBidPrices")
     private @Nullable Output<List<ClusterNodeGroupSpotBidPriceArgs>> spotBidPrices;
 
     /**
-     * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+     * @return The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupSpotBidPriceArgs>>> spotBidPrices() {
@@ -283,14 +283,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The detail configuration of subscription payment type. See `subscription_config` below.
+     * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      * 
      */
     @Import(name="subscriptionConfig")
     private @Nullable Output<ClusterNodeGroupSubscriptionConfigArgs> subscriptionConfig;
 
     /**
-     * @return The detail configuration of subscription payment type. See `subscription_config` below.
+     * @return The detail configuration of subscription payment type. See `subscriptionConfig` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupSubscriptionConfigArgs>> subscriptionConfig() {
@@ -298,14 +298,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Host Ecs system disk information in this node group. See `system_disk` below.
+     * Host Ecs system disk information in this node group. See `systemDisk` below.
      * 
      */
     @Import(name="systemDisk", required=true)
     private Output<ClusterNodeGroupSystemDiskArgs> systemDisk;
 
     /**
-     * @return Host Ecs system disk information in this node group. See `system_disk` below.
+     * @return Host Ecs system disk information in this node group. See `systemDisk` below.
      * 
      */
     public Output<ClusterNodeGroupSystemDiskArgs> systemDisk() {
@@ -313,14 +313,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+     * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
      * 
      */
     @Import(name="vswitchIds")
     private @Nullable Output<List<String>> vswitchIds;
 
     /**
-     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
      * 
      */
     public Optional<Output<List<String>>> vswitchIds() {
@@ -328,14 +328,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+     * Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
      * 
      */
     @Import(name="withPublicIp")
     private @Nullable Output<Boolean> withPublicIp;
 
     /**
-     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
      * 
      */
     public Optional<Output<Boolean>> withPublicIp() {
@@ -387,7 +387,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ackConfig The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+         * @param ackConfig The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ackConfig The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+         * @param ackConfig The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoScalingPolicy The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+         * @param autoScalingPolicy The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoScalingPolicy The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+         * @param autoScalingPolicy The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataDisks Host Ecs data disks information in this node group. See `data_disks` below.
+         * @param dataDisks Host Ecs data disks information in this node group. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataDisks Host Ecs data disks information in this node group. See `data_disks` below.
+         * @param dataDisks Host Ecs data disks information in this node group. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataDisks Host Ecs data disks information in this node group. See `data_disks` below.
+         * @param dataDisks Host Ecs data disks information in this node group. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privatePoolOptions The node group specific private pool resources. See `private_pool_options` below.
+         * @param privatePoolOptions The node group specific private pool resources. See `privatePoolOptions` below.
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privatePoolOptions The node group specific private pool resources. See `private_pool_options` below.
+         * @param privatePoolOptions The node group specific private pool resources. See `privatePoolOptions` below.
          * 
          * @return builder
          * 
@@ -711,7 +711,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          * 
          * @return builder
          * 
@@ -732,7 +732,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
+         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscriptionConfig` below.
          * 
          * @return builder
          * 
@@ -795,7 +795,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
+         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscriptionConfig` below.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param systemDisk Host Ecs system disk information in this node group. See `system_disk` below.
+         * @param systemDisk Host Ecs system disk information in this node group. See `systemDisk` below.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param systemDisk Host Ecs system disk information in this node group. See `system_disk` below.
+         * @param systemDisk Host Ecs system disk information in this node group. See `systemDisk` below.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
          * 
          * @return builder
          * 
@@ -847,7 +847,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
          * 
          * @return builder
          * 

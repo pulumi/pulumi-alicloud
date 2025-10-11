@@ -24,7 +24,7 @@ public final class TunnelQuotaTimerQuotaTimer {
      */
     private String endTime;
     /**
-     * @return Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+     * @return Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
      * 
      */
     private @Nullable TunnelQuotaTimerQuotaTimerTunnelQuotaParameter tunnelQuotaParameter;
@@ -45,7 +45,7 @@ public final class TunnelQuotaTimerQuotaTimer {
         return this.endTime;
     }
     /**
-     * @return Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+     * @return Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
      * 
      */
     public Optional<TunnelQuotaTimerQuotaTimerTunnelQuotaParameter> tunnelQuotaParameter() {

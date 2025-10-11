@@ -23,22 +23,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleAction {
     /**
-     * @return Request forwarding based on CORS. See `cors_config` below.
+     * @return Request forwarding based on CORS. See `corsConfig` below.
      * 
      */
     private @Nullable RuleRuleActionCorsConfig corsConfig;
     /**
-     * @return The configuration of the fixed response. See `fixed_response_config` below.
+     * @return The configuration of the fixed response. See `fixedResponseConfig` below.
      * 
      */
     private @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
     /**
-     * @return The forward response action within ALB. See `forward_group_config` below.
+     * @return The forward response action within ALB. See `forwardGroupConfig` below.
      * 
      */
     private @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
     /**
-     * @return The configuration of the inserted header field. See `insert_header_config` below.
+     * @return The configuration of the inserted header field. See `insertHeaderConfig` below.
      * 
      */
     private @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
@@ -48,27 +48,27 @@ public final class RuleRuleAction {
      */
     private Integer order;
     /**
-     * @return The configuration of the external redirect action. See `redirect_config` below.
+     * @return The configuration of the external redirect action. See `redirectConfig` below.
      * 
      */
     private @Nullable RuleRuleActionRedirectConfig redirectConfig;
     /**
-     * @return The configuration of the inserted header field. See `remove_header_config` below.
+     * @return The configuration of the inserted header field. See `removeHeaderConfig` below.
      * 
      */
     private @Nullable RuleRuleActionRemoveHeaderConfig removeHeaderConfig;
     /**
-     * @return The redirect action within ALB. See `rewrite_config` below.
+     * @return The redirect action within ALB. See `rewriteConfig` below.
      * 
      */
     private @Nullable RuleRuleActionRewriteConfig rewriteConfig;
     /**
-     * @return The Flow speed limit. See `traffic_limit_config` below.
+     * @return The Flow speed limit. See `trafficLimitConfig` below.
      * 
      */
     private @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
     /**
-     * @return The Traffic mirroring. See `traffic_mirror_config` below.
+     * @return The Traffic mirroring. See `trafficMirrorConfig` below.
      * 
      */
     private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
@@ -83,28 +83,28 @@ public final class RuleRuleAction {
 
     private RuleRuleAction() {}
     /**
-     * @return Request forwarding based on CORS. See `cors_config` below.
+     * @return Request forwarding based on CORS. See `corsConfig` below.
      * 
      */
     public Optional<RuleRuleActionCorsConfig> corsConfig() {
         return Optional.ofNullable(this.corsConfig);
     }
     /**
-     * @return The configuration of the fixed response. See `fixed_response_config` below.
+     * @return The configuration of the fixed response. See `fixedResponseConfig` below.
      * 
      */
     public Optional<RuleRuleActionFixedResponseConfig> fixedResponseConfig() {
         return Optional.ofNullable(this.fixedResponseConfig);
     }
     /**
-     * @return The forward response action within ALB. See `forward_group_config` below.
+     * @return The forward response action within ALB. See `forwardGroupConfig` below.
      * 
      */
     public Optional<RuleRuleActionForwardGroupConfig> forwardGroupConfig() {
         return Optional.ofNullable(this.forwardGroupConfig);
     }
     /**
-     * @return The configuration of the inserted header field. See `insert_header_config` below.
+     * @return The configuration of the inserted header field. See `insertHeaderConfig` below.
      * 
      */
     public Optional<RuleRuleActionInsertHeaderConfig> insertHeaderConfig() {
@@ -118,35 +118,35 @@ public final class RuleRuleAction {
         return this.order;
     }
     /**
-     * @return The configuration of the external redirect action. See `redirect_config` below.
+     * @return The configuration of the external redirect action. See `redirectConfig` below.
      * 
      */
     public Optional<RuleRuleActionRedirectConfig> redirectConfig() {
         return Optional.ofNullable(this.redirectConfig);
     }
     /**
-     * @return The configuration of the inserted header field. See `remove_header_config` below.
+     * @return The configuration of the inserted header field. See `removeHeaderConfig` below.
      * 
      */
     public Optional<RuleRuleActionRemoveHeaderConfig> removeHeaderConfig() {
         return Optional.ofNullable(this.removeHeaderConfig);
     }
     /**
-     * @return The redirect action within ALB. See `rewrite_config` below.
+     * @return The redirect action within ALB. See `rewriteConfig` below.
      * 
      */
     public Optional<RuleRuleActionRewriteConfig> rewriteConfig() {
         return Optional.ofNullable(this.rewriteConfig);
     }
     /**
-     * @return The Flow speed limit. See `traffic_limit_config` below.
+     * @return The Flow speed limit. See `trafficLimitConfig` below.
      * 
      */
     public Optional<RuleRuleActionTrafficLimitConfig> trafficLimitConfig() {
         return Optional.ofNullable(this.trafficLimitConfig);
     }
     /**
-     * @return The Traffic mirroring. See `traffic_mirror_config` below.
+     * @return The Traffic mirroring. See `trafficMirrorConfig` below.
      * 
      */
     public Optional<RuleRuleActionTrafficMirrorConfig> trafficMirrorConfig() {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerAclConfig
     {
         /// <summary>
-        /// The ACLs that are associated with the listener. See `acl_relations` below for details.
+        /// The ACLs that are associated with the listener. See `AclRelations` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.ListenerAclConfigAclRelation> AclRelations;
         /// <summary>

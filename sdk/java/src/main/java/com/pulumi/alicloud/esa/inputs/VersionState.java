@@ -92,14 +92,14 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+     * Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+     * @return Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -241,7 +241,7 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+         * @param status Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+         * @param status Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
          * 
          * @return builder
          * 

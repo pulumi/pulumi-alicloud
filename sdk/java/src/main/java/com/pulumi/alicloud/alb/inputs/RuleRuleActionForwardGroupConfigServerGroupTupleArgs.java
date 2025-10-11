@@ -32,14 +32,14 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
     }
 
     /**
-     * The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+     * The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -93,7 +93,7 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
         }
 
         /**
-         * @param weight The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+         * @param weight The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
         }
 
         /**
-         * @param weight The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+         * @param weight The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
          * 
          * @return builder
          * 

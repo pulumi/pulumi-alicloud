@@ -63,14 +63,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network redirection. See `net_redirect_policy` below.
+     * Network redirection. See `netRedirectPolicy` below.
      * 
      */
     @Import(name="netRedirectPolicy")
     private @Nullable Output<PolicyNetRedirectPolicyArgs> netRedirectPolicy;
 
     /**
-     * @return Network redirection. See `net_redirect_policy` below.
+     * @return Network redirection. See `netRedirectPolicy` below.
      * 
      */
     public Optional<Output<PolicyNetRedirectPolicyArgs>> netRedirectPolicy() {
@@ -216,7 +216,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netRedirectPolicy Network redirection. See `net_redirect_policy` below.
+         * @param netRedirectPolicy Network redirection. See `netRedirectPolicy` below.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netRedirectPolicy Network redirection. See `net_redirect_policy` below.
+         * @param netRedirectPolicy Network redirection. See `netRedirectPolicy` below.
          * 
          * @return builder
          * 

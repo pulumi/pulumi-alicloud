@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        /// The description of the snapshot. The `Description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `Description` can be modified.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Output<int?> RetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+        /// The name of the snapshot. The `SnapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `Auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `SnapshotName` can be modified.
         /// </summary>
         [Output("snapshotName")]
         public Output<string?> SnapshotName { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        /// The description of the snapshot. The `Description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `Description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+        /// The name of the snapshot. The `SnapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `Auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `SnapshotName` can be modified.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        /// The description of the snapshot. The `Description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `Description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
+        /// The name of the snapshot. The `SnapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `Auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `SnapshotName` can be modified.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }

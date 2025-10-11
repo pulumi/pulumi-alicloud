@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// HTTP request body. See `request_body` below.
+        /// HTTP request body. See `RequestBody` below.
         /// </summary>
         [Input("requestBody")]
         public Input<Inputs.SyntheticTaskMonitorConfApiHttpRequestBodyArgs>? RequestBody { get; set; }

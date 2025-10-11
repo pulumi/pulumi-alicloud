@@ -319,613 +319,613 @@ namespace Pulumi.AliCloud
              public class Endpoints
              {
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom acr endpoints.
             /// </summary>
                 public string? Acr { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Actiontrail endpoints.
             /// </summary>
                 public string? Actiontrail { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom AnalyticDB endpoints.
             /// </summary>
                 public string? Adb { get; set; } = null!;
                 public string? Aiworkspace { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom alb endpoints.
             /// </summary>
                 public string? Alb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom alidfs endpoints.
             /// </summary>
                 public string? Alidfs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom alidns endpoints.
             /// </summary>
                 public string? Alidns { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ALIKAFKA endpoints.
             /// </summary>
                 public string? Alikafka { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom onsproxy endpoints.
             /// </summary>
                 public string? Amqp { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ddosbasic endpoints.
             /// </summary>
                 public string? AntiddosPublic { get; set; } = null!;
                 public string? Apig { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Api Gateway endpoints.
             /// </summary>
                 public string? Apigateway { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom arms endpoints.
             /// </summary>
                 public string? Arms { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom bastionhost endpoints.
             /// </summary>
                 public string? Bastionhost { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom beebot endpoints.
             /// </summary>
                 public string? Beebot { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom bpstudio endpoints.
             /// </summary>
                 public string? Bpstudio { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom BrainIndustrial endpoints.
             /// </summary>
                 public string? BrainIndustrial { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom BSSOPENAPI endpoints.
             /// </summary>
                 public string? Bssopenapi { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom CAS endpoints.
             /// </summary>
                 public string? Cas { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cassandra endpoints.
             /// </summary>
                 public string? Cassandra { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cbn endpoints.
             /// </summary>
                 public string? Cbn { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cbs endpoints.
             /// </summary>
                 public string? Cbs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cddc endpoints.
             /// </summary>
                 public string? Cddc { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom CDN endpoints.
             /// </summary>
                 public string? Cdn { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cds endpoints.
             /// </summary>
                 public string? Cds { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom beebot endpoints.
             /// </summary>
                 public string? Chatbot { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom clickhouse endpoints.
             /// </summary>
                 public string? Clickhouse { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Api Gateway endpoints.
             /// </summary>
                 public string? Cloudapi { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cloudauth endpoints.
             /// </summary>
                 public string? Cloudauth { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cloudfirewall endpoints.
             /// </summary>
                 public string? Cloudfirewall { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cloudfw endpoints.
             /// </summary>
                 public string? Cloudfw { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cloudphone endpoints.
             /// </summary>
                 public string? Cloudphone { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cloudsso endpoints.
             /// </summary>
                 public string? Cloudsso { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Cloud Monitor endpoints.
             /// </summary>
                 public string? Cms { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom computenest endpoints.
             /// </summary>
                 public string? Computenest { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom config endpoints.
             /// </summary>
                 public string? Config { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Container Registry endpoints.
             /// </summary>
                 public string? Cr { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Container Service endpoints.
             /// </summary>
                 public string? Cs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom das endpoints.
             /// </summary>
                 public string? Das { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Datahub endpoints.
             /// </summary>
                 public string? Datahub { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dataworkspublic endpoints.
             /// </summary>
                 public string? DataworksPublic { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dataworkspublic endpoints.
             /// </summary>
                 public string? Dataworkspublic { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dbfs endpoints.
             /// </summary>
                 public string? Dbfs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom cbs endpoints.
             /// </summary>
                 public string? Dbs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dcdn endpoints.
             /// </summary>
                 public string? Dcdn { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ddosbasic endpoints.
             /// </summary>
                 public string? Ddosbasic { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom DDOSBGP endpoints.
             /// </summary>
                 public string? Ddosbgp { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom DDOSCOO endpoints.
             /// </summary>
                 public string? Ddoscoo { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom MongoDB endpoints.
             /// </summary>
                 public string? Dds { get; set; } = null!;
                 public string? DevopsRdc { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom devopsrdc endpoints.
             /// </summary>
                 public string? Devopsrdc { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom alidfs endpoints.
             /// </summary>
                 public string? Dfs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dg endpoints.
             /// </summary>
                 public string? Dg { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dm endpoints.
             /// </summary>
                 public string? Dm { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom DmsEnterprise endpoints.
             /// </summary>
                 public string? DmsEnterprise { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dmsenterprise endpoints.
             /// </summary>
                 public string? Dmsenterprise { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom DNS endpoints.
             /// </summary>
                 public string? Dns { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom DRDS endpoints.
             /// </summary>
                 public string? Drds { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dts endpoints.
             /// </summary>
                 public string? Dts { get; set; } = null!;
                 public string? Dysms { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom dysmsapi endpoints.
             /// </summary>
                 public string? Dysmsapi { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom eais endpoints.
             /// </summary>
                 public string? Eais { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ebs endpoints.
             /// </summary>
                 public string? Ebs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom gwsecd endpoints.
             /// </summary>
                 public string? Ecd { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom eci endpoints.
             /// </summary>
                 public string? Eci { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ECS endpoints.
             /// </summary>
                 public string? Ecs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom edas endpoints.
             /// </summary>
                 public string? Edas { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom edasschedulerx endpoints.
             /// </summary>
                 public string? Edasschedulerx { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom edsuser endpoints.
             /// </summary>
                 public string? EdsUser { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom edsuser endpoints.
             /// </summary>
                 public string? Edsuser { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom eflo endpoints.
             /// </summary>
                 public string? Eflo { get; set; } = null!;
                 public string? EfloCnp { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom efloctrl endpoints.
             /// </summary>
                 public string? EfloController { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ehpc endpoints.
             /// </summary>
                 public string? Ehpc { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ehs endpoints.
             /// </summary>
                 public string? Ehs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom eipanycast endpoints.
             /// </summary>
                 public string? Eipanycast { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Elasticsearch endpoints.
             /// </summary>
                 public string? Elasticsearch { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom EMR endpoints.
             /// </summary>
                 public string? Emr { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ens endpoints.
             /// </summary>
                 public string? Ens { get; set; } = null!;
                 public string? Esa { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Autoscaling endpoints.
             /// </summary>
                 public string? Ess { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom EventbridgeShare endpoints.
             /// </summary>
                 public string? Eventbridge { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Function Computing endpoints.
             /// </summary>
                 public string? Fc { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Function Computing endpoints.
             /// </summary>
                 public string? FcOpen { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom fnf endpoints.
             /// </summary>
                 public string? Fnf { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ga endpoints.
             /// </summary>
                 public string? Ga { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom gaplus endpoints.
             /// </summary>
                 public string? Gaplus { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom gds endpoints.
             /// </summary>
                 public string? Gdb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom gds endpoints.
             /// </summary>
                 public string? Gds { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom GPDB endpoints.
             /// </summary>
                 public string? Gpdb { get; set; } = null!;
                 public string? Gwlb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom gwsecd endpoints.
             /// </summary>
                 public string? Gwsecd { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom hbr endpoints.
             /// </summary>
                 public string? Hbr { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom HcsSgw endpoints.
             /// </summary>
                 public string? HcsSgw { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom hitsdb endpoints.
             /// </summary>
                 public string? Hitsdb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom imm endpoints.
             /// </summary>
                 public string? Imm { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom imp endpoints.
             /// </summary>
                 public string? Imp { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ims endpoints.
             /// </summary>
                 public string? Ims { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom iot endpoints.
             /// </summary>
                 public string? Iot { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom KMS endpoints.
             /// </summary>
                 public string? Kms { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom R-KVStore endpoints.
             /// </summary>
                 public string? Kvstore { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Location Service endpoints.
             /// </summary>
                 public string? Location { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Log Service endpoints.
             /// </summary>
                 public string? Log { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Market Place endpoints.
             /// </summary>
                 public string? Market { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom MaxCompute endpoints.
             /// </summary>
                 public string? Maxcompute { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom mhub endpoints.
             /// </summary>
                 public string? Mhub { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom MNS endpoints.
             /// </summary>
                 public string? Mns { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom MNS endpoints.
             /// </summary>
                 public string? MnsOpen { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom mscopensubscription endpoints.
             /// </summary>
                 public string? Mscopensubscription { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom mse endpoints.
             /// </summary>
                 public string? Mse { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom NAS endpoints.
             /// </summary>
                 public string? Nas { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom nlb endpoints.
             /// </summary>
                 public string? Nlb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom oceanbase endpoints.
             /// </summary>
                 public string? Oceanbase { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom oceanbase endpoints.
             /// </summary>
                 public string? Oceanbasepro { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ONS endpoints.
             /// </summary>
                 public string? Ons { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom onsproxy endpoints.
             /// </summary>
                 public string? Onsproxy { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom oos endpoints.
             /// </summary>
                 public string? Oos { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom opensearch endpoints.
             /// </summary>
                 public string? Opensearch { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom OSS endpoints.
             /// </summary>
                 public string? Oss { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Table Store endpoints.
             /// </summary>
                 public string? Ots { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom PolarDB endpoints.
             /// </summary>
                 public string? Polardb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom DRDS endpoints.
             /// </summary>
                 public string? Polardbx { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom privatelink endpoints.
             /// </summary>
                 public string? Privatelink { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom Private Zone endpoints.
             /// </summary>
                 public string? Pvtz { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom quickbi endpoints.
             /// </summary>
                 public string? Quickbi { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom quickbi endpoints.
             /// </summary>
                 public string? QuickbiPublic { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom quotas endpoints.
             /// </summary>
                 public string? Quotas { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom RKvstore endpoints.
             /// </summary>
                 public string? RKvstore { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom RAM endpoints.
             /// </summary>
                 public string? Ram { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom RDS endpoints.
             /// </summary>
                 public string? Rds { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom redisa endpoints.
             /// </summary>
                 public string? Redisa { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom resourcemanager endpoints.
             /// </summary>
                 public string? Resourcemanager { get; set; } = null!;
                 public string? Resourcesharing { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom resourcesharing endpoints.
             /// </summary>
                 public string? Ressharing { get; set; } = null!;
                 public string? Rocketmq { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom ros endpoints.
             /// </summary>
                 public string? Ros { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom serverless endpoints.
             /// </summary>
                 public string? Sae { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom sas endpoints.
             /// </summary>
                 public string? Sas { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom scdn endpoints.
             /// </summary>
                 public string? Scdn { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom edasschedulerx endpoints.
             /// </summary>
                 public string? Schedulerx2 { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom sddp endpoints.
             /// </summary>
                 public string? Sddp { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom selectdb endpoints.
             /// </summary>
                 public string? Selectdb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom serverless endpoints.
             /// </summary>
                 public string? Serverless { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom srvcatalog endpoints.
             /// </summary>
                 public string? Servicecatalog { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom servicemesh endpoints.
             /// </summary>
                 public string? Servicemesh { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom sgw endpoints.
             /// </summary>
                 public string? Sgw { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom SLB endpoints.
             /// </summary>
                 public string? Slb { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom smartag endpoints.
             /// </summary>
                 public string? Smartag { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom srvcatalog endpoints.
             /// </summary>
                 public string? Srvcatalog { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom STS endpoints.
             /// </summary>
                 public string? Sts { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom swas endpoints.
             /// </summary>
                 public string? Swas { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom swas endpoints.
             /// </summary>
                 public string? SwasOpen { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom tag endpoints.
             /// </summary>
                 public string? Tag { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom vod endpoints.
             /// </summary>
                 public string? Vod { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom VPC and VPN endpoints.
             /// </summary>
                 public string? Vpc { get; set; } = null!;
                 public string? Vpcipam { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom vpcpeer endpoints.
             /// </summary>
                 public string? Vpcpeer { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom vs endpoints.
             /// </summary>
                 public string? Vs { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom waf endpoints.
             /// </summary>
                 public string? Waf { get; set; } = null!;
             /// <summary>
-            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
+            /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom WafOpenapi endpoints.
             /// </summary>
                 public string? WafOpenapi { get; set; } = null!;
             }

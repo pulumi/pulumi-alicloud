@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.ActionTrail
         }
 
         /// <summary>
-        /// Whether to show organization tracking. Default to `false`.
+        /// Whether to show organization tracking. Default to `False`.
         /// </summary>
         [Input("includeOrganizationTrail")]
         public bool? IncludeOrganizationTrail { get; set; }
 
         /// <summary>
-        /// Whether to show shadow tracking. Default to `false`.
+        /// Whether to show shadow tracking. Default to `False`.
         /// </summary>
         [Input("includeShadowTrails")]
         public bool? IncludeShadowTrails { get; set; }
@@ -168,13 +168,13 @@ namespace Pulumi.AliCloud.ActionTrail
         }
 
         /// <summary>
-        /// Whether to show organization tracking. Default to `false`.
+        /// Whether to show organization tracking. Default to `False`.
         /// </summary>
         [Input("includeOrganizationTrail")]
         public Input<bool>? IncludeOrganizationTrail { get; set; }
 
         /// <summary>
-        /// Whether to show shadow tracking. Default to `false`.
+        /// Whether to show shadow tracking. Default to `False`.
         /// </summary>
         [Input("includeShadowTrails")]
         public Input<bool>? IncludeShadowTrails { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetTrailsResult
     {
         /// <summary>
-        /// Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
+        /// Field `Actiontrails` has been deprecated from version 1.95.0. Use `Trails` instead."
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTrailsActiontrailResult> Actiontrails;
         /// <summary>

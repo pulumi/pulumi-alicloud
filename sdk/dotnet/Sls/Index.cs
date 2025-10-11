@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string?> Keys { get; private set; } = null!;
 
         /// <summary>
-        /// Full-text index See `line` below.
+        /// Full-text index See `Line` below.
         /// </summary>
         [Output("line")]
         public Output<Outputs.IndexLine?> Line { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? Keys { get; set; }
 
         /// <summary>
-        /// Full-text index See `line` below.
+        /// Full-text index See `Line` below.
         /// </summary>
         [Input("line")]
         public Input<Inputs.IndexLineArgs>? Line { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? Keys { get; set; }
 
         /// <summary>
-        /// Full-text index See `line` below.
+        /// Full-text index See `Line` below.
         /// </summary>
         [Input("line")]
         public Input<Inputs.IndexLineGetArgs>? Line { get; set; }

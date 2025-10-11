@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> AuthType { get; private set; } = null!;
 
         /// <summary>
-        /// constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
+        /// constant_parameters defines the constant parameters of the api. See `ConstantParameters` below.
         /// </summary>
         [Output("constantParameters")]
         public Output<ImmutableArray<Outputs.ApiConstantParameter>> ConstantParameters { get; private set; } = null!;
@@ -110,13 +110,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
+        /// fc_service_config defines the config when ServiceType selected 'FunctionCompute'. See `FcServiceConfig` below.
         /// </summary>
         [Output("fcServiceConfig")]
         public Output<Outputs.ApiFcServiceConfig?> FcServiceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to prevent API replay attack. Default value: `false`.
+        /// Whether to prevent API replay attack. Default value: `False`.
         /// </summary>
         [Output("forceNonceCheck")]
         public Output<bool> ForceNonceCheck { get; private set; } = null!;
@@ -128,19 +128,19 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        /// http_service_config defines the config when ServiceType selected 'HTTP'. See `HttpServiceConfig` below.
         /// </summary>
         [Output("httpServiceConfig")]
         public Output<Outputs.ApiHttpServiceConfig?> HttpServiceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        /// http_vpc_service_config defines the config when ServiceType selected 'HTTP-VPC'. See `HttpVpcServiceConfig` below.
         /// </summary>
         [Output("httpVpcServiceConfig")]
         public Output<Outputs.ApiHttpVpcServiceConfig?> HttpVpcServiceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
+        /// http_service_config defines the config when ServiceType selected 'MOCK'. See `MockServiceConfig` below.
         /// </summary>
         [Output("mockServiceConfig")]
         public Output<Outputs.ApiMockServiceConfig?> MockServiceConfig { get; private set; } = null!;
@@ -152,13 +152,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Request_config defines how users can send requests to your API. See `request_config` below.
+        /// Request_config defines how users can send requests to your API. See `RequestConfig` below.
         /// </summary>
         [Output("requestConfig")]
         public Output<Outputs.ApiRequestConfig> RequestConfig { get; private set; } = null!;
 
         /// <summary>
-        /// request_parameters defines the request parameters of the api. See `request_parameters` below.
+        /// request_parameters defines the request parameters of the api. See `RequestParameters` below.
         /// </summary>
         [Output("requestParameters")]
         public Output<ImmutableArray<Outputs.ApiRequestParameter>> RequestParameters { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<ImmutableArray<string>> StageNames { get; private set; } = null!;
 
         /// <summary>
-        /// system_parameters defines the system parameters of the api. See `system_parameters` below.
+        /// system_parameters defines the system parameters of the api. See `SystemParameters` below.
         /// </summary>
         [Output("systemParameters")]
         public Output<ImmutableArray<Outputs.ApiSystemParameter>> SystemParameters { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.ApiConstantParameterArgs>? _constantParameters;
 
         /// <summary>
-        /// constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
+        /// constant_parameters defines the constant parameters of the api. See `ConstantParameters` below.
         /// </summary>
         public InputList<Inputs.ApiConstantParameterArgs> ConstantParameters
         {
@@ -252,13 +252,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
+        /// fc_service_config defines the config when ServiceType selected 'FunctionCompute'. See `FcServiceConfig` below.
         /// </summary>
         [Input("fcServiceConfig")]
         public Input<Inputs.ApiFcServiceConfigArgs>? FcServiceConfig { get; set; }
 
         /// <summary>
-        /// Whether to prevent API replay attack. Default value: `false`.
+        /// Whether to prevent API replay attack. Default value: `False`.
         /// </summary>
         [Input("forceNonceCheck")]
         public Input<bool>? ForceNonceCheck { get; set; }
@@ -270,19 +270,19 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        /// http_service_config defines the config when ServiceType selected 'HTTP'. See `HttpServiceConfig` below.
         /// </summary>
         [Input("httpServiceConfig")]
         public Input<Inputs.ApiHttpServiceConfigArgs>? HttpServiceConfig { get; set; }
 
         /// <summary>
-        /// http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        /// http_vpc_service_config defines the config when ServiceType selected 'HTTP-VPC'. See `HttpVpcServiceConfig` below.
         /// </summary>
         [Input("httpVpcServiceConfig")]
         public Input<Inputs.ApiHttpVpcServiceConfigArgs>? HttpVpcServiceConfig { get; set; }
 
         /// <summary>
-        /// http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
+        /// http_service_config defines the config when ServiceType selected 'MOCK'. See `MockServiceConfig` below.
         /// </summary>
         [Input("mockServiceConfig")]
         public Input<Inputs.ApiMockServiceConfigArgs>? MockServiceConfig { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Request_config defines how users can send requests to your API. See `request_config` below.
+        /// Request_config defines how users can send requests to your API. See `RequestConfig` below.
         /// </summary>
         [Input("requestConfig", required: true)]
         public Input<Inputs.ApiRequestConfigArgs> RequestConfig { get; set; } = null!;
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.ApiRequestParameterArgs>? _requestParameters;
 
         /// <summary>
-        /// request_parameters defines the request parameters of the api. See `request_parameters` below.
+        /// request_parameters defines the request parameters of the api. See `RequestParameters` below.
         /// </summary>
         public InputList<Inputs.ApiRequestParameterArgs> RequestParameters
         {
@@ -333,7 +333,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.ApiSystemParameterArgs>? _systemParameters;
 
         /// <summary>
-        /// system_parameters defines the system parameters of the api. See `system_parameters` below.
+        /// system_parameters defines the system parameters of the api. See `SystemParameters` below.
         /// </summary>
         public InputList<Inputs.ApiSystemParameterArgs> SystemParameters
         {
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.ApiConstantParameterGetArgs>? _constantParameters;
 
         /// <summary>
-        /// constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
+        /// constant_parameters defines the constant parameters of the api. See `ConstantParameters` below.
         /// </summary>
         public InputList<Inputs.ApiConstantParameterGetArgs> ConstantParameters
         {
@@ -380,13 +380,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
+        /// fc_service_config defines the config when ServiceType selected 'FunctionCompute'. See `FcServiceConfig` below.
         /// </summary>
         [Input("fcServiceConfig")]
         public Input<Inputs.ApiFcServiceConfigGetArgs>? FcServiceConfig { get; set; }
 
         /// <summary>
-        /// Whether to prevent API replay attack. Default value: `false`.
+        /// Whether to prevent API replay attack. Default value: `False`.
         /// </summary>
         [Input("forceNonceCheck")]
         public Input<bool>? ForceNonceCheck { get; set; }
@@ -398,19 +398,19 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        /// http_service_config defines the config when ServiceType selected 'HTTP'. See `HttpServiceConfig` below.
         /// </summary>
         [Input("httpServiceConfig")]
         public Input<Inputs.ApiHttpServiceConfigGetArgs>? HttpServiceConfig { get; set; }
 
         /// <summary>
-        /// http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        /// http_vpc_service_config defines the config when ServiceType selected 'HTTP-VPC'. See `HttpVpcServiceConfig` below.
         /// </summary>
         [Input("httpVpcServiceConfig")]
         public Input<Inputs.ApiHttpVpcServiceConfigGetArgs>? HttpVpcServiceConfig { get; set; }
 
         /// <summary>
-        /// http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
+        /// http_service_config defines the config when ServiceType selected 'MOCK'. See `MockServiceConfig` below.
         /// </summary>
         [Input("mockServiceConfig")]
         public Input<Inputs.ApiMockServiceConfigGetArgs>? MockServiceConfig { get; set; }
@@ -422,7 +422,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Request_config defines how users can send requests to your API. See `request_config` below.
+        /// Request_config defines how users can send requests to your API. See `RequestConfig` below.
         /// </summary>
         [Input("requestConfig")]
         public Input<Inputs.ApiRequestConfigGetArgs>? RequestConfig { get; set; }
@@ -431,7 +431,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.ApiRequestParameterGetArgs>? _requestParameters;
 
         /// <summary>
-        /// request_parameters defines the request parameters of the api. See `request_parameters` below.
+        /// request_parameters defines the request parameters of the api. See `RequestParameters` below.
         /// </summary>
         public InputList<Inputs.ApiRequestParameterGetArgs> RequestParameters
         {
@@ -461,7 +461,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.ApiSystemParameterGetArgs>? _systemParameters;
 
         /// <summary>
-        /// system_parameters defines the system parameters of the api. See `system_parameters` below.
+        /// system_parameters defines the system parameters of the api. See `SystemParameters` below.
         /// </summary>
         public InputList<Inputs.ApiSystemParameterGetArgs> SystemParameters
         {

@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Gpdb
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.187.0. New field `ZoneId` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -97,13 +97,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        /// Whether to load the sample dataset after the instance is created. Valid values: `True`, `False`.
         /// </summary>
         [Output("createSampleData")]
         public Output<bool> CreateSampleData { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        /// Specifies whether to enable or disable data sharing. Default value: `Closed`. Valid values:
         /// </summary>
         [Output("dataShareStatus")]
         public Output<string> DataShareStatus { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The ID of the encryption key.
-        /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        /// Field `InstanceChargeType` has been deprecated from provider version 1.187.0. New field `PaymentType` instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -180,17 +180,17 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The specification of segment nodes. Valid values:
-        /// - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-        /// - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        /// - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+        /// - If `DbInstanceCategory` is set to `HighAvailability`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// - If `DbInstanceCategory` is set to `Basic`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         /// </summary>
         [Output("instanceSpec")]
         public Output<string?> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The ip whitelist. See `ip_whitelist` below.
-        /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
+        /// The ip whitelist. See `IpWhitelist` below.
+        /// Default to creating a whitelist group with the group name "default" and SecurityIpList "127.0.0.1".
         /// </summary>
         [Output("ipWhitelists")]
         public Output<ImmutableArray<Outputs.InstanceIpWhitelist>> IpWhitelists { get; private set; } = null!;
@@ -214,13 +214,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<int> MasterCu { get; private set; } = null!;
 
         /// <summary>
-        /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        /// The number of Master nodes. **NOTE:** Field `MasterNodeNum` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Output("masterNodeNum")]
         public Output<int?> MasterNodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters. See `parameters` below.
+        /// The parameters. See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`. Valid values: `Year`, `Month`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -244,13 +244,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        /// The private ip address. **NOTE:** Field `PrivateIpAddress` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string?> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        /// The type of the product. Default value: `Standard`. Valid values: `Standard`, `cost-effective`.
         /// </summary>
         [Output("prodType")]
         public Output<string> ProdType { get; private set; } = null!;
@@ -268,13 +268,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> ResourceManagementMode { get; private set; } = null!;
 
         /// <summary>
-        /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        /// Field `SecurityIpList` has been deprecated from provider version 1.187.0. New field `IpWhitelist` instead.
         /// </summary>
         [Output("securityIpLists")]
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        /// The ESSD cloud disk performance level. Valid values: `Pl0`, `Pl1`, `Pl2`.
         /// </summary>
         [Output("segDiskPerformanceLevel")]
         public Output<string> SegDiskPerformanceLevel { get; private set; } = null!;
@@ -287,13 +287,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<int> SegNodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        /// The seg storage type. Valid values: `CloudEssd`. **NOTE:** If `DbInstanceMode` is set to `StorageElastic`, `SegStorageType` is required. From version 1.233.1, `SegStorageType` cannot be modified, or set to `CloudEfficiency`. `SegStorageType` can only be set to `CloudEssd`.
         /// </summary>
         [Output("segStorageType")]
         public Output<string> SegStorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `ServerlessMode` is valid only when `DbInstanceMode` is set to `Serverless`.
         /// </summary>
         [Output("serverlessMode")]
         public Output<string> ServerlessMode { get; private set; } = null!;
@@ -324,13 +324,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`.
         /// </summary>
         [Output("usedTime")]
         public Output<string?> UsedTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        /// Specifies whether to enable vector engine optimization. Default value: `Disabled`. Valid values: `Enabled` and `Disabled`.
         /// </summary>
         [Output("vectorConfigurationStatus")]
         public Output<string> VectorConfigurationStatus { get; private set; } = null!;
@@ -400,19 +400,19 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.187.0. New field `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        /// Whether to load the sample dataset after the instance is created. Valid values: `True`, `False`.
         /// </summary>
         [Input("createSampleData")]
         public Input<bool>? CreateSampleData { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        /// Specifies whether to enable or disable data sharing. Default value: `Closed`. Valid values:
         /// </summary>
         [Input("dataShareStatus")]
         public Input<string>? DataShareStatus { get; set; }
@@ -445,7 +445,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The ID of the encryption key.
-        /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -470,7 +470,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        /// Field `InstanceChargeType` has been deprecated from provider version 1.187.0. New field `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -489,9 +489,9 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The specification of segment nodes. Valid values:
-        /// - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-        /// - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        /// - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+        /// - If `DbInstanceCategory` is set to `HighAvailability`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// - If `DbInstanceCategory` is set to `Basic`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         /// </summary>
         [Input("instanceSpec")]
@@ -501,8 +501,8 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceIpWhitelistArgs>? _ipWhitelists;
 
         /// <summary>
-        /// The ip whitelist. See `ip_whitelist` below.
-        /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
+        /// The ip whitelist. See `IpWhitelist` below.
+        /// Default to creating a whitelist group with the group name "default" and SecurityIpList "127.0.0.1".
         /// </summary>
         public InputList<Inputs.InstanceIpWhitelistArgs> IpWhitelists
         {
@@ -529,7 +529,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? MasterCu { get; set; }
 
         /// <summary>
-        /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        /// The number of Master nodes. **NOTE:** Field `MasterNodeNum` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
@@ -538,7 +538,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// The parameters. See `parameters` below.
+        /// The parameters. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterArgs> Parameters
         {
@@ -553,19 +553,19 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`. Valid values: `Year`, `Month`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        /// The private ip address. **NOTE:** Field `PrivateIpAddress` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        /// The type of the product. Default value: `Standard`. Valid values: `Standard`, `cost-effective`.
         /// </summary>
         [Input("prodType")]
         public Input<string>? ProdType { get; set; }
@@ -586,7 +586,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<string>? _securityIpLists;
 
         /// <summary>
-        /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        /// Field `SecurityIpList` has been deprecated from provider version 1.187.0. New field `IpWhitelist` instead.
         /// </summary>
         [Obsolete(@"Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.")]
         public InputList<string> SecurityIpLists
@@ -596,7 +596,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        /// The ESSD cloud disk performance level. Valid values: `Pl0`, `Pl1`, `Pl2`.
         /// </summary>
         [Input("segDiskPerformanceLevel")]
         public Input<string>? SegDiskPerformanceLevel { get; set; }
@@ -609,13 +609,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? SegNodeNum { get; set; }
 
         /// <summary>
-        /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        /// The seg storage type. Valid values: `CloudEssd`. **NOTE:** If `DbInstanceMode` is set to `StorageElastic`, `SegStorageType` is required. From version 1.233.1, `SegStorageType` cannot be modified, or set to `CloudEfficiency`. `SegStorageType` can only be set to `CloudEssd`.
         /// </summary>
         [Input("segStorageType")]
         public Input<string>? SegStorageType { get; set; }
 
         /// <summary>
-        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `ServerlessMode` is valid only when `DbInstanceMode` is set to `Serverless`.
         /// </summary>
         [Input("serverlessMode")]
         public Input<string>? ServerlessMode { get; set; }
@@ -646,13 +646,13 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        /// Specifies whether to enable vector engine optimization. Default value: `Disabled`. Valid values: `Enabled` and `Disabled`.
         /// </summary>
         [Input("vectorConfigurationStatus")]
         public Input<string>? VectorConfigurationStatus { get; set; }
@@ -684,7 +684,7 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.187.0. New field `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -696,13 +696,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        /// Whether to load the sample dataset after the instance is created. Valid values: `True`, `False`.
         /// </summary>
         [Input("createSampleData")]
         public Input<bool>? CreateSampleData { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        /// Specifies whether to enable or disable data sharing. Default value: `Closed`. Valid values:
         /// </summary>
         [Input("dataShareStatus")]
         public Input<string>? DataShareStatus { get; set; }
@@ -735,7 +735,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The ID of the encryption key.
-        /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -760,7 +760,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        /// Field `InstanceChargeType` has been deprecated from provider version 1.187.0. New field `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -779,9 +779,9 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The specification of segment nodes. Valid values:
-        /// - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-        /// - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        /// - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+        /// - If `DbInstanceCategory` is set to `HighAvailability`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// - If `DbInstanceCategory` is set to `Basic`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         /// </summary>
         [Input("instanceSpec")]
@@ -791,8 +791,8 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceIpWhitelistGetArgs>? _ipWhitelists;
 
         /// <summary>
-        /// The ip whitelist. See `ip_whitelist` below.
-        /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
+        /// The ip whitelist. See `IpWhitelist` below.
+        /// Default to creating a whitelist group with the group name "default" and SecurityIpList "127.0.0.1".
         /// </summary>
         public InputList<Inputs.InstanceIpWhitelistGetArgs> IpWhitelists
         {
@@ -819,7 +819,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? MasterCu { get; set; }
 
         /// <summary>
-        /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        /// The number of Master nodes. **NOTE:** Field `MasterNodeNum` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
@@ -828,7 +828,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// The parameters. See `parameters` below.
+        /// The parameters. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
         {
@@ -843,7 +843,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`. Valid values: `Year`, `Month`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -855,13 +855,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        /// The private ip address. **NOTE:** Field `PrivateIpAddress` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        /// The type of the product. Default value: `Standard`. Valid values: `Standard`, `cost-effective`.
         /// </summary>
         [Input("prodType")]
         public Input<string>? ProdType { get; set; }
@@ -882,7 +882,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<string>? _securityIpLists;
 
         /// <summary>
-        /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        /// Field `SecurityIpList` has been deprecated from provider version 1.187.0. New field `IpWhitelist` instead.
         /// </summary>
         [Obsolete(@"Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.")]
         public InputList<string> SecurityIpLists
@@ -892,7 +892,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        /// The ESSD cloud disk performance level. Valid values: `Pl0`, `Pl1`, `Pl2`.
         /// </summary>
         [Input("segDiskPerformanceLevel")]
         public Input<string>? SegDiskPerformanceLevel { get; set; }
@@ -905,13 +905,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? SegNodeNum { get; set; }
 
         /// <summary>
-        /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        /// The seg storage type. Valid values: `CloudEssd`. **NOTE:** If `DbInstanceMode` is set to `StorageElastic`, `SegStorageType` is required. From version 1.233.1, `SegStorageType` cannot be modified, or set to `CloudEfficiency`. `SegStorageType` can only be set to `CloudEssd`.
         /// </summary>
         [Input("segStorageType")]
         public Input<string>? SegStorageType { get; set; }
 
         /// <summary>
-        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `ServerlessMode` is valid only when `DbInstanceMode` is set to `Serverless`.
         /// </summary>
         [Input("serverlessMode")]
         public Input<string>? ServerlessMode { get; set; }
@@ -948,13 +948,13 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        /// Specifies whether to enable vector engine optimization. Default value: `Disabled`. Valid values: `Enabled` and `Disabled`.
         /// </summary>
         [Input("vectorConfigurationStatus")]
         public Input<string>? VectorConfigurationStatus { get; set; }

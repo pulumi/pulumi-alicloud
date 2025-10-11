@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? Dip;
         /// <summary>
-        /// The health check on status. Valid values: `true`, `false`.
+        /// The health check on status. Valid values: `True`, `False`.
         /// </summary>
         public readonly string? Enable;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? Sip;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
         /// </summary>
         public readonly string? Status;
 

@@ -226,14 +226,14 @@ public class Custom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.createMode);
     }
     /**
-     * Data disk See `data_disk` below.
+     * Data disk See `dataDisk` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,CustomDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomDataDisk>> dataDisks;
 
     /**
-     * @return Data disk See `data_disk` below.
+     * @return Data disk See `dataDisk` below.
      * 
      */
     public Output<Optional<List<CustomDataDisk>>> dataDisks() {
@@ -596,14 +596,14 @@ public class Custom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.supportCase);
     }
     /**
-     * System disk specifications. See `system_disk` below.
+     * System disk specifications. See `systemDisk` below.
      * 
      */
     @Export(name="systemDisk", refs={CustomSystemDisk.class}, tree="[0]")
     private Output</* @Nullable */ CustomSystemDisk> systemDisk;
 
     /**
-     * @return System disk specifications. See `system_disk` below.
+     * @return System disk specifications. See `systemDisk` below.
      * 
      */
     public Output<Optional<CustomSystemDisk>> systemDisk() {

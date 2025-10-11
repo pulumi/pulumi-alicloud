@@ -17,7 +17,7 @@ public final class GetLifecycleHooksHook {
      */
     private String defaultResult;
     /**
-     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
+     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
      * 
      */
     private Integer heartbeatTimeout;
@@ -61,7 +61,7 @@ public final class GetLifecycleHooksHook {
         return this.defaultResult;
     }
     /**
-     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
+     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
      * 
      */
     public Integer heartbeatTimeout() {

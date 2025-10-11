@@ -19,7 +19,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
     public static final ContainerGroupVolumeArgs Empty = new ContainerGroupVolumeArgs();
 
     /**
-     * The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+     * The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
      * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
@@ -27,7 +27,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs>> configFileVolumeConfigFileToPaths;
 
     /**
-     * @return The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+     * @return The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
      * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
@@ -220,7 +220,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
          * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
@@ -232,7 +232,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
          * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
@@ -243,7 +243,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
          * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder

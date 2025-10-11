@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.174.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
  * ## Import
  * 
  * Service Mesh User Permission can be imported using the id, e.g.
@@ -48,14 +52,14 @@ public class UserPermission extends com.pulumi.resources.CustomResource {
         return this.permissions;
     }
     /**
-     * The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      * 
      */
     @Export(name="subAccountUserId", refs={String.class}, tree="[0]")
     private Output<String> subAccountUserId;
 
     /**
-     * @return The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * @return The configuration of the Load Balancer. See the following `Block loadBalancer`.
      * 
      */
     public Output<String> subAccountUserId() {

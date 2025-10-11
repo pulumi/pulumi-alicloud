@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class GetBucketsBucketResult
     {
         /// <summary>
-        /// Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
+        /// Bucket access control list. Possible values: `Private`, `public-read` and `public-read-write`.
         /// </summary>
         public readonly string Acl;
         /// <summary>

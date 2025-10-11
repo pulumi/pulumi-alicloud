@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string ConfigRuleId;
         /// <summary>
-        /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+        /// Field `ConfigRuleState` has been deprecated from provider version 1.124.1. New field `Status` instead.
         /// </summary>
         public readonly string ConfigRuleState;
         /// <summary>

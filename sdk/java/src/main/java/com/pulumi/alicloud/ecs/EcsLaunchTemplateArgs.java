@@ -40,14 +40,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * @return Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -55,14 +55,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * @return The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -70,14 +70,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The list of data disks created with instance. See `data_disks` below.
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<EcsLaunchTemplateDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `data_disks` below.
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Optional<Output<List<EcsLaunchTemplateDataDiskArgs>>> dataDisks() {
@@ -85,14 +85,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
      * 
      */
     @Import(name="defaultVersionNumber")
     private @Nullable Output<Integer> defaultVersionNumber;
 
     /**
-     * @return The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * @return The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
      * 
      */
     public Optional<Output<Integer>> defaultVersionNumber() {
@@ -163,7 +163,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      * 
      */
     @Import(name="httpEndpoint")
@@ -173,7 +173,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
      * @return Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      * 
      */
     public Optional<Output<String>> httpEndpoint() {
@@ -181,14 +181,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     @Import(name="httpPutResponseHopLimit")
     private @Nullable Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     public Optional<Output<Integer>> httpPutResponseHopLimit() {
@@ -199,7 +199,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      * 
      */
     @Import(name="httpTokens")
@@ -209,7 +209,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
      * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      * 
      */
     public Optional<Output<String>> httpTokens() {
@@ -232,14 +232,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The options of images. See `image_options` below.
+     * The options of images. See `imageOptions` below.
      * 
      */
     @Import(name="imageOptions")
     private @Nullable Output<EcsLaunchTemplateImageOptionsArgs> imageOptions;
 
     /**
-     * @return The options of images. See `image_options` below.
+     * @return The options of images. See `imageOptions` below.
      * 
      */
     public Optional<Output<EcsLaunchTemplateImageOptionsArgs>> imageOptions() {
@@ -292,14 +292,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * @return Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -401,7 +401,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -412,7 +412,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -424,14 +424,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The list of network interfaces created with instance. See `network_interfaces` below.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<EcsLaunchTemplateNetworkInterfacesArgs> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance. See `network_interfaces` below.
+     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     public Optional<Output<EcsLaunchTemplateNetworkInterfacesArgs>> networkInterfaces() {
@@ -470,8 +470,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     @Import(name="period")
@@ -479,8 +479,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -638,14 +638,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The System Disk. See `system_disk` below.
+     * The System Disk. See `systemDisk` below.
      * 
      */
     @Import(name="systemDisk")
     private @Nullable Output<EcsLaunchTemplateSystemDiskArgs> systemDisk;
 
     /**
-     * @return The System Disk. See `system_disk` below.
+     * @return The System Disk. See `systemDisk` below.
      * 
      */
     public Optional<Output<EcsLaunchTemplateSystemDiskArgs>> systemDisk() {
@@ -653,7 +653,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -664,7 +664,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -676,7 +676,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -687,7 +687,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> systemDiskDescription;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -699,7 +699,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -710,7 +710,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> systemDiskName;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -722,7 +722,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -733,7 +733,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> systemDiskSize;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -794,14 +794,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
      * 
      */
     @Import(name="updateDefaultVersionNumber")
     private @Nullable Output<Boolean> updateDefaultVersionNumber;
 
     /**
-     * @return Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * @return Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
      * 
      */
     public Optional<Output<Boolean>> updateDefaultVersionNumber() {
@@ -824,7 +824,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
@@ -835,7 +835,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> userdata;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * @return It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
@@ -1005,7 +1005,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenew Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -1016,7 +1016,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenew Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -1026,7 +1026,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewPeriod The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+         * @param autoRenewPeriod The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
          * 
          * @return builder
          * 
@@ -1037,7 +1037,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewPeriod The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+         * @param autoRenewPeriod The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
          * 
          * @return builder
          * 
@@ -1047,7 +1047,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1058,7 +1058,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1068,7 +1068,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1078,7 +1078,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defaultVersionNumber The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+         * @param defaultVersionNumber The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
          * 
          * @return builder
          * 
@@ -1089,7 +1089,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defaultVersionNumber The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+         * @param defaultVersionNumber The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
          * 
          * @return builder
          * 
@@ -1186,7 +1186,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * @param httpEndpoint Whether to enable access to instance metadata. Valid values:
          * - enabled: Enabled.
          * - disabled: Disabled.
-         *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+         *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
          * 
          * @return builder
          * 
@@ -1200,7 +1200,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * @param httpEndpoint Whether to enable access to instance metadata. Valid values:
          * - enabled: Enabled.
          * - disabled: Disabled.
-         *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+         *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
          * 
          * @return builder
          * 
@@ -1210,7 +1210,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
          * 
          * @return builder
          * 
@@ -1221,7 +1221,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
          * 
          * @return builder
          * 
@@ -1234,7 +1234,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
          * - optional: Not mandatory.
          * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-         *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+         *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
          * 
          * @return builder
          * 
@@ -1248,7 +1248,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
          * - optional: Not mandatory.
          * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-         *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+         *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
          * 
          * @return builder
          * 
@@ -1279,7 +1279,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param imageOptions The options of images. See `image_options` below.
+         * @param imageOptions The options of images. See `imageOptions` below.
          * 
          * @return builder
          * 
@@ -1290,7 +1290,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param imageOptions The options of images. See `image_options` below.
+         * @param imageOptions The options of images. See `imageOptions` below.
          * 
          * @return builder
          * 
@@ -1363,7 +1363,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceType Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+         * @param instanceType Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
          * 
          * @return builder
          * 
@@ -1374,7 +1374,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceType Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+         * @param instanceType Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
          * 
          * @return builder
          * 
@@ -1514,7 +1514,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
          * 
          * @return builder
          * 
@@ -1529,7 +1529,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
          * 
          * @return builder
          * 
@@ -1543,7 +1543,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
+         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1554,7 +1554,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
+         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1607,8 +1607,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param period The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-         * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-         * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+         * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+         * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
          * 
          * @return builder
          * 
@@ -1620,8 +1620,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param period The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-         * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
-         * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+         * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+         * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
          * 
          * @return builder
          * 
@@ -1851,7 +1851,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDisk The System Disk. See `system_disk` below.
+         * @param systemDisk The System Disk. See `systemDisk` below.
          * 
          * @return builder
          * 
@@ -1862,7 +1862,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDisk The System Disk. See `system_disk` below.
+         * @param systemDisk The System Disk. See `systemDisk` below.
          * 
          * @return builder
          * 
@@ -1872,7 +1872,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskCategory It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskCategory It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1887,7 +1887,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskCategory It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskCategory It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1901,7 +1901,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskDescription It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskDescription It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1916,7 +1916,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskDescription It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskDescription It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1930,7 +1930,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskName It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskName It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1945,7 +1945,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskName It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskName It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1959,7 +1959,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskSize It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskSize It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -1974,7 +1974,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDiskSize It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * @param systemDiskSize It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
          * 
          * @return builder
          * 
@@ -2055,7 +2055,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
          * 
          * @return builder
          * 
@@ -2066,7 +2066,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
          * 
          * @return builder
          * 
@@ -2097,7 +2097,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userdata It has been deprecated from version 1.120.0, and use field `user_data` instead.
+         * @param userdata It has been deprecated from version 1.120.0, and use field `userData` instead.
          * 
          * @return builder
          * 
@@ -2112,7 +2112,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userdata It has been deprecated from version 1.120.0, and use field `user_data` instead.
+         * @param userdata It has been deprecated from version 1.120.0, and use field `userData` instead.
          * 
          * @return builder
          * 

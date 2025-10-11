@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The ID of the Alibaba Cloud account that owns the VPC.
-        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `VpcOwnerId` is required.
         /// </summary>
         [Output("vpcOwnerId")]
         public Output<int> VpcOwnerId { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The ID of the Alibaba Cloud account that owns the VPC.
-        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `VpcOwnerId` is required.
         /// </summary>
         [Input("vpcOwnerId")]
         public Input<int>? VpcOwnerId { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The ID of the Alibaba Cloud account that owns the VPC.
-        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `VpcOwnerId` is required.
         /// </summary>
         [Input("vpcOwnerId")]
         public Input<int>? VpcOwnerId { get; set; }

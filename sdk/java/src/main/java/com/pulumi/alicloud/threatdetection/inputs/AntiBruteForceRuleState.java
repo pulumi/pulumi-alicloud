@@ -80,14 +80,14 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
      * 
      */
     @Import(name="protocolType")
     private @Nullable Output<AntiBruteForceRuleProtocolTypeArgs> protocolType;
 
     /**
-     * @return The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * @return The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
      * 
      */
     public Optional<Output<AntiBruteForceRuleProtocolTypeArgs>> protocolType() {
@@ -239,7 +239,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param protocolType The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+         * @param protocolType The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param protocolType The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+         * @param protocolType The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
          * 
          * @return builder
          * 

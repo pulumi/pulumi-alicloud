@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DbClusterDbClusterAccessWhiteList {
     /**
-     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
      * 
      */
     private @Nullable String dbClusterIpArrayAttribute;
@@ -29,7 +29,7 @@ public final class DbClusterDbClusterAccessWhiteList {
 
     private DbClusterDbClusterAccessWhiteList() {}
     /**
-     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
      * 
      */
     public Optional<String> dbClusterIpArrayAttribute() {

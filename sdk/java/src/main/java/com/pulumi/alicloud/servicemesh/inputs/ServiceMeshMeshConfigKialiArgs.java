@@ -155,14 +155,14 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
     }
 
     /**
-     * When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+     * When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
      * 
      */
     @Import(name="openIdConfig")
     private @Nullable Output<ServiceMeshMeshConfigKialiOpenIdConfigArgs> openIdConfig;
 
     /**
-     * @return When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+     * @return When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigKialiOpenIdConfigArgs>> openIdConfig() {
@@ -170,14 +170,14 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
     }
 
     /**
-     * When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+     * When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
      * 
      */
     @Import(name="ramOauthConfig")
     private @Nullable Output<ServiceMeshMeshConfigKialiRamOauthConfigArgs> ramOauthConfig;
 
     /**
-     * @return When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+     * @return When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigKialiRamOauthConfigArgs>> ramOauthConfig() {
@@ -185,14 +185,14 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
     }
 
     /**
-     * When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+     * When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
      * 
      */
     @Import(name="serverConfig")
     private @Nullable Output<ServiceMeshMeshConfigKialiServerConfigArgs> serverConfig;
 
     /**
-     * @return When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+     * @return When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigKialiServerConfigArgs>> serverConfig() {
@@ -456,7 +456,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param openIdConfig When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+         * @param openIdConfig When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param openIdConfig When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+         * @param openIdConfig When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ramOauthConfig When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+         * @param ramOauthConfig When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ramOauthConfig When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+         * @param ramOauthConfig When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverConfig When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+         * @param serverConfig When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverConfig When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+         * @param serverConfig When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
          * 
          * @return builder
          * 

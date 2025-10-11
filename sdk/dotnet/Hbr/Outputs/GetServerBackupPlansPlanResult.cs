@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerBackupPlansPlanDetailResult> Details;
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool Disabled;
         /// <summary>

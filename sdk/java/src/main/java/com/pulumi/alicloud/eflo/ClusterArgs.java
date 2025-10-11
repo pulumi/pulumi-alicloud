@@ -142,14 +142,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node Group List See `node_groups` below.
+     * Node Group List See `nodeGroups` below.
      * 
      */
     @Import(name="nodeGroups")
     private @Nullable Output<List<ClusterNodeGroupArgs>> nodeGroups;
 
     /**
-     * @return Node Group List See `node_groups` below.
+     * @return Node Group List See `nodeGroups` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupArgs>>> nodeGroups() {
@@ -425,7 +425,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Node Group List See `node_groups` below.
+         * @param nodeGroups Node Group List See `nodeGroups` below.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Node Group List See `node_groups` below.
+         * @param nodeGroups Node Group List See `nodeGroups` below.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Node Group List See `node_groups` below.
+         * @param nodeGroups Node Group List See `nodeGroups` below.
          * 
          * @return builder
          * 

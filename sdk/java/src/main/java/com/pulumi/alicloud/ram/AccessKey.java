@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.0.0.
  * 
- * &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.
+ * &gt; **NOTE:**  You should set the `secretFile` if you want to get the access key.
  * 
- * &gt; **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
+ * &gt; **NOTE:**  From version 1.98.0, if not set `pgpKey`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
  * 
  * ## Example Usage
  * 
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * Using `pgp_key` to encrypt the secret.
+ * Using `pgpKey` to encrypt the secret.
  * 
  * <pre>
  * {@code
@@ -216,7 +216,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
     /**
      * (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
-     * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+     * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
      * 
      */
@@ -226,7 +226,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
     /**
      * @return (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
-     * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+     * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
      * 
      */

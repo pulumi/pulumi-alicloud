@@ -97,7 +97,7 @@ public final class GetScalingRulesRule {
      */
     private String predictiveValueBehavior;
     /**
-     * @return (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+     * @return (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
      * 
      */
     private Integer predictiveValueBuffer;
@@ -251,7 +251,7 @@ public final class GetScalingRulesRule {
         return this.predictiveValueBehavior;
     }
     /**
-     * @return (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+     * @return (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
      * 
      */
     public Integer predictiveValueBuffer() {

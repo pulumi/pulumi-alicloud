@@ -46,14 +46,14 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
     }
 
     /**
-     * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+     * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
      * 
      */
     @Import(name="targetReplicas")
     private @Nullable Output<Integer> targetReplicas;
 
     /**
-     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
      * 
      */
     public Optional<Output<Integer>> targetReplicas() {
@@ -127,7 +127,7 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         }
 
         /**
-         * @param targetReplicas This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+         * @param targetReplicas This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         }
 
         /**
-         * @param targetReplicas This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+         * @param targetReplicas This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
          * 
          * @return builder
          * 

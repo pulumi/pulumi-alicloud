@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string SourceArn;
         /// <summary>
-        /// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
+        /// Type of the trigger. Valid values: `Oss`, `Log`, `Timer`, `Http`, `MnsTopic`, `CdnEvents` and `Eventbridge`.
         /// </summary>
         public readonly string Type;
 

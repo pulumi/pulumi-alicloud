@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of resource id. The element value is same as `transit_router_id`.
+        /// A list of resource id. The element value is same as `TransitRouterId`.
         /// </summary>
         public List<string> Ids
         {
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of resource id. The element value is same as `transit_router_id`.
+        /// A list of resource id. The element value is same as `TransitRouterId`.
         /// </summary>
         public InputList<string> Ids
         {

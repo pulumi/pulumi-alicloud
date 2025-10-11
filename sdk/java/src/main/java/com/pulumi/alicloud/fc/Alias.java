@@ -114,14 +114,14 @@ public class Alias extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The Function Compute alias&#39; route configuration settings. See `routing_config` below.
+     * The Function Compute alias&#39; route configuration settings. See `routingConfig` below.
      * 
      */
     @Export(name="routingConfig", refs={AliasRoutingConfig.class}, tree="[0]")
     private Output</* @Nullable */ AliasRoutingConfig> routingConfig;
 
     /**
-     * @return The Function Compute alias&#39; route configuration settings. See `routing_config` below.
+     * @return The Function Compute alias&#39; route configuration settings. See `routingConfig` below.
      * 
      */
     public Output<Optional<AliasRoutingConfig>> routingConfig() {

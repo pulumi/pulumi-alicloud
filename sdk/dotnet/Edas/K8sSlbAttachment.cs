@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+        /// The configurations of SLB attachment, which is supported for multiple configurations. See `SlbConfigs` below.
         /// </summary>
         [Output("slbConfigs")]
         public Output<ImmutableArray<Outputs.K8sSlbAttachmentSlbConfig>> SlbConfigs { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Edas
         private InputList<Inputs.K8sSlbAttachmentSlbConfigArgs>? _slbConfigs;
 
         /// <summary>
-        /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+        /// The configurations of SLB attachment, which is supported for multiple configurations. See `SlbConfigs` below.
         /// </summary>
         public InputList<Inputs.K8sSlbAttachmentSlbConfigArgs> SlbConfigs
         {
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.Edas
         private InputList<Inputs.K8sSlbAttachmentSlbConfigGetArgs>? _slbConfigs;
 
         /// <summary>
-        /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+        /// The configurations of SLB attachment, which is supported for multiple configurations. See `SlbConfigs` below.
         /// </summary>
         public InputList<Inputs.K8sSlbAttachmentSlbConfigGetArgs> SlbConfigs
         {

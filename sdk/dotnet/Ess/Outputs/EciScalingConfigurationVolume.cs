@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
     {
         /// <summary>
         /// ConfigFileVolumeConfigFileToPaths.
-        /// See `config_file_volume_config_file_to_paths` below for details.
+        /// See `ConfigFileVolumeConfigFileToPaths` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> ConfigFileVolumeConfigFileToPaths;
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? NfsVolumePath;
         /// <summary>
-        /// The nfs volume read only. Default to `false`.
+        /// The nfs volume read only. Default to `False`.
         /// </summary>
         public readonly bool? NfsVolumeReadOnly;
         /// <summary>

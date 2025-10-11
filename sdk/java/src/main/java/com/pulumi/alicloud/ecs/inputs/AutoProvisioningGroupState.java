@@ -291,14 +291,14 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+     * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      * 
      */
     @Import(name="validFrom")
     private @Nullable Output<String> validFrom;
 
     /**
-     * @return The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+     * @return The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      * 
      */
     public Optional<Output<String>> validFrom() {
@@ -306,14 +306,14 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+     * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      * 
      */
     @Import(name="validUntil")
     private @Nullable Output<String> validUntil;
 
     /**
-     * @return The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+     * @return The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      * 
      */
     public Optional<Output<String>> validUntil() {
@@ -752,7 +752,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param validFrom The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+         * @param validFrom The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param validFrom The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+         * @param validFrom The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
          * 
          * @return builder
          * 
@@ -773,7 +773,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param validUntil The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+         * @param validUntil The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param validUntil The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+         * @param validUntil The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
          * 
          * @return builder
          * 

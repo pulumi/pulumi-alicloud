@@ -50,14 +50,14 @@ public final class PrometheusAlertRuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+     * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      * 
      */
     @Import(name="dispatchRuleId")
     private @Nullable Output<String> dispatchRuleId;
 
     /**
-     * @return The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+     * @return The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      * 
      */
     public Optional<Output<String>> dispatchRuleId() {
@@ -287,7 +287,7 @@ public final class PrometheusAlertRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dispatchRuleId The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+         * @param dispatchRuleId The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class PrometheusAlertRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dispatchRuleId The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
+         * @param dispatchRuleId The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
          * 
          * @return builder
          * 

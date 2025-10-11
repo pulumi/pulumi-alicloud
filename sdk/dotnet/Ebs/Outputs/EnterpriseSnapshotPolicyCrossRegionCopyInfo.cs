@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ebs.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Destination region for Snapshot replication. See `regions` below.
+        /// Destination region for Snapshot replication. See `Regions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion> Regions;
 

@@ -20,14 +20,14 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
     public static final HttpRequestHeaderModificationRuleArgs Empty = new HttpRequestHeaderModificationRuleArgs();
 
     /**
-     * The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+     * The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
      * 
      */
     @Import(name="requestHeaderModifications", required=true)
     private Output<List<HttpRequestHeaderModificationRuleRequestHeaderModificationArgs>> requestHeaderModifications;
 
     /**
-     * @return The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+     * @return The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
      * 
      */
     public Output<List<HttpRequestHeaderModificationRuleRequestHeaderModificationArgs>> requestHeaderModifications() {
@@ -147,7 +147,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param requestHeaderModifications The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+         * @param requestHeaderModifications The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param requestHeaderModifications The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+         * @param requestHeaderModifications The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param requestHeaderModifications The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+         * @param requestHeaderModifications The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
          * 
          * @return builder
          * 

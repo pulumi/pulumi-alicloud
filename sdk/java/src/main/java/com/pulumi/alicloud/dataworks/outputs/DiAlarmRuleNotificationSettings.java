@@ -20,12 +20,12 @@ public final class DiAlarmRuleNotificationSettings {
      */
     private @Nullable Integer inhibitionInterval;
     /**
-     * @return Alarm notification Channel See `notification_channels` below.
+     * @return Alarm notification Channel See `notificationChannels` below.
      * 
      */
     private @Nullable List<DiAlarmRuleNotificationSettingsNotificationChannel> notificationChannels;
     /**
-     * @return List of alert notification recipients See `notification_receivers` below.
+     * @return List of alert notification recipients See `notificationReceivers` below.
      * 
      */
     private @Nullable List<DiAlarmRuleNotificationSettingsNotificationReceiver> notificationReceivers;
@@ -39,14 +39,14 @@ public final class DiAlarmRuleNotificationSettings {
         return Optional.ofNullable(this.inhibitionInterval);
     }
     /**
-     * @return Alarm notification Channel See `notification_channels` below.
+     * @return Alarm notification Channel See `notificationChannels` below.
      * 
      */
     public List<DiAlarmRuleNotificationSettingsNotificationChannel> notificationChannels() {
         return this.notificationChannels == null ? List.of() : this.notificationChannels;
     }
     /**
-     * @return List of alert notification recipients See `notification_receivers` below.
+     * @return List of alert notification recipients See `notificationReceivers` below.
      * 
      */
     public List<DiAlarmRuleNotificationSettingsNotificationReceiver> notificationReceivers() {

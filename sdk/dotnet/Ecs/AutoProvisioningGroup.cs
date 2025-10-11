@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
+    /// Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and PayAsYouGo instances to rapidly deploy clusters.
     /// 
     /// &gt; **NOTE:** Available in 1.79.0+
     /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AutoProvisioningGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+        /// The type of the auto provisioning group. Valid values:`Request` and `Maintain`,Default value: `Maintain`.
         /// </summary>
         [Output("autoProvisioningGroupType")]
         public Output<string?> AutoProvisioningGroupType { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
+        /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `Termination`,Default value: `no-termination`.
         /// </summary>
         [Output("excessCapacityTerminationPolicy")]
         public Output<string?> ExcessCapacityTerminationPolicy { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<double> MaxSpotPrice { get; private set; } = null!;
 
         /// <summary>
-        /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
+        /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `Prioritized`,Default value: `lowest-price`.
         /// </summary>
         [Output("payAsYouGoAllocationStrategy")]
         public Output<string?> PayAsYouGoAllocationStrategy { get; private set; } = null!;
@@ -166,13 +166,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> PayAsYouGoTargetCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
+        /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `Diversified`,Default value: `lowest-price`.
         /// </summary>
         [Output("spotAllocationStrategy")]
         public Output<string?> SpotAllocationStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
+        /// The default behavior after preemptible instances are shut down. Valid values: `Stop` and `Terminate`,Default value: `Stop`.
         /// </summary>
         [Output("spotInstanceInterruptionBehavior")]
         public Output<string?> SpotInstanceInterruptionBehavior { get; private set; } = null!;
@@ -190,13 +190,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotTargetCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
+        /// Specifies whether to release instances of the auto provisioning group. Valid values:`False` and `True`, default value: `False`.
         /// </summary>
         [Output("terminateInstances")]
         public Output<bool?> TerminateInstances { get; private set; } = null!;
 
         /// <summary>
-        /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
+        /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `False` and `True`, default value: `False`.
         /// </summary>
         [Output("terminateInstancesWithExpiration")]
         public Output<bool?> TerminateInstancesWithExpiration { get; private set; } = null!;
@@ -208,13 +208,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> TotalTargetCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+        /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `ValidUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         /// </summary>
         [Output("validFrom")]
         public Output<string> ValidFrom { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+        /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `ValidFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         /// </summary>
         [Output("validUntil")]
         public Output<string> ValidUntil { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoProvisioningGroupName { get; set; }
 
         /// <summary>
-        /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+        /// The type of the auto provisioning group. Valid values:`Request` and `Maintain`,Default value: `Maintain`.
         /// </summary>
         [Input("autoProvisioningGroupType")]
         public Input<string>? AutoProvisioningGroupType { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
+        /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `Termination`,Default value: `no-termination`.
         /// </summary>
         [Input("excessCapacityTerminationPolicy")]
         public Input<string>? ExcessCapacityTerminationPolicy { get; set; }
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? MaxSpotPrice { get; set; }
 
         /// <summary>
-        /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
+        /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `Prioritized`,Default value: `lowest-price`.
         /// </summary>
         [Input("payAsYouGoAllocationStrategy")]
         public Input<string>? PayAsYouGoAllocationStrategy { get; set; }
@@ -338,13 +338,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PayAsYouGoTargetCapacity { get; set; }
 
         /// <summary>
-        /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
+        /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `Diversified`,Default value: `lowest-price`.
         /// </summary>
         [Input("spotAllocationStrategy")]
         public Input<string>? SpotAllocationStrategy { get; set; }
 
         /// <summary>
-        /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
+        /// The default behavior after preemptible instances are shut down. Valid values: `Stop` and `Terminate`,Default value: `Stop`.
         /// </summary>
         [Input("spotInstanceInterruptionBehavior")]
         public Input<string>? SpotInstanceInterruptionBehavior { get; set; }
@@ -362,13 +362,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotTargetCapacity { get; set; }
 
         /// <summary>
-        /// Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
+        /// Specifies whether to release instances of the auto provisioning group. Valid values:`False` and `True`, default value: `False`.
         /// </summary>
         [Input("terminateInstances")]
         public Input<bool>? TerminateInstances { get; set; }
 
         /// <summary>
-        /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
+        /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `False` and `True`, default value: `False`.
         /// </summary>
         [Input("terminateInstancesWithExpiration")]
         public Input<bool>? TerminateInstancesWithExpiration { get; set; }
@@ -380,13 +380,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> TotalTargetCapacity { get; set; } = null!;
 
         /// <summary>
-        /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+        /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `ValidUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         /// </summary>
         [Input("validFrom")]
         public Input<string>? ValidFrom { get; set; }
 
         /// <summary>
-        /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+        /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `ValidFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         /// </summary>
         [Input("validUntil")]
         public Input<string>? ValidUntil { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoProvisioningGroupName { get; set; }
 
         /// <summary>
-        /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+        /// The type of the auto provisioning group. Valid values:`Request` and `Maintain`,Default value: `Maintain`.
         /// </summary>
         [Input("autoProvisioningGroupType")]
         public Input<string>? AutoProvisioningGroupType { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
+        /// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `Termination`,Default value: `no-termination`.
         /// </summary>
         [Input("excessCapacityTerminationPolicy")]
         public Input<string>? ExcessCapacityTerminationPolicy { get; set; }
@@ -460,7 +460,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? MaxSpotPrice { get; set; }
 
         /// <summary>
-        /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
+        /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `Prioritized`,Default value: `lowest-price`.
         /// </summary>
         [Input("payAsYouGoAllocationStrategy")]
         public Input<string>? PayAsYouGoAllocationStrategy { get; set; }
@@ -472,13 +472,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PayAsYouGoTargetCapacity { get; set; }
 
         /// <summary>
-        /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
+        /// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `Diversified`,Default value: `lowest-price`.
         /// </summary>
         [Input("spotAllocationStrategy")]
         public Input<string>? SpotAllocationStrategy { get; set; }
 
         /// <summary>
-        /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
+        /// The default behavior after preemptible instances are shut down. Valid values: `Stop` and `Terminate`,Default value: `Stop`.
         /// </summary>
         [Input("spotInstanceInterruptionBehavior")]
         public Input<string>? SpotInstanceInterruptionBehavior { get; set; }
@@ -496,13 +496,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotTargetCapacity { get; set; }
 
         /// <summary>
-        /// Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
+        /// Specifies whether to release instances of the auto provisioning group. Valid values:`False` and `True`, default value: `False`.
         /// </summary>
         [Input("terminateInstances")]
         public Input<bool>? TerminateInstances { get; set; }
 
         /// <summary>
-        /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
+        /// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `False` and `True`, default value: `False`.
         /// </summary>
         [Input("terminateInstancesWithExpiration")]
         public Input<bool>? TerminateInstancesWithExpiration { get; set; }
@@ -514,13 +514,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? TotalTargetCapacity { get; set; }
 
         /// <summary>
-        /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+        /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `ValidUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         /// </summary>
         [Input("validFrom")]
         public Input<string>? ValidFrom { get; set; }
 
         /// <summary>
-        /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+        /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `ValidFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         /// </summary>
         [Input("validUntil")]
         public Input<string>? ValidUntil { get; set; }

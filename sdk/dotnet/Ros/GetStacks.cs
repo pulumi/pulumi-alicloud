@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Ros
     public sealed class GetStacksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ros
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// Query the instance bound to the tag. The format of the incoming value is `Json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Ros
     public sealed class GetStacksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Ros
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// Query the instance bound to the tag. The format of the incoming value is `Json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public InputMap<string> Tags
         {

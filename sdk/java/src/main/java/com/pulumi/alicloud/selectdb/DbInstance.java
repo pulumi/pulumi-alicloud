@@ -214,14 +214,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.cpuPrepaid;
     }
     /**
-     * The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     @Export(name="dbInstanceClass", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceClass;
 
     /**
-     * @return The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     public Output<String> dbInstanceClass() {
@@ -242,14 +242,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceDescription;
     }
     /**
-     * The modified IP address whitelists. See `desired_security_ip_lists` below.
+     * The modified IP address whitelists. See `desiredSecurityIpLists` below.
      * 
      */
     @Export(name="desiredSecurityIpLists", refs={List.class,DbInstanceDesiredSecurityIpList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DbInstanceDesiredSecurityIpList>> desiredSecurityIpLists;
 
     /**
-     * @return The modified IP address whitelists. See `desired_security_ip_lists` below.
+     * @return The modified IP address whitelists. See `desiredSecurityIpLists` below.
      * 
      */
     public Output<Optional<List<DbInstanceDesiredSecurityIpList>>> desiredSecurityIpLists() {
@@ -424,28 +424,28 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+     * It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
-     * @return It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+     * @return It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      * 
      */
     public Output<Optional<String>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Export(name="periodTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> periodTime;
 
     /**
-     * @return The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Output<Optional<Integer>> periodTime() {
@@ -526,18 +526,18 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      * @deprecated
-     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
-    @Deprecated /* Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead. */
+    @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
     @Export(name="upgradedEngineMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> upgradedEngineMinorVersion;
 
     /**
-     * @return Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * @return Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
     public Output<String> upgradedEngineMinorVersion() {

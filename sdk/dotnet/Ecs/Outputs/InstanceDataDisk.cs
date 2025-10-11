@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
+        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, CloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `True`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// Encrypted the data in this disk. Default value: `false`.
+        /// Encrypted the data in this disk. Default value: `False`.
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>

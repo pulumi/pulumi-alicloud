@@ -41,14 +41,14 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ack cluster custom annotations. See `custom_annotations` below.
+     * The ack cluster custom annotations. See `customAnnotations` below.
      * 
      */
     @Import(name="customAnnotations")
     private @Nullable Output<List<ClusterNodeGroupAckConfigCustomAnnotationArgs>> customAnnotations;
 
     /**
-     * @return The ack cluster custom annotations. See `custom_annotations` below.
+     * @return The ack cluster custom annotations. See `customAnnotations` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupAckConfigCustomAnnotationArgs>>> customAnnotations() {
@@ -56,14 +56,14 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ack cluster custom labels. See `custom_labels` below.
+     * The ack cluster custom labels. See `customLabels` below.
      * 
      */
     @Import(name="customLabels")
     private @Nullable Output<List<ClusterNodeGroupAckConfigCustomLabelArgs>> customLabels;
 
     /**
-     * @return The ack cluster custom labels. See `custom_labels` below.
+     * @return The ack cluster custom labels. See `customLabels` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupAckConfigCustomLabelArgs>>> customLabels() {
@@ -131,14 +131,14 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+     * The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
      * 
      */
     @Import(name="nodeSelectors")
     private @Nullable Output<List<ClusterNodeGroupAckConfigNodeSelectorArgs>> nodeSelectors;
 
     /**
-     * @return The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+     * @return The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupAckConfigNodeSelectorArgs>>> nodeSelectors() {
@@ -251,14 +251,14 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ack cluster volume mounts. See `volume_mounts` below.
+     * The ack cluster volume mounts. See `volumeMounts` below.
      * 
      */
     @Import(name="volumeMounts")
     private @Nullable Output<List<ClusterNodeGroupAckConfigVolumeMountArgs>> volumeMounts;
 
     /**
-     * @return The ack cluster volume mounts. See `volume_mounts` below.
+     * @return The ack cluster volume mounts. See `volumeMounts` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupAckConfigVolumeMountArgs>>> volumeMounts() {
@@ -342,7 +342,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customAnnotations The ack cluster custom annotations. See `custom_annotations` below.
+         * @param customAnnotations The ack cluster custom annotations. See `customAnnotations` below.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customAnnotations The ack cluster custom annotations. See `custom_annotations` below.
+         * @param customAnnotations The ack cluster custom annotations. See `customAnnotations` below.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customAnnotations The ack cluster custom annotations. See `custom_annotations` below.
+         * @param customAnnotations The ack cluster custom annotations. See `customAnnotations` below.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customLabels The ack cluster custom labels. See `custom_labels` below.
+         * @param customLabels The ack cluster custom labels. See `customLabels` below.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customLabels The ack cluster custom labels. See `custom_labels` below.
+         * @param customLabels The ack cluster custom labels. See `customLabels` below.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customLabels The ack cluster custom labels. See `custom_labels` below.
+         * @param customLabels The ack cluster custom labels. See `customLabels` below.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeSelectors The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+         * @param nodeSelectors The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeSelectors The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+         * @param nodeSelectors The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeSelectors The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+         * @param nodeSelectors The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volumeMounts The ack cluster volume mounts. See `volume_mounts` below.
+         * @param volumeMounts The ack cluster volume mounts. See `volumeMounts` below.
          * 
          * @return builder
          * 
@@ -707,7 +707,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volumeMounts The ack cluster volume mounts. See `volume_mounts` below.
+         * @param volumeMounts The ack cluster volume mounts. See `volumeMounts` below.
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class ClusterNodeGroupAckConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volumeMounts The ack cluster volume mounts. See `volume_mounts` below.
+         * @param volumeMounts The ack cluster volume mounts. See `volumeMounts` below.
          * 
          * @return builder
          * 

@@ -157,28 +157,28 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectImmediately);
     }
     /**
-     * The configuration of Phase 1 negotiations. See `ike_config` below.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      * 
      */
     @Export(name="ikeConfigs", refs={List.class,IpsecServerIkeConfig.class}, tree="[0,1]")
     private Output<List<IpsecServerIkeConfig>> ikeConfigs;
 
     /**
-     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
+     * @return The configuration of Phase 1 negotiations. See `ikeConfig` below.
      * 
      */
     public Output<List<IpsecServerIkeConfig>> ikeConfigs() {
         return this.ikeConfigs;
     }
     /**
-     * The configuration of Phase 2 negotiations. See `ipsec_config` below.
+     * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      * 
      */
     @Export(name="ipsecConfigs", refs={List.class,IpsecServerIpsecConfig.class}, tree="[0,1]")
     private Output<List<IpsecServerIpsecConfig>> ipsecConfigs;
 
     /**
-     * @return The configuration of Phase 2 negotiations. See `ipsec_config` below.
+     * @return The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      * 
      */
     public Output<List<IpsecServerIpsecConfig>> ipsecConfigs() {

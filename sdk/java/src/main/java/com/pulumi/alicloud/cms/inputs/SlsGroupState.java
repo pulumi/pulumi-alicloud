@@ -18,14 +18,14 @@ public final class SlsGroupState extends com.pulumi.resources.ResourceArgs {
     public static final SlsGroupState Empty = new SlsGroupState();
 
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      * 
      */
     @Import(name="slsGroupConfigs")
     private @Nullable Output<List<SlsGroupSlsGroupConfigArgs>> slsGroupConfigs;
 
     /**
-     * @return The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+     * @return The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      * 
      */
     public Optional<Output<List<SlsGroupSlsGroupConfigArgs>>> slsGroupConfigs() {
@@ -89,7 +89,7 @@ public final class SlsGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class SlsGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class SlsGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
          * 
          * @return builder
          * 

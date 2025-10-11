@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
-        /// Each collection item represents a single `ingress` or `egress` permission rule.
+        /// Each collection item represents a single `Ingress` or `Egress` permission rule.
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
         /// 
         /// ## Example Usage
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
-        /// Each collection item represents a single `ingress` or `egress` permission rule.
+        /// Each collection item represents a single `Ingress` or `Egress` permission rule.
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
         /// 
         /// ## Example Usage
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
-        /// Each collection item represents a single `ingress` or `egress` permission rule.
+        /// Each collection item represents a single `Ingress` or `Egress` permission rule.
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
         /// 
         /// ## Example Usage
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetSecurityGroupRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Authorization direction. Valid values are: `ingress` or `egress`.
+        /// Authorization direction. Valid values are: `Ingress` or `Egress`.
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -169,13 +169,13 @@ namespace Pulumi.AliCloud.Ecs
         public string GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
+        /// The IP protocol. Valid values are: `Tcp`, `Udp`, `Icmp`, `Gre` and `All`.
         /// </summary>
         [Input("ipProtocol")]
         public string? IpProtocol { get; set; }
 
         /// <summary>
-        /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+        /// Refers to the network type. Can be either `Internet` or `Intranet`. The default value is `Internet`.
         /// </summary>
         [Input("nicType")]
         public string? NicType { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
+        /// Authorization policy. Can be either `Accept` or `Drop`. The default value is `Accept`.
         /// </summary>
         [Input("policy")]
         public string? Policy { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetSecurityGroupRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Authorization direction. Valid values are: `ingress` or `egress`.
+        /// Authorization direction. Valid values are: `Ingress` or `Egress`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
+        /// The IP protocol. Valid values are: `Tcp`, `Udp`, `Icmp`, `Gre` and `All`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+        /// Refers to the network type. Can be either `Internet` or `Intranet`. The default value is `Internet`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
+        /// Authorization policy. Can be either `Accept` or `Drop`. The default value is `Accept`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetSecurityGroupRulesResult
     {
         /// <summary>
-        /// Authorization direction, `ingress` or `egress`.
+        /// Authorization direction, `Ingress` or `Egress`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -264,16 +264,16 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+        /// The protocol. Can be `Tcp`, `Udp`, `Icmp`, `Gre` or `All`.
         /// </summary>
         public readonly string? IpProtocol;
         /// <summary>
-        /// Network type, `internet` or `intranet`.
+        /// Network type, `Internet` or `Intranet`.
         /// </summary>
         public readonly string? NicType;
         public readonly string? OutputFile;
         /// <summary>
-        /// Authorization policy. Can be either `accept` or `drop`.
+        /// Authorization policy. Can be either `Accept` or `Drop`.
         /// </summary>
         public readonly string? Policy;
         /// <summary>

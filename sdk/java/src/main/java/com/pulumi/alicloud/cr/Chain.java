@@ -227,14 +227,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cr/chain:Chain")
 public class Chain extends com.pulumi.resources.CustomResource {
     /**
-     * The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      * 
      */
     @Export(name="chainConfigs", refs={List.class,ChainChainConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ChainChainConfig>> chainConfigs;
 
     /**
-     * @return The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * @return The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      * 
      */
     public Output<Optional<List<ChainChainConfig>>> chainConfigs() {

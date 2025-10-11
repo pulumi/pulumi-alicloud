@@ -32,7 +32,7 @@ public final class GetPatchBaselinesBaseline {
      */
     private String description;
     /**
-     * @return The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
+     * @return The ID of the Patch Baseline. Its value is same as `patchBaselineName`.
      * 
      */
     private String id;
@@ -102,7 +102,7 @@ public final class GetPatchBaselinesBaseline {
         return this.description;
     }
     /**
-     * @return The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
+     * @return The ID of the Patch Baseline. Its value is same as `patchBaselineName`.
      * 
      */
     public String id() {

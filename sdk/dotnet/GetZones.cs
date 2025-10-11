@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+        /// Filter the results by a specific disk category. Can be either `Cloud`, `CloudEfficiency`, `CloudSsd`, `EphemeralSsd`.
         /// </summary>
         [Input("availableDiskCategory")]
         public string? AvailableDiskCategory { get; set; }
@@ -118,28 +118,28 @@ namespace Pulumi.AliCloud
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
         /// 
-        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// &gt; **NOTE:** From version 1.134.0, the `AvailableResourceCreation` value "Rds" has been deprecated.
         /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         [Input("availableResourceCreation")]
         public string? AvailableResourceCreation { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// Filter the results by a slb instance address version. Can be either `Ipv4`, or `Ipv6`.
         /// 
-        /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
+        /// &gt; **NOTE:** The disk category `Cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `CloudEfficiency` or `CloudSsd`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public string? AvailableSlbAddressIpVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// Filter the results by a slb instance address type. Can be either `Vpc`, `ClassicInternet` or `ClassicIntranet`
         /// </summary>
         [Input("availableSlbAddressType")]
         public string? AvailableSlbAddressType { get; set; }
 
         /// <summary>
-        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// Default to false and only output `Id` in the `Zones` block. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch RDS instances.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+        /// Filter the results by a specific disk category. Can be either `Cloud`, `CloudEfficiency`, `CloudSsd`, `EphemeralSsd`.
         /// </summary>
         [Input("availableDiskCategory")]
         public Input<string>? AvailableDiskCategory { get; set; }
@@ -198,28 +198,28 @@ namespace Pulumi.AliCloud
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
         /// 
-        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// &gt; **NOTE:** From version 1.134.0, the `AvailableResourceCreation` value "Rds" has been deprecated.
         /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         [Input("availableResourceCreation")]
         public Input<string>? AvailableResourceCreation { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// Filter the results by a slb instance address version. Can be either `Ipv4`, or `Ipv6`.
         /// 
-        /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
+        /// &gt; **NOTE:** The disk category `Cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `CloudEfficiency` or `CloudSsd`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public Input<string>? AvailableSlbAddressIpVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// Filter the results by a slb instance address type. Can be either `Vpc`, `ClassicInternet` or `ClassicIntranet`
         /// </summary>
         [Input("availableSlbAddressType")]
         public Input<string>? AvailableSlbAddressType { get; set; }
 
         /// <summary>
-        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// Default to false and only output `Id` in the `Zones` block. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `False`. Multi AZ is usually used to launch RDS instances.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }

@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string?> DefaultQuota { get; private set; } = null!;
 
         /// <summary>
-        /// IP whitelist See `ip_white_list` below.
+        /// IP whitelist See `IpWhiteList` below.
         /// </summary>
         [Output("ipWhiteList")]
         public Output<Outputs.ProjectIpWhiteList?> IpWhiteList { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Project base attributes See `properties` below.
+        /// Project base attributes See `Properties` below.
         /// </summary>
         [Output("properties")]
         public Output<Outputs.ProjectProperties> Properties { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Security-related attributes See `security_properties` below.
+        /// Security-related attributes See `SecurityProperties` below.
         /// </summary>
         [Output("securityProperties")]
         public Output<Outputs.ProjectSecurityProperties> SecurityProperties { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// IP whitelist See `ip_white_list` below.
+        /// IP whitelist See `IpWhiteList` below.
         /// </summary>
         [Input("ipWhiteList")]
         public Input<Inputs.ProjectIpWhiteListArgs>? IpWhiteList { get; set; }
@@ -226,13 +226,13 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Project base attributes See `properties` below.
+        /// Project base attributes See `Properties` below.
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesArgs>? Properties { get; set; }
 
         /// <summary>
-        /// Security-related attributes See `security_properties` below.
+        /// Security-related attributes See `SecurityProperties` below.
         /// </summary>
         [Input("securityProperties")]
         public Input<Inputs.ProjectSecurityPropertiesArgs>? SecurityProperties { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// IP whitelist See `ip_white_list` below.
+        /// IP whitelist See `IpWhiteList` below.
         /// </summary>
         [Input("ipWhiteList")]
         public Input<Inputs.ProjectIpWhiteListGetArgs>? IpWhiteList { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Project base attributes See `properties` below.
+        /// Project base attributes See `Properties` below.
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesGetArgs>? Properties { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// Security-related attributes See `security_properties` below.
+        /// Security-related attributes See `SecurityProperties` below.
         /// </summary>
         [Input("securityProperties")]
         public Input<Inputs.ProjectSecurityPropertiesGetArgs>? SecurityProperties { get; set; }

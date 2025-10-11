@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
+        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `ZoneMappings` below.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
+        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `ZoneMappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -333,7 +333,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
+        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `ZoneMappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

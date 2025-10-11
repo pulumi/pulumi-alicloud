@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string AckInstanceId;
         /// <summary>
-        /// The ack cluster custom annotations. See `custom_annotations` below.
+        /// The ack cluster custom annotations. See `CustomAnnotations` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigCustomAnnotation> CustomAnnotations;
         /// <summary>
-        /// The ack cluster custom labels. See `custom_labels` below.
+        /// The ack cluster custom labels. See `CustomLabels` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigCustomLabel> CustomLabels;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string? NodeAffinity;
         /// <summary>
-        /// The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+        /// The ack cluster node selectors for job pods scheduling. See `NodeSelectors` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigNodeSelector> NodeSelectors;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PreStartCommands;
         /// <summary>
-        /// The ack cluster persistent volume claim. See `pvcs` below.
+        /// The ack cluster persistent volume claim. See `Pvcs` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigPvc> Pvcs;
         /// <summary>
@@ -70,15 +70,15 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly double RequestMemory;
         /// <summary>
-        /// The ack cluster tolerations. See `tolerations` below.
+        /// The ack cluster tolerations. See `Tolerations` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigToleration> Tolerations;
         /// <summary>
-        /// The ack cluster volume mounts. See `volume_mounts` below.
+        /// The ack cluster volume mounts. See `VolumeMounts` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigVolumeMount> VolumeMounts;
         /// <summary>
-        /// The ack cluster volumes. See `volumes` below.
+        /// The ack cluster volumes. See `Volumes` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAckConfigVolume> Volumes;
 

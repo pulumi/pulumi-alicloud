@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<string>? Qualifier { get; set; }
 
         /// <summary>
-        /// Override Configuration See `rewrite_config` below.
+        /// Override Configuration See `RewriteConfig` below.
         /// </summary>
         [Input("rewriteConfig")]
         public Input<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigGetArgs>? RewriteConfig { get; set; }

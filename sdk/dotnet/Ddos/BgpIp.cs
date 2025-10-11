@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> MemberUid { get; private set; } = null!;
 
         /// <summary>
-        /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
+        /// Field `ResourceGroupId` has been deprecated from provider version 1.259.0.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
+        /// Field `ResourceGroupId` has been deprecated from provider version 1.259.0.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
+        /// Field `ResourceGroupId` has been deprecated from provider version 1.259.0.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

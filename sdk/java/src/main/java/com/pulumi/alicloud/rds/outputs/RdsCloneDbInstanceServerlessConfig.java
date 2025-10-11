@@ -22,7 +22,7 @@ public final class RdsCloneDbInstanceServerlessConfig {
      */
     private @Nullable Boolean autoPause;
     /**
-     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
      * - MySQL: 1~8
      * - SQLServer: 2~8
      * - PostgreSQL: 1~12
@@ -30,7 +30,7 @@ public final class RdsCloneDbInstanceServerlessConfig {
      */
     private Double maxCapacity;
     /**
-     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
      * - SQLServer: 2~8 \(Supports integers only\).
      * - PostgreSQL: 0.5~12
@@ -59,7 +59,7 @@ public final class RdsCloneDbInstanceServerlessConfig {
         return Optional.ofNullable(this.autoPause);
     }
     /**
-     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
      * - MySQL: 1~8
      * - SQLServer: 2~8
      * - PostgreSQL: 1~12
@@ -69,7 +69,7 @@ public final class RdsCloneDbInstanceServerlessConfig {
         return this.maxCapacity;
     }
     /**
-     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
      * - SQLServer: 2~8 \(Supports integers only\).
      * - PostgreSQL: 0.5~12

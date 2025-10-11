@@ -121,10 +121,10 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
     @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
@@ -133,10 +133,10 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
+    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
     @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
@@ -148,10 +148,10 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

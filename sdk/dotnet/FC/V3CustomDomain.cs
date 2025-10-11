@@ -251,13 +251,13 @@ namespace Pulumi.AliCloud.FC
         public Output<string> ApiVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Permission authentication configuration See `auth_config` below.
+        /// Permission authentication configuration See `AuthConfig` below.
         /// </summary>
         [Output("authConfig")]
         public Output<Outputs.V3CustomDomainAuthConfig?> AuthConfig { get; private set; } = null!;
 
         /// <summary>
-        /// HTTPS certificate information See `cert_config` below.
+        /// HTTPS certificate information See `CertConfig` below.
         /// </summary>
         [Output("certConfig")]
         public Output<Outputs.V3CustomDomainCertConfig> CertConfig { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// Route matching rule configuration See `route_config` below.
+        /// Route matching rule configuration See `RouteConfig` below.
         /// </summary>
         [Output("routeConfig")]
         public Output<Outputs.V3CustomDomainRouteConfig?> RouteConfig { get; private set; } = null!;
@@ -299,13 +299,13 @@ namespace Pulumi.AliCloud.FC
         public Output<string> SubdomainCount { get; private set; } = null!;
 
         /// <summary>
-        /// TLS configuration information See `tls_config` below.
+        /// TLS configuration information See `TlsConfig` below.
         /// </summary>
         [Output("tlsConfig")]
         public Output<Outputs.V3CustomDomainTlsConfig> TlsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Web application firewall configuration information See `waf_config` below.
+        /// Web application firewall configuration information See `WafConfig` below.
         /// </summary>
         [Output("wafConfig")]
         public Output<Outputs.V3CustomDomainWafConfig?> WafConfig { get; private set; } = null!;
@@ -357,13 +357,13 @@ namespace Pulumi.AliCloud.FC
     public sealed class V3CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permission authentication configuration See `auth_config` below.
+        /// Permission authentication configuration See `AuthConfig` below.
         /// </summary>
         [Input("authConfig")]
         public Input<Inputs.V3CustomDomainAuthConfigArgs>? AuthConfig { get; set; }
 
         /// <summary>
-        /// HTTPS certificate information See `cert_config` below.
+        /// HTTPS certificate information See `CertConfig` below.
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.V3CustomDomainCertConfigArgs>? CertConfig { get; set; }
@@ -381,19 +381,19 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Route matching rule configuration See `route_config` below.
+        /// Route matching rule configuration See `RouteConfig` below.
         /// </summary>
         [Input("routeConfig")]
         public Input<Inputs.V3CustomDomainRouteConfigArgs>? RouteConfig { get; set; }
 
         /// <summary>
-        /// TLS configuration information See `tls_config` below.
+        /// TLS configuration information See `TlsConfig` below.
         /// </summary>
         [Input("tlsConfig")]
         public Input<Inputs.V3CustomDomainTlsConfigArgs>? TlsConfig { get; set; }
 
         /// <summary>
-        /// Web application firewall configuration information See `waf_config` below.
+        /// Web application firewall configuration information See `WafConfig` below.
         /// </summary>
         [Input("wafConfig")]
         public Input<Inputs.V3CustomDomainWafConfigArgs>? WafConfig { get; set; }
@@ -419,13 +419,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// Permission authentication configuration See `auth_config` below.
+        /// Permission authentication configuration See `AuthConfig` below.
         /// </summary>
         [Input("authConfig")]
         public Input<Inputs.V3CustomDomainAuthConfigGetArgs>? AuthConfig { get; set; }
 
         /// <summary>
-        /// HTTPS certificate information See `cert_config` below.
+        /// HTTPS certificate information See `CertConfig` below.
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.V3CustomDomainCertConfigGetArgs>? CertConfig { get; set; }
@@ -455,7 +455,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Route matching rule configuration See `route_config` below.
+        /// Route matching rule configuration See `RouteConfig` below.
         /// </summary>
         [Input("routeConfig")]
         public Input<Inputs.V3CustomDomainRouteConfigGetArgs>? RouteConfig { get; set; }
@@ -467,13 +467,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? SubdomainCount { get; set; }
 
         /// <summary>
-        /// TLS configuration information See `tls_config` below.
+        /// TLS configuration information See `TlsConfig` below.
         /// </summary>
         [Input("tlsConfig")]
         public Input<Inputs.V3CustomDomainTlsConfigGetArgs>? TlsConfig { get; set; }
 
         /// <summary>
-        /// Web application firewall configuration information See `waf_config` below.
+        /// Web application firewall configuration information See `WafConfig` below.
         /// </summary>
         [Input("wafConfig")]
         public Input<Inputs.V3CustomDomainWafConfigGetArgs>? WafConfig { get; set; }

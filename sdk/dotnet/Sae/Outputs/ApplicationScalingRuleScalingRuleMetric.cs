@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int? MaxReplicas;
         /// <summary>
-        /// Indicator rule configuration. See `metrics` below.
+        /// Indicator rule configuration. See `Metrics` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScalingRuleScalingRuleMetricMetric> Metrics;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int? MinReplicas;
         /// <summary>
-        /// Apply shrink rules. See `scale_down_rules` below.
+        /// Apply shrink rules. See `ScaleDownRules` below.
         /// </summary>
         public readonly Outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules? ScaleDownRules;
         /// <summary>
-        /// Apply expansion rules. See `scale_up_rules` below.
+        /// Apply expansion rules. See `ScaleUpRules` below.
         /// </summary>
         public readonly Outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules? ScaleUpRules;
 

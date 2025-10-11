@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NatIpCidr : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to precheck this request only. Valid values: `True` and `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool> DryRun { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatIpCidrArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to precheck this request only. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatIpCidrState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to precheck this request only. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

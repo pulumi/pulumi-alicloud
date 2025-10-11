@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Mse
     public partial class NacosConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Output("acceptLanguage")]
         public Output<string?> AcceptLanguage { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
+        /// The id of Namespace. If you want to create a config under the `Public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
         /// </summary>
         [Output("namespaceId")]
         public Output<string?> NamespaceId { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class NacosConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
+        /// The id of Namespace. If you want to create a config under the `Public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class NacosConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -344,7 +344,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
+        /// The id of Namespace. If you want to create a config under the `Public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

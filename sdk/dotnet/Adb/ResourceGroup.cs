@@ -114,13 +114,13 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        /// The name of the resource group. The `GroupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        /// The query execution mode. Default value: `Interactive`. Valid values: `Interactive`, `Batch`.
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
@@ -202,13 +202,13 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        /// The name of the resource group. The `GroupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        /// The query execution mode. Default value: `Interactive`. Valid values: `Interactive`, `Batch`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
@@ -252,13 +252,13 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterId { get; set; }
 
         /// <summary>
-        /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        /// The name of the resource group. The `GroupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        /// The query execution mode. Default value: `Interactive`. Valid values: `Interactive`, `Batch`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }

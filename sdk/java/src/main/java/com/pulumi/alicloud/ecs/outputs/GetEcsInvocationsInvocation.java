@@ -64,7 +64,7 @@ public final class GetEcsInvocationsInvocation {
      */
     private List<GetEcsInvocationsInvocationInvokeInstance> invokeInstances;
     /**
-     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
      * 
      */
     private String invokeStatus;
@@ -161,7 +161,7 @@ public final class GetEcsInvocationsInvocation {
         return this.invokeInstances;
     }
     /**
-     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
      * 
      */
     public String invokeStatus() {

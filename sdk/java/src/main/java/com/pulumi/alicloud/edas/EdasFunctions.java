@@ -565,6 +565,8 @@ public final class EdasFunctions {
      * 
      * &gt; **NOTE:** Available in 1.82.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args) {
         return getDeployGroups(args, InvokeOptions.Empty);
@@ -573,6 +575,8 @@ public final class EdasFunctions {
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.82.0+
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args) {
@@ -583,6 +587,8 @@ public final class EdasFunctions {
      * 
      * &gt; **NOTE:** Available in 1.82.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
@@ -592,6 +598,8 @@ public final class EdasFunctions {
      * 
      * &gt; **NOTE:** Available in 1.82.0+
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
@@ -600,6 +608,8 @@ public final class EdasFunctions {
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.82.0+
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args, InvokeOptions options) {

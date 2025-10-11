@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
     public sealed class NodeGroupIpAllocationPolicyNodePolicy
     {
         /// <summary>
-        /// Bond information See `bonds` below.
+        /// Bond information See `Bonds` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeGroupIpAllocationPolicyNodePolicyBond> Bonds;
         public readonly string? NodeId;

@@ -17,14 +17,14 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAltern
     public static final BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs Empty = new BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs();
 
     /**
-     * Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+     * Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
      * 
      */
     @Import(name="mirrorMultiAlternates")
     private @Nullable Output<List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs>> mirrorMultiAlternates;
 
     /**
-     * @return Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+     * @return Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
      * 
      */
     public Optional<Output<List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs>>> mirrorMultiAlternates() {
@@ -56,7 +56,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAltern
         }
 
         /**
-         * @param mirrorMultiAlternates Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+         * @param mirrorMultiAlternates Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAltern
         }
 
         /**
-         * @param mirrorMultiAlternates Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+         * @param mirrorMultiAlternates Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAltern
         }
 
         /**
-         * @param mirrorMultiAlternates Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+         * @param mirrorMultiAlternates Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
          * 
          * @return builder
          * 

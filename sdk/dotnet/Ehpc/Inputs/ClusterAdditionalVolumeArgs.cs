@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         private InputList<Inputs.ClusterAdditionalVolumeRoleArgs>? _roles;
 
         /// <summary>
-        /// The roles. See `roles` below.
+        /// The roles. See `Roles` below.
         /// </summary>
         public InputList<Inputs.ClusterAdditionalVolumeRoleArgs> Roles
         {

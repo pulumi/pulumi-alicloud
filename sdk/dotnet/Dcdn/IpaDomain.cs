@@ -83,19 +83,19 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
+        /// The accelerated region. Valid values: `Domestic`, `Global`, `Overseas`.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// Sources. See `sources` below.
+        /// Sources. See `Sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.IpaDomainSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
+        /// The status of DCDN Ipa Domain. Valid values: `Online`, `Offline`. Default to `Online`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
+        /// The accelerated region. Valid values: `Domestic`, `Global`, `Overseas`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.IpaDomainSourceArgs>? _sources;
 
         /// <summary>
-        /// Sources. See `sources` below.
+        /// Sources. See `Sources` below.
         /// </summary>
         public InputList<Inputs.IpaDomainSourceArgs> Sources
         {
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
+        /// The status of DCDN Ipa Domain. Valid values: `Online`, `Offline`. Default to `Online`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
+        /// The accelerated region. Valid values: `Domestic`, `Global`, `Overseas`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.IpaDomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// Sources. See `sources` below.
+        /// Sources. See `Sources` below.
         /// </summary>
         public InputList<Inputs.IpaDomainSourceGetArgs> Sources
         {
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
+        /// The status of DCDN Ipa Domain. Valid values: `Online`, `Offline`. Default to `Online`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

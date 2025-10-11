@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ServerIds;
         /// <summary>
-        /// Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
+        /// Specify the type of the backend server. Default value: `Ecs`. Valid values: `Ecs`, `Eni`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

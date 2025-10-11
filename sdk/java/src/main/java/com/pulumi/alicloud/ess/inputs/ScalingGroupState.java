@@ -22,14 +22,14 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     public static final ScalingGroupState Empty = new ScalingGroupState();
 
     /**
-     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
      * 
      */
     @Import(name="albServerGroups")
     private @Nullable Output<List<ScalingGroupAlbServerGroupArgs>> albServerGroups;
 
     /**
-     * @return If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+     * @return If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
      * 
      */
     public Optional<Output<List<ScalingGroupAlbServerGroupArgs>>> albServerGroups() {
@@ -206,14 +206,14 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+     * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      * 
      */
     @Import(name="desiredCapacity")
     private @Nullable Output<Integer> desiredCapacity;
 
     /**
-     * @return Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+     * @return Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      * 
      */
     public Optional<Output<Integer>> desiredCapacity() {
@@ -311,14 +311,14 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
      * 
      */
     @Import(name="launchTemplateOverrides")
     private @Nullable Output<List<ScalingGroupLaunchTemplateOverrideArgs>> launchTemplateOverrides;
 
     /**
-     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
      * 
      */
     public Optional<Output<List<ScalingGroupLaunchTemplateOverrideArgs>>> launchTemplateOverrides() {
@@ -343,7 +343,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
-     * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+     * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
      *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -355,7 +355,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
-     * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+     * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
      *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -382,7 +382,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-     * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+     * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      * 
      */
     @Import(name="maxSize")
@@ -390,7 +390,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-     * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+     * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      * 
      */
     public Optional<Output<Integer>> maxSize() {
@@ -399,7 +399,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-     * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+     * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
      * 
      */
     @Import(name="minSize")
@@ -407,7 +407,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-     * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+     * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
      * 
      */
     public Optional<Output<Integer>> minSize() {
@@ -723,7 +723,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
          * 
          * @return builder
          * 
@@ -744,7 +744,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
          * 
          * @return builder
          * 
@@ -1001,7 +1001,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredCapacity Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+         * @param desiredCapacity Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
          * 
          * @return builder
          * 
@@ -1012,7 +1012,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredCapacity Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+         * @param desiredCapacity Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
          * 
          * @return builder
          * 
@@ -1158,7 +1158,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
          * 
          * @return builder
          * 
@@ -1169,7 +1169,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
          * 
          * @return builder
          * 
@@ -1179,7 +1179,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
          * 
          * @return builder
          * 
@@ -1212,7 +1212,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param loadbalancerIds If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
          * - The Server Load Balancer instance must be enabled.
-         * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+         * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
          *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
          * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
          * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -1228,7 +1228,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param loadbalancerIds If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
          * - The Server Load Balancer instance must be enabled.
-         * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+         * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
          *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
          * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
          * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -1243,7 +1243,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param loadbalancerIds If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
          * - The Server Load Balancer instance must be enabled.
-         * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+         * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
          *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
          * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
          * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -1278,7 +1278,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-         * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+         * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -1290,7 +1290,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-         * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+         * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -1301,7 +1301,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param minSize Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-         * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+         * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -1313,7 +1313,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param minSize Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-         * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+         * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
          * 
          * @return builder
          * 

@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+        /// Disk category. Possible values: `Cloud` (basic cloud disk), `CloudEfficiency` (ultra cloud disk), `EphemeralSsd` (local SSD cloud disk), `CloudSsd` (SSD cloud disk), and `CloudEssd` (ESSD cloud disk), `CloudEssdEntry`.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Possible values: `On` and `Off`.
         /// </summary>
         [Input("encrypted")]
         public string? Encrypted { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Disk type. Possible values: `system` and `data`.
+        /// Disk type. Possible values: `System` and `Data`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+        /// Disk category. Possible values: `Cloud` (basic cloud disk), `CloudEfficiency` (ultra cloud disk), `EphemeralSsd` (local SSD cloud disk), `CloudSsd` (SSD cloud disk), and `CloudEssd` (ESSD cloud disk), `CloudEssdEntry`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Possible values: `On` and `Off`.
         /// </summary>
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Disk type. Possible values: `system` and `data`.
+        /// Disk type. Possible values: `System` and `Data`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -458,7 +458,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string? AvailabilityZone;
         /// <summary>
-        /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+        /// Disk category. Possible values: `Cloud` (basic cloud disk), `CloudEfficiency` (ultra cloud disk), `EphemeralSsd` (local SSD cloud disk), `CloudSsd` (SSD cloud disk), and `CloudEssd` (ESSD cloud disk).
         /// </summary>
         public readonly string? Category;
         public readonly bool? DeleteAutoSnapshot;
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly bool? EnableAutomatedSnapshotPolicy;
         public readonly bool? EnableShared;
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Possible values: `On` and `Off`.
         /// </summary>
         public readonly string? Encrypted;
         /// <summary>
@@ -483,7 +483,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// ID of the related instance. It is `null` unless the `status` is `In_use`.
+        /// ID of the related instance. It is `Null` unless the `Status` is `In_use`.
         /// </summary>
         public readonly string? InstanceId;
         public readonly string? KmsKeyId;
@@ -513,7 +513,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
         /// <summary>
-        /// Disk type. Possible values: `system` and `data`.
+        /// Disk type. Possible values: `System` and `Data`.
         /// </summary>
         public readonly string? Type;
         public readonly string? ZoneId;

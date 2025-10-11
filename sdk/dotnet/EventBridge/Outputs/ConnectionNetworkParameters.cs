@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     public sealed class ConnectionNetworkParameters
     {
         /// <summary>
-        /// The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+        /// The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `NetworkType` to `PrivateNetwork`, you must configure `VpcId`, `VswitcheId`, and `SecurityGroupId`.
         /// </summary>
         public readonly string NetworkType;
         /// <summary>

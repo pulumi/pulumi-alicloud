@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Nas
         /// The protocol type of the file system.
         /// Valid values:
         /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`).
+        /// `SMB` (Available when the `FileSystemType` is `Standard`).
         /// </summary>
         [Input("protocolType")]
         public string? ProtocolType { get; set; }
@@ -144,8 +144,8 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// The storage type of the file system.
         /// * Valid values:
-        /// * `Performance` (Available when the `file_system_type` is `standard`)
-        /// * `Capacity` (Available when the `file_system_type` is `standard`)
+        /// * `Performance` (Available when the `FileSystemType` is `Standard`)
+        /// * `Capacity` (Available when the `FileSystemType` is `Standard`)
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Nas
         /// The protocol type of the file system.
         /// Valid values:
         /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`).
+        /// `SMB` (Available when the `FileSystemType` is `Standard`).
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
@@ -194,8 +194,8 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// The storage type of the file system.
         /// * Valid values:
-        /// * `Performance` (Available when the `file_system_type` is `standard`)
-        /// * `Capacity` (Available when the `file_system_type` is `standard`)
+        /// * `Performance` (Available when the `FileSystemType` is `Standard`)
+        /// * `Capacity` (Available when the `FileSystemType` is `Standard`)
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<string> NickName { get; set; } = null!;
 
         /// <summary>
-        /// Parameter See `parameter` below.
+        /// Parameter See `Parameter` below.
         /// </summary>
         [Input("parameter")]
         public Input<Inputs.QuotaSubQuotaInfoListParameterArgs>? Parameter { get; set; }

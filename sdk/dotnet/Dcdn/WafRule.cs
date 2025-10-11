@@ -96,13 +96,13 @@ namespace Pulumi.AliCloud.Dcdn
     public partial class WafRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
+        /// Specifies the action of the rule. Valid values: `Block`, `Monitor`, `Js`, `Deny`.
         /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+        /// Specifies whether to enable rate limiting. Valid values: `On` and `Off`. **NOTE:** This parameter is required when policy is of type `CustomAcl`.
         /// </summary>
         [Output("ccStatus")]
         public Output<string> CcStatus { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> CnRegionList { get; private set; } = null!;
 
         /// <summary>
-        /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        /// Conditions that trigger the rule. See `Conditions` below. **NOTE:** This parameter is required when policy is of type `CustomAcl` or `Whitelist`.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.WafRuleCondition>> Conditions { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> DefenseScene { get; private set; } = null!;
 
         /// <summary>
-        /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
+        /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `Rule` (takes effect for the current rule) and `Service` (takes effect globally).
         /// </summary>
         [Output("effect")]
         public Output<string?> Effect { get; private set; } = null!;
@@ -150,19 +150,19 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+        /// The rules of rate limiting. If you set `CcStatus` to on, you must configure this parameter. See `RateLimit` below.
         /// </summary>
         [Output("rateLimit")]
         public Output<Outputs.WafRuleRateLimit?> RateLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+        /// The regular expression.e, when WafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         /// </summary>
         [Output("regularRules")]
         public Output<ImmutableArray<string>> RegularRules { get; private set; } = null!;
 
         /// <summary>
-        /// Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
+        /// Regular rule type, when WafGroup appears in tags, this value can be filled in, optional values:["sqli", "xss", "CodeExec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         /// </summary>
         [Output("regularTypes")]
         public Output<ImmutableArray<string>> RegularTypes { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<ImmutableArray<string>> RemoteAddrs { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+        /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `RegionBlock`.
         /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
@@ -186,13 +186,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<ImmutableArray<string>> Scenes { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+        /// The status of the waf rule. Valid values: `On` and `Off`. Default value: on.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `WafGroup`.
         /// </summary>
         [Output("wafGroupIds")]
         public Output<string?> WafGroupIds { get; private set; } = null!;
@@ -244,13 +244,13 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class WafRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
+        /// Specifies the action of the rule. Valid values: `Block`, `Monitor`, `Js`, `Deny`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+        /// Specifies whether to enable rate limiting. Valid values: `On` and `Off`. **NOTE:** This parameter is required when policy is of type `CustomAcl`.
         /// </summary>
         [Input("ccStatus")]
         public Input<string>? CcStatus { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.WafRuleConditionArgs>? _conditions;
 
         /// <summary>
-        /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        /// Conditions that trigger the rule. See `Conditions` below. **NOTE:** This parameter is required when policy is of type `CustomAcl` or `Whitelist`.
         /// </summary>
         public InputList<Inputs.WafRuleConditionArgs> Conditions
         {
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
+        /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `Rule` (takes effect for the current rule) and `Service` (takes effect globally).
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string> PolicyId { get; set; } = null!;
 
         /// <summary>
-        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+        /// The rules of rate limiting. If you set `CcStatus` to on, you must configure this parameter. See `RateLimit` below.
         /// </summary>
         [Input("rateLimit")]
         public Input<Inputs.WafRuleRateLimitArgs>? RateLimit { get; set; }
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<string>? _regularRules;
 
         /// <summary>
-        /// The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+        /// The regular expression.e, when WafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         /// </summary>
         public InputList<string> RegularRules
         {
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<string>? _regularTypes;
 
         /// <summary>
-        /// Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
+        /// Regular rule type, when WafGroup appears in tags, this value can be filled in, optional values:["sqli", "xss", "CodeExec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         /// </summary>
         public InputList<string> RegularTypes
         {
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+        /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `RegionBlock`.
         /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
@@ -352,13 +352,13 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+        /// The status of the waf rule. Valid values: `On` and `Off`. Default value: on.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `WafGroup`.
         /// </summary>
         [Input("wafGroupIds")]
         public Input<string>? WafGroupIds { get; set; }
@@ -372,13 +372,13 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class WafRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
+        /// Specifies the action of the rule. Valid values: `Block`, `Monitor`, `Js`, `Deny`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
+        /// Specifies whether to enable rate limiting. Valid values: `On` and `Off`. **NOTE:** This parameter is required when policy is of type `CustomAcl`.
         /// </summary>
         [Input("ccStatus")]
         public Input<string>? CcStatus { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.WafRuleConditionGetArgs>? _conditions;
 
         /// <summary>
-        /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        /// Conditions that trigger the rule. See `Conditions` below. **NOTE:** This parameter is required when policy is of type `CustomAcl` or `Whitelist`.
         /// </summary>
         public InputList<Inputs.WafRuleConditionGetArgs> Conditions
         {
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? DefenseScene { get; set; }
 
         /// <summary>
-        /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
+        /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `Rule` (takes effect for the current rule) and `Service` (takes effect globally).
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+        /// The rules of rate limiting. If you set `CcStatus` to on, you must configure this parameter. See `RateLimit` below.
         /// </summary>
         [Input("rateLimit")]
         public Input<Inputs.WafRuleRateLimitGetArgs>? RateLimit { get; set; }
@@ -441,7 +441,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<string>? _regularRules;
 
         /// <summary>
-        /// The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
+        /// The regular expression.e, when WafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         /// </summary>
         public InputList<string> RegularRules
         {
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<string>? _regularTypes;
 
         /// <summary>
-        /// Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
+        /// Regular rule type, when WafGroup appears in tags, this value can be filled in, optional values:["sqli", "xss", "CodeExec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         /// </summary>
         public InputList<string> RegularTypes
         {
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
+        /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `RegionBlock`.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -492,13 +492,13 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+        /// The status of the waf rule. Valid values: `On` and `Off`. Default value: on.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
+        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `WafGroup`.
         /// </summary>
         [Input("wafGroupIds")]
         public Input<string>? WafGroupIds { get; set; }

@@ -31,12 +31,12 @@ public final class ApplicationScalingRuleScalingRuleMetric {
      */
     private @Nullable Integer minReplicas;
     /**
-     * @return Apply shrink rules. See `scale_down_rules` below.
+     * @return Apply shrink rules. See `scaleDownRules` below.
      * 
      */
     private @Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules;
     /**
-     * @return Apply expansion rules. See `scale_up_rules` below.
+     * @return Apply expansion rules. See `scaleUpRules` below.
      * 
      */
     private @Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules;
@@ -64,14 +64,14 @@ public final class ApplicationScalingRuleScalingRuleMetric {
         return Optional.ofNullable(this.minReplicas);
     }
     /**
-     * @return Apply shrink rules. See `scale_down_rules` below.
+     * @return Apply shrink rules. See `scaleDownRules` below.
      * 
      */
     public Optional<ApplicationScalingRuleScalingRuleMetricScaleDownRules> scaleDownRules() {
         return Optional.ofNullable(this.scaleDownRules);
     }
     /**
-     * @return Apply expansion rules. See `scale_up_rules` below.
+     * @return Apply expansion rules. See `scaleUpRules` below.
      * 
      */
     public Optional<ApplicationScalingRuleScalingRuleMetricScaleUpRules> scaleUpRules() {

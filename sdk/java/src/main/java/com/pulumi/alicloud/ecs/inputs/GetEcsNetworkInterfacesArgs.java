@@ -49,7 +49,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+     * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -60,7 +60,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -132,7 +132,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+     * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -143,7 +143,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
     private @Nullable Output<String> privateIp;
 
     /**
-     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+     * @return Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -366,7 +366,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param privateIp Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+         * @param privateIp Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class GetEcsNetworkInterfacesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param privateIp Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+         * @param privateIp Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
          * 
          * @return builder
          * 

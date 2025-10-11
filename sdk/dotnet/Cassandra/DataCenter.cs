@@ -86,13 +86,13 @@ namespace Pulumi.AliCloud.Cassandra
     public partial class DataCenter : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+        /// Auto renew of dataCenter-2,`True` or `False`. System default to `False`, valid when PayType = Subscription.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        /// Period of dataCenter-2 auto renew, if auto renew is `True`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when PayType = Subscription. Unit: month.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<int?> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        /// The disk type of Cassandra dataCenter-2. Valid values are `CloudSsd`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`, LocalDisk size is fixed.
         /// </summary>
         [Output("diskType")]
         public Output<string?> DiskType { get; private set; } = null!;
@@ -160,15 +160,15 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+        /// The VswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
         /// 
-        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, AutoRenewPeriod and so on) will be supported in the furture.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the Cassandra dataCenter-2. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -220,13 +220,13 @@ namespace Pulumi.AliCloud.Cassandra
     public sealed class DataCenterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+        /// Auto renew of dataCenter-2,`True` or `False`. System default to `False`, valid when PayType = Subscription.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        /// Period of dataCenter-2 auto renew, if auto renew is `True`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when PayType = Subscription. Unit: month.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        /// The disk type of Cassandra dataCenter-2. Valid values are `CloudSsd`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`, LocalDisk size is fixed.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -285,15 +285,15 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+        /// The VswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
         /// 
-        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, AutoRenewPeriod and so on) will be supported in the furture.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the Cassandra dataCenter-2. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -307,13 +307,13 @@ namespace Pulumi.AliCloud.Cassandra
     public sealed class DataCenterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
+        /// Auto renew of dataCenter-2,`True` or `False`. System default to `False`, valid when PayType = Subscription.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        /// Period of dataCenter-2 auto renew, if auto renew is `True`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when PayType = Subscription. Unit: month.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        /// The disk type of Cassandra dataCenter-2. Valid values are `CloudSsd`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`, LocalDisk size is fixed.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -386,15 +386,15 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+        /// The VswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
         /// 
-        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, AutoRenewPeriod and so on) will be supported in the furture.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the Cassandra dataCenter-2. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -33,14 +33,14 @@ public final class QuotaScheduleState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * schedule list See `schedule_list` below.
+     * schedule list See `scheduleList` below.
      * 
      */
     @Import(name="scheduleLists")
     private @Nullable Output<List<QuotaScheduleScheduleListArgs>> scheduleLists;
 
     /**
-     * @return schedule list See `schedule_list` below.
+     * @return schedule list See `scheduleList` below.
      * 
      */
     public Optional<Output<List<QuotaScheduleScheduleListArgs>>> scheduleLists() {
@@ -110,7 +110,7 @@ public final class QuotaScheduleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scheduleLists schedule list See `schedule_list` below.
+         * @param scheduleLists schedule list See `scheduleList` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class QuotaScheduleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scheduleLists schedule list See `schedule_list` below.
+         * @param scheduleLists schedule list See `scheduleList` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class QuotaScheduleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scheduleLists schedule list See `schedule_list` below.
+         * @param scheduleLists schedule list See `scheduleList` below.
          * 
          * @return builder
          * 

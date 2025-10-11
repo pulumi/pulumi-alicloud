@@ -19,8 +19,8 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of operations that can be performed on the resource. Valid values:
-     * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-     * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      * 
      */
     @Import(name="actions", required=true)
@@ -28,8 +28,8 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of operations that can be performed on the resource. Valid values:
-     * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-     * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      * 
      */
     public Output<List<String>> actions() {
@@ -158,8 +158,8 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param actions The type of operations that can be performed on the resource. Valid values:
-         * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-         * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+         * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+         * - If `resourceType` is set to `Group`. Valid values: `Sub`.
          * 
          * @return builder
          * 
@@ -171,8 +171,8 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param actions The type of operations that can be performed on the resource. Valid values:
-         * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-         * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+         * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+         * - If `resourceType` is set to `Group`. Valid values: `Sub`.
          * 
          * @return builder
          * 
@@ -183,8 +183,8 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param actions The type of operations that can be performed on the resource. Valid values:
-         * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-         * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+         * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+         * - If `resourceType` is set to `Group`. Valid values: `Sub`.
          * 
          * @return builder
          * 

@@ -20,7 +20,7 @@ public final class OriginPoolOrigin {
      */
     private @Nullable String address;
     /**
-     * @return The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+     * @return The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
      * 
      */
     private @Nullable OriginPoolOriginAuthConf authConf;
@@ -67,7 +67,7 @@ public final class OriginPoolOrigin {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+     * @return The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
      * 
      */
     public Optional<OriginPoolOriginAuthConf> authConf() {

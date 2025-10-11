@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        /// The status of the resource. Valid values: `Illegal`, `Inactive`, `Active`, `Unknown`.
         /// </summary>
         public readonly string Status;
 

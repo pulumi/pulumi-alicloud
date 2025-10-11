@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.122.0.
  * 
- * &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn&#39;t resize disk.
+ * &gt; **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `alicloud.ecs.Disk` doesn&#39;t resize disk.
  * 
  * ## Example Usage
  * 
@@ -86,10 +86,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * The Zone to create the disk in.
      * 
      * @deprecated
-     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      * 
      */
-    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
+    @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
@@ -107,14 +107,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.burstingEnabled);
     }
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      * 
      */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
-     * @return Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+     * @return Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      * 
      */
     public Output<Optional<String>> category() {
@@ -201,14 +201,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptAlgorithm);
     }
     /**
-     * If true, the disk will be encrypted, conflict with `snapshot_id`.
+     * If true, the disk will be encrypted, conflict with `snapshotId`.
      * 
      */
     @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> encrypted;
 
     /**
-     * @return If true, the disk will be encrypted, conflict with `snapshot_id`.
+     * @return If true, the disk will be encrypted, conflict with `snapshotId`.
      * 
      */
     public Output<Boolean> encrypted() {
@@ -244,10 +244,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -298,7 +298,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
@@ -306,7 +306,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      */
     public Output<String> resourceGroupId() {

@@ -32,7 +32,7 @@ public final class GetHoneyPotsPot {
      */
     private String honeypotName;
     /**
-     * @return Honeypot ID. The value is the same as `honeypot_id`.
+     * @return Honeypot ID. The value is the same as `honeypotId`.
      * 
      */
     private String id;
@@ -87,7 +87,7 @@ public final class GetHoneyPotsPot {
         return this.honeypotName;
     }
     /**
-     * @return Honeypot ID. The value is the same as `honeypot_id`.
+     * @return Honeypot ID. The value is the same as `honeypotId`.
      * 
      */
     public String id() {

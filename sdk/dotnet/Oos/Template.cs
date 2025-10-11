@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Oos
     public partial class Template : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When deleting a template, whether to delete its related executions. Default to `false`.
+        /// When deleting a template, whether to delete its related executions. Default to `False`.
         /// </summary>
         [Output("autoDeleteExecutions")]
         public Output<bool?> AutoDeleteExecutions { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class TemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When deleting a template, whether to delete its related executions. Default to `false`.
+        /// When deleting a template, whether to delete its related executions. Default to `False`.
         /// </summary>
         [Input("autoDeleteExecutions")]
         public Input<bool>? AutoDeleteExecutions { get; set; }
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class TemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When deleting a template, whether to delete its related executions. Default to `false`.
+        /// When deleting a template, whether to delete its related executions. Default to `False`.
         /// </summary>
         [Input("autoDeleteExecutions")]
         public Input<bool>? AutoDeleteExecutions { get; set; }

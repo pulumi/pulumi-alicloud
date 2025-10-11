@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> AdjustmentValue { get; private set; } = null!;
 
         /// <summary>
-        /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        /// AlarmDimension for StepScalingRule. See `AlarmDimension` below.
         /// </summary>
         [Output("alarmDimension")]
         public Output<Outputs.ScalingRuleAlarmDimension?> AlarmDimension { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> EstimatedInstanceWarmup { get; private set; } = null!;
 
         /// <summary>
-        /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        /// The Hybrid Cloud Monitoring metrics. See `HybridMetrics` below.
         /// </summary>
         [Output("hybridMetrics")]
         public Output<ImmutableArray<Outputs.ScalingRuleHybridMetric>> HybridMetrics { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> ScalingRuleType { get; private set; } = null!;
 
         /// <summary>
-        /// Steps for StepScalingRule. See `step_adjustment` below.
+        /// Steps for StepScalingRule. See `StepAdjustment` below.
         /// </summary>
         [Output("stepAdjustments")]
         public Output<ImmutableArray<Outputs.ScalingRuleStepAdjustment>> StepAdjustments { get; private set; } = null!;
@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? AdjustmentValue { get; set; }
 
         /// <summary>
-        /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        /// AlarmDimension for StepScalingRule. See `AlarmDimension` below.
         /// </summary>
         [Input("alarmDimension")]
         public Input<Inputs.ScalingRuleAlarmDimensionArgs>? AlarmDimension { get; set; }
@@ -382,7 +382,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingRuleHybridMetricArgs>? _hybridMetrics;
 
         /// <summary>
-        /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        /// The Hybrid Cloud Monitoring metrics. See `HybridMetrics` below.
         /// </summary>
         public InputList<Inputs.ScalingRuleHybridMetricArgs> HybridMetrics
         {
@@ -478,7 +478,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingRuleStepAdjustmentArgs>? _stepAdjustments;
 
         /// <summary>
-        /// Steps for StepScalingRule. See `step_adjustment` below.
+        /// Steps for StepScalingRule. See `StepAdjustment` below.
         /// </summary>
         public InputList<Inputs.ScalingRuleStepAdjustmentArgs> StepAdjustments
         {
@@ -519,7 +519,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? AdjustmentValue { get; set; }
 
         /// <summary>
-        /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        /// AlarmDimension for StepScalingRule. See `AlarmDimension` below.
         /// </summary>
         [Input("alarmDimension")]
         public Input<Inputs.ScalingRuleAlarmDimensionGetArgs>? AlarmDimension { get; set; }
@@ -552,7 +552,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingRuleHybridMetricGetArgs>? _hybridMetrics;
 
         /// <summary>
-        /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        /// The Hybrid Cloud Monitoring metrics. See `HybridMetrics` below.
         /// </summary>
         public InputList<Inputs.ScalingRuleHybridMetricGetArgs> HybridMetrics
         {
@@ -648,7 +648,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingRuleStepAdjustmentGetArgs>? _stepAdjustments;
 
         /// <summary>
-        /// Steps for StepScalingRule. See `step_adjustment` below.
+        /// Steps for StepScalingRule. See `StepAdjustment` below.
         /// </summary>
         public InputList<Inputs.ScalingRuleStepAdjustmentGetArgs> StepAdjustments
         {

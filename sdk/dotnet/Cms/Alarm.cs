@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class Alarm : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The trigger conditions for multiple metrics. See `composite_expression` below.
+        /// The trigger conditions for multiple metrics. See `CompositeExpression` below.
         /// </summary>
         [Output("compositeExpression")]
         public Output<Outputs.AlarmCompositeExpression?> CompositeExpression { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<string>> ContactGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        /// Field `Dimensions` has been deprecated from provider version 1.173.0. New field `MetricDimensions` instead.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, string>> Dimensions { get; private set; } = null!;
@@ -152,37 +152,37 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> EffectiveInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable alarm rule. Default value: `true`.
+        /// Whether to enable alarm rule. Default value: `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        /// Field `EndTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of critical alarm. See `escalations_critical` below.
+        /// A configuration of critical alarm. See `EscalationsCritical` below.
         /// </summary>
         [Output("escalationsCritical")]
         public Output<Outputs.AlarmEscalationsCritical> EscalationsCritical { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of critical info. See `escalations_info` below.
+        /// A configuration of critical info. See `EscalationsInfo` below.
         /// </summary>
         [Output("escalationsInfo")]
         public Output<Outputs.AlarmEscalationsInfo> EscalationsInfo { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of critical warn. See `escalations_warn` below.
+        /// A configuration of critical warn. See `EscalationsWarn` below.
         /// </summary>
         [Output("escalationsWarn")]
         public Output<Outputs.AlarmEscalationsWarn> EscalationsWarn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The name of the metric, such as `CPUUtilization` and `NetworkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Output("metric")]
         public Output<string> Metric { get; private set; } = null!;
@@ -206,14 +206,14 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+        /// The namespace of the cloud service, such as `AcsEcsDashboard` and `AcsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// **NOTE:** The `Dimensions` and `MetricDimensions` must be empty when `Project` is `AcsPrometheus`, otherwise, one of them must be set.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// The Prometheus alert rule. See `Prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         /// </summary>
         [Output("prometheuses")]
         public Output<ImmutableArray<Outputs.AlarmPrometheus>> Prometheuses { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> SilenceTime { get; private set; } = null!;
 
         /// <summary>
-        /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        /// Field `StartTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Adds or modifies the push channels of an alert rule. See `targets` below.
+        /// Adds or modifies the push channels of an alert rule. See `Targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.AlarmTarget>> Targets { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class AlarmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The trigger conditions for multiple metrics. See `composite_expression` below.
+        /// The trigger conditions for multiple metrics. See `CompositeExpression` below.
         /// </summary>
         [Input("compositeExpression")]
         public Input<Inputs.AlarmCompositeExpressionArgs>? CompositeExpression { get; set; }
@@ -322,9 +322,9 @@ namespace Pulumi.AliCloud.Cms
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        /// Field `Dimensions` has been deprecated from provider version 1.173.0. New field `MetricDimensions` instead.
         /// </summary>
-        [Obsolete(@"Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.")]
+        [Obsolete(@"Field `Dimensions` has been deprecated from provider version 1.173.0. New field `MetricDimensions` instead.")]
         public InputMap<string> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputMap<string>());
@@ -338,37 +338,37 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// Whether to enable alarm rule. Default value: `true`.
+        /// Whether to enable alarm rule. Default value: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        /// Field `EndTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// A configuration of critical alarm. See `escalations_critical` below.
+        /// A configuration of critical alarm. See `EscalationsCritical` below.
         /// </summary>
         [Input("escalationsCritical")]
         public Input<Inputs.AlarmEscalationsCriticalArgs>? EscalationsCritical { get; set; }
 
         /// <summary>
-        /// A configuration of critical info. See `escalations_info` below.
+        /// A configuration of critical info. See `EscalationsInfo` below.
         /// </summary>
         [Input("escalationsInfo")]
         public Input<Inputs.AlarmEscalationsInfoArgs>? EscalationsInfo { get; set; }
 
         /// <summary>
-        /// A configuration of critical warn. See `escalations_warn` below.
+        /// A configuration of critical warn. See `EscalationsWarn` below.
         /// </summary>
         [Input("escalationsWarn")]
         public Input<Inputs.AlarmEscalationsWarnArgs>? EscalationsWarn { get; set; }
 
         /// <summary>
-        /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The name of the metric, such as `CPUUtilization` and `NetworkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
@@ -392,8 +392,8 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+        /// The namespace of the cloud service, such as `AcsEcsDashboard` and `AcsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// **NOTE:** The `Dimensions` and `MetricDimensions` must be empty when `Project` is `AcsPrometheus`, otherwise, one of them must be set.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -402,7 +402,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmPrometheusArgs>? _prometheuses;
 
         /// <summary>
-        /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// The Prometheus alert rule. See `Prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         /// </summary>
         public InputList<Inputs.AlarmPrometheusArgs> Prometheuses
         {
@@ -417,7 +417,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? SilenceTime { get; set; }
 
         /// <summary>
-        /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        /// Field `StartTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmTargetArgs>? _targets;
 
         /// <summary>
-        /// Adds or modifies the push channels of an alert rule. See `targets` below.
+        /// Adds or modifies the push channels of an alert rule. See `Targets` below.
         /// </summary>
         public InputList<Inputs.AlarmTargetArgs> Targets
         {
@@ -461,7 +461,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class AlarmState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The trigger conditions for multiple metrics. See `composite_expression` below.
+        /// The trigger conditions for multiple metrics. See `CompositeExpression` below.
         /// </summary>
         [Input("compositeExpression")]
         public Input<Inputs.AlarmCompositeExpressionGetArgs>? CompositeExpression { get; set; }
@@ -482,9 +482,9 @@ namespace Pulumi.AliCloud.Cms
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        /// Field `Dimensions` has been deprecated from provider version 1.173.0. New field `MetricDimensions` instead.
         /// </summary>
-        [Obsolete(@"Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.")]
+        [Obsolete(@"Field `Dimensions` has been deprecated from provider version 1.173.0. New field `MetricDimensions` instead.")]
         public InputMap<string> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputMap<string>());
@@ -498,37 +498,37 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// Whether to enable alarm rule. Default value: `true`.
+        /// Whether to enable alarm rule. Default value: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        /// Field `EndTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// A configuration of critical alarm. See `escalations_critical` below.
+        /// A configuration of critical alarm. See `EscalationsCritical` below.
         /// </summary>
         [Input("escalationsCritical")]
         public Input<Inputs.AlarmEscalationsCriticalGetArgs>? EscalationsCritical { get; set; }
 
         /// <summary>
-        /// A configuration of critical info. See `escalations_info` below.
+        /// A configuration of critical info. See `EscalationsInfo` below.
         /// </summary>
         [Input("escalationsInfo")]
         public Input<Inputs.AlarmEscalationsInfoGetArgs>? EscalationsInfo { get; set; }
 
         /// <summary>
-        /// A configuration of critical warn. See `escalations_warn` below.
+        /// A configuration of critical warn. See `EscalationsWarn` below.
         /// </summary>
         [Input("escalationsWarn")]
         public Input<Inputs.AlarmEscalationsWarnGetArgs>? EscalationsWarn { get; set; }
 
         /// <summary>
-        /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The name of the metric, such as `CPUUtilization` and `NetworkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Input("metric")]
         public Input<string>? Metric { get; set; }
@@ -552,8 +552,8 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+        /// The namespace of the cloud service, such as `AcsEcsDashboard` and `AcsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// **NOTE:** The `Dimensions` and `MetricDimensions` must be empty when `Project` is `AcsPrometheus`, otherwise, one of them must be set.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmPrometheusGetArgs>? _prometheuses;
 
         /// <summary>
-        /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// The Prometheus alert rule. See `Prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         /// </summary>
         public InputList<Inputs.AlarmPrometheusGetArgs> Prometheuses
         {
@@ -577,7 +577,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? SilenceTime { get; set; }
 
         /// <summary>
-        /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        /// Field `StartTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmTargetGetArgs>? _targets;
 
         /// <summary>
-        /// Adds or modifies the push channels of an alert rule. See `targets` below.
+        /// Adds or modifies the push channels of an alert rule. See `Targets` below.
         /// </summary>
         public InputList<Inputs.AlarmTargetGetArgs> Targets
         {

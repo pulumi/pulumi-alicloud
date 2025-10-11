@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string?> EcrName { get; private set; } = null!;
 
         /// <summary>
-        /// List of regions representing leased line gateways. See `regions` below.
+        /// List of regions representing leased line gateways. See `Regions` below.
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<Outputs.RouterExpressConnectRouterRegion>> Regions { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<Inputs.RouterExpressConnectRouterRegionArgs>? _regions;
 
         /// <summary>
-        /// List of regions representing leased line gateways. See `regions` below.
+        /// List of regions representing leased line gateways. See `Regions` below.
         /// </summary>
         public InputList<Inputs.RouterExpressConnectRouterRegionArgs> Regions
         {
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<Inputs.RouterExpressConnectRouterRegionGetArgs>? _regions;
 
         /// <summary>
-        /// List of regions representing leased line gateways. See `regions` below.
+        /// List of regions representing leased line gateways. See `Regions` below.
         /// </summary>
         public InputList<Inputs.RouterExpressConnectRouterRegionGetArgs> Regions
         {

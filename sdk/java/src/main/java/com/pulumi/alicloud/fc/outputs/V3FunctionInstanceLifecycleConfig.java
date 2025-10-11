@@ -18,7 +18,7 @@ public final class V3FunctionInstanceLifecycleConfig {
      */
     private @Nullable V3FunctionInstanceLifecycleConfigInitializer initializer;
     /**
-     * @return PreStop handler method configuration See `pre_stop` below.
+     * @return PreStop handler method configuration See `preStop` below.
      * 
      */
     private @Nullable V3FunctionInstanceLifecycleConfigPreStop preStop;
@@ -32,7 +32,7 @@ public final class V3FunctionInstanceLifecycleConfig {
         return Optional.ofNullable(this.initializer);
     }
     /**
-     * @return PreStop handler method configuration See `pre_stop` below.
+     * @return PreStop handler method configuration See `preStop` below.
      * 
      */
     public Optional<V3FunctionInstanceLifecycleConfigPreStop> preStop() {

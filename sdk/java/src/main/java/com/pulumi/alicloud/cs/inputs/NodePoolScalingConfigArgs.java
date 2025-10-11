@@ -33,14 +33,14 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+     * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
      * 
      */
     @Import(name="eipInternetChargeType")
     private @Nullable Output<String> eipInternetChargeType;
 
     /**
-     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
      * 
      */
     public Optional<Output<String>> eipInternetChargeType() {
@@ -78,14 +78,14 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+     * Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
      * 
      */
     @Import(name="maxSize")
     private @Nullable Output<Integer> maxSize;
 
     /**
-     * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+     * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
      * 
      */
     public Optional<Output<Integer>> maxSize() {
@@ -108,14 +108,14 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+     * Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+     * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -174,7 +174,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param eipInternetChargeType EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+         * @param eipInternetChargeType EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param eipInternetChargeType EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+         * @param eipInternetChargeType EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxSize Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+         * @param maxSize Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxSize Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+         * @param maxSize Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+         * @param type Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+         * @param type Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
          * 
          * @return builder
          * 

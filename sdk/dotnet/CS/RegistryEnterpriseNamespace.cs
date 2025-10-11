@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.CS
     public partial class RegistryEnterpriseNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to automatically create an image repository in the namespace. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("autoCreate")]
         public Output<bool?> AutoCreate { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to automatically create an image repository in the namespace. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoCreate")]
         public Input<bool>? AutoCreate { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to automatically create an image repository in the namespace. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("autoCreate")]
         public Input<bool>? AutoCreate { get; set; }

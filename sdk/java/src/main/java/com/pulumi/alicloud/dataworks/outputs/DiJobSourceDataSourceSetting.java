@@ -18,7 +18,7 @@ public final class DiJobSourceDataSourceSetting {
      */
     private @Nullable String dataSourceName;
     /**
-     * @return Single Source Data Source Properties See `data_source_properties` below.
+     * @return Single Source Data Source Properties See `dataSourceProperties` below.
      * 
      */
     private @Nullable DiJobSourceDataSourceSettingDataSourceProperties dataSourceProperties;
@@ -32,7 +32,7 @@ public final class DiJobSourceDataSourceSetting {
         return Optional.ofNullable(this.dataSourceName);
     }
     /**
-     * @return Single Source Data Source Properties See `data_source_properties` below.
+     * @return Single Source Data Source Properties See `dataSourceProperties` below.
      * 
      */
     public Optional<DiJobSourceDataSourceSettingDataSourceProperties> dataSourceProperties() {

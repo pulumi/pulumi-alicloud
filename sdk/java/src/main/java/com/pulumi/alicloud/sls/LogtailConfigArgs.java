@@ -109,14 +109,14 @@ public final class LogtailConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Detailed configuration of logtail output See `output_detail` below.
+     * Detailed configuration of logtail output See `outputDetail` below.
      * 
      */
     @Import(name="outputDetail")
     private @Nullable Output<LogtailConfigOutputDetailArgs> outputDetail;
 
     /**
-     * @return Detailed configuration of logtail output See `output_detail` below.
+     * @return Detailed configuration of logtail output See `outputDetail` below.
      * 
      */
     public Optional<Output<LogtailConfigOutputDetailArgs>> outputDetail() {
@@ -312,7 +312,7 @@ public final class LogtailConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outputDetail Detailed configuration of logtail output See `output_detail` below.
+         * @param outputDetail Detailed configuration of logtail output See `outputDetail` below.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class LogtailConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outputDetail Detailed configuration of logtail output See `output_detail` below.
+         * @param outputDetail Detailed configuration of logtail output See `outputDetail` below.
          * 
          * @return builder
          * 

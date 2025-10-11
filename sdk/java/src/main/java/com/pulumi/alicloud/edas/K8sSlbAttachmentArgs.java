@@ -34,14 +34,14 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      * 
      */
     @Import(name="slbConfigs")
     private @Nullable Output<List<K8sSlbAttachmentSlbConfigArgs>> slbConfigs;
 
     /**
-     * @return The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+     * @return The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      * 
      */
     public Optional<Output<List<K8sSlbAttachmentSlbConfigArgs>>> slbConfigs() {
@@ -95,7 +95,7 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
          * 
          * @return builder
          * 

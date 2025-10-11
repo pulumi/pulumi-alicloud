@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides Express Connect Virtual Physical Connection available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetVirtualPhysicalConnectionsResult> InvokeAsync(GetVirtualPhysicalConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsArgs(), options.WithDefaults());
@@ -23,6 +25,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides Express Connect Virtual Physical Connection available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetVirtualPhysicalConnectionsResult> Invoke(GetVirtualPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsInvokeArgs(), options.WithDefaults());
@@ -31,6 +35,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides Express Connect Virtual Physical Connection available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetVirtualPhysicalConnectionsResult> Invoke(GetVirtualPhysicalConnectionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsInvokeArgs(), options.WithDefaults());

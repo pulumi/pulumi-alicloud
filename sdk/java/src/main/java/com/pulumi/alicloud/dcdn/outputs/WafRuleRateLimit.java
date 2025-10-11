@@ -24,7 +24,7 @@ public final class WafRuleRateLimit {
      */
     private @Nullable WafRuleRateLimitStatus status;
     /**
-     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
      * 
      */
     private @Nullable String subKey;
@@ -60,7 +60,7 @@ public final class WafRuleRateLimit {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
      * 
      */
     public Optional<String> subKey() {

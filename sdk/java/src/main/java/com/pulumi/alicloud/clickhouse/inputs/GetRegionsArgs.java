@@ -47,14 +47,14 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * You can use specified region_id to find the region and available zones information that supports ClickHouse.
+     * You can use specified regionId to find the region and available zones information that supports ClickHouse.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return You can use specified region_id to find the region and available zones information that supports ClickHouse.
+     * @return You can use specified regionId to find the region and available zones information that supports ClickHouse.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -130,7 +130,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regionId You can use specified region_id to find the region and available zones information that supports ClickHouse.
+         * @param regionId You can use specified regionId to find the region and available zones information that supports ClickHouse.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regionId You can use specified region_id to find the region and available zones information that supports ClickHouse.
+         * @param regionId You can use specified regionId to find the region and available zones information that supports ClickHouse.
          * 
          * @return builder
          * 

@@ -50,14 +50,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * Setting environment variables in eais instance on Initialization See `environmentVar` below.
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<List<InstanceEnvironmentVarArgs>> environmentVars;
 
     /**
-     * @return Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * @return Setting environment variables in eais instance on Initialization See `environmentVar` below.
      * 
      */
     public Optional<Output<List<InstanceEnvironmentVarArgs>>> environmentVars() {
@@ -301,7 +301,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environmentVars Setting environment variables in eais instance on Initialization See `environment_var` below.
+         * @param environmentVars Setting environment variables in eais instance on Initialization See `environmentVar` below.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environmentVars Setting environment variables in eais instance on Initialization See `environment_var` below.
+         * @param environmentVars Setting environment variables in eais instance on Initialization See `environmentVar` below.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environmentVars Setting environment variables in eais instance on Initialization See `environment_var` below.
+         * @param environmentVars Setting environment variables in eais instance on Initialization See `environmentVar` below.
          * 
          * @return builder
          * 

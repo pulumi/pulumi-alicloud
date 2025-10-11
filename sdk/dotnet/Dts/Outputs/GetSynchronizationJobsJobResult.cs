@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string DestinationEndpointInstanceId;
         /// <summary>
-        /// The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of destination instance. Valid values: `Ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         public readonly string DestinationEndpointInstanceType;
         /// <summary>
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly bool StructureInitialization;
         /// <summary>
-        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+        /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `SyncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `Bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         /// </summary>
         public readonly string SynchronizationDirection;
 

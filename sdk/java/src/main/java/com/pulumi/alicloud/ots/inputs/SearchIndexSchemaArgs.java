@@ -20,14 +20,14 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
     public static final SearchIndexSchemaArgs Empty = new SearchIndexSchemaArgs();
 
     /**
-     * A list of field schemas. See `field_schema` below.
+     * A list of field schemas. See `fieldSchema` below.
      * 
      */
     @Import(name="fieldSchemas", required=true)
     private Output<List<SearchIndexSchemaFieldSchemaArgs>> fieldSchemas;
 
     /**
-     * @return A list of field schemas. See `field_schema` below.
+     * @return A list of field schemas. See `fieldSchema` below.
      * 
      */
     public Output<List<SearchIndexSchemaFieldSchemaArgs>> fieldSchemas() {
@@ -35,14 +35,14 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The settings of the search index, including routingFields. See `index_setting` below.
+     * The settings of the search index, including routingFields. See `indexSetting` below.
      * 
      */
     @Import(name="indexSettings")
     private @Nullable Output<List<SearchIndexSchemaIndexSettingArgs>> indexSettings;
 
     /**
-     * @return The settings of the search index, including routingFields. See `index_setting` below.
+     * @return The settings of the search index, including routingFields. See `indexSetting` below.
      * 
      */
     public Optional<Output<List<SearchIndexSchemaIndexSettingArgs>>> indexSettings() {
@@ -50,14 +50,14 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
+     * The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `indexSort` below.
      * 
      */
     @Import(name="indexSorts")
     private @Nullable Output<List<SearchIndexSchemaIndexSortArgs>> indexSorts;
 
     /**
-     * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
+     * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `indexSort` below.
      * 
      */
     public Optional<Output<List<SearchIndexSchemaIndexSortArgs>>> indexSorts() {
@@ -91,7 +91,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fieldSchemas A list of field schemas. See `field_schema` below.
+         * @param fieldSchemas A list of field schemas. See `fieldSchema` below.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fieldSchemas A list of field schemas. See `field_schema` below.
+         * @param fieldSchemas A list of field schemas. See `fieldSchema` below.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fieldSchemas A list of field schemas. See `field_schema` below.
+         * @param fieldSchemas A list of field schemas. See `fieldSchema` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexSettings The settings of the search index, including routingFields. See `index_setting` below.
+         * @param indexSettings The settings of the search index, including routingFields. See `indexSetting` below.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexSettings The settings of the search index, including routingFields. See `index_setting` below.
+         * @param indexSettings The settings of the search index, including routingFields. See `indexSetting` below.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexSettings The settings of the search index, including routingFields. See `index_setting` below.
+         * @param indexSettings The settings of the search index, including routingFields. See `indexSetting` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexSorts The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
+         * @param indexSorts The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `indexSort` below.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexSorts The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
+         * @param indexSorts The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `indexSort` below.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexSorts The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
+         * @param indexSorts The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `indexSort` below.
          * 
          * @return builder
          * 

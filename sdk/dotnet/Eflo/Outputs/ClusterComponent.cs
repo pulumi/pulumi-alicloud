@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
     public sealed class ClusterComponent
     {
         /// <summary>
-        /// Component Configuration See `component_config` below.
+        /// Component Configuration See `ComponentConfig` below.
         /// </summary>
         public readonly Outputs.ClusterComponentComponentConfig? ComponentConfig;
         /// <summary>

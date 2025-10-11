@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<bool> Authed { get; private set; } = null!;
 
         /// <summary>
-        /// The dataphin. Valid values: `yes`,`no`.
+        /// The dataphin. Valid values: `Yes`,`No`.
         /// </summary>
         [Output("dataphin")]
         public Output<string?> Dataphin { get; private set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string?> Logistics { get; private set; } = null!;
 
         /// <summary>
-        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `ModifyType` is required when you execute a update operation.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string> RemainDays { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+        /// Automatic renewal period. **NOTE:** The `RenewPeriod` is required under the condition that RenewalStatus is `AutoRenewal`,
         /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use the database. Valid values:`yes`,`no`.
+        /// Whether to use the database. Valid values:`Yes`,`No`.
         /// </summary>
         [Output("sdCbool")]
         public Output<string> SdCbool { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string> Sdc { get; private set; } = null!;
 
         /// <summary>
-        /// The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+        /// The sddp version. Valid values: `VersionAudit`,`VersionCompany`,`VersionDlp`.
         /// </summary>
         [Output("sddpVersion")]
         public Output<string> SddpVersion { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use OSS. Valid values: `yes`,`no`.
+        /// Whether to use OSS. Valid values: `Yes`,`No`.
         /// </summary>
         [Output("udCbool")]
         public Output<string> UdCbool { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Sddp
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataphin. Valid values: `yes`,`no`.
+        /// The dataphin. Valid values: `Yes`,`No`.
         /// </summary>
         [Input("dataphin")]
         public Input<string>? Dataphin { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `ModifyType` is required when you execute a update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<int> Period { get; set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+        /// Automatic renewal period. **NOTE:** The `RenewPeriod` is required under the condition that RenewalStatus is `AutoRenewal`,
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Whether to use the database. Valid values:`yes`,`no`.
+        /// Whether to use the database. Valid values:`Yes`,`No`.
         /// </summary>
         [Input("sdCbool", required: true)]
         public Input<string> SdCbool { get; set; } = null!;
@@ -295,13 +295,13 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string> Sdc { get; set; } = null!;
 
         /// <summary>
-        /// The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+        /// The sddp version. Valid values: `VersionAudit`,`VersionCompany`,`VersionDlp`.
         /// </summary>
         [Input("sddpVersion", required: true)]
         public Input<string> SddpVersion { get; set; } = null!;
 
         /// <summary>
-        /// Whether to use OSS. Valid values: `yes`,`no`.
+        /// Whether to use OSS. Valid values: `Yes`,`No`.
         /// </summary>
         [Input("udCbool", required: true)]
         public Input<string> UdCbool { get; set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<bool>? Authed { get; set; }
 
         /// <summary>
-        /// The dataphin. Valid values: `yes`,`no`.
+        /// The dataphin. Valid values: `Yes`,`No`.
         /// </summary>
         [Input("dataphin")]
         public Input<string>? Dataphin { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `ModifyType` is required when you execute a update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? RemainDays { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
+        /// Automatic renewal period. **NOTE:** The `RenewPeriod` is required under the condition that RenewalStatus is `AutoRenewal`,
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
@@ -411,7 +411,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Whether to use the database. Valid values:`yes`,`no`.
+        /// Whether to use the database. Valid values:`Yes`,`No`.
         /// </summary>
         [Input("sdCbool")]
         public Input<string>? SdCbool { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Sdc { get; set; }
 
         /// <summary>
-        /// The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
+        /// The sddp version. Valid values: `VersionAudit`,`VersionCompany`,`VersionDlp`.
         /// </summary>
         [Input("sddpVersion")]
         public Input<string>? SddpVersion { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to use OSS. Valid values: `yes`,`no`.
+        /// Whether to use OSS. Valid values: `Yes`,`No`.
         /// </summary>
         [Input("udCbool")]
         public Input<string>? UdCbool { get; set; }

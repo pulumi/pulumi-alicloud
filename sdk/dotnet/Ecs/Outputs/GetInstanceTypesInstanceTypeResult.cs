@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int CpuCoreCount;
         /// <summary>
-        /// Filter the result whose network interface number is no more than `eni_amount`.
+        /// Filter the result whose network interface number is no more than `EniAmount`.
         /// </summary>
         public readonly int EniAmount;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string NvmeSupport;
         /// <summary>
-        /// The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
+        /// The price of instance type. **Note:** `Price` takes effect only if `SortedBy` is set to `Price`.
         /// </summary>
         public readonly string Price;
         /// <summary>

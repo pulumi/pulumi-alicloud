@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Provides a ESS scaling configuration resource.
     /// 
-    /// &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
+    /// &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `IsOutdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
     /// 
     /// &gt; **NOTE:** Available since v1.39.0.
     /// 
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ess
     public partial class ScalingConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
+        /// Whether active current scaling configuration in the specified scaling group. Default to `False`.
         /// </summary>
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
@@ -147,13 +147,13 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> CreditSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `CustomPriorities` below for details.
         /// </summary>
         [Output("customPriorities")]
         public Output<ImmutableArray<Outputs.ScalingConfigurationCustomPriority>> CustomPriorities { get; private set; } = null!;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        /// DataDisk mappings to attach to ecs instance. See `DataDisk` below for details.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.ScalingConfigurationDataDisk>> DataDisks { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `InstancePatternInfo` below for details.
         /// </summary>
         [Output("instancePatternInfos")]
         public Output<ImmutableArray<Outputs.ScalingConfigurationInstancePatternInfo>> InstancePatternInfos { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// specify the weight of instance type.  See `instance_type_override` below for details.
+        /// specify the weight of instance type.  See `InstanceTypeOverride` below for details.
         /// </summary>
         [Output("instanceTypeOverrides")]
         public Output<ImmutableArray<Outputs.ScalingConfigurationInstanceTypeOverride>> InstanceTypeOverrides { get; private set; } = null!;
@@ -279,19 +279,19 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `NetworkInterfaces` below for details.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.ScalingConfigurationNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `Password` and `KmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
         /// </summary>
         [Output("passwordInherit")]
         public Output<bool?> PasswordInherit { get; private set; } = null!;
@@ -345,13 +345,13 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        /// ID of the security group used to create new instance. It is conflict with `SecurityGroupIds`.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        /// List IDs of the security group used to create new instances. It is conflict with `SecurityGroupId`.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -363,11 +363,11 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> SpotDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        /// Sets the maximum price hourly for instance types. See `SpotPriceLimit` below for details.
         /// 
         /// &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
         /// 
-        /// &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+        /// &gt; **NOTE:** If the number of attached ECS instances by `InstanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
         /// 
         /// &gt; **NOTE:** Restrictions on attaching ECS instances:
         /// 
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
+        /// The another scaling configuration which will be active automatically and replace current configuration when setting `Active` to 'false'. It is invalid when `Active` is 'true'.
         /// </summary>
         [Output("substitute")]
         public Output<string> Substitute { get; private set; } = null!;
@@ -401,7 +401,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+        /// Category of the system disk. The parameter value options are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd`, `CloudEssd` and `Cloud`. `Cloud` only is used to some no I/O optimized instance. Default to `CloudEfficiency`.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
@@ -515,7 +515,7 @@ namespace Pulumi.AliCloud.Ess
     public sealed class ScalingConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
+        /// Whether active current scaling configuration in the specified scaling group. Default to `False`.
         /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
@@ -530,7 +530,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationCustomPriorityArgs>? _customPriorities;
 
         /// <summary>
-        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `CustomPriorities` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationCustomPriorityArgs> CustomPriorities
         {
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        /// DataDisk mappings to attach to ecs instance. See `DataDisk` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationDataDiskArgs> DataDisks
         {
@@ -621,7 +621,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationInstancePatternInfoArgs>? _instancePatternInfos;
 
         /// <summary>
-        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `InstancePatternInfo` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationInstancePatternInfoArgs> InstancePatternInfos
         {
@@ -639,7 +639,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationInstanceTypeOverrideArgs>? _instanceTypeOverrides;
 
         /// <summary>
-        /// specify the weight of instance type.  See `instance_type_override` below for details.
+        /// specify the weight of instance type.  See `InstanceTypeOverride` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationInstanceTypeOverrideArgs> InstanceTypeOverrides
         {
@@ -696,7 +696,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -705,7 +705,7 @@ namespace Pulumi.AliCloud.Ess
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -717,7 +717,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationNetworkInterfaceArgs>? _networkInterfaces;
 
         /// <summary>
-        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `NetworkInterfaces` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationNetworkInterfaceArgs> NetworkInterfaces
         {
@@ -738,7 +738,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `Password` and `KmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
@@ -774,7 +774,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
         /// <summary>
-        /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        /// ID of the security group used to create new instance. It is conflict with `SecurityGroupIds`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -783,7 +783,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        /// List IDs of the security group used to create new instances. It is conflict with `SecurityGroupId`.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -801,11 +801,11 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationSpotPriceLimitArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        /// Sets the maximum price hourly for instance types. See `SpotPriceLimit` below for details.
         /// 
         /// &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
         /// 
-        /// &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+        /// &gt; **NOTE:** If the number of attached ECS instances by `InstanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
         /// 
         /// &gt; **NOTE:** Restrictions on attaching ECS instances:
         /// 
@@ -830,7 +830,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
+        /// The another scaling configuration which will be active automatically and replace current configuration when setting `Active` to 'false'. It is invalid when `Active` is 'true'.
         /// </summary>
         [Input("substitute")]
         public Input<string>? Substitute { get; set; }
@@ -842,7 +842,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+        /// Category of the system disk. The parameter value options are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd`, `CloudEssd` and `Cloud`. `Cloud` only is used to some no I/O optimized instance. Default to `CloudEfficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -924,7 +924,7 @@ namespace Pulumi.AliCloud.Ess
     public sealed class ScalingConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
+        /// Whether active current scaling configuration in the specified scaling group. Default to `False`.
         /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
@@ -939,7 +939,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationCustomPriorityGetArgs>? _customPriorities;
 
         /// <summary>
-        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `CustomPriorities` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationCustomPriorityGetArgs> CustomPriorities
         {
@@ -951,7 +951,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        /// DataDisk mappings to attach to ecs instance. See `DataDisk` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationDataDiskGetArgs> DataDisks
         {
@@ -1030,7 +1030,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationInstancePatternInfoGetArgs>? _instancePatternInfos;
 
         /// <summary>
-        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `InstancePatternInfo` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationInstancePatternInfoGetArgs> InstancePatternInfos
         {
@@ -1048,7 +1048,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationInstanceTypeOverrideGetArgs>? _instanceTypeOverrides;
 
         /// <summary>
-        /// specify the weight of instance type.  See `instance_type_override` below for details.
+        /// specify the weight of instance type.  See `InstanceTypeOverride` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationInstanceTypeOverrideGetArgs> InstanceTypeOverrides
         {
@@ -1105,7 +1105,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -1114,7 +1114,7 @@ namespace Pulumi.AliCloud.Ess
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1126,7 +1126,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationNetworkInterfaceGetArgs>? _networkInterfaces;
 
         /// <summary>
-        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `NetworkInterfaces` below for details.
         /// </summary>
         public InputList<Inputs.ScalingConfigurationNetworkInterfaceGetArgs> NetworkInterfaces
         {
@@ -1147,7 +1147,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
+        /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `Password` and `KmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
@@ -1183,7 +1183,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
         /// <summary>
-        /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        /// ID of the security group used to create new instance. It is conflict with `SecurityGroupIds`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1192,7 +1192,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        /// List IDs of the security group used to create new instances. It is conflict with `SecurityGroupId`.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -1210,11 +1210,11 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingConfigurationSpotPriceLimitGetArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        /// Sets the maximum price hourly for instance types. See `SpotPriceLimit` below for details.
         /// 
         /// &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
         /// 
-        /// &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+        /// &gt; **NOTE:** If the number of attached ECS instances by `InstanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
         /// 
         /// &gt; **NOTE:** Restrictions on attaching ECS instances:
         /// 
@@ -1239,7 +1239,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
+        /// The another scaling configuration which will be active automatically and replace current configuration when setting `Active` to 'false'. It is invalid when `Active` is 'true'.
         /// </summary>
         [Input("substitute")]
         public Input<string>? Substitute { get; set; }
@@ -1251,7 +1251,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+        /// Category of the system disk. The parameter value options are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd`, `CloudEssd` and `Cloud`. `Cloud` only is used to some no I/O optimized instance. Default to `CloudEfficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }

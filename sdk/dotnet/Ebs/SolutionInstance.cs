@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Solution Instance Creation Parameters. See `parameters` below.
+        /// Solution Instance Creation Parameters. See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.SolutionInstanceParameter>> Parameters { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Ebs
         private InputList<Inputs.SolutionInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Solution Instance Creation Parameters. See `parameters` below.
+        /// Solution Instance Creation Parameters. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.SolutionInstanceParameterArgs> Parameters
         {
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Ebs
         private InputList<Inputs.SolutionInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Solution Instance Creation Parameters. See `parameters` below.
+        /// Solution Instance Creation Parameters. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.SolutionInstanceParameterGetArgs> Parameters
         {

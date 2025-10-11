@@ -14,6 +14,8 @@ import (
 // This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
 func GetDeployGroups(ctx *pulumi.Context, args *GetDeployGroupsArgs, opts ...pulumi.InvokeOption) (*GetDeployGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeployGroupsResult

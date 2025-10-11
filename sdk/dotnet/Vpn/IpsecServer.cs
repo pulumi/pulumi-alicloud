@@ -107,13 +107,13 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> EffectImmediately { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `IkeConfig` below.
         /// </summary>
         [Output("ikeConfigs")]
         public Output<ImmutableArray<Outputs.IpsecServerIkeConfig>> IkeConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
+        /// The configuration of Phase 2 negotiations. See `IpsecConfig` below.
         /// </summary>
         [Output("ipsecConfigs")]
         public Output<ImmutableArray<Outputs.IpsecServerIpsecConfig>> IpsecConfigs { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> Psk { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+        /// Whether to enable the pre-shared key authentication method. The value is only `True`, which indicates that the pre-shared key authentication method is enabled.
         /// </summary>
         [Output("pskEnabled")]
         public Output<bool?> PskEnabled { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIkeConfigArgs>? _ikeConfigs;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `IkeConfig` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIkeConfigArgs> IkeConfigs
         {
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIpsecConfigArgs>? _ipsecConfigs;
 
         /// <summary>
-        /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
+        /// The configuration of Phase 2 negotiations. See `IpsecConfig` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIpsecConfigArgs> IpsecConfigs
         {
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Psk { get; set; }
 
         /// <summary>
-        /// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+        /// Whether to enable the pre-shared key authentication method. The value is only `True`, which indicates that the pre-shared key authentication method is enabled.
         /// </summary>
         [Input("pskEnabled")]
         public Input<bool>? PskEnabled { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIkeConfigGetArgs>? _ikeConfigs;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `IkeConfig` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIkeConfigGetArgs> IkeConfigs
         {
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIpsecConfigGetArgs>? _ipsecConfigs;
 
         /// <summary>
-        /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
+        /// The configuration of Phase 2 negotiations. See `IpsecConfig` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIpsecConfigGetArgs> IpsecConfigs
         {
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Psk { get; set; }
 
         /// <summary>
-        /// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+        /// Whether to enable the pre-shared key authentication method. The value is only `True`, which indicates that the pre-shared key authentication method is enabled.
         /// </summary>
         [Input("pskEnabled")]
         public Input<bool>? PskEnabled { get; set; }

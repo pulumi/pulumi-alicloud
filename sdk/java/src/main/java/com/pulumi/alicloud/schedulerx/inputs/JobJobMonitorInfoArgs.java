@@ -18,14 +18,14 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
     public static final JobJobMonitorInfoArgs Empty = new JobJobMonitorInfoArgs();
 
     /**
-     * Contact information. See `contact_info` below.
+     * Contact information. See `contactInfo` below.
      * 
      */
     @Import(name="contactInfos")
     private @Nullable Output<List<JobJobMonitorInfoContactInfoArgs>> contactInfos;
 
     /**
-     * @return Contact information. See `contact_info` below.
+     * @return Contact information. See `contactInfo` below.
      * 
      */
     public Optional<Output<List<JobJobMonitorInfoContactInfoArgs>>> contactInfos() {
@@ -33,14 +33,14 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Alarm switch and threshold configuration. See `monitor_config` below.
+     * Alarm switch and threshold configuration. See `monitorConfig` below.
      * 
      */
     @Import(name="monitorConfig")
     private @Nullable Output<JobJobMonitorInfoMonitorConfigArgs> monitorConfig;
 
     /**
-     * @return Alarm switch and threshold configuration. See `monitor_config` below.
+     * @return Alarm switch and threshold configuration. See `monitorConfig` below.
      * 
      */
     public Optional<Output<JobJobMonitorInfoMonitorConfigArgs>> monitorConfig() {
@@ -73,7 +73,7 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contactInfos Contact information. See `contact_info` below.
+         * @param contactInfos Contact information. See `contactInfo` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contactInfos Contact information. See `contact_info` below.
+         * @param contactInfos Contact information. See `contactInfo` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contactInfos Contact information. See `contact_info` below.
+         * @param contactInfos Contact information. See `contactInfo` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param monitorConfig Alarm switch and threshold configuration. See `monitor_config` below.
+         * @param monitorConfig Alarm switch and threshold configuration. See `monitorConfig` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class JobJobMonitorInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param monitorConfig Alarm switch and threshold configuration. See `monitor_config` below.
+         * @param monitorConfig Alarm switch and threshold configuration. See `monitorConfig` below.
          * 
          * @return builder
          * 

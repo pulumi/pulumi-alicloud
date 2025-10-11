@@ -219,14 +219,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.apiVersion;
     }
     /**
-     * The configuration of HTTPS certificate.See `cert_config` below.
+     * The configuration of HTTPS certificate.See `certConfig` below.
      * 
      */
     @Export(name="certConfig", refs={CustomDomainCertConfig.class}, tree="[0]")
     private Output</* @Nullable */ CustomDomainCertConfig> certConfig;
 
     /**
-     * @return The configuration of HTTPS certificate.See `cert_config` below.
+     * @return The configuration of HTTPS certificate.See `certConfig` below.
      * 
      */
     public Output<Optional<CustomDomainCertConfig>> certConfig() {
@@ -289,14 +289,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
-     * The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+     * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      * 
      */
     @Export(name="routeConfigs", refs={List.class,CustomDomainRouteConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomDomainRouteConfig>> routeConfigs;
 
     /**
-     * @return The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+     * @return The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      * 
      */
     public Output<Optional<List<CustomDomainRouteConfig>>> routeConfigs() {

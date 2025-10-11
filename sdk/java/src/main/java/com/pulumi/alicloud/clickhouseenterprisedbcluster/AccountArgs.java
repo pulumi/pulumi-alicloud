@@ -82,14 +82,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authorization information. See `dml_auth_setting` below.
+     * Authorization information. See `dmlAuthSetting` below.
      * 
      */
     @Import(name="dmlAuthSetting")
     private @Nullable Output<AccountDmlAuthSettingArgs> dmlAuthSetting;
 
     /**
-     * @return Authorization information. See `dml_auth_setting` below.
+     * @return Authorization information. See `dmlAuthSetting` below.
      * 
      */
     public Optional<Output<AccountDmlAuthSettingArgs>> dmlAuthSetting() {
@@ -235,7 +235,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dmlAuthSetting Authorization information. See `dml_auth_setting` below.
+         * @param dmlAuthSetting Authorization information. See `dmlAuthSetting` below.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dmlAuthSetting Authorization information. See `dml_auth_setting` below.
+         * @param dmlAuthSetting Authorization information. See `dmlAuthSetting` below.
          * 
          * @return builder
          * 

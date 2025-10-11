@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> RecordName { get; private set; } = null!;
 
         /// <summary>
-        /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
+        /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `Rules` below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.TransportLayerApplicationRule>> Rules { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.TransportLayerApplicationRuleArgs>? _rules;
 
         /// <summary>
-        /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
+        /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `Rules` below.
         /// </summary>
         public InputList<Inputs.TransportLayerApplicationRuleArgs> Rules
         {
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.TransportLayerApplicationRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
+        /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `Rules` below.
         /// </summary>
         public InputList<Inputs.TransportLayerApplicationRuleGetArgs> Rules
         {

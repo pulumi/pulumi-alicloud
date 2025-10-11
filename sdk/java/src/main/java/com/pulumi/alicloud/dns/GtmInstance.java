@@ -104,14 +104,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/gtmInstance:GtmInstance")
 public class GtmInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The alert notification methods. See `alert_config` below for details.
+     * The alert notification methods. See `alertConfig` below for details.
      * 
      */
     @Export(name="alertConfigs", refs={List.class,GtmInstanceAlertConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GtmInstanceAlertConfig>> alertConfigs;
 
     /**
-     * @return The alert notification methods. See `alert_config` below for details.
+     * @return The alert notification methods. See `alertConfig` below for details.
      * 
      */
     public Output<Optional<List<GtmInstanceAlertConfig>>> alertConfigs() {
@@ -300,14 +300,14 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
         return this.publicZoneName;
     }
     /**
-     * Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+     * Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
+     * @return Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {

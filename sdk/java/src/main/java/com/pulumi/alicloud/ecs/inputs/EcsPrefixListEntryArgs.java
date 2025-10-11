@@ -17,12 +17,12 @@ public final class EcsPrefixListEntryArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
-     * * The total number of entries must not exceed the `max_entries` value.
+     * * The total number of entries must not exceed the `maxEntries` value.
      * * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
      * * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
      * * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
      * * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
-     * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+     * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
      * 
      */
     @Import(name="cidr")
@@ -30,12 +30,12 @@ public final class EcsPrefixListEntryArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
-     * * The total number of entries must not exceed the `max_entries` value.
+     * * The total number of entries must not exceed the `maxEntries` value.
      * * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
      * * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
      * * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
      * * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
-     * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+     * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -84,12 +84,12 @@ public final class EcsPrefixListEntryArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param cidr The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
-         * * The total number of entries must not exceed the `max_entries` value.
+         * * The total number of entries must not exceed the `maxEntries` value.
          * * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
          * * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
          * * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
          * * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
-         * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+         * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
          * 
          * @return builder
          * 
@@ -101,12 +101,12 @@ public final class EcsPrefixListEntryArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param cidr The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
-         * * The total number of entries must not exceed the `max_entries` value.
+         * * The total number of entries must not exceed the `maxEntries` value.
          * * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
          * * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
          * * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
          * * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
-         * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+         * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
          * 
          * @return builder
          * 

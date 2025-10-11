@@ -113,6 +113,10 @@ class UserPermission(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.174.0.
 
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         Service Mesh User Permission can be imported using the id, e.g.
@@ -138,6 +142,10 @@ class UserPermission(pulumi.CustomResource):
         For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
 
         > **NOTE:** Available since v1.174.0.
+
+        ## Example Usage
+
+        Basic Usage
 
         ## Import
 

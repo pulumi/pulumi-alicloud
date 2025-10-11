@@ -155,14 +155,14 @@ public final class AdConnectorDirectoryArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+     * The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
      * 
      */
     @Import(name="subDomainDnsAddresses")
     private @Nullable Output<List<String>> subDomainDnsAddresses;
 
     /**
-     * @return The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+     * @return The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
      * 
      */
     public Optional<Output<List<String>>> subDomainDnsAddresses() {
@@ -434,7 +434,7 @@ public final class AdConnectorDirectoryArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subDomainDnsAddresses The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+         * @param subDomainDnsAddresses The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class AdConnectorDirectoryArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subDomainDnsAddresses The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+         * @param subDomainDnsAddresses The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class AdConnectorDirectoryArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subDomainDnsAddresses The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+         * @param subDomainDnsAddresses The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
          * 
          * @return builder
          * 

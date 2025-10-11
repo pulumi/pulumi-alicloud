@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>
-        /// The name for the alarm's associated metric. See `dimensions` below for details.
+        /// The name for the alarm's associated metric. See `Dimensions` below for details.
         /// </summary>
         public readonly string? MetricName;
         /// <summary>

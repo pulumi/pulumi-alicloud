@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.DirectMail
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.DirectMail
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

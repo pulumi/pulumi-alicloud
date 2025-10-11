@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eflo.Outputs
     public sealed class ClusterNetworks
     {
         /// <summary>
-        /// IP allocation policy See `ip_allocation_policy` below.
+        /// IP allocation policy See `IpAllocationPolicy` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNetworksIpAllocationPolicy> IpAllocationPolicies;
         /// <summary>
-        /// Vpd configuration information See `new_vpd_info` below.
+        /// Vpd configuration information See `NewVpdInfo` below.
         /// </summary>
         public readonly Outputs.ClusterNetworksNewVpdInfo? NewVpdInfo;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// Multiplexing VPD information See `vpd_info` below.
+        /// Multiplexing VPD information See `VpdInfo` below.
         /// </summary>
         public readonly Outputs.ClusterNetworksVpdInfo? VpdInfo;
         /// <summary>

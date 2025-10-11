@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<int> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The Monitoring node. See `isp_city_node` below for details.
+        /// The Monitoring node. See `IspCityNode` below for details.
         /// </summary>
         [Output("ispCityNodes")]
         public Output<ImmutableArray<Outputs.MonitorConfigIspCityNode>> IspCityNodes { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.MonitorConfigIspCityNodeArgs>? _ispCityNodes;
 
         /// <summary>
-        /// The Monitoring node. See `isp_city_node` below for details.
+        /// The Monitoring node. See `IspCityNode` below for details.
         /// </summary>
         public InputList<Inputs.MonitorConfigIspCityNodeArgs> IspCityNodes
         {
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.MonitorConfigIspCityNodeGetArgs>? _ispCityNodes;
 
         /// <summary>
-        /// The Monitoring node. See `isp_city_node` below for details.
+        /// The Monitoring node. See `IspCityNode` below for details.
         /// </summary>
         public InputList<Inputs.MonitorConfigIspCityNodeGetArgs> IspCityNodes
         {

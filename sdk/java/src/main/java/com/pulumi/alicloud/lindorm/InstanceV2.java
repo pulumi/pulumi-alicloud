@@ -237,14 +237,14 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
         return this.deletionProtection;
     }
     /**
-     * Engine List See `engine_list` below.
+     * Engine List See `engineList` below.
      * 
      */
     @Export(name="engineLists", refs={List.class,InstanceV2EngineList.class}, tree="[0,1]")
     private Output<List<InstanceV2EngineList>> engineLists;
 
     /**
-     * @return Engine List See `engine_list` below.
+     * @return Engine List See `engineList` below.
      * 
      */
     public Output<List<InstanceV2EngineList>> engineLists() {

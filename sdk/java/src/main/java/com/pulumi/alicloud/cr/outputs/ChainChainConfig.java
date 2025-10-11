@@ -15,7 +15,7 @@ public final class ChainChainConfig {
     /**
      * @return Each node in the delivery chain. See `nodes` below.
      * 
-     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     private @Nullable List<ChainChainConfigNode> nodes;
@@ -29,7 +29,7 @@ public final class ChainChainConfig {
     /**
      * @return Each node in the delivery chain. See `nodes` below.
      * 
-     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     public List<ChainChainConfigNode> nodes() {

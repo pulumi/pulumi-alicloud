@@ -129,14 +129,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> accountPassword() {
@@ -157,28 +157,28 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.dbClusterId;
     }
     /**
-     * An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {

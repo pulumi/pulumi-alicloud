@@ -19,14 +19,14 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
     public static final ConnectionAuthParametersOauthParametersOauthHttpParametersArgs Empty = new ConnectionAuthParametersOauthParametersOauthHttpParametersArgs();
 
     /**
-     * The parameters that are configured for the request body. See `body_parameters` below.
+     * The parameters that are configured for the request body. See `bodyParameters` below.
      * 
      */
     @Import(name="bodyParameters")
     private @Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>> bodyParameters;
 
     /**
-     * @return The parameters that are configured for the request body. See `body_parameters` below.
+     * @return The parameters that are configured for the request body. See `bodyParameters` below.
      * 
      */
     public Optional<Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>>> bodyParameters() {
@@ -34,14 +34,14 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
     }
 
     /**
-     * The parameters that are configured for the request header. See `header_parameters` below.
+     * The parameters that are configured for the request header. See `headerParameters` below.
      * 
      */
     @Import(name="headerParameters")
     private @Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>> headerParameters;
 
     /**
-     * @return The parameters that are configured for the request header. See `header_parameters` below.
+     * @return The parameters that are configured for the request header. See `headerParameters` below.
      * 
      */
     public Optional<Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>>> headerParameters() {
@@ -49,14 +49,14 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
     }
 
     /**
-     * The parameters that are configured for the request path. See `query_string_parameters` below.
+     * The parameters that are configured for the request path. See `queryStringParameters` below.
      * 
      */
     @Import(name="queryStringParameters")
     private @Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>> queryStringParameters;
 
     /**
-     * @return The parameters that are configured for the request path. See `query_string_parameters` below.
+     * @return The parameters that are configured for the request path. See `queryStringParameters` below.
      * 
      */
     public Optional<Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>>> queryStringParameters() {
@@ -90,7 +90,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param bodyParameters The parameters that are configured for the request body. See `body_parameters` below.
+         * @param bodyParameters The parameters that are configured for the request body. See `bodyParameters` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param bodyParameters The parameters that are configured for the request body. See `body_parameters` below.
+         * @param bodyParameters The parameters that are configured for the request body. See `bodyParameters` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param bodyParameters The parameters that are configured for the request body. See `body_parameters` below.
+         * @param bodyParameters The parameters that are configured for the request body. See `bodyParameters` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param headerParameters The parameters that are configured for the request header. See `header_parameters` below.
+         * @param headerParameters The parameters that are configured for the request header. See `headerParameters` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param headerParameters The parameters that are configured for the request header. See `header_parameters` below.
+         * @param headerParameters The parameters that are configured for the request header. See `headerParameters` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param headerParameters The parameters that are configured for the request header. See `header_parameters` below.
+         * @param headerParameters The parameters that are configured for the request header. See `headerParameters` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param queryStringParameters The parameters that are configured for the request path. See `query_string_parameters` below.
+         * @param queryStringParameters The parameters that are configured for the request path. See `queryStringParameters` below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param queryStringParameters The parameters that are configured for the request path. See `query_string_parameters` below.
+         * @param queryStringParameters The parameters that are configured for the request path. See `queryStringParameters` below.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
         }
 
         /**
-         * @param queryStringParameters The parameters that are configured for the request path. See `query_string_parameters` below.
+         * @param queryStringParameters The parameters that are configured for the request path. See `queryStringParameters` below.
          * 
          * @return builder
          * 
