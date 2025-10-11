@@ -126,6 +126,8 @@ def get_policies(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:**  Available in 1.86.0+.
 
+    ## Example Usage
+
 
     :param Sequence[_builtins.str] ids: A list of Resource Manager Policy IDs.
     :param _builtins.str name_regex: A regex string to filter results by policy name.
@@ -157,6 +159,8 @@ def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.s
     This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
 
 
     :param Sequence[_builtins.str] ids: A list of Resource Manager Policy IDs.

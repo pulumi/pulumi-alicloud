@@ -47,14 +47,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * @return Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -62,14 +62,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -100,7 +100,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -109,7 +109,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceBabelfishConfigArgs>> babelfishConfigs;
 
     /**
-     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -159,7 +159,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+     * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      * 
@@ -168,7 +168,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> caType;
 
     /**
-     * @return The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+     * @return The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      * 
@@ -188,7 +188,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
      * 
-     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+     * &gt; **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;zone-c&#34;, `zoneIdSlaveB` = &#34;zone-b&#34;, then the `vswitchId` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;Auto&#34;,`zoneIdSlaveB` = &#34;Auto&#34;, then the `vswitchId` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
      */
     @Import(name="category")
@@ -205,7 +205,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
      * 
-     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+     * &gt; **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;zone-c&#34;, `zoneIdSlaveB` = &#34;zone-b&#34;, then the `vswitchId` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;Auto&#34;,`zoneIdSlaveB` = &#34;Auto&#34;, then the `vswitchId` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
      */
     public Optional<Output<String>> category() {
@@ -385,7 +385,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+     * The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -398,7 +398,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dbInstanceStorageType;
 
     /**
-     * @return The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+     * @return The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -492,7 +492,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      * 
      */
     @Import(name="deletionProtection")
@@ -503,7 +503,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+     * &gt; **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -730,7 +730,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
      *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      * 
      */
     @Import(name="instanceStorage")
@@ -743,7 +743,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
      *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      * 
      */
     public Optional<Output<Integer>> instanceStorage() {
@@ -758,7 +758,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - SQLServer high availability: mssql.mem2.serverless.s2
      * - PostgreSQL basic: pg.n2.serverless.1c
      * 
-     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      * 
      */
     @Import(name="instanceType")
@@ -772,7 +772,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - SQLServer high availability: mssql.mem2.serverless.s2
      * - PostgreSQL basic: pg.n2.serverless.1c
      * 
-     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+     * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -899,7 +899,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -907,7 +907,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -935,14 +935,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      * 
      */
     @Import(name="pgHbaConfs")
     private @Nullable Output<List<InstancePgHbaConfArgs>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      * 
      */
     public Optional<Output<List<InstancePgHbaConfArgs>>> pgHbaConfs() {
@@ -1083,24 +1083,24 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      * @deprecated
-     * Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      */
-    @Deprecated /* Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead. */
+    @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * @return It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      * @deprecated
-     * Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      */
-    @Deprecated /* Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead. */
+    @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
     public Optional<Output<String>> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
@@ -1166,14 +1166,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+     * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverCert` start  support `MySQL` engine.
      * 
      */
     @Import(name="serverCert")
     private @Nullable Output<String> serverCert;
 
     /**
-     * @return The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+     * @return The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverCert` start  support `MySQL` engine.
      * 
      */
     public Optional<Output<String>> serverCert() {
@@ -1181,14 +1181,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+     * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverKey` start support `MySQL` engine.
      * 
      */
     @Import(name="serverKey")
     private @Nullable Output<String> serverKey;
 
     /**
-     * @return The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+     * @return The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverKey` start support `MySQL` engine.
      * 
      */
     public Optional<Output<String>> serverKey() {
@@ -1196,14 +1196,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
      * 
      */
     @Import(name="serverlessConfigs")
     private @Nullable Output<List<InstanceServerlessConfigArgs>> serverlessConfigs;
 
     /**
-     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
      * 
      */
     public Optional<Output<List<InstanceServerlessConfigArgs>>> serverlessConfigs() {
@@ -1212,7 +1212,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-     * &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+     * &gt; **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
      * 
      */
     @Import(name="sqlCollectorConfigValue")
@@ -1220,7 +1220,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-     * &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+     * &gt; **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
      * 
      */
     public Optional<Output<Integer>> sqlCollectorConfigValue() {
@@ -1249,7 +1249,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * `Update`: update SSL certificate.
      * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      * 
-     * &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
+     * &gt; **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
      * 
      */
     @Import(name="sslAction")
@@ -1262,7 +1262,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * `Update`: update SSL certificate.
      * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      * 
-     * &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
+     * &gt; **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
      * 
      */
     public Optional<Output<String>> sslAction() {
@@ -1378,7 +1378,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
@@ -1387,7 +1387,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> switchTime;
 
     /**
-     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
@@ -1487,7 +1487,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      * 
-     * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+     * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
      * 
      */
     @Import(name="tdeStatus")
@@ -1496,7 +1496,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      * 
-     * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+     * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
      * 
      */
     public Optional<Output<String>> tdeStatus() {
@@ -1543,10 +1543,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
      * @deprecated
-     * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      * 
      */
-    @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
+    @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
     @Import(name="upgradeDbInstanceKernelVersion")
     private @Nullable Output<Boolean> upgradeDbInstanceKernelVersion;
 
@@ -1560,16 +1560,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
      * @deprecated
-     * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      * 
      */
-    @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
+    @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
     public Optional<Output<Boolean>> upgradeDbInstanceKernelVersion() {
         return Optional.ofNullable(this.upgradeDbInstanceKernelVersion);
     }
 
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1579,7 +1579,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> upgradeTime;
 
     /**
-     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1650,7 +1650,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
@@ -1659,7 +1659,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
@@ -1838,7 +1838,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
          * 
          * @return builder
          * 
@@ -1849,7 +1849,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
          * 
          * @return builder
          * 
@@ -1859,7 +1859,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
          * 
          * @return builder
          * 
@@ -1870,7 +1870,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
          * 
          * @return builder
          * 
@@ -1909,7 +1909,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1922,7 +1922,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1934,7 +1934,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1998,7 +1998,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caType The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+         * @param caType The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
          * - aliyun: a cloud certificate
          * - custom: a custom certificate
          * 
@@ -2011,7 +2011,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caType The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
+         * @param caType The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
          * - aliyun: a cloud certificate
          * - custom: a custom certificate
          * 
@@ -2033,7 +2033,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
          * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
          * 
-         * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+         * &gt; **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;zone-c&#34;, `zoneIdSlaveB` = &#34;zone-b&#34;, then the `vswitchId` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;Auto&#34;,`zoneIdSlaveB` = &#34;Auto&#34;, then the `vswitchId` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
          * 
          * @return builder
          * 
@@ -2054,7 +2054,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
          * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
          * 
-         * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+         * &gt; **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;zone-c&#34;, `zoneIdSlaveB` = &#34;zone-b&#34;, then the `vswitchId` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zoneId` = &#34;zone-a&#34; and `zoneIdSlaveA` = &#34;Auto&#34;,`zoneIdSlaveB` = &#34;Auto&#34;, then the `vswitchId` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
          * 
          * @return builder
          * 
@@ -2296,7 +2296,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceStorageType The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+         * @param dbInstanceStorageType The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
          * - local_ssd: specifies to use local SSDs. This value is recommended.
          * - cloud_ssd: specifies to use standard SSDs.
          * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -2313,7 +2313,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceStorageType The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
+         * @param dbInstanceStorageType The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
          * - local_ssd: specifies to use local SSDs. This value is recommended.
          * - cloud_ssd: specifies to use standard SSDs.
          * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -2433,7 +2433,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+         * &gt; **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
          * 
          * @return builder
          * 
@@ -2448,7 +2448,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
+         * &gt; **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
          * 
          * @return builder
          * 
@@ -2743,7 +2743,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - [10, 2000] for SQL Server 2008R2;
          * - [20,2000] for SQL Server 2012 basic single node edition
          *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-         *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+         *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
          * 
          * @return builder
          * 
@@ -2760,7 +2760,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - [10, 2000] for SQL Server 2008R2;
          * - [20,2000] for SQL Server 2012 basic single node edition
          *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-         *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+         *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
          * 
          * @return builder
          * 
@@ -2777,7 +2777,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - SQLServer high availability: mssql.mem2.serverless.s2
          * - PostgreSQL basic: pg.n2.serverless.1c
          * 
-         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
          * 
          * @return builder
          * 
@@ -2795,7 +2795,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - SQLServer high availability: mssql.mem2.serverless.s2
          * - PostgreSQL basic: pg.n2.serverless.1c
          * 
-         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+         * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instanceStorage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
          * 
          * @return builder
          * 
@@ -2976,7 +2976,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2988,7 +2988,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -3024,7 +3024,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
          * 
          * @return builder
          * 
@@ -3035,7 +3035,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
          * 
          * @return builder
          * 
@@ -3045,7 +3045,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
          * 
          * @return builder
          * 
@@ -3230,30 +3230,30 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+         * @param securityGroupId It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+         * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
          * 
          */
-        @Deprecated /* Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead. */
+        @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
         public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
             $.securityGroupId = securityGroupId;
             return this;
         }
 
         /**
-         * @param securityGroupId It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+         * @param securityGroupId It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+         * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
          * 
          */
-        @Deprecated /* Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead. */
+        @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
         }
@@ -3363,7 +3363,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverCert The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+         * @param serverCert The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverCert` start  support `MySQL` engine.
          * 
          * @return builder
          * 
@@ -3374,7 +3374,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverCert The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+         * @param serverCert The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverCert` start  support `MySQL` engine.
          * 
          * @return builder
          * 
@@ -3384,7 +3384,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverKey The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+         * @param serverKey The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverKey` start support `MySQL` engine.
          * 
          * @return builder
          * 
@@ -3395,7 +3395,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverKey The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
+         * @param serverKey The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `serverKey` start support `MySQL` engine.
          * 
          * @return builder
          * 
@@ -3405,7 +3405,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
          * 
          * @return builder
          * 
@@ -3416,7 +3416,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
          * 
          * @return builder
          * 
@@ -3426,7 +3426,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
          * 
          * @return builder
          * 
@@ -3437,7 +3437,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sqlCollectorConfigValue The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-         * &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+         * &gt; **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
          * 
          * @return builder
          * 
@@ -3449,7 +3449,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sqlCollectorConfigValue The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
-         * &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
+         * &gt; **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
          * 
          * @return builder
          * 
@@ -3486,7 +3486,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * `Update`: update SSL certificate.
          * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
          * 
-         * &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
+         * &gt; **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
          * 
          * @return builder
          * 
@@ -3503,7 +3503,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * `Update`: update SSL certificate.
          * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
          * 
-         * &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
+         * &gt; **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = &#34;Serverless&#34;` for SQLServer, PostgreSQL or MariaDB.
          * 
          * @return builder
          * 
@@ -3657,7 +3657,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
          * 
@@ -3670,7 +3670,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
          * 
@@ -3796,7 +3796,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tdeStatus The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
          * 
-         * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+         * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
          * 
          * @return builder
          * 
@@ -3809,7 +3809,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tdeStatus The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
          * 
-         * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+         * &gt; **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
          * 
          * @return builder
          * 
@@ -3892,10 +3892,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+         * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
          * 
          */
-        @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
+        @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
         public Builder upgradeDbInstanceKernelVersion(@Nullable Output<Boolean> upgradeDbInstanceKernelVersion) {
             $.upgradeDbInstanceKernelVersion = upgradeDbInstanceKernelVersion;
             return this;
@@ -3913,16 +3913,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+         * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
          * 
          */
-        @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
+        @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
         public Builder upgradeDbInstanceKernelVersion(Boolean upgradeDbInstanceKernelVersion) {
             return upgradeDbInstanceKernelVersion(Output.of(upgradeDbInstanceKernelVersion));
         }
 
         /**
-         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
          * - Immediate: The minor engine version is immediately updated.
          * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
          * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -3936,7 +3936,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
+         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
          * - Immediate: The minor engine version is immediately updated.
          * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
          * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -4027,7 +4027,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zoneId The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-         * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
          * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
          * 
          * @return builder
@@ -4040,7 +4040,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zoneId The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-         * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
          * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
          * 
          * @return builder

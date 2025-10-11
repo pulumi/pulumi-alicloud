@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<bool>? DataDiskEncrypted { get; set; }
 
         /// <summary>
-        /// The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        /// The kms key id used to encrypt the data disk. It takes effect when DataDiskEncrypted is true.
         /// </summary>
         [Input("dataDiskKmsKeyId")]
         public Input<string>? DataDiskKmsKeyId { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<bool>? SystemDiskEncrypted { get; set; }
 
         /// <summary>
-        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// The kms key id used to encrypt the system disk. It takes effect when SystemDiskEncrypted is true.
         /// </summary>
         [Input("systemDiskKmsKeyId")]
         public Input<string>? SystemDiskKmsKeyId { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// 
         /// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
         /// 
-        /// `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+        /// `logtail-ds` - You can specify `IngressDashboardEnabled` and `SlsProjectName` in config. If you switch on `IngressDashboardEnabled` and `SlsProjectName`,then logtail-ds would use `SlsProjectName` as default log store.
         /// 
         /// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
         /// 

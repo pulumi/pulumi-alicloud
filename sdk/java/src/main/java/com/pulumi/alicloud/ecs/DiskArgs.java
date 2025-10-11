@@ -29,10 +29,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * The Zone to create the disk in.
      * 
      * @deprecated
-     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      * 
      */
-    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
+    @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
@@ -40,10 +40,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * @return The Zone to create the disk in.
      * 
      * @deprecated
-     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      * 
      */
-    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
+    @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -56,14 +56,14 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+     * @return Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -152,14 +152,14 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the disk will be encrypted, conflict with `snapshot_id`.
+     * If true, the disk will be encrypted, conflict with `snapshotId`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return If true, the disk will be encrypted, conflict with `snapshot_id`.
+     * @return If true, the disk will be encrypted, conflict with `snapshotId`.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
@@ -199,10 +199,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -210,10 +210,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * @return Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -255,7 +255,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      */
     @Import(name="resourceGroupId")
@@ -263,7 +263,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -408,10 +408,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
+         * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
          * 
          */
-        @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
+        @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
@@ -423,10 +423,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
+         * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
          * 
          */
-        @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
+        @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
@@ -441,7 +441,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+         * @param category Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+         * @param category Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encrypted If true, the disk will be encrypted, conflict with `snapshot_id`.
+         * @param encrypted If true, the disk will be encrypted, conflict with `snapshotId`.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encrypted If true, the disk will be encrypted, conflict with `snapshot_id`.
+         * @param encrypted If true, the disk will be encrypted, conflict with `snapshotId`.
          * 
          * @return builder
          * 
@@ -638,10 +638,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+         * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -653,10 +653,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+         * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -708,7 +708,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The Id of resource group which the disk belongs.
-         * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The Id of resource group which the disk belongs.
-         * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
          * 
          * @return builder
          * 

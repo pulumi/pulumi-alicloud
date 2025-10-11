@@ -54,14 +54,14 @@ public final class GetWafPoliciesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;waf_group&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
+     * The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;wafGroup&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
      * 
      */
     @Import(name="queryArgs")
     private @Nullable Output<String> queryArgs;
 
     /**
-     * @return The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;waf_group&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
+     * @return The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;wafGroup&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
      * 
      */
     public Optional<Output<String>> queryArgs() {
@@ -173,7 +173,7 @@ public final class GetWafPoliciesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryArgs The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;waf_group&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
+         * @param queryArgs The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;wafGroup&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class GetWafPoliciesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryArgs The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;waf_group&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
+         * @param queryArgs The query conditions. The value is a string in the JSON format. Format: `{&#34;PolicyIds&#34;:&#34;The ID of the proteuleIds&#34;:&#34;Thection policy&#34;,&#34;R range of protection rule IDs&#34;,&#34;PolicyNameLike&#34;:&#34;The name of the protection policy&#34;,&#34;DomainNames&#34;:&#34;The protected domain names&#34;,&#34;PolicyType&#34;:&#34;default&#34;,&#34;DefenseScenes&#34;:&#34;wafGroup&#34;,&#34;PolicyStatus&#34;:&#34;on&#34;,&#34;OrderBy&#34;:&#34;GmtModified&#34;,&#34;Desc&#34;:&#34;false&#34;}`.
          * 
          * @return builder
          * 

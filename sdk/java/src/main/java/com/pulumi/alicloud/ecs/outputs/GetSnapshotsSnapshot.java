@@ -95,7 +95,7 @@ public final class GetSnapshotsSnapshot {
     private Map<String,String> tags;
     private String type;
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     private String usage;
@@ -233,7 +233,7 @@ public final class GetSnapshotsSnapshot {
         return this.type;
     }
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     public String usage() {

@@ -31,14 +31,14 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+     * The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+     * @return The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -188,7 +188,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param diskType The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+         * @param diskType The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param diskType The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+         * @param diskType The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
          * 
          * @return builder
          * 

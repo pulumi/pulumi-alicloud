@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
+        /// Specifies whether to transmit data over HTTPS. Valid values: `True`, `False`.
         /// </summary>
         [Output("useHttps")]
         public Output<bool?> UseHttps { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? ClientInfo { get; set; }
 
         /// <summary>
-        /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
+        /// Specifies whether to transmit data over HTTPS. Valid values: `True`, `False`.
         /// </summary>
         [Input("useHttps")]
         public Input<bool>? UseHttps { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
+        /// Specifies whether to transmit data over HTTPS. Valid values: `True`, `False`.
         /// </summary>
         [Input("useHttps")]
         public Input<bool>? UseHttps { get; set; }

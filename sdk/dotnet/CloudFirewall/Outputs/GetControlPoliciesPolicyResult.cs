@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     public sealed class GetControlPoliciesPolicyResult
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         public readonly string AclAction;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string DestinationType;
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         public readonly string Direction;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly int Order;
         /// <summary>
-        /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The type of the protocol in the access control policy. Valid values: If `Direction` is  `In`, the valid value is `ANY`. If `Direction` is `Out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         public readonly string Proto;
         /// <summary>

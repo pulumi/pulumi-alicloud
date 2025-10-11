@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         /// 
         /// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
         /// 
-        /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
+        /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `True` and the `StickySessionType` parameter is set to `Server`.
         /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         /// 
         /// Default value: `1000`.
         /// 
-        /// &gt; **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
+        /// &gt; **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `True` and `StickySessionType` is set to `Insert`.
         /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         /// 
         /// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
         /// 
-        /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
+        /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `True` for the server group.
         /// </summary>
         [Input("stickySessionType")]
         public Input<string>? StickySessionType { get; set; }

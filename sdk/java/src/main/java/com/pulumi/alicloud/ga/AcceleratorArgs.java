@@ -83,14 +83,14 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      * 
      */
     @Import(name="crossBorderMode")
     private @Nullable Output<String> crossBorderMode;
 
     /**
-     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      * 
      */
     public Optional<Output<String>> crossBorderMode() {
@@ -129,8 +129,8 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The subscription duration.
-     * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-     * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
      */
     @Import(name="duration")
@@ -138,8 +138,8 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The subscription duration.
-     * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-     * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
      */
     public Optional<Output<Integer>> duration() {
@@ -181,14 +181,14 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     @Import(name="promotionOptionNo")
     private @Nullable Output<String> promotionOptionNo;
 
     /**
-     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * @return The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     public Optional<Output<String>> promotionOptionNo() {
@@ -388,7 +388,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
+         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
          * 
          * @return builder
          * 
@@ -452,8 +452,8 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param duration The subscription duration.
-         * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-         * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+         * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+         * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
          * 
          * @return builder
          * 
@@ -465,8 +465,8 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param duration The subscription duration.
-         * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-         * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+         * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+         * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
          * 
          * @return builder
          * 

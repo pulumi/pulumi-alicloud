@@ -169,14 +169,14 @@ public class ServiceEventRule extends com.pulumi.resources.CustomResource {
         return this.eventTypes;
     }
     /**
-     * Matching rules, or relationships between multiple rules. See `match_rules` below.
+     * Matching rules, or relationships between multiple rules. See `matchRules` below.
      * 
      */
     @Export(name="matchRules", refs={List.class,ServiceEventRuleMatchRule.class}, tree="[0,[0,1]]")
     private Output</* @Nullable */ List<List<ServiceEventRuleMatchRule>>> matchRules;
 
     /**
-     * @return Matching rules, or relationships between multiple rules. See `match_rules` below.
+     * @return Matching rules, or relationships between multiple rules. See `matchRules` below.
      * 
      */
     public Output<Optional<List<List<ServiceEventRuleMatchRule>>>> matchRules() {

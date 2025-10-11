@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         private InputList<Inputs.ClusterNetworksIpAllocationPolicyGetArgs>? _ipAllocationPolicies;
 
         /// <summary>
-        /// IP allocation policy See `ip_allocation_policy` below.
+        /// IP allocation policy See `IpAllocationPolicy` below.
         /// </summary>
         public InputList<Inputs.ClusterNetworksIpAllocationPolicyGetArgs> IpAllocationPolicies
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         }
 
         /// <summary>
-        /// Vpd configuration information See `new_vpd_info` below.
+        /// Vpd configuration information See `NewVpdInfo` below.
         /// </summary>
         [Input("newVpdInfo")]
         public Input<Inputs.ClusterNetworksNewVpdInfoGetArgs>? NewVpdInfo { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// Multiplexing VPD information See `vpd_info` below.
+        /// Multiplexing VPD information See `VpdInfo` below.
         /// </summary>
         [Input("vpdInfo")]
         public Input<Inputs.ClusterNetworksVpdInfoGetArgs>? VpdInfo { get; set; }

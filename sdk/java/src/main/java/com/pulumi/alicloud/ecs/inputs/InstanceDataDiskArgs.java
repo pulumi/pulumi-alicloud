@@ -64,14 +64,14 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
+     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -333,7 +333,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
+         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
+         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
          * 
          * @return builder
          * 

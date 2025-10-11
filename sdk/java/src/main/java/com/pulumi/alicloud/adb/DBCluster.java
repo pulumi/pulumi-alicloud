@@ -31,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:adb/dBCluster:DBCluster")
 public class DBCluster extends com.pulumi.resources.CustomResource {
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     public Output<Integer> autoRenewPeriod() {
@@ -87,18 +87,18 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return this.dbClusterCategory;
     }
     /**
-     * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      * @deprecated
-     * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
+    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
     @Export(name="dbClusterClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterClass;
 
     /**
-     * @return It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * @return It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
     public Output<Optional<String>> dbClusterClass() {
@@ -218,9 +218,9 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
-     * - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
-     * - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
-     * - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+     * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+     * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      * 
      */
     @Export(name="elasticIoResourceSize", refs={String.class}, tree="[0]")
@@ -228,9 +228,9 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
-     * - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
-     * - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
-     * - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+     * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+     * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      * 
      */
     public Output<String> elasticIoResourceSize() {
@@ -265,14 +265,14 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return this.kernelVersion;
     }
     /**
-     * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      * 
      */
     @Export(name="kmsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsId;
 
     /**
-     * @return The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * @return The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      * 
      */
     public Output<Optional<String>> kmsId() {
@@ -321,7 +321,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * Field `payType` has been deprecated. New field `paymentType` instead.
      * 
      * @deprecated
      * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
@@ -332,28 +332,28 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
     private Output<String> payType;
 
     /**
-     * @return Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * @return Field `payType` has been deprecated. New field `paymentType` instead.
      * 
      */
     public Output<String> payType() {
         return this.payType;
     }
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
@@ -361,7 +361,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */

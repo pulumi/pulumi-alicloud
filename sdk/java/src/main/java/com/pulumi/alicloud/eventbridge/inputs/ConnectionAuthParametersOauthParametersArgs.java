@@ -33,14 +33,14 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
     }
 
     /**
-     * The parameters that are configured for the client. See `client_parameters` below.
+     * The parameters that are configured for the client. See `clientParameters` below.
      * 
      */
     @Import(name="clientParameters")
     private @Nullable Output<ConnectionAuthParametersOauthParametersClientParametersArgs> clientParameters;
 
     /**
-     * @return The parameters that are configured for the client. See `client_parameters` below.
+     * @return The parameters that are configured for the client. See `clientParameters` below.
      * 
      */
     public Optional<Output<ConnectionAuthParametersOauthParametersClientParametersArgs>> clientParameters() {
@@ -63,14 +63,14 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
     }
 
     /**
-     * The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
      * 
      */
     @Import(name="oauthHttpParameters")
     private @Nullable Output<ConnectionAuthParametersOauthParametersOauthHttpParametersArgs> oauthHttpParameters;
 
     /**
-     * @return The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * @return The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
      * 
      */
     public Optional<Output<ConnectionAuthParametersOauthParametersOauthHttpParametersArgs>> oauthHttpParameters() {
@@ -126,7 +126,7 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
         }
 
         /**
-         * @param clientParameters The parameters that are configured for the client. See `client_parameters` below.
+         * @param clientParameters The parameters that are configured for the client. See `clientParameters` below.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
         }
 
         /**
-         * @param clientParameters The parameters that are configured for the client. See `client_parameters` below.
+         * @param clientParameters The parameters that are configured for the client. See `clientParameters` below.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
         }
 
         /**
-         * @param oauthHttpParameters The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+         * @param oauthHttpParameters The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
         }
 
         /**
-         * @param oauthHttpParameters The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+         * @param oauthHttpParameters The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
          * 
          * @return builder
          * 

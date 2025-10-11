@@ -22,13 +22,13 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
+        /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `True` and `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
+        /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `AutoRenew` is valid when the attribute is `True`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -128,13 +128,13 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
+        /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `True` and `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
+        /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `AutoRenew` is valid when the attribute is `True`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -196,13 +196,13 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
+        /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `True` and `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
+        /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `AutoRenew` is valid when the attribute is `True`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }

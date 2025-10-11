@@ -138,14 +138,14 @@ public final class AutoGroupingRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The content records of the rule. See `rule_contents` below.
+     * The content records of the rule. See `ruleContents` below.
      * 
      */
     @Import(name="ruleContents")
     private @Nullable Output<List<AutoGroupingRuleRuleContentArgs>> ruleContents;
 
     /**
-     * @return The content records of the rule. See `rule_contents` below.
+     * @return The content records of the rule. See `ruleContents` below.
      * 
      */
     public Optional<Output<List<AutoGroupingRuleRuleContentArgs>>> ruleContents() {
@@ -401,7 +401,7 @@ public final class AutoGroupingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleContents The content records of the rule. See `rule_contents` below.
+         * @param ruleContents The content records of the rule. See `ruleContents` below.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class AutoGroupingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleContents The content records of the rule. See `rule_contents` below.
+         * @param ruleContents The content records of the rule. See `ruleContents` below.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class AutoGroupingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleContents The content records of the rule. See `rule_contents` below.
+         * @param ruleContents The content records of the rule. See `ruleContents` below.
          * 
          * @return builder
          * 

@@ -32,8 +32,8 @@ public final class RuleTargetParamList {
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * 
-     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
-     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
+     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * If you want to set `resourceKey = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
     private @Nullable String value;
@@ -65,8 +65,8 @@ public final class RuleTargetParamList {
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * 
-     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
-     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
+     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * If you want to set `resourceKey = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
     public Optional<String> value() {

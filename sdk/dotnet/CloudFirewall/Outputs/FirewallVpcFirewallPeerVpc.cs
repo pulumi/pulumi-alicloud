@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string? EniPrivateIpAddress;
         /// <summary>
-        /// The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+        /// The network segment list of the peer VPC. See `PeerVpcCidrTableList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> PeerVpcCidrTableLists;
         /// <summary>

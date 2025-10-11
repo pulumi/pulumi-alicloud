@@ -57,14 +57,14 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * ParameterOverrides. See the following `Block parameter_overrides`.
+     * ParameterOverrides. See the following `Block parameterOverrides`.
      * 
      */
     @Import(name="parameterOverrides")
     private @Nullable Output<List<StackInstanceParameterOverrideArgs>> parameterOverrides;
 
     /**
-     * @return ParameterOverrides. See the following `Block parameter_overrides`.
+     * @return ParameterOverrides. See the following `Block parameterOverrides`.
      * 
      */
     public Optional<Output<List<StackInstanceParameterOverrideArgs>>> parameterOverrides() {
@@ -72,14 +72,14 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+     * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      * 
      */
     @Import(name="retainStacks")
     private @Nullable Output<Boolean> retainStacks;
 
     /**
-     * @return Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+     * @return Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      * 
      */
     public Optional<Output<Boolean>> retainStacks() {
@@ -254,7 +254,7 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameterOverrides ParameterOverrides. See the following `Block parameter_overrides`.
+         * @param parameterOverrides ParameterOverrides. See the following `Block parameterOverrides`.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameterOverrides ParameterOverrides. See the following `Block parameter_overrides`.
+         * @param parameterOverrides ParameterOverrides. See the following `Block parameterOverrides`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameterOverrides ParameterOverrides. See the following `Block parameter_overrides`.
+         * @param parameterOverrides ParameterOverrides. See the following `Block parameterOverrides`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param retainStacks Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+         * @param retainStacks Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param retainStacks Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+         * @param retainStacks Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
          * 
          * @return builder
          * 

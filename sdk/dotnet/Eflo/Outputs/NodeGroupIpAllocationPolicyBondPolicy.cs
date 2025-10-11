@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
         /// </summary>
         public readonly string? BondDefaultSubnet;
         /// <summary>
-        /// Bond information See `bonds` below.
+        /// Bond information See `Bonds` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeGroupIpAllocationPolicyBondPolicyBond> Bonds;
 

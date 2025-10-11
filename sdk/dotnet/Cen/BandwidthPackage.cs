@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> CenBandwidthPackageName { get; private set; } = null!;
 
         /// <summary>
-        /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+        /// Field `ChargeType` has been deprecated from version 1.97.0. Use `PaymentType` and instead.
         /// </summary>
         [Output("chargeType")]
         public Output<string> ChargeType { get; private set; } = null!;
@@ -68,13 +68,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> GeographicRegionBId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+        /// Field `GeographicRegionIds` has been deprecated from version 1.97.0. Use `GeographicRegionAId` and `GeographicRegionBId` instead.
         /// </summary>
         [Output("geographicRegionIds")]
         public Output<ImmutableArray<string>> GeographicRegionIds { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        /// Field `Name` has been deprecated from version 1.97.0. Use `CenBandwidthPackageName` and instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenBandwidthPackageName { get; set; }
 
         /// <summary>
-        /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+        /// Field `ChargeType` has been deprecated from version 1.97.0. Use `PaymentType` and instead.
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _geographicRegionIds;
 
         /// <summary>
-        /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+        /// Field `GeographicRegionIds` has been deprecated from version 1.97.0. Use `GeographicRegionAId` and `GeographicRegionBId` instead.
         /// </summary>
         [Obsolete(@"Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.")]
         public InputList<string> GeographicRegionIds
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        /// Field `Name` has been deprecated from version 1.97.0. Use `CenBandwidthPackageName` and instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenBandwidthPackageName { get; set; }
 
         /// <summary>
-        /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
+        /// Field `ChargeType` has been deprecated from version 1.97.0. Use `PaymentType` and instead.
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _geographicRegionIds;
 
         /// <summary>
-        /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+        /// Field `GeographicRegionIds` has been deprecated from version 1.97.0. Use `GeographicRegionAId` and `GeographicRegionBId` instead.
         /// </summary>
         [Obsolete(@"Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.")]
         public InputList<string> GeographicRegionIds
@@ -284,7 +284,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        /// Field `Name` has been deprecated from version 1.97.0. Use `CenBandwidthPackageName` and instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

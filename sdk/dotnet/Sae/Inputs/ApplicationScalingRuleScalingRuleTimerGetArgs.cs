@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationScalingRuleScalingRuleTimerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        /// The Start date. When the `BeginDate` and `EndDate` values are empty. it indicates long-term execution and is the default value.
         /// </summary>
         [Input("beginDate")]
         public Input<string>? BeginDate { get; set; }
 
         /// <summary>
-        /// The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        /// The End Date. When the `BeginDate` and `EndDate` values are empty. it indicates long-term execution and is the default value.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.ApplicationScalingRuleScalingRuleTimerScheduleGetArgs>? _schedules;
 
         /// <summary>
-        /// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
+        /// Resilient Scaling Strategy Trigger Timing. See `Schedules` below.
         /// </summary>
         public InputList<Inputs.ApplicationScalingRuleScalingRuleTimerScheduleGetArgs> Schedules
         {

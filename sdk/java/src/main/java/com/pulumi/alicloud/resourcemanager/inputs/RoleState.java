@@ -77,14 +77,14 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This ID of Resource Manager role. The value is set to `role_name`.
+     * This ID of Resource Manager role. The value is set to `roleName`.
      * 
      */
     @Import(name="roleId")
     private @Nullable Output<String> roleId;
 
     /**
-     * @return This ID of Resource Manager role. The value is set to `role_name`.
+     * @return This ID of Resource Manager role. The value is set to `roleName`.
      * 
      */
     public Optional<Output<String>> roleId() {
@@ -236,7 +236,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleId This ID of Resource Manager role. The value is set to `role_name`.
+         * @param roleId This ID of Resource Manager role. The value is set to `roleName`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleId This ID of Resource Manager role. The value is set to `role_name`.
+         * @param roleId This ID of Resource Manager role. The value is set to `roleName`.
          * 
          * @return builder
          * 

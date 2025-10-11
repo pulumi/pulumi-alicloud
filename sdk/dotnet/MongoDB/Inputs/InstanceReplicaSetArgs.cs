@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? VpcCloudInstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+        /// The ID of the VPC. &gt; **NOTE:** `VpcId` is valid only when `NetworkType` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

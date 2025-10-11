@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The structure of environmentVars. 
-        /// See `environment_vars` below for details.
+        /// See `EnvironmentVars` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerEnvironmentVarArgs> EnvironmentVars
         {
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationInitContainerPortArgs>? _ports;
 
         /// <summary>
-        /// The structure of port. See `ports` below for details.
+        /// The structure of port. See `Ports` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerPortArgs> Ports
         {
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationInitContainerVolumeMountArgs>? _volumeMounts;
 
         /// <summary>
-        /// The structure of volumeMounts. See `volume_mounts` below for details.
+        /// The structure of volumeMounts. See `VolumeMounts` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerVolumeMountArgs> VolumeMounts
         {

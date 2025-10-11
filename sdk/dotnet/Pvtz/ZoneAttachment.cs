@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// <summary>
     /// ## Example Usage
     /// 
-    /// Using `vpc_ids` to attach being in same region several vpc instances to a private zone
+    /// Using `VpcIds` to attach being in same region several vpc instances to a private zone
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// });
     /// ```
     /// 
-    /// Using `vpcs` to attach being in same region several vpc instances to a private zone
+    /// Using `Vpcs` to attach being in same region several vpc instances to a private zone
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// });
     /// ```
     /// 
-    /// Using `vpcs` to attach being in different regions several vpc instances to a private zone
+    /// Using `Vpcs` to attach being in different regions several vpc instances to a private zone
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<ImmutableArray<string>> VpcIds { get; private set; } = null!;
 
         /// <summary>
-        /// See `vpcs` below.Recommend to use `vpcs`.
+        /// See `Vpcs` below.Recommend to use `Vpcs`.
         /// </summary>
         [Output("vpcs")]
         public Output<ImmutableArray<Outputs.ZoneAttachmentVpc>> Vpcs { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneAttachmentVpcArgs>? _vpcs;
 
         /// <summary>
-        /// See `vpcs` below.Recommend to use `vpcs`.
+        /// See `Vpcs` below.Recommend to use `Vpcs`.
         /// </summary>
         public InputList<Inputs.ZoneAttachmentVpcArgs> Vpcs
         {
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneAttachmentVpcGetArgs>? _vpcs;
 
         /// <summary>
-        /// See `vpcs` below.Recommend to use `vpcs`.
+        /// See `Vpcs` below.Recommend to use `Vpcs`.
         /// </summary>
         public InputList<Inputs.ZoneAttachmentVpcGetArgs> Vpcs
         {

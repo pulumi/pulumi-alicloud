@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetVpcFirewallControlPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction")]
         public string? AclAction { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetVpcFirewallControlPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction")]
         public Input<string>? AclAction { get; set; }
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }

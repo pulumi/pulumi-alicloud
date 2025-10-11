@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         private InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs>? _localRouteEntryLists;
 
         /// <summary>
-        /// The list of route entries of the local VPC. See `local_route_entry_list` below.
+        /// The list of route entries of the local VPC. See `LocalRouteEntryList` below.
         /// </summary>
         public InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs> LocalRouteEntryLists
         {

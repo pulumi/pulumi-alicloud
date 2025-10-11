@@ -36,7 +36,7 @@ public final class QuotaPlanQuotaArgs extends com.pulumi.resources.ResourceArgs 
      * Secondary Quota list
      * 
      * &gt; **NOTE:** need to list all secondary Quota
-     * See `sub_quota_info_list` below.
+     * See `subQuotaInfoList` below.
      * 
      */
     @Import(name="subQuotaInfoLists")
@@ -46,7 +46,7 @@ public final class QuotaPlanQuotaArgs extends com.pulumi.resources.ResourceArgs 
      * @return Secondary Quota list
      * 
      * &gt; **NOTE:** need to list all secondary Quota
-     * See `sub_quota_info_list` below.
+     * See `subQuotaInfoList` below.
      * 
      */
     public Optional<Output<List<QuotaPlanQuotaSubQuotaInfoListArgs>>> subQuotaInfoLists() {
@@ -103,7 +103,7 @@ public final class QuotaPlanQuotaArgs extends com.pulumi.resources.ResourceArgs 
          * @param subQuotaInfoLists Secondary Quota list
          * 
          * &gt; **NOTE:** need to list all secondary Quota
-         * See `sub_quota_info_list` below.
+         * See `subQuotaInfoList` below.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class QuotaPlanQuotaArgs extends com.pulumi.resources.ResourceArgs 
          * @param subQuotaInfoLists Secondary Quota list
          * 
          * &gt; **NOTE:** need to list all secondary Quota
-         * See `sub_quota_info_list` below.
+         * See `subQuotaInfoList` below.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class QuotaPlanQuotaArgs extends com.pulumi.resources.ResourceArgs 
          * @param subQuotaInfoLists Secondary Quota list
          * 
          * &gt; **NOTE:** need to list all secondary Quota
-         * See `sub_quota_info_list` below.
+         * See `subQuotaInfoList` below.
          * 
          * @return builder
          * 

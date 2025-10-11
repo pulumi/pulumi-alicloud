@@ -65,7 +65,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * The private IP address of the ENI.
-     * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+     * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
      * 
      */
     @Import(name="subAddress")
@@ -73,7 +73,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * @return The private IP address of the ENI.
-     * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+     * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
      * 
      */
     public Optional<Output<String>> subAddress() {
@@ -226,7 +226,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param subAddress The private IP address of the ENI.
-         * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+         * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param subAddress The private IP address of the ENI.
-         * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+         * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
          * 
          * @return builder
          * 

@@ -15,6 +15,10 @@ namespace Pulumi.AliCloud.Eais
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -23,6 +27,10 @@ namespace Pulumi.AliCloud.Eais
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -31,6 +39,10 @@ namespace Pulumi.AliCloud.Eais
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

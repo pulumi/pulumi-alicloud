@@ -14,8 +14,8 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupVolume
     {
         /// <summary>
-        /// The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
-        /// &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
+        /// The paths of the ConfigFile volume. See `ConfigFileVolumeConfigFileToPaths` below.
+        /// &gt; **NOTE:** Every volumes mounted must have `Name` and `Type` attributes.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPath> ConfigFileVolumeConfigFileToPaths;
         /// <summary>
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? NfsVolumePath;
         /// <summary>
-        /// The nfs volume read only. Default value: `false`.
+        /// The nfs volume read only. Default value: `False`.
         /// </summary>
         public readonly bool? NfsVolumeReadOnly;
         /// <summary>

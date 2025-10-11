@@ -34,14 +34,14 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The details of the local VPC. See `local_vpc` below.
+     * The details of the local VPC. See `localVpc` below.
      * 
      */
     @Import(name="localVpc", required=true)
     private Output<FirewallVpcFirewallLocalVpcArgs> localVpc;
 
     /**
-     * @return The details of the local VPC. See `local_vpc` below.
+     * @return The details of the local VPC. See `localVpc` below.
      * 
      */
     public Output<FirewallVpcFirewallLocalVpcArgs> localVpc() {
@@ -64,14 +64,14 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The details of the peer VPC. See `peer_vpc` below.
+     * The details of the peer VPC. See `peerVpc` below.
      * 
      */
     @Import(name="peerVpc", required=true)
     private Output<FirewallVpcFirewallPeerVpcArgs> peerVpc;
 
     /**
-     * @return The details of the peer VPC. See `peer_vpc` below.
+     * @return The details of the peer VPC. See `peerVpc` below.
      * 
      */
     public Output<FirewallVpcFirewallPeerVpcArgs> peerVpc() {
@@ -159,7 +159,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localVpc The details of the local VPC. See `local_vpc` below.
+         * @param localVpc The details of the local VPC. See `localVpc` below.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localVpc The details of the local VPC. See `local_vpc` below.
+         * @param localVpc The details of the local VPC. See `localVpc` below.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerVpc The details of the peer VPC. See `peer_vpc` below.
+         * @param peerVpc The details of the peer VPC. See `peerVpc` below.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerVpc The details of the peer VPC. See `peer_vpc` below.
+         * @param peerVpc The details of the peer VPC. See `peerVpc` below.
          * 
          * @return builder
          * 

@@ -32,24 +32,24 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -103,7 +103,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
-     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+     * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
     @Import(name="syncScope")
@@ -113,7 +113,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
      * @return The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
-     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+     * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
     public Optional<Output<String>> syncScope() {
@@ -287,30 +287,30 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+         * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+         * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -382,7 +382,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
          * @param syncScope The synchronization scope. Valid values:
          * - `REPO`: Encrypts or decrypts data.
          * - `NAMESPACE`: Generates or verifies a digital signature.
-         * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+         * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
          * @param syncScope The synchronization scope. Valid values:
          * - `REPO`: Encrypts or decrypts data.
          * - `NAMESPACE`: Generates or verifies a digital signature.
-         * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+         * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
          * 
          * @return builder
          * 

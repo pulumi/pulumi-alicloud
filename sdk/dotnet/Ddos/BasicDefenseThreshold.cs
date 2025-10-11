@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<int> Bps { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        /// The type of the threshold to query. Valid values: `Defense`,`Blackhole`.
         /// </summary>
         [Output("ddosType")]
         public Output<string> DdosType { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
+        /// The instance type of the public IP address asset. Value: `Ecs`,`Slb`,`Eip`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<int>? Bps { get; set; }
 
         /// <summary>
-        /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        /// The type of the threshold to query. Valid values: `Defense`,`Blackhole`.
         /// </summary>
         [Input("ddosType", required: true)]
         public Input<string> DdosType { get; set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
+        /// The instance type of the public IP address asset. Value: `Ecs`,`Slb`,`Eip`.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<int>? Bps { get; set; }
 
         /// <summary>
-        /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        /// The type of the threshold to query. Valid values: `Defense`,`Blackhole`.
         /// </summary>
         [Input("ddosType")]
         public Input<string>? DdosType { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
+        /// The instance type of the public IP address asset. Value: `Ecs`,`Slb`,`Eip`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

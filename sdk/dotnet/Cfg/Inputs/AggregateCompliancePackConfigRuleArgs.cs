@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Cfg.Inputs
         private InputList<Inputs.AggregateCompliancePackConfigRuleConfigRuleParameterArgs>? _configRuleParameters;
 
         /// <summary>
-        /// A list of parameter rules. See `config_rule_parameters` below.
+        /// A list of parameter rules. See `ConfigRuleParameters` below.
         /// </summary>
         public InputList<Inputs.AggregateCompliancePackConfigRuleConfigRuleParameterArgs> ConfigRuleParameters
         {

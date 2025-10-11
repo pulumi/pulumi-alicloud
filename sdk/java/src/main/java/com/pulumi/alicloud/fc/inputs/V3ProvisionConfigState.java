@@ -126,14 +126,14 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Timing policy configuration See `scheduled_actions` below.
+     * Timing policy configuration See `scheduledActions` below.
      * 
      */
     @Import(name="scheduledActions")
     private @Nullable Output<List<V3ProvisionConfigScheduledActionArgs>> scheduledActions;
 
     /**
-     * @return Timing policy configuration See `scheduled_actions` below.
+     * @return Timing policy configuration See `scheduledActions` below.
      * 
      */
     public Optional<Output<List<V3ProvisionConfigScheduledActionArgs>>> scheduledActions() {
@@ -156,14 +156,14 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Metric tracking scaling policy configuration See `target_tracking_policies` below.
+     * Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      * 
      */
     @Import(name="targetTrackingPolicies")
     private @Nullable Output<List<V3ProvisionConfigTargetTrackingPolicyArgs>> targetTrackingPolicies;
 
     /**
-     * @return Metric tracking scaling policy configuration See `target_tracking_policies` below.
+     * @return Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      * 
      */
     public Optional<Output<List<V3ProvisionConfigTargetTrackingPolicyArgs>>> targetTrackingPolicies() {
@@ -351,7 +351,7 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scheduledActions Timing policy configuration See `scheduled_actions` below.
+         * @param scheduledActions Timing policy configuration See `scheduledActions` below.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scheduledActions Timing policy configuration See `scheduled_actions` below.
+         * @param scheduledActions Timing policy configuration See `scheduledActions` below.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scheduledActions Timing policy configuration See `scheduled_actions` below.
+         * @param scheduledActions Timing policy configuration See `scheduledActions` below.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetTrackingPolicies Metric tracking scaling policy configuration See `target_tracking_policies` below.
+         * @param targetTrackingPolicies Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetTrackingPolicies Metric tracking scaling policy configuration See `target_tracking_policies` below.
+         * @param targetTrackingPolicies Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetTrackingPolicies Metric tracking scaling policy configuration See `target_tracking_policies` below.
+         * @param targetTrackingPolicies Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
          * 
          * @return builder
          * 

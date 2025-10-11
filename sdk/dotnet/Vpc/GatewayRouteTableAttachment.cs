@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// Specifies whether to only precheck this request. Default value: `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GatewayRouteTableAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// Specifies whether to only precheck this request. Default value: `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// Specifies whether to only precheck this request. Default value: `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

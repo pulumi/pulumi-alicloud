@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Slb
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+        /// Filter listeners by the specified protocol. Valid values: `Http`, `Https`, `Tcp` and `Udp`.
         /// </summary>
         [Input("protocol")]
         public string? Protocol { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+        /// Filter listeners by the specified protocol. Valid values: `Http`, `Https`, `Tcp` and `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Slb
         public readonly string LoadBalancerId;
         public readonly string? OutputFile;
         /// <summary>
-        /// Listener protocol. Possible values: `http`, `https`, `tcp` and `udp`.
+        /// Listener protocol. Possible values: `Http`, `Https`, `Tcp` and `Udp`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

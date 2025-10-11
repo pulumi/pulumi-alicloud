@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The keywords of the `namespace` or `description` of the namespace.
+        /// The keywords of the `Namespace` or `Description` of the namespace.
         /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The keywords of the `namespace` or `description` of the namespace.
+        /// The keywords of the `Namespace` or `Description` of the namespace.
         /// </summary>
         [Input("keyword")]
         public Input<string>? Keyword { get; set; }

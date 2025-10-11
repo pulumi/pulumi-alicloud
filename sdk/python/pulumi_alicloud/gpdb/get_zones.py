@@ -100,6 +100,8 @@ def get_zones(multi: Optional[_builtins.bool] = None,
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
 
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -123,6 +125,8 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[_builtins.bool]]] = N
     This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available in v1.73.0+.
+
+    ## Example Usage
 
 
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.

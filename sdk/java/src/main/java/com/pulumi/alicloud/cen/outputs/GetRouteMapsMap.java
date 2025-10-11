@@ -74,7 +74,7 @@ public final class GetRouteMapsMap {
      */
     private List<String> destinationRouteTableIds;
     /**
-     * @return The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `route_map_id`.
+     * @return The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `routeMapId`.
      * 
      */
     private String id;
@@ -250,7 +250,7 @@ public final class GetRouteMapsMap {
         return this.destinationRouteTableIds;
     }
     /**
-     * @return The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `route_map_id`.
+     * @return The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `routeMapId`.
      * 
      */
     public String id() {

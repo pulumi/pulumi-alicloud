@@ -18,7 +18,7 @@ public final class GetConfigurationRecordersRecorder {
      */
     private String accountId;
     /**
-     * @return The ID of the Config Configuration Recorder. Value as the `account_id`.
+     * @return The ID of the Config Configuration Recorder. Value as the `accountId`.
      * 
      */
     private String id;
@@ -52,7 +52,7 @@ public final class GetConfigurationRecordersRecorder {
         return this.accountId;
     }
     /**
-     * @return The ID of the Config Configuration Recorder. Value as the `account_id`.
+     * @return The ID of the Config Configuration Recorder. Value as the `accountId`.
      * 
      */
     public String id() {

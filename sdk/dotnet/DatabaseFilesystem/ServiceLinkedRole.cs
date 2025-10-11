@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Output<string> ProductName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
+        /// The status of the service Associated role. Valid Values: `True`: Created. `False`: not created.
         /// </summary>
         [Output("status")]
         public Output<bool> Status { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<string>? ProductName { get; set; }
 
         /// <summary>
-        /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
+        /// The status of the service Associated role. Valid Values: `True`: Created. `False`: not created.
         /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }

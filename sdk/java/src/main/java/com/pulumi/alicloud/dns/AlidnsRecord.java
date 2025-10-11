@@ -159,14 +159,14 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.remark);
     }
     /**
-     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
+     * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
      * 
      */
     @Export(name="rr", refs={String.class}, tree="[0]")
     private Output<String> rr;
 
     /**
-     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
+     * @return Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
      * 
      */
     public Output<String> rr() {

@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string MaxWorker;
         /// <summary>
-        /// The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
+        /// The operating system type of client, only the ECS File Backup Client is available. Valid values: `Windows`, `Linux`.
         /// </summary>
         public readonly string OsType;
         /// <summary>
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
+        /// Indicates whether to use the HTTPS protocol. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool UseHttps;
         /// <summary>

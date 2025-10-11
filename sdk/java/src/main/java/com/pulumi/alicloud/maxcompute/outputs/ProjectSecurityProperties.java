@@ -33,7 +33,7 @@ public final class ProjectSecurityProperties {
      */
     private @Nullable Boolean objectCreatorHasGrantPermission;
     /**
-     * @return Project protection See `project_protection` below.
+     * @return Project protection See `projectProtection` below.
      * 
      */
     private @Nullable ProjectSecurityPropertiesProjectProtection projectProtection;
@@ -78,7 +78,7 @@ public final class ProjectSecurityProperties {
         return Optional.ofNullable(this.objectCreatorHasGrantPermission);
     }
     /**
-     * @return Project protection See `project_protection` below.
+     * @return Project protection See `projectProtection` below.
      * 
      */
     public Optional<ProjectSecurityPropertiesProjectProtection> projectProtection() {

@@ -153,14 +153,14 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     @Import(name="withDecryption")
     private @Nullable Boolean withDecryption;
 
     /**
-     * @return Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+     * @return Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Optional<Boolean> withDecryption() {
@@ -310,7 +310,7 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
          * 
          * @return builder
          * 

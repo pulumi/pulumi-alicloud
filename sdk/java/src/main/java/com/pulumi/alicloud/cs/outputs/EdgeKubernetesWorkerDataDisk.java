@@ -17,7 +17,7 @@ public final class EdgeKubernetesWorkerDataDisk {
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
-     * @return The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
      * 
      */
     private @Nullable String category;
@@ -42,7 +42,7 @@ public final class EdgeKubernetesWorkerDataDisk {
      */
     private @Nullable String name;
     /**
-     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     private @Nullable String performanceLevel;
@@ -66,7 +66,7 @@ public final class EdgeKubernetesWorkerDataDisk {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
-     * @return The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
      * 
      */
     public Optional<String> category() {
@@ -101,7 +101,7 @@ public final class EdgeKubernetesWorkerDataDisk {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<String> performanceLevel() {

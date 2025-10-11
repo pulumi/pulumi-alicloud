@@ -50,14 +50,14 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
     }
 
     /**
-     * HTTP request body. See `request_body` below.
+     * HTTP request body. See `requestBody` below.
      * 
      */
     @Import(name="requestBody")
     private @Nullable Output<SyntheticTaskMonitorConfApiHttpRequestBodyArgs> requestBody;
 
     /**
-     * @return HTTP request body. See `request_body` below.
+     * @return HTTP request body. See `requestBody` below.
      * 
      */
     public Optional<Output<SyntheticTaskMonitorConfApiHttpRequestBodyArgs>> requestBody() {
@@ -181,7 +181,7 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
         }
 
         /**
-         * @param requestBody HTTP request body. See `request_body` below.
+         * @param requestBody HTTP request body. See `requestBody` below.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
         }
 
         /**
-         * @param requestBody HTTP request body. See `request_body` below.
+         * @param requestBody HTTP request body. See `requestBody` below.
          * 
          * @return builder
          * 

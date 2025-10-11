@@ -25,7 +25,7 @@ public final class GetEndpointGroupsGroup {
      */
     private List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations;
     /**
-     * @return The endpoint_group_id of the Endpoint Group.
+     * @return The endpointGroupId of the Endpoint Group.
      * 
      */
     private String endpointGroupId;
@@ -111,7 +111,7 @@ public final class GetEndpointGroupsGroup {
         return this.endpointConfigurations;
     }
     /**
-     * @return The endpoint_group_id of the Endpoint Group.
+     * @return The endpointGroupId of the Endpoint Group.
      * 
      */
     public String endpointGroupId() {

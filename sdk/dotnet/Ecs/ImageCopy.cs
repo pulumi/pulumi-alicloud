@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///  The following attributes are exported:
     /// 
-    /// * `id` - ID of the image.
+    /// * `Id` - ID of the image.
     /// 
     /// ## Import
     /// 
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to force delete the custom image, Default is `false`. 
+        /// Indicates whether to force delete the custom image, Default is `False`. 
         /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
         /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         /// </summary>
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// Indicates whether to force delete the custom image, Default is `false`. 
+        /// Indicates whether to force delete the custom image, Default is `False`. 
         /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
         /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         /// </summary>
@@ -307,7 +307,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// Indicates whether to force delete the custom image, Default is `false`. 
+        /// Indicates whether to force delete the custom image, Default is `False`. 
         /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
         /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         /// </summary>

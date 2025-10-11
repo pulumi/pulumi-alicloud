@@ -146,14 +146,14 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The parameters that are configured for the API destination. See `http_api_parameters` below.
+     * The parameters that are configured for the API destination. See `httpApiParameters` below.
      * 
      */
     @Export(name="httpApiParameters", refs={ApiDestinationHttpApiParameters.class}, tree="[0]")
     private Output<ApiDestinationHttpApiParameters> httpApiParameters;
 
     /**
-     * @return The parameters that are configured for the API destination. See `http_api_parameters` below.
+     * @return The parameters that are configured for the API destination. See `httpApiParameters` below.
      * 
      */
     public Output<ApiDestinationHttpApiParameters> httpApiParameters() {

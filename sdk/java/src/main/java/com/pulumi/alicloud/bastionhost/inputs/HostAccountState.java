@@ -76,14 +76,14 @@ public final class HostAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+     * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      * 
      */
     @Import(name="passPhrase")
     private @Nullable Output<String> passPhrase;
 
     /**
-     * @return The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+     * @return The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      * 
      */
     public Optional<Output<String>> passPhrase() {
@@ -106,14 +106,14 @@ public final class HostAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+     * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+     * @return The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -251,7 +251,7 @@ public final class HostAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passPhrase The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+         * @param passPhrase The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class HostAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passPhrase The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+         * @param passPhrase The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class HostAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+         * @param privateKey The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class HostAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+         * @param privateKey The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
          * 
          * @return builder
          * 

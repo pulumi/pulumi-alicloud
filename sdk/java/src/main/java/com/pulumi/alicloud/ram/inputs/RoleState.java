@@ -80,7 +80,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+     * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
@@ -91,7 +91,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> document;
 
     /**
-     * @return Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+     * @return Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
@@ -133,7 +133,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+     * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
@@ -144,7 +144,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
@@ -156,7 +156,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+     * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
      * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
@@ -167,7 +167,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> ramUsers;
 
     /**
-     * @return Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+     * @return Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
      * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
@@ -391,7 +391,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+         * @param document Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+         * @param document Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ramUsers Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+         * @param ramUsers Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ramUsers Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+         * @param ramUsers Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ramUsers Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
+         * @param ramUsers Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 

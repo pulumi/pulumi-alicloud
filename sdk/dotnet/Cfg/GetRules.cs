@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class GetRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+        /// Field `ConfigRuleState` has been deprecated from provider version 1.124.1. New field `Status` instead.
         /// </summary>
         [Input("configRuleState")]
         public string? ConfigRuleState { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -180,13 +180,13 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class GetRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+        /// Field `ConfigRuleState` has been deprecated from provider version 1.124.1. New field `Status` instead.
         /// </summary>
         [Input("configRuleState")]
         public Input<string>? ConfigRuleState { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

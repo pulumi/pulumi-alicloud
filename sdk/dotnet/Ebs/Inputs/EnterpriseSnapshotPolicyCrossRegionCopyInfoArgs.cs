@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ebs.Inputs
         private InputList<Inputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs>? _regions;
 
         /// <summary>
-        /// Destination region for Snapshot replication. See `regions` below.
+        /// Destination region for Snapshot replication. See `Regions` below.
         /// </summary>
         public InputList<Inputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs> Regions
         {

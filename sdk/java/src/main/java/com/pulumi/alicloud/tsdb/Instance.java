@@ -109,14 +109,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.appKey);
     }
     /**
-     * The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      * 
      */
     @Export(name="diskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      * 
      */
     public Output<Optional<String>> diskCategory() {
@@ -137,14 +137,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.duration);
     }
     /**
-     * The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+     * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      * 
      */
     @Export(name="engineType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> engineType;
 
     /**
-     * @return The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+     * @return The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      * 
      */
     public Output<Optional<String>> engineType() {

@@ -110,14 +110,14 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+     * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      * 
      */
     @Import(name="maximumExecutionFrequency")
     private @Nullable Output<String> maximumExecutionFrequency;
 
     /**
-     * @return The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+     * @return The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      * 
      */
     public Optional<Output<String>> maximumExecutionFrequency() {
@@ -245,14 +245,14 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      * 
      */
     @Import(name="tagValueScope")
     private @Nullable Output<String> tagValueScope;
 
     /**
-     * @return The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * @return The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      * 
      */
     public Optional<Output<String>> tagValueScope() {
@@ -425,7 +425,7 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maximumExecutionFrequency The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+         * @param maximumExecutionFrequency The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maximumExecutionFrequency The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
+         * @param maximumExecutionFrequency The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tagValueScope The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+         * @param tagValueScope The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tagValueScope The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+         * @param tagValueScope The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
          * 
          * @return builder
          * 

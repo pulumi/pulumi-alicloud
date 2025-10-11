@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string AccountName;
         /// <summary>
-        /// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+        /// The role of the account. Valid values: `Db`, `Cs`, `Mongos`, `Logic`, `Normal`.
         /// </summary>
         public readonly string CharacterType;
         /// <summary>

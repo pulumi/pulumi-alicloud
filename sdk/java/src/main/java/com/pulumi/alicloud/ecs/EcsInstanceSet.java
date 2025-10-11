@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `alicloud.ecs.Instance` is preferred.
  * 
- * &gt; **NOTE:** In the instances managed by this resource, names are automatically generated based on `instance_name` and `unique_suffix`.
+ * &gt; **NOTE:** In the instances managed by this resource, names are automatically generated based on `instanceName` and `uniqueSuffix`.
  * 
  * &gt; **NOTE:** Only `tags` support batch modification.
  * 
@@ -157,32 +157,32 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoReleaseTime);
     }
     /**
-     * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+     * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+     * @return Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
@@ -203,28 +203,28 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bootCheckOsWithAssistant);
     }
     /**
-     * The list of data disks created with instance. See `data_disks` below..
+     * The list of data disks created with instance. See `dataDisks` below..
      * 
      */
     @Export(name="dataDisks", refs={List.class,EcsInstanceSetDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsInstanceSetDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `data_disks` below..
+     * @return The list of data disks created with instance. See `dataDisks` below..
      * 
      */
     public Output<Optional<List<EcsInstanceSetDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
     /**
-     * The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+     * The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     @Export(name="dedicatedHostId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostId;
 
     /**
-     * @return The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+     * @return The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
     public Output<Optional<String>> dedicatedHostId() {
@@ -273,14 +273,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+     * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      * 
      */
     @Export(name="excludeInstanceFilter", refs={EcsInstanceSetExcludeInstanceFilter.class}, tree="[0]")
     private Output</* @Nullable */ EcsInstanceSetExcludeInstanceFilter> excludeInstanceFilter;
 
     /**
-     * @return The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+     * @return The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      * 
      */
     public Output<Optional<EcsInstanceSetExcludeInstanceFilter>> excludeInstanceFilter() {
@@ -357,14 +357,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return this.instanceIds;
     }
     /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
-     * @return The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+     * @return The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> instanceName() {
@@ -441,14 +441,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateId);
     }
     /**
-     * The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     @Export(name="launchTemplateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateName;
 
     /**
-     * @return The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * @return The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      * 
      */
     public Output<Optional<String>> launchTemplateName() {
@@ -469,14 +469,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateVersion);
     }
     /**
-     * A list of NetworkInterface. See `network_interfaces` below..
+     * A list of NetworkInterface. See `networkInterfaces` below..
      * 
      */
     @Export(name="networkInterfaces", refs={List.class,EcsInstanceSetNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsInstanceSetNetworkInterface>> networkInterfaces;
 
     /**
-     * @return A list of NetworkInterface. See `network_interfaces` below..
+     * @return A list of NetworkInterface. See `networkInterfaces` below..
      * 
      */
     public Output<Optional<List<EcsInstanceSetNetworkInterface>>> networkInterfaces() {
@@ -511,32 +511,32 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordInherit);
     }
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-     * - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-     * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * @return The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -617,7 +617,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return this.spotPriceLimit;
     }
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -627,7 +627,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
     private Output<String> spotStrategy;
 
     /**
-     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -651,14 +651,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
     }
     /**
-     * The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+     * The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+     * @return The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     public Output<String> systemDiskCategory() {

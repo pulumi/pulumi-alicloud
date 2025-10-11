@@ -115,10 +115,10 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      * The snapshot policy name.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

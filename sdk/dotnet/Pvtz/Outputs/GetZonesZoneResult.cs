@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetZonesZoneResult
     {
         /// <summary>
-        /// The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
+        /// The VPCs associated with the zone. **Note:** `BindVpcs` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneBindVpcResult> BindVpcs;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
+        /// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `SlaveDns` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly bool SlaveDns;
         public readonly string UpdateTime;

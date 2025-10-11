@@ -31,7 +31,7 @@ public final class EndpointGroupEndpointConfiguration {
     private String endpoint;
     /**
      * @return The private IP address of the ENI.
-     * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+     * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
      * 
      */
     private @Nullable String subAddress;
@@ -81,7 +81,7 @@ public final class EndpointGroupEndpointConfiguration {
     }
     /**
      * @return The private IP address of the ENI.
-     * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+     * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
      * 
      */
     public Optional<String> subAddress() {

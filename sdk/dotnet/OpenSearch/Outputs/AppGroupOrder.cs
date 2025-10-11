@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
     public sealed class AppGroupOrder
     {
         /// <summary>
-        /// Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+        /// Whether to renew automatically. It only takes effect when the parameter PaymentType takes the value `Subscription`.
         /// </summary>
         public readonly bool? AutoRenew;
         /// <summary>

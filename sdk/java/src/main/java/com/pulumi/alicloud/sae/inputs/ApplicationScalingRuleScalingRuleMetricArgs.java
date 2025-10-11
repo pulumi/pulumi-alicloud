@@ -65,14 +65,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     }
 
     /**
-     * Apply shrink rules. See `scale_down_rules` below.
+     * Apply shrink rules. See `scaleDownRules` below.
      * 
      */
     @Import(name="scaleDownRules")
     private @Nullable Output<ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs> scaleDownRules;
 
     /**
-     * @return Apply shrink rules. See `scale_down_rules` below.
+     * @return Apply shrink rules. See `scaleDownRules` below.
      * 
      */
     public Optional<Output<ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs>> scaleDownRules() {
@@ -80,14 +80,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     }
 
     /**
-     * Apply expansion rules. See `scale_up_rules` below.
+     * Apply expansion rules. See `scaleUpRules` below.
      * 
      */
     @Import(name="scaleUpRules")
     private @Nullable Output<ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs> scaleUpRules;
 
     /**
-     * @return Apply expansion rules. See `scale_up_rules` below.
+     * @return Apply expansion rules. See `scaleUpRules` below.
      * 
      */
     public Optional<Output<ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs>> scaleUpRules() {
@@ -196,7 +196,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleDownRules Apply shrink rules. See `scale_down_rules` below.
+         * @param scaleDownRules Apply shrink rules. See `scaleDownRules` below.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleDownRules Apply shrink rules. See `scale_down_rules` below.
+         * @param scaleDownRules Apply shrink rules. See `scaleDownRules` below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleUpRules Apply expansion rules. See `scale_up_rules` below.
+         * @param scaleUpRules Apply expansion rules. See `scaleUpRules` below.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleUpRules Apply expansion rules. See `scale_up_rules` below.
+         * @param scaleUpRules Apply expansion rules. See `scaleUpRules` below.
          * 
          * @return builder
          * 

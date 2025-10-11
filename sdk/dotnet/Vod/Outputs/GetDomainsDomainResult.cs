@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Vod.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainSourceResult> Sources;
         /// <summary>
-        /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+        /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `On`,`Off`.
         /// </summary>
         public readonly string SslProtocol;
         /// <summary>

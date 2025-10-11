@@ -73,13 +73,13 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? CpuCfsQuotaPeriod { get; set; }
 
         /// <summary>
-        /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+        /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `None` or `Static`.
         /// </summary>
         [Input("cpuManagerPolicy")]
         public Input<string>? CpuManagerPolicy { get; set; }
 
         /// <summary>
-        /// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+        /// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `EventRecordQps`. It is only used when `EventRecordQps` is greater than 0. Valid value is `[0-100]`.
         /// </summary>
         [Input("eventBurst")]
         public Input<string>? EventBurst { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? ReadOnlyPort { get; set; }
 
         /// <summary>
-        /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+        /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `RegistryPullQps`. Only used if `RegistryPullQps` is greater than 0. Valid value is `[0-100]`.
         /// </summary>
         [Input("registryBurst")]
         public Input<string>? RegistryBurst { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         private InputList<Inputs.NodePoolKubeletConfigurationReservedMemoryGetArgs>? _reservedMemories;
 
         /// <summary>
-        /// Reserve memory for NUMA nodes. See `reserved_memory` below.
+        /// Reserve memory for NUMA nodes. See `ReservedMemory` below.
         /// </summary>
         public InputList<Inputs.NodePoolKubeletConfigurationReservedMemoryGetArgs> ReservedMemories
         {
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         }
 
         /// <summary>
-        /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `True` or `False`.
         /// </summary>
         [Input("serializeImagePulls")]
         public Input<string>? SerializeImagePulls { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? TopologyManagerPolicy { get; set; }
 
         /// <summary>
-        /// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+        /// OpenTelemetry tracks the configuration information for client settings versioning. See `Tracing` below.
         /// </summary>
         [Input("tracing")]
         public Input<Inputs.NodePoolKubeletConfigurationTracingGetArgs>? Tracing { get; set; }

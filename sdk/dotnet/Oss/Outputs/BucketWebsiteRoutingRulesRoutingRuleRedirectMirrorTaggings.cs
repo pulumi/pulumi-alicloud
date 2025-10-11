@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings
     {
         /// <summary>
-        /// Image back-to-source save label rule list See `taggings` below.
+        /// Image back-to-source save label rule list See `Taggings` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging> Taggings;
 

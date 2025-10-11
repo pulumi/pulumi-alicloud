@@ -31,14 +31,14 @@ public final class GetInstanceEnginesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+     * The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;.
      * 
      */
     @Import(name="dbInstanceStorageType")
     private @Nullable String dbInstanceStorageType;
 
     /**
-     * @return The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+     * @return The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;.
      * 
      */
     public Optional<String> dbInstanceStorageType() {
@@ -178,7 +178,7 @@ public final class GetInstanceEnginesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;.
          * 
          * @return builder
          * 

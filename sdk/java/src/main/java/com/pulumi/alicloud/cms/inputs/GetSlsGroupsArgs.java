@@ -33,14 +33,14 @@ public final class GetSlsGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
+     * The keywords of the `slsGroupName` or `slsGroupDescription` of the Sls Group.
      * 
      */
     @Import(name="keyword")
     private @Nullable Output<String> keyword;
 
     /**
-     * @return The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
+     * @return The keywords of the `slsGroupName` or `slsGroupDescription` of the Sls Group.
      * 
      */
     public Optional<Output<String>> keyword() {
@@ -152,7 +152,7 @@ public final class GetSlsGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyword The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
+         * @param keyword The keywords of the `slsGroupName` or `slsGroupDescription` of the Sls Group.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class GetSlsGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyword The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
+         * @param keyword The keywords of the `slsGroupName` or `slsGroupDescription` of the Sls Group.
          * 
          * @return builder
          * 

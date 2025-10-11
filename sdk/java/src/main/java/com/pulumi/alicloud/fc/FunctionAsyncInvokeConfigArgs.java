@@ -20,14 +20,14 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
     public static final FunctionAsyncInvokeConfigArgs Empty = new FunctionAsyncInvokeConfigArgs();
 
     /**
-     * Configuration block with destination configuration. See `destination_config` below.
+     * Configuration block with destination configuration. See `destinationConfig` below.
      * 
      */
     @Import(name="destinationConfig")
     private @Nullable Output<FunctionAsyncInvokeConfigDestinationConfigArgs> destinationConfig;
 
     /**
-     * @return Configuration block with destination configuration. See `destination_config` below.
+     * @return Configuration block with destination configuration. See `destinationConfig` below.
      * 
      */
     public Optional<Output<FunctionAsyncInvokeConfigDestinationConfigArgs>> destinationConfig() {
@@ -155,7 +155,7 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param destinationConfig Configuration block with destination configuration. See `destination_config` below.
+         * @param destinationConfig Configuration block with destination configuration. See `destinationConfig` below.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param destinationConfig Configuration block with destination configuration. See `destination_config` below.
+         * @param destinationConfig Configuration block with destination configuration. See `destinationConfig` below.
          * 
          * @return builder
          * 

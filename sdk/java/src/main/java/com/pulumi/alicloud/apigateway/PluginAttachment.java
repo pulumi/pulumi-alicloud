@@ -121,14 +121,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:apigateway/pluginAttachment:PluginAttachment")
 public class PluginAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The api_id that plugin attaches to.
+     * The apiId that plugin attaches to.
      * 
      */
     @Export(name="apiId", refs={String.class}, tree="[0]")
     private Output<String> apiId;
 
     /**
-     * @return The api_id that plugin attaches to.
+     * @return The apiId that plugin attaches to.
      * 
      */
     public Output<String> apiId() {

@@ -18,14 +18,14 @@ public final class V2FunctionCustomDnsArgs extends com.pulumi.resources.Resource
     public static final V2FunctionCustomDnsArgs Empty = new V2FunctionCustomDnsArgs();
 
     /**
-     * DNS resolver configuration parameter list. See `dns_options` below.
+     * DNS resolver configuration parameter list. See `dnsOptions` below.
      * 
      */
     @Import(name="dnsOptions")
     private @Nullable Output<List<V2FunctionCustomDnsDnsOptionArgs>> dnsOptions;
 
     /**
-     * @return DNS resolver configuration parameter list. See `dns_options` below.
+     * @return DNS resolver configuration parameter list. See `dnsOptions` below.
      * 
      */
     public Optional<Output<List<V2FunctionCustomDnsDnsOptionArgs>>> dnsOptions() {
@@ -89,7 +89,7 @@ public final class V2FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dnsOptions DNS resolver configuration parameter list. See `dns_options` below.
+         * @param dnsOptions DNS resolver configuration parameter list. See `dnsOptions` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class V2FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dnsOptions DNS resolver configuration parameter list. See `dns_options` below.
+         * @param dnsOptions DNS resolver configuration parameter list. See `dnsOptions` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class V2FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dnsOptions DNS resolver configuration parameter list. See `dns_options` below.
+         * @param dnsOptions DNS resolver configuration parameter list. See `dnsOptions` below.
          * 
          * @return builder
          * 

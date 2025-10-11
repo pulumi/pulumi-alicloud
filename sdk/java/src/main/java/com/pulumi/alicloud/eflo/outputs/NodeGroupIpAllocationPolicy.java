@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeGroupIpAllocationPolicy {
     /**
-     * @return Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+     * @return Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
      * 
      */
     private @Nullable NodeGroupIpAllocationPolicyBondPolicy bondPolicy;
     /**
-     * @return Model Assignment Policy See `machine_type_policy` below.
+     * @return Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     private @Nullable List<NodeGroupIpAllocationPolicyMachineTypePolicy> machineTypePolicies;
     /**
-     * @return Node allocation policy See `node_policy` below.
+     * @return Node allocation policy See `nodePolicy` below.
      * 
      */
     private @Nullable List<NodeGroupIpAllocationPolicyNodePolicy> nodePolicies;
 
     private NodeGroupIpAllocationPolicy() {}
     /**
-     * @return Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+     * @return Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
      * 
      */
     public Optional<NodeGroupIpAllocationPolicyBondPolicy> bondPolicy() {
         return Optional.ofNullable(this.bondPolicy);
     }
     /**
-     * @return Model Assignment Policy See `machine_type_policy` below.
+     * @return Model Assignment Policy See `machineTypePolicy` below.
      * 
      */
     public List<NodeGroupIpAllocationPolicyMachineTypePolicy> machineTypePolicies() {
         return this.machineTypePolicies == null ? List.of() : this.machineTypePolicies;
     }
     /**
-     * @return Node allocation policy See `node_policy` below.
+     * @return Node allocation policy See `nodePolicy` below.
      * 
      */
     public List<NodeGroupIpAllocationPolicyNodePolicy> nodePolicies() {

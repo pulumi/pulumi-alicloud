@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class TrafficMirrorFilterIngressRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// The collection policy of the inbound rule. Valid values: `Accept` or `Drop`. `Accept`: collects network traffic. `Drop`: does not collect network traffic.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> DestinationCidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+        /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `Protocol` is `ICMP`, this parameter is invalid.
         /// </summary>
         [Output("destinationPortRange")]
         public Output<string> DestinationPortRange { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SourceCidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+        /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `Protocol` is `ICMP`, this parameter is invalid.
         /// </summary>
         [Output("sourcePortRange")]
         public Output<string> SourcePortRange { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorFilterIngressRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// The collection policy of the inbound rule. Valid values: `Accept` or `Drop`. `Accept`: collects network traffic. `Drop`: does not collect network traffic.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> DestinationCidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+        /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `Protocol` is `ICMP`, this parameter is invalid.
         /// </summary>
         [Input("destinationPortRange")]
         public Input<string>? DestinationPortRange { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> SourceCidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+        /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `Protocol` is `ICMP`, this parameter is invalid.
         /// </summary>
         [Input("sourcePortRange")]
         public Input<string>? SourcePortRange { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorFilterIngressRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// The collection policy of the inbound rule. Valid values: `Accept` or `Drop`. `Accept`: collects network traffic. `Drop`: does not collect network traffic.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DestinationCidrBlock { get; set; }
 
         /// <summary>
-        /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+        /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `Protocol` is `ICMP`, this parameter is invalid.
         /// </summary>
         [Input("destinationPortRange")]
         public Input<string>? DestinationPortRange { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SourceCidrBlock { get; set; }
 
         /// <summary>
-        /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+        /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `Protocol` is `ICMP`, this parameter is invalid.
         /// </summary>
         [Input("sourcePortRange")]
         public Input<string>? SourcePortRange { get; set; }

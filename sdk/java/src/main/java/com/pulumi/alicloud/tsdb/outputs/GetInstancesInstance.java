@@ -22,12 +22,12 @@ public final class GetInstancesInstance {
      */
     private String cpuNumber;
     /**
-     * @return The disk type of instance. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
+     * @return The disk type of instance. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
      * 
      */
     private String diskCategory;
     /**
-     * @return The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+     * @return The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      * 
      */
     private String engineType;
@@ -118,14 +118,14 @@ public final class GetInstancesInstance {
         return this.cpuNumber;
     }
     /**
-     * @return The disk type of instance. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
+     * @return The disk type of instance. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
      * 
      */
     public String diskCategory() {
         return this.diskCategory;
     }
     /**
-     * @return The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+     * @return The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      * 
      */
     public String engineType() {

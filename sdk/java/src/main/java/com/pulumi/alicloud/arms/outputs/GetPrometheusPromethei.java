@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPrometheusPromethei {
     /**
-     * @return (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The authorization token. **Note:** `authToken` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String authToken;
@@ -37,12 +37,12 @@ public final class GetPrometheusPromethei {
      */
     private String grafanaInstanceId;
     /**
-     * @return (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for the HTTP API. **Note:** `httpApiInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String httpApiInterUrl;
     /**
-     * @return (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `httpApiIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String httpApiIntraUrl;
@@ -52,32 +52,32 @@ public final class GetPrometheusPromethei {
      */
     private String id;
     /**
-     * @return (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for Pushgateway. **Note:** `pushGateWayInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String pushGateWayInterUrl;
     /**
-     * @return (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `pushGateWayIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String pushGateWayIntraUrl;
     /**
-     * @return (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for remote read. **Note:** `remoteReadInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String remoteReadInterUrl;
     /**
-     * @return (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for remote read. **Note:** `remoteReadIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String remoteReadIntraUrl;
     /**
-     * @return (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for remote write. **Note:** `remoteWriteInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String remoteWriteInterUrl;
     /**
-     * @return (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for remote write. **Note:** `remoteWriteIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String remoteWriteIntraUrl;
@@ -114,7 +114,7 @@ public final class GetPrometheusPromethei {
 
     private GetPrometheusPromethei() {}
     /**
-     * @return (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The authorization token. **Note:** `authToken` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String authToken() {
@@ -149,14 +149,14 @@ public final class GetPrometheusPromethei {
         return this.grafanaInstanceId;
     }
     /**
-     * @return (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for the HTTP API. **Note:** `httpApiInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String httpApiInterUrl() {
         return this.httpApiInterUrl;
     }
     /**
-     * @return (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `httpApiIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String httpApiIntraUrl() {
@@ -170,42 +170,42 @@ public final class GetPrometheusPromethei {
         return this.id;
     }
     /**
-     * @return (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for Pushgateway. **Note:** `pushGateWayInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String pushGateWayInterUrl() {
         return this.pushGateWayInterUrl;
     }
     /**
-     * @return (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `pushGateWayIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String pushGateWayIntraUrl() {
         return this.pushGateWayIntraUrl;
     }
     /**
-     * @return (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for remote read. **Note:** `remoteReadInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String remoteReadInterUrl() {
         return this.remoteReadInterUrl;
     }
     /**
-     * @return (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for remote read. **Note:** `remoteReadIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String remoteReadIntraUrl() {
         return this.remoteReadIntraUrl;
     }
     /**
-     * @return (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The public URL for remote write. **Note:** `remoteWriteInterUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String remoteWriteInterUrl() {
         return this.remoteWriteInterUrl;
     }
     /**
-     * @return (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.214.0) The internal URL for remote write. **Note:** `remoteWriteIntraUrl` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String remoteWriteIntraUrl() {

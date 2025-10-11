@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.cloudPhone
         public Output<string> LockResolution { get; private set; } = null!;
 
         /// <summary>
-        /// Network redirection. See `net_redirect_policy` below.
+        /// Network redirection. See `NetRedirectPolicy` below.
         /// </summary>
         [Output("netRedirectPolicy")]
         public Output<Outputs.PolicyNetRedirectPolicy> NetRedirectPolicy { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.cloudPhone
         public Input<string>? LockResolution { get; set; }
 
         /// <summary>
-        /// Network redirection. See `net_redirect_policy` below.
+        /// Network redirection. See `NetRedirectPolicy` below.
         /// </summary>
         [Input("netRedirectPolicy")]
         public Input<Inputs.PolicyNetRedirectPolicyArgs>? NetRedirectPolicy { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.cloudPhone
         public Input<string>? LockResolution { get; set; }
 
         /// <summary>
-        /// Network redirection. See `net_redirect_policy` below.
+        /// Network redirection. See `NetRedirectPolicy` below.
         /// </summary>
         [Input("netRedirectPolicy")]
         public Input<Inputs.PolicyNetRedirectPolicyGetArgs>? NetRedirectPolicy { get; set; }

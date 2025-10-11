@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Scdn.Outputs
         /// </summary>
         public readonly string? SslPri;
         /// <summary>
-        /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+        /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `On`, `Off`.
         /// </summary>
         public readonly string? SslProtocol;
         /// <summary>

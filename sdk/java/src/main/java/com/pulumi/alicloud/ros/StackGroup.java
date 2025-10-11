@@ -94,7 +94,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Automatic deployment setting information. Description
-     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `autoDeployment` below.
      * 
      */
     @Export(name="autoDeployment", refs={StackGroupAutoDeployment.class}, tree="[0]")
@@ -102,7 +102,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Automatic deployment setting information. Description
-     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `autoDeployment` below.
      * 
      */
     public Output<Optional<StackGroupAutoDeployment>> autoDeployment() {

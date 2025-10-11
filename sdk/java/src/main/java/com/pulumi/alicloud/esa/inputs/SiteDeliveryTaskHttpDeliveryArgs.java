@@ -90,14 +90,14 @@ public final class SiteDeliveryTaskHttpDeliveryArgs extends com.pulumi.resources
     }
 
     /**
-     * See `standard_auth_param` below.
+     * See `standardAuthParam` below.
      * 
      */
     @Import(name="standardAuthParam")
     private @Nullable Output<SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs> standardAuthParam;
 
     /**
-     * @return See `standard_auth_param` below.
+     * @return See `standardAuthParam` below.
      * 
      */
     public Optional<Output<SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs>> standardAuthParam() {
@@ -237,7 +237,7 @@ public final class SiteDeliveryTaskHttpDeliveryArgs extends com.pulumi.resources
         }
 
         /**
-         * @param standardAuthParam See `standard_auth_param` below.
+         * @param standardAuthParam See `standardAuthParam` below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class SiteDeliveryTaskHttpDeliveryArgs extends com.pulumi.resources
         }
 
         /**
-         * @param standardAuthParam See `standard_auth_param` below.
+         * @param standardAuthParam See `standardAuthParam` below.
          * 
          * @return builder
          * 

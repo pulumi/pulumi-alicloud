@@ -32,14 +32,14 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
+     * Another side router interface ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account.
      * 
      */
     @Import(name="oppositeInterfaceId", required=true)
     private Output<String> oppositeInterfaceId;
 
     /**
-     * @return Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
+     * @return Another side router interface ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account.
      * 
      */
     public Output<String> oppositeInterfaceId() {
@@ -62,14 +62,14 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * Another side router ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
      */
     @Import(name="oppositeRouterId")
     private @Nullable Output<String> oppositeRouterId;
 
     /**
-     * @return Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * @return Another side router ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
      */
     public Optional<Output<String>> oppositeRouterId() {
@@ -77,18 +77,18 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
-     * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+     * &gt; **NOTE:** The value of &#34;oppositeInterfaceOwnerId&#34; or &#34;accountId&#34; must be main account and not be sub account.
      * 
      */
     @Import(name="oppositeRouterType")
     private @Nullable Output<String> oppositeRouterType;
 
     /**
-     * @return Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * @return Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
-     * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+     * &gt; **NOTE:** The value of &#34;oppositeInterfaceOwnerId&#34; or &#34;accountId&#34; must be main account and not be sub account.
      * 
      */
     public Optional<Output<String>> oppositeRouterType() {
@@ -145,7 +145,7 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param oppositeInterfaceId Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
+         * @param oppositeInterfaceId Another side router interface ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param oppositeInterfaceId Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
+         * @param oppositeInterfaceId Another side router interface ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param oppositeRouterId Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+         * @param oppositeRouterId Another side router ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param oppositeRouterId Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+         * @param oppositeRouterId Another side router ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
          * 
          * @return builder
          * 
@@ -208,9 +208,9 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param oppositeRouterType Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+         * @param oppositeRouterType Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
          * 
-         * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+         * &gt; **NOTE:** The value of &#34;oppositeInterfaceOwnerId&#34; or &#34;accountId&#34; must be main account and not be sub account.
          * 
          * @return builder
          * 
@@ -221,9 +221,9 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param oppositeRouterType Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+         * @param oppositeRouterType Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
          * 
-         * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+         * &gt; **NOTE:** The value of &#34;oppositeInterfaceOwnerId&#34; or &#34;accountId&#34; must be main account and not be sub account.
          * 
          * @return builder
          * 

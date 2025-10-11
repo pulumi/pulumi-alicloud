@@ -189,28 +189,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/rule:Rule")
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
-     * The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      * 
      */
     @Export(name="cookie", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cookie;
 
     /**
-     * @return The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * @return The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      * 
      */
     public Output<Optional<String>> cookie() {
         return Codegen.optional(this.cookie);
     }
     /**
-     * Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+     * Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
      * 
      */
     @Export(name="cookieTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cookieTimeout;
 
     /**
-     * @return Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+     * @return Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
      * 
      */
     public Output<Optional<Integer>> cookieTimeout() {
@@ -265,14 +265,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.frontendPort;
     }
     /**
-     * Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+     * Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     @Export(name="healthCheck", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheck;
 
     /**
-     * @return Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+     * @return Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener&#39;s `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     public Output<Optional<String>> healthCheck() {
@@ -293,84 +293,84 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.healthCheckConnectPort;
     }
     /**
-     * Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      * 
      */
     @Export(name="healthCheckDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckDomain;
 
     /**
-     * @return Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * @return Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      * 
      */
     public Output<Optional<String>> healthCheckDomain() {
         return Codegen.optional(this.healthCheckDomain);
     }
     /**
-     * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+     * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
      * 
      */
     @Export(name="healthCheckHttpCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckHttpCode;
 
     /**
-     * @return Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+     * @return Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
      * 
      */
     public Output<Optional<String>> healthCheckHttpCode() {
         return Codegen.optional(this.healthCheckHttpCode);
     }
     /**
-     * Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+     * Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
      * 
      */
     @Export(name="healthCheckInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckInterval;
 
     /**
-     * @return Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+     * @return Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
      * 
      */
     public Output<Optional<Integer>> healthCheckInterval() {
         return Codegen.optional(this.healthCheckInterval);
     }
     /**
-     * Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` &lt; `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      * 
      */
     @Export(name="healthCheckTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckTimeout;
 
     /**
-     * @return Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * @return Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` &lt; `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      * 
      */
     public Output<Optional<Integer>> healthCheckTimeout() {
         return Codegen.optional(this.healthCheckTimeout);
     }
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     @Export(name="healthCheckUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     public Output<Optional<String>> healthCheckUri() {
         return Codegen.optional(this.healthCheckUri);
     }
     /**
-     * Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthyThreshold;
 
     /**
-     * @return Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * @return Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     public Output<Optional<Integer>> healthyThreshold() {
@@ -419,14 +419,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+     * Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduler;
 
     /**
-     * @return Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+     * @return Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     public Output<Optional<String>> scheduler() {
@@ -447,42 +447,42 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.serverGroupId;
     }
     /**
-     * Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+     * Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     @Export(name="stickySession", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySession;
 
     /**
-     * @return Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+     * @return Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
      * 
      */
     public Output<Optional<String>> stickySession() {
         return Codegen.optional(this.stickySession);
     }
     /**
-     * Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      * 
      */
     @Export(name="stickySessionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySessionType;
 
     /**
-     * @return Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * @return Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      * 
      */
     public Output<Optional<String>> stickySessionType() {
         return Codegen.optional(this.stickySessionType);
     }
     /**
-     * Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     @Export(name="unhealthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyThreshold;
 
     /**
-     * @return Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+     * @return Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      * 
      */
     public Output<Optional<Integer>> unhealthyThreshold() {

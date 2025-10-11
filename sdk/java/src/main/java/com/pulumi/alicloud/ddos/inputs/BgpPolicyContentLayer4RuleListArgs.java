@@ -33,14 +33,14 @@ public final class BgpPolicyContentLayer4RuleListArgs extends com.pulumi.resourc
     }
 
     /**
-     * Matching Condition. See `condition_list` below.
+     * Matching Condition. See `conditionList` below.
      * 
      */
     @Import(name="conditionLists", required=true)
     private Output<List<BgpPolicyContentLayer4RuleListConditionListArgs>> conditionLists;
 
     /**
-     * @return Matching Condition. See `condition_list` below.
+     * @return Matching Condition. See `conditionList` below.
      * 
      */
     public Output<List<BgpPolicyContentLayer4RuleListConditionListArgs>> conditionLists() {
@@ -174,7 +174,7 @@ public final class BgpPolicyContentLayer4RuleListArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param conditionLists Matching Condition. See `condition_list` below.
+         * @param conditionLists Matching Condition. See `conditionList` below.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class BgpPolicyContentLayer4RuleListArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param conditionLists Matching Condition. See `condition_list` below.
+         * @param conditionLists Matching Condition. See `conditionList` below.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class BgpPolicyContentLayer4RuleListArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param conditionLists Matching Condition. See `condition_list` below.
+         * @param conditionLists Matching Condition. See `conditionList` below.
          * 
          * @return builder
          * 

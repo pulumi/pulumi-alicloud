@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Hbase
     public static class GetInstanceTypes
     {
         /// <summary>
-        /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// This data source provides availability InstanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.106.0.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Hbase
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// This data source provides availability InstanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.106.0.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Hbase
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// This data source provides availability InstanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.106.0.
         /// </summary>
@@ -46,13 +46,13 @@ namespace Pulumi.AliCloud.Hbase
         public string? ChargeType { get; set; }
 
         /// <summary>
-        /// The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+        /// The disk type, `CloudSsd`, `CloudEssdPl1`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`.
         /// </summary>
         [Input("diskType")]
         public string? DiskType { get; set; }
 
         /// <summary>
-        /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+        /// The engine name, `Singlehbase`, `Hbase`, `Hbaseue`, `Bds`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -102,13 +102,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? ChargeType { get; set; }
 
         /// <summary>
-        /// The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+        /// The disk type, `CloudSsd`, `CloudEssdPl1`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+        /// The engine name, `Singlehbase`, `Hbase`, `Hbaseue`, `Bds`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

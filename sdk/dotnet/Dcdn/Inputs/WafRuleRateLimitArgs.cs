@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// Response code statistics. See `status` below.
+        /// Response code statistics. See `Status` below.
         /// </summary>
         [Input("status")]
         public Input<Inputs.WafRuleRateLimitStatusArgs>? Status { get; set; }
 
         /// <summary>
-        /// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+        /// The subfield of the target field. If you set `Target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `SubKey`.
         /// </summary>
         [Input("subKey")]
         public Input<string>? SubKey { get; set; }

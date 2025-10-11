@@ -48,14 +48,14 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ &#34;cmk_key_id&#34;: &#34;your_cmk_key_id&#34;, &#34;arn&#34;: &#34;your_role_arn&#34;, &#34;region_id&#34;: &#34;you_cmk_region_id&#34; }`. See `user_cmk_info` below.
+     * User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ &#34;cmkKeyId&#34;: &#34;yourCmkKeyId&#34;, &#34;arn&#34;: &#34;yourRoleArn&#34;, &#34;regionId&#34;: &#34;youCmkRegionId&#34; }`. See `userCmkInfo` below.
      * 
      */
     @Import(name="userCmkInfo")
     private @Nullable Output<StoreEncryptConfUserCmkInfoArgs> userCmkInfo;
 
     /**
-     * @return User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ &#34;cmk_key_id&#34;: &#34;your_cmk_key_id&#34;, &#34;arn&#34;: &#34;your_role_arn&#34;, &#34;region_id&#34;: &#34;you_cmk_region_id&#34; }`. See `user_cmk_info` below.
+     * @return User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ &#34;cmkKeyId&#34;: &#34;yourCmkKeyId&#34;, &#34;arn&#34;: &#34;yourRoleArn&#34;, &#34;regionId&#34;: &#34;youCmkRegionId&#34; }`. See `userCmkInfo` below.
      * 
      */
     public Optional<Output<StoreEncryptConfUserCmkInfoArgs>> userCmkInfo() {
@@ -131,7 +131,7 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userCmkInfo User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ &#34;cmk_key_id&#34;: &#34;your_cmk_key_id&#34;, &#34;arn&#34;: &#34;your_role_arn&#34;, &#34;region_id&#34;: &#34;you_cmk_region_id&#34; }`. See `user_cmk_info` below.
+         * @param userCmkInfo User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ &#34;cmkKeyId&#34;: &#34;yourCmkKeyId&#34;, &#34;arn&#34;: &#34;yourRoleArn&#34;, &#34;regionId&#34;: &#34;youCmkRegionId&#34; }`. See `userCmkInfo` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userCmkInfo User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ &#34;cmk_key_id&#34;: &#34;your_cmk_key_id&#34;, &#34;arn&#34;: &#34;your_role_arn&#34;, &#34;region_id&#34;: &#34;you_cmk_region_id&#34; }`. See `user_cmk_info` below.
+         * @param userCmkInfo User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ &#34;cmkKeyId&#34;: &#34;yourCmkKeyId&#34;, &#34;arn&#34;: &#34;yourRoleArn&#34;, &#34;regionId&#34;: &#34;youCmkRegionId&#34; }`. See `userCmkInfo` below.
          * 
          * @return builder
          * 

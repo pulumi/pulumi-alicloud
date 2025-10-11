@@ -220,14 +220,14 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
         return this.fileSystemId;
     }
     /**
-     * The Posix user. See `posix_user` below.
+     * The Posix user. See `posixUser` below.
      * 
      */
     @Export(name="posixUser", refs={AccessPointPosixUser.class}, tree="[0]")
     private Output<AccessPointPosixUser> posixUser;
 
     /**
-     * @return The Posix user. See `posix_user` below.
+     * @return The Posix user. See `posixUser` below.
      * 
      */
     public Output<AccessPointPosixUser> posixUser() {
@@ -262,14 +262,14 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
         return this.rootPath;
     }
     /**
-     * Root permissions. See `root_path_permission` below.
+     * Root permissions. See `rootPathPermission` below.
      * 
      */
     @Export(name="rootPathPermission", refs={AccessPointRootPathPermission.class}, tree="[0]")
     private Output<AccessPointRootPathPermission> rootPathPermission;
 
     /**
-     * @return Root permissions. See `root_path_permission` below.
+     * @return Root permissions. See `rootPathPermission` below.
      * 
      */
     public Output<AccessPointRootPathPermission> rootPathPermission() {

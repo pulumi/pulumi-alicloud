@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string CnameAuthStatus;
         /// <summary>
-        /// Indicates whether the CNAME record is successfully verified. **Note:** `cname_confirm_status` takes effect only if `enable_details` is set to `true`.
+        /// Indicates whether the CNAME record is successfully verified. **Note:** `CnameConfirmStatus` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string CnameConfirmStatus;
         /// <summary>
-        /// The value of the CNAME record. **Note:** `cname_record` takes effect only if `enable_details` is set to `true`.
+        /// The value of the CNAME record. **Note:** `CnameRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string CnameRecord;
         /// <summary>
@@ -30,47 +30,47 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The default domain name. **Note:** `default_domain` takes effect only if `enable_details` is set to `true`.
+        /// The default domain name. **Note:** `DefaultDomain` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DefaultDomain;
         /// <summary>
-        /// (Available since v1.227.1) The DKIM validation flag. **Note:** `dkim_auth_status` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DKIM validation flag. **Note:** `DkimAuthStatus` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DkimAuthStatus;
         /// <summary>
-        /// (Available since v1.227.1) The DKIM public key. **Note:** `dkim_public_key` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DKIM public key. **Note:** `DkimPublicKey` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DkimPublicKey;
         /// <summary>
-        /// (Available since v1.227.1) The DKIM Host Record. **Note:** `dkim_rr` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DKIM Host Record. **Note:** `DkimRr` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DkimRr;
         /// <summary>
-        /// (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarc_auth_status` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DMARC validation flag. **Note:** `DmarcAuthStatus` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DmarcAuthStatus;
         /// <summary>
-        /// (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarc_host_record` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DMARC Host Record. **Note:** `DmarcHostRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DmarcHostRecord;
         /// <summary>
-        /// (Available since v1.227.1) The DMARC record. **Note:** `dmarc_record` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DMARC record. **Note:** `DmarcRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DmarcRecord;
         /// <summary>
-        /// (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dns_dmarc` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `DnsDmarc` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DnsDmarc;
         /// <summary>
-        /// The MX record value resolved through public DNS. **Note:** `dns_mx` takes effect only if `enable_details` is set to `true`.
+        /// The MX record value resolved through public DNS. **Note:** `DnsMx` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DnsMx;
         /// <summary>
-        /// The SPF record value resolved through public DNS. **Note:** `dns_spf` takes effect only if `enable_details` is set to `true`.
+        /// The SPF record value resolved through public DNS. **Note:** `DnsSpf` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DnsSpf;
         /// <summary>
-        /// The TXT record value resolved through public DNS. **Note:** `dns_txt` takes effect only if `enable_details` is set to `true`.
+        /// The TXT record value resolved through public DNS. **Note:** `DnsTxt` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DnsTxt;
         /// <summary>
@@ -86,11 +86,11 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string DomainRecord;
         /// <summary>
-        /// The type of the domain. **Note:** `domain_type` takes effect only if `enable_details` is set to `true`.
+        /// The type of the domain. **Note:** `DomainType` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string DomainType;
         /// <summary>
-        /// (Available since v1.227.1) The value of the host record. **Note:** `host_record` takes effect only if `enable_details` is set to `true`.
+        /// (Available since v1.227.1) The value of the host record. **Note:** `HostRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string HostRecord;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string MxAuthStatus;
         /// <summary>
-        /// The MX verification record provided by the Direct Mail console. **Note:** `mx_record` takes effect only if `enable_details` is set to `true`.
+        /// The MX verification record provided by the Direct Mail console. **Note:** `MxRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string MxRecord;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string SpfAuthStatus;
         /// <summary>
-        /// The SPF verification record provided by the Direct Mail console. **Note:** `spf_record` takes effect only if `enable_details` is set to `true`.
+        /// The SPF verification record provided by the Direct Mail console. **Note:** `SpfRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string SpfRecord;
         /// <summary>
@@ -122,11 +122,11 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
+        /// The primary domain name. **Note:** `TlDomainName` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string TlDomainName;
         /// <summary>
-        /// The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
+        /// The CNAME verification record provided by the Direct Mail console. **Note:** `TracefRecord` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string TracefRecord;
 

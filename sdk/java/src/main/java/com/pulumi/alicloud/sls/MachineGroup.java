@@ -88,14 +88,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sls/machineGroup:MachineGroup")
 public class MachineGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+     * Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
      * 
      */
     @Export(name="groupAttribute", refs={MachineGroupGroupAttribute.class}, tree="[0]")
     private Output</* @Nullable */ MachineGroupGroupAttribute> groupAttribute;
 
     /**
-     * @return Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+     * @return Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
      * 
      */
     public Output<Optional<MachineGroupGroupAttribute>> groupAttribute() {

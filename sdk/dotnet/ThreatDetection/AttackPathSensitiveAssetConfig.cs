@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public partial class AttackPathSensitiveAssetConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+        /// The attack path sensitive asset configuration list. See `AttackPathAssetList` below.
         /// </summary>
         [Output("attackPathAssetLists")]
         public Output<ImmutableArray<Outputs.AttackPathSensitiveAssetConfigAttackPathAssetList>> AttackPathAssetLists { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<Inputs.AttackPathSensitiveAssetConfigAttackPathAssetListArgs>? _attackPathAssetLists;
 
         /// <summary>
-        /// The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+        /// The attack path sensitive asset configuration list. See `AttackPathAssetList` below.
         /// </summary>
         public InputList<Inputs.AttackPathSensitiveAssetConfigAttackPathAssetListArgs> AttackPathAssetLists
         {
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<Inputs.AttackPathSensitiveAssetConfigAttackPathAssetListGetArgs>? _attackPathAssetLists;
 
         /// <summary>
-        /// The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+        /// The attack path sensitive asset configuration list. See `AttackPathAssetList` below.
         /// </summary>
         public InputList<Inputs.AttackPathSensitiveAssetConfigAttackPathAssetListGetArgs> AttackPathAssetLists
         {

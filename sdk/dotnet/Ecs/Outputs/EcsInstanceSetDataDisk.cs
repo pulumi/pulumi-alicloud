@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
-        /// The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        /// The category of the disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         public readonly string? DiskCategory;
         /// <summary>
@@ -31,14 +31,14 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string? DiskName;
         /// <summary>
         /// The size of the data disk. Unit: GiB.
-        /// - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
-        /// - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
-        /// - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
-        /// - When `disk_category` is `cloud`, Valid values: `5` to `200`.
+        /// - When `DiskCategory` is `CloudEfficiency`, Valid values: `20` to `32768`.
+        /// - When `DiskCategory` is `CloudSsd`, Valid values: `20` to `32768`.
+        /// - When `DiskCategory` is `CloudEssd`, Valid values: `20` to `32768`.
+        /// - When `DiskCategory` is `Cloud`, Valid values: `5` to `200`.
         /// </summary>
         public readonly int DiskSize;
         /// <summary>
-        /// Encrypted the data in this disk. Default value: `false`.
+        /// Encrypted the data in this disk. Default value: `False`.
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>

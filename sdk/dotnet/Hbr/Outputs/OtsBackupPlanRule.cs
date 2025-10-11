@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string? BackupType;
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`. Default values: `False`.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string? Retention;
         /// <summary>
-        /// The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        /// The name of the backup rule.**Note:** Required while SourceType equals `OTS_TABLE`. `RuleName` should be unique for the specific user.
         /// </summary>
         public readonly string? RuleName;
         /// <summary>

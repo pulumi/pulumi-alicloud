@@ -100,13 +100,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> AcceleratorId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the endpoint group. The `BasicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("basicEndpointGroupName")]
         public Output<string?> BasicEndpointGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        /// The description of the endpoint group. The `Description` cannot exceed 256 characters in length and cannot contain http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -194,13 +194,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AcceleratorId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the endpoint group. The `BasicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("basicEndpointGroupName")]
         public Input<string>? BasicEndpointGroupName { get; set; }
 
         /// <summary>
-        /// The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        /// The description of the endpoint group. The `Description` cannot exceed 256 characters in length and cannot contain http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -244,13 +244,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AcceleratorId { get; set; }
 
         /// <summary>
-        /// The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the endpoint group. The `BasicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("basicEndpointGroupName")]
         public Input<string>? BasicEndpointGroupName { get; set; }
 
         /// <summary>
-        /// The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+        /// The description of the endpoint group. The `Description` cannot exceed 256 characters in length and cannot contain http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

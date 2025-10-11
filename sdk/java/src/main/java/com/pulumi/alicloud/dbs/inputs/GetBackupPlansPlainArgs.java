@@ -33,14 +33,14 @@ public final class GetBackupPlansPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Default to `true`. Set it to `false` can hide the `payment_type` to output.
+     * Default to `true`. Set it to `false` can hide the `paymentType` to output.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `true`. Set it to `false` can hide the `payment_type` to output.
+     * @return Default to `true`. Set it to `false` can hide the `paymentType` to output.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -107,14 +107,14 @@ public final class GetBackupPlansPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+     * The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+     * @return The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      * 
      */
     public Optional<String> status() {
@@ -164,7 +164,7 @@ public final class GetBackupPlansPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param enableDetails Default to `true`. Set it to `false` can hide the `payment_type` to output.
+         * @param enableDetails Default to `true`. Set it to `false` can hide the `paymentType` to output.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GetBackupPlansPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
+         * @param status The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
          * 
          * @return builder
          * 

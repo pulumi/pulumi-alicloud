@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// Valid
-        /// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+        /// value is between 1 and 1000, If argument "InternetChargeType" is "paybytraffic", then this value will be ignore.
         /// </summary>
         [Output("bandwidth")]
         public Output<int?> Bandwidth { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> MasterZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `ModificationProtectionStatus` is `ConsoleProtection`.
         /// </summary>
         [Output("modificationProtectionReason")]
         public Output<string?> ModificationProtectionReason { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> ModificationProtectionStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.123.1 New field `LoadBalancerName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -174,8 +174,8 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Specification { get; private set; } = null!;
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `Active` and `Inactice`. The system default value is `Active`.
         /// 
         /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
         /// 
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        /// A mapping of tags to assign to the resource. The `Tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        /// The vSwitch ID to launch in. If `AddressType` is internet, it will be ignore.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// Valid
-        /// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+        /// value is between 1 and 1000, If argument "InternetChargeType" is "paybytraffic", then this value will be ignore.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -333,7 +333,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? MasterZoneId { get; set; }
 
         /// <summary>
-        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `ModificationProtectionStatus` is `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ModificationProtectionStatus { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.123.1 New field `LoadBalancerName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -357,8 +357,8 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `Active` and `Inactice`. The system default value is `Active`.
         /// 
         /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
         /// 
@@ -399,7 +399,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        /// A mapping of tags to assign to the resource. The `Tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        /// The vSwitch ID to launch in. If `AddressType` is internet, it will be ignore.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// Valid
-        /// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+        /// value is between 1 and 1000, If argument "InternetChargeType" is "paybytraffic", then this value will be ignore.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? MasterZoneId { get; set; }
 
         /// <summary>
-        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `ModificationProtectionStatus` is `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
@@ -496,7 +496,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ModificationProtectionStatus { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.123.1 New field `LoadBalancerName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -508,8 +508,8 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -535,7 +535,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `Active` and `Inactice`. The system default value is `Active`.
         /// 
         /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
         /// 
@@ -550,7 +550,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        /// A mapping of tags to assign to the resource. The `Tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -559,7 +559,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        /// The vSwitch ID to launch in. If `AddressType` is internet, it will be ignore.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

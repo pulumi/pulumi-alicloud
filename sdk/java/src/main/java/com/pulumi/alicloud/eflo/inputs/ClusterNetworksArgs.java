@@ -20,14 +20,14 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
     public static final ClusterNetworksArgs Empty = new ClusterNetworksArgs();
 
     /**
-     * IP allocation policy See `ip_allocation_policy` below.
+     * IP allocation policy See `ipAllocationPolicy` below.
      * 
      */
     @Import(name="ipAllocationPolicies")
     private @Nullable Output<List<ClusterNetworksIpAllocationPolicyArgs>> ipAllocationPolicies;
 
     /**
-     * @return IP allocation policy See `ip_allocation_policy` below.
+     * @return IP allocation policy See `ipAllocationPolicy` below.
      * 
      */
     public Optional<Output<List<ClusterNetworksIpAllocationPolicyArgs>>> ipAllocationPolicies() {
@@ -35,14 +35,14 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Vpd configuration information See `new_vpd_info` below.
+     * Vpd configuration information See `newVpdInfo` below.
      * 
      */
     @Import(name="newVpdInfo")
     private @Nullable Output<ClusterNetworksNewVpdInfoArgs> newVpdInfo;
 
     /**
-     * @return Vpd configuration information See `new_vpd_info` below.
+     * @return Vpd configuration information See `newVpdInfo` below.
      * 
      */
     public Optional<Output<ClusterNetworksNewVpdInfoArgs>> newVpdInfo() {
@@ -95,14 +95,14 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Multiplexing VPD information See `vpd_info` below.
+     * Multiplexing VPD information See `vpdInfo` below.
      * 
      */
     @Import(name="vpdInfo")
     private @Nullable Output<ClusterNetworksVpdInfoArgs> vpdInfo;
 
     /**
-     * @return Multiplexing VPD information See `vpd_info` below.
+     * @return Multiplexing VPD information See `vpdInfo` below.
      * 
      */
     public Optional<Output<ClusterNetworksVpdInfoArgs>> vpdInfo() {
@@ -171,7 +171,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipAllocationPolicies IP allocation policy See `ip_allocation_policy` below.
+         * @param ipAllocationPolicies IP allocation policy See `ipAllocationPolicy` below.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipAllocationPolicies IP allocation policy See `ip_allocation_policy` below.
+         * @param ipAllocationPolicies IP allocation policy See `ipAllocationPolicy` below.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipAllocationPolicies IP allocation policy See `ip_allocation_policy` below.
+         * @param ipAllocationPolicies IP allocation policy See `ipAllocationPolicy` below.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param newVpdInfo Vpd configuration information See `new_vpd_info` below.
+         * @param newVpdInfo Vpd configuration information See `newVpdInfo` below.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param newVpdInfo Vpd configuration information See `new_vpd_info` below.
+         * @param newVpdInfo Vpd configuration information See `newVpdInfo` below.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpdInfo Multiplexing VPD information See `vpd_info` below.
+         * @param vpdInfo Multiplexing VPD information See `vpdInfo` below.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ClusterNetworksArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpdInfo Multiplexing VPD information See `vpd_info` below.
+         * @param vpdInfo Multiplexing VPD information See `vpdInfo` below.
          * 
          * @return builder
          * 

@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> VscName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Vsc. Default value: `primary`. Valid values: `primary`.
+        /// The type of the Vsc. Default value: `Primary`. Valid values: `Primary`.
         /// </summary>
         [Output("vscType")]
         public Output<string> VscType { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? VscName { get; set; }
 
         /// <summary>
-        /// The type of the Vsc. Default value: `primary`. Valid values: `primary`.
+        /// The type of the Vsc. Default value: `Primary`. Valid values: `Primary`.
         /// </summary>
         [Input("vscType")]
         public Input<string>? VscType { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? VscName { get; set; }
 
         /// <summary>
-        /// The type of the Vsc. Default value: `primary`. Valid values: `primary`.
+        /// The type of the Vsc. Default value: `Primary`. Valid values: `Primary`.
         /// </summary>
         [Input("vscType")]
         public Input<string>? VscType { get; set; }

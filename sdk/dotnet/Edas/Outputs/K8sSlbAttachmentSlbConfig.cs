@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Edas.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
+        /// The port configuration for SLB instance, which is supported for multiple configurations. See `PortMappings` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.K8sSlbAttachmentSlbConfigPortMapping> PortMappings;
         /// <summary>

@@ -16,14 +16,14 @@ public final class DbClusterDbClusterAccessWhiteListArgs extends com.pulumi.reso
     public static final DbClusterDbClusterAccessWhiteListArgs Empty = new DbClusterDbClusterAccessWhiteListArgs();
 
     /**
-     * Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * Field `dbClusterIpArrayAttribute` has been removed from provider.
      * 
      */
     @Import(name="dbClusterIpArrayAttribute")
     private @Nullable Output<String> dbClusterIpArrayAttribute;
 
     /**
-     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
      * 
      */
     public Optional<Output<String>> dbClusterIpArrayAttribute() {
@@ -87,7 +87,7 @@ public final class DbClusterDbClusterAccessWhiteListArgs extends com.pulumi.reso
         }
 
         /**
-         * @param dbClusterIpArrayAttribute Field `db_cluster_ip_array_attribute` has been removed from provider.
+         * @param dbClusterIpArrayAttribute Field `dbClusterIpArrayAttribute` has been removed from provider.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class DbClusterDbClusterAccessWhiteListArgs extends com.pulumi.reso
         }
 
         /**
-         * @param dbClusterIpArrayAttribute Field `db_cluster_ip_array_attribute` has been removed from provider.
+         * @param dbClusterIpArrayAttribute Field `dbClusterIpArrayAttribute` has been removed from provider.
          * 
          * @return builder
          * 

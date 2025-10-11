@@ -78,14 +78,14 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     @Import(name="logstoreName")
     private @Nullable Output<String> logstoreName;
 
     /**
-     * @return The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * @return The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     public Optional<Output<String>> logstoreName() {
@@ -93,14 +93,14 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     @Import(name="netflowServerIp")
     private @Nullable Output<String> netflowServerIp;
 
     /**
-     * @return The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * @return The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     public Optional<Output<String>> netflowServerIp() {
@@ -108,14 +108,14 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     @Import(name="netflowServerPort")
     private @Nullable Output<Integer> netflowServerPort;
 
     /**
-     * @return The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * @return The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     public Optional<Output<Integer>> netflowServerPort() {
@@ -123,14 +123,14 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     @Import(name="netflowVersion")
     private @Nullable Output<String> netflowVersion;
 
     /**
-     * @return The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * @return The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     public Optional<Output<String>> netflowVersion() {
@@ -153,14 +153,14 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * @return The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -168,14 +168,14 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     @Import(name="slsRegionId")
     private @Nullable Output<String> slsRegionId;
 
     /**
-     * @return The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * @return The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     public Optional<Output<String>> slsRegionId() {
@@ -317,7 +317,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param logstoreName The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+         * @param logstoreName The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param logstoreName The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+         * @param logstoreName The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netflowServerIp The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+         * @param netflowServerIp The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netflowServerIp The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+         * @param netflowServerIp The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netflowServerPort The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+         * @param netflowServerPort The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netflowServerPort The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+         * @param netflowServerPort The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netflowVersion The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+         * @param netflowVersion The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netflowVersion The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+         * @param netflowVersion The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectName The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+         * @param projectName The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectName The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+         * @param projectName The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param slsRegionId The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+         * @param slsRegionId The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class SmartagFlowLogArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param slsRegionId The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+         * @param slsRegionId The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
          * 
          * @return builder
          * 

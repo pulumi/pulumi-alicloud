@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetEngineNamespacesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public string? AcceptLanguage { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// 
-        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// **NOTE:** You must set `ClusterId` or `InstanceId` or both.
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetEngineNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// 
-        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// **NOTE:** You must set `ClusterId` or `InstanceId` or both.
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }

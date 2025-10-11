@@ -35,14 +35,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Automatic repair node policy. See `auto_repair_policy` below.
+     * Automatic repair node policy. See `autoRepairPolicy` below.
      * 
      */
     @Import(name="autoRepairPolicy")
     private @Nullable Output<NodePoolManagementAutoRepairPolicyArgs> autoRepairPolicy;
 
     /**
-     * @return Automatic repair node policy. See `auto_repair_policy` below.
+     * @return Automatic repair node policy. See `autoRepairPolicy` below.
      * 
      */
     public Optional<Output<NodePoolManagementAutoRepairPolicyArgs>> autoRepairPolicy() {
@@ -65,14 +65,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The auto update policy. See `auto_upgrade_policy` below.
+     * The auto update policy. See `autoUpgradePolicy` below.
      * 
      */
     @Import(name="autoUpgradePolicy")
     private @Nullable Output<NodePoolManagementAutoUpgradePolicyArgs> autoUpgradePolicy;
 
     /**
-     * @return The auto update policy. See `auto_upgrade_policy` below.
+     * @return The auto update policy. See `autoUpgradePolicy` below.
      * 
      */
     public Optional<Output<NodePoolManagementAutoUpgradePolicyArgs>> autoUpgradePolicy() {
@@ -95,14 +95,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * The auto CVE patching policy. See `autoVulFixPolicy` below.
      * 
      */
     @Import(name="autoVulFixPolicy")
     private @Nullable Output<NodePoolManagementAutoVulFixPolicyArgs> autoVulFixPolicy;
 
     /**
-     * @return The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * @return The auto CVE patching policy. See `autoVulFixPolicy` below.
      * 
      */
     public Optional<Output<NodePoolManagementAutoVulFixPolicyArgs>> autoVulFixPolicy() {
@@ -240,7 +240,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepairPolicy Automatic repair node policy. See `auto_repair_policy` below.
+         * @param autoRepairPolicy Automatic repair node policy. See `autoRepairPolicy` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepairPolicy Automatic repair node policy. See `auto_repair_policy` below.
+         * @param autoRepairPolicy Automatic repair node policy. See `autoRepairPolicy` below.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoUpgradePolicy The auto update policy. See `auto_upgrade_policy` below.
+         * @param autoUpgradePolicy The auto update policy. See `autoUpgradePolicy` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoUpgradePolicy The auto update policy. See `auto_upgrade_policy` below.
+         * @param autoUpgradePolicy The auto update policy. See `autoUpgradePolicy` below.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoVulFixPolicy The auto CVE patching policy. See `auto_vul_fix_policy` below.
+         * @param autoVulFixPolicy The auto CVE patching policy. See `autoVulFixPolicy` below.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoVulFixPolicy The auto CVE patching policy. See `auto_vul_fix_policy` below.
+         * @param autoVulFixPolicy The auto CVE patching policy. See `autoVulFixPolicy` below.
          * 
          * @return builder
          * 

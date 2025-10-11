@@ -31,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:elasticsearch/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
      * 
      */
     @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
-     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
      * 
      */
     public Output<Optional<Integer>> autoRenewDuration() {
@@ -101,14 +101,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataNodeDiskEncrypted);
     }
     /**
-     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
      */
     @Export(name="dataNodeDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataNodeDiskPerformanceLevel;
 
     /**
-     * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
      */
     public Output<Optional<String>> dataNodeDiskPerformanceLevel() {
@@ -227,14 +227,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enablePublic);
     }
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
      */
     public Output<Optional<String>> instanceChargeType() {
@@ -283,28 +283,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaPort;
     }
     /**
-     * the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
      * 
      */
     @Export(name="kibanaPrivateSecurityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kibanaPrivateSecurityGroupId;
 
     /**
-     * @return the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * @return the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
      * 
      */
     public Output<Optional<String>> kibanaPrivateSecurityGroupId() {
         return Codegen.optional(this.kibanaPrivateSecurityGroupId);
     }
     /**
-     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      * 
      */
     @Export(name="kibanaPrivateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      * 
      */
     public Output<List<String>> kibanaPrivateWhitelists() {
@@ -325,28 +325,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaWhitelists;
     }
     /**
-     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
@@ -395,14 +395,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -493,14 +493,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.publicWhitelists;
     }
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewStatus;
 
     /**
-     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
      * 
      */
     public Output<Optional<String>> renewStatus() {
@@ -675,14 +675,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.warmNodeSpec);
     }
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      * 
      */
     @Export(name="zoneCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> zoneCount;
 
     /**
-     * @return The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+     * @return The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      * 
      */
     public Output<Optional<Integer>> zoneCount() {

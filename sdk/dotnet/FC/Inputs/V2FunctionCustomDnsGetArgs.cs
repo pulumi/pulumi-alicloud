@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V2FunctionCustomDnsDnsOptionGetArgs>? _dnsOptions;
 
         /// <summary>
-        /// DNS resolver configuration parameter list. See `dns_options` below.
+        /// DNS resolver configuration parameter list. See `DnsOptions` below.
         /// </summary>
         public InputList<Inputs.V2FunctionCustomDnsDnsOptionGetArgs> DnsOptions
         {

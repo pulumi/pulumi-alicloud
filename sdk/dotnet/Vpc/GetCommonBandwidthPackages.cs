@@ -49,9 +49,9 @@ namespace Pulumi.AliCloud.Vpc
         ///   
         ///   The public ip addresses mapping supports the following:
         ///   
-        ///   * `ip_address`   - The address of the EIP.
-        ///   * `allocation_id` - The ID of the EIP instance.
-        ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+        ///   * `IpAddress`   - The address of the EIP.
+        ///   * `AllocationId` - The ID of the EIP instance.
+        ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
         /// </summary>
         public static Task<GetCommonBandwidthPackagesResult> InvokeAsync(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesArgs(), options.WithDefaults());
@@ -94,9 +94,9 @@ namespace Pulumi.AliCloud.Vpc
         ///   
         ///   The public ip addresses mapping supports the following:
         ///   
-        ///   * `ip_address`   - The address of the EIP.
-        ///   * `allocation_id` - The ID of the EIP instance.
-        ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+        ///   * `IpAddress`   - The address of the EIP.
+        ///   * `AllocationId` - The ID of the EIP instance.
+        ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
         /// </summary>
         public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());
@@ -139,9 +139,9 @@ namespace Pulumi.AliCloud.Vpc
         ///   
         ///   The public ip addresses mapping supports the following:
         ///   
-        ///   * `ip_address`   - The address of the EIP.
-        ///   * `allocation_id` - The ID of the EIP instance.
-        ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+        ///   * `IpAddress`   - The address of the EIP.
+        ///   * `AllocationId` - The ID of the EIP instance.
+        ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
         /// </summary>
         public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());

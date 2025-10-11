@@ -113,47 +113,47 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      * @deprecated
-     * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
-    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * @return Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      * @deprecated
-     * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
-    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
 
     /**
-     * Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * @deprecated
-     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
-    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * @deprecated
-     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
-    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -295,7 +295,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * ZoneMappingss See `zone_mappings` below.
+     * ZoneMappingss See `zoneMappings` below.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -304,7 +304,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     private Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return ZoneMappingss See `zone_mappings` below.
+     * @return ZoneMappingss See `zoneMappings` below.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -482,59 +482,59 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+         * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
          * 
          */
-        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+        @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+         * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
          * 
          */
-        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+        @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+         * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
          * 
          */
-        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+        @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+         * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
          * 
          */
-        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+        @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }
@@ -724,7 +724,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneMappings ZoneMappingss See `zone_mappings` below.
+         * @param zoneMappings ZoneMappingss See `zoneMappings` below.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -737,7 +737,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneMappings ZoneMappingss See `zone_mappings` below.
+         * @param zoneMappings ZoneMappingss See `zoneMappings` below.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -749,7 +749,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneMappings ZoneMappingss See `zone_mappings` below.
+         * @param zoneMappings ZoneMappingss See `zoneMappings` below.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

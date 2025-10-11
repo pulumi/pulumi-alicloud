@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CreatedTime { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration block with destination configuration. See `destination_config` below.
+        /// Configuration block with destination configuration. See `DestinationConfig` below.
         /// </summary>
         [Output("destinationConfig")]
         public Output<Outputs.FunctionAsyncInvokeConfigDestinationConfig?> DestinationConfig { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
+        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `False`
         /// </summary>
         [Output("statefulInvocation")]
         public Output<bool?> StatefulInvocation { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.FC
     public sealed class FunctionAsyncInvokeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration block with destination configuration. See `destination_config` below.
+        /// Configuration block with destination configuration. See `DestinationConfig` below.
         /// </summary>
         [Input("destinationConfig")]
         public Input<Inputs.FunctionAsyncInvokeConfigDestinationConfigArgs>? DestinationConfig { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
+        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `False`
         /// </summary>
         [Input("statefulInvocation")]
         public Input<bool>? StatefulInvocation { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CreatedTime { get; set; }
 
         /// <summary>
-        /// Configuration block with destination configuration. See `destination_config` below.
+        /// Configuration block with destination configuration. See `DestinationConfig` below.
         /// </summary>
         [Input("destinationConfig")]
         public Input<Inputs.FunctionAsyncInvokeConfigDestinationConfigGetArgs>? DestinationConfig { get; set; }
@@ -381,7 +381,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
+        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `False`
         /// </summary>
         [Input("statefulInvocation")]
         public Input<bool>? StatefulInvocation { get; set; }

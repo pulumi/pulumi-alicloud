@@ -123,14 +123,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultQuota);
     }
     /**
-     * IP whitelist See `ip_white_list` below.
+     * IP whitelist See `ipWhiteList` below.
      * 
      */
     @Export(name="ipWhiteList", refs={ProjectIpWhiteList.class}, tree="[0]")
     private Output</* @Nullable */ ProjectIpWhiteList> ipWhiteList;
 
     /**
-     * @return IP whitelist See `ip_white_list` below.
+     * @return IP whitelist See `ipWhiteList` below.
      * 
      */
     public Output<Optional<ProjectIpWhiteList>> ipWhiteList() {
@@ -217,14 +217,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.regionId;
     }
     /**
-     * Security-related attributes See `security_properties` below.
+     * Security-related attributes See `securityProperties` below.
      * 
      */
     @Export(name="securityProperties", refs={ProjectSecurityProperties.class}, tree="[0]")
     private Output<ProjectSecurityProperties> securityProperties;
 
     /**
-     * @return Security-related attributes See `security_properties` below.
+     * @return Security-related attributes See `securityProperties` below.
      * 
      */
     public Output<ProjectSecurityProperties> securityProperties() {

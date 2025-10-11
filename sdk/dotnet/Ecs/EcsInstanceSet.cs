@@ -18,9 +18,9 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `alicloud.ecs.Instance` is preferred.
     /// 
-    /// &gt; **NOTE:** In the instances managed by this resource, names are automatically generated based on `instance_name` and `unique_suffix`.
+    /// &gt; **NOTE:** In the instances managed by this resource, names are automatically generated based on `InstanceName` and `UniqueSuffix`.
     /// 
-    /// &gt; **NOTE:** Only `tags` support batch modification.
+    /// &gt; **NOTE:** Only `Tags` support batch modification.
     /// 
     /// ## Example Usage
     /// 
@@ -111,15 +111,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-        /// - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -131,13 +131,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> BootCheckOsWithAssistant { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below..
+        /// The list of data disks created with instance. See `DataDisks` below..
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.EcsInstanceSetDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+        /// The ID of the dedicated host on which to create the instance. If the `DedicatedHostId` is specified, the `SpotStrategy` and `SpotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         /// </summary>
         [Output("dedicatedHostId")]
         public Output<string?> DedicatedHostId { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+        /// The instances that need to be excluded from the Instance Set.  See `ExcludeInstanceFilter` below.
         /// </summary>
         [Output("excludeInstanceFilter")]
         public Output<Outputs.EcsInstanceSetExcludeInstanceFilter?> ExcludeInstanceFilter { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+        /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         /// </summary>
         [Output("instanceName")]
         public Output<string?> InstanceName { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LaunchTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// The name of the launch template. To use a launch template to create an instance, you must use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the launch template.
         /// </summary>
         [Output("launchTemplateName")]
         public Output<string?> LaunchTemplateName { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
 
         /// <summary>
-        /// A list of NetworkInterface. See `network_interfaces` below..
+        /// A list of NetworkInterface. See `NetworkInterfaces` below..
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.EcsInstanceSetNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
@@ -263,15 +263,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        /// - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<double> SpotPriceLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'.
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
         /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        /// The category of the system disk. Valid values are `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -440,15 +440,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-        /// - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -463,7 +463,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below..
+        /// The list of data disks created with instance. See `DataDisks` below..
         /// </summary>
         public InputList<Inputs.EcsInstanceSetDataDiskArgs> DataDisks
         {
@@ -472,7 +472,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+        /// The ID of the dedicated host on which to create the instance. If the `DedicatedHostId` is specified, the `SpotStrategy` and `SpotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }
@@ -496,7 +496,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+        /// The instances that need to be excluded from the Instance Set.  See `ExcludeInstanceFilter` below.
         /// </summary>
         [Input("excludeInstanceFilter")]
         public Input<Inputs.EcsInstanceSetExcludeInstanceFilterArgs>? ExcludeInstanceFilter { get; set; }
@@ -526,7 +526,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+        /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateId { get; set; }
 
         /// <summary>
-        /// The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// The name of the launch template. To use a launch template to create an instance, you must use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the launch template.
         /// </summary>
         [Input("launchTemplateName")]
         public Input<string>? LaunchTemplateName { get; set; }
@@ -577,7 +577,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetNetworkInterfaceArgs>? _networkInterfaces;
 
         /// <summary>
-        /// A list of NetworkInterface. See `network_interfaces` below..
+        /// A list of NetworkInterface. See `NetworkInterfaces` below..
         /// </summary>
         public InputList<Inputs.EcsInstanceSetNetworkInterfaceArgs> NetworkInterfaces
         {
@@ -608,15 +608,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        /// - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -660,7 +660,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? SpotPriceLimit { get; set; }
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'.
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
         /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -675,7 +675,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        /// The category of the system disk. Valid values are `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -755,15 +755,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-        /// - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -778,7 +778,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `data_disks` below..
+        /// The list of data disks created with instance. See `DataDisks` below..
         /// </summary>
         public InputList<Inputs.EcsInstanceSetDataDiskGetArgs> DataDisks
         {
@@ -787,7 +787,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+        /// The ID of the dedicated host on which to create the instance. If the `DedicatedHostId` is specified, the `SpotStrategy` and `SpotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }
@@ -811,7 +811,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
+        /// The instances that need to be excluded from the Instance Set.  See `ExcludeInstanceFilter` below.
         /// </summary>
         [Input("excludeInstanceFilter")]
         public Input<Inputs.EcsInstanceSetExcludeInstanceFilterGetArgs>? ExcludeInstanceFilter { get; set; }
@@ -853,7 +853,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+        /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -889,7 +889,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateId { get; set; }
 
         /// <summary>
-        /// The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// The name of the launch template. To use a launch template to create an instance, you must use the `LaunchTemplateId` or `LaunchTemplateName` parameter to specify the launch template.
         /// </summary>
         [Input("launchTemplateName")]
         public Input<string>? LaunchTemplateName { get; set; }
@@ -904,7 +904,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetNetworkInterfaceGetArgs>? _networkInterfaces;
 
         /// <summary>
-        /// A list of NetworkInterface. See `network_interfaces` below..
+        /// A list of NetworkInterface. See `NetworkInterfaces` below..
         /// </summary>
         public InputList<Inputs.EcsInstanceSetNetworkInterfaceGetArgs> NetworkInterfaces
         {
@@ -935,15 +935,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        /// - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -987,7 +987,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? SpotPriceLimit { get; set; }
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'.
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
         /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
@@ -1002,7 +1002,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        /// The category of the system disk. Valid values are `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }

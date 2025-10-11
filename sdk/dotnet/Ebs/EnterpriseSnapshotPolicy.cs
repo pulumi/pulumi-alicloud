@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot replication information. See `cross_region_copy_info` below.
+        /// Snapshot replication information. See `CrossRegionCopyInfo` below.
         /// </summary>
         [Output("crossRegionCopyInfo")]
         public Output<Outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo> CrossRegionCopyInfo { get; private set; } = null!;
@@ -102,19 +102,19 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot retention policy representing resources. See `retain_rule` below.
+        /// Snapshot retention policy representing resources. See `RetainRule` below.
         /// </summary>
         [Output("retainRule")]
         public Output<Outputs.EnterpriseSnapshotPolicyRetainRule> RetainRule { get; private set; } = null!;
 
         /// <summary>
-        /// The scheduling plan that represents the resource. See `schedule` below.
+        /// The scheduling plan that represents the resource. See `Schedule` below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.EnterpriseSnapshotPolicySchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot special retention rules. See `special_retain_rules` below.
+        /// Snapshot special retention rules. See `SpecialRetainRules` below.
         /// </summary>
         [Output("specialRetainRules")]
         public Output<Outputs.EnterpriseSnapshotPolicySpecialRetainRules> SpecialRetainRules { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot storage policy. See `storage_rule` below.
+        /// Snapshot storage policy. See `StorageRule` below.
         /// </summary>
         [Output("storageRule")]
         public Output<Outputs.EnterpriseSnapshotPolicyStorageRule?> StorageRule { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Ebs
     public sealed class EnterpriseSnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Snapshot replication information. See `cross_region_copy_info` below.
+        /// Snapshot replication information. See `CrossRegionCopyInfo` below.
         /// </summary>
         [Input("crossRegionCopyInfo")]
         public Input<Inputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs>? CrossRegionCopyInfo { get; set; }
@@ -214,19 +214,19 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Snapshot retention policy representing resources. See `retain_rule` below.
+        /// Snapshot retention policy representing resources. See `RetainRule` below.
         /// </summary>
         [Input("retainRule", required: true)]
         public Input<Inputs.EnterpriseSnapshotPolicyRetainRuleArgs> RetainRule { get; set; } = null!;
 
         /// <summary>
-        /// The scheduling plan that represents the resource. See `schedule` below.
+        /// The scheduling plan that represents the resource. See `Schedule` below.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.EnterpriseSnapshotPolicyScheduleArgs> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Snapshot special retention rules. See `special_retain_rules` below.
+        /// Snapshot special retention rules. See `SpecialRetainRules` below.
         /// </summary>
         [Input("specialRetainRules")]
         public Input<Inputs.EnterpriseSnapshotPolicySpecialRetainRulesArgs>? SpecialRetainRules { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Snapshot storage policy. See `storage_rule` below.
+        /// Snapshot storage policy. See `StorageRule` below.
         /// </summary>
         [Input("storageRule")]
         public Input<Inputs.EnterpriseSnapshotPolicyStorageRuleArgs>? StorageRule { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Snapshot replication information. See `cross_region_copy_info` below.
+        /// Snapshot replication information. See `CrossRegionCopyInfo` below.
         /// </summary>
         [Input("crossRegionCopyInfo")]
         public Input<Inputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoGetArgs>? CrossRegionCopyInfo { get; set; }
@@ -300,19 +300,19 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Snapshot retention policy representing resources. See `retain_rule` below.
+        /// Snapshot retention policy representing resources. See `RetainRule` below.
         /// </summary>
         [Input("retainRule")]
         public Input<Inputs.EnterpriseSnapshotPolicyRetainRuleGetArgs>? RetainRule { get; set; }
 
         /// <summary>
-        /// The scheduling plan that represents the resource. See `schedule` below.
+        /// The scheduling plan that represents the resource. See `Schedule` below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.EnterpriseSnapshotPolicyScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Snapshot special retention rules. See `special_retain_rules` below.
+        /// Snapshot special retention rules. See `SpecialRetainRules` below.
         /// </summary>
         [Input("specialRetainRules")]
         public Input<Inputs.EnterpriseSnapshotPolicySpecialRetainRulesGetArgs>? SpecialRetainRules { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Snapshot storage policy. See `storage_rule` below.
+        /// Snapshot storage policy. See `StorageRule` below.
         /// </summary>
         [Input("storageRule")]
         public Input<Inputs.EnterpriseSnapshotPolicyStorageRuleGetArgs>? StorageRule { get; set; }

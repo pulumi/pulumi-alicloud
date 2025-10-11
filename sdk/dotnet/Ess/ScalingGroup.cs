@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
     /// 
-    /// &gt; **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
+    /// &gt; **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `VswitchIds`.
     /// 
     /// For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
     /// 
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Ess
     public partial class ScalingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `AlbServerGroup` below for details.
         /// </summary>
         [Output("albServerGroups")]
         public Output<ImmutableArray<Outputs.ScalingGroupAlbServerGroup>> AlbServerGroups { get; private set; } = null!;
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> DefaultCooldown { get; private set; } = null!;
 
         /// <summary>
-        /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        /// Expected number of ECS instances in the scaling group. Value range: [min_size, MaxSize].
         /// </summary>
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        /// Specifies whether the scaling group deletion protection is enabled. `True` or `False`, Default value: `False`.
         /// </summary>
         [Output("groupDeletionProtection")]
         public Output<bool?> GroupDeletionProtection { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> LaunchTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `LaunchTemplateOverride` below for details.
         /// </summary>
         [Output("launchTemplateOverrides")]
         public Output<ImmutableArray<Outputs.ScalingGroupLaunchTemplateOverride>> LaunchTemplateOverrides { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
-        /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+        /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `DependsOn` argument
         /// targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -285,14 +285,14 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-        /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        /// **NOTE:** From version 1.204.1, `MaxSize` can be set to `2000`.
         /// </summary>
         [Output("maxSize")]
         public Output<int> MaxSize { get; private set; } = null!;
 
         /// <summary>
         /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-        /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+        /// **NOTE:** From version 1.204.1, `MinSize` can be set to `2000`.
         /// </summary>
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupAlbServerGroupArgs>? _albServerGroups;
 
         /// <summary>
-        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `AlbServerGroup` below for details.
         /// </summary>
         public InputList<Inputs.ScalingGroupAlbServerGroupArgs> AlbServerGroups
         {
@@ -526,13 +526,13 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? DefaultCooldown { get; set; }
 
         /// <summary>
-        /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        /// Expected number of ECS instances in the scaling group. Value range: [min_size, MaxSize].
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        /// Specifies whether the scaling group deletion protection is enabled. `True` or `False`, Default value: `False`.
         /// </summary>
         [Input("groupDeletionProtection")]
         public Input<bool>? GroupDeletionProtection { get; set; }
@@ -577,7 +577,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs>? _launchTemplateOverrides;
 
         /// <summary>
-        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `LaunchTemplateOverride` below for details.
         /// </summary>
         public InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs> LaunchTemplateOverrides
         {
@@ -597,7 +597,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
-        /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+        /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `DependsOn` argument
         /// targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -616,14 +616,14 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-        /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        /// **NOTE:** From version 1.204.1, `MaxSize` can be set to `2000`.
         /// </summary>
         [Input("maxSize", required: true)]
         public Input<int> MaxSize { get; set; } = null!;
 
         /// <summary>
         /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-        /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+        /// **NOTE:** From version 1.204.1, `MinSize` can be set to `2000`.
         /// </summary>
         [Input("minSize", required: true)]
         public Input<int> MinSize { get; set; } = null!;
@@ -760,7 +760,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupAlbServerGroupGetArgs>? _albServerGroups;
 
         /// <summary>
-        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `AlbServerGroup` below for details.
         /// </summary>
         public InputList<Inputs.ScalingGroupAlbServerGroupGetArgs> AlbServerGroups
         {
@@ -843,13 +843,13 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? DefaultCooldown { get; set; }
 
         /// <summary>
-        /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        /// Expected number of ECS instances in the scaling group. Value range: [min_size, MaxSize].
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        /// Specifies whether the scaling group deletion protection is enabled. `True` or `False`, Default value: `False`.
         /// </summary>
         [Input("groupDeletionProtection")]
         public Input<bool>? GroupDeletionProtection { get; set; }
@@ -894,7 +894,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs>? _launchTemplateOverrides;
 
         /// <summary>
-        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `LaunchTemplateOverride` below for details.
         /// </summary>
         public InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs> LaunchTemplateOverrides
         {
@@ -914,7 +914,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
-        /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+        /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `DependsOn` argument
         /// targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
@@ -933,14 +933,14 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
-        /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        /// **NOTE:** From version 1.204.1, `MaxSize` can be set to `2000`.
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
 
         /// <summary>
         /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
-        /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
+        /// **NOTE:** From version 1.204.1, `MinSize` can be set to `2000`.
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }

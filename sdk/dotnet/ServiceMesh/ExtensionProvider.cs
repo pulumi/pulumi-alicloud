@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     public partial class ExtensionProvider : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The config of the Service Mesh Extension Provider. The `config` format is json.
+        /// The config of the Service Mesh Extension Provider. The `Config` format is json.
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<string> ServiceMeshId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
+        /// The type of the Service Mesh Extension Provider. Valid values: `Httpextauth`, `Grpcextauth`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class ExtensionProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The config of the Service Mesh Extension Provider. The `config` format is json.
+        /// The config of the Service Mesh Extension Provider. The `Config` format is json.
         /// </summary>
         [Input("config", required: true)]
         public Input<string> Config { get; set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string> ServiceMeshId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
+        /// The type of the Service Mesh Extension Provider. Valid values: `Httpextauth`, `Grpcextauth`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class ExtensionProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The config of the Service Mesh Extension Provider. The `config` format is json.
+        /// The config of the Service Mesh Extension Provider. The `Config` format is json.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? ServiceMeshId { get; set; }
 
         /// <summary>
-        /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
+        /// The type of the Service Mesh Extension Provider. Valid values: `Httpextauth`, `Grpcextauth`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -56,10 +56,10 @@ public class CopyImage extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `image_name` instead.
+     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
+    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

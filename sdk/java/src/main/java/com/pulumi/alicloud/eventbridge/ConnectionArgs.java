@@ -19,14 +19,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionArgs Empty = new ConnectionArgs();
 
     /**
-     * The parameters that are configured for authentication. See `auth_parameters` below.
+     * The parameters that are configured for authentication. See `authParameters` below.
      * 
      */
     @Import(name="authParameters")
     private @Nullable Output<ConnectionAuthParametersArgs> authParameters;
 
     /**
-     * @return The parameters that are configured for authentication. See `auth_parameters` below.
+     * @return The parameters that are configured for authentication. See `authParameters` below.
      * 
      */
     public Optional<Output<ConnectionAuthParametersArgs>> authParameters() {
@@ -64,14 +64,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The parameters that are configured for the network. See `network_parameters` below.
+     * The parameters that are configured for the network. See `networkParameters` below.
      * 
      */
     @Import(name="networkParameters", required=true)
     private Output<ConnectionNetworkParametersArgs> networkParameters;
 
     /**
-     * @return The parameters that are configured for the network. See `network_parameters` below.
+     * @return The parameters that are configured for the network. See `networkParameters` below.
      * 
      */
     public Output<ConnectionNetworkParametersArgs> networkParameters() {
@@ -106,7 +106,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authParameters The parameters that are configured for authentication. See `auth_parameters` below.
+         * @param authParameters The parameters that are configured for authentication. See `authParameters` below.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authParameters The parameters that are configured for authentication. See `auth_parameters` below.
+         * @param authParameters The parameters that are configured for authentication. See `authParameters` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkParameters The parameters that are configured for the network. See `network_parameters` below.
+         * @param networkParameters The parameters that are configured for the network. See `networkParameters` below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkParameters The parameters that are configured for the network. See `network_parameters` below.
+         * @param networkParameters The parameters that are configured for the network. See `networkParameters` below.
          * 
          * @return builder
          * 

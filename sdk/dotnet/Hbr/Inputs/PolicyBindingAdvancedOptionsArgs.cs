@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class PolicyBindingAdvancedOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ECS Backup Advanced options. See `udm_detail` below.
+        /// ECS Backup Advanced options. See `UdmDetail` below.
         /// </summary>
         [Input("udmDetail")]
         public Input<Inputs.PolicyBindingAdvancedOptionsUdmDetailArgs>? UdmDetail { get; set; }

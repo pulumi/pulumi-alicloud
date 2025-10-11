@@ -33,7 +33,7 @@ public final class ApplicationNasConfig {
      */
     private @Nullable String nasPath;
     /**
-     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
      * 
      */
     private @Nullable Boolean readOnly;
@@ -68,7 +68,7 @@ public final class ApplicationNasConfig {
         return Optional.ofNullable(this.nasPath);
     }
     /**
-     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
      * 
      */
     public Optional<Boolean> readOnly() {

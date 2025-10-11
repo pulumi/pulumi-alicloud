@@ -1361,9 +1361,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages() {
@@ -1420,9 +1420,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static CompletableFuture<GetCommonBandwidthPackagesResult> getCommonBandwidthPackagesPlain() {
@@ -1479,9 +1479,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs args) {
@@ -1538,9 +1538,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static CompletableFuture<GetCommonBandwidthPackagesResult> getCommonBandwidthPackagesPlain(GetCommonBandwidthPackagesPlainArgs args) {
@@ -1597,9 +1597,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs args, InvokeOptions options) {
@@ -1656,9 +1656,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs args, InvokeOutputOptions options) {
@@ -1715,9 +1715,9 @@ public final class VpcFunctions {
      * 
      *   The public ip addresses mapping supports the following:
      * 
-     *   * `ip_address`   - The address of the EIP.
-     *   * `allocation_id` - The ID of the EIP instance.
-     *   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+     *   * `ipAddress`   - The address of the EIP.
+     *   * `allocationId` - The ID of the EIP instance.
+     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static CompletableFuture<GetCommonBandwidthPackagesResult> getCommonBandwidthPackagesPlain(GetCommonBandwidthPackagesPlainArgs args, InvokeOptions options) {

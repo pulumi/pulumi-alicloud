@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         private InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterGetArgs>? _bodyParameters;
 
         /// <summary>
-        /// The parameters that are configured for the request body. See `body_parameters` below.
+        /// The parameters that are configured for the request body. See `BodyParameters` below.
         /// </summary>
         public InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterGetArgs> BodyParameters
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         private InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterGetArgs>? _headerParameters;
 
         /// <summary>
-        /// The parameters that are configured for the request header. See `header_parameters` below.
+        /// The parameters that are configured for the request header. See `HeaderParameters` below.
         /// </summary>
         public InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterGetArgs> HeaderParameters
         {
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         private InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterGetArgs>? _queryStringParameters;
 
         /// <summary>
-        /// The parameters that are configured for the request path. See `query_string_parameters` below.
+        /// The parameters that are configured for the request path. See `QueryStringParameters` below.
         /// </summary>
         public InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterGetArgs> QueryStringParameters
         {

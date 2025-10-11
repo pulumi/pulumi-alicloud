@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string TagValue;
         /// <summary>
-        /// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        /// Matching method of tag value. Valid values: `All`, `startWith`,`endWith`,`Contains`,`notContains`,`Equals`.
         /// </summary>
         public readonly string TagValueMatchFunction;
 

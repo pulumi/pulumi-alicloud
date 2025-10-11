@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> LineOperator { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        /// The ID of the order that is placed. **Note:** `OrderId` takes effect only if `Status` is set to `Enabled`.
         /// </summary>
         [Output("orderId")]
         public Output<string> OrderId { get; private set; } = null!;
@@ -116,8 +116,8 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The subscription duration. Valid values:
-        /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-        /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        /// - If `PricingCycle` is set to `Month`. Valid values: `1` to `9`.
+        /// - If `PricingCycle` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -137,26 +137,26 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-        /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        /// &gt; **NOTE:** From version 1.185.0, `PortType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `PortType` cannot be modified.
         /// </summary>
         [Output("portType")]
         public Output<string?> PortType { get; private set; } = null!;
 
         /// <summary>
         /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-        /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        /// &gt; **NOTE:** `Period` and `PricingCycle` are valid only when `Status` is set to `Enabled`.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `RedundantPhysicalConnectionId` cannot be modified.
         /// </summary>
         [Output("redundantPhysicalConnectionId")]
         public Output<string?> RedundantPhysicalConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `Status` can be set to `Confirmed`. If you want to set `Status` to `Enabled`, `Period` must be set.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -257,8 +257,8 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The subscription duration. Valid values:
-        /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-        /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        /// - If `PricingCycle` is set to `Month`. Valid values: `1` to `9`.
+        /// - If `PricingCycle` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -278,26 +278,26 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-        /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        /// &gt; **NOTE:** From version 1.185.0, `PortType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `PortType` cannot be modified.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
 
         /// <summary>
         /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-        /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        /// &gt; **NOTE:** `Period` and `PricingCycle` are valid only when `Status` is set to `Enabled`.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `RedundantPhysicalConnectionId` cannot be modified.
         /// </summary>
         [Input("redundantPhysicalConnectionId")]
         public Input<string>? RedundantPhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `Status` can be set to `Confirmed`. If you want to set `Status` to `Enabled`, `Period` must be set.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? LineOperator { get; set; }
 
         /// <summary>
-        /// The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        /// The ID of the order that is placed. **Note:** `OrderId` takes effect only if `Status` is set to `Enabled`.
         /// </summary>
         [Input("orderId")]
         public Input<string>? OrderId { get; set; }
@@ -366,8 +366,8 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// The subscription duration. Valid values:
-        /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-        /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        /// - If `PricingCycle` is set to `Month`. Valid values: `1` to `9`.
+        /// - If `PricingCycle` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -387,26 +387,26 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-        /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        /// &gt; **NOTE:** From version 1.185.0, `PortType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `PortType` cannot be modified.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
 
         /// <summary>
         /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-        /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        /// &gt; **NOTE:** `Period` and `PricingCycle` are valid only when `Status` is set to `Enabled`.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `RedundantPhysicalConnectionId` cannot be modified.
         /// </summary>
         [Input("redundantPhysicalConnectionId")]
         public Input<string>? RedundantPhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `Status` can be set to `Confirmed`. If you want to set `Status` to `Enabled`, `Period` must be set.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

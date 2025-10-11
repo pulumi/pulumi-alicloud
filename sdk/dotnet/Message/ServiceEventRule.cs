@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Message
         public Output<string> DeliveryMode { get; private set; } = null!;
 
         /// <summary>
-        /// Message Receiving Terminal Endpoint Object. See `endpoint` below.
+        /// Message Receiving Terminal Endpoint Object. See `Endpoint` below.
         /// </summary>
         [Output("endpoint")]
         public Output<Outputs.ServiceEventRuleEndpoint?> Endpoint { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Message
         public Output<ImmutableArray<string>> EventTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Matching rules, or relationships between multiple rules. See `match_rules` below.
+        /// Matching rules, or relationships between multiple rules. See `MatchRules` below.
         /// </summary>
         [Output("matchRules")]
         public Output<ImmutableArray<ImmutableArray<Outputs.ServiceEventRuleMatchRule>>> MatchRules { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Message
         public Input<string>? DeliveryMode { get; set; }
 
         /// <summary>
-        /// Message Receiving Terminal Endpoint Object. See `endpoint` below.
+        /// Message Receiving Terminal Endpoint Object. See `Endpoint` below.
         /// </summary>
         [Input("endpoint")]
         public Input<Inputs.ServiceEventRuleEndpointArgs>? Endpoint { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Message
         private InputList<ImmutableArray<Inputs.ServiceEventRuleMatchRuleArgs>>? _matchRules;
 
         /// <summary>
-        /// Matching rules, or relationships between multiple rules. See `match_rules` below.
+        /// Matching rules, or relationships between multiple rules. See `MatchRules` below.
         /// </summary>
         public InputList<ImmutableArray<Inputs.ServiceEventRuleMatchRuleArgs>> MatchRules
         {
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Message
         public Input<string>? DeliveryMode { get; set; }
 
         /// <summary>
-        /// Message Receiving Terminal Endpoint Object. See `endpoint` below.
+        /// Message Receiving Terminal Endpoint Object. See `Endpoint` below.
         /// </summary>
         [Input("endpoint")]
         public Input<Inputs.ServiceEventRuleEndpointGetArgs>? Endpoint { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Message
         private InputList<ImmutableArray<Inputs.ServiceEventRuleMatchRuleGetArgs>>? _matchRules;
 
         /// <summary>
-        /// Matching rules, or relationships between multiple rules. See `match_rules` below.
+        /// Matching rules, or relationships between multiple rules. See `MatchRules` below.
         /// </summary>
         public InputList<ImmutableArray<Inputs.ServiceEventRuleMatchRuleGetArgs>> MatchRules
         {

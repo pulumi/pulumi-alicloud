@@ -49,10 +49,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
      * The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
+    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
@@ -60,10 +60,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
      * @return The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
+    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -83,14 +83,14 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -196,10 +196,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
+        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
@@ -211,10 +211,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
+        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }
@@ -238,7 +238,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
          * 
          * @return builder
          * 

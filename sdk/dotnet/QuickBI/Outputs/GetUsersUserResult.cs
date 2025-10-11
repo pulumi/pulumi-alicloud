@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.QuickBI.Outputs
         /// </summary>
         public readonly string AccountName;
         /// <summary>
-        /// Whether it is the administrator. Valid values: `true` and `false`.
+        /// Whether it is the administrator. Valid values: `True` and `False`.
         /// </summary>
         public readonly bool AdminUser;
         /// <summary>
-        /// Whether this is a permissions administrator. Valid values: `true` and `false`.
+        /// Whether this is a permissions administrator. Valid values: `True` and `False`.
         /// </summary>
         public readonly bool AuthAdminUser;
         /// <summary>

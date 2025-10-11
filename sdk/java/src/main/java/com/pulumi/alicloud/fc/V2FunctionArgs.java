@@ -87,14 +87,14 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom-container runtime related function configuration. See `custom_container_config` below.
+     * Custom-container runtime related function configuration. See `customContainerConfig` below.
      * 
      */
     @Import(name="customContainerConfig")
     private @Nullable Output<V2FunctionCustomContainerConfigArgs> customContainerConfig;
 
     /**
-     * @return Custom-container runtime related function configuration. See `custom_container_config` below.
+     * @return Custom-container runtime related function configuration. See `customContainerConfig` below.
      * 
      */
     public Optional<Output<V2FunctionCustomContainerConfigArgs>> customContainerConfig() {
@@ -102,14 +102,14 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Function custom DNS configuration. See `custom_dns` below.
+     * Function custom DNS configuration. See `customDns` below.
      * 
      */
     @Import(name="customDns")
     private @Nullable Output<V2FunctionCustomDnsArgs> customDns;
 
     /**
-     * @return Function custom DNS configuration. See `custom_dns` below.
+     * @return Function custom DNS configuration. See `customDns` below.
      * 
      */
     public Optional<Output<V2FunctionCustomDnsArgs>> customDns() {
@@ -117,14 +117,14 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+     * Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      * 
      */
     @Import(name="customHealthCheckConfig")
     private @Nullable Output<V2FunctionCustomHealthCheckConfigArgs> customHealthCheckConfig;
 
     /**
-     * @return Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+     * @return Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      * 
      */
     public Optional<Output<V2FunctionCustomHealthCheckConfigArgs>> customHealthCheckConfig() {
@@ -132,14 +132,14 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+     * Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      * 
      */
     @Import(name="customRuntimeConfig")
     private @Nullable Output<V2FunctionCustomRuntimeConfigArgs> customRuntimeConfig;
 
     /**
-     * @return Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+     * @return Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      * 
      */
     public Optional<Output<V2FunctionCustomRuntimeConfigArgs>> customRuntimeConfig() {
@@ -282,14 +282,14 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance lifecycle configuration. See `instance_lifecycle_config` below.
+     * Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      * 
      */
     @Import(name="instanceLifecycleConfig")
     private @Nullable Output<V2FunctionInstanceLifecycleConfigArgs> instanceLifecycleConfig;
 
     /**
-     * @return Instance lifecycle configuration. See `instance_lifecycle_config` below.
+     * @return Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      * 
      */
     public Optional<Output<V2FunctionInstanceLifecycleConfigArgs>> instanceLifecycleConfig() {
@@ -530,7 +530,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customContainerConfig Custom-container runtime related function configuration. See `custom_container_config` below.
+         * @param customContainerConfig Custom-container runtime related function configuration. See `customContainerConfig` below.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customContainerConfig Custom-container runtime related function configuration. See `custom_container_config` below.
+         * @param customContainerConfig Custom-container runtime related function configuration. See `customContainerConfig` below.
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDns Function custom DNS configuration. See `custom_dns` below.
+         * @param customDns Function custom DNS configuration. See `customDns` below.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDns Function custom DNS configuration. See `custom_dns` below.
+         * @param customDns Function custom DNS configuration. See `customDns` below.
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHealthCheckConfig Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+         * @param customHealthCheckConfig Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHealthCheckConfig Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+         * @param customHealthCheckConfig Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customRuntimeConfig Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+         * @param customRuntimeConfig Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customRuntimeConfig Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+         * @param customRuntimeConfig Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceLifecycleConfig Instance lifecycle configuration. See `instance_lifecycle_config` below.
+         * @param instanceLifecycleConfig Instance lifecycle configuration. See `instanceLifecycleConfig` below.
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceLifecycleConfig Instance lifecycle configuration. See `instance_lifecycle_config` below.
+         * @param instanceLifecycleConfig Instance lifecycle configuration. See `instanceLifecycleConfig` below.
          * 
          * @return builder
          * 

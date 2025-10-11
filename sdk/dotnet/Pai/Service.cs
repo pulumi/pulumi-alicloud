@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Pai
     /// 
     /// For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
     /// 
-    /// &gt; **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
+    /// &gt; **NOTE:** Field `Labels` has been removed since version 1.245.0. Please use new field `Tags`.
     /// 
     /// &gt; **NOTE:** Available since v1.238.0.
     /// 

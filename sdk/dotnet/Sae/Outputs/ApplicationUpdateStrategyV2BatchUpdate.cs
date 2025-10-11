@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int? BatchWaitTime;
         /// <summary>
-        /// The processing method for the batches. Valid values: `auto` and `manual`.
+        /// The processing method for the batches. Valid values: `Auto` and `Manual`.
         /// </summary>
         public readonly string? ReleaseType;
 

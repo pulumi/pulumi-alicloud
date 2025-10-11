@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> EventRw { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+        /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
         /// </summary>
         [Output("isOrganizationTrail")]
         public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
@@ -115,13 +115,13 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> MaxComputeWriteRoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// Field `mns_topic_arn` has been deprecated from provider version 1.118.0.
+        /// Field `MnsTopicArn` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Output("mnsTopicArn")]
         public Output<string?> MnsTopicArn { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.95.0. New field `TrailName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `role_name` has been deprecated from provider version 1.118.0.
+        /// Field `RoleName` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Output("roleName")]
         public Output<string?> RoleName { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? EventRw { get; set; }
 
         /// <summary>
-        /// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+        /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
         /// </summary>
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
@@ -257,13 +257,13 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? MaxComputeWriteRoleArn { get; set; }
 
         /// <summary>
-        /// Field `mns_topic_arn` has been deprecated from provider version 1.118.0.
+        /// Field `MnsTopicArn` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.95.0. New field `TrailName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? OssWriteRoleArn { get; set; }
 
         /// <summary>
-        /// Field `role_name` has been deprecated from provider version 1.118.0.
+        /// Field `RoleName` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? EventRw { get; set; }
 
         /// <summary>
-        /// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+        /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
         /// </summary>
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
@@ -361,13 +361,13 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? MaxComputeWriteRoleArn { get; set; }
 
         /// <summary>
-        /// Field `mns_topic_arn` has been deprecated from provider version 1.118.0.
+        /// Field `MnsTopicArn` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.95.0. New field `TrailName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// Field `role_name` has been deprecated from provider version 1.118.0.
+        /// Field `RoleName` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }

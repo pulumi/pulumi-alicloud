@@ -59,14 +59,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Log Configuration See `log_config` below.
+     * Log Configuration See `logConfig` below.
      * 
      */
     @Import(name="logConfig")
     private @Nullable Output<GatewayLogConfigArgs> logConfig;
 
     /**
-     * @return Log Configuration See `log_config` below.
+     * @return Log Configuration See `logConfig` below.
      * 
      */
     public Optional<Output<GatewayLogConfigArgs>> logConfig() {
@@ -74,14 +74,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network Access Configuration See `network_access_config` below.
+     * Network Access Configuration See `networkAccessConfig` below.
      * 
      */
     @Import(name="networkAccessConfig")
     private @Nullable Output<GatewayNetworkAccessConfigArgs> networkAccessConfig;
 
     /**
-     * @return Network Access Configuration See `network_access_config` below.
+     * @return Network Access Configuration See `networkAccessConfig` below.
      * 
      */
     public Optional<Output<GatewayNetworkAccessConfigArgs>> networkAccessConfig() {
@@ -179,14 +179,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Availability Zone Configuration See `zone_config` below.
+     * Availability Zone Configuration See `zoneConfig` below.
      * 
      */
     @Import(name="zoneConfig", required=true)
     private Output<GatewayZoneConfigArgs> zoneConfig;
 
     /**
-     * @return Availability Zone Configuration See `zone_config` below.
+     * @return Availability Zone Configuration See `zoneConfig` below.
      * 
      */
     public Output<GatewayZoneConfigArgs> zoneConfig() {
@@ -290,7 +290,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logConfig Log Configuration See `log_config` below.
+         * @param logConfig Log Configuration See `logConfig` below.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logConfig Log Configuration See `log_config` below.
+         * @param logConfig Log Configuration See `logConfig` below.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAccessConfig Network Access Configuration See `network_access_config` below.
+         * @param networkAccessConfig Network Access Configuration See `networkAccessConfig` below.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAccessConfig Network Access Configuration See `network_access_config` below.
+         * @param networkAccessConfig Network Access Configuration See `networkAccessConfig` below.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneConfig Availability Zone Configuration See `zone_config` below.
+         * @param zoneConfig Availability Zone Configuration See `zoneConfig` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneConfig Availability Zone Configuration See `zone_config` below.
+         * @param zoneConfig Availability Zone Configuration See `zoneConfig` below.
          * 
          * @return builder
          * 

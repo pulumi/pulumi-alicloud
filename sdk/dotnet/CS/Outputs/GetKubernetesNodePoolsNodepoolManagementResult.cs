@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetKubernetesNodePoolsNodepoolManagementResult
     {
         /// <summary>
-        /// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        /// Whether to enable automatic repair. Valid values: `True`: Automatic repair. `False`: not automatically repaired.
         /// </summary>
         public readonly bool AutoRepair;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly Outputs.GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyResult AutoRepairPolicy;
         /// <summary>
-        /// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+        /// Specifies whether to enable auto update. Valid values: `True`: enables auto update. `False`: disables auto update.
         /// </summary>
         public readonly bool AutoUpgrade;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly Outputs.GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyResult AutoUpgradePolicy;
         /// <summary>
-        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool AutoVulFix;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly Outputs.GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyResult AutoVulFixPolicy;
         /// <summary>
-        /// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+        /// Whether to enable automatic scaling. Value:- `True`: enables the node pool auto-scaling function.- `False`: Auto scaling is not enabled. When the value is false, other `AutoScaling` configuration parameters do not take effect.
         /// </summary>
         public readonly bool Enable;
         /// <summary>

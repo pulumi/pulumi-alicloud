@@ -35,14 +35,14 @@ public final class EcsImagePipelineState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+     * The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
      * 
      */
     @Import(name="baseImage")
     private @Nullable Output<String> baseImage;
 
     /**
-     * @return The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+     * @return The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
      * 
      */
     public Optional<Output<String>> baseImage() {
@@ -318,7 +318,7 @@ public final class EcsImagePipelineState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param baseImage The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+         * @param baseImage The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class EcsImagePipelineState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param baseImage The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+         * @param baseImage The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
          * 
          * @return builder
          * 

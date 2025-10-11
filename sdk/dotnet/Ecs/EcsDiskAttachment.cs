@@ -125,13 +125,13 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EcsDiskAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to mount as a system disk. Default to: `false`.
+        /// Whether to mount as a system disk. Default to: `False`.
         /// </summary>
         [Output("bootable")]
         public Output<bool?> Bootable { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance. Default to: `false`.
+        /// Indicates whether the disk is released together with the instance. Default to: `False`.
         /// </summary>
         [Output("deleteWithInstance")]
         public Output<bool?> DeleteWithInstance { get; private set; } = null!;
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsDiskAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to mount as a system disk. Default to: `false`.
+        /// Whether to mount as a system disk. Default to: `False`.
         /// </summary>
         [Input("bootable")]
         public Input<bool>? Bootable { get; set; }
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance. Default to: `false`.
+        /// Indicates whether the disk is released together with the instance. Default to: `False`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
@@ -257,13 +257,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsDiskAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to mount as a system disk. Default to: `false`.
+        /// Whether to mount as a system disk. Default to: `False`.
         /// </summary>
         [Input("bootable")]
         public Input<bool>? Bootable { get; set; }
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance. Default to: `false`.
+        /// Indicates whether the disk is released together with the instance. Default to: `False`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }

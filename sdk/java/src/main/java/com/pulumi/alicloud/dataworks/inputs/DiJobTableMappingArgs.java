@@ -18,14 +18,14 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
     public static final DiJobTableMappingArgs Empty = new DiJobTableMappingArgs();
 
     /**
-     * Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+     * Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
      * 
      */
     @Import(name="sourceObjectSelectionRules")
     private @Nullable Output<List<DiJobTableMappingSourceObjectSelectionRuleArgs>> sourceObjectSelectionRules;
 
     /**
-     * @return Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+     * @return Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
      * 
      */
     public Optional<Output<List<DiJobTableMappingSourceObjectSelectionRuleArgs>>> sourceObjectSelectionRules() {
@@ -33,14 +33,14 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+     * A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
      * 
      */
     @Import(name="transformationRules")
     private @Nullable Output<List<DiJobTableMappingTransformationRuleArgs>> transformationRules;
 
     /**
-     * @return A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+     * @return A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
      * 
      */
     public Optional<Output<List<DiJobTableMappingTransformationRuleArgs>>> transformationRules() {
@@ -73,7 +73,7 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceObjectSelectionRules Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+         * @param sourceObjectSelectionRules Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceObjectSelectionRules Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+         * @param sourceObjectSelectionRules Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceObjectSelectionRules Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+         * @param sourceObjectSelectionRules Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transformationRules A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+         * @param transformationRules A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transformationRules A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+         * @param transformationRules A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class DiJobTableMappingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transformationRules A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+         * @param transformationRules A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
          * 
          * @return builder
          * 

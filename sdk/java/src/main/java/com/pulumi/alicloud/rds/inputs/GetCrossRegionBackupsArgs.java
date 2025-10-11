@@ -50,7 +50,7 @@ public final class GetCrossRegionBackupsArgs extends com.pulumi.resources.Invoke
     /**
      * The ID of the destination region where the cross-region data backup file is stored.
      * 
-     * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+     * &gt; **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      * 
      */
     @Import(name="crossBackupRegion")
@@ -59,7 +59,7 @@ public final class GetCrossRegionBackupsArgs extends com.pulumi.resources.Invoke
     /**
      * @return The ID of the destination region where the cross-region data backup file is stored.
      * 
-     * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+     * &gt; **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      * 
      */
     public Optional<Output<String>> crossBackupRegion() {
@@ -233,7 +233,7 @@ public final class GetCrossRegionBackupsArgs extends com.pulumi.resources.Invoke
         /**
          * @param crossBackupRegion The ID of the destination region where the cross-region data backup file is stored.
          * 
-         * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+         * &gt; **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class GetCrossRegionBackupsArgs extends com.pulumi.resources.Invoke
         /**
          * @param crossBackupRegion The ID of the destination region where the cross-region data backup file is stored.
          * 
-         * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+         * &gt; **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
          * 
          * @return builder
          * 

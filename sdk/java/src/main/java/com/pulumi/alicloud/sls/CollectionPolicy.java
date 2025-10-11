@@ -271,14 +271,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sls/collectionPolicy:CollectionPolicy")
 public class CollectionPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Centralized transfer configuration. See `centralize_config` below.
+     * Centralized transfer configuration. See `centralizeConfig` below.
      * 
      */
     @Export(name="centralizeConfig", refs={CollectionPolicyCentralizeConfig.class}, tree="[0]")
     private Output<CollectionPolicyCentralizeConfig> centralizeConfig;
 
     /**
-     * @return Centralized transfer configuration. See `centralize_config` below.
+     * @return Centralized transfer configuration. See `centralizeConfig` below.
      * 
      */
     public Output<CollectionPolicyCentralizeConfig> centralizeConfig() {
@@ -313,14 +313,14 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
         return this.dataCode;
     }
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
      * 
      */
     @Export(name="dataConfig", refs={CollectionPolicyDataConfig.class}, tree="[0]")
     private Output<CollectionPolicyDataConfig> dataConfig;
 
     /**
-     * @return The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+     * @return The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
      * 
      */
     public Output<CollectionPolicyDataConfig> dataConfig() {
@@ -341,14 +341,14 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * Collection rule configuration. See `policy_config` below.
+     * Collection rule configuration. See `policyConfig` below.
      * 
      */
     @Export(name="policyConfig", refs={CollectionPolicyPolicyConfig.class}, tree="[0]")
     private Output<CollectionPolicyPolicyConfig> policyConfig;
 
     /**
-     * @return Collection rule configuration. See `policy_config` below.
+     * @return Collection rule configuration. See `policyConfig` below.
      * 
      */
     public Output<CollectionPolicyPolicyConfig> policyConfig() {
@@ -383,14 +383,14 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
         return this.productCode;
     }
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     @Export(name="resourceDirectory", refs={CollectionPolicyResourceDirectory.class}, tree="[0]")
     private Output<CollectionPolicyResourceDirectory> resourceDirectory;
 
     /**
-     * @return For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+     * @return For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     public Output<CollectionPolicyResourceDirectory> resourceDirectory() {

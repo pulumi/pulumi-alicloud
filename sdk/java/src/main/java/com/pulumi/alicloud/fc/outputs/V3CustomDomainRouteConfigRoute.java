@@ -34,7 +34,7 @@ public final class V3CustomDomainRouteConfigRoute {
      */
     private @Nullable String qualifier;
     /**
-     * @return Override Configuration See `rewrite_config` below.
+     * @return Override Configuration See `rewriteConfig` below.
      * 
      */
     private @Nullable V3CustomDomainRouteConfigRouteRewriteConfig rewriteConfig;
@@ -69,7 +69,7 @@ public final class V3CustomDomainRouteConfigRoute {
         return Optional.ofNullable(this.qualifier);
     }
     /**
-     * @return Override Configuration See `rewrite_config` below.
+     * @return Override Configuration See `rewriteConfig` below.
      * 
      */
     public Optional<V3CustomDomainRouteConfigRouteRewriteConfig> rewriteConfig() {

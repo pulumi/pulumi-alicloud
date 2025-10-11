@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the local VPC. See `local_vpc` below.
+        /// The details of the local VPC. See `LocalVpc` below.
         /// </summary>
         [Output("localVpc")]
         public Output<Outputs.FirewallVpcFirewallLocalVpc> LocalVpc { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> MemberUid { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the peer VPC. See `peer_vpc` below.
+        /// The details of the peer VPC. See `PeerVpc` below.
         /// </summary>
         [Output("peerVpc")]
         public Output<Outputs.FirewallVpcFirewallPeerVpc> PeerVpc { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the local VPC. See `local_vpc` below.
+        /// The details of the local VPC. See `LocalVpc` below.
         /// </summary>
         [Input("localVpc", required: true)]
         public Input<Inputs.FirewallVpcFirewallLocalVpcArgs> LocalVpc { get; set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The details of the peer VPC. See `peer_vpc` below.
+        /// The details of the peer VPC. See `PeerVpc` below.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<Inputs.FirewallVpcFirewallPeerVpcArgs> PeerVpc { get; set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the local VPC. See `local_vpc` below.
+        /// The details of the local VPC. See `LocalVpc` below.
         /// </summary>
         [Input("localVpc")]
         public Input<Inputs.FirewallVpcFirewallLocalVpcGetArgs>? LocalVpc { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The details of the peer VPC. See `peer_vpc` below.
+        /// The details of the peer VPC. See `PeerVpc` below.
         /// </summary>
         [Input("peerVpc")]
         public Input<Inputs.FirewallVpcFirewallPeerVpcGetArgs>? PeerVpc { get; set; }

@@ -66,14 +66,14 @@ public final class NestServiceInstanceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The configuration of O&amp;M. See `operation_metadata` below.
+     * The configuration of O&amp;M. See `operationMetadata` below.
      * 
      */
     @Import(name="operationMetadata")
     private @Nullable Output<NestServiceInstanceOperationMetadataArgs> operationMetadata;
 
     /**
-     * @return The configuration of O&amp;M. See `operation_metadata` below.
+     * @return The configuration of O&amp;M. See `operationMetadata` below.
      * 
      */
     public Optional<Output<NestServiceInstanceOperationMetadataArgs>> operationMetadata() {
@@ -315,7 +315,7 @@ public final class NestServiceInstanceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param operationMetadata The configuration of O&amp;M. See `operation_metadata` below.
+         * @param operationMetadata The configuration of O&amp;M. See `operationMetadata` below.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class NestServiceInstanceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param operationMetadata The configuration of O&amp;M. See `operation_metadata` below.
+         * @param operationMetadata The configuration of O&amp;M. See `operationMetadata` below.
          * 
          * @return builder
          * 

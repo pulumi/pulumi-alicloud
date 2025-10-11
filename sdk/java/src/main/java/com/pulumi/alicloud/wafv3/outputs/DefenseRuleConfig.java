@@ -22,7 +22,7 @@ public final class DefenseRuleConfig {
      */
     private @Nullable String abroadRegions;
     /**
-     * @return The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+     * @return The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
      * 
      */
     private @Nullable List<DefenseRuleConfigAccountIdentifier> accountIdentifiers;
@@ -115,7 +115,7 @@ public final class DefenseRuleConfig {
      */
     private @Nullable String protocol;
     /**
-     * @return The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+     * @return The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
      * 
      */
     private @Nullable DefenseRuleConfigRateLimit rateLimit;
@@ -171,7 +171,7 @@ public final class DefenseRuleConfig {
         return Optional.ofNullable(this.abroadRegions);
     }
     /**
-     * @return The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+     * @return The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
      * 
      */
     public List<DefenseRuleConfigAccountIdentifier> accountIdentifiers() {
@@ -284,7 +284,7 @@ public final class DefenseRuleConfig {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+     * @return The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
      * 
      */
     public Optional<DefenseRuleConfigRateLimit> rateLimit() {

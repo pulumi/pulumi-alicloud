@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.DirectMail
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Account type. Valid values: `batch`, `trigger`.
+        /// Account type. Valid values: `Batch`, `Trigger`.
         /// </summary>
         [Input("sendtype")]
         public string? Sendtype { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.DirectMail
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Account type. Valid values: `batch`, `trigger`.
+        /// Account type. Valid values: `Batch`, `Trigger`.
         /// </summary>
         [Input("sendtype")]
         public Input<string>? Sendtype { get; set; }

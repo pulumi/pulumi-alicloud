@@ -77,14 +77,14 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+     * @return Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -92,14 +92,14 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      * 
      */
     @Import(name="policyType")
     private @Nullable Output<String> policyType;
 
     /**
-     * @return Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * @return Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      * 
      */
     public Optional<Output<String>> policyType() {
@@ -230,7 +230,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyName Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+         * @param policyName Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyName Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+         * @param policyName Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyType Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+         * @param policyType Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyType Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+         * @param policyType Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
          * 
          * @return builder
          * 

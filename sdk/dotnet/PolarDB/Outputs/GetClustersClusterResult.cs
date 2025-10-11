@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string ConnectionString;
         /// <summary>
-        /// The create_time of the db_nodes.
+        /// The CreateTime of the db_nodes.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The db_node_class of the db_nodes.
+        /// The DbNodeClass of the db_nodes.
         /// </summary>
         public readonly string DbNodeClass;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string Port;
         /// <summary>
-        /// The region_id of the db_nodes.
+        /// The RegionId of the db_nodes.
         /// </summary>
         public readonly string RegionId;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The zone_id of the db_nodes.
+        /// The ZoneId of the db_nodes.
         /// </summary>
         public readonly string ZoneId;
 

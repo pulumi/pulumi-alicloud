@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  * ### 2. Scale Up
  * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
  * 
- * In the case of scaling up cluster, we should add the node_count of some host group.
+ * In the case of scaling up cluster, we should add the nodeCount of some host group.
  * 
  * &gt; **NOTE:** Scaling up is only applicable to CORE and TASK group. Cost time of scaling up will vary with the number of scaling-up nodes.
  * Scaling down is only applicable to TASK group. If you want to scale down CORE group, please submit tickets or contact EMR support team.

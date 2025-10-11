@@ -66,14 +66,14 @@ public final class ServiceEventRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Matching rules, or relationships between multiple rules. See `match_rules` below.
+     * Matching rules, or relationships between multiple rules. See `matchRules` below.
      * 
      */
     @Import(name="matchRules")
     private @Nullable Output<List<List<ServiceEventRuleMatchRuleArgs>>> matchRules;
 
     /**
-     * @return Matching rules, or relationships between multiple rules. See `match_rules` below.
+     * @return Matching rules, or relationships between multiple rules. See `matchRules` below.
      * 
      */
     public Optional<Output<List<List<ServiceEventRuleMatchRuleArgs>>>> matchRules() {
@@ -199,7 +199,7 @@ public final class ServiceEventRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param matchRules Matching rules, or relationships between multiple rules. See `match_rules` below.
+         * @param matchRules Matching rules, or relationships between multiple rules. See `matchRules` below.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ServiceEventRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param matchRules Matching rules, or relationships between multiple rules. See `match_rules` below.
+         * @param matchRules Matching rules, or relationships between multiple rules. See `matchRules` below.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ServiceEventRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param matchRules Matching rules, or relationships between multiple rules. See `match_rules` below.
+         * @param matchRules Matching rules, or relationships between multiple rules. See `matchRules` below.
          * 
          * @return builder
          * 

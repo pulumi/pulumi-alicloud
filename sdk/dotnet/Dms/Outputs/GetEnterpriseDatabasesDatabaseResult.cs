@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Dms.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// The Database ID, same value as `database_id`.
+        /// The Database ID, same value as `DatabaseId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

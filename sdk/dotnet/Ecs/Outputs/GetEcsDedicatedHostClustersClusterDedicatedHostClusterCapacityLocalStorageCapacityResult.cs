@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int AvailableDisk;
         /// <summary>
-        /// The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+        /// The category of the data disk. Valid values:`Cloud`, `CloudEfficiency`, `CloudSsd`, `EphemeralSsd`, `CloudEssd`.
         /// </summary>
         public readonly string DataDiskCategory;
         /// <summary>

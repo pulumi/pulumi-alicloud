@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
+        /// The status of the bandwidth plan. Valid values: `Active`, `Binded`, `Binding`, `finacialLocked`, `Init`, `Unbinding`, `Updating`.
         /// </summary>
         public readonly string Status;
         /// <summary>

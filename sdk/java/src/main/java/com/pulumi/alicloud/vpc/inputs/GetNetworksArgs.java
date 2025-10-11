@@ -65,14 +65,14 @@ public final class GetNetworksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Default to `true`. Set it to true can output the `route_table_id`.
+     * Default to `true`. Set it to true can output the `routeTableId`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `true`. Set it to true can output the `route_table_id`.
+     * @return Default to `true`. Set it to true can output the `routeTableId`.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -346,7 +346,7 @@ public final class GetNetworksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `true`. Set it to true can output the `route_table_id`.
+         * @param enableDetails Default to `true`. Set it to true can output the `routeTableId`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class GetNetworksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `true`. Set it to true can output the `route_table_id`.
+         * @param enableDetails Default to `true`. Set it to true can output the `routeTableId`.
          * 
          * @return builder
          * 

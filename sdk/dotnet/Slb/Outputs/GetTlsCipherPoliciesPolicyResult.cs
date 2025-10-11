@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class GetTlsCipherPoliciesPolicyResult
     {
         /// <summary>
-        /// The encryption algorithms supported. It depends on the value of `tls_versions`.
+        /// The encryption algorithms supported. It depends on the value of `TlsVersions`.
         /// </summary>
         public readonly ImmutableArray<string> Ciphers;
         /// <summary>

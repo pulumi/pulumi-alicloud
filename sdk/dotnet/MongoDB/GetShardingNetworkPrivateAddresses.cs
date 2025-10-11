@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.MongoDB
         public string DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
         /// </summary>
         [Input("nodeId")]
         public string? NodeId { get; set; }
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The bgp config of Tunnel. See `tunnel_bgp_config` below.
+        /// The bgp config of Tunnel. See `TunnelBgpConfig` below.
         /// </summary>
         public readonly Outputs.ConnectionTunnelOptionsSpecificationTunnelBgpConfig? TunnelBgpConfig;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? TunnelId;
         /// <summary>
-        /// The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+        /// The configuration of Phase 1 negotiations in Tunnel. See `TunnelIkeConfig` below.
         /// </summary>
         public readonly Outputs.ConnectionTunnelOptionsSpecificationTunnelIkeConfig? TunnelIkeConfig;
         /// <summary>
-        /// IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+        /// IPsec configuration in Tunnel. See `TunnelIpsecConfig` below.
         /// </summary>
         public readonly Outputs.ConnectionTunnelOptionsSpecificationTunnelIpsecConfig? TunnelIpsecConfig;
         /// <summary>

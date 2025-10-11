@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Cas.Outputs
     public sealed class GetServiceCertificatesCertificateResult
     {
         /// <summary>
-        /// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
+        /// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `BuyInAliyun` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly bool BuyInAliyun;
         /// <summary>
-        /// The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
+        /// The Cert of the certificate. **Note:** `Cert` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string Cert;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.AliCloud.Cas.Outputs
         /// </summary>
         public readonly string Issuer;
         /// <summary>
-        /// The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
+        /// The Key of the certificate. **Note:** `Key` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+        /// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `Name` has been deprecated from provider version 1.129.0. New field `CertificateName` instead.
         /// </summary>
         public readonly string Name;
         /// <summary>

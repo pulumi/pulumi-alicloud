@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders
     {
         /// <summary>
-        /// The list of response header rules for mirroring back-to-source return. See `return_header` below.
+        /// The list of response header rules for mirroring back-to-source return. See `ReturnHeader` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader> ReturnHeaders;
 

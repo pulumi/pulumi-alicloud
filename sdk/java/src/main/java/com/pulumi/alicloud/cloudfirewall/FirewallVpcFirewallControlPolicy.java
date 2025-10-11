@@ -171,28 +171,28 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.description;
     }
     /**
-     * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
      * 
      */
     @Export(name="destPort", refs={String.class}, tree="[0]")
     private Output<String> destPort;
 
     /**
-     * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+     * @return The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
      * 
      */
     public Output<String> destPort() {
         return this.destPort;
     }
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
      * 
      */
     @Export(name="destPortGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destPortGroup;
 
     /**
-     * @return Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+     * @return Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
      * 
      */
     public Output<Optional<String>> destPortGroup() {
@@ -228,9 +228,9 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
     }
     /**
      * The destination address in the access control policy. Valid values:
-     * - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-     * - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-     * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+     * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
+     * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
+     * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
      * 
      */
     @Export(name="destination", refs={String.class}, tree="[0]")
@@ -238,9 +238,9 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
 
     /**
      * @return The destination address in the access control policy. Valid values:
-     * - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-     * - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-     * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+     * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
+     * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
+     * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
      * 
      */
     public Output<String> destination() {

@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Kms
         public string? DescriptionRegex { get; set; }
 
         /// <summary>
-        /// Default to `true`. Set it to `true` can output more details about resource attributes.
+        /// Default to `True`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DescriptionRegex { get; set; }
 
         /// <summary>
-        /// Default to `true`. Set it to `true` can output more details about resource attributes.
+        /// Default to `True`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

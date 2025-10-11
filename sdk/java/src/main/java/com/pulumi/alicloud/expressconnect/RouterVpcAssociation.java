@@ -194,7 +194,7 @@ public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
-     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
     @Export(name="vpcOwnerId", refs={Integer.class}, tree="[0]")
@@ -202,7 +202,7 @@ public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the Alibaba Cloud account that owns the VPC.
-     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
     public Output<Integer> vpcOwnerId() {

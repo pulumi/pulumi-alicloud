@@ -31,7 +31,7 @@ public final class DefenseRuleConfigRateLimit {
     private @Nullable String subKey;
     /**
      * @return The type of the statistical object. Valid values:
-     * - remote_addr (default): indicates IP.
+     * - remoteAddr (default): indicates IP.
      * - cookie.acw_tc: indicates session.
      * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
      * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
@@ -76,7 +76,7 @@ public final class DefenseRuleConfigRateLimit {
     }
     /**
      * @return The type of the statistical object. Valid values:
-     * - remote_addr (default): indicates IP.
+     * - remoteAddr (default): indicates IP.
      * - cookie.acw_tc: indicates session.
      * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
      * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.

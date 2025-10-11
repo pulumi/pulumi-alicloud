@@ -122,14 +122,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbInstanceDescription);
     }
     /**
-     * IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+     * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      * 
      */
     @Export(name="dbInstanceIpArrays", refs={List.class,DbInstanceDbInstanceIpArray.class}, tree="[0,1]")
     private Output<List<DbInstanceDbInstanceIpArray>> dbInstanceIpArrays;
 
     /**
-     * @return IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+     * @return IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      * 
      */
     public Output<List<DbInstanceDbInstanceIpArray>> dbInstanceIpArrays() {
@@ -150,14 +150,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceNetworkType;
     }
     /**
-     * Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+     * Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      * 
      */
     @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceStorageType;
 
     /**
-     * @return Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
+     * @return Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      * 
      */
     public Output<String> dbInstanceStorageType() {

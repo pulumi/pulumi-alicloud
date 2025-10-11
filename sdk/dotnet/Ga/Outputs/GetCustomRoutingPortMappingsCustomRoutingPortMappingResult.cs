@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         /// <summary>
-        /// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+        /// The access policy of traffic for the backend instance. Valid Values: `Allow`, `Deny`.
         /// </summary>
         public readonly string Status;
         /// <summary>

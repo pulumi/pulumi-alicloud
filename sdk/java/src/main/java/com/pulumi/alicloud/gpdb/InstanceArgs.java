@@ -23,7 +23,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+     * Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
@@ -34,7 +34,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
@@ -141,7 +141,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the encryption key.
-     * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      * 
      */
     @Import(name="encryptionKey")
@@ -149,7 +149,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the encryption key.
-     * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      * 
      */
     public Optional<Output<String>> encryptionKey() {
@@ -204,24 +204,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+     * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      * 
      * @deprecated
-     * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+     * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
+    @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+     * @return Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      * 
      * @deprecated
-     * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+     * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
+    @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -258,9 +258,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The specification of segment nodes. Valid values:
-     * - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-     * - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
@@ -269,9 +269,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The specification of segment nodes. Valid values:
-     * - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-     * - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
@@ -280,16 +280,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ip whitelist. See `ip_whitelist` below.
-     * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
+     * The ip whitelist. See `ipWhitelist` below.
+     * Default to creating a whitelist group with the group name &#34;default&#34; and securityIpList &#34;127.0.0.1&#34;.
      * 
      */
     @Import(name="ipWhitelists")
     private @Nullable Output<List<InstanceIpWhitelistArgs>> ipWhitelists;
 
     /**
-     * @return The ip whitelist. See `ip_whitelist` below.
-     * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
+     * @return The ip whitelist. See `ipWhitelist` below.
+     * Default to creating a whitelist group with the group name &#34;default&#34; and securityIpList &#34;127.0.0.1&#34;.
      * 
      */
     public Optional<Output<List<InstanceIpWhitelistArgs>>> ipWhitelists() {
@@ -342,24 +342,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      * @deprecated
-     * Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
+    @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
     @Import(name="masterNodeNum")
     private @Nullable Output<Integer> masterNodeNum;
 
     /**
-     * @return The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * @return The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      * @deprecated
-     * Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
+    @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
     public Optional<Output<Integer>> masterNodeNum() {
         return Optional.ofNullable(this.masterNodeNum);
     }
@@ -395,14 +395,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+     * The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<String> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+     * @return The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
      * 
      */
     public Optional<Output<String>> period() {
@@ -410,24 +410,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+     * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      * @deprecated
-     * Field `private_ip_address` has been deprecated from provider version 1.213.0.
+     * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
+    @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
     /**
-     * @return The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+     * @return The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      * @deprecated
-     * Field `private_ip_address` has been deprecated from provider version 1.213.0.
+     * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
+    @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
     public Optional<Output<String>> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
@@ -478,7 +478,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      * 
      * @deprecated
      * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
@@ -489,7 +489,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> securityIpLists;
 
     /**
-     * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * @return Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      * 
      * @deprecated
      * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
@@ -533,14 +533,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+     * The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
      * 
      */
     @Import(name="segStorageType")
     private @Nullable Output<String> segStorageType;
 
     /**
-     * @return The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+     * @return The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
      * 
      */
     public Optional<Output<String>> segStorageType() {
@@ -548,14 +548,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+     * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
      * 
      */
     @Import(name="serverlessMode")
     private @Nullable Output<String> serverlessMode;
 
     /**
-     * @return The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+     * @return The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
      * 
      */
     public Optional<Output<String>> serverlessMode() {
@@ -610,14 +610,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
      * 
      */
     @Import(name="usedTime")
     private @Nullable Output<String> usedTime;
 
     /**
-     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+     * @return The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
      * 
      */
     public Optional<Output<String>> usedTime() {
@@ -748,7 +748,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptionKey The ID of the encryption key.
-         * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+         * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
          * 
          * @return builder
          * 
@@ -920,7 +920,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptionKey The ID of the encryption key.
-         * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+         * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
          * 
          * @return builder
          * 
@@ -995,30 +995,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+         * @param instanceChargeType Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+         * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
+        @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+         * @param instanceChargeType Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+         * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
+        @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -1067,9 +1067,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceSpec The specification of segment nodes. Valid values:
-         * - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-         * - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-         * - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+         * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+         * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+         * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
          * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
          * 
          * @return builder
@@ -1082,9 +1082,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceSpec The specification of segment nodes. Valid values:
-         * - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
-         * - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-         * - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+         * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+         * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+         * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
          * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
          * 
          * @return builder
@@ -1095,8 +1095,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist. See `ip_whitelist` below.
-         * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
+         * @param ipWhitelists The ip whitelist. See `ipWhitelist` below.
+         * Default to creating a whitelist group with the group name &#34;default&#34; and securityIpList &#34;127.0.0.1&#34;.
          * 
          * @return builder
          * 
@@ -1107,8 +1107,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist. See `ip_whitelist` below.
-         * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
+         * @param ipWhitelists The ip whitelist. See `ipWhitelist` below.
+         * Default to creating a whitelist group with the group name &#34;default&#34; and securityIpList &#34;127.0.0.1&#34;.
          * 
          * @return builder
          * 
@@ -1118,8 +1118,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist. See `ip_whitelist` below.
-         * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
+         * @param ipWhitelists The ip whitelist. See `ipWhitelist` below.
+         * Default to creating a whitelist group with the group name &#34;default&#34; and securityIpList &#34;127.0.0.1&#34;.
          * 
          * @return builder
          * 
@@ -1192,30 +1192,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodeNum The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * @param masterNodeNum The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
+        @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
         public Builder masterNodeNum(@Nullable Output<Integer> masterNodeNum) {
             $.masterNodeNum = masterNodeNum;
             return this;
         }
 
         /**
-         * @param masterNodeNum The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * @param masterNodeNum The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
+        @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
         public Builder masterNodeNum(Integer masterNodeNum) {
             return masterNodeNum(Output.of(masterNodeNum));
         }
@@ -1273,7 +1273,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+         * @param period The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
          * 
          * @return builder
          * 
@@ -1284,7 +1284,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+         * @param period The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
          * 
          * @return builder
          * 
@@ -1294,30 +1294,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIpAddress The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+         * @param privateIpAddress The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `private_ip_address` has been deprecated from provider version 1.213.0.
+         * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
+        @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
         public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
             $.privateIpAddress = privateIpAddress;
             return this;
         }
 
         /**
-         * @param privateIpAddress The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+         * @param privateIpAddress The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `private_ip_address` has been deprecated from provider version 1.213.0.
+         * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
+        @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
         public Builder privateIpAddress(String privateIpAddress) {
             return privateIpAddress(Output.of(privateIpAddress));
         }
@@ -1386,7 +1386,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIpLists Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * @param securityIpLists Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
          * 
          * @return builder
          * 
@@ -1401,7 +1401,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIpLists Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * @param securityIpLists Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
          * 
          * @return builder
          * 
@@ -1415,7 +1415,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIpLists Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * @param securityIpLists Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
          * 
          * @return builder
          * 
@@ -1473,7 +1473,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param segStorageType The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+         * @param segStorageType The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
          * 
          * @return builder
          * 
@@ -1484,7 +1484,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param segStorageType The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+         * @param segStorageType The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
          * 
          * @return builder
          * 
@@ -1494,7 +1494,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessMode The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+         * @param serverlessMode The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
          * 
          * @return builder
          * 
@@ -1505,7 +1505,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessMode The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+         * @param serverlessMode The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
          * 
          * @return builder
          * 
@@ -1580,7 +1580,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+         * @param usedTime The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
          * 
          * @return builder
          * 
@@ -1591,7 +1591,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+         * @param usedTime The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
          * 
          * @return builder
          * 

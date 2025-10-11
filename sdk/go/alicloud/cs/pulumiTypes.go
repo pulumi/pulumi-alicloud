@@ -2513,6 +2513,8 @@ type ManagedKubernetesAddon struct {
 	// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 	//
 	// The `main.tf`:
+	//
+	// The `varibales.tf`:
 	Disabled *bool `pulumi:"disabled"`
 	// This parameter specifies the name of the component.
 	Name *string `pulumi:"name"`
@@ -2545,6 +2547,8 @@ type ManagedKubernetesAddonArgs struct {
 	// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 	//
 	// The `main.tf`:
+	//
+	// The `varibales.tf`:
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// This parameter specifies the name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2619,6 +2623,8 @@ func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 // `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 //
 // The `main.tf`:
+//
+// The `varibales.tf`:
 func (o ManagedKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }

@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string?> Carrier { get; private set; } = null!;
 
         /// <summary>
-        /// Data disk specifications See `data_disk` below.
+        /// Data disk specifications See `DataDisk` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `SystemDisk` below.
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.InstanceSystemDisk?> SystemDisk { get; private set; } = null!;
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.Ens
         private InputList<Inputs.InstanceDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk specifications See `data_disk` below.
+        /// Data disk specifications See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskArgs> DataDisks
         {
@@ -604,7 +604,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.InstanceSystemDiskArgs>? SystemDisk { get; set; }
@@ -697,7 +697,7 @@ namespace Pulumi.AliCloud.Ens
         private InputList<Inputs.InstanceDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk specifications See `data_disk` below.
+        /// Data disk specifications See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskGetArgs> DataDisks
         {
@@ -907,7 +907,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `SystemDisk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.InstanceSystemDiskGetArgs>? SystemDisk { get; set; }

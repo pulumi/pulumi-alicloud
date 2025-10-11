@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string IpVersion;
         /// <summary>
-        /// The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
+        /// The status of the acceleration region. Valid values: `Active`, `Deleting`, `Init`, `Updating`.
         /// </summary>
         public readonly string Status;
 

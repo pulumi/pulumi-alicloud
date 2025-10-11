@@ -35,14 +35,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+     * The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Integer> cpu;
 
     /**
-     * @return The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     public Optional<Output<Integer>> cpu() {
@@ -65,14 +65,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     @Import(name="dbClusterClass")
     private @Nullable Output<String> dbClusterClass;
 
     /**
-     * @return The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     public Optional<Output<String>> dbClusterClass() {
@@ -125,14 +125,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The modified parameter in DBCluster. See `desired_params` below.
+     * The modified parameter in DBCluster. See `desiredParams` below.
      * 
      */
     @Import(name="desiredParams")
     private @Nullable Output<List<DbClusterDesiredParamArgs>> desiredParams;
 
     /**
-     * @return The modified parameter in DBCluster. See `desired_params` below.
+     * @return The modified parameter in DBCluster. See `desiredParams` below.
      * 
      */
     public Optional<Output<List<DbClusterDesiredParamArgs>>> desiredParams() {
@@ -185,14 +185,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+     * The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Integer> memory;
 
     /**
-     * @return The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+     * @return The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      * 
      */
     public Optional<Output<Integer>> memory() {
@@ -352,7 +352,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpu The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+         * @param cpu The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpu The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+         * @param cpu The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterClass The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         * @param dbClusterClass The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterClass The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         * @param dbClusterClass The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredParams The modified parameter in DBCluster. See `desired_params` below.
+         * @param desiredParams The modified parameter in DBCluster. See `desiredParams` below.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredParams The modified parameter in DBCluster. See `desired_params` below.
+         * @param desiredParams The modified parameter in DBCluster. See `desiredParams` below.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredParams The modified parameter in DBCluster. See `desired_params` below.
+         * @param desiredParams The modified parameter in DBCluster. See `desiredParams` below.
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memory The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+         * @param memory The memory resource amount of DBCluster. Depends on `dbClusterClass`.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memory The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+         * @param memory The memory resource amount of DBCluster. Depends on `dbClusterClass`.
          * 
          * @return builder
          * 

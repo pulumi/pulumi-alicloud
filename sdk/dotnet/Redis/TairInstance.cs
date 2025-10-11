@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> StoragePerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Output("storageSizeGb")]
         public Output<int> StorageSizeGb { get; private set; } = null!;
@@ -664,7 +664,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? StoragePerformanceLevel { get; set; }
 
         /// <summary>
-        /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Input("storageSizeGb")]
         public Input<int>? StorageSizeGb { get; set; }
@@ -1018,7 +1018,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? StoragePerformanceLevel { get; set; }
 
         /// <summary>
-        /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Input("storageSizeGb")]
         public Input<int>? StorageSizeGb { get; set; }

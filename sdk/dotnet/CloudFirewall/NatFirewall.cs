@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> NatGatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        /// The list of routes to be switched by the NAT gateway. See `NatRouteEntryList` below.
         /// </summary>
         [Output("natRouteEntryLists")]
         public Output<ImmutableArray<Outputs.NatFirewallNatRouteEntryList>> NatRouteEntryLists { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<Inputs.NatFirewallNatRouteEntryListArgs>? _natRouteEntryLists;
 
         /// <summary>
-        /// The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        /// The list of routes to be switched by the NAT gateway. See `NatRouteEntryList` below.
         /// </summary>
         public InputList<Inputs.NatFirewallNatRouteEntryListArgs> NatRouteEntryLists
         {
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<Inputs.NatFirewallNatRouteEntryListGetArgs>? _natRouteEntryLists;
 
         /// <summary>
-        /// The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        /// The list of routes to be switched by the NAT gateway. See `NatRouteEntryList` below.
         /// </summary>
         public InputList<Inputs.NatFirewallNatRouteEntryListGetArgs> NatRouteEntryLists
         {

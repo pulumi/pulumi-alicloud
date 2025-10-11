@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.DataWorks.Outputs
     public sealed class DiJobTableMapping
     {
         /// <summary>
-        /// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+        /// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `SourceObjectSelectionRules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiJobTableMappingSourceObjectSelectionRule> SourceObjectSelectionRules;
         /// <summary>
-        /// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+        /// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `TransformationRules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiJobTableMappingTransformationRule> TransformationRules;
 

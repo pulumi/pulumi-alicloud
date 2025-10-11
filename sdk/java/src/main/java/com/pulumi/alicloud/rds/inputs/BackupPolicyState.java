@@ -19,14 +19,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     public static final BackupPolicyState Empty = new BackupPolicyState();
 
     /**
-     * Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+     * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
      * 
      */
     @Import(name="archiveBackupKeepCount")
     private @Nullable Output<Integer> archiveBackupKeepCount;
 
     /**
-     * @return Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+     * @return Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
      * 
      */
     public Optional<Output<Integer>> archiveBackupKeepCount() {
@@ -34,14 +34,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      * 
      */
     @Import(name="archiveBackupKeepPolicy")
     private @Nullable Output<String> archiveBackupKeepPolicy;
 
     /**
-     * @return Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+     * @return Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      * 
      */
     public Optional<Output<String>> archiveBackupKeepPolicy() {
@@ -49,14 +49,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+     * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
      * 
      */
     @Import(name="archiveBackupRetentionPeriod")
     private @Nullable Output<Integer> archiveBackupRetentionPeriod;
 
     /**
-     * @return Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+     * @return Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
      * 
      */
     public Optional<Output<Integer>> archiveBackupRetentionPeriod() {
@@ -100,7 +100,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * - Snapshot: snapshot backup
      *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      * 
-     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      * 
      */
     @Import(name="backupMethod")
@@ -112,7 +112,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * - Snapshot: snapshot backup
      *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      * 
-     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      * 
      */
     public Optional<Output<String>> backupMethod() {
@@ -123,10 +123,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
+    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
     @Import(name="backupPeriods")
     private @Nullable Output<List<String>> backupPeriods;
 
@@ -134,10 +134,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
+    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
     public Optional<Output<List<String>>> backupPeriods() {
         return Optional.ofNullable(this.backupPeriods);
     }
@@ -182,10 +182,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead */
+    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
     @Import(name="backupTime")
     private @Nullable Output<String> backupTime;
 
@@ -193,10 +193,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead */
+    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
     public Optional<Output<String>> backupTime() {
         return Optional.ofNullable(this.backupTime);
     }
@@ -270,14 +270,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+     * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      * 
      */
     @Import(name="highSpaceUsageProtection")
     private @Nullable Output<String> highSpaceUsageProtection;
 
     /**
-     * @return Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+     * @return Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      * 
      */
     public Optional<Output<String>> highSpaceUsageProtection() {
@@ -300,14 +300,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+     * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      * 
      */
     @Import(name="localLogRetentionHours")
     private @Nullable Output<Integer> localLogRetentionHours;
 
     /**
-     * @return Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+     * @return Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      * 
      */
     public Optional<Output<Integer>> localLogRetentionHours() {
@@ -315,14 +315,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      * 
      */
     @Import(name="localLogRetentionSpace")
     private @Nullable Output<Integer> localLogRetentionSpace;
 
     /**
-     * @return Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+     * @return Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      * 
      */
     public Optional<Output<Integer>> localLogRetentionSpace() {
@@ -333,10 +333,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      * 
      */
-    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead */
+    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
     @Import(name="logBackup")
     private @Nullable Output<Boolean> logBackup;
 
@@ -344,10 +344,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      * 
      */
-    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead */
+    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
     public Optional<Output<Boolean>> logBackup() {
         return Optional.ofNullable(this.logBackup);
     }
@@ -385,14 +385,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
      * 
      */
     @Import(name="logBackupRetentionPeriod")
     private @Nullable Output<Integer> logBackupRetentionPeriod;
 
     /**
-     * @return Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+     * @return Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
      * 
      */
     public Optional<Output<Integer>> logBackupRetentionPeriod() {
@@ -403,10 +403,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead */
+    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
     @Import(name="logRetentionPeriod")
     private @Nullable Output<Integer> logRetentionPeriod;
 
@@ -414,10 +414,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead */
+    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
     public Optional<Output<Integer>> logRetentionPeriod() {
         return Optional.ofNullable(this.logRetentionPeriod);
     }
@@ -477,10 +477,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead */
+    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
     @Import(name="retentionPeriod")
     private @Nullable Output<Integer> retentionPeriod;
 
@@ -488,10 +488,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      * @deprecated
-     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead */
+    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
     public Optional<Output<Integer>> retentionPeriod() {
         return Optional.ofNullable(this.retentionPeriod);
     }
@@ -546,7 +546,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveBackupKeepCount Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+         * @param archiveBackupKeepCount Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveBackupKeepCount Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+         * @param archiveBackupKeepCount Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveBackupKeepPolicy Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+         * @param archiveBackupKeepPolicy Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveBackupKeepPolicy Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+         * @param archiveBackupKeepPolicy Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
          * 
          * @return builder
          * 
@@ -588,7 +588,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveBackupRetentionPeriod Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+         * @param archiveBackupRetentionPeriod Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveBackupRetentionPeriod Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+         * @param archiveBackupRetentionPeriod Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * - Snapshot: snapshot backup
          *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
          * 
-         * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+         * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * - Snapshot: snapshot backup
          *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
          * 
-         * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+         * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
          * 
          * @return builder
          * 
@@ -682,10 +682,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
+        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
         public Builder backupPeriods(@Nullable Output<List<String>> backupPeriods) {
             $.backupPeriods = backupPeriods;
             return this;
@@ -697,10 +697,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
+        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
         public Builder backupPeriods(List<String> backupPeriods) {
             return backupPeriods(Output.of(backupPeriods));
         }
@@ -711,10 +711,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
+        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
         public Builder backupPeriods(String... backupPeriods) {
             return backupPeriods(List.of(backupPeriods));
         }
@@ -773,10 +773,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+         * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead */
+        @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
         public Builder backupTime(@Nullable Output<String> backupTime) {
             $.backupTime = backupTime;
             return this;
@@ -788,10 +788,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+         * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead */
+        @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
         public Builder backupTime(String backupTime) {
             return backupTime(Output.of(backupTime));
         }
@@ -889,7 +889,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param highSpaceUsageProtection Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+         * @param highSpaceUsageProtection Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
          * 
          * @return builder
          * 
@@ -900,7 +900,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param highSpaceUsageProtection Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+         * @param highSpaceUsageProtection Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
          * 
          * @return builder
          * 
@@ -931,7 +931,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localLogRetentionHours Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+         * @param localLogRetentionHours Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localLogRetentionHours Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+         * @param localLogRetentionHours Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
          * 
          * @return builder
          * 
@@ -952,7 +952,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localLogRetentionSpace Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+         * @param localLogRetentionSpace Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
          * 
          * @return builder
          * 
@@ -963,7 +963,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localLogRetentionSpace Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
+         * @param localLogRetentionSpace Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
          * 
          * @return builder
          * 
@@ -978,10 +978,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+         * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
          * 
          */
-        @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead */
+        @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
         public Builder logBackup(@Nullable Output<Boolean> logBackup) {
             $.logBackup = logBackup;
             return this;
@@ -993,10 +993,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+         * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
          * 
          */
-        @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead */
+        @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
         public Builder logBackup(Boolean logBackup) {
             return logBackup(Output.of(logBackup));
         }
@@ -1046,7 +1046,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logBackupRetentionPeriod Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+         * @param logBackupRetentionPeriod Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
          * 
          * @return builder
          * 
@@ -1057,7 +1057,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logBackupRetentionPeriod Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+         * @param logBackupRetentionPeriod Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
          * 
          * @return builder
          * 
@@ -1072,10 +1072,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+         * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead */
+        @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
         public Builder logRetentionPeriod(@Nullable Output<Integer> logRetentionPeriod) {
             $.logRetentionPeriod = logRetentionPeriod;
             return this;
@@ -1087,10 +1087,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+         * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead */
+        @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
         public Builder logRetentionPeriod(Integer logRetentionPeriod) {
             return logRetentionPeriod(Output.of(logRetentionPeriod));
         }
@@ -1180,10 +1180,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+         * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead */
+        @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
         public Builder retentionPeriod(@Nullable Output<Integer> retentionPeriod) {
             $.retentionPeriod = retentionPeriod;
             return this;
@@ -1195,10 +1195,10 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+         * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead */
+        @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
         public Builder retentionPeriod(Integer retentionPeriod) {
             return retentionPeriod(Output.of(retentionPeriod));
         }

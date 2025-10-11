@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetChainsChainChainConfigNodeNodeConfig {
     /**
-     * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+     * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
      * 
      */
     private List<GetChainsChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies;
 
     private GetChainsChainChainConfigNodeNodeConfig() {}
     /**
-     * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+     * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
      * 
      */
     public List<GetChainsChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies() {

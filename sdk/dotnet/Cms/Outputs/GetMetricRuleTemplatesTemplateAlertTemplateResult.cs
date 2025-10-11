@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GetMetricRuleTemplatesTemplateAlertTemplateResult
     {
         /// <summary>
-        /// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+        /// The abbreviation of the service name. Valid values: `Ecs`, `Rds`, `Ads`, `Slb`, `Vpc`, `Apigateway`, `Cdn`, `Cs`, `Dcdn`, `Ddos`, `Eip`, `Elasticsearch`, `Emr`, `Ess`, `Hbase`, `IotEdge`, `KvstoreSharding`, `KvstoreSplitrw`, `KvstoreStandard`, `Memcache`, `Mns`, `Mongodb`, `MongodbCluster`, `MongodbSharding`, `MqTopic`, `Ocs`, `Opensearch`, `Oss`, `Polardb`, `Petadata`, `Scdn`, `Sharebandwidthpackages`, `Sls`, `Vpn`.
         /// </summary>
         public readonly string Category;
         /// <summary>

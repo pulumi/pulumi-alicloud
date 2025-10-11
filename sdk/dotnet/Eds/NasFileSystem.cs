@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> OfficeSiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
+        /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `False`.
         /// </summary>
         [Output("reset")]
         public Output<bool?> Reset { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string> OfficeSiteId { get; set; } = null!;
 
         /// <summary>
-        /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
+        /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `False`.
         /// </summary>
         [Input("reset")]
         public Input<bool>? Reset { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OfficeSiteId { get; set; }
 
         /// <summary>
-        /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
+        /// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `False`.
         /// </summary>
         [Input("reset")]
         public Input<bool>? Reset { get; set; }

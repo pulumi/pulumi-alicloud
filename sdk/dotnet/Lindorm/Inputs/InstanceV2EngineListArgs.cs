@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Lindorm.Inputs
         private InputList<Inputs.InstanceV2EngineListNodeGroupArgs>? _nodeGroups;
 
         /// <summary>
-        /// Node Group List See `node_group` below.
+        /// Node Group List See `NodeGroup` below.
         /// </summary>
         public InputList<Inputs.InstanceV2EngineListNodeGroupArgs> NodeGroups
         {

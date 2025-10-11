@@ -124,10 +124,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Subscription plan:
-     * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version_3&#34;, &#34;version_4&#34;, &#34;version_5&#34;].
-     * * China site customers can purchase the following versions of International region, valid values: [&#34;version_pro_asia&#34;, &#34;version_business_asia&#34;, &#34;version_enterprise_asia&#34;]
-     * * International site customers can purchase the following versions of China Mainland region: [&#34;version_pro_china&#34;, &#34;version_business_china&#34;, &#34;version_enterprise_china&#34;]
-     * * International site customers can purchase the following versions of International region: [&#34;version_pro&#34;, &#34;version_business&#34;, &#34;version_enterprise&#34;].
+     * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version3&#34;, &#34;version4&#34;, &#34;version5&#34;].
+     * * China site customers can purchase the following versions of International region, valid values: [&#34;versionProAsia&#34;, &#34;versionBusinessAsia&#34;, &#34;versionEnterpriseAsia&#34;]
+     * * International site customers can purchase the following versions of China Mainland region: [&#34;versionProChina&#34;, &#34;versionBusinessChina&#34;, &#34;versionEnterpriseChina&#34;]
+     * * International site customers can purchase the following versions of International region: [&#34;versionPro&#34;, &#34;versionBusiness&#34;, &#34;versionEnterprise&#34;].
      * 
      */
     @Import(name="packageCode", required=true)
@@ -135,10 +135,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Subscription plan:
-     * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version_3&#34;, &#34;version_4&#34;, &#34;version_5&#34;].
-     * * China site customers can purchase the following versions of International region, valid values: [&#34;version_pro_asia&#34;, &#34;version_business_asia&#34;, &#34;version_enterprise_asia&#34;]
-     * * International site customers can purchase the following versions of China Mainland region: [&#34;version_pro_china&#34;, &#34;version_business_china&#34;, &#34;version_enterprise_china&#34;]
-     * * International site customers can purchase the following versions of International region: [&#34;version_pro&#34;, &#34;version_business&#34;, &#34;version_enterprise&#34;].
+     * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version3&#34;, &#34;version4&#34;, &#34;version5&#34;].
+     * * China site customers can purchase the following versions of International region, valid values: [&#34;versionProAsia&#34;, &#34;versionBusinessAsia&#34;, &#34;versionEnterpriseAsia&#34;]
+     * * International site customers can purchase the following versions of China Mainland region: [&#34;versionProChina&#34;, &#34;versionBusinessChina&#34;, &#34;versionEnterpriseChina&#34;]
+     * * International site customers can purchase the following versions of International region: [&#34;versionPro&#34;, &#34;versionBusiness&#34;, &#34;versionEnterprise&#34;].
      * 
      */
     public Output<String> packageCode() {
@@ -457,10 +457,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param packageCode Subscription plan:
-         * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version_3&#34;, &#34;version_4&#34;, &#34;version_5&#34;].
-         * * China site customers can purchase the following versions of International region, valid values: [&#34;version_pro_asia&#34;, &#34;version_business_asia&#34;, &#34;version_enterprise_asia&#34;]
-         * * International site customers can purchase the following versions of China Mainland region: [&#34;version_pro_china&#34;, &#34;version_business_china&#34;, &#34;version_enterprise_china&#34;]
-         * * International site customers can purchase the following versions of International region: [&#34;version_pro&#34;, &#34;version_business&#34;, &#34;version_enterprise&#34;].
+         * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version3&#34;, &#34;version4&#34;, &#34;version5&#34;].
+         * * China site customers can purchase the following versions of International region, valid values: [&#34;versionProAsia&#34;, &#34;versionBusinessAsia&#34;, &#34;versionEnterpriseAsia&#34;]
+         * * International site customers can purchase the following versions of China Mainland region: [&#34;versionProChina&#34;, &#34;versionBusinessChina&#34;, &#34;versionEnterpriseChina&#34;]
+         * * International site customers can purchase the following versions of International region: [&#34;versionPro&#34;, &#34;versionBusiness&#34;, &#34;versionEnterprise&#34;].
          * 
          * @return builder
          * 
@@ -472,10 +472,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param packageCode Subscription plan:
-         * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version_3&#34;, &#34;version_4&#34;, &#34;version_5&#34;].
-         * * China site customers can purchase the following versions of International region, valid values: [&#34;version_pro_asia&#34;, &#34;version_business_asia&#34;, &#34;version_enterprise_asia&#34;]
-         * * International site customers can purchase the following versions of China Mainland region: [&#34;version_pro_china&#34;, &#34;version_business_china&#34;, &#34;version_enterprise_china&#34;]
-         * * International site customers can purchase the following versions of International region: [&#34;version_pro&#34;, &#34;version_business&#34;, &#34;version_enterprise&#34;].
+         * * China site customers can purchase the following versions of China Mainland region, valid values: [&#34;version3&#34;, &#34;version4&#34;, &#34;version5&#34;].
+         * * China site customers can purchase the following versions of International region, valid values: [&#34;versionProAsia&#34;, &#34;versionBusinessAsia&#34;, &#34;versionEnterpriseAsia&#34;]
+         * * International site customers can purchase the following versions of China Mainland region: [&#34;versionProChina&#34;, &#34;versionBusinessChina&#34;, &#34;versionEnterpriseChina&#34;]
+         * * International site customers can purchase the following versions of International region: [&#34;versionPro&#34;, &#34;versionBusiness&#34;, &#34;versionEnterprise&#34;].
          * 
          * @return builder
          * 

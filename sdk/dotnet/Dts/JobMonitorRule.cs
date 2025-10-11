@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
+        /// Monitoring rules of type, valid values: `Delay`, `Error`. **delay**: delay alarm. **error**: abnormal alarm.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
+        /// Monitoring rules of type, valid values: `Delay`, `Error`. **delay**: delay alarm. **error**: abnormal alarm.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
+        /// Monitoring rules of type, valid values: `Delay`, `Error`. **delay**: delay alarm. **error**: abnormal alarm.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

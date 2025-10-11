@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.PolarDB.Inputs
 
         /// <summary>
         /// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-        /// **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+        /// **NOTE:** There does not recommend setting ModifyMode to `Append` or `Delete` and it will bring a potential diff error.
         /// </summary>
         [Input("modifyMode")]
         public Input<string>? ModifyMode { get; set; }

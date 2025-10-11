@@ -25,7 +25,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Real-time log type. Valid values:
-     * - `dcdn_log_access_l1 (default)`: access log.
+     * - `dcdnLogAccessL1 (default)`: access log.
      * 
      */
     @Import(name="businessType", required=true)
@@ -33,7 +33,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Real-time log type. Valid values:
-     * - `dcdn_log_access_l1 (default)`: access log.
+     * - `dcdnLogAccessL1 (default)`: access log.
      * 
      */
     public Output<String> businessType() {
@@ -101,14 +101,14 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * HTTP delivery configuration parameters. See `http_delivery` below.
+     * HTTP delivery configuration parameters. See `httpDelivery` below.
      * 
      */
     @Import(name="httpDelivery")
     private @Nullable Output<SiteDeliveryTaskHttpDeliveryArgs> httpDelivery;
 
     /**
-     * @return HTTP delivery configuration parameters. See `http_delivery` below.
+     * @return HTTP delivery configuration parameters. See `httpDelivery` below.
      * 
      */
     public Optional<Output<SiteDeliveryTaskHttpDeliveryArgs>> httpDelivery() {
@@ -116,14 +116,14 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kafka delivery configuration parameters. See `kafka_delivery` below.
+     * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      * 
      */
     @Import(name="kafkaDelivery")
     private @Nullable Output<SiteDeliveryTaskKafkaDeliveryArgs> kafkaDelivery;
 
     /**
-     * @return Kafka delivery configuration parameters. See `kafka_delivery` below.
+     * @return Kafka delivery configuration parameters. See `kafkaDelivery` below.
      * 
      */
     public Optional<Output<SiteDeliveryTaskKafkaDeliveryArgs>> kafkaDelivery() {
@@ -131,14 +131,14 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * OSS delivery configuration. See `oss_delivery` below.
+     * OSS delivery configuration. See `ossDelivery` below.
      * 
      */
     @Import(name="ossDelivery")
     private @Nullable Output<SiteDeliveryTaskOssDeliveryArgs> ossDelivery;
 
     /**
-     * @return OSS delivery configuration. See `oss_delivery` below.
+     * @return OSS delivery configuration. See `ossDelivery` below.
      * 
      */
     public Optional<Output<SiteDeliveryTaskOssDeliveryArgs>> ossDelivery() {
@@ -146,14 +146,14 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+     * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      * 
      */
     @Import(name="s3Delivery")
     private @Nullable Output<SiteDeliveryTaskS3DeliveryArgs> s3Delivery;
 
     /**
-     * @return S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+     * @return S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      * 
      */
     public Optional<Output<SiteDeliveryTaskS3DeliveryArgs>> s3Delivery() {
@@ -176,14 +176,14 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * SLS delivery configuration. See `sls_delivery` below.
+     * SLS delivery configuration. See `slsDelivery` below.
      * 
      */
     @Import(name="slsDelivery")
     private @Nullable Output<SiteDeliveryTaskSlsDeliveryArgs> slsDelivery;
 
     /**
-     * @return SLS delivery configuration. See `sls_delivery` below.
+     * @return SLS delivery configuration. See `slsDelivery` below.
      * 
      */
     public Optional<Output<SiteDeliveryTaskSlsDeliveryArgs>> slsDelivery() {
@@ -258,7 +258,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param businessType Real-time log type. Valid values:
-         * - `dcdn_log_access_l1 (default)`: access log.
+         * - `dcdnLogAccessL1 (default)`: access log.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param businessType Real-time log type. Valid values:
-         * - `dcdn_log_access_l1 (default)`: access log.
+         * - `dcdnLogAccessL1 (default)`: access log.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param httpDelivery HTTP delivery configuration parameters. See `http_delivery` below.
+         * @param httpDelivery HTTP delivery configuration parameters. See `httpDelivery` below.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param httpDelivery HTTP delivery configuration parameters. See `http_delivery` below.
+         * @param httpDelivery HTTP delivery configuration parameters. See `httpDelivery` below.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kafkaDelivery Kafka delivery configuration parameters. See `kafka_delivery` below.
+         * @param kafkaDelivery Kafka delivery configuration parameters. See `kafkaDelivery` below.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kafkaDelivery Kafka delivery configuration parameters. See `kafka_delivery` below.
+         * @param kafkaDelivery Kafka delivery configuration parameters. See `kafkaDelivery` below.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ossDelivery OSS delivery configuration. See `oss_delivery` below.
+         * @param ossDelivery OSS delivery configuration. See `ossDelivery` below.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ossDelivery OSS delivery configuration. See `oss_delivery` below.
+         * @param ossDelivery OSS delivery configuration. See `ossDelivery` below.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param s3Delivery S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+         * @param s3Delivery S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param s3Delivery S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+         * @param s3Delivery S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slsDelivery SLS delivery configuration. See `sls_delivery` below.
+         * @param slsDelivery SLS delivery configuration. See `slsDelivery` below.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class SiteDeliveryTaskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slsDelivery SLS delivery configuration. See `sls_delivery` below.
+         * @param slsDelivery SLS delivery configuration. See `slsDelivery` below.
          * 
          * @return builder
          * 

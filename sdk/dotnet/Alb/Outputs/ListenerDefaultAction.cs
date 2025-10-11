@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerDefaultAction
     {
         /// <summary>
-        /// Forwarding Action Configurations See `forward_group_config` below.
+        /// Forwarding Action Configurations See `ForwardGroupConfig` below.
         /// </summary>
         public readonly Outputs.ListenerDefaultActionForwardGroupConfig? ForwardGroupConfig;
         /// <summary>

@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public string? PluginName { get; set; }
 
         /// <summary>
-        /// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
+        /// The type of the plug-in. Valid values: `backendSignature`, `Caching`, `Cors`, `ipControl`, `jwtAuth`, `trafficControl`.
         /// </summary>
         [Input("pluginType")]
         public string? PluginType { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? PluginName { get; set; }
 
         /// <summary>
-        /// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
+        /// The type of the plug-in. Valid values: `backendSignature`, `Caching`, `Cors`, `ipControl`, `jwtAuth`, `trafficControl`.
         /// </summary>
         [Input("pluginType")]
         public Input<string>? PluginType { get; set; }

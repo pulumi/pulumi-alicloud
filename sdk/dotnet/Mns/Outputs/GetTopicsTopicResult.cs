@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mns.Outputs
     public sealed class GetTopicsTopicResult
     {
         /// <summary>
-        /// The id of the topic. The value is set to `name`.
+        /// The id of the topic. The value is set to `Name`.
         /// </summary>
         public readonly string Id;
         /// <summary>

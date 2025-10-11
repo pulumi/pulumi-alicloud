@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string DefaultResult;
         /// <summary>
-        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
+        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter.
         /// </summary>
         public readonly int HeartbeatTimeout;
         /// <summary>

@@ -255,14 +255,14 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.envs);
     }
     /**
-     * Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
+     * Mirror address. When the packageType is set to &#39;Image&#39;, this parameter item is required.
      * 
      */
     @Export(name="imageUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageUrl;
 
     /**
-     * @return Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
+     * @return Mirror address. When the packageType is set to &#39;Image&#39;, this parameter item is required.
      * 
      */
     public Output<Optional<String>> imageUrl() {

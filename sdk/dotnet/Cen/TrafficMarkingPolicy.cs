@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// List of stream classification rules.
-        /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        /// You can add up to 50 stream classification rules at a time. See `TrafficMatchRules` below.
         /// </summary>
         [Output("trafficMatchRules")]
         public Output<ImmutableArray<Outputs.TrafficMarkingPolicyTrafficMatchRule>> TrafficMatchRules { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// List of stream classification rules.
-        /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        /// You can add up to 50 stream classification rules at a time. See `TrafficMatchRules` below.
         /// </summary>
         public InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleArgs> TrafficMatchRules
         {
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// List of stream classification rules.
-        /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        /// You can add up to 50 stream classification rules at a time. See `TrafficMatchRules` below.
         /// </summary>
         public InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleGetArgs> TrafficMatchRules
         {

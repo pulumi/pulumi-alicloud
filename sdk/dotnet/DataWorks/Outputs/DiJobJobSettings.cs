@@ -21,19 +21,19 @@ namespace Pulumi.AliCloud.DataWorks.Outputs
         /// </summary>
         public readonly string? ChannelSettings;
         /// <summary>
-        /// Column type mapping of the synchronization task See `column_data_type_settings` below.
+        /// Column type mapping of the synchronization task See `ColumnDataTypeSettings` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiJobJobSettingsColumnDataTypeSetting> ColumnDataTypeSettings;
         /// <summary>
-        /// Periodic scheduling settings See `cycle_schedule_settings` below.
+        /// Periodic scheduling settings See `CycleScheduleSettings` below.
         /// </summary>
         public readonly Outputs.DiJobJobSettingsCycleScheduleSettings? CycleScheduleSettings;
         /// <summary>
-        /// List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+        /// List of DDL processing settings for synchronization tasks See `DdlHandlingSettings` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiJobJobSettingsDdlHandlingSetting> DdlHandlingSettings;
         /// <summary>
-        /// Run-time setting parameter list See `runtime_settings` below.
+        /// Run-time setting parameter list See `RuntimeSettings` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiJobJobSettingsRuntimeSetting> RuntimeSettings;
 

@@ -148,14 +148,14 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.addAccounts);
     }
     /**
-     * The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+     * The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
      * 
      */
     @Export(name="baseImage", refs={String.class}, tree="[0]")
     private Output<String> baseImage;
 
     /**
-     * @return The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
+     * @return The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
      * 
      */
     public Output<String> baseImage() {

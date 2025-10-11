@@ -21,14 +21,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+     * Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+     * @return Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -36,14 +36,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+     * Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+     * @return Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -100,14 +100,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+     * The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+     * @return The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -250,7 +250,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A list of security group ids to associate with.
      * 
-     * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      * 
      */
     @Import(name="securityGroups")
@@ -259,7 +259,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A list of security group ids to associate with.
      * 
-     * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -282,14 +282,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch_id of dataCenter-1, can not empty.
+     * The vswitchId of dataCenter-1, can not empty.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of dataCenter-1, can not empty.
+     * @return The vswitchId of dataCenter-1, can not empty.
      * 
      */
     public Output<String> vswitchId() {
@@ -297,14 +297,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+     * @return The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -356,7 +356,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+         * @param autoRenew Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+         * @param autoRenew Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+         * @param autoRenewPeriod Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+         * @param autoRenewPeriod Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskType The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+         * @param diskType The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskType The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+         * @param diskType The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityGroups A list of security group ids to associate with.
          * 
-         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityGroups A list of security group ids to associate with.
          * 
-         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityGroups A list of security group ids to associate with.
          * 
-         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -727,7 +727,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch_id of dataCenter-1, can not empty.
+         * @param vswitchId The vswitchId of dataCenter-1, can not empty.
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch_id of dataCenter-1, can not empty.
+         * @param vswitchId The vswitchId of dataCenter-1, can not empty.
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+         * @param zoneId The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
          * 
          * @return builder
          * 
@@ -759,7 +759,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
+         * @param zoneId The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be &#34;&#34; or consistent.
          * 
          * @return builder
          * 

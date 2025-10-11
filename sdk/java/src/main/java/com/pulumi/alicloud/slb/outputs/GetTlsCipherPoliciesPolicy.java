@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTlsCipherPoliciesPolicy {
     /**
-     * @return The encryption algorithms supported. It depends on the value of `tls_versions`.
+     * @return The encryption algorithms supported. It depends on the value of `tlsVersions`.
      * 
      */
     private List<String> ciphers;
@@ -55,7 +55,7 @@ public final class GetTlsCipherPoliciesPolicy {
 
     private GetTlsCipherPoliciesPolicy() {}
     /**
-     * @return The encryption algorithms supported. It depends on the value of `tls_versions`.
+     * @return The encryption algorithms supported. It depends on the value of `tlsVersions`.
      * 
      */
     public List<String> ciphers() {

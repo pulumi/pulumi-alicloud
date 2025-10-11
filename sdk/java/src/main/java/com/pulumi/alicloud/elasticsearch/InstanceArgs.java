@@ -21,14 +21,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -96,14 +96,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
      */
     @Import(name="dataNodeDiskPerformanceLevel")
     private @Nullable Output<String> dataNodeDiskPerformanceLevel;
 
     /**
-     * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
      */
     public Optional<Output<String>> dataNodeDiskPerformanceLevel() {
@@ -216,14 +216,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -246,14 +246,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
      * 
      */
     @Import(name="kibanaPrivateSecurityGroupId")
     private @Nullable Output<String> kibanaPrivateSecurityGroupId;
 
     /**
-     * @return the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * @return the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
      * 
      */
     public Optional<Output<String>> kibanaPrivateSecurityGroupId() {
@@ -261,14 +261,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      * 
      */
     @Import(name="kibanaPrivateWhitelists")
     private @Nullable Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      * 
      */
     public Optional<Output<List<String>>> kibanaPrivateWhitelists() {
@@ -291,14 +291,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -306,14 +306,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
@@ -366,14 +366,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -426,14 +426,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
      * 
      */
     @Import(name="renewStatus")
     private @Nullable Output<String> renewStatus;
 
     /**
-     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
      * 
      */
     public Optional<Output<String>> renewStatus() {
@@ -606,14 +606,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      * 
      */
     @Import(name="zoneCount")
     private @Nullable Output<Integer> zoneCount;
 
     /**
-     * @return The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+     * @return The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      * 
      */
     public Optional<Output<Integer>> zoneCount() {
@@ -684,7 +684,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataNodeDiskPerformanceLevel Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+         * @param dataNodeDiskPerformanceLevel Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
          * 
          * @return builder
          * 
@@ -800,7 +800,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataNodeDiskPerformanceLevel Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+         * @param dataNodeDiskPerformanceLevel Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
          * 
          * @return builder
          * 
@@ -957,7 +957,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
          * 
          * @return builder
          * 
@@ -999,7 +999,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
          * 
          * @return builder
          * 
@@ -1010,7 +1010,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
          * 
          * @return builder
          * 
@@ -1031,7 +1031,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
          * 
          * @return builder
          * 
@@ -1082,7 +1082,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1093,7 +1093,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1103,7 +1103,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -1114,7 +1114,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
          * 
          * @return builder
          * 
@@ -1187,7 +1187,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
          * 
          * @return builder
          * 
@@ -1198,7 +1198,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
          * 
          * @return builder
          * 
@@ -1291,7 +1291,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
          * 
          * @return builder
          * 
@@ -1302,7 +1302,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
          * 
          * @return builder
          * 
@@ -1543,7 +1543,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneCount The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+         * @param zoneCount The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
          * 
          * @return builder
          * 
@@ -1554,7 +1554,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneCount The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+         * @param zoneCount The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
          * 
          * @return builder
          * 

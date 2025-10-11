@@ -64,18 +64,18 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The config of external source.
-     * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+     * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
      * `VirtualHostName` - The virtual host name of RabbitMQ.
      * `QueueName` - The queue name of RabbitMQ.
-     * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+     * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
      * `Topic` - The topic of RabbitMQ.
      * `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
      * `GroupID` - The group ID of consumer.
-     * When `external_source_type` is `MNS`, The following attributes are supported:
+     * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      * 
      */
@@ -84,18 +84,18 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The config of external source.
-     * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+     * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
      * `VirtualHostName` - The virtual host name of RabbitMQ.
      * `QueueName` - The queue name of RabbitMQ.
-     * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+     * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
      * `Topic` - The topic of RabbitMQ.
      * `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
      * `GroupID` - The group ID of consumer.
-     * When `external_source_type` is `MNS`, The following attributes are supported:
+     * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      * 
      */
@@ -104,14 +104,14 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
      * 
      */
     @Import(name="externalSourceType")
     private @Nullable Output<String> externalSourceType;
 
     /**
-     * @return The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+     * @return The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
      * 
      */
     public Optional<Output<String>> externalSourceType() {
@@ -227,18 +227,18 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param externalSourceConfig The config of external source.
-         * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+         * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
          * `RegionId` - The region ID of RabbitMQ.
          * `InstanceId` - The instance ID of RabbitMQ.
          * `VirtualHostName` - The virtual host name of RabbitMQ.
          * `QueueName` - The queue name of RabbitMQ.
-         * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+         * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
          * `RegionId` - The region ID of RabbitMQ.
          * `InstanceId` - The instance ID of RabbitMQ.
          * `Topic` - The topic of RabbitMQ.
          * `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
          * `GroupID` - The group ID of consumer.
-         * When `external_source_type` is `MNS`, The following attributes are supported:
+         * When `externalSourceType` is `MNS`, The following attributes are supported:
          * `QueueName` - The queue name of MNS.
          * 
          * @return builder
@@ -251,18 +251,18 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param externalSourceConfig The config of external source.
-         * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+         * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
          * `RegionId` - The region ID of RabbitMQ.
          * `InstanceId` - The instance ID of RabbitMQ.
          * `VirtualHostName` - The virtual host name of RabbitMQ.
          * `QueueName` - The queue name of RabbitMQ.
-         * When `external_source_type` is `RabbitMQ`, The following attributes are supported:
+         * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
          * `RegionId` - The region ID of RabbitMQ.
          * `InstanceId` - The instance ID of RabbitMQ.
          * `Topic` - The topic of RabbitMQ.
          * `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
          * `GroupID` - The group ID of consumer.
-         * When `external_source_type` is `MNS`, The following attributes are supported:
+         * When `externalSourceType` is `MNS`, The following attributes are supported:
          * `QueueName` - The queue name of MNS.
          * 
          * @return builder
@@ -273,7 +273,7 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalSourceType The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+         * @param externalSourceType The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class EventSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalSourceType The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+         * @param externalSourceType The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
          * 
          * @return builder
          * 

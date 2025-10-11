@@ -68,13 +68,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string?> DirectoryName { get; private set; } = null!;
 
         /// <summary>
-        /// Login preferences See `login_preference` below.
+        /// Login preferences See `LoginPreference` below.
         /// </summary>
         [Output("loginPreference")]
         public Output<Outputs.DirectoryLoginPreference> LoginPreference { get; private set; } = null!;
 
         /// <summary>
-        /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        /// Global MFA verification configuration. See `MfaAuthenticationSettingInfo` below.
         /// </summary>
         [Output("mfaAuthenticationSettingInfo")]
         public Output<Outputs.DirectoryMfaAuthenticationSettingInfo> MfaAuthenticationSettingInfo { get; private set; } = null!;
@@ -86,19 +86,19 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> MfaAuthenticationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Password policy See `password_policy` below.
+        /// Password policy See `PasswordPolicy` below.
         /// </summary>
         [Output("passwordPolicy")]
         public Output<Outputs.DirectoryPasswordPolicy> PasswordPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        /// Identity Provider (IDP) See `SamlIdentityProviderConfiguration` below.
         /// </summary>
         [Output("samlIdentityProviderConfiguration")]
         public Output<Outputs.DirectorySamlIdentityProviderConfiguration> SamlIdentityProviderConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// SP information. See `saml_service_provider` below.
+        /// SP information. See `SamlServiceProvider` below.
         /// </summary>
         [Output("samlServiceProvider")]
         public Output<Outputs.DirectorySamlServiceProvider> SamlServiceProvider { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> ScimSynchronizationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// User Provisioning configuration See `user_provisioning_configuration` below.
+        /// User Provisioning configuration See `UserProvisioningConfiguration` below.
         /// </summary>
         [Output("userProvisioningConfiguration")]
         public Output<Outputs.DirectoryUserProvisioningConfiguration> UserProvisioningConfiguration { get; private set; } = null!;
@@ -174,13 +174,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryName { get; set; }
 
         /// <summary>
-        /// Login preferences See `login_preference` below.
+        /// Login preferences See `LoginPreference` below.
         /// </summary>
         [Input("loginPreference")]
         public Input<Inputs.DirectoryLoginPreferenceArgs>? LoginPreference { get; set; }
 
         /// <summary>
-        /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        /// Global MFA verification configuration. See `MfaAuthenticationSettingInfo` below.
         /// </summary>
         [Input("mfaAuthenticationSettingInfo")]
         public Input<Inputs.DirectoryMfaAuthenticationSettingInfoArgs>? MfaAuthenticationSettingInfo { get; set; }
@@ -192,19 +192,19 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? MfaAuthenticationStatus { get; set; }
 
         /// <summary>
-        /// Password policy See `password_policy` below.
+        /// Password policy See `PasswordPolicy` below.
         /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.DirectoryPasswordPolicyArgs>? PasswordPolicy { get; set; }
 
         /// <summary>
-        /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        /// Identity Provider (IDP) See `SamlIdentityProviderConfiguration` below.
         /// </summary>
         [Input("samlIdentityProviderConfiguration")]
         public Input<Inputs.DirectorySamlIdentityProviderConfigurationArgs>? SamlIdentityProviderConfiguration { get; set; }
 
         /// <summary>
-        /// SP information. See `saml_service_provider` below.
+        /// SP information. See `SamlServiceProvider` below.
         /// </summary>
         [Input("samlServiceProvider")]
         public Input<Inputs.DirectorySamlServiceProviderArgs>? SamlServiceProvider { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? ScimSynchronizationStatus { get; set; }
 
         /// <summary>
-        /// User Provisioning configuration See `user_provisioning_configuration` below.
+        /// User Provisioning configuration See `UserProvisioningConfiguration` below.
         /// </summary>
         [Input("userProvisioningConfiguration")]
         public Input<Inputs.DirectoryUserProvisioningConfigurationArgs>? UserProvisioningConfiguration { get; set; }
@@ -248,13 +248,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryName { get; set; }
 
         /// <summary>
-        /// Login preferences See `login_preference` below.
+        /// Login preferences See `LoginPreference` below.
         /// </summary>
         [Input("loginPreference")]
         public Input<Inputs.DirectoryLoginPreferenceGetArgs>? LoginPreference { get; set; }
 
         /// <summary>
-        /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        /// Global MFA verification configuration. See `MfaAuthenticationSettingInfo` below.
         /// </summary>
         [Input("mfaAuthenticationSettingInfo")]
         public Input<Inputs.DirectoryMfaAuthenticationSettingInfoGetArgs>? MfaAuthenticationSettingInfo { get; set; }
@@ -266,19 +266,19 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? MfaAuthenticationStatus { get; set; }
 
         /// <summary>
-        /// Password policy See `password_policy` below.
+        /// Password policy See `PasswordPolicy` below.
         /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.DirectoryPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
 
         /// <summary>
-        /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        /// Identity Provider (IDP) See `SamlIdentityProviderConfiguration` below.
         /// </summary>
         [Input("samlIdentityProviderConfiguration")]
         public Input<Inputs.DirectorySamlIdentityProviderConfigurationGetArgs>? SamlIdentityProviderConfiguration { get; set; }
 
         /// <summary>
-        /// SP information. See `saml_service_provider` below.
+        /// SP information. See `SamlServiceProvider` below.
         /// </summary>
         [Input("samlServiceProvider")]
         public Input<Inputs.DirectorySamlServiceProviderGetArgs>? SamlServiceProvider { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? ScimSynchronizationStatus { get; set; }
 
         /// <summary>
-        /// User Provisioning configuration See `user_provisioning_configuration` below.
+        /// User Provisioning configuration See `UserProvisioningConfiguration` below.
         /// </summary>
         [Input("userProvisioningConfiguration")]
         public Input<Inputs.DirectoryUserProvisioningConfigurationGetArgs>? UserProvisioningConfiguration { get; set; }

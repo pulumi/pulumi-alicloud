@@ -35,14 +35,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rocketmq/rocketMQInstance:RocketMQInstance")
 public class RocketMQInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The access control list for the instance. See `acl_info` below.
+     * The access control list for the instance. See `aclInfo` below.
      * 
      */
     @Export(name="aclInfo", refs={RocketMQInstanceAclInfo.class}, tree="[0]")
     private Output<RocketMQInstanceAclInfo> aclInfo;
 
     /**
-     * @return The access control list for the instance. See `acl_info` below.
+     * @return The access control list for the instance. See `aclInfo` below.
      * 
      */
     public Output<RocketMQInstanceAclInfo> aclInfo() {
@@ -169,14 +169,14 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
         return this.ipWhitelists;
     }
     /**
-     * Instance network configuration information See `network_info` below.
+     * Instance network configuration information See `networkInfo` below.
      * 
      */
     @Export(name="networkInfo", refs={RocketMQInstanceNetworkInfo.class}, tree="[0]")
     private Output<RocketMQInstanceNetworkInfo> networkInfo;
 
     /**
-     * @return Instance network configuration information See `network_info` below.
+     * @return Instance network configuration information See `networkInfo` below.
      * 
      */
     public Output<RocketMQInstanceNetworkInfo> networkInfo() {
@@ -253,14 +253,14 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
         return this.periodUnit;
     }
     /**
-     * product info See `product_info` below.
+     * product info See `productInfo` below.
      * 
      */
     @Export(name="productInfo", refs={RocketMQInstanceProductInfo.class}, tree="[0]")
     private Output</* @Nullable */ RocketMQInstanceProductInfo> productInfo;
 
     /**
-     * @return product info See `product_info` below.
+     * @return product info See `productInfo` below.
      * 
      */
     public Output<Optional<RocketMQInstanceProductInfo>> productInfo() {
@@ -381,8 +381,8 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
      * - serverless：Serverless instance
-     *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     *   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      * 
      */
     @Export(name="subSeriesCode", refs={String.class}, tree="[0]")
@@ -395,8 +395,8 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
      * - serverless：Serverless instance
-     *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     *   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      * 
      */
     public Output<String> subSeriesCode() {

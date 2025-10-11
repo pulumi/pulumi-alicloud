@@ -94,14 +94,14 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
-     * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
      * 
      */
     @Import(name="destPort")
     private @Nullable Output<String> destPort;
 
     /**
-     * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+     * @return The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
      * 
      */
     public Optional<Output<String>> destPort() {
@@ -109,14 +109,14 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
-     * Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+     * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
      * 
      */
     @Import(name="destPortGroup")
     private @Nullable Output<String> destPortGroup;
 
     /**
-     * @return Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+     * @return Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
      * 
      */
     public Optional<Output<String>> destPortGroup() {
@@ -155,9 +155,9 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
 
     /**
      * The destination address in the access control policy. Valid values:
-     * - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-     * - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-     * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+     * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
+     * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
+     * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
      * 
      */
     @Import(name="destination")
@@ -165,9 +165,9 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
 
     /**
      * @return The destination address in the access control policy. Valid values:
-     * - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-     * - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-     * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+     * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
+     * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
+     * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
      * 
      */
     public Optional<Output<String>> destination() {
@@ -541,7 +541,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param destPort The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+         * @param destPort The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param destPort The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+         * @param destPort The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param destPortGroup Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+         * @param destPortGroup Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param destPortGroup Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+         * @param destPortGroup Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
          * 
          * @return builder
          * 
@@ -636,9 +636,9 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
 
         /**
          * @param destination The destination address in the access control policy. Valid values:
-         * - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-         * - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-         * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+         * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
+         * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
+         * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
          * 
          * @return builder
          * 
@@ -650,9 +650,9 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
 
         /**
          * @param destination The destination address in the access control policy. Valid values:
-         * - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-         * - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-         * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+         * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
+         * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
+         * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
          * 
          * @return builder
          * 

@@ -1276,7 +1276,7 @@ namespace Pulumi.AliCloud.Ram
         private List<Inputs.GetPolicyDocumentStatementArgs>? _statements;
 
         /// <summary>
-        /// Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
+        /// Statement of the RAM policy document. See the following `Block statement`. See `Statement` below.
         /// </summary>
         public List<Inputs.GetPolicyDocumentStatementArgs> Statements
         {
@@ -1308,7 +1308,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.GetPolicyDocumentStatementInputArgs>? _statements;
 
         /// <summary>
-        /// Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
+        /// Statement of the RAM policy document. See the following `Block statement`. See `Statement` below.
         /// </summary>
         public InputList<Inputs.GetPolicyDocumentStatementInputArgs> Statements
         {

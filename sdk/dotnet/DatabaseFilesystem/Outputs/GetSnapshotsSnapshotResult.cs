@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
         /// </summary>
         public readonly int SourceFsSize;
         /// <summary>
-        /// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        /// The status of the snapshot. Possible values: `Progressing`, `Accomplished`, `Failed`.
         /// </summary>
         public readonly string Status;
 

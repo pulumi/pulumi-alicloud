@@ -133,7 +133,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
@@ -141,7 +141,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
     private @Nullable Output<Boolean> enforceMfaForLogin;
 
     /**
-     * @return Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+     * @return Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
@@ -444,7 +444,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enforceMfaForLogin Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+         * @param enforceMfaForLogin Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
          * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
          * 
          * @return builder
@@ -456,7 +456,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enforceMfaForLogin Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+         * @param enforceMfaForLogin Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
          * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
          * 
          * @return builder

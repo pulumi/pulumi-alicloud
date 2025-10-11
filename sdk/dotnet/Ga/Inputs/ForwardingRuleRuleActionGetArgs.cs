@@ -13,8 +13,8 @@ namespace Pulumi.AliCloud.Ga.Inputs
     public sealed class ForwardingRuleRuleActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Forwarding configuration. See `forward_group_config` below.
-        /// &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
+        /// Forwarding configuration. See `ForwardGroupConfig` below.
+        /// &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `ForwardGroupConfig`, and we recommend that you use the `RuleActionType` and `RuleActionValue` to configure forwarding actions.
         /// </summary>
         [Input("forwardGroupConfig")]
         public Input<Inputs.ForwardingRuleRuleActionForwardGroupConfigGetArgs>? ForwardGroupConfig { get; set; }

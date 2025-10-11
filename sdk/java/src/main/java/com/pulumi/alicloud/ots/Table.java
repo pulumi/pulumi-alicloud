@@ -140,14 +140,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowUpdate);
     }
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      * 
      */
     @Export(name="definedColumns", refs={List.class,TableDefinedColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TableDefinedColumn>> definedColumns;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      * 
      */
     public Output<Optional<List<TableDefinedColumn>>> definedColumns() {
@@ -210,28 +210,28 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.maxVersion;
     }
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      * 
      */
     @Export(name="primaryKeys", refs={List.class,TablePrimaryKey.class}, tree="[0,1]")
     private Output<List<TablePrimaryKey>> primaryKeys;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      * 
      */
     public Output<List<TablePrimaryKey>> primaryKeys() {
         return this.primaryKeys;
     }
     /**
-     * . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     @Export(name="sseKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseKeyId;
 
     /**
-     * @return . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * @return . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     public Output<Optional<String>> sseKeyId() {
@@ -252,14 +252,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sseKeyType);
     }
     /**
-     * The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     @Export(name="sseRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseRoleArn;
 
     /**
-     * @return The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * @return The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     public Output<Optional<String>> sseRoleArn() {

@@ -141,43 +141,43 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountDescription` instead.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `DbInstanceId` instead.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
         /// </summary>
         [Output("resetPermissionFlag")]
         public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
         /// 
         /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         /// </summary>
@@ -310,19 +310,19 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountDescription` instead.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `DbInstanceId` instead.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -340,7 +340,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password
@@ -363,13 +363,13 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
         /// </summary>
         [Input("resetPermissionFlag")]
         public Input<bool>? ResetPermissionFlag { get; set; }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
         /// 
         /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         /// </summary>
@@ -447,19 +447,19 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountDescription` instead.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `DbInstanceId` instead.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -468,7 +468,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a db account with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -477,7 +477,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -486,7 +486,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password
@@ -500,7 +500,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
         /// </summary>
         [Input("resetPermissionFlag")]
         public Input<bool>? ResetPermissionFlag { get; set; }
@@ -512,7 +512,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
         /// 
         /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         /// </summary>

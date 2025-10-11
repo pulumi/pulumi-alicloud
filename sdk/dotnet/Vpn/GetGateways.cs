@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Vpn
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `Enable`, `Disable`.
         /// </summary>
         [Input("sslVpn")]
         public string? SslVpn { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `Enable`, `Disable`.
         /// </summary>
         [Input("sslVpn")]
         public Input<string>? SslVpn { get; set; }

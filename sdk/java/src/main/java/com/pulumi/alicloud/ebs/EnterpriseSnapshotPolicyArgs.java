@@ -23,14 +23,14 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
     public static final EnterpriseSnapshotPolicyArgs Empty = new EnterpriseSnapshotPolicyArgs();
 
     /**
-     * Snapshot replication information. See `cross_region_copy_info` below.
+     * Snapshot replication information. See `crossRegionCopyInfo` below.
      * 
      */
     @Import(name="crossRegionCopyInfo")
     private @Nullable Output<EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs> crossRegionCopyInfo;
 
     /**
-     * @return Snapshot replication information. See `cross_region_copy_info` below.
+     * @return Snapshot replication information. See `crossRegionCopyInfo` below.
      * 
      */
     public Optional<Output<EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs>> crossRegionCopyInfo() {
@@ -83,14 +83,14 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Snapshot retention policy representing resources. See `retain_rule` below.
+     * Snapshot retention policy representing resources. See `retainRule` below.
      * 
      */
     @Import(name="retainRule", required=true)
     private Output<EnterpriseSnapshotPolicyRetainRuleArgs> retainRule;
 
     /**
-     * @return Snapshot retention policy representing resources. See `retain_rule` below.
+     * @return Snapshot retention policy representing resources. See `retainRule` below.
      * 
      */
     public Output<EnterpriseSnapshotPolicyRetainRuleArgs> retainRule() {
@@ -113,14 +113,14 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Snapshot special retention rules. See `special_retain_rules` below.
+     * Snapshot special retention rules. See `specialRetainRules` below.
      * 
      */
     @Import(name="specialRetainRules")
     private @Nullable Output<EnterpriseSnapshotPolicySpecialRetainRulesArgs> specialRetainRules;
 
     /**
-     * @return Snapshot special retention rules. See `special_retain_rules` below.
+     * @return Snapshot special retention rules. See `specialRetainRules` below.
      * 
      */
     public Optional<Output<EnterpriseSnapshotPolicySpecialRetainRulesArgs>> specialRetainRules() {
@@ -143,14 +143,14 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Snapshot storage policy. See `storage_rule` below.
+     * Snapshot storage policy. See `storageRule` below.
      * 
      */
     @Import(name="storageRule")
     private @Nullable Output<EnterpriseSnapshotPolicyStorageRuleArgs> storageRule;
 
     /**
-     * @return Snapshot storage policy. See `storage_rule` below.
+     * @return Snapshot storage policy. See `storageRule` below.
      * 
      */
     public Optional<Output<EnterpriseSnapshotPolicyStorageRuleArgs>> storageRule() {
@@ -222,7 +222,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param crossRegionCopyInfo Snapshot replication information. See `cross_region_copy_info` below.
+         * @param crossRegionCopyInfo Snapshot replication information. See `crossRegionCopyInfo` below.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param crossRegionCopyInfo Snapshot replication information. See `cross_region_copy_info` below.
+         * @param crossRegionCopyInfo Snapshot replication information. See `crossRegionCopyInfo` below.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param retainRule Snapshot retention policy representing resources. See `retain_rule` below.
+         * @param retainRule Snapshot retention policy representing resources. See `retainRule` below.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param retainRule Snapshot retention policy representing resources. See `retain_rule` below.
+         * @param retainRule Snapshot retention policy representing resources. See `retainRule` below.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param specialRetainRules Snapshot special retention rules. See `special_retain_rules` below.
+         * @param specialRetainRules Snapshot special retention rules. See `specialRetainRules` below.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param specialRetainRules Snapshot special retention rules. See `special_retain_rules` below.
+         * @param specialRetainRules Snapshot special retention rules. See `specialRetainRules` below.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param storageRule Snapshot storage policy. See `storage_rule` below.
+         * @param storageRule Snapshot storage policy. See `storageRule` below.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class EnterpriseSnapshotPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param storageRule Snapshot storage policy. See `storage_rule` below.
+         * @param storageRule Snapshot storage policy. See `storageRule` below.
          * 
          * @return builder
          * 

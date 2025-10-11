@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetRegistryEnterpriseInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `true`. Set it to true can output instance authorization token.
+        /// Default to `True`. Set it to true can output instance authorization token.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetRegistryEnterpriseInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `true`. Set it to true can output instance authorization token.
+        /// Default to `True`. Set it to true can output instance authorization token.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

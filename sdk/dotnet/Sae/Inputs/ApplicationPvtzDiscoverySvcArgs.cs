@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.ApplicationPvtzDiscoverySvcPortProtocolArgs>? _portProtocols;
 
         /// <summary>
-        /// The port number and protocol. See `port_protocols` below.
+        /// The port number and protocol. See `PortProtocols` below.
         /// </summary>
         public InputList<Inputs.ApplicationPvtzDiscoverySvcPortProtocolArgs> PortProtocols
         {

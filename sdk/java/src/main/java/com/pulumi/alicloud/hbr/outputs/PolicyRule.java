@@ -41,7 +41,7 @@ public final class PolicyRule {
      */
     private @Nullable Integer retention;
     /**
-     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
      * 
      */
     private @Nullable List<PolicyRuleRetentionRule> retentionRules;
@@ -103,7 +103,7 @@ public final class PolicyRule {
         return Optional.ofNullable(this.retention);
     }
     /**
-     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
      * 
      */
     public List<PolicyRuleRetentionRule> retentionRules() {

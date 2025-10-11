@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// <summary>
         /// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
         /// 
-        /// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
+        /// **NOTE:** The `Status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// <summary>
         /// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
         /// 
-        /// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
+        /// **NOTE:** The `Status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// <summary>
         /// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
         /// 
-        /// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
+        /// **NOTE:** The `Status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

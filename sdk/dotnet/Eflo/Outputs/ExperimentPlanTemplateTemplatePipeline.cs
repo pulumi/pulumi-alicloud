@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
     public sealed class ExperimentPlanTemplateTemplatePipeline
     {
         /// <summary>
-        /// Contains a series of parameters related to the environment. See `env_params` below.
+        /// Contains a series of parameters related to the environment. See `EnvParams` below.
         /// </summary>
         public readonly Outputs.ExperimentPlanTemplateTemplatePipelineEnvParams EnvParams;
         /// <summary>

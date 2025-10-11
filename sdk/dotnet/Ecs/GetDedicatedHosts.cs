@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<Inputs.GetDedicatedHostsOperationLockArgs>? _operationLocks;
 
         /// <summary>
-        /// The reason why the dedicated host resource is locked. See `operation_locks` below.
+        /// The reason why the dedicated host resource is locked. See `OperationLocks` below.
         /// </summary>
         public List<Inputs.GetDedicatedHostsOperationLockArgs> OperationLocks
         {
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.GetDedicatedHostsOperationLockInputArgs>? _operationLocks;
 
         /// <summary>
-        /// The reason why the dedicated host resource is locked. See `operation_locks` below.
+        /// The reason why the dedicated host resource is locked. See `OperationLocks` below.
         /// </summary>
         public InputList<Inputs.GetDedicatedHostsOperationLockInputArgs> OperationLocks
         {

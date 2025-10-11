@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretParametersParameter {
     /**
-     * @return The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
+     * @return The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String constraints;
@@ -88,14 +88,14 @@ public final class GetSecretParametersParameter {
      */
     private String updatedDate;
     /**
-     * @return (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+     * @return (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `withDecryption` is set to `true`.
      * 
      */
     private String value;
 
     private GetSecretParametersParameter() {}
     /**
-     * @return The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
+     * @return The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String constraints() {
@@ -200,7 +200,7 @@ public final class GetSecretParametersParameter {
         return this.updatedDate;
     }
     /**
-     * @return (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+     * @return (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `withDecryption` is set to `true`.
      * 
      */
     public String value() {

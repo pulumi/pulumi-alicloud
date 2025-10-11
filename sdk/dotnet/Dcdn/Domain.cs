@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.94.0.
     /// 
-    /// &gt; **NOTE:** Field `force_set`, `security_token` has been removed from provider version 1.227.1.
+    /// &gt; **NOTE:** Field `ForceSet`, `SecurityToken` has been removed from provider version 1.227.1.
     /// 
     /// ## Example Usage
     /// 
@@ -73,19 +73,19 @@ namespace Pulumi.AliCloud.Dcdn
     public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `Cas`. If you specify this parameter, an existing certificate is used.
         /// </summary>
         [Output("certId")]
         public Output<string> CertId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `Upload`.
         /// </summary>
         [Output("certName")]
         public Output<string> CertName { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `Cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
         /// </summary>
         [Output("certRegion")]
         public Output<string> CertRegion { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `Staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         /// </summary>
         [Output("env")]
         public Output<string?> Env { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// Source  See `sources` below.
+        /// Source  See `Sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainSource>> Sources { get; private set; } = null!;
@@ -243,19 +243,19 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `Cas`. If you specify this parameter, an existing certificate is used.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
 
         /// <summary>
-        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `Upload`.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `Cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
         /// </summary>
         [Input("certRegion")]
         public Input<string>? CertRegion { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `Staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         /// </summary>
         [Input("env")]
         public Input<string>? Env { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainSourceArgs>? _sources;
 
         /// <summary>
-        /// Source  See `sources` below.
+        /// Source  See `Sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceArgs> Sources
         {
@@ -381,19 +381,19 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `Cas`. If you specify this parameter, an existing certificate is used.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
 
         /// <summary>
-        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `Upload`.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `Cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
         /// </summary>
         [Input("certRegion")]
         public Input<string>? CertRegion { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `Staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         /// </summary>
         [Input("env")]
         public Input<string>? Env { get; set; }
@@ -462,7 +462,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// Source  See `sources` below.
+        /// Source  See `Sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceGetArgs> Sources
         {

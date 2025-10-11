@@ -30,19 +30,19 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DestGroupOwnerAccount;
         /// <summary>
-        /// Authorization direction. Valid values are: `ingress` or `egress`.
+        /// Authorization direction. Valid values are: `Ingress` or `Egress`.
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
+        /// The IP protocol. Valid values are: `Tcp`, `Udp`, `Icmp`, `Gre` and `All`.
         /// </summary>
         public readonly string IpProtocol;
         /// <summary>
-        /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+        /// Refers to the network type. Can be either `Internet` or `Intranet`. The default value is `Internet`.
         /// </summary>
         public readonly string NicType;
         /// <summary>
-        /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
+        /// Authorization policy. Can be either `Accept` or `Drop`. The default value is `Accept`.
         /// </summary>
         public readonly string Policy;
         /// <summary>

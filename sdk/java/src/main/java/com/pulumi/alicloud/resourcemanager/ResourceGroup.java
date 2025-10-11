@@ -102,18 +102,18 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      * 
      */
     public Output<String> name() {

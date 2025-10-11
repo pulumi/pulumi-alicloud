@@ -114,13 +114,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The first name of user. The first_name can be up to `64` characters long.
+        /// The first name of user. The FirstName can be up to `64` characters long.
         /// </summary>
         [Output("firstName")]
         public Output<string?> FirstName { get; private set; } = null!;
 
         /// <summary>
-        /// The last name of user. The last_name can be up to `64` characters long.
+        /// The last name of user. The LastName can be up to `64` characters long.
         /// </summary>
         [Output("lastName")]
         public Output<string?> LastName { get; private set; } = null!;
@@ -214,13 +214,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The first name of user. The first_name can be up to `64` characters long.
+        /// The first name of user. The FirstName can be up to `64` characters long.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of user. The last_name can be up to `64` characters long.
+        /// The last name of user. The LastName can be up to `64` characters long.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
@@ -270,13 +270,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The first name of user. The first_name can be up to `64` characters long.
+        /// The first name of user. The FirstName can be up to `64` characters long.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of user. The last_name can be up to `64` characters long.
+        /// The last name of user. The LastName can be up to `64` characters long.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }

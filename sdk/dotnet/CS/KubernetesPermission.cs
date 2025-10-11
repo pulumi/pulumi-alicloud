@@ -146,13 +146,13 @@ namespace Pulumi.AliCloud.CS
     public partial class KubernetesPermission : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of user permission. See `permissions` below.
+        /// A list of user permission. See `Permissions` below.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.KubernetesPermissionPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `IsRamRole` to `True` during authorization.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// A list of user permission. See `permissions` below.
+        /// A list of user permission. See `Permissions` below.
         /// </summary>
         public InputList<Inputs.KubernetesPermissionPermissionArgs> Permissions
         {
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `IsRamRole` to `True` during authorization.
         /// </summary>
         [Input("uid", required: true)]
         public Input<string> Uid { get; set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// A list of user permission. See `permissions` below.
+        /// A list of user permission. See `Permissions` below.
         /// </summary>
         public InputList<Inputs.KubernetesPermissionPermissionGetArgs> Permissions
         {
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+        /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `IsRamRole` to `True` during authorization.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

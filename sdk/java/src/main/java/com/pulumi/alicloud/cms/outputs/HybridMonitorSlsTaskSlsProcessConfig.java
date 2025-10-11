@@ -26,7 +26,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
      */
     private @Nullable HybridMonitorSlsTaskSlsProcessConfigFilter filter;
     /**
-     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
      * 
      */
     private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigGroupBy> groupBies;
@@ -52,7 +52,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
      * 
      */
     public List<HybridMonitorSlsTaskSlsProcessConfigGroupBy> groupBies() {

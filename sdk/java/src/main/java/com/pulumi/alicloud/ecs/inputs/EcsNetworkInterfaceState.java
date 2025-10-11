@@ -50,14 +50,14 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      * 
      */
     @Import(name="ipv4PrefixCount")
     private @Nullable Output<Integer> ipv4PrefixCount;
 
     /**
-     * @return The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+     * @return The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      * 
      */
     public Optional<Output<Integer>> ipv4PrefixCount() {
@@ -80,14 +80,14 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      * 
      */
     @Import(name="ipv6AddressCount")
     private @Nullable Output<Integer> ipv6AddressCount;
 
     /**
-     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      * 
      */
     public Optional<Output<Integer>> ipv6AddressCount() {
@@ -125,7 +125,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+     * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -136,7 +136,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -193,7 +193,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+     * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -204,7 +204,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> privateIp;
 
     /**
-     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+     * @return Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -231,7 +231,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+     * Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      * 
      * @deprecated
      * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
@@ -242,7 +242,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> privateIps;
 
     /**
-     * @return Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+     * @return Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      * 
      * @deprecated
      * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
@@ -254,7 +254,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+     * Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      * 
      * @deprecated
      * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
@@ -265,7 +265,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private @Nullable Output<Integer> privateIpsCount;
 
     /**
-     * @return Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+     * @return Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      * 
      * @deprecated
      * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
@@ -322,14 +322,14 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+     * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+     * @return The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -337,7 +337,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+     * Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      * 
      * @deprecated
      * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
@@ -348,7 +348,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+     * @return Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      * 
      * @deprecated
      * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
@@ -509,7 +509,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv4PrefixCount The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+         * @param ipv4PrefixCount The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv4PrefixCount The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+         * @param ipv4PrefixCount The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIp Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+         * @param privateIp Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
          * 
          * @return builder
          * 
@@ -741,7 +741,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIp Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+         * @param privateIp Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
          * 
          * @return builder
          * 
@@ -786,7 +786,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIps Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+         * @param privateIps Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
          * 
          * @return builder
          * 
@@ -801,7 +801,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIps Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+         * @param privateIps Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIps Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
+         * @param privateIps Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
          * 
          * @return builder
          * 
@@ -829,7 +829,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIpsCount Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+         * @param privateIpsCount Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIpsCount Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
+         * @param privateIpsCount Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
          * 
          * @return builder
          * 
@@ -921,7 +921,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -932,7 +932,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -952,7 +952,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+         * @param securityGroups Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+         * @param securityGroups Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+         * @param securityGroups Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
          * 
          * @return builder
          * 

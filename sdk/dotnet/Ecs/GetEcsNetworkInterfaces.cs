@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `NetworkInterfaceName` instead
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        /// Field `PrivateIp` has been deprecated from provider version 1.123.1. New field `PrimaryIpAddress` instead
         /// </summary>
         [Input("privateIp")]
         public string? PrivateIp { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
+        /// Field `Name` has been deprecated from provider version 1.123.1. New field `NetworkInterfaceName` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        /// Field `PrivateIp` has been deprecated from provider version 1.123.1. New field `PrimaryIpAddress` instead
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }

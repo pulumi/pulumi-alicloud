@@ -23,11 +23,11 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? Period;
         /// <summary>
-        /// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+        /// Field `Statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
         /// </summary>
         public readonly string? Statistics;
         /// <summary>
-        /// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+        /// Field `Threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
         /// </summary>
         public readonly string? Threshold;
 

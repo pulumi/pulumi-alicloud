@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// </summary>
         public readonly string? RemoteDirectory;
         /// <summary>
-        /// The roles. See `roles` below.
+        /// The roles. See `Roles` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAdditionalVolumeRole> Roles;
         /// <summary>

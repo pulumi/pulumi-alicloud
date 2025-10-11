@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
  * 
- * &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+ * &gt; **NOTE:** Please remember to add a `dependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
  * 
  * ## Example Usage
  * 
@@ -135,14 +135,14 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
         return this.interfaceId;
     }
     /**
-     * Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
+     * Another side router interface ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account.
      * 
      */
     @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceId;
 
     /**
-     * @return Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
+     * @return Another side router interface ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account.
      * 
      */
     public Output<String> oppositeInterfaceId() {
@@ -163,32 +163,32 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
         return this.oppositeInterfaceOwnerId;
     }
     /**
-     * Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * Another side router ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
      */
     @Export(name="oppositeRouterId", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterId;
 
     /**
-     * @return Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * @return Another side router ID. It must belong the specified &#34;oppositeInterfaceOwnerId&#34; account. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
      */
     public Output<String> oppositeRouterId() {
         return this.oppositeRouterId;
     }
     /**
-     * Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
-     * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+     * &gt; **NOTE:** The value of &#34;oppositeInterfaceOwnerId&#34; or &#34;accountId&#34; must be main account and not be sub account.
      * 
      */
     @Export(name="oppositeRouterType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeRouterType;
 
     /**
-     * @return Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * @return Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;oppositeInterfaceOwnerId&#34; is specified.
      * 
-     * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+     * &gt; **NOTE:** The value of &#34;oppositeInterfaceOwnerId&#34; or &#34;accountId&#34; must be main account and not be sub account.
      * 
      */
     public Output<Optional<String>> oppositeRouterType() {

@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// Response code statistics. See `status` below.
+        /// Response code statistics. See `Status` below.
         /// </summary>
         public readonly Outputs.WafRuleRateLimitStatus? Status;
         /// <summary>
-        /// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+        /// The subfield of the target field. If you set `Target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `SubKey`.
         /// </summary>
         public readonly string? SubKey;
         /// <summary>

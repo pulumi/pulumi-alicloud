@@ -20,12 +20,12 @@ public final class ApiFcServiceConfig {
      */
     private String arnRole;
     /**
-     * @return The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The base url of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     private @Nullable String functionBaseUrl;
     /**
-     * @return The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * @return The function name of function compute service. Required if `functionType` is `FCEvent`.
      * 
      */
     private @Nullable String functionName;
@@ -40,17 +40,17 @@ public final class ApiFcServiceConfig {
      */
     private @Nullable String functionVersion;
     /**
-     * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The http method of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     private @Nullable String method;
     /**
-     * @return Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * @return Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
      * 
      */
     private @Nullable Boolean onlyBusinessPath;
     /**
-     * @return The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The path of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     private @Nullable String path;
@@ -65,7 +65,7 @@ public final class ApiFcServiceConfig {
      */
     private String region;
     /**
-     * @return The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+     * @return The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
      * 
      */
     private @Nullable String serviceName;
@@ -84,14 +84,14 @@ public final class ApiFcServiceConfig {
         return this.arnRole;
     }
     /**
-     * @return The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The base url of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<String> functionBaseUrl() {
         return Optional.ofNullable(this.functionBaseUrl);
     }
     /**
-     * @return The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * @return The function name of function compute service. Required if `functionType` is `FCEvent`.
      * 
      */
     public Optional<String> functionName() {
@@ -112,21 +112,21 @@ public final class ApiFcServiceConfig {
         return Optional.ofNullable(this.functionVersion);
     }
     /**
-     * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The http method of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
     /**
-     * @return Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * @return Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<Boolean> onlyBusinessPath() {
         return Optional.ofNullable(this.onlyBusinessPath);
     }
     /**
-     * @return The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * @return The path of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
     public Optional<String> path() {
@@ -147,7 +147,7 @@ public final class ApiFcServiceConfig {
         return this.region;
     }
     /**
-     * @return The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+     * @return The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
      * 
      */
     public Optional<String> serviceName() {

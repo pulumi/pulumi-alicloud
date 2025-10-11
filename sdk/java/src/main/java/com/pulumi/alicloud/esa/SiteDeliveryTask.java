@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
 public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
     /**
      * Real-time log type. Valid values:
-     * - `dcdn_log_access_l1 (default)`: access log.
+     * - `dcdnLogAccessL1 (default)`: access log.
      * 
      */
     @Export(name="businessType", refs={String.class}, tree="[0]")
@@ -125,7 +125,7 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Real-time log type. Valid values:
-     * - `dcdn_log_access_l1 (default)`: access log.
+     * - `dcdnLogAccessL1 (default)`: access log.
      * 
      */
     public Output<String> businessType() {
@@ -188,56 +188,56 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
         return this.fieldName;
     }
     /**
-     * HTTP delivery configuration parameters. See `http_delivery` below.
+     * HTTP delivery configuration parameters. See `httpDelivery` below.
      * 
      */
     @Export(name="httpDelivery", refs={SiteDeliveryTaskHttpDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskHttpDelivery> httpDelivery;
 
     /**
-     * @return HTTP delivery configuration parameters. See `http_delivery` below.
+     * @return HTTP delivery configuration parameters. See `httpDelivery` below.
      * 
      */
     public Output<Optional<SiteDeliveryTaskHttpDelivery>> httpDelivery() {
         return Codegen.optional(this.httpDelivery);
     }
     /**
-     * Kafka delivery configuration parameters. See `kafka_delivery` below.
+     * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      * 
      */
     @Export(name="kafkaDelivery", refs={SiteDeliveryTaskKafkaDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskKafkaDelivery> kafkaDelivery;
 
     /**
-     * @return Kafka delivery configuration parameters. See `kafka_delivery` below.
+     * @return Kafka delivery configuration parameters. See `kafkaDelivery` below.
      * 
      */
     public Output<Optional<SiteDeliveryTaskKafkaDelivery>> kafkaDelivery() {
         return Codegen.optional(this.kafkaDelivery);
     }
     /**
-     * OSS delivery configuration. See `oss_delivery` below.
+     * OSS delivery configuration. See `ossDelivery` below.
      * 
      */
     @Export(name="ossDelivery", refs={SiteDeliveryTaskOssDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskOssDelivery> ossDelivery;
 
     /**
-     * @return OSS delivery configuration. See `oss_delivery` below.
+     * @return OSS delivery configuration. See `ossDelivery` below.
      * 
      */
     public Output<Optional<SiteDeliveryTaskOssDelivery>> ossDelivery() {
         return Codegen.optional(this.ossDelivery);
     }
     /**
-     * S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+     * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      * 
      */
     @Export(name="s3Delivery", refs={SiteDeliveryTaskS3Delivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskS3Delivery> s3Delivery;
 
     /**
-     * @return S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+     * @return S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      * 
      */
     public Output<Optional<SiteDeliveryTaskS3Delivery>> s3Delivery() {
@@ -258,14 +258,14 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * SLS delivery configuration. See `sls_delivery` below.
+     * SLS delivery configuration. See `slsDelivery` below.
      * 
      */
     @Export(name="slsDelivery", refs={SiteDeliveryTaskSlsDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskSlsDelivery> slsDelivery;
 
     /**
-     * @return SLS delivery configuration. See `sls_delivery` below.
+     * @return SLS delivery configuration. See `slsDelivery` below.
      * 
      */
     public Output<Optional<SiteDeliveryTaskSlsDelivery>> slsDelivery() {

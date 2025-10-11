@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     public sealed class RuleTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+        /// The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `DeadLetterQueue` below.
         /// </summary>
         [Input("deadLetterQueue")]
         public Input<Inputs.RuleTargetDeadLetterQueueGetArgs>? DeadLetterQueue { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         private InputList<Inputs.RuleTargetParamListGetArgs>? _paramLists;
 
         /// <summary>
-        /// The parameters that are configured for the event target. See `param_list` below.
+        /// The parameters that are configured for the event target. See `ParamList` below.
         /// </summary>
         public InputList<Inputs.RuleTargetParamListGetArgs> ParamLists
         {
@@ -51,8 +51,8 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         public Input<string> TargetId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
-        /// **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
+        /// The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `Http`,`Https` and `Mysql`.
+        /// **NOTE:** From version 1.208.1, `Type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `Mysql`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

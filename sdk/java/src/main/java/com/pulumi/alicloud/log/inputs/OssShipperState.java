@@ -110,16 +110,16 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
      * - format = `json`
-     *   `json_enable_tag` - (Optional) Whether to deliver the label.
+     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
      * - format = `csv`
-     *   `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-     *   `csv_config_nullidentifier` - (Optional) Invalid field content.
-     *   `csv_config_quote` - (Optional) Escape character under csv configuration.
-     *   `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
-     *   `parquet_config` - (Optional) Configure to use parquet storage format.
+     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
      *   `name` - (Required) The name of the key.
      *   `type` - (Required) Type of configuration name.
      * 
@@ -131,16 +131,16 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
      * @return Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
      * - format = `json`
-     *   `json_enable_tag` - (Optional) Whether to deliver the label.
+     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
      * - format = `csv`
-     *   `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-     *   `csv_config_nullidentifier` - (Optional) Invalid field content.
-     *   `csv_config_quote` - (Optional) Escape character under csv configuration.
-     *   `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
-     *   `parquet_config` - (Optional) Configure to use parquet storage format.
+     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
      *   `name` - (Required) The name of the key.
      *   `type` - (Required) Type of configuration name.
      * 
@@ -435,16 +435,16 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
          * @param format Storage format, only supports three types: `json`, `parquet`, `csv`.
          * **According to the different format, please select the following parameters**
          * - format = `json`
-         *   `json_enable_tag` - (Optional) Whether to deliver the label.
+         *   `jsonEnableTag` - (Optional) Whether to deliver the label.
          * - format = `csv`
-         *   `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-         *   `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-         *   `csv_config_nullidentifier` - (Optional) Invalid field content.
-         *   `csv_config_quote` - (Optional) Escape character under csv configuration.
-         *   `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-         *   `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+         *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+         *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+         *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+         *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+         *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+         *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
          * - format = `parquet`
-         *   `parquet_config` - (Optional) Configure to use parquet storage format.
+         *   `parquetConfig` - (Optional) Configure to use parquet storage format.
          *   `name` - (Required) The name of the key.
          *   `type` - (Required) Type of configuration name.
          * 
@@ -460,16 +460,16 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
          * @param format Storage format, only supports three types: `json`, `parquet`, `csv`.
          * **According to the different format, please select the following parameters**
          * - format = `json`
-         *   `json_enable_tag` - (Optional) Whether to deliver the label.
+         *   `jsonEnableTag` - (Optional) Whether to deliver the label.
          * - format = `csv`
-         *   `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-         *   `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-         *   `csv_config_nullidentifier` - (Optional) Invalid field content.
-         *   `csv_config_quote` - (Optional) Escape character under csv configuration.
-         *   `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-         *   `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+         *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+         *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+         *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+         *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+         *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+         *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
          * - format = `parquet`
-         *   `parquet_config` - (Optional) Configure to use parquet storage format.
+         *   `parquetConfig` - (Optional) Configure to use parquet storage format.
          *   `name` - (Required) The name of the key.
          *   `type` - (Required) Type of configuration name.
          * 

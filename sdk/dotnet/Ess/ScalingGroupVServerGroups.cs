@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Attaches/Detaches vserver groups to a specified scaling group.
     /// 
-    /// &gt; **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
+    /// &gt; **NOTE:** The load balancer of which vserver groups belongs to must be in `Active` status.
     /// 
     /// &gt; **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
     /// 
@@ -24,9 +24,9 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** Detach action will be executed before attach action.
     /// 
-    /// &gt; **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.
+    /// &gt; **NOTE:** Vserver group is defined uniquely by `LoadbalancerId`, `VserverGroupId`, `Port`.
     /// 
-    /// &gt; **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
+    /// &gt; **NOTE:** Modifing `Weight` attribute means detach vserver group first and then, attach with new weight parameter.
     /// 
     /// &gt; **NOTE:** Available since v1.53.0.
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
+        /// A list of vserver groups attached on scaling group. See `VserverGroups` below.
         /// </summary>
         [Output("vserverGroups")]
         public Output<ImmutableArray<Outputs.ScalingGroupVServerGroupsVserverGroup>> VserverGroups { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs>? _vserverGroups;
 
         /// <summary>
-        /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
+        /// A list of vserver groups attached on scaling group. See `VserverGroups` below.
         /// </summary>
         public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs> VserverGroups
         {
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs>? _vserverGroups;
 
         /// <summary>
-        /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
+        /// A list of vserver groups attached on scaling group. See `VserverGroups` below.
         /// </summary>
         public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs> VserverGroups
         {

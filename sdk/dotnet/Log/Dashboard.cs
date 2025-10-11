@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Configuration of charts in the dashboard.
-        /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
+        /// **Note:** From version 1.164.0, `CharList` can set parameter "action".
         /// </summary>
         [Output("charList")]
         public Output<string> CharList { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Configuration of charts in the dashboard.
-        /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
+        /// **Note:** From version 1.164.0, `CharList` can set parameter "action".
         /// </summary>
         [Input("charList", required: true)]
         public Input<string> CharList { get; set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Configuration of charts in the dashboard.
-        /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
+        /// **Note:** From version 1.164.0, `CharList` can set parameter "action".
         /// </summary>
         [Input("charList")]
         public Input<string>? CharList { get; set; }

@@ -151,14 +151,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eventbridge/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
-     * The parameters that are configured for authentication. See `auth_parameters` below.
+     * The parameters that are configured for authentication. See `authParameters` below.
      * 
      */
     @Export(name="authParameters", refs={ConnectionAuthParameters.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionAuthParameters> authParameters;
 
     /**
-     * @return The parameters that are configured for authentication. See `auth_parameters` below.
+     * @return The parameters that are configured for authentication. See `authParameters` below.
      * 
      */
     public Output<Optional<ConnectionAuthParameters>> authParameters() {
@@ -207,14 +207,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The parameters that are configured for the network. See `network_parameters` below.
+     * The parameters that are configured for the network. See `networkParameters` below.
      * 
      */
     @Export(name="networkParameters", refs={ConnectionNetworkParameters.class}, tree="[0]")
     private Output<ConnectionNetworkParameters> networkParameters;
 
     /**
-     * @return The parameters that are configured for the network. See `network_parameters` below.
+     * @return The parameters that are configured for the network. See `networkParameters` below.
      * 
      */
     public Output<ConnectionNetworkParameters> networkParameters() {

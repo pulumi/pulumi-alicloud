@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string InternalPort;
         /// <summary>
-        /// The ip protocol. Valid values: `any`,`tcp` and `udp`.
+        /// The ip protocol. Valid values: `Any`,`Tcp` and `Udp`.
         /// </summary>
         public readonly string IpProtocol;
         /// <summary>

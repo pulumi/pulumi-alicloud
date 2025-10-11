@@ -25,7 +25,7 @@ public final class FirewallVpcFirewallPeerVpc {
      */
     private @Nullable String eniPrivateIpAddress;
     /**
-     * @return The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+     * @return The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
      * 
      */
     private List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists;
@@ -66,7 +66,7 @@ public final class FirewallVpcFirewallPeerVpc {
         return Optional.ofNullable(this.eniPrivateIpAddress);
     }
     /**
-     * @return The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+     * @return The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
      * 
      */
     public List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists() {

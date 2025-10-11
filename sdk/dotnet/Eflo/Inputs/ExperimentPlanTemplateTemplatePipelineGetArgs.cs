@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Eflo.Inputs
     public sealed class ExperimentPlanTemplateTemplatePipelineGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contains a series of parameters related to the environment. See `env_params` below.
+        /// Contains a series of parameters related to the environment. See `EnvParams` below.
         /// </summary>
         [Input("envParams", required: true)]
         public Input<Inputs.ExperimentPlanTemplateTemplatePipelineEnvParamsGetArgs> EnvParams { get; set; } = null!;

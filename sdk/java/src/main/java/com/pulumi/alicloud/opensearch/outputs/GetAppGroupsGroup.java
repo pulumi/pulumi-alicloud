@@ -24,7 +24,7 @@ public final class GetAppGroupsGroup {
      */
     private String appGroupName;
     /**
-     * @return Billing model. Valid values:`compute_resource` and `qps`.
+     * @return Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     private Integer chargeWay;
@@ -125,7 +125,7 @@ public final class GetAppGroupsGroup {
      */
     private Integer secondRankAlgoDeploymentId;
     /**
-     * @return The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+     * @return The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      * 
      */
     private String status;
@@ -156,7 +156,7 @@ public final class GetAppGroupsGroup {
         return this.appGroupName;
     }
     /**
-     * @return Billing model. Valid values:`compute_resource` and `qps`.
+     * @return Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     public Integer chargeWay() {
@@ -299,7 +299,7 @@ public final class GetAppGroupsGroup {
         return this.secondRankAlgoDeploymentId;
     }
     /**
-     * @return The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+     * @return The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      * 
      */
     public String status() {

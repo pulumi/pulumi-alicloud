@@ -106,14 +106,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:adb/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
     public Output<Integer> autoRenewPeriod() {
@@ -155,10 +155,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
+    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
     @Export(name="dbClusterClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterClass;
 
@@ -180,42 +180,42 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbClusterVersion);
     }
     /**
-     * The db_node_class of cluster node.
+     * The dbNodeClass of cluster node.
      * 
      */
     @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
     private Output<String> dbNodeClass;
 
     /**
-     * @return The db_node_class of cluster node.
+     * @return The dbNodeClass of cluster node.
      * 
      */
     public Output<String> dbNodeClass() {
         return this.dbNodeClass;
     }
     /**
-     * The db_node_count of cluster node.
+     * The dbNodeCount of cluster node.
      * 
      */
     @Export(name="dbNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeCount;
 
     /**
-     * @return The db_node_count of cluster node.
+     * @return The dbNodeCount of cluster node.
      * 
      */
     public Output<Integer> dbNodeCount() {
         return this.dbNodeCount;
     }
     /**
-     * The db_node_storage of cluster node.
+     * The dbNodeStorage of cluster node.
      * 
      */
     @Export(name="dbNodeStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeStorage;
 
     /**
-     * @return The db_node_storage of cluster node.
+     * @return The dbNodeStorage of cluster node.
      * 
      */
     public Output<Integer> dbNodeStorage() {
@@ -304,7 +304,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * Field `payType` has been deprecated. New field `paymentType` instead.
      * 
      * @deprecated
      * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
@@ -315,35 +315,35 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> payType;
 
     /**
-     * @return Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * @return Field `payType` has been deprecated. New field `paymentType` instead.
      * 
      */
     public Output<String> payType() {
         return this.payType;
     }
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * @return The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      * 
      */
     public Output<Optional<Integer>> period() {

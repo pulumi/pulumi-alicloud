@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<ImmutableDictionary<string, string>?> Envs { get; private set; } = null!;
 
         /// <summary>
-        /// Mirror address. When the package_type is set to 'Image', this parameter item is required.
+        /// Mirror address. When the PackageType is set to 'Image', this parameter item is required.
         /// </summary>
         [Output("imageUrl")]
         public Output<string?> ImageUrl { get; private set; } = null!;
@@ -425,7 +425,7 @@ namespace Pulumi.AliCloud.Edas
         }
 
         /// <summary>
-        /// Mirror address. When the package_type is set to 'Image', this parameter item is required.
+        /// Mirror address. When the PackageType is set to 'Image', this parameter item is required.
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }
@@ -633,7 +633,7 @@ namespace Pulumi.AliCloud.Edas
         }
 
         /// <summary>
-        /// Mirror address. When the package_type is set to 'Image', this parameter item is required.
+        /// Mirror address. When the PackageType is set to 'Image', this parameter item is required.
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }

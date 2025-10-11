@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
+        /// Whether it is the default NAT IP ADDRESS. Valid values:`True` or `False`.`True`: is the default NAT IP ADDRESS. `False`: it is not the default NAT IP ADDRESS.
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>

@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The structure of volumeMounts.
-        /// See `dimensions` below for details.
+        /// See `Dimensions` below for details.
         /// </summary>
         public InputList<Inputs.ScalingRuleHybridMetricDimensionArgs> Dimensions
         {

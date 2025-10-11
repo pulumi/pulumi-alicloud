@@ -34,14 +34,14 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
     }
 
     /**
-     * The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+     * The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
      * 
      */
     @Import(name="clusterMemberIds")
     private @Nullable Output<Map<String,String>> clusterMemberIds;
 
     /**
-     * @return The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+     * @return The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
      * 
      */
     public Optional<Output<Map<String,String>>> clusterMemberIds() {
@@ -49,14 +49,14 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
     }
 
     /**
-     * The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+     * The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
      * 
      */
     @Import(name="ecuMap")
     private @Nullable Output<Map<String,String>> ecuMap;
 
     /**
-     * @return The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+     * @return The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
      * 
      */
     public Optional<Output<Map<String,String>>> ecuMap() {
@@ -79,14 +79,14 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
     }
 
     /**
-     * The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+     * The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      * 
      */
     @Import(name="statusMap")
     private @Nullable Output<Map<String,Integer>> statusMap;
 
     /**
-     * @return The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+     * @return The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      * 
      */
     public Optional<Output<Map<String,Integer>>> statusMap() {
@@ -143,7 +143,7 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param clusterMemberIds The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+         * @param clusterMemberIds The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param clusterMemberIds The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+         * @param clusterMemberIds The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param ecuMap The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+         * @param ecuMap The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param ecuMap The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+         * @param ecuMap The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param statusMap The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+         * @param statusMap The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class InstanceClusterAttachmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param statusMap The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+         * @param statusMap The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
          * 
          * @return builder
          * 

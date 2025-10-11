@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketReplicationProgress {
     /**
-     * @return The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+     * @return The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
      * 
      */
     private @Nullable String historicalObject;
@@ -24,7 +24,7 @@ public final class BucketReplicationProgress {
 
     private BucketReplicationProgress() {}
     /**
-     * @return The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+     * @return The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
      * 
      */
     public Optional<String> historicalObject() {

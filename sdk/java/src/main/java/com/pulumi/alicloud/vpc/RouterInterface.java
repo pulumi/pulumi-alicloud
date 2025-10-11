@@ -114,42 +114,42 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      * 
      */
     @Export(name="healthCheckSourceIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckSourceIp;
 
     /**
-     * @return Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * @return Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      * 
      */
     public Output<Optional<String>> healthCheckSourceIp() {
         return Codegen.optional(this.healthCheckSourceIp);
     }
     /**
-     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      * 
      */
     @Export(name="healthCheckTargetIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckTargetIp;
 
     /**
-     * @return Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * @return Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      * 
      */
     public Output<Optional<String>> healthCheckTargetIp() {
         return Codegen.optional(this.healthCheckTargetIp);
     }
     /**
-     * The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
+     * The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and oppositeRegion are the same.
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
-     * @return The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
+     * @return The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and oppositeRegion are the same.
      * 
      */
     public Output<Optional<String>> instanceChargeType() {
@@ -276,7 +276,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return this.oppositeRouterType;
     }
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -284,7 +284,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */

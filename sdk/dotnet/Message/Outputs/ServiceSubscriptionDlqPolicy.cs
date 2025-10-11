@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Message.Outputs
         /// </summary>
         public readonly string? DeadLetterTargetQueue;
         /// <summary>
-        /// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+        /// Specifies whether to enable the dead-letter message delivery. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? Enabled;
 

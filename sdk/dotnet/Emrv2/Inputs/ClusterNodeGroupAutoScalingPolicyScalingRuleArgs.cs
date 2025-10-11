@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<int> AdjustmentValue { get; set; } = null!;
 
         /// <summary>
-        /// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+        /// The trigger metrics of scaling rules for emr node group auto scaling policy. See `MetricsTrigger` below.
         /// </summary>
         [Input("metricsTrigger")]
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs>? MetricsTrigger { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string> RuleName { get; set; } = null!;
 
         /// <summary>
-        /// The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+        /// The trigger time of scaling rules for emr node group auto scaling policy. See `TimeTrigger` below.
         /// </summary>
         [Input("timeTrigger")]
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs>? TimeTrigger { get; set; }

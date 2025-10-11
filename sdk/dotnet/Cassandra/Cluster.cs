@@ -69,13 +69,13 @@ namespace Pulumi.AliCloud.Cassandra
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+        /// Auto renew of dataCenter-1,`True` or `False`. System default to `False`, valid when PayType = PrePaid.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        /// Period of dataCenter-1 auto renew, if auto renew is `True`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when PayType = Subscription. Unit: month.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<int?> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        /// The disk type of Cassandra dataCenter-1. Valid values are `CloudSsd`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`, LocalDisk size is fixed.
         /// </summary>
         [Output("diskType")]
         public Output<string?> DiskType { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// <summary>
         /// A list of security group ids to associate with.
         /// 
-        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, AutoRenewPeriod and so on) will be supported in the furture.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -181,13 +181,13 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch_id of dataCenter-1, can not empty.
+        /// The VswitchId of dataCenter-1, can not empty.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the Cassandra cluster. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -243,13 +243,13 @@ namespace Pulumi.AliCloud.Cassandra
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+        /// Auto renew of dataCenter-1,`True` or `False`. System default to `False`, valid when PayType = PrePaid.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        /// Period of dataCenter-1 auto renew, if auto renew is `True`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when PayType = Subscription. Unit: month.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        /// The disk type of Cassandra dataCenter-1. Valid values are `CloudSsd`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`, LocalDisk size is fixed.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// <summary>
         /// A list of security group ids to associate with.
         /// 
-        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, AutoRenewPeriod and so on) will be supported in the furture.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -370,13 +370,13 @@ namespace Pulumi.AliCloud.Cassandra
         }
 
         /// <summary>
-        /// The vswitch_id of dataCenter-1, can not empty.
+        /// The VswitchId of dataCenter-1, can not empty.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the Cassandra cluster. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -390,13 +390,13 @@ namespace Pulumi.AliCloud.Cassandra
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+        /// Auto renew of dataCenter-1,`True` or `False`. System default to `False`, valid when PayType = PrePaid.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        /// Period of dataCenter-1 auto renew, if auto renew is `True`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when PayType = Subscription. Unit: month.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -422,7 +422,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        /// The disk type of Cassandra dataCenter-1. Valid values are `CloudSsd`, `CloudEfficiency`, `LocalHddPro`, `LocalSsdPro`, LocalDisk size is fixed.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -504,7 +504,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// <summary>
         /// A list of security group ids to associate with.
         /// 
-        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, AutoRenewPeriod and so on) will be supported in the furture.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -528,13 +528,13 @@ namespace Pulumi.AliCloud.Cassandra
         }
 
         /// <summary>
-        /// The vswitch_id of dataCenter-1, can not empty.
+        /// The VswitchId of dataCenter-1, can not empty.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the Cassandra cluster. If VswitchId is not empty, this ZoneId can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.ShardingNetworkPublicAddressNetworkAddress>> NetworkAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
         /// </summary>
         [Output("nodeId")]
         public Output<string> NodeId { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
         /// </summary>
         [Input("nodeId", required: true)]
         public Input<string> NodeId { get; set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }

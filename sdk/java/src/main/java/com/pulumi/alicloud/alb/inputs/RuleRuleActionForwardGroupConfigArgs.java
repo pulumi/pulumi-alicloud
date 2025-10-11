@@ -18,14 +18,14 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
     public static final RuleRuleActionForwardGroupConfigArgs Empty = new RuleRuleActionForwardGroupConfigArgs();
 
     /**
-     * The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+     * The configuration of session persistence for server groups. See `serverGroupStickySession` below.
      * 
      */
     @Import(name="serverGroupStickySession")
     private @Nullable Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs> serverGroupStickySession;
 
     /**
-     * @return The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+     * @return The configuration of session persistence for server groups. See `serverGroupStickySession` below.
      * 
      */
     public Optional<Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs>> serverGroupStickySession() {
@@ -33,14 +33,14 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * The destination server group to which requests are forwarded. See `serverGroupTuples` below.
      * 
      */
     @Import(name="serverGroupTuples")
     private @Nullable Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * @return The destination server group to which requests are forwarded. See `serverGroupTuples` below.
      * 
      */
     public Optional<Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>>> serverGroupTuples() {
@@ -73,7 +73,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+         * @param serverGroupStickySession The configuration of session persistence for server groups. See `serverGroupStickySession` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+         * @param serverGroupStickySession The configuration of session persistence for server groups. See `serverGroupStickySession` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          * 
          * @return builder
          * 

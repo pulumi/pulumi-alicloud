@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        /// Indicates whether to delete the IP block that the VPC can access, conflict with `ToConnectVpcIpBlock`.
         /// </summary>
         [Output("deleteVpcIpBlock")]
         public Output<string?> DeleteVpcIpBlock { get; private set; } = null!;
@@ -170,13 +170,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string?> IngressVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        /// The user ID that the VpcID of `IngressVpcId` belongs to.
         /// </summary>
         [Output("ingressVpcOwnerId")]
         public Output<string?> IngressVpcOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        /// The VSwitch ID that belongs to the Vpc of `IngressVpcId`. Required when `IngressVpcId` is set.
         /// </summary>
         [Output("ingressVswitchId")]
         public Output<string?> IngressVswitchId { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<bool> SupportIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        /// The additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
         /// </summary>
         [Output("toConnectVpcIpBlock")]
         public Output<Outputs.InstanceToConnectVpcIpBlock?> ToConnectVpcIpBlock { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> ZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `ZoneVswitchSecurityGroup` below.
         /// </summary>
         [Output("zoneVswitchSecurityGroups")]
         public Output<ImmutableArray<Outputs.InstanceZoneVswitchSecurityGroup>> ZoneVswitchSecurityGroups { get; private set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        /// Indicates whether to delete the IP block that the VPC can access, conflict with `ToConnectVpcIpBlock`.
         /// </summary>
         [Input("deleteVpcIpBlock")]
         public Input<string>? DeleteVpcIpBlock { get; set; }
@@ -354,13 +354,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? IngressVpcId { get; set; }
 
         /// <summary>
-        /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        /// The user ID that the VpcID of `IngressVpcId` belongs to.
         /// </summary>
         [Input("ingressVpcOwnerId")]
         public Input<string>? IngressVpcOwnerId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        /// The VSwitch ID that belongs to the Vpc of `IngressVpcId`. Required when `IngressVpcId` is set.
         /// </summary>
         [Input("ingressVswitchId")]
         public Input<string>? IngressVswitchId { get; set; }
@@ -416,7 +416,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<bool>? SkipWaitSwitch { get; set; }
 
         /// <summary>
-        /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        /// The additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
         /// </summary>
         [Input("toConnectVpcIpBlock")]
         public Input<Inputs.InstanceToConnectVpcIpBlockArgs>? ToConnectVpcIpBlock { get; set; }
@@ -443,7 +443,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.InstanceZoneVswitchSecurityGroupArgs>? _zoneVswitchSecurityGroups;
 
         /// <summary>
-        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `ZoneVswitchSecurityGroup` below.
         /// </summary>
         public InputList<Inputs.InstanceZoneVswitchSecurityGroupArgs> ZoneVswitchSecurityGroups
         {
@@ -472,7 +472,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        /// Indicates whether to delete the IP block that the VPC can access, conflict with `ToConnectVpcIpBlock`.
         /// </summary>
         [Input("deleteVpcIpBlock")]
         public Input<string>? DeleteVpcIpBlock { get; set; }
@@ -506,13 +506,13 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? IngressVpcId { get; set; }
 
         /// <summary>
-        /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        /// The user ID that the VpcID of `IngressVpcId` belongs to.
         /// </summary>
         [Input("ingressVpcOwnerId")]
         public Input<string>? IngressVpcOwnerId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        /// The VSwitch ID that belongs to the Vpc of `IngressVpcId`. Required when `IngressVpcId` is set.
         /// </summary>
         [Input("ingressVswitchId")]
         public Input<string>? IngressVswitchId { get; set; }
@@ -580,7 +580,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<bool>? SupportIpv6 { get; set; }
 
         /// <summary>
-        /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        /// The additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
         /// </summary>
         [Input("toConnectVpcIpBlock")]
         public Input<Inputs.InstanceToConnectVpcIpBlockGetArgs>? ToConnectVpcIpBlock { get; set; }
@@ -607,7 +607,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<Inputs.InstanceZoneVswitchSecurityGroupGetArgs>? _zoneVswitchSecurityGroups;
 
         /// <summary>
-        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `ZoneVswitchSecurityGroup` below.
         /// </summary>
         public InputList<Inputs.InstanceZoneVswitchSecurityGroupGetArgs> ZoneVswitchSecurityGroups
         {

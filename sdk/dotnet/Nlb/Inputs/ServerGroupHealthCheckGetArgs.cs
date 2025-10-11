@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         public Input<string>? HealthCheckUrl { get; set; }
 
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `Fail` to `Success`.
         /// Valid values: `2` to `10`.
         /// Default value: `2`.
         /// </summary>
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         public Input<string>? HttpCheckMethod { get; set; }
 
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `Success` to `Fail`.
         /// Valid values: `2` to `10`.
         /// Default value: `2`.
         /// </summary>

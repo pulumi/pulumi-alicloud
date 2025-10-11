@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.94.0.
  * 
- * &gt; **NOTE:** Field `force_set`, `security_token` has been removed from provider version 1.227.1.
+ * &gt; **NOTE:** Field `forceSet`, `securityToken` has been removed from provider version 1.227.1.
  * 
  * ## Example Usage
  * 

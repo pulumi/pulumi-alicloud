@@ -55,14 +55,14 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      * 
      */
     @Import(name="healthCheckSourceIp")
     private @Nullable Output<String> healthCheckSourceIp;
 
     /**
-     * @return Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * @return Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      * 
      */
     public Optional<Output<String>> healthCheckSourceIp() {
@@ -70,14 +70,14 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      * 
      */
     @Import(name="healthCheckTargetIp")
     private @Nullable Output<String> healthCheckTargetIp;
 
     /**
-     * @return Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * @return Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      * 
      */
     public Optional<Output<String>> healthCheckTargetIp() {
@@ -85,14 +85,14 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
+     * The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and oppositeRegion are the same.
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
+     * @return The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and oppositeRegion are the same.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -247,7 +247,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -255,7 +255,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -414,7 +414,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param healthCheckSourceIp Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+         * @param healthCheckSourceIp Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param healthCheckSourceIp Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+         * @param healthCheckSourceIp Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param healthCheckTargetIp Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+         * @param healthCheckTargetIp Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param healthCheckTargetIp Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+         * @param healthCheckTargetIp Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceChargeType The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
+         * @param instanceChargeType The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and oppositeRegion are the same.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceChargeType The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
+         * @param instanceChargeType The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and oppositeRegion are the same.
          * 
          * @return builder
          * 
@@ -666,7 +666,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -678,7 +678,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder

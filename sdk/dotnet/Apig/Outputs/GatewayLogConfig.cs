@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Apig.Outputs
     public sealed class GatewayLogConfig
     {
         /// <summary>
-        /// Sls See `sls` below.
+        /// Sls See `Sls` below.
         /// </summary>
         public readonly Outputs.GatewayLogConfigSls? Sls;
 

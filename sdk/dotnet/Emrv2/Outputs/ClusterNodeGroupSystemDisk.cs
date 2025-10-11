@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterNodeGroupSystemDisk
     {
         /// <summary>
-        /// The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+        /// The type of the data disk. Valid values: `CloudEfficiency`, `CloudEssd`, `Cloud`, `LocalHddPro`, `LocalDisk`, `LocalSsdPro`. **NOTE:** Since version v1.230.0, the categories `Cloud`, `LocalHddPro`, `LocalDisk`, `LocalSsdPro` are available.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly int? Count;
         /// <summary>
-        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+        /// Worker node data disk performance level, when `Category` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>

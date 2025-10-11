@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

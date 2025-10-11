@@ -19,14 +19,14 @@ public final class AggregateCompliancePackConfigRuleArgs extends com.pulumi.reso
     public static final AggregateCompliancePackConfigRuleArgs Empty = new AggregateCompliancePackConfigRuleArgs();
 
     /**
-     * A list of parameter rules. See `config_rule_parameters` below.
+     * A list of parameter rules. See `configRuleParameters` below.
      * 
      */
     @Import(name="configRuleParameters")
     private @Nullable Output<List<AggregateCompliancePackConfigRuleConfigRuleParameterArgs>> configRuleParameters;
 
     /**
-     * @return A list of parameter rules. See `config_rule_parameters` below.
+     * @return A list of parameter rules. See `configRuleParameters` below.
      * 
      */
     public Optional<Output<List<AggregateCompliancePackConfigRuleConfigRuleParameterArgs>>> configRuleParameters() {
@@ -74,7 +74,7 @@ public final class AggregateCompliancePackConfigRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param configRuleParameters A list of parameter rules. See `config_rule_parameters` below.
+         * @param configRuleParameters A list of parameter rules. See `configRuleParameters` below.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class AggregateCompliancePackConfigRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param configRuleParameters A list of parameter rules. See `config_rule_parameters` below.
+         * @param configRuleParameters A list of parameter rules. See `configRuleParameters` below.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class AggregateCompliancePackConfigRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param configRuleParameters A list of parameter rules. See `config_rule_parameters` below.
+         * @param configRuleParameters A list of parameter rules. See `configRuleParameters` below.
          * 
          * @return builder
          * 

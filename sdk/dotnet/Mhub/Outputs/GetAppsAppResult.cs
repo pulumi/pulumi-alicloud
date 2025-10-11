@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Mhub.Outputs
         /// </summary>
         public readonly string AppName;
         /// <summary>
-        /// iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// iOS application ID. Required when creating an iOS app. **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         public readonly string BundleId;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Mhub.Outputs
         /// </summary>
         public readonly string IndustryId;
         /// <summary>
-        /// Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
+        /// Android App package name.  **NOTE:** Either `BundleId` or `PackageName` must be set.
         /// </summary>
         public readonly string PackageName;
         /// <summary>

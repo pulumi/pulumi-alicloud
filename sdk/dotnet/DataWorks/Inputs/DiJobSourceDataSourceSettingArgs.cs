@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.DataWorks.Inputs
         public Input<string>? DataSourceName { get; set; }
 
         /// <summary>
-        /// Single Source Data Source Properties See `data_source_properties` below.
+        /// Single Source Data Source Properties See `DataSourceProperties` below.
         /// </summary>
         [Input("dataSourceProperties")]
         public Input<Inputs.DiJobSourceDataSourceSettingDataSourcePropertiesArgs>? DataSourceProperties { get; set; }

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+        /// The tag of the objects to which the lifecycle rule does not apply. See `Tag` below.
         /// </summary>
         [Input("tag")]
         public Input<Inputs.BucketLifecycleRuleFilterNotTagGetArgs>? Tag { get; set; }

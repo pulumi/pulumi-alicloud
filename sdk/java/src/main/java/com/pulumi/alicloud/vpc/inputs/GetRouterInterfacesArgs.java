@@ -93,7 +93,7 @@ public final class GetRouterInterfacesArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      * 
      */
     @Import(name="role")
@@ -101,7 +101,7 @@ public final class GetRouterInterfacesArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -318,7 +318,7 @@ public final class GetRouterInterfacesArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param role Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-         * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+         * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class GetRouterInterfacesArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param role Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
-         * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+         * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
          * 
          * @return builder
          * 

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The type of data disk. Default value: `cloud_efficiency`. Valid values:
+        /// The type of data disk. Default value: `CloudEfficiency`. Valid values:
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -43,37 +43,37 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Device { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        /// Specifies whether to encrypt data disks. Valid values: true and false. Default to `False`.
         /// </summary>
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
 
         /// <summary>
-        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        /// The type of the mounted file system. Works when AutoFormat is true. Optional value: `Ext4`, `Xfs`.
         /// </summary>
         [Input("fileSystem")]
         public Input<string>? FileSystem { get; set; }
 
         /// <summary>
-        /// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        /// The kms key id used to encrypt the data disk. It takes effect when `Encrypted` is true.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The Mount path. Works when auto_format is true.
+        /// The Mount path. Works when AutoFormat is true.
         /// </summary>
         [Input("mountTarget")]
         public Input<string>? MountTarget { get; set; }
 
         /// <summary>
-        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if AutoFormat is set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node data disk performance level, when `Category` values `CloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }

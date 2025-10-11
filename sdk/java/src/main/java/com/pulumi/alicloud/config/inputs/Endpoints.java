@@ -84,7 +84,7 @@ public final class Endpoints {
      */
     private @Nullable String bpstudio;
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brainIndustrial endpoints.
      * 
      */
     private @Nullable String brainIndustrial;
@@ -270,7 +270,7 @@ public final class Endpoints {
      */
     private @Nullable String dm;
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsEnterprise endpoints.
      * 
      */
     private @Nullable String dmsEnterprise;
@@ -393,7 +393,7 @@ public final class Endpoints {
      */
     private @Nullable String ess;
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridgeShare endpoints.
      * 
      */
     private @Nullable String eventbridge;
@@ -449,7 +449,7 @@ public final class Endpoints {
      */
     private @Nullable String hbr;
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcsSgw endpoints.
      * 
      */
     private @Nullable String hcsSgw;
@@ -619,7 +619,7 @@ public final class Endpoints {
      */
     private @Nullable String quotas;
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom rKvstore endpoints.
      * 
      */
     private @Nullable String rKvstore;
@@ -767,7 +767,7 @@ public final class Endpoints {
      */
     private @Nullable String waf;
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom wafOpenapi endpoints.
      * 
      */
     private @Nullable String wafOpenapi;
@@ -878,7 +878,7 @@ public final class Endpoints {
         return Optional.ofNullable(this.bpstudio);
     }
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brainIndustrial endpoints.
      * 
      */
     public Optional<String> brainIndustrial() {
@@ -1140,7 +1140,7 @@ public final class Endpoints {
         return Optional.ofNullable(this.dm);
     }
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsEnterprise endpoints.
      * 
      */
     public Optional<String> dmsEnterprise() {
@@ -1317,7 +1317,7 @@ public final class Endpoints {
         return Optional.ofNullable(this.ess);
     }
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridgeShare endpoints.
      * 
      */
     public Optional<String> eventbridge() {
@@ -1397,7 +1397,7 @@ public final class Endpoints {
         return Optional.ofNullable(this.hbr);
     }
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcsSgw endpoints.
      * 
      */
     public Optional<String> hcsSgw() {
@@ -1635,7 +1635,7 @@ public final class Endpoints {
         return Optional.ofNullable(this.quotas);
     }
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom rKvstore endpoints.
      * 
      */
     public Optional<String> rKvstore() {
@@ -1847,7 +1847,7 @@ public final class Endpoints {
         return Optional.ofNullable(this.waf);
     }
     /**
-     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom wafOpenapi endpoints.
      * 
      */
     public Optional<String> wafOpenapi() {

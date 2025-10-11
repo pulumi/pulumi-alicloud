@@ -64,13 +64,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field `domain` has been deprecated from provider version 1.243.0.
+        /// Field `Domain` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Field `granularity` has been deprecated from provider version 1.243.0.
+        /// Field `Granularity` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Output("granularity")]
         public Output<string> Granularity { get; private set; } = null!;
@@ -148,13 +148,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `domain` has been deprecated from provider version 1.243.0.
+        /// Field `Domain` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Field `granularity` has been deprecated from provider version 1.243.0.
+        /// Field `Granularity` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("granularity")]
         public Input<string>? Granularity { get; set; }
@@ -194,13 +194,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `domain` has been deprecated from provider version 1.243.0.
+        /// Field `Domain` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Field `granularity` has been deprecated from provider version 1.243.0.
+        /// Field `Granularity` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("granularity")]
         public Input<string>? Granularity { get; set; }

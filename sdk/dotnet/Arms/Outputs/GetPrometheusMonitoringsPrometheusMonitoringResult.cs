@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string MonitoringName;
         /// <summary>
-        /// The status of the monitoring configuration. Valid values: `run`, `stop`.
+        /// The status of the monitoring configuration. Valid values: `Run`, `Stop`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `Probe`.
         /// </summary>
         public readonly string Type;
 
