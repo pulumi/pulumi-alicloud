@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
         /// </summary>
         public readonly string? EffectiveInterval;
         /// <summary>
-        /// The alert level. Valid values: `critical`, `warn`, `info`.
+        /// The alert level. Valid values: `Critical`, `Warn`, `Info`.
         /// </summary>
         public readonly string EscalationsLevel;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
         /// </summary>
         public readonly string Statistics;
         /// <summary>
-        /// The alert triggers. See `target_list` below.
+        /// The alert triggers. See `TargetList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceGroupMonitoringAgentProcessAlertConfigTargetList> TargetLists;
         /// <summary>

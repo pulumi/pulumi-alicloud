@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetListenersListenerXforwardedForConfigResult
     {
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        /// The Custom Header Field Names Only When `XforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
         /// </summary>
         public readonly string XforwardedforclientcertIssuerdnalias;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly bool XforwardedforclientcertIssuerdnenabled;
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The Custom Header Field Names Only When `Xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
         public readonly string Xforwardedforclientcertclientverifyalias;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly bool Xforwardedforclientcertclientverifyenabled;
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The Custom Header Field Names Only When `Xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
         public readonly string Xforwardedforclientcertfingerprintalias;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly bool Xforwardedforclientcertfingerprintenabled;
         /// <summary>
-        /// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The name of the custom header. This parameter is valid only if `Xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
         public readonly string Xforwardedforclientcertsubjectdnalias;
         /// <summary>

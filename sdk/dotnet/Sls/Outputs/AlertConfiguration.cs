@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly bool? AutoAnnotation;
         /// <summary>
-        /// Alarm trigger condition. See `condition_configuration` below.
+        /// Alarm trigger condition. See `ConditionConfiguration` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationConditionConfiguration? ConditionConfiguration;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly string? Dashboard;
         /// <summary>
-        /// Group evaluation configuration. See `group_configuration` below.
+        /// Group evaluation configuration. See `GroupConfiguration` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationGroupConfiguration? GroupConfiguration;
         /// <summary>
-        /// Set operation configuration. See `join_configurations` below.
+        /// Set operation configuration. See `JoinConfigurations` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertConfigurationJoinConfiguration> JoinConfigurations;
         /// <summary>
-        /// Label. See `labels` below.
+        /// Label. See `Labels` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertConfigurationLabel> Labels;
         /// <summary>
@@ -54,11 +54,11 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly int? NoDataSeverity;
         /// <summary>
-        /// Alert policy configuration. See `policy_configuration` below.
+        /// Alert policy configuration. See `PolicyConfiguration` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationPolicyConfiguration? PolicyConfiguration;
         /// <summary>
-        /// Query the statistical list. See `query_list` below.
+        /// Query the statistical list. See `QueryList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertConfigurationQueryList> QueryLists;
         /// <summary>
@@ -66,19 +66,19 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly bool? SendResolved;
         /// <summary>
-        /// Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+        /// Trigger condition, set at least one trigger condition. See `SeverityConfigurations` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertConfigurationSeverityConfiguration> SeverityConfigurations;
         /// <summary>
-        /// Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+        /// Configuration of Alerts Sent to Alerthub. See `SinkAlerthub` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationSinkAlerthub? SinkAlerthub;
         /// <summary>
-        /// Configure alerts sent to CloudMonitor. See `sink_cms` below.
+        /// Configure alerts sent to CloudMonitor. See `SinkCms` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationSinkCms? SinkCms;
         /// <summary>
-        /// Configuration of sending alarms to EventStore. See `sink_event_store` below.
+        /// Configuration of sending alarms to EventStore. See `SinkEventStore` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationSinkEventStore? SinkEventStore;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Alarm rule template configuration. See `template_configuration` below.
+        /// Alarm rule template configuration. See `TemplateConfiguration` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationTemplateConfiguration? TemplateConfiguration;
         /// <summary>

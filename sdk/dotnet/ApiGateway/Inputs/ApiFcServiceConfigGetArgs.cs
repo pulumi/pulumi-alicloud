@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> ArnRole { get; set; } = null!;
 
         /// <summary>
-        /// The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// The base url of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         [Input("functionBaseUrl")]
         public Input<string>? FunctionBaseUrl { get; set; }
 
         /// <summary>
-        /// The function name of function compute service. Required if `function_type` is `FCEvent`.
+        /// The function name of function compute service. Required if `FunctionType` is `FCEvent`.
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
@@ -43,19 +43,19 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? FunctionVersion { get; set; }
 
         /// <summary>
-        /// The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// The http method of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        /// Whether to filter path in `FunctionBaseUrl`. Optional if `FunctionType` is `HttpTrigger`.
         /// </summary>
         [Input("onlyBusinessPath")]
         public Input<bool>? OnlyBusinessPath { get; set; }
 
         /// <summary>
-        /// The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// The path of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+        /// The service name of function compute service. Required if `FunctionType` is `FCEvent` and `FunctionVersion` is `2.0`.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

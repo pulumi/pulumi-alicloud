@@ -309,14 +309,14 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
         return this.imageId;
     }
     /**
-     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      * 
      */
     @Export(name="ipAllocationPolicies", refs={List.class,NodeGroupIpAllocationPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodeGroupIpAllocationPolicy>> ipAllocationPolicies;
 
     /**
-     * @return IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+     * @return IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      * 
      */
     public Output<Optional<List<NodeGroupIpAllocationPolicy>>> ipAllocationPolicies() {

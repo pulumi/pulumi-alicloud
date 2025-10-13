@@ -49,14 +49,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+     * The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
      * 
      */
     @Import(name="peerVpcCidrTableLists", required=true)
     private Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs>> peerVpcCidrTableLists;
 
     /**
-     * @return The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+     * @return The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
      * 
      */
     public Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs>> peerVpcCidrTableLists() {
@@ -196,7 +196,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
          * 
          * @return builder
          * 

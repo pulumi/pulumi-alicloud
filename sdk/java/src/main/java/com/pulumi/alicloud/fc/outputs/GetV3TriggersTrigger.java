@@ -77,7 +77,7 @@ public final class GetV3TriggersTrigger {
      */
     private String triggerName;
     /**
-     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      * 
      */
     private String triggerType;
@@ -175,7 +175,7 @@ public final class GetV3TriggersTrigger {
         return this.triggerName;
     }
     /**
-     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      * 
      */
     public String triggerType() {

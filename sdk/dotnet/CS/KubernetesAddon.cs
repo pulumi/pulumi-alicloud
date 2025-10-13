@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool> CanUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+        /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `True`: clean up, `False`: do not clean up.
         /// </summary>
         [Output("cleanupCloudResources")]
         public Output<bool?> CleanupCloudResources { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class KubernetesAddonArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+        /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `True`: clean up, `False`: do not clean up.
         /// </summary>
         [Input("cleanupCloudResources")]
         public Input<bool>? CleanupCloudResources { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? CanUpgrade { get; set; }
 
         /// <summary>
-        /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+        /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `True`: clean up, `False`: do not clean up.
         /// </summary>
         [Input("cleanupCloudResources")]
         public Input<bool>? CleanupCloudResources { get; set; }

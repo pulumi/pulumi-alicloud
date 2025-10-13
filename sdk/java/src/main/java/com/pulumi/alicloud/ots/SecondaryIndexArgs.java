@@ -34,14 +34,14 @@ public final class SecondaryIndexArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+     * whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      * 
      */
     @Import(name="includeBaseData", required=true)
     private Output<Boolean> includeBaseData;
 
     /**
-     * @return whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+     * @return whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      * 
      */
     public Output<Boolean> includeBaseData() {
@@ -185,7 +185,7 @@ public final class SecondaryIndexArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includeBaseData whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+         * @param includeBaseData whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SecondaryIndexArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includeBaseData whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
+         * @param includeBaseData whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
          * 
          * @return builder
          * 

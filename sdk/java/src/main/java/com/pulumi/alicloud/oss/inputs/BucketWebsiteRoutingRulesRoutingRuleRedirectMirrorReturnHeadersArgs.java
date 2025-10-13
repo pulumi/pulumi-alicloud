@@ -17,14 +17,14 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeade
     public static final BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs Empty = new BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs();
 
     /**
-     * The list of response header rules for mirroring back-to-source return. See `return_header` below.
+     * The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
      * 
      */
     @Import(name="returnHeaders")
     private @Nullable Output<List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs>> returnHeaders;
 
     /**
-     * @return The list of response header rules for mirroring back-to-source return. See `return_header` below.
+     * @return The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
      * 
      */
     public Optional<Output<List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs>>> returnHeaders() {
@@ -56,7 +56,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeade
         }
 
         /**
-         * @param returnHeaders The list of response header rules for mirroring back-to-source return. See `return_header` below.
+         * @param returnHeaders The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeade
         }
 
         /**
-         * @param returnHeaders The list of response header rules for mirroring back-to-source return. See `return_header` below.
+         * @param returnHeaders The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeade
         }
 
         /**
-         * @param returnHeaders The list of response header rules for mirroring back-to-source return. See `return_header` below.
+         * @param returnHeaders The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
          * 
          * @return builder
          * 

@@ -35,7 +35,7 @@ public final class GetInstancesInstance {
      */
     private String coreInstanceType;
     /**
-     * @return Same with &#34;core_instance_quantity&#34;
+     * @return Same with &#34;coreInstanceQuantity&#34;
      * 
      */
     private Integer coreNodeCount;
@@ -55,7 +55,7 @@ public final class GetInstancesInstance {
      */
     private String engine;
     /**
-     * @return The engine_version of the instance.
+     * @return The engineVersion of the instance.
      * 
      */
     private String engineVersion;
@@ -155,7 +155,7 @@ public final class GetInstancesInstance {
         return this.coreInstanceType;
     }
     /**
-     * @return Same with &#34;core_instance_quantity&#34;
+     * @return Same with &#34;coreInstanceQuantity&#34;
      * 
      */
     public Integer coreNodeCount() {
@@ -183,7 +183,7 @@ public final class GetInstancesInstance {
         return this.engine;
     }
     /**
-     * @return The engine_version of the instance.
+     * @return The engineVersion of the instance.
      * 
      */
     public String engineVersion() {

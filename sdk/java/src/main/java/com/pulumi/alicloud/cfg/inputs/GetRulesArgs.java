@@ -19,7 +19,7 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRulesArgs Empty = new GetRulesArgs();
 
     /**
-     * Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+     * Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
@@ -30,7 +30,7 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> configRuleState;
 
     /**
-     * @return Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+     * @return Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
@@ -178,7 +178,7 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param configRuleState Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+         * @param configRuleState Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param configRuleState Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+         * @param configRuleState Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
          * 
          * @return builder
          * 

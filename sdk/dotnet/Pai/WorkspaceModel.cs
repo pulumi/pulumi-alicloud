@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Pai
         public Output<ImmutableDictionary<string, string>?> ExtraInfo { get; private set; } = null!;
 
         /// <summary>
-        /// A list of tags. See `labels` below.
+        /// A list of tags. See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.WorkspaceModelLabel>> Labels { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceModelLabelArgs>? _labels;
 
         /// <summary>
-        /// A list of tags. See `labels` below.
+        /// A list of tags. See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceModelLabelArgs> Labels
         {
@@ -332,7 +332,7 @@ namespace Pulumi.AliCloud.Pai
         private InputList<Inputs.WorkspaceModelLabelGetArgs>? _labels;
 
         /// <summary>
-        /// A list of tags. See `labels` below.
+        /// A list of tags. See `Labels` below.
         /// </summary>
         public InputList<Inputs.WorkspaceModelLabelGetArgs> Labels
         {

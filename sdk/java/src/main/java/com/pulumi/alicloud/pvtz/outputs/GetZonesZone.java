@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesZone {
     /**
-     * @return The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
+     * @return The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetZonesZoneBindVpc> bindVpcs;
@@ -61,7 +61,7 @@ public final class GetZonesZone {
      */
     private String resourceGroupId;
     /**
-     * @return Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
+     * @return Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private Boolean slaveDns;
@@ -84,7 +84,7 @@ public final class GetZonesZone {
 
     private GetZonesZone() {}
     /**
-     * @return The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
+     * @return The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetZonesZoneBindVpc> bindVpcs() {
@@ -150,7 +150,7 @@ public final class GetZonesZone {
         return this.resourceGroupId;
     }
     /**
-     * @return Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
+     * @return Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Boolean slaveDns() {

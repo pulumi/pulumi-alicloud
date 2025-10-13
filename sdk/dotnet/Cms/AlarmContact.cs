@@ -85,9 +85,9 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Describe { get; private set; } = null!;
 
         /// <summary>
-        /// The language type of the alarm. Valid values: `en`, `zh-cn`.
+        /// The language type of the alarm. Valid values: `En`, `zh-cn`.
         /// 
-        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `ChannelsAliim`, `ChannelsDingWebHook`, `ChannelsMail`, `ChannelsSms`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -175,9 +175,9 @@ namespace Pulumi.AliCloud.Cms
         public Input<string> Describe { get; set; } = null!;
 
         /// <summary>
-        /// The language type of the alarm. Valid values: `en`, `zh-cn`.
+        /// The language type of the alarm. Valid values: `En`, `zh-cn`.
         /// 
-        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `ChannelsAliim`, `ChannelsDingWebHook`, `ChannelsMail`, `ChannelsSms`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -227,9 +227,9 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Describe { get; set; }
 
         /// <summary>
-        /// The language type of the alarm. Valid values: `en`, `zh-cn`.
+        /// The language type of the alarm. Valid values: `En`, `zh-cn`.
         /// 
-        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `ChannelsAliim`, `ChannelsDingWebHook`, `ChannelsMail`, `ChannelsSms`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }

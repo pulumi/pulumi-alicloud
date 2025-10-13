@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+        /// Source Encryption Type，It is valid only when VaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
         /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> EncryptType { get; private set; } = null!;
 
         /// <summary>
-        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when EncryptType is `KMS`.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
@@ -121,13 +121,13 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// The type of Vault. Valid values:
         /// - `STANDARD`: Standard backup vault.
-        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `VaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
         /// </summary>
         [Output("vaultType")]
         public Output<string> VaultType { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        /// Indicates whether the immutable backup feature is enabled. Valid values: `True`, `False`.
         /// </summary>
         [Output("wormEnabled")]
         public Output<bool?> WormEnabled { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+        /// Source Encryption Type，It is valid only when VaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
         /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? EncryptType { get; set; }
 
         /// <summary>
-        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when EncryptType is `KMS`.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -231,13 +231,13 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// The type of Vault. Valid values:
         /// - `STANDARD`: Standard backup vault.
-        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `VaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
 
         /// <summary>
-        /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        /// Indicates whether the immutable backup feature is enabled. Valid values: `True`, `False`.
         /// </summary>
         [Input("wormEnabled")]
         public Input<bool>? WormEnabled { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+        /// Source Encryption Type，It is valid only when VaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
         /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
@@ -271,7 +271,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? EncryptType { get; set; }
 
         /// <summary>
-        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when EncryptType is `KMS`.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -321,13 +321,13 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// The type of Vault. Valid values:
         /// - `STANDARD`: Standard backup vault.
-        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `VaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
 
         /// <summary>
-        /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        /// Indicates whether the immutable backup feature is enabled. Valid values: `True`, `False`.
         /// </summary>
         [Input("wormEnabled")]
         public Input<bool>? WormEnabled { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly string RoleArn;
         /// <summary>
-        /// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+        /// The configurations of the Object Storage Service (OSS) data shipping job. See `Sink` below.
         /// </summary>
         public readonly Outputs.OssExportSinkConfigurationSink Sink;
         /// <summary>

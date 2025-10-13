@@ -34,14 +34,14 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The container that holds the error page configuration information. See `error_document` below.
+     * The container that holds the error page configuration information. See `errorDocument` below.
      * 
      */
     @Import(name="errorDocument")
     private @Nullable Output<BucketWebsiteErrorDocumentArgs> errorDocument;
 
     /**
-     * @return The container that holds the error page configuration information. See `error_document` below.
+     * @return The container that holds the error page configuration information. See `errorDocument` below.
      * 
      */
     public Optional<Output<BucketWebsiteErrorDocumentArgs>> errorDocument() {
@@ -49,14 +49,14 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Static Website Default Home Page Configuration See `index_document` below.
+     * Static Website Default Home Page Configuration See `indexDocument` below.
      * 
      */
     @Import(name="indexDocument")
     private @Nullable Output<BucketWebsiteIndexDocumentArgs> indexDocument;
 
     /**
-     * @return Static Website Default Home Page Configuration See `index_document` below.
+     * @return Static Website Default Home Page Configuration See `indexDocument` below.
      * 
      */
     public Optional<Output<BucketWebsiteIndexDocumentArgs>> indexDocument() {
@@ -64,14 +64,14 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+     * The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
      * 
      */
     @Import(name="routingRules")
     private @Nullable Output<BucketWebsiteRoutingRulesArgs> routingRules;
 
     /**
-     * @return The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+     * @return The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
      * 
      */
     public Optional<Output<BucketWebsiteRoutingRulesArgs>> routingRules() {
@@ -127,7 +127,7 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param errorDocument The container that holds the error page configuration information. See `error_document` below.
+         * @param errorDocument The container that holds the error page configuration information. See `errorDocument` below.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param errorDocument The container that holds the error page configuration information. See `error_document` below.
+         * @param errorDocument The container that holds the error page configuration information. See `errorDocument` below.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexDocument Static Website Default Home Page Configuration See `index_document` below.
+         * @param indexDocument Static Website Default Home Page Configuration See `indexDocument` below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexDocument Static Website Default Home Page Configuration See `index_document` below.
+         * @param indexDocument Static Website Default Home Page Configuration See `indexDocument` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routingRules The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+         * @param routingRules The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class BucketWebsiteState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routingRules The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+         * @param routingRules The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
          * 
          * @return builder
          * 

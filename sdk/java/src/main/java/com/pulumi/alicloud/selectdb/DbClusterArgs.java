@@ -35,14 +35,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     @Import(name="dbClusterClass", required=true)
     private Output<String> dbClusterClass;
 
     /**
-     * @return The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     public Output<String> dbClusterClass() {
@@ -80,14 +80,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The modified parameter in DBCluster. See `desired_params` below.
+     * The modified parameter in DBCluster. See `desiredParams` below.
      * 
      */
     @Import(name="desiredParams")
     private @Nullable Output<List<DbClusterDesiredParamArgs>> desiredParams;
 
     /**
-     * @return The modified parameter in DBCluster. See `desired_params` below.
+     * @return The modified parameter in DBCluster. See `desiredParams` below.
      * 
      */
     public Optional<Output<List<DbClusterDesiredParamArgs>>> desiredParams() {
@@ -176,7 +176,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterClass The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         * @param dbClusterClass The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterClass The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         * @param dbClusterClass The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredParams The modified parameter in DBCluster. See `desired_params` below.
+         * @param desiredParams The modified parameter in DBCluster. See `desiredParams` below.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredParams The modified parameter in DBCluster. See `desired_params` below.
+         * @param desiredParams The modified parameter in DBCluster. See `desiredParams` below.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredParams The modified parameter in DBCluster. See `desired_params` below.
+         * @param desiredParams The modified parameter in DBCluster. See `desiredParams` below.
          * 
          * @return builder
          * 

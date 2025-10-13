@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> ArchVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        /// Specifies whether to enable auto-renewal for the instance. Valid when the `PaymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         /// </summary>
         [Output("autoRenew")]
         public Output<string?> AutoRenew { get; private set; } = null!;
@@ -122,9 +122,9 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<int?> CoreSingleStorage { get; private set; } = null!;
 
         /// <summary>
-        /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+        /// The core spec. When `DiskCategory` is `LocalSsdPro` or `LocalHddPro`, this filed is valid.
+        /// - When `DiskCategory` is `LocalSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `DiskCategory` is `LocalHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Output("coreSpec")]
         public Output<string> CoreSpec { get; private set; } = null!;
@@ -136,13 +136,13 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<bool> DeletionProection { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+        /// The disk type of instance. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdPl0`, `CapacityCloudStorage`, `LocalSsdPro`, `LocalHddPro`. **NOTE:** From version 1.207.0, `DiskCategory` can be set to `CloudEssdPl0`.
         /// </summary>
         [Output("diskCategory")]
         public Output<string> DiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+        /// The duration of paid. Valid when the `PaymentType` is `Subscription`.  When `PricingCycle` set to `Month`, the valid value id `1` to `9`.  When `PricingCycle` set to `Year`, the valid value id `1` to `3`.
         /// </summary>
         [Output("duration")]
         public Output<string?> Duration { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<ImmutableArray<string>> IpWhiteLists { get; private set; } = null!;
 
         /// <summary>
-        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `CloudEfficiency`, `CloudSsd`.
         /// </summary>
         [Output("logDiskCategory")]
         public Output<string?> LogDiskCategory { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        /// The pricing cycle. Valid when the `PaymentType` is `Subscription`. Valid values: `Month` and `Year`.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> TimeSeriesEngineSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// Field `TimeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `TimeSeriesEngineSpecification` instead.
         /// </summary>
         [Output("timeSeriresEngineSpecification")]
         public Output<string> TimeSeriresEngineSpecification { get; private set; } = null!;
@@ -452,7 +452,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        /// Specifies whether to enable auto-renewal for the instance. Valid when the `PaymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         /// </summary>
         [Input("autoRenew")]
         public Input<string>? AutoRenew { get; set; }
@@ -476,9 +476,9 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? CoreSingleStorage { get; set; }
 
         /// <summary>
-        /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+        /// The core spec. When `DiskCategory` is `LocalSsdPro` or `LocalHddPro`, this filed is valid.
+        /// - When `DiskCategory` is `LocalSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `DiskCategory` is `LocalHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Input("coreSpec")]
         public Input<string>? CoreSpec { get; set; }
@@ -490,13 +490,13 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? DeletionProection { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+        /// The disk type of instance. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdPl0`, `CapacityCloudStorage`, `LocalSsdPro`, `LocalHddPro`. **NOTE:** From version 1.207.0, `DiskCategory` can be set to `CloudEssdPl0`.
         /// </summary>
         [Input("diskCategory", required: true)]
         public Input<string> DiskCategory { get; set; } = null!;
 
         /// <summary>
-        /// The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+        /// The duration of paid. Valid when the `PaymentType` is `Subscription`.  When `PricingCycle` set to `Month`, the valid value id `1` to `9`.  When `PricingCycle` set to `Year`, the valid value id `1` to `3`.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -538,7 +538,7 @@ namespace Pulumi.AliCloud.Lindorm
         }
 
         /// <summary>
-        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `CloudEfficiency`, `CloudSsd`.
         /// </summary>
         [Input("logDiskCategory")]
         public Input<string>? LogDiskCategory { get; set; }
@@ -586,7 +586,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        /// The pricing cycle. Valid when the `PaymentType` is `Subscription`. Valid values: `Month` and `Year`.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
@@ -682,7 +682,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriesEngineSpecification { get; set; }
 
         /// <summary>
-        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// Field `TimeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `TimeSeriesEngineSpecification` instead.
         /// </summary>
         [Input("timeSeriresEngineSpecification")]
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
@@ -732,7 +732,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        /// Specifies whether to enable auto-renewal for the instance. Valid when the `PaymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         /// </summary>
         [Input("autoRenew")]
         public Input<string>? AutoRenew { get; set; }
@@ -756,9 +756,9 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? CoreSingleStorage { get; set; }
 
         /// <summary>
-        /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+        /// The core spec. When `DiskCategory` is `LocalSsdPro` or `LocalHddPro`, this filed is valid.
+        /// - When `DiskCategory` is `LocalSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `DiskCategory` is `LocalHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Input("coreSpec")]
         public Input<string>? CoreSpec { get; set; }
@@ -770,13 +770,13 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? DeletionProection { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+        /// The disk type of instance. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdPl0`, `CapacityCloudStorage`, `LocalSsdPro`, `LocalHddPro`. **NOTE:** From version 1.207.0, `DiskCategory` can be set to `CloudEssdPl0`.
         /// </summary>
         [Input("diskCategory")]
         public Input<string>? DiskCategory { get; set; }
 
         /// <summary>
-        /// The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+        /// The duration of paid. Valid when the `PaymentType` is `Subscription`.  When `PricingCycle` set to `Month`, the valid value id `1` to `9`.  When `PricingCycle` set to `Year`, the valid value id `1` to `3`.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -854,7 +854,7 @@ namespace Pulumi.AliCloud.Lindorm
         }
 
         /// <summary>
-        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `CloudEfficiency`, `CloudSsd`.
         /// </summary>
         [Input("logDiskCategory")]
         public Input<string>? LogDiskCategory { get; set; }
@@ -902,7 +902,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        /// The pricing cycle. Valid when the `PaymentType` is `Subscription`. Valid values: `Month` and `Year`.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
@@ -1010,7 +1010,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriesEngineSpecification { get; set; }
 
         /// <summary>
-        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// Field `TimeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `TimeSeriesEngineSpecification` instead.
         /// </summary>
         [Input("timeSeriresEngineSpecification")]
         public Input<string>? TimeSeriresEngineSpecification { get; set; }

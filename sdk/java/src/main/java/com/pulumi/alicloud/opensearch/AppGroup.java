@@ -95,14 +95,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
         return this.appGroupName;
     }
     /**
-     * Billing model. Valid values:`compute_resource` and `qps`.
+     * Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     @Export(name="chargeWay", refs={String.class}, tree="[0]")
     private Output<String> chargeWay;
 
     /**
-     * @return Billing model. Valid values:`compute_resource` and `qps`.
+     * @return Billing model. Valid values:`computeResource` and `qps`.
      * 
      */
     public Output<String> chargeWay() {
@@ -207,14 +207,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
         return this.quota;
     }
     /**
-     * The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+     * The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+     * @return The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      * 
      */
     public Output<String> status() {

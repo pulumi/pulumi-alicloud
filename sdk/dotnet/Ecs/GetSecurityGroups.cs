@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Ecs
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The Id of resource group which the SecurityGroup belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The Id of resource group which the SecurityGroup belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly int? PageNumber;
         public readonly int? PageSize;
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The Id of resource group which the SecurityGroup belongs.
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>

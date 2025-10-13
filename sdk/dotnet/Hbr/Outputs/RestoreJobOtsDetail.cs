@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class RestoreJobOtsDetail
     {
         /// <summary>
-        /// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        /// Whether to overwrite the existing table storage recovery task. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? OverwriteExisting;
 

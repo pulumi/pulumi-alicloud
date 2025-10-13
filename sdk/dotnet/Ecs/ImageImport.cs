@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class ImageImport : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+        /// The architecture of the image. Default value: `X8664`. Valid values: `X8664`, `I386`.
         /// </summary>
         [Output("architecture")]
         public Output<string?> Architecture { get; private set; } = null!;
@@ -103,19 +103,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> BootMode { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// The description of the image. The `Description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the custom image. See `disk_device_mapping` below.
+        /// The information about the custom image. See `DiskDeviceMapping` below.
         /// </summary>
         [Output("diskDeviceMappings")]
         public Output<ImmutableArray<Outputs.ImageImportDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        /// The name of the image. The `ImageName` must be `2` to `128` characters in length. The `ImageName` must start with a letter and cannot start with acs: or aliyun. The `ImageName` cannot contain http:// or https://. The `ImageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Output("imageName")]
         public Output<string> ImageName { get; private set; } = null!;
@@ -127,14 +127,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LicenseType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
+        /// The type of the operating system. Default value: `Linux`. Valid values: `Windows`, `Linux`.
         /// </summary>
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
 
         /// <summary>
         /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
+        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `Platform` is `Ubuntu`.
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ImageImportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+        /// The architecture of the image. Default value: `X8664`. Valid values: `X8664`, `I386`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? BootMode { get; set; }
 
         /// <summary>
-        /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// The description of the image. The `Description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.ImageImportDiskDeviceMappingArgs>? _diskDeviceMappings;
 
         /// <summary>
-        /// The information about the custom image. See `disk_device_mapping` below.
+        /// The information about the custom image. See `DiskDeviceMapping` below.
         /// </summary>
         public InputList<Inputs.ImageImportDiskDeviceMappingArgs> DiskDeviceMappings
         {
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        /// The name of the image. The `ImageName` must be `2` to `128` characters in length. The `ImageName` must start with a letter and cannot start with acs: or aliyun. The `ImageName` cannot contain http:// or https://. The `ImageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -228,14 +228,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LicenseType { get; set; }
 
         /// <summary>
-        /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
+        /// The type of the operating system. Default value: `Linux`. Valid values: `Windows`, `Linux`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         /// <summary>
         /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
+        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `Platform` is `Ubuntu`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ImageImportState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+        /// The architecture of the image. Default value: `X8664`. Valid values: `X8664`, `I386`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? BootMode { get; set; }
 
         /// <summary>
-        /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// The description of the image. The `Description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.ImageImportDiskDeviceMappingGetArgs>? _diskDeviceMappings;
 
         /// <summary>
-        /// The information about the custom image. See `disk_device_mapping` below.
+        /// The information about the custom image. See `DiskDeviceMapping` below.
         /// </summary>
         public InputList<Inputs.ImageImportDiskDeviceMappingGetArgs> DiskDeviceMappings
         {
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        /// The name of the image. The `ImageName` must be `2` to `128` characters in length. The `ImageName` must start with a letter and cannot start with acs: or aliyun. The `ImageName` cannot contain http:// or https://. The `ImageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -291,14 +291,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LicenseType { get; set; }
 
         /// <summary>
-        /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
+        /// The type of the operating system. Default value: `Linux`. Valid values: `Windows`, `Linux`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         /// <summary>
         /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
+        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `Platform` is `Ubuntu`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

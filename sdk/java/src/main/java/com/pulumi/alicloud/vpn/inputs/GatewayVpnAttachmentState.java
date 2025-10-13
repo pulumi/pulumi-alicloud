@@ -25,7 +25,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * Bgp configuration information.
-     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
      * 
      */
     @Import(name="bgpConfig")
@@ -33,7 +33,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * @return Bgp configuration information.
-     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentBgpConfigArgs>> bgpConfig() {
@@ -150,7 +150,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * This parameter is supported if you create an vpn attachment in single-tunnel mode.
-     * Health check configuration information. See `health_check_config` below.
+     * Health check configuration information. See `healthCheckConfig` below.
      * 
      */
     @Import(name="healthCheckConfig")
@@ -158,7 +158,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
-     * Health check configuration information. See `health_check_config` below.
+     * Health check configuration information. See `healthCheckConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentHealthCheckConfigArgs>> healthCheckConfig() {
@@ -167,7 +167,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * The configurations of Phase 1 negotiations.
-     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
      * 
      */
     @Import(name="ikeConfig")
@@ -175,7 +175,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * @return The configurations of Phase 1 negotiations.
-     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentIkeConfigArgs>> ikeConfig() {
@@ -184,7 +184,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * Configuration negotiated in the second stage.
-     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
      * 
      */
     @Import(name="ipsecConfig")
@@ -192,7 +192,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * @return Configuration negotiated in the second stage.
-     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentIpsecConfigArgs>> ipsecConfig() {
@@ -299,8 +299,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * Configure the tunnel.
-     * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+     * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
      * 
      */
     @Import(name="tunnelOptionsSpecifications")
@@ -308,8 +308,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     /**
      * @return Configure the tunnel.
-     * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+     * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
      * 
      */
     public Optional<Output<List<GatewayVpnAttachmentTunnelOptionsSpecificationArgs>>> tunnelOptionsSpecifications() {
@@ -374,7 +374,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param bgpConfig Bgp configuration information.
-         * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+         * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param bgpConfig Bgp configuration information.
-         * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
+         * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param healthCheckConfig This parameter is supported if you create an vpn attachment in single-tunnel mode.
-         * Health check configuration information. See `health_check_config` below.
+         * Health check configuration information. See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param healthCheckConfig This parameter is supported if you create an vpn attachment in single-tunnel mode.
-         * Health check configuration information. See `health_check_config` below.
+         * Health check configuration information. See `healthCheckConfig` below.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param ikeConfig The configurations of Phase 1 negotiations.
-         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param ikeConfig The configurations of Phase 1 negotiations.
-         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param ipsecConfig Configuration negotiated in the second stage.
-         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param ipsecConfig Configuration negotiated in the second stage.
-         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
          * 
          * @return builder
          * 
@@ -744,8 +744,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param tunnelOptionsSpecifications Configure the tunnel.
-         * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+         * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
          * 
          * @return builder
          * 
@@ -757,8 +757,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param tunnelOptionsSpecifications Configure the tunnel.
-         * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+         * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
          * 
          * @return builder
          * 
@@ -769,8 +769,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
         /**
          * @param tunnelOptionsSpecifications Configure the tunnel.
-         * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
-         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+         * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
          * 
          * @return builder
          * 

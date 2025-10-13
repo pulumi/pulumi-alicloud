@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public partial class FirewallVpcFirewallControlPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Output("aclAction")]
         public Output<string> AclAction { get; private set; } = null!;
@@ -107,13 +107,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify this parameter.
         /// </summary>
         [Output("destPort")]
         public Output<string> DestPort { get; private set; } = null!;
 
         /// <summary>
-        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `DestPortType` is set to `Group`, you must specify this parameter.
         /// </summary>
         [Output("destPortGroup")]
         public Output<string?> DestPortGroup { get; private set; } = null!;
@@ -125,16 +125,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<ImmutableArray<string>> DestPortGroupPorts { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        /// The type of the destination port in the access control policy. Valid values: `Port`, `Group`.
         /// </summary>
         [Output("destPortType")]
         public Output<string> DestPortType { get; private set; } = null!;
 
         /// <summary>
         /// The destination address in the access control policy. Valid values:
-        /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-        /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-        /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+        /// - If `DestinationType` is set to `Net`, the value of `Destination` must be a CIDR block.
+        /// - If `DestinationType` is set to `Group`, the value of `Destination` must be an address book.
+        /// - If `DestinationType` is set to `Domain`, the value of `Destination` must be a domain name.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> DestinationGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
+        /// The type of the destination address in the access control policy. Valid values: `Net`, `Group`, `Domain`.
         /// </summary>
         [Output("destinationType")]
         public Output<string> DestinationType { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<int> HitTimes { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> SourceGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the source address in the access control policy. Valid values: `net`, `group`.
+        /// The type of the source address in the access control policy. Valid values: `Net`, `Group`.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class FirewallVpcFirewallControlPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction", required: true)]
         public Input<string> AclAction { get; set; } = null!;
@@ -290,40 +290,40 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify this parameter.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `DestPortType` is set to `Group`, you must specify this parameter.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
 
         /// <summary>
-        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        /// The type of the destination port in the access control policy. Valid values: `Port`, `Group`.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
 
         /// <summary>
         /// The destination address in the access control policy. Valid values:
-        /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-        /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-        /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+        /// - If `DestinationType` is set to `Net`, the value of `Destination` must be a CIDR block.
+        /// - If `DestinationType` is set to `Group`, the value of `Destination` must be an address book.
+        /// - If `DestinationType` is set to `Domain`, the value of `Destination` must be a domain name.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
-        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
+        /// The type of the destination address in the access control policy. Valid values: `Net`, `Group`, `Domain`.
         /// </summary>
         [Input("destinationType", required: true)]
         public Input<string> DestinationType { get; set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -359,7 +359,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Source { get; set; } = null!;
 
         /// <summary>
-        /// The type of the source address in the access control policy. Valid values: `net`, `group`.
+        /// The type of the source address in the access control policy. Valid values: `Net`, `Group`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class FirewallVpcFirewallControlPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction")]
         public Input<string>? AclAction { get; set; }
@@ -411,13 +411,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
+        /// The destination port in the access control policy. **Note:** If `DestPortType` is set to `Port`, you must specify this parameter.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
+        /// Access control policy in the access traffic of the destination port address book name. **Note:** If `DestPortType` is set to `Group`, you must specify this parameter.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
@@ -435,16 +435,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        /// The type of the destination port in the access control policy. Valid values: `Port`, `Group`.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
 
         /// <summary>
         /// The destination address in the access control policy. Valid values:
-        /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
-        /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
-        /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
+        /// - If `DestinationType` is set to `Net`, the value of `Destination` must be a CIDR block.
+        /// - If `DestinationType` is set to `Group`, the value of `Destination` must be an address book.
+        /// - If `DestinationType` is set to `Domain`, the value of `Destination` must be a domain name.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
@@ -468,7 +468,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? DestinationGroupType { get; set; }
 
         /// <summary>
-        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
+        /// The type of the destination address in the access control policy. Valid values: `Net`, `Group`, `Domain`.
         /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
@@ -480,7 +480,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? HitTimes { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `zh`, `en`.
+        /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -534,7 +534,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? SourceGroupType { get; set; }
 
         /// <summary>
-        /// The type of the source address in the access control policy. Valid values: `net`, `group`.
+        /// The type of the source address in the access control policy. Valid values: `Net`, `Group`.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
     public sealed class SyntheticTaskCommonSettingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom host. See `custom_host` below.
+        /// Custom host. See `CustomHost` below.
         /// </summary>
         [Input("customHost")]
         public Input<Inputs.SyntheticTaskCommonSettingCustomHostGetArgs>? CustomHost { get; set; }

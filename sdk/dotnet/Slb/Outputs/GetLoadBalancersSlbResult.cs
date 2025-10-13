@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `network_type` is `vpc`.
+        /// SLB addressType: internet if `True`, intranet if `False`. Must be `False` when `NetworkType` is `Vpc`.
         /// </summary>
         public readonly bool Internet;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string SlaveAvailabilityZone;
         /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> DestinationCidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// Next jump See `next_hops` below.
+        /// Next jump See `NextHops` below.
         /// </summary>
         [Output("nextHops")]
         public Output<ImmutableArray<Outputs.VPCRouteEntryNextHop>> NextHops { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouteEntryName { get; private set; } = null!;
 
         /// <summary>
-        /// Route publish status and publish target type See `route_publish_targets` below.
+        /// Route publish status and publish target type See `RoutePublishTargets` below.
         /// </summary>
         [Output("routePublishTargets")]
         public Output<ImmutableArray<Outputs.VPCRouteEntryRoutePublishTarget>> RoutePublishTargets { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.VPCRouteEntryNextHopArgs>? _nextHops;
 
         /// <summary>
-        /// Next jump See `next_hops` below.
+        /// Next jump See `NextHops` below.
         /// </summary>
         public InputList<Inputs.VPCRouteEntryNextHopArgs> NextHops
         {
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.VPCRouteEntryRoutePublishTargetArgs>? _routePublishTargets;
 
         /// <summary>
-        /// Route publish status and publish target type See `route_publish_targets` below.
+        /// Route publish status and publish target type See `RoutePublishTargets` below.
         /// </summary>
         public InputList<Inputs.VPCRouteEntryRoutePublishTargetArgs> RoutePublishTargets
         {
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.VPCRouteEntryNextHopGetArgs>? _nextHops;
 
         /// <summary>
-        /// Next jump See `next_hops` below.
+        /// Next jump See `NextHops` below.
         /// </summary>
         public InputList<Inputs.VPCRouteEntryNextHopGetArgs> NextHops
         {
@@ -362,7 +362,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.VPCRouteEntryRoutePublishTargetGetArgs>? _routePublishTargets;
 
         /// <summary>
-        /// Route publish status and publish target type See `route_publish_targets` below.
+        /// Route publish status and publish target type See `RoutePublishTargets` below.
         /// </summary>
         public InputList<Inputs.VPCRouteEntryRoutePublishTargetGetArgs> RoutePublishTargets
         {

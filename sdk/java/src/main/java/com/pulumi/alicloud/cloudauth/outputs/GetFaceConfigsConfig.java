@@ -16,7 +16,7 @@ public final class GetFaceConfigsConfig {
      */
     private String bizName;
     /**
-     * @return Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+     * @return Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
     private String bizType;
@@ -35,7 +35,7 @@ public final class GetFaceConfigsConfig {
         return this.bizName;
     }
     /**
-     * @return Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+     * @return Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
     public String bizType() {

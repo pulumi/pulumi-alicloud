@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
     /**
-     * @return Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+     * @return Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
      * 
      */
     private @Nullable List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate> mirrorMultiAlternates;
 
     private BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates() {}
     /**
-     * @return Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+     * @return Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
      * 
      */
     public List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate> mirrorMultiAlternates() {

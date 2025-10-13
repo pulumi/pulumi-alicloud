@@ -52,14 +52,14 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration for custom container runtime.See `custom_container_config` below.
+     * The configuration for custom container runtime.See `customContainerConfig` below.
      * 
      */
     @Import(name="customContainerConfig")
     private @Nullable Output<FunctionCustomContainerConfigArgs> customContainerConfig;
 
     /**
-     * @return The configuration for custom container runtime.See `custom_container_config` below.
+     * @return The configuration for custom container runtime.See `customContainerConfig` below.
      * 
      */
     public Optional<Output<FunctionCustomContainerConfigArgs>> customContainerConfig() {
@@ -262,14 +262,14 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * The Function Compute function name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * @return The Function Compute function name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -457,7 +457,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customContainerConfig The configuration for custom container runtime.See `custom_container_config` below.
+         * @param customContainerConfig The configuration for custom container runtime.See `customContainerConfig` below.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customContainerConfig The configuration for custom container runtime.See `custom_container_config` below.
+         * @param customContainerConfig The configuration for custom container runtime.See `customContainerConfig` below.
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+         * @param name The Function Compute function name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+         * @param name The Function Compute function name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
          * 
          * @return builder
          * 

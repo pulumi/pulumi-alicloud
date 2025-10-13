@@ -42,7 +42,7 @@ public final class InstanceReplicaSet {
      */
     private @Nullable String vpcCloudInstanceId;
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     private @Nullable String vpcId;
@@ -96,7 +96,7 @@ public final class InstanceReplicaSet {
         return Optional.ofNullable(this.vpcCloudInstanceId);
     }
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      * 
      */
     public Optional<String> vpcId() {

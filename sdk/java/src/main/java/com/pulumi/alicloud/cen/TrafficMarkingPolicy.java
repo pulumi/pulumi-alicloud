@@ -202,7 +202,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * List of stream classification rules.
-     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      * 
      */
     @Export(name="trafficMatchRules", refs={List.class,TrafficMarkingPolicyTrafficMatchRule.class}, tree="[0,1]")
@@ -210,7 +210,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return List of stream classification rules.
-     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      * 
      */
     public Output<Optional<List<TrafficMarkingPolicyTrafficMatchRule>>> trafficMatchRules() {

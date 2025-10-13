@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The role type. Valid Value: `custom`.
+        /// The role type. Valid Value: `Custom`.
         /// </summary>
         [Input("roleType")]
         public Input<string>? RoleType { get; set; }

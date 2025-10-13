@@ -230,7 +230,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return this.dbInstanceId;
     }
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      * @deprecated
      * Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
@@ -241,14 +241,14 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     private Output<String> description;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      * @deprecated
      * Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
@@ -259,42 +259,42 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     private Output<String> instanceId;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
@@ -305,14 +305,14 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
@@ -323,7 +323,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     private Output<String> password;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      */
     public Output<String> password() {
@@ -358,7 +358,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      * 
@@ -371,7 +371,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      * 

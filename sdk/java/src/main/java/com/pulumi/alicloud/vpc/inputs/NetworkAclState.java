@@ -51,14 +51,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Out direction rule information. See `egress_acl_entries` below.
+     * Out direction rule information. See `egressAclEntries` below.
      * 
      */
     @Import(name="egressAclEntries")
     private @Nullable Output<List<NetworkAclEgressAclEntryArgs>> egressAclEntries;
 
     /**
-     * @return Out direction rule information. See `egress_acl_entries` below.
+     * @return Out direction rule information. See `egressAclEntries` below.
      * 
      */
     public Optional<Output<List<NetworkAclEgressAclEntryArgs>>> egressAclEntries() {
@@ -66,14 +66,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Inward direction rule information. See `ingress_acl_entries` below.
+     * Inward direction rule information. See `ingressAclEntries` below.
      * 
      */
     @Import(name="ingressAclEntries")
     private @Nullable Output<List<NetworkAclIngressAclEntryArgs>> ingressAclEntries;
 
     /**
-     * @return Inward direction rule information. See `ingress_acl_entries` below.
+     * @return Inward direction rule information. See `ingressAclEntries` below.
      * 
      */
     public Optional<Output<List<NetworkAclIngressAclEntryArgs>>> ingressAclEntries() {
@@ -276,7 +276,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries Out direction rule information. See `egress_acl_entries` below.
+         * @param egressAclEntries Out direction rule information. See `egressAclEntries` below.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries Out direction rule information. See `egress_acl_entries` below.
+         * @param egressAclEntries Out direction rule information. See `egressAclEntries` below.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries Out direction rule information. See `egress_acl_entries` below.
+         * @param egressAclEntries Out direction rule information. See `egressAclEntries` below.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries Inward direction rule information. See `ingress_acl_entries` below.
+         * @param ingressAclEntries Inward direction rule information. See `ingressAclEntries` below.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries Inward direction rule information. See `ingress_acl_entries` below.
+         * @param ingressAclEntries Inward direction rule information. See `ingressAclEntries` below.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries Inward direction rule information. See `ingress_acl_entries` below.
+         * @param ingressAclEntries Inward direction rule information. See `ingressAclEntries` below.
          * 
          * @return builder
          * 

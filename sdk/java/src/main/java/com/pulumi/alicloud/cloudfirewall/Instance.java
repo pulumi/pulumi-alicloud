@@ -110,14 +110,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudfirewall/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The number of multi account. It will be ignored when `cfw_account = false`.
+     * The number of multi account. It will be ignored when `cfwAccount = false`.
      * 
      */
     @Export(name="accountNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> accountNumber;
 
     /**
-     * @return The number of multi account. It will be ignored when `cfw_account = false`.
+     * @return The number of multi account. It will be ignored when `cfwAccount = false`.
      * 
      */
     public Output<Optional<Integer>> accountNumber() {
@@ -152,28 +152,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cfwAccount);
     }
     /**
-     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      * 
      */
     @Export(name="cfwLog", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cfwLog;
 
     /**
-     * @return Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+     * @return Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      * 
      */
     public Output<Optional<Boolean>> cfwLog() {
         return Codegen.optional(this.cfwLog);
     }
     /**
-     * The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
+     * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      * 
      */
     @Export(name="cfwLogStorage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cfwLogStorage;
 
     /**
-     * @return The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
+     * @return The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      * 
      */
     public Output<Optional<Integer>> cfwLogStorage() {
@@ -208,14 +208,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.endTime;
     }
     /**
-     * The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
+     * The number of protected VPCs. It will be ignored when `spec = &#34;premiumVersion&#34;`. Valid values between 2 and 500.
      * 
      */
     @Export(name="fwVpcNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> fwVpcNumber;
 
     /**
-     * @return The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
+     * @return The number of protected VPCs. It will be ignored when `spec = &#34;premiumVersion&#34;`. Valid values between 2 and 500.
      * 
      */
     public Output<Integer> fwVpcNumber() {
@@ -264,42 +264,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logistics);
     }
     /**
-     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      * 
      */
     @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
-     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
+     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      * 
      */
     public Output<Optional<String>> modifyType() {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+     * @return The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -320,7 +320,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.releaseTime;
     }
     /**
-     * Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+     * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      * 
      * @deprecated
      * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
@@ -331,23 +331,23 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+     * @return Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      * 
      */
     public Output<Integer> renewPeriod() {
         return this.renewPeriod;
     }
     /**
-     * Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
-     * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
+     * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      * 
      */
     @Export(name="renewalDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> renewalDuration;
 
     /**
-     * @return Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
-     * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
+     * @return Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      * 
      */
     public Output<Integer> renewalDuration() {
@@ -372,7 +372,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-     *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+     *   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
@@ -383,21 +383,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-     *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+     *   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      * 
      */
     public Output<String> renewalStatus() {
         return this.renewalStatus;
     }
     /**
-     * Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
+     * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      * 
      */
     @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
-     * @return Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
+     * @return Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      * 
      */
     public Output<String> spec() {

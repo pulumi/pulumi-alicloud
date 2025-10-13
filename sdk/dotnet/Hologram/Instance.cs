@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Hologram
         public Output<int?> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// List of domain names. See `endpoints` below.
+        /// List of domain names. See `Endpoints` below.
         /// </summary>
         [Output("endpoints")]
         public Output<ImmutableArray<Outputs.InstanceEndpoint>> Endpoints { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Hologram
         private InputList<Inputs.InstanceEndpointArgs>? _endpoints;
 
         /// <summary>
-        /// List of domain names. See `endpoints` below.
+        /// List of domain names. See `Endpoints` below.
         /// </summary>
         public InputList<Inputs.InstanceEndpointArgs> Endpoints
         {
@@ -406,7 +406,7 @@ namespace Pulumi.AliCloud.Hologram
         private InputList<Inputs.InstanceEndpointGetArgs>? _endpoints;
 
         /// <summary>
-        /// List of domain names. See `endpoints` below.
+        /// List of domain names. See `Endpoints` below.
         /// </summary>
         public InputList<Inputs.InstanceEndpointGetArgs> Endpoints
         {

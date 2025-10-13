@@ -13,43 +13,43 @@ namespace Pulumi.AliCloud.Arms.Inputs
     public sealed class SyntheticTaskMonitorConfArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// HTTP(S) task configuration information. See `api_http` below.
+        /// HTTP(S) task configuration information. See `ApiHttp` below.
         /// </summary>
         [Input("apiHttp")]
         public Input<Inputs.SyntheticTaskMonitorConfApiHttpArgs>? ApiHttp { get; set; }
 
         /// <summary>
-        /// File download type task configuration. See `file_download` below.
+        /// File download type task configuration. See `FileDownload` below.
         /// </summary>
         [Input("fileDownload")]
         public Input<Inputs.SyntheticTaskMonitorConfFileDownloadArgs>? FileDownload { get; set; }
 
         /// <summary>
-        /// The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+        /// The configuration parameters of the DNS dial test. Required when TaskType is 3. See `NetDns` below.
         /// </summary>
         [Input("netDns")]
         public Input<Inputs.SyntheticTaskMonitorConfNetDnsArgs>? NetDns { get; set; }
 
         /// <summary>
-        /// ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+        /// ICMP dialing configuration parameters. Required when TaskType is 1. See `NetIcmp` below.
         /// </summary>
         [Input("netIcmp")]
         public Input<Inputs.SyntheticTaskMonitorConfNetIcmpArgs>? NetIcmp { get; set; }
 
         /// <summary>
-        /// The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+        /// The configuration parameters of TCP dial test. Required when TaskType is 2. See `NetTcp` below.
         /// </summary>
         [Input("netTcp")]
         public Input<Inputs.SyntheticTaskMonitorConfNetTcpArgs>? NetTcp { get; set; }
 
         /// <summary>
-        /// Streaming Media Dial Test Configuration. See `stream` below.
+        /// Streaming Media Dial Test Configuration. See `Stream` below.
         /// </summary>
         [Input("stream")]
         public Input<Inputs.SyntheticTaskMonitorConfStreamArgs>? Stream { get; set; }
 
         /// <summary>
-        /// Website speed measurement type task configuration. See `website` below.
+        /// Website speed measurement type task configuration. See `Website` below.
         /// </summary>
         [Input("website")]
         public Input<Inputs.SyntheticTaskMonitorConfWebsiteArgs>? Website { get; set; }

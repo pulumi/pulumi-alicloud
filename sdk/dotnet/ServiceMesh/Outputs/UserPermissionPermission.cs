@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string? RoleName;
         /// <summary>
-        /// The role type. Valid Value: `custom`.
+        /// The role type. Valid Value: `Custom`.
         /// </summary>
         public readonly string? RoleType;
         /// <summary>

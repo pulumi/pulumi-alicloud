@@ -383,6 +383,10 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.
@@ -411,6 +415,10 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         For information about Ebs Dedicated Block Storage Cluster and how to use it, see [What is Dedicated Block Storage Cluster](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatededicatedblockstoragecluster).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
 
         ## Import
 

@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The schema of the search index. If changed, a new index would be created. See `schema` below.
+        /// The schema of the search index. If changed, a new index would be created. See `Schema` below.
         /// </summary>
         [Output("schemas")]
         public Output<ImmutableArray<Outputs.SearchIndexSchema>> Schemas { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.SearchIndexSchemaArgs>? _schemas;
 
         /// <summary>
-        /// The schema of the search index. If changed, a new index would be created. See `schema` below.
+        /// The schema of the search index. If changed, a new index would be created. See `Schema` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaArgs> Schemas
         {
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.SearchIndexSchemaGetArgs>? _schemas;
 
         /// <summary>
-        /// The schema of the search index. If changed, a new index would be created. See `schema` below.
+        /// The schema of the search index. If changed, a new index would be created. See `Schema` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaGetArgs> Schemas
         {

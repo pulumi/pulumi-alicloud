@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Adb
     public partial class DBCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `PaymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterCategory { get; private set; } = null!;
 
         /// <summary>
-        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        /// It duplicates with attribute DbNodeClass and is deprecated from 1.121.2.
         /// </summary>
         [Output("dbClusterClass")]
         public Output<string?> DbClusterClass { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable disk encryption. Default Value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("diskEncryption")]
         public Output<bool?> DiskEncryption { get; private set; } = null!;
@@ -101,15 +101,15 @@ namespace Pulumi.AliCloud.Adb
 
         /// <summary>
         /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
-        /// - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
-        /// - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
-        /// - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        /// - `8Core64GB`: If you set `ElasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        /// - `12Core96GB`: If you set `ElasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        /// - `16Core128GB`: (Available since v1.237.0)If you set `ElasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         /// </summary>
         [Output("elasticIoResourceSize")]
         public Output<string> ElasticIoResourceSize { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableSsl")]
         public Output<bool?> EnableSsl { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> KernelVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `KmsId` is valid only when `DiskEncryption` is set to `True`.
         /// </summary>
         [Output("kmsId")]
         public Output<string?> KmsId { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of the cluster. Valid values: `reserver`, `flexible`.
+        /// The mode of the cluster. Valid values: `Reserver`, `Flexible`.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -145,20 +145,20 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// Field `PayType` has been deprecated. New field `PaymentType` instead.
         /// </summary>
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        /// The duration that you will buy DB cluster (in month). It is valid when `PaymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class DBClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `PaymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> DbClusterCategory { get; set; } = null!;
 
         /// <summary>
-        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        /// It duplicates with attribute DbNodeClass and is deprecated from 1.121.2.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable disk encryption. Default Value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
@@ -347,15 +347,15 @@ namespace Pulumi.AliCloud.Adb
 
         /// <summary>
         /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
-        /// - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
-        /// - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
-        /// - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        /// - `8Core64GB`: If you set `ElasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        /// - `12Core96GB`: If you set `ElasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        /// - `16Core128GB`: (Available since v1.237.0)If you set `ElasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? KernelVersion { get; set; }
 
         /// <summary>
-        /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `KmsId` is valid only when `DiskEncryption` is set to `True`.
         /// </summary>
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// The mode of the cluster. Valid values: `reserver`, `flexible`.
+        /// The mode of the cluster. Valid values: `Reserver`, `Flexible`.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -391,20 +391,20 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// Field `PayType` has been deprecated. New field `PaymentType` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        /// The duration that you will buy DB cluster (in month). It is valid when `PaymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -482,7 +482,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class DBClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `PaymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -506,7 +506,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterCategory { get; set; }
 
         /// <summary>
-        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        /// It duplicates with attribute DbNodeClass and is deprecated from 1.121.2.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable disk encryption. Default Value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
@@ -561,15 +561,15 @@ namespace Pulumi.AliCloud.Adb
 
         /// <summary>
         /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
-        /// - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
-        /// - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
-        /// - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        /// - `8Core64GB`: If you set `ElasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        /// - `12Core96GB`: If you set `ElasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        /// - `16Core128GB`: (Available since v1.237.0)If you set `ElasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
@@ -581,7 +581,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? KernelVersion { get; set; }
 
         /// <summary>
-        /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `KmsId` is valid only when `DiskEncryption` is set to `True`.
         /// </summary>
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
@@ -593,7 +593,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// The mode of the cluster. Valid values: `reserver`, `flexible`.
+        /// The mode of the cluster. Valid values: `Reserver`, `Flexible`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -605,20 +605,20 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// Field `PayType` has been deprecated. New field `PaymentType` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        /// The duration that you will buy DB cluster (in month). It is valid when `PaymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

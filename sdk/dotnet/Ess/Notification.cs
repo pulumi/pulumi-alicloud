@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ess
         /// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
         /// * region: the region ID of the scaling group. For more information, see `Regions and zones`
         /// * account-id: the ID of your account.
-        /// * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
+        /// * resource-relative-id: the notification method. Valid values : `Cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         /// </summary>
         [Output("notificationArn")]
         public Output<string> NotificationArn { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Ess
         /// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
         /// * region: the region ID of the scaling group. For more information, see `Regions and zones`
         /// * account-id: the ID of your account.
-        /// * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
+        /// * resource-relative-id: the notification method. Valid values : `Cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         /// </summary>
         [Input("notificationArn", required: true)]
         public Input<string> NotificationArn { get; set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Ess
         /// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
         /// * region: the region ID of the scaling group. For more information, see `Regions and zones`
         /// * account-id: the ID of your account.
-        /// * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
+        /// * resource-relative-id: the notification method. Valid values : `Cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         /// </summary>
         [Input("notificationArn")]
         public Input<string>? NotificationArn { get; set; }

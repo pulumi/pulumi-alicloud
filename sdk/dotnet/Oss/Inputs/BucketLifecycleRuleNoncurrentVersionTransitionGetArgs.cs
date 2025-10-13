@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<int> Days { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+        /// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `True`, the rule applies to objects based on their last access time; if set to `False`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `AccessMonitor` first.
         /// </summary>
         [Input("isAccessTime")]
         public Input<bool>? IsAccessTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+        /// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `True`, converts the storage class of the objects to Standard; if set to `False`, does not convert the storage class of the objects to Standard.
         /// </summary>
         [Input("returnToStdWhenVisit")]
         public Input<bool>? ReturnToStdWhenVisit { get; set; }

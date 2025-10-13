@@ -17,14 +17,14 @@ public final class BucketWebsiteRoutingRulesArgs extends com.pulumi.resources.Re
     public static final BucketWebsiteRoutingRulesArgs Empty = new BucketWebsiteRoutingRulesArgs();
 
     /**
-     * Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+     * Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
      * 
      */
     @Import(name="routingRules")
     private @Nullable Output<List<BucketWebsiteRoutingRulesRoutingRuleArgs>> routingRules;
 
     /**
-     * @return Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+     * @return Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
      * 
      */
     public Optional<Output<List<BucketWebsiteRoutingRulesRoutingRuleArgs>>> routingRules() {
@@ -56,7 +56,7 @@ public final class BucketWebsiteRoutingRulesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routingRules Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+         * @param routingRules Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class BucketWebsiteRoutingRulesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routingRules Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+         * @param routingRules Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class BucketWebsiteRoutingRulesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routingRules Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+         * @param routingRules Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
          * 
          * @return builder
          * 

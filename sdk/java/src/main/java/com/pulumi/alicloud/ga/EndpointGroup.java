@@ -164,28 +164,28 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
+     * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      * 
      */
     @Export(name="endpointConfigurations", refs={List.class,EndpointGroupEndpointConfiguration.class}, tree="[0,1]")
     private Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations;
 
     /**
-     * @return The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
+     * @return The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      * 
      */
     public Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations() {
         return this.endpointConfigurations;
     }
     /**
-     * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
      * 
      */
     @Export(name="endpointGroupIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> endpointGroupIpLists;
 
     /**
-     * @return (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     * @return (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
      * 
      */
     public Output<List<String>> endpointGroupIpLists() {
@@ -223,7 +223,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
-     * &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+     * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      * 
      */
     @Export(name="endpointProtocolVersion", refs={String.class}, tree="[0]")
@@ -231,7 +231,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
-     * &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+     * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      * 
      */
     public Output<String> endpointProtocolVersion() {
@@ -239,7 +239,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
-     * &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
+     * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      * 
      */
     @Export(name="endpointRequestProtocol", refs={String.class}, tree="[0]")
@@ -247,7 +247,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
-     * &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
+     * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      * 
      */
     public Output<String> endpointRequestProtocol() {
@@ -314,7 +314,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
-     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
+     * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     @Export(name="healthCheckProtocol", refs={String.class}, tree="[0]")
@@ -325,7 +325,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
-     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
+     * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     public Output<Optional<String>> healthCheckProtocol() {
@@ -360,7 +360,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
+     * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
@@ -368,7 +368,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ EndpointGroupPortOverrides> portOverrides;
 
     /**
-     * @return Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
+     * @return Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */

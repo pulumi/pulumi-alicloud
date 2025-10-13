@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly int Status;
         /// <summary>
-        /// The status_name of the topic.
+        /// The StatusName of the topic.
         /// </summary>
         public readonly string StatusName;
         /// <summary>

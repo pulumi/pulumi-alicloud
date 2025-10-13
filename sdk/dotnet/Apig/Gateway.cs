@@ -42,13 +42,13 @@ namespace Pulumi.AliCloud.Apig
         public Output<string> GatewayType { get; private set; } = null!;
 
         /// <summary>
-        /// Log Configuration See `log_config` below.
+        /// Log Configuration See `LogConfig` below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.GatewayLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Network Access Configuration See `network_access_config` below.
+        /// Network Access Configuration See `NetworkAccessConfig` below.
         /// </summary>
         [Output("networkAccessConfig")]
         public Output<Outputs.GatewayNetworkAccessConfig?> NetworkAccessConfig { get; private set; } = null!;
@@ -84,25 +84,25 @@ namespace Pulumi.AliCloud.Apig
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC associated with the Gateway. See `vpc` below.
+        /// The VPC associated with the Gateway. See `Vpc` below.
         /// </summary>
         [Output("vpc")]
         public Output<Outputs.GatewayVpc?> Vpc { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch associated with the Gateway. See `vswitch` below.
+        /// The virtual switch associated with the Gateway. See `Vswitch` below.
         /// </summary>
         [Output("vswitch")]
         public Output<Outputs.GatewayVswitch?> Vswitch { get; private set; } = null!;
 
         /// <summary>
-        /// Availability Zone Configuration See `zone_config` below.
+        /// Availability Zone Configuration See `ZoneConfig` below.
         /// </summary>
         [Output("zoneConfig")]
         public Output<Outputs.GatewayZoneConfig> ZoneConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The List of zones associated with the Gateway. See `zones` below.
+        /// The List of zones associated with the Gateway. See `Zones` below.
         /// </summary>
         [Output("zones")]
         public Output<ImmutableArray<Outputs.GatewayZone>> Zones { get; private set; } = null!;
@@ -168,13 +168,13 @@ namespace Pulumi.AliCloud.Apig
         public Input<string>? GatewayType { get; set; }
 
         /// <summary>
-        /// Log Configuration See `log_config` below.
+        /// Log Configuration See `LogConfig` below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.GatewayLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Network Access Configuration See `network_access_config` below.
+        /// Network Access Configuration See `NetworkAccessConfig` below.
         /// </summary>
         [Input("networkAccessConfig")]
         public Input<Inputs.GatewayNetworkAccessConfigArgs>? NetworkAccessConfig { get; set; }
@@ -210,19 +210,19 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// The VPC associated with the Gateway. See `vpc` below.
+        /// The VPC associated with the Gateway. See `Vpc` below.
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.GatewayVpcArgs>? Vpc { get; set; }
 
         /// <summary>
-        /// The virtual switch associated with the Gateway. See `vswitch` below.
+        /// The virtual switch associated with the Gateway. See `Vswitch` below.
         /// </summary>
         [Input("vswitch")]
         public Input<Inputs.GatewayVswitchArgs>? Vswitch { get; set; }
 
         /// <summary>
-        /// Availability Zone Configuration See `zone_config` below.
+        /// Availability Zone Configuration See `ZoneConfig` below.
         /// </summary>
         [Input("zoneConfig", required: true)]
         public Input<Inputs.GatewayZoneConfigArgs> ZoneConfig { get; set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Apig
         private InputList<Inputs.GatewayZoneArgs>? _zones;
 
         /// <summary>
-        /// The List of zones associated with the Gateway. See `zones` below.
+        /// The List of zones associated with the Gateway. See `Zones` below.
         /// </summary>
         public InputList<Inputs.GatewayZoneArgs> Zones
         {
@@ -268,13 +268,13 @@ namespace Pulumi.AliCloud.Apig
         public Input<string>? GatewayType { get; set; }
 
         /// <summary>
-        /// Log Configuration See `log_config` below.
+        /// Log Configuration See `LogConfig` below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.GatewayLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Network Access Configuration See `network_access_config` below.
+        /// Network Access Configuration See `NetworkAccessConfig` below.
         /// </summary>
         [Input("networkAccessConfig")]
         public Input<Inputs.GatewayNetworkAccessConfigGetArgs>? NetworkAccessConfig { get; set; }
@@ -316,19 +316,19 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// The VPC associated with the Gateway. See `vpc` below.
+        /// The VPC associated with the Gateway. See `Vpc` below.
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.GatewayVpcGetArgs>? Vpc { get; set; }
 
         /// <summary>
-        /// The virtual switch associated with the Gateway. See `vswitch` below.
+        /// The virtual switch associated with the Gateway. See `Vswitch` below.
         /// </summary>
         [Input("vswitch")]
         public Input<Inputs.GatewayVswitchGetArgs>? Vswitch { get; set; }
 
         /// <summary>
-        /// Availability Zone Configuration See `zone_config` below.
+        /// Availability Zone Configuration See `ZoneConfig` below.
         /// </summary>
         [Input("zoneConfig")]
         public Input<Inputs.GatewayZoneConfigGetArgs>? ZoneConfig { get; set; }
@@ -337,7 +337,7 @@ namespace Pulumi.AliCloud.Apig
         private InputList<Inputs.GatewayZoneGetArgs>? _zones;
 
         /// <summary>
-        /// The List of zones associated with the Gateway. See `zones` below.
+        /// The List of zones associated with the Gateway. See `Zones` below.
         /// </summary>
         public InputList<Inputs.GatewayZoneGetArgs> Zones
         {

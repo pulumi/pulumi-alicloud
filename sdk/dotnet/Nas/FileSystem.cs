@@ -145,13 +145,13 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// NFS ACL See `nfs_acl` below.
+        /// NFS ACL See `NfsAcl` below.
         /// </summary>
         [Output("nfsAcl")]
         public Output<Outputs.FileSystemNfsAcl> NfsAcl { get; private set; } = null!;
 
         /// <summary>
-        /// Option. See `options` below.
+        /// Option. See `Options` below.
         /// </summary>
         [Output("options")]
         public Output<Outputs.FileSystemOptions> Options { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> ProtocolType { get; private set; } = null!;
 
         /// <summary>
-        /// Recycle Bin See `recycle_bin` below.
+        /// Recycle Bin See `RecycleBin` below.
         /// </summary>
         [Output("recycleBin")]
         public Output<Outputs.FileSystemRecycleBin> RecycleBin { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// SMB ACL See `smb_acl` below.
+        /// SMB ACL See `SmbAcl` below.
         /// </summary>
         [Output("smbAcl")]
         public Output<Outputs.FileSystemSmbAcl> SmbAcl { get; private set; } = null!;
@@ -363,13 +363,13 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// NFS ACL See `nfs_acl` below.
+        /// NFS ACL See `NfsAcl` below.
         /// </summary>
         [Input("nfsAcl")]
         public Input<Inputs.FileSystemNfsAclArgs>? NfsAcl { get; set; }
 
         /// <summary>
-        /// Option. See `options` below.
+        /// Option. See `Options` below.
         /// </summary>
         [Input("options")]
         public Input<Inputs.FileSystemOptionsArgs>? Options { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> ProtocolType { get; set; } = null!;
 
         /// <summary>
-        /// Recycle Bin See `recycle_bin` below.
+        /// Recycle Bin See `RecycleBin` below.
         /// </summary>
         [Input("recycleBin")]
         public Input<Inputs.FileSystemRecycleBinArgs>? RecycleBin { get; set; }
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// SMB ACL See `smb_acl` below.
+        /// SMB ACL See `SmbAcl` below.
         /// </summary>
         [Input("smbAcl")]
         public Input<Inputs.FileSystemSmbAclArgs>? SmbAcl { get; set; }
@@ -543,13 +543,13 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// NFS ACL See `nfs_acl` below.
+        /// NFS ACL See `NfsAcl` below.
         /// </summary>
         [Input("nfsAcl")]
         public Input<Inputs.FileSystemNfsAclGetArgs>? NfsAcl { get; set; }
 
         /// <summary>
-        /// Option. See `options` below.
+        /// Option. See `Options` below.
         /// </summary>
         [Input("options")]
         public Input<Inputs.FileSystemOptionsGetArgs>? Options { get; set; }
@@ -564,7 +564,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? ProtocolType { get; set; }
 
         /// <summary>
-        /// Recycle Bin See `recycle_bin` below.
+        /// Recycle Bin See `RecycleBin` below.
         /// </summary>
         [Input("recycleBin")]
         public Input<Inputs.FileSystemRecycleBinGetArgs>? RecycleBin { get; set; }
@@ -582,7 +582,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// SMB ACL See `smb_acl` below.
+        /// SMB ACL See `SmbAcl` below.
         /// </summary>
         [Input("smbAcl")]
         public Input<Inputs.FileSystemSmbAclGetArgs>? SmbAcl { get; set; }

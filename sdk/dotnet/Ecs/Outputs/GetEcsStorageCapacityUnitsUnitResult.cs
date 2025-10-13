@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsStorageCapacityUnitsUnitResult
     {
         /// <summary>
-        /// When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+        /// When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `Allocated`, `Ignored`.
         /// </summary>
         public readonly string AllocationStatus;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Alert template language including `cn`, `en`.
+        /// Alert template language including `Cn`, `En`.
         /// </summary>
         public readonly string? Lang;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tokens;
         /// <summary>
-        /// Alert template type including `sys`, `user`.
+        /// Alert template type including `Sys`, `User`.
         /// </summary>
         public readonly string Type;
 

@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Eci.Inputs
     public sealed class ContainerGroupImageRegistryCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        /// The password used to log on to the image repository. It is required when `ImageRegistryCredential` is configured.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// The address of the image repository. It is required when `image_registry_credential` is configured.
+        /// The address of the image repository. It is required when `ImageRegistryCredential` is configured.
         /// </summary>
         [Input("server", required: true)]
         public Input<string> Server { get; set; } = null!;
 
         /// <summary>
-        /// The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        /// The username used to log on to the image repository. It is required when `ImageRegistryCredential` is configured.
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;

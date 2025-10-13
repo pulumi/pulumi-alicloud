@@ -58,8 +58,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The ids of subscribed contacts.
-        /// **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-        /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        /// **NOTE:** There is a potential diff error because of the order of `ContactIds` values indefinite.
+        /// So, from version 1.161.0, `ContactIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
         /// </summary>
         [Output("contactIds")]
@@ -164,8 +164,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The ids of subscribed contacts.
-        /// **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-        /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        /// **NOTE:** There is a potential diff error because of the order of `ContactIds` values indefinite.
+        /// So, from version 1.161.0, `ContactIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
         /// </summary>
         public InputList<string> ContactIds
@@ -241,8 +241,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The ids of subscribed contacts.
-        /// **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
-        /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        /// **NOTE:** There is a potential diff error because of the order of `ContactIds` values indefinite.
+        /// So, from version 1.161.0, `ContactIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
         /// </summary>
         public InputList<string> ContactIds

@@ -47,14 +47,14 @@ public final class BandwidthPackageAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+     * The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      * 
      */
     @Import(name="bandwidthPackageId")
     private @Nullable Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+     * @return The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      * 
      */
     public Optional<Output<String>> bandwidthPackageId() {
@@ -156,7 +156,7 @@ public final class BandwidthPackageAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param bandwidthPackageId The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+         * @param bandwidthPackageId The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class BandwidthPackageAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param bandwidthPackageId The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+         * @param bandwidthPackageId The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
          * 
          * @return builder
          * 

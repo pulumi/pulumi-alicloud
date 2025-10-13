@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string DtsJobName;
         /// <summary>
-        /// The ID of the Migration Job. Its value is same as `dts_job_id`.
+        /// The ID of the Migration Job. Its value is same as `DtsJobId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Waf
     public partial class ProtectionModule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+        /// The Protection Module. Valid values: `AcCc`, `Antifraud`, `Dld`, `Normalized`, `Waf`.
         /// </summary>
         [Output("defenseType")]
         public Output<string> DefenseType { get; private set; } = null!;
@@ -107,12 +107,12 @@ namespace Pulumi.AliCloud.Waf
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-        /// * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-        /// * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-        /// * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-        /// * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-        /// * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+        /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `DefenseType` parameter.
+        /// * The `DefenseType` is `Waf`. `0`: block mode. `1`: warn mode.
+        /// * The `DefenseType` is `Dld`. `0`: warn mode. `1`: block mode.
+        /// * The `DefenseType` is `AcCc`. `0`: prevention mode. `1`: protection-emergency mode.
+        /// * The `DefenseType` is `Antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+        /// * The `DefenseType` is `Normalized`. `0`: warn mode. `1`: block mode.
         /// </summary>
         [Output("mode")]
         public Output<int> Mode { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class ProtectionModuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+        /// The Protection Module. Valid values: `AcCc`, `Antifraud`, `Dld`, `Normalized`, `Waf`.
         /// </summary>
         [Input("defenseType", required: true)]
         public Input<string> DefenseType { get; set; } = null!;
@@ -188,12 +188,12 @@ namespace Pulumi.AliCloud.Waf
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-        /// * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-        /// * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-        /// * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-        /// * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-        /// * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+        /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `DefenseType` parameter.
+        /// * The `DefenseType` is `Waf`. `0`: block mode. `1`: warn mode.
+        /// * The `DefenseType` is `Dld`. `0`: warn mode. `1`: block mode.
+        /// * The `DefenseType` is `AcCc`. `0`: prevention mode. `1`: protection-emergency mode.
+        /// * The `DefenseType` is `Antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+        /// * The `DefenseType` is `Normalized`. `0`: warn mode. `1`: block mode.
         /// </summary>
         [Input("mode", required: true)]
         public Input<int> Mode { get; set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class ProtectionModuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+        /// The Protection Module. Valid values: `AcCc`, `Antifraud`, `Dld`, `Normalized`, `Waf`.
         /// </summary>
         [Input("defenseType")]
         public Input<string>? DefenseType { get; set; }
@@ -231,12 +231,12 @@ namespace Pulumi.AliCloud.Waf
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-        /// * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-        /// * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-        /// * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-        /// * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-        /// * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+        /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `DefenseType` parameter.
+        /// * The `DefenseType` is `Waf`. `0`: block mode. `1`: warn mode.
+        /// * The `DefenseType` is `Dld`. `0`: warn mode. `1`: block mode.
+        /// * The `DefenseType` is `AcCc`. `0`: prevention mode. `1`: protection-emergency mode.
+        /// * The `DefenseType` is `Antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+        /// * The `DefenseType` is `Normalized`. `0`: warn mode. `1`: block mode.
         /// </summary>
         [Input("mode")]
         public Input<int>? Mode { get; set; }

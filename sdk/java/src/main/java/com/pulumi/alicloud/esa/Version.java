@@ -159,14 +159,14 @@ public class Version extends com.pulumi.resources.CustomResource {
         return this.siteVersion;
     }
     /**
-     * Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+     * Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+     * @return Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
      * 
      */
     public Output<String> status() {

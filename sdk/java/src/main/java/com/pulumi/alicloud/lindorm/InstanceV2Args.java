@@ -140,14 +140,14 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Engine List See `engine_list` below.
+     * Engine List See `engineList` below.
      * 
      */
     @Import(name="engineLists", required=true)
     private Output<List<InstanceV2EngineListArgs>> engineLists;
 
     /**
-     * @return Engine List See `engine_list` below.
+     * @return Engine List See `engineList` below.
      * 
      */
     public Output<List<InstanceV2EngineListArgs>> engineLists() {
@@ -491,7 +491,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineLists Engine List See `engine_list` below.
+         * @param engineLists Engine List See `engineList` below.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineLists Engine List See `engine_list` below.
+         * @param engineLists Engine List See `engineList` below.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineLists Engine List See `engine_list` below.
+         * @param engineLists Engine List See `engineList` below.
          * 
          * @return builder
          * 

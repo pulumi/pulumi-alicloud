@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<bool?> AllowUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `DefinedColumn` should not be more than 32. See `DefinedColumn` below.
         /// </summary>
         [Output("definedColumns")]
         public Output<ImmutableArray<Outputs.TableDefinedColumn>> DefinedColumns { get; private set; } = null!;
@@ -145,13 +145,13 @@ namespace Pulumi.AliCloud.Ots
         public Output<int> MaxVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `PrimaryKey` should not be less than one and not be more than four. See `PrimaryKey` below.
         /// </summary>
         [Output("primaryKeys")]
         public Output<ImmutableArray<Outputs.TablePrimaryKey>> PrimaryKeys { get; private set; } = null!;
 
         /// <summary>
-        /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`.
         /// </summary>
         [Output("sseKeyId")]
         public Output<string?> SseKeyId { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<string?> SseKeyType { get; private set; } = null!;
 
         /// <summary>
-        /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`.
         /// </summary>
         [Output("sseRoleArn")]
         public Output<string?> SseRoleArn { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TableDefinedColumnArgs>? _definedColumns;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `DefinedColumn` should not be more than 32. See `DefinedColumn` below.
         /// </summary>
         public InputList<Inputs.TableDefinedColumnArgs> DefinedColumns
         {
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TablePrimaryKeyArgs>? _primaryKeys;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `PrimaryKey` should not be less than one and not be more than four. See `PrimaryKey` below.
         /// </summary>
         public InputList<Inputs.TablePrimaryKeyArgs> PrimaryKeys
         {
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`.
         /// </summary>
         [Input("sseKeyId")]
         public Input<string>? SseKeyId { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? SseKeyType { get; set; }
 
         /// <summary>
-        /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`.
         /// </summary>
         [Input("sseRoleArn")]
         public Input<string>? SseRoleArn { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TableDefinedColumnGetArgs>? _definedColumns;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `DefinedColumn` should not be more than 32. See `DefinedColumn` below.
         /// </summary>
         public InputList<Inputs.TableDefinedColumnGetArgs> DefinedColumns
         {
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TablePrimaryKeyGetArgs>? _primaryKeys;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `PrimaryKey` should not be less than one and not be more than four. See `PrimaryKey` below.
         /// </summary>
         public InputList<Inputs.TablePrimaryKeyGetArgs> PrimaryKeys
         {
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`.
         /// </summary>
         [Input("sseKeyId")]
         public Input<string>? SseKeyId { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? SseKeyType { get; set; }
 
         /// <summary>
-        /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`.
         /// </summary>
         [Input("sseRoleArn")]
         public Input<string>? SseRoleArn { get; set; }

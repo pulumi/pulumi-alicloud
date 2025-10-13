@@ -48,14 +48,14 @@ public final class TunnelQuotaTimerQuotaTimerArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+     * Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
      * 
      */
     @Import(name="tunnelQuotaParameter")
     private @Nullable Output<TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs> tunnelQuotaParameter;
 
     /**
-     * @return Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+     * @return Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
      * 
      */
     public Optional<Output<TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs>> tunnelQuotaParameter() {
@@ -131,7 +131,7 @@ public final class TunnelQuotaTimerQuotaTimerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tunnelQuotaParameter Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+         * @param tunnelQuotaParameter Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class TunnelQuotaTimerQuotaTimerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tunnelQuotaParameter Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+         * @param tunnelQuotaParameter Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
          * 
          * @return builder
          * 

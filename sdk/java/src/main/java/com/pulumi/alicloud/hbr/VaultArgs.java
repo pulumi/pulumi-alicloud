@@ -34,7 +34,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
@@ -43,7 +43,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> encryptType;
 
     /**
-     * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * @return Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
@@ -53,14 +53,14 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
-     * @return The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+     * @return The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
@@ -130,7 +130,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
-     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     @Import(name="vaultType")
@@ -139,7 +139,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
-     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     public Optional<Output<String>> vaultType() {
@@ -215,7 +215,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+         * @param encryptType Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
          * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
          * - `KMS`: Use Alibaba Cloud Kms to encryption.
          * 
@@ -228,7 +228,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+         * @param encryptType Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
          * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
          * - `KMS`: Use Alibaba Cloud Kms to encryption.
          * 
@@ -240,7 +240,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+         * @param kmsKeyId The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+         * @param kmsKeyId The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vaultType The type of Vault. Valid values:
          * - `STANDARD`: Standard backup vault.
-         * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+         * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vaultType The type of Vault. Valid values:
          * - `STANDARD`: Standard backup vault.
-         * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+         * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
          * 
          * @return builder
          * 

@@ -47,14 +47,14 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Sets the notification object. See `notify_objects` below.
+     * Sets the notification object. See `notifyObjects` below.
      * 
      */
     @Import(name="notifyObjects", required=true)
     private Output<List<DispatchRuleNotifyRuleNotifyObjectArgs>> notifyObjects;
 
     /**
-     * @return Sets the notification object. See `notify_objects` below.
+     * @return Sets the notification object. See `notifyObjects` below.
      * 
      */
     public Output<List<DispatchRuleNotifyRuleNotifyObjectArgs>> notifyObjects() {
@@ -156,7 +156,7 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifyObjects Sets the notification object. See `notify_objects` below.
+         * @param notifyObjects Sets the notification object. See `notifyObjects` below.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifyObjects Sets the notification object. See `notify_objects` below.
+         * @param notifyObjects Sets the notification object. See `notifyObjects` below.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifyObjects Sets the notification object. See `notify_objects` below.
+         * @param notifyObjects Sets the notification object. See `notifyObjects` below.
          * 
          * @return builder
          * 

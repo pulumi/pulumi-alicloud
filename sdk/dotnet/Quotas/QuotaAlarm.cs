@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> QuotaAlarmName { get; private set; } = null!;
 
         /// <summary>
-        /// The Quota Dimensions. See `quota_dimensions` below.
+        /// The Quota Dimensions. See `QuotaDimensions` below.
         /// </summary>
         [Output("quotaDimensions")]
         public Output<ImmutableArray<Outputs.QuotaAlarmQuotaDimension>> QuotaDimensions { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaAlarmQuotaDimensionArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions. See `quota_dimensions` below.
+        /// The Quota Dimensions. See `QuotaDimensions` below.
         /// </summary>
         public InputList<Inputs.QuotaAlarmQuotaDimensionArgs> QuotaDimensions
         {
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaAlarmQuotaDimensionGetArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions. See `quota_dimensions` below.
+        /// The Quota Dimensions. See `QuotaDimensions` below.
         /// </summary>
         public InputList<Inputs.QuotaAlarmQuotaDimensionGetArgs> QuotaDimensions
         {

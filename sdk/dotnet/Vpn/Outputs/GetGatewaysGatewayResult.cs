@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetGatewaysGatewayResult
     {
         /// <summary>
-        /// Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+        /// Whether to automatically propagate BGP routes to the VPC. Valid values: `True`, `False`.
         /// </summary>
         public readonly string AutoPropagate;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string EnableIpsec;
         /// <summary>
-        /// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
+        /// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `SslVpn` instead.
         /// </summary>
         public readonly string EnableSsl;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly int SslConnections;
         /// <summary>
-        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `Enable`, `Disable`.
         /// </summary>
         public readonly string SslVpn;
         /// <summary>

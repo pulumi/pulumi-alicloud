@@ -113,25 +113,25 @@ namespace Pulumi.AliCloud.Ehpc
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
+        /// The type of the domain account service. Valid values: `Nis`, `Ldap`. Default value: `Nis`
         /// </summary>
         [Output("accountType")]
         public Output<string> AccountType { get; private set; } = null!;
 
         /// <summary>
-        /// The additional volumes. See `additional_volumes` below.
+        /// The additional volumes. See `AdditionalVolumes` below.
         /// </summary>
         [Output("additionalVolumes")]
         public Output<ImmutableArray<Outputs.ClusterAdditionalVolume>> AdditionalVolumes { get; private set; } = null!;
 
         /// <summary>
-        /// The application. See `application` below.
+        /// The application. See `Application` below.
         /// </summary>
         [Output("applications")]
         public Output<ImmutableArray<Outputs.ClusterApplication>> Applications { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
+        /// Specifies whether to enable auto-renewal for the subscription. Default value: `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<int> ComputeCount { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the compute nodes support hyper-threading. Default value: `true`.
+        /// Specifies whether the compute nodes support hyper-threading. Default value: `True`.
         /// </summary>
         [Output("computeEnableHt")]
         public Output<bool?> ComputeEnableHt { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> EhpcVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
+        /// Specifies whether to enable the high availability feature. Default value: `False`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
         /// </summary>
         [Output("haEnable")]
         public Output<bool> HaEnable { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
+        /// The type of the image. Valid values: `Others`, `Self`, `System`, `Marketplace`. Default value: `System`.
         /// </summary>
         [Output("imageOwnerAlias")]
         public Output<string> ImageOwnerAlias { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> InputFileUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable auto scaling. Default value: `false`.
+        /// Specifies whether to enable auto scaling. Default value: `False`.
         /// </summary>
         [Output("isComputeEss")]
         public Output<bool?> IsComputeEss { get; private set; } = null!;
@@ -299,13 +299,13 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> OsTag { get; private set; } = null!;
 
         /// <summary>
-        /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `Password` or `KeyPairName`. If both are specified, the Password parameter prevails.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+        /// The duration of the subscription. The unit of the duration is specified by the `PeriodUnit` parameter. Default value: `1`.
         /// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
         /// * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         /// * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> Plugin { get; private set; } = null!;
 
         /// <summary>
-        /// The post install script. See `post_install_script` below.
+        /// The post install script. See `PostInstallScript` below.
         /// </summary>
         [Output("postInstallScripts")]
         public Output<ImmutableArray<Outputs.ClusterPostInstallScript>> PostInstallScripts { get; private set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> RamRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The release instance. Valid values: `true`.
+        /// The release instance. Valid values: `True`.
         /// </summary>
         [Output("releaseInstance")]
         public Output<bool?> ReleaseInstance { get; private set; } = null!;
@@ -361,7 +361,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> RemoteDirectory { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
+        /// Specifies whether to enable Virtual Network Computing (VNC). Default value: `False`.
         /// </summary>
         [Output("remoteVisEnable")]
         public Output<bool?> RemoteVisEnable { get; private set; } = null!;
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> SccClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
+        /// The type of the scheduler. Valid values: `Pbs`, `Slurm`, `Opengridscheduler` and `Deadline`. Default value: `Pbs`.
         /// </summary>
         [Output("schedulerType")]
         public Output<string> SchedulerType { get; private set; } = null!;
@@ -419,7 +419,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<int?> SystemDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+        /// The type of the system disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd` or `Cloud`. Default value: `CloudSsd`.
         /// </summary>
         [Output("systemDiskType")]
         public Output<string?> SystemDiskType { get; private set; } = null!;
@@ -469,13 +469,13 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether not to install the agent. Default value: `false`.
+        /// Specifies whether not to install the agent. Default value: `False`.
         /// </summary>
         [Output("withoutAgent")]
         public Output<bool?> WithoutAgent { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
+        /// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `False`.
         /// </summary>
         [Output("withoutElasticIp")]
         public Output<bool?> WithoutElasticIp { get; private set; } = null!;
@@ -537,7 +537,7 @@ namespace Pulumi.AliCloud.Ehpc
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
+        /// The type of the domain account service. Valid values: `Nis`, `Ldap`. Default value: `Nis`
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -546,7 +546,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterAdditionalVolumeArgs>? _additionalVolumes;
 
         /// <summary>
-        /// The additional volumes. See `additional_volumes` below.
+        /// The additional volumes. See `AdditionalVolumes` below.
         /// </summary>
         public InputList<Inputs.ClusterAdditionalVolumeArgs> AdditionalVolumes
         {
@@ -558,7 +558,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterApplicationArgs>? _applications;
 
         /// <summary>
-        /// The application. See `application` below.
+        /// The application. See `Application` below.
         /// </summary>
         public InputList<Inputs.ClusterApplicationArgs> Applications
         {
@@ -567,7 +567,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
+        /// Specifies whether to enable auto-renewal for the subscription. Default value: `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -603,7 +603,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<int> ComputeCount { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the compute nodes support hyper-threading. Default value: `true`.
+        /// Specifies whether the compute nodes support hyper-threading. Default value: `True`.
         /// </summary>
         [Input("computeEnableHt")]
         public Input<bool>? ComputeEnableHt { get; set; }
@@ -663,7 +663,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? EhpcVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
+        /// Specifies whether to enable the high availability feature. Default value: `False`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
         /// </summary>
         [Input("haEnable")]
         public Input<bool>? HaEnable { get; set; }
@@ -675,7 +675,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
+        /// The type of the image. Valid values: `Others`, `Self`, `System`, `Marketplace`. Default value: `System`.
         /// </summary>
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
@@ -687,7 +687,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? InputFileUrl { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto scaling. Default value: `false`.
+        /// Specifies whether to enable auto scaling. Default value: `False`.
         /// </summary>
         [Input("isComputeEss")]
         public Input<bool>? IsComputeEss { get; set; }
@@ -738,7 +738,7 @@ namespace Pulumi.AliCloud.Ehpc
         private Input<string>? _password;
 
         /// <summary>
-        /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `Password` or `KeyPairName`. If both are specified, the Password parameter prevails.
         /// </summary>
         public Input<string>? Password
         {
@@ -751,7 +751,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
-        /// The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+        /// The duration of the subscription. The unit of the duration is specified by the `PeriodUnit` parameter. Default value: `1`.
         /// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
         /// * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         /// * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -780,7 +780,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterPostInstallScriptArgs>? _postInstallScripts;
 
         /// <summary>
-        /// The post install script. See `post_install_script` below.
+        /// The post install script. See `PostInstallScript` below.
         /// </summary>
         public InputList<Inputs.ClusterPostInstallScriptArgs> PostInstallScripts
         {
@@ -807,7 +807,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? RamRoleName { get; set; }
 
         /// <summary>
-        /// The release instance. Valid values: `true`.
+        /// The release instance. Valid values: `True`.
         /// </summary>
         [Input("releaseInstance")]
         public Input<bool>? ReleaseInstance { get; set; }
@@ -819,7 +819,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? RemoteDirectory { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
+        /// Specifies whether to enable Virtual Network Computing (VNC). Default value: `False`.
         /// </summary>
         [Input("remoteVisEnable")]
         public Input<bool>? RemoteVisEnable { get; set; }
@@ -837,7 +837,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? SccClusterId { get; set; }
 
         /// <summary>
-        /// The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
+        /// The type of the scheduler. Valid values: `Pbs`, `Slurm`, `Opengridscheduler` and `Deadline`. Default value: `Pbs`.
         /// </summary>
         [Input("schedulerType")]
         public Input<string>? SchedulerType { get; set; }
@@ -871,7 +871,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<int>? SystemDiskSize { get; set; }
 
         /// <summary>
-        /// The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+        /// The type of the system disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd` or `Cloud`. Default value: `CloudSsd`.
         /// </summary>
         [Input("systemDiskType")]
         public Input<string>? SystemDiskType { get; set; }
@@ -921,13 +921,13 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// Specifies whether not to install the agent. Default value: `false`.
+        /// Specifies whether not to install the agent. Default value: `False`.
         /// </summary>
         [Input("withoutAgent")]
         public Input<bool>? WithoutAgent { get; set; }
 
         /// <summary>
-        /// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
+        /// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `False`.
         /// </summary>
         [Input("withoutElasticIp")]
         public Input<bool>? WithoutElasticIp { get; set; }
@@ -947,7 +947,7 @@ namespace Pulumi.AliCloud.Ehpc
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
+        /// The type of the domain account service. Valid values: `Nis`, `Ldap`. Default value: `Nis`
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -956,7 +956,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterAdditionalVolumeGetArgs>? _additionalVolumes;
 
         /// <summary>
-        /// The additional volumes. See `additional_volumes` below.
+        /// The additional volumes. See `AdditionalVolumes` below.
         /// </summary>
         public InputList<Inputs.ClusterAdditionalVolumeGetArgs> AdditionalVolumes
         {
@@ -968,7 +968,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterApplicationGetArgs>? _applications;
 
         /// <summary>
-        /// The application. See `application` below.
+        /// The application. See `Application` below.
         /// </summary>
         public InputList<Inputs.ClusterApplicationGetArgs> Applications
         {
@@ -977,7 +977,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
-        /// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
+        /// Specifies whether to enable auto-renewal for the subscription. Default value: `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -1013,7 +1013,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<int>? ComputeCount { get; set; }
 
         /// <summary>
-        /// Specifies whether the compute nodes support hyper-threading. Default value: `true`.
+        /// Specifies whether the compute nodes support hyper-threading. Default value: `True`.
         /// </summary>
         [Input("computeEnableHt")]
         public Input<bool>? ComputeEnableHt { get; set; }
@@ -1073,7 +1073,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? EhpcVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
+        /// Specifies whether to enable the high availability feature. Default value: `False`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
         /// </summary>
         [Input("haEnable")]
         public Input<bool>? HaEnable { get; set; }
@@ -1085,7 +1085,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
+        /// The type of the image. Valid values: `Others`, `Self`, `System`, `Marketplace`. Default value: `System`.
         /// </summary>
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
@@ -1097,7 +1097,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? InputFileUrl { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable auto scaling. Default value: `false`.
+        /// Specifies whether to enable auto scaling. Default value: `False`.
         /// </summary>
         [Input("isComputeEss")]
         public Input<bool>? IsComputeEss { get; set; }
@@ -1148,7 +1148,7 @@ namespace Pulumi.AliCloud.Ehpc
         private Input<string>? _password;
 
         /// <summary>
-        /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `Password` or `KeyPairName`. If both are specified, the Password parameter prevails.
         /// </summary>
         public Input<string>? Password
         {
@@ -1161,7 +1161,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
-        /// The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+        /// The duration of the subscription. The unit of the duration is specified by the `PeriodUnit` parameter. Default value: `1`.
         /// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
         /// * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         /// * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -1190,7 +1190,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterPostInstallScriptGetArgs>? _postInstallScripts;
 
         /// <summary>
-        /// The post install script. See `post_install_script` below.
+        /// The post install script. See `PostInstallScript` below.
         /// </summary>
         public InputList<Inputs.ClusterPostInstallScriptGetArgs> PostInstallScripts
         {
@@ -1217,7 +1217,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? RamRoleName { get; set; }
 
         /// <summary>
-        /// The release instance. Valid values: `true`.
+        /// The release instance. Valid values: `True`.
         /// </summary>
         [Input("releaseInstance")]
         public Input<bool>? ReleaseInstance { get; set; }
@@ -1229,7 +1229,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? RemoteDirectory { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
+        /// Specifies whether to enable Virtual Network Computing (VNC). Default value: `False`.
         /// </summary>
         [Input("remoteVisEnable")]
         public Input<bool>? RemoteVisEnable { get; set; }
@@ -1247,7 +1247,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? SccClusterId { get; set; }
 
         /// <summary>
-        /// The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
+        /// The type of the scheduler. Valid values: `Pbs`, `Slurm`, `Opengridscheduler` and `Deadline`. Default value: `Pbs`.
         /// </summary>
         [Input("schedulerType")]
         public Input<string>? SchedulerType { get; set; }
@@ -1287,7 +1287,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<int>? SystemDiskSize { get; set; }
 
         /// <summary>
-        /// The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+        /// The type of the system disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd` or `Cloud`. Default value: `CloudSsd`.
         /// </summary>
         [Input("systemDiskType")]
         public Input<string>? SystemDiskType { get; set; }
@@ -1337,13 +1337,13 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// Specifies whether not to install the agent. Default value: `false`.
+        /// Specifies whether not to install the agent. Default value: `False`.
         /// </summary>
         [Input("withoutAgent")]
         public Input<bool>? WithoutAgent { get; set; }
 
         /// <summary>
-        /// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
+        /// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `False`.
         /// </summary>
         [Input("withoutElasticIp")]
         public Input<bool>? WithoutElasticIp { get; set; }

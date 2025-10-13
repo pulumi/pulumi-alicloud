@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> ConfigId { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+        /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `RequestHeaderModification` below.
         /// </summary>
         [Output("requestHeaderModifications")]
         public Output<ImmutableArray<Outputs.HttpRequestHeaderModificationRuleRequestHeaderModification>> RequestHeaderModifications { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.HttpRequestHeaderModificationRuleRequestHeaderModificationArgs>? _requestHeaderModifications;
 
         /// <summary>
-        /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+        /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `RequestHeaderModification` below.
         /// </summary>
         public InputList<Inputs.HttpRequestHeaderModificationRuleRequestHeaderModificationArgs> RequestHeaderModifications
         {
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.HttpRequestHeaderModificationRuleRequestHeaderModificationGetArgs>? _requestHeaderModifications;
 
         /// <summary>
-        /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
+        /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `RequestHeaderModification` below.
         /// </summary>
         public InputList<Inputs.HttpRequestHeaderModificationRuleRequestHeaderModificationGetArgs> RequestHeaderModifications
         {

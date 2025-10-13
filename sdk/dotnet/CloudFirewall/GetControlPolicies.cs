@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetControlPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction")]
         public string? AclAction { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? Destination { get; set; }
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Input("direction", required: true)]
         public string Direction { get; set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? IpVersion { get; set; }
 
         /// <summary>
-        /// The language of the content within the response. Valid values: `en`, `zh`.
+        /// The language of the content within the response. Valid values: `En`, `Zh`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The type of the protocol in the access control policy. Valid values: If `Direction` is  `In`, the valid value is `ANY`. If `Direction` is `Out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public string? Proto { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetControlPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `Accept`, `Drop`, `Log`.
         /// </summary>
         [Input("aclAction")]
         public Input<string>? AclAction { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `In`, `Out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// The language of the content within the response. Valid values: `en`, `zh`.
+        /// The language of the content within the response. Valid values: `En`, `Zh`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The type of the protocol in the access control policy. Valid values: If `Direction` is  `In`, the valid value is `ANY`. If `Direction` is `Out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }

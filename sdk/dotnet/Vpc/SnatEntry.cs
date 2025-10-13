@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> SnatEntryName { get; private set; } = null!;
 
         /// <summary>
-        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `SnatIp` can be modified.
         /// </summary>
         [Output("snatIp")]
         public Output<string> SnatIp { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SnatEntryName { get; set; }
 
         /// <summary>
-        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `SnatIp` can be modified.
         /// </summary>
         [Input("snatIp", required: true)]
         public Input<string> SnatIp { get; set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SnatEntryName { get; set; }
 
         /// <summary>
-        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `SnatIp` can be modified.
         /// </summary>
         [Input("snatIp")]
         public Input<string>? SnatIp { get; set; }

@@ -61,14 +61,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Alarm trigger condition. See `condition_configuration` below.
+     * Alarm trigger condition. See `conditionConfiguration` below.
      * 
      */
     @Import(name="conditionConfiguration")
     private @Nullable Output<AlertConfigurationConditionConfigurationArgs> conditionConfiguration;
 
     /**
-     * @return Alarm trigger condition. See `condition_configuration` below.
+     * @return Alarm trigger condition. See `conditionConfiguration` below.
      * 
      */
     public Optional<Output<AlertConfigurationConditionConfigurationArgs>> conditionConfiguration() {
@@ -91,14 +91,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Group evaluation configuration. See `group_configuration` below.
+     * Group evaluation configuration. See `groupConfiguration` below.
      * 
      */
     @Import(name="groupConfiguration")
     private @Nullable Output<AlertConfigurationGroupConfigurationArgs> groupConfiguration;
 
     /**
-     * @return Group evaluation configuration. See `group_configuration` below.
+     * @return Group evaluation configuration. See `groupConfiguration` below.
      * 
      */
     public Optional<Output<AlertConfigurationGroupConfigurationArgs>> groupConfiguration() {
@@ -106,14 +106,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set operation configuration. See `join_configurations` below.
+     * Set operation configuration. See `joinConfigurations` below.
      * 
      */
     @Import(name="joinConfigurations")
     private @Nullable Output<List<AlertConfigurationJoinConfigurationArgs>> joinConfigurations;
 
     /**
-     * @return Set operation configuration. See `join_configurations` below.
+     * @return Set operation configuration. See `joinConfigurations` below.
      * 
      */
     public Optional<Output<List<AlertConfigurationJoinConfigurationArgs>>> joinConfigurations() {
@@ -181,14 +181,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Alert policy configuration. See `policy_configuration` below.
+     * Alert policy configuration. See `policyConfiguration` below.
      * 
      */
     @Import(name="policyConfiguration")
     private @Nullable Output<AlertConfigurationPolicyConfigurationArgs> policyConfiguration;
 
     /**
-     * @return Alert policy configuration. See `policy_configuration` below.
+     * @return Alert policy configuration. See `policyConfiguration` below.
      * 
      */
     public Optional<Output<AlertConfigurationPolicyConfigurationArgs>> policyConfiguration() {
@@ -196,14 +196,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Query the statistical list. See `query_list` below.
+     * Query the statistical list. See `queryList` below.
      * 
      */
     @Import(name="queryLists")
     private @Nullable Output<List<AlertConfigurationQueryListArgs>> queryLists;
 
     /**
-     * @return Query the statistical list. See `query_list` below.
+     * @return Query the statistical list. See `queryList` below.
      * 
      */
     public Optional<Output<List<AlertConfigurationQueryListArgs>>> queryLists() {
@@ -226,14 +226,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+     * Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
      * 
      */
     @Import(name="severityConfigurations")
     private @Nullable Output<List<AlertConfigurationSeverityConfigurationArgs>> severityConfigurations;
 
     /**
-     * @return Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+     * @return Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
      * 
      */
     public Optional<Output<List<AlertConfigurationSeverityConfigurationArgs>>> severityConfigurations() {
@@ -241,14 +241,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+     * Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
      * 
      */
     @Import(name="sinkAlerthub")
     private @Nullable Output<AlertConfigurationSinkAlerthubArgs> sinkAlerthub;
 
     /**
-     * @return Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+     * @return Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
      * 
      */
     public Optional<Output<AlertConfigurationSinkAlerthubArgs>> sinkAlerthub() {
@@ -256,14 +256,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configure alerts sent to CloudMonitor. See `sink_cms` below.
+     * Configure alerts sent to CloudMonitor. See `sinkCms` below.
      * 
      */
     @Import(name="sinkCms")
     private @Nullable Output<AlertConfigurationSinkCmsArgs> sinkCms;
 
     /**
-     * @return Configure alerts sent to CloudMonitor. See `sink_cms` below.
+     * @return Configure alerts sent to CloudMonitor. See `sinkCms` below.
      * 
      */
     public Optional<Output<AlertConfigurationSinkCmsArgs>> sinkCms() {
@@ -271,14 +271,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configuration of sending alarms to EventStore. See `sink_event_store` below.
+     * Configuration of sending alarms to EventStore. See `sinkEventStore` below.
      * 
      */
     @Import(name="sinkEventStore")
     private @Nullable Output<AlertConfigurationSinkEventStoreArgs> sinkEventStore;
 
     /**
-     * @return Configuration of sending alarms to EventStore. See `sink_event_store` below.
+     * @return Configuration of sending alarms to EventStore. See `sinkEventStore` below.
      * 
      */
     public Optional<Output<AlertConfigurationSinkEventStoreArgs>> sinkEventStore() {
@@ -301,14 +301,14 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Alarm rule template configuration. See `template_configuration` below.
+     * Alarm rule template configuration. See `templateConfiguration` below.
      * 
      */
     @Import(name="templateConfiguration")
     private @Nullable Output<AlertConfigurationTemplateConfigurationArgs> templateConfiguration;
 
     /**
-     * @return Alarm rule template configuration. See `template_configuration` below.
+     * @return Alarm rule template configuration. See `templateConfiguration` below.
      * 
      */
     public Optional<Output<AlertConfigurationTemplateConfigurationArgs>> templateConfiguration() {
@@ -458,7 +458,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param conditionConfiguration Alarm trigger condition. See `condition_configuration` below.
+         * @param conditionConfiguration Alarm trigger condition. See `conditionConfiguration` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param conditionConfiguration Alarm trigger condition. See `condition_configuration` below.
+         * @param conditionConfiguration Alarm trigger condition. See `conditionConfiguration` below.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupConfiguration Group evaluation configuration. See `group_configuration` below.
+         * @param groupConfiguration Group evaluation configuration. See `groupConfiguration` below.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupConfiguration Group evaluation configuration. See `group_configuration` below.
+         * @param groupConfiguration Group evaluation configuration. See `groupConfiguration` below.
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param joinConfigurations Set operation configuration. See `join_configurations` below.
+         * @param joinConfigurations Set operation configuration. See `joinConfigurations` below.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param joinConfigurations Set operation configuration. See `join_configurations` below.
+         * @param joinConfigurations Set operation configuration. See `joinConfigurations` below.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param joinConfigurations Set operation configuration. See `join_configurations` below.
+         * @param joinConfigurations Set operation configuration. See `joinConfigurations` below.
          * 
          * @return builder
          * 
@@ -646,7 +646,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param policyConfiguration Alert policy configuration. See `policy_configuration` below.
+         * @param policyConfiguration Alert policy configuration. See `policyConfiguration` below.
          * 
          * @return builder
          * 
@@ -657,7 +657,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param policyConfiguration Alert policy configuration. See `policy_configuration` below.
+         * @param policyConfiguration Alert policy configuration. See `policyConfiguration` below.
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param queryLists Query the statistical list. See `query_list` below.
+         * @param queryLists Query the statistical list. See `queryList` below.
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param queryLists Query the statistical list. See `query_list` below.
+         * @param queryLists Query the statistical list. See `queryList` below.
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param queryLists Query the statistical list. See `query_list` below.
+         * @param queryLists Query the statistical list. See `queryList` below.
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param severityConfigurations Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+         * @param severityConfigurations Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param severityConfigurations Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+         * @param severityConfigurations Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param severityConfigurations Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+         * @param severityConfigurations Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
          * 
          * @return builder
          * 
@@ -750,7 +750,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sinkAlerthub Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+         * @param sinkAlerthub Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sinkAlerthub Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+         * @param sinkAlerthub Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sinkCms Configure alerts sent to CloudMonitor. See `sink_cms` below.
+         * @param sinkCms Configure alerts sent to CloudMonitor. See `sinkCms` below.
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sinkCms Configure alerts sent to CloudMonitor. See `sink_cms` below.
+         * @param sinkCms Configure alerts sent to CloudMonitor. See `sinkCms` below.
          * 
          * @return builder
          * 
@@ -792,7 +792,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sinkEventStore Configuration of sending alarms to EventStore. See `sink_event_store` below.
+         * @param sinkEventStore Configuration of sending alarms to EventStore. See `sinkEventStore` below.
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sinkEventStore Configuration of sending alarms to EventStore. See `sink_event_store` below.
+         * @param sinkEventStore Configuration of sending alarms to EventStore. See `sinkEventStore` below.
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param templateConfiguration Alarm rule template configuration. See `template_configuration` below.
+         * @param templateConfiguration Alarm rule template configuration. See `templateConfiguration` below.
          * 
          * @return builder
          * 
@@ -855,7 +855,7 @@ public final class AlertConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param templateConfiguration Alarm rule template configuration. See `template_configuration` below.
+         * @param templateConfiguration Alarm rule template configuration. See `templateConfiguration` below.
          * 
          * @return builder
          * 

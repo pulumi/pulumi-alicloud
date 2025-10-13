@@ -33,14 +33,14 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
      * 
      */
     @Import(name="dataDiskKmsKeyId")
     private @Nullable Output<String> dataDiskKmsKeyId;
 
     /**
-     * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * @return The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
      * 
      */
     public Optional<Output<String>> dataDiskKmsKeyId() {
@@ -108,14 +108,14 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
      * 
      */
     @Import(name="systemDiskKmsKeyId")
     private @Nullable Output<String> systemDiskKmsKeyId;
 
     /**
-     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * @return The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
      * 
      */
     public Optional<Output<String>> systemDiskKmsKeyId() {
@@ -206,7 +206,7 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataDiskKmsKeyId The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+         * @param dataDiskKmsKeyId The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataDiskKmsKeyId The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+         * @param dataDiskKmsKeyId The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param systemDiskKmsKeyId The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+         * @param systemDiskKmsKeyId The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param systemDiskKmsKeyId The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+         * @param systemDiskKmsKeyId The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
          * 
          * @return builder
          * 

@@ -24,12 +24,12 @@ public final class GetClustersCluster {
      */
     private String connectionString;
     /**
-     * @return The create_time of the db_nodes.
+     * @return The createTime of the db_nodes.
      * 
      */
     private String createTime;
     /**
-     * @return The db_node_class of the db_nodes.
+     * @return The dbNodeClass of the db_nodes.
      * 
      */
     private String dbNodeClass;
@@ -99,7 +99,7 @@ public final class GetClustersCluster {
      */
     private String port;
     /**
-     * @return The region_id of the db_nodes.
+     * @return The regionId of the db_nodes.
      * 
      */
     private String regionId;
@@ -119,7 +119,7 @@ public final class GetClustersCluster {
      */
     private String vpcId;
     /**
-     * @return The zone_id of the db_nodes.
+     * @return The zoneId of the db_nodes.
      * 
      */
     private String zoneId;
@@ -140,14 +140,14 @@ public final class GetClustersCluster {
         return this.connectionString;
     }
     /**
-     * @return The create_time of the db_nodes.
+     * @return The createTime of the db_nodes.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The db_node_class of the db_nodes.
+     * @return The dbNodeClass of the db_nodes.
      * 
      */
     public String dbNodeClass() {
@@ -245,7 +245,7 @@ public final class GetClustersCluster {
         return this.port;
     }
     /**
-     * @return The region_id of the db_nodes.
+     * @return The regionId of the db_nodes.
      * 
      */
     public String regionId() {
@@ -273,7 +273,7 @@ public final class GetClustersCluster {
         return this.vpcId;
     }
     /**
-     * @return The zone_id of the db_nodes.
+     * @return The zoneId of the db_nodes.
      * 
      */
     public String zoneId() {

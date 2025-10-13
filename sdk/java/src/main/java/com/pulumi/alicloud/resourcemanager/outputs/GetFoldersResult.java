@@ -35,7 +35,7 @@ public final class GetFoldersResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.114.0) The ID of the parent folder. **Note:** `parentFolderId` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private @Nullable String parentFolderId;
@@ -76,7 +76,7 @@ public final class GetFoldersResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
+     * @return (Available since v1.114.0) The ID of the parent folder. **Note:** `parentFolderId` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Optional<String> parentFolderId() {

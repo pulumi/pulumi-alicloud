@@ -73,7 +73,7 @@ public final class GetGatewayFileSharesShare {
      */
     private String diskId;
     /**
-     * @return The cache disk type. Valid values: `cloud_efficiency`: Ultra cloud disk. `cloud_ssd`:SSD cloud disk.
+     * @return The cache disk type. Valid values: `cloudEfficiency`: Ultra cloud disk. `cloudSsd`:SSD cloud disk.
      * 
      */
     private String diskType;
@@ -278,7 +278,7 @@ public final class GetGatewayFileSharesShare {
      */
     private String size;
     /**
-     * @return The set up gateway file share NFS protocol user mapping. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`.
+     * @return The set up gateway file share NFS protocol user mapping. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`.
      * 
      */
     private String squash;
@@ -409,7 +409,7 @@ public final class GetGatewayFileSharesShare {
         return this.diskId;
     }
     /**
-     * @return The cache disk type. Valid values: `cloud_efficiency`: Ultra cloud disk. `cloud_ssd`:SSD cloud disk.
+     * @return The cache disk type. Valid values: `cloudEfficiency`: Ultra cloud disk. `cloudSsd`:SSD cloud disk.
      * 
      */
     public String diskType() {
@@ -696,7 +696,7 @@ public final class GetGatewayFileSharesShare {
         return this.size;
     }
     /**
-     * @return The set up gateway file share NFS protocol user mapping. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`.
+     * @return The set up gateway file share NFS protocol user mapping. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`.
      * 
      */
     public String squash() {

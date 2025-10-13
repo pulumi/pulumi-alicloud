@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/switch:Switch")
 public class Switch extends com.pulumi.resources.CustomResource {
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -215,21 +215,21 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
      * 
      */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      * 
      */
     @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
-     * @return The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+     * @return The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      * 
      */
     public Output<String> cidrBlock() {
@@ -320,7 +320,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isDefault);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -331,7 +331,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      * 
      */
     public Output<String> name() {
@@ -366,14 +366,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
+     * @return The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      * 
      */
     public Output<String> vpcId() {

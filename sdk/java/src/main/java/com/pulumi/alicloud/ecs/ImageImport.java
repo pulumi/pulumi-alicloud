@@ -113,14 +113,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/imageImport:ImageImport")
 public class ImageImport extends com.pulumi.resources.CustomResource {
     /**
-     * The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+     * The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      * 
      */
     @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
-     * @return The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
+     * @return The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      * 
      */
     public Output<Optional<String>> architecture() {
@@ -155,28 +155,28 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The information about the custom image. See `disk_device_mapping` below.
+     * The information about the custom image. See `diskDeviceMapping` below.
      * 
      */
     @Export(name="diskDeviceMappings", refs={List.class,ImageImportDiskDeviceMapping.class}, tree="[0,1]")
     private Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings;
 
     /**
-     * @return The information about the custom image. See `disk_device_mapping` below.
+     * @return The information about the custom image. See `diskDeviceMapping` below.
      * 
      */
     public Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings() {
         return this.diskDeviceMappings;
     }
     /**
-     * The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+     * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     /**
-     * @return The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+     * @return The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Output<String> imageName() {

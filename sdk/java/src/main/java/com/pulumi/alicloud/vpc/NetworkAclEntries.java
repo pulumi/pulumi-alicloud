@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Using this resource need to open a whitelist.
  * 
- * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingress_acl_entries` and `egress_acl_entries` with the resource alicloud_network_acl.
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingressAclEntries` and `egressAclEntries` with the resource alicloud_network_acl.
  * 
  * ## Example Usage
  * 

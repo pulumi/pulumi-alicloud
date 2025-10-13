@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppGroupOrder {
     /**
-     * @return Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+     * @return Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
      * 
      */
     private @Nullable Boolean autoRenew;
@@ -31,7 +31,7 @@ public final class AppGroupOrder {
 
     private AppGroupOrder() {}
     /**
-     * @return Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+     * @return Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
      * 
      */
     public Optional<Boolean> autoRenew() {

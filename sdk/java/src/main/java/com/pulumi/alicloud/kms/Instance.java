@@ -308,14 +308,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:kms/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      * 
      */
     @Export(name="bindVpcs", refs={List.class,InstanceBindVpc.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceBindVpc>> bindVpcs;
 
     /**
-     * @return Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+     * @return Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      * 
      */
     public Output<Optional<List<InstanceBindVpc>>> bindVpcs() {
@@ -392,42 +392,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="keyNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> keyNum;
 
     /**
-     * @return Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> keyNum() {
         return Codegen.optional(this.keyNum);
     }
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="log", refs={String.class}, tree="[0]")
     private Output<String> log;
 
     /**
-     * @return Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<String> log() {
         return this.log;
     }
     /**
-     * Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="logStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> logStorage;
 
     /**
-     * @return Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Integer> logStorage() {
@@ -452,14 +452,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -480,28 +480,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.productVersion;
     }
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output<String> renewStatus;
 
     /**
-     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<String> renewStatus() {
@@ -526,28 +526,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.renewalPeriodUnit);
     }
     /**
-     * Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="secretNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> secretNum;
 
     /**
-     * @return Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> secretNum() {
         return Codegen.optional(this.secretNum);
     }
     /**
-     * The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="spec", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spec;
 
     /**
-     * @return The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> spec() {
@@ -596,14 +596,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     @Export(name="vpcNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vpcNum;
 
     /**
-     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> vpcNum() {

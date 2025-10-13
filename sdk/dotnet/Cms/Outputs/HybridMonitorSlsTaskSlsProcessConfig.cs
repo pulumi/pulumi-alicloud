@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.HybridMonitorSlsTaskSlsProcessConfigExpress> Expresses;
         /// <summary>
-        /// The conditions that are used to filter logs imported from Log Service. See `filter` below.
+        /// The conditions that are used to filter logs imported from Log Service. See `Filter` below.
         /// </summary>
         public readonly Outputs.HybridMonitorSlsTaskSlsProcessConfigFilter? Filter;
         /// <summary>
-        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `GroupBy` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.HybridMonitorSlsTaskSlsProcessConfigGroupBy> GroupBies;
         /// <summary>
-        /// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
+        /// The method that is used to aggregate logs imported from Log Service. See `Statistics` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.HybridMonitorSlsTaskSlsProcessConfigStatistic> Statistics;
 

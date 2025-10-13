@@ -19,14 +19,14 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
     public static final PolicyBindingState Empty = new PolicyBindingState();
 
     /**
-     * Backup Advanced Options See `advanced_options` below.
+     * Backup Advanced Options See `advancedOptions` below.
      * 
      */
     @Import(name="advancedOptions")
     private @Nullable Output<PolicyBindingAdvancedOptionsArgs> advancedOptions;
 
     /**
-     * @return Backup Advanced Options See `advanced_options` below.
+     * @return Backup Advanced Options See `advancedOptions` below.
      * 
      */
     public Optional<Output<PolicyBindingAdvancedOptionsArgs>> advancedOptions() {
@@ -282,7 +282,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param advancedOptions Backup Advanced Options See `advanced_options` below.
+         * @param advancedOptions Backup Advanced Options See `advancedOptions` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param advancedOptions Backup Advanced Options See `advanced_options` below.
+         * @param advancedOptions Backup Advanced Options See `advancedOptions` below.
          * 
          * @return builder
          * 

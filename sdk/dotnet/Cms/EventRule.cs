@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class EventRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+        /// The information about the alert contact groups that receive alert notifications. See `ContactParameters` below.
         /// </summary>
         [Output("contactParameters")]
         public Output<ImmutableArray<Outputs.EventRuleContactParameter>> ContactParameters { get; private set; } = null!;
@@ -88,13 +88,13 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+        /// Event mode, used to describe the trigger conditions for this event. See `EventPattern` below.
         /// </summary>
         [Output("eventPattern")]
         public Output<Outputs.EventRuleEventPattern> EventPattern { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the recipients in Function Compute. See `fc_parameters` below.
+        /// The information about the recipients in Function Compute. See `FcParameters` below.
         /// </summary>
         [Output("fcParameters")]
         public Output<ImmutableArray<Outputs.EventRuleFcParameter>> FcParameters { get; private set; } = null!;
@@ -106,13 +106,13 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+        /// The information about the recipients in Message Service (MNS). See `MnsParameters` below.
         /// </summary>
         [Output("mnsParameters")]
         public Output<ImmutableArray<Outputs.EventRuleMnsParameter>> MnsParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters of API callback notification. See `open_api_parameters` below.
+        /// The parameters of API callback notification. See `OpenApiParameters` below.
         /// </summary>
         [Output("openApiParameters")]
         public Output<ImmutableArray<Outputs.EventRuleOpenApiParameter>> OpenApiParameters { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> SilenceTime { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
+        /// The information about the recipients in Simple Log Service. See `SlsParameters` below.
         /// </summary>
         [Output("slsParameters")]
         public Output<ImmutableArray<Outputs.EventRuleSlsParameter>> SlsParameters { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+        /// The information about the callback URLs that are used to receive alert notifications. See `WebhookParameters` below.
         /// </summary>
         [Output("webhookParameters")]
         public Output<ImmutableArray<Outputs.EventRuleWebhookParameter>> WebhookParameters { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleContactParameterArgs>? _contactParameters;
 
         /// <summary>
-        /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+        /// The information about the alert contact groups that receive alert notifications. See `ContactParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleContactParameterArgs> ContactParameters
         {
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+        /// Event mode, used to describe the trigger conditions for this event. See `EventPattern` below.
         /// </summary>
         [Input("eventPattern", required: true)]
         public Input<Inputs.EventRuleEventPatternArgs> EventPattern { get; set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleFcParameterArgs>? _fcParameters;
 
         /// <summary>
-        /// The information about the recipients in Function Compute. See `fc_parameters` below.
+        /// The information about the recipients in Function Compute. See `FcParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleFcParameterArgs> FcParameters
         {
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleMnsParameterArgs>? _mnsParameters;
 
         /// <summary>
-        /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+        /// The information about the recipients in Message Service (MNS). See `MnsParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleMnsParameterArgs> MnsParameters
         {
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleOpenApiParameterArgs>? _openApiParameters;
 
         /// <summary>
-        /// The parameters of API callback notification. See `open_api_parameters` below.
+        /// The parameters of API callback notification. See `OpenApiParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleOpenApiParameterArgs> OpenApiParameters
         {
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleSlsParameterArgs>? _slsParameters;
 
         /// <summary>
-        /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
+        /// The information about the recipients in Simple Log Service. See `SlsParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleSlsParameterArgs> SlsParameters
         {
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleWebhookParameterArgs>? _webhookParameters;
 
         /// <summary>
-        /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+        /// The information about the callback URLs that are used to receive alert notifications. See `WebhookParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleWebhookParameterArgs> WebhookParameters
         {
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleContactParameterGetArgs>? _contactParameters;
 
         /// <summary>
-        /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+        /// The information about the alert contact groups that receive alert notifications. See `ContactParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleContactParameterGetArgs> ContactParameters
         {
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
+        /// Event mode, used to describe the trigger conditions for this event. See `EventPattern` below.
         /// </summary>
         [Input("eventPattern")]
         public Input<Inputs.EventRuleEventPatternGetArgs>? EventPattern { get; set; }
@@ -337,7 +337,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleFcParameterGetArgs>? _fcParameters;
 
         /// <summary>
-        /// The information about the recipients in Function Compute. See `fc_parameters` below.
+        /// The information about the recipients in Function Compute. See `FcParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleFcParameterGetArgs> FcParameters
         {
@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleMnsParameterGetArgs>? _mnsParameters;
 
         /// <summary>
-        /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+        /// The information about the recipients in Message Service (MNS). See `MnsParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleMnsParameterGetArgs> MnsParameters
         {
@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleOpenApiParameterGetArgs>? _openApiParameters;
 
         /// <summary>
-        /// The parameters of API callback notification. See `open_api_parameters` below.
+        /// The parameters of API callback notification. See `OpenApiParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleOpenApiParameterGetArgs> OpenApiParameters
         {
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleSlsParameterGetArgs>? _slsParameters;
 
         /// <summary>
-        /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
+        /// The information about the recipients in Simple Log Service. See `SlsParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleSlsParameterGetArgs> SlsParameters
         {
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.EventRuleWebhookParameterGetArgs>? _webhookParameters;
 
         /// <summary>
-        /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+        /// The information about the callback URLs that are used to receive alert notifications. See `WebhookParameters` below.
         /// </summary>
         public InputList<Inputs.EventRuleWebhookParameterGetArgs> WebhookParameters
         {

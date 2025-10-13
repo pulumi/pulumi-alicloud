@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Oos
         public Output<string> ScheduleExpression { get; private set; } = null!;
 
         /// <summary>
-        /// Timing type. Valid values: `rate`.
+        /// Timing type. Valid values: `Rate`.
         /// </summary>
         [Output("scheduleType")]
         public Output<string> ScheduleType { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string> ScheduleExpression { get; set; } = null!;
 
         /// <summary>
-        /// Timing type. Valid values: `rate`.
+        /// Timing type. Valid values: `Rate`.
         /// </summary>
         [Input("scheduleType", required: true)]
         public Input<string> ScheduleType { get; set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? ScheduleExpression { get; set; }
 
         /// <summary>
-        /// Timing type. Valid values: `rate`.
+        /// Timing type. Valid values: `Rate`.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }

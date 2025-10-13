@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Oos
     public partial class ServiceSetting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+        /// The name of the OSS bucket. **NOTE:** When the `DeliveryOssEnabled` is `True`, The `DeliveryOssBucketName` is valid.
         /// </summary>
         [Output("deliveryOssBucketName")]
         public Output<string?> DeliveryOssBucketName { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Oos
         public Output<bool?> DeliveryOssEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+        /// The Directory of the OSS bucket. **NOTE:** When the `DeliveryOssEnabled` is `True`, The `DeliveryOssBucketName` is valid.
         /// </summary>
         [Output("deliveryOssKeyPrefix")]
         public Output<string?> DeliveryOssKeyPrefix { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Oos
         public Output<bool?> DeliverySlsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+        /// The name of SLS  Project. **NOTE:** When the `DeliverySlsEnabled` is `True`, The `DeliverySlsProjectName` is valid.
         /// </summary>
         [Output("deliverySlsProjectName")]
         public Output<string?> DeliverySlsProjectName { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class ServiceSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+        /// The name of the OSS bucket. **NOTE:** When the `DeliveryOssEnabled` is `True`, The `DeliveryOssBucketName` is valid.
         /// </summary>
         [Input("deliveryOssBucketName")]
         public Input<string>? DeliveryOssBucketName { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<bool>? DeliveryOssEnabled { get; set; }
 
         /// <summary>
-        /// The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+        /// The Directory of the OSS bucket. **NOTE:** When the `DeliveryOssEnabled` is `True`, The `DeliveryOssBucketName` is valid.
         /// </summary>
         [Input("deliveryOssKeyPrefix")]
         public Input<string>? DeliveryOssKeyPrefix { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<bool>? DeliverySlsEnabled { get; set; }
 
         /// <summary>
-        /// The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+        /// The name of SLS  Project. **NOTE:** When the `DeliverySlsEnabled` is `True`, The `DeliverySlsProjectName` is valid.
         /// </summary>
         [Input("deliverySlsProjectName")]
         public Input<string>? DeliverySlsProjectName { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class ServiceSettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+        /// The name of the OSS bucket. **NOTE:** When the `DeliveryOssEnabled` is `True`, The `DeliveryOssBucketName` is valid.
         /// </summary>
         [Input("deliveryOssBucketName")]
         public Input<string>? DeliveryOssBucketName { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<bool>? DeliveryOssEnabled { get; set; }
 
         /// <summary>
-        /// The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+        /// The Directory of the OSS bucket. **NOTE:** When the `DeliveryOssEnabled` is `True`, The `DeliveryOssBucketName` is valid.
         /// </summary>
         [Input("deliveryOssKeyPrefix")]
         public Input<string>? DeliveryOssKeyPrefix { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<bool>? DeliverySlsEnabled { get; set; }
 
         /// <summary>
-        /// The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+        /// The name of SLS  Project. **NOTE:** When the `DeliverySlsEnabled` is `True`, The `DeliverySlsProjectName` is valid.
         /// </summary>
         [Input("deliverySlsProjectName")]
         public Input<string>? DeliverySlsProjectName { get; set; }

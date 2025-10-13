@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> DbName { get; private set; } = null!;
 
         /// <summary>
-        /// Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
+        /// Remove form state when resource cannot be deleted. Valid values: `True` and `False`.
         /// </summary>
         [Output("removeFromState")]
         public Output<bool?> RemoveFromState { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbName { get; set; }
 
         /// <summary>
-        /// Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
+        /// Remove form state when resource cannot be deleted. Valid values: `True` and `False`.
         /// </summary>
         [Input("removeFromState")]
         public Input<bool>? RemoveFromState { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbName { get; set; }
 
         /// <summary>
-        /// Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
+        /// Remove form state when resource cannot be deleted. Valid values: `True` and `False`.
         /// </summary>
         [Input("removeFromState")]
         public Input<bool>? RemoveFromState { get; set; }

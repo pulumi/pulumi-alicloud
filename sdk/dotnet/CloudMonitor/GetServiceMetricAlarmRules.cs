@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         public string? RuleName { get; set; }
 
         /// <summary>
-        /// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+        /// Specifies whether to query enabled or disabled alert rules. Valid values: `True`, `False`.
         /// </summary>
         [Input("status")]
         public bool? Status { get; set; }
@@ -387,7 +387,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+        /// Specifies whether to query enabled or disabled alert rules. Valid values: `True`, `False`.
         /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class AutoSnapshotPolicyCopyEncryptionConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether to enable encryption for cross-region snapshot replication. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }

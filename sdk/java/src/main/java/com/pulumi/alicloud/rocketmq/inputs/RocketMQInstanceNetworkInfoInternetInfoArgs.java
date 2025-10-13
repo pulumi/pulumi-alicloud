@@ -72,7 +72,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     }
 
     /**
-     * Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+     * Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
      * 
      * @deprecated
      * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
@@ -83,7 +83,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     private @Nullable Output<List<String>> ipWhitelists;
 
     /**
-     * @return Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+     * @return Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
      * 
      * @deprecated
      * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
@@ -193,7 +193,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param ipWhitelists Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+         * @param ipWhitelists Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param ipWhitelists Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+         * @param ipWhitelists Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param ipWhitelists Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+         * @param ipWhitelists Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
          * 
          * @return builder
          * 

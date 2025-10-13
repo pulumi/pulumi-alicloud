@@ -20,7 +20,7 @@ public final class EcsInstanceSetDataDisk {
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
-     * @return The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+     * @return The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     private @Nullable String diskCategory;
@@ -36,10 +36,10 @@ public final class EcsInstanceSetDataDisk {
     private @Nullable String diskName;
     /**
      * @return The size of the data disk. Unit: GiB.
-     * - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
-     * - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
-     * - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
-     * - When `disk_category` is `cloud`, Valid values: `5` to `200`.
+     * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+     * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+     * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+     * - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
      * 
      */
     private Integer diskSize;
@@ -73,7 +73,7 @@ public final class EcsInstanceSetDataDisk {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
-     * @return The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+     * @return The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     public Optional<String> diskCategory() {
@@ -95,10 +95,10 @@ public final class EcsInstanceSetDataDisk {
     }
     /**
      * @return The size of the data disk. Unit: GiB.
-     * - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
-     * - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
-     * - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
-     * - When `disk_category` is `cloud`, Valid values: `5` to `200`.
+     * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+     * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+     * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+     * - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
      * 
      */
     public Integer diskSize() {

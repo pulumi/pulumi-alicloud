@@ -45,9 +45,9 @@ public class Quota extends com.pulumi.resources.CustomResource {
         return this.commodityCode;
     }
     /**
-     * Define quota rules when creating quotas, for example:{&#34;CU&#34;:50,&#34;ord_time&#34;:&#34;1:Month&#34;,&#34;autoRenew&#34;:false}.
+     * Define quota rules when creating quotas, for example:{&#34;CU&#34;:50,&#34;ordTime&#34;:&#34;1:Month&#34;,&#34;autoRenew&#34;:false}.
      * CU (minimum quota resource size is 50)
-     * ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
+     * ordTime 1:Month/Year (1 means quantity: Month/Year is the unit)
      * autoRenew (whether to enable automatic renewal)
      * If PaymentType is PayAsYouGo, you do not need to fill in
      * 
@@ -56,9 +56,9 @@ public class Quota extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> commodityData;
 
     /**
-     * @return Define quota rules when creating quotas, for example:{&#34;CU&#34;:50,&#34;ord_time&#34;:&#34;1:Month&#34;,&#34;autoRenew&#34;:false}.
+     * @return Define quota rules when creating quotas, for example:{&#34;CU&#34;:50,&#34;ordTime&#34;:&#34;1:Month&#34;,&#34;autoRenew&#34;:false}.
      * CU (minimum quota resource size is 50)
-     * ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
+     * ordTime 1:Month/Year (1 means quantity: Month/Year is the unit)
      * autoRenew (whether to enable automatic renewal)
      * If PaymentType is PayAsYouGo, you do not need to fill in
      * 
@@ -106,7 +106,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * Secondary Quota list
      * 
      * &gt; **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
-     * See `sub_quota_info_list` below.
+     * See `subQuotaInfoList` below.
      * 
      */
     @Export(name="subQuotaInfoLists", refs={List.class,QuotaSubQuotaInfoList.class}, tree="[0,1]")
@@ -116,7 +116,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * @return Secondary Quota list
      * 
      * &gt; **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
-     * See `sub_quota_info_list` below.
+     * See `subQuotaInfoList` below.
      * 
      */
     public Output<List<QuotaSubQuotaInfoList>> subQuotaInfoLists() {

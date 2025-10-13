@@ -195,13 +195,13 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> MonitoringName { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values: `stop`, `run`.
+        /// Valid values: `Stop`, `Run`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `Probe`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -265,13 +265,13 @@ namespace Pulumi.AliCloud.Arms
         public Input<string> ConfigYaml { get; set; } = null!;
 
         /// <summary>
-        /// Valid values: `stop`, `run`.
+        /// Valid values: `Stop`, `Run`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `Probe`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -303,13 +303,13 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? MonitoringName { get; set; }
 
         /// <summary>
-        /// Valid values: `stop`, `run`.
+        /// Valid values: `Stop`, `Run`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `Probe`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

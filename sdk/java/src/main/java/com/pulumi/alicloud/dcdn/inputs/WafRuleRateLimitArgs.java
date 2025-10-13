@@ -48,14 +48,14 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+     * The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
      * 
      */
     @Import(name="subKey")
     private @Nullable Output<String> subKey;
 
     /**
-     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
      * 
      */
     public Optional<Output<String>> subKey() {
@@ -179,7 +179,7 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subKey The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+         * @param subKey The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subKey The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+         * @param subKey The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
          * 
          * @return builder
          * 

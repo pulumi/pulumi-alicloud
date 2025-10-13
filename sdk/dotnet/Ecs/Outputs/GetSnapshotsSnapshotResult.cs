@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string SourceDiskType;
         public readonly string SourceStorageType;
         /// <summary>
-        /// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+        /// The snapshot status. Value range: `Progressing`, `Accomplished` and `Failed`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Type;
         /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        /// Whether the snapshots are used to create resources or not. Value range: `Image`, `Disk`, `ImageDisk` and `None`.
         /// </summary>
         public readonly string Usage;
 

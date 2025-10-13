@@ -22,7 +22,7 @@ public final class GetTopicsResult {
     private String id;
     private List<String> ids;
     /**
-     * @return The instance_id of the instance.
+     * @return The instanceId of the instance.
      * 
      */
     private String instanceId;
@@ -59,7 +59,7 @@ public final class GetTopicsResult {
         return this.ids;
     }
     /**
-     * @return The instance_id of the instance.
+     * @return The instanceId of the instance.
      * 
      */
     public String instanceId() {

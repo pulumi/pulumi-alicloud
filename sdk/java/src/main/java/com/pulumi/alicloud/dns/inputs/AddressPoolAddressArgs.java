@@ -52,14 +52,14 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+     * The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
      * 
      */
     @Import(name="lbaWeight")
     private @Nullable Output<Integer> lbaWeight;
 
     /**
-     * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+     * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
      * 
      */
     public Optional<Output<Integer>> lbaWeight() {
@@ -171,7 +171,7 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param lbaWeight The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+         * @param lbaWeight The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param lbaWeight The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+         * @param lbaWeight The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
          * 
          * @return builder
          * 

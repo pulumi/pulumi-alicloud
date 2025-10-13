@@ -213,14 +213,14 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.computeUnit);
     }
     /**
-     * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+     * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      * 
      */
     @Export(name="databaseCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> databaseCount;
 
     /**
-     * @return The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
+     * @return The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      * 
      */
     public Output<Optional<Integer>> databaseCount() {
@@ -269,28 +269,28 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.delayPhone);
     }
     /**
-     * When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+     * When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
     @Export(name="delayRuleTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delayRuleTime;
 
     /**
-     * @return When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+     * @return When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
     public Output<Optional<String>> delayRuleTime() {
         return Codegen.optional(this.delayRuleTime);
     }
     /**
-     * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+     * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      * 
      */
     @Export(name="destinationEndpointEngineName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointEngineName;
 
     /**
-     * @return The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
+     * @return The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      * 
      */
     public Output<Optional<String>> destinationEndpointEngineName() {
@@ -381,28 +381,28 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceClass);
     }
     /**
-     * The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     @Export(name="paymentDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> paymentDuration;
 
     /**
-     * @return The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * @return The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     public Output<Optional<Integer>> paymentDuration() {
         return Codegen.optional(this.paymentDuration);
     }
     /**
-     * The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     @Export(name="paymentDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentDurationUnit;
 
     /**
-     * @return The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+     * @return The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
     public Output<Optional<String>> paymentDurationUnit() {
@@ -661,28 +661,28 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.subscriptionInstanceNetworkType);
     }
     /**
-     * The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     @Export(name="subscriptionInstanceVpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subscriptionInstanceVpcId;
 
     /**
-     * @return The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * @return The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     public Output<Optional<String>> subscriptionInstanceVpcId() {
         return Codegen.optional(this.subscriptionInstanceVpcId);
     }
     /**
-     * The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     @Export(name="subscriptionInstanceVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subscriptionInstanceVswitchId;
 
     /**
-     * @return The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
+     * @return The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      * 
      */
     public Output<Optional<String>> subscriptionInstanceVswitchId() {

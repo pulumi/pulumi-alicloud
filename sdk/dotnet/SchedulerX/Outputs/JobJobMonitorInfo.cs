@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.SchedulerX.Outputs
     public sealed class JobJobMonitorInfo
     {
         /// <summary>
-        /// Contact information. See `contact_info` below.
+        /// Contact information. See `ContactInfo` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobJobMonitorInfoContactInfo> ContactInfos;
         /// <summary>
-        /// Alarm switch and threshold configuration. See `monitor_config` below.
+        /// Alarm switch and threshold configuration. See `MonitorConfig` below.
         /// </summary>
         public readonly Outputs.JobJobMonitorInfoMonitorConfig? MonitorConfig;
 

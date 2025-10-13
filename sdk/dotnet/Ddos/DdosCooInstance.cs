@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
-    /// &gt; **NOTE:** From version 1.214.0, if `product_type` is set to `ddoscoo` or `ddoscoo_intl`, the provider `region` should be set to `cn-hangzhou`, and if `product_type` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
+    /// &gt; **NOTE:** From version 1.214.0, if `ProductType` is set to `Ddoscoo` or `DdoscooIntl`, the provider `Region` should be set to `cn-hangzhou`, and if `ProductType` is set to `ddosDip`, the provider `Region` should be set to `ap-southeast-1`.
     /// 
     /// ## Example Usage
     /// 
@@ -61,13 +61,13 @@ namespace Pulumi.AliCloud.Ddos
     public partial class DdosCooInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `AddressType` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Output("addressType")]
         public Output<string> AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `Bandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string?> BandwidthMode { get; private set; } = null!;
 
         /// <summary>
-        /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `BaseBandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Output("baseBandwidth")]
         public Output<string> BaseBandwidth { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> DomainCount { get; private set; } = null!;
 
         /// <summary>
-        /// The mitigation plan of the instance. Default value: `coop`. Valid values:
+        /// The mitigation plan of the instance. Default value: `Coop`. Valid values:
         /// </summary>
         [Output("editionSale")]
         public Output<string> EditionSale { get; private set; } = null!;
@@ -127,19 +127,19 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+        /// The clean bandwidth provided by the instance. **NOTE:** `NormalBandwidth` is valid only when `ProductType` is set to `ddosDip`. From version 1.248.0, `NormalBandwidth` can be modified.
         /// </summary>
         [Output("normalBandwidth")]
         public Output<string> NormalBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+        /// The clean QPS provided by the instance. **NOTE:** `NormalQps` is valid only when `ProductType` is set to `ddosDip`. From version 1.248.0, `NormalQps` can be modified.
         /// </summary>
         [Output("normalQps")]
         public Output<string> NormalQps { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `Period`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -157,13 +157,13 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> ProductPlan { get; private set; } = null!;
 
         /// <summary>
-        /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
+        /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `Ddoscoo`. Valid values:
         /// </summary>
         [Output("productType")]
         public Output<string?> ProductType { get; private set; } = null!;
 
         /// <summary>
-        /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `ServiceBandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Output("serviceBandwidth")]
         public Output<string> ServiceBandwidth { get; private set; } = null!;
@@ -231,13 +231,13 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class DdosCooInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `AddressType` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `Bandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? BandwidthMode { get; set; }
 
         /// <summary>
-        /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `BaseBandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("baseBandwidth")]
         public Input<string>? BaseBandwidth { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> DomainCount { get; set; } = null!;
 
         /// <summary>
-        /// The mitigation plan of the instance. Default value: `coop`. Valid values:
+        /// The mitigation plan of the instance. Default value: `Coop`. Valid values:
         /// </summary>
         [Input("editionSale")]
         public Input<string>? EditionSale { get; set; }
@@ -285,19 +285,19 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+        /// The clean bandwidth provided by the instance. **NOTE:** `NormalBandwidth` is valid only when `ProductType` is set to `ddosDip`. From version 1.248.0, `NormalBandwidth` can be modified.
         /// </summary>
         [Input("normalBandwidth")]
         public Input<string>? NormalBandwidth { get; set; }
 
         /// <summary>
-        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+        /// The clean QPS provided by the instance. **NOTE:** `NormalQps` is valid only when `ProductType` is set to `ddosDip`. From version 1.248.0, `NormalQps` can be modified.
         /// </summary>
         [Input("normalQps")]
         public Input<string>? NormalQps { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `Period`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -315,13 +315,13 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? ProductPlan { get; set; }
 
         /// <summary>
-        /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
+        /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `Ddoscoo`. Valid values:
         /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
         /// <summary>
-        /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `ServiceBandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("serviceBandwidth")]
         public Input<string>? ServiceBandwidth { get; set; }
@@ -347,13 +347,13 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class DdosCooInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `AddressType` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `Bandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? BandwidthMode { get; set; }
 
         /// <summary>
-        /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `BaseBandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("baseBandwidth")]
         public Input<string>? BaseBandwidth { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? DomainCount { get; set; }
 
         /// <summary>
-        /// The mitigation plan of the instance. Default value: `coop`. Valid values:
+        /// The mitigation plan of the instance. Default value: `Coop`. Valid values:
         /// </summary>
         [Input("editionSale")]
         public Input<string>? EditionSale { get; set; }
@@ -413,19 +413,19 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
+        /// The clean bandwidth provided by the instance. **NOTE:** `NormalBandwidth` is valid only when `ProductType` is set to `ddosDip`. From version 1.248.0, `NormalBandwidth` can be modified.
         /// </summary>
         [Input("normalBandwidth")]
         public Input<string>? NormalBandwidth { get; set; }
 
         /// <summary>
-        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
+        /// The clean QPS provided by the instance. **NOTE:** `NormalQps` is valid only when `ProductType` is set to `ddosDip`. From version 1.248.0, `NormalQps` can be modified.
         /// </summary>
         [Input("normalQps")]
         public Input<string>? NormalQps { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `Period`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -443,13 +443,13 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? ProductPlan { get; set; }
 
         /// <summary>
-        /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
+        /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `Ddoscoo`. Valid values:
         /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
         /// <summary>
-        /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `ServiceBandwidth` is valid only when `ProductType` is set to `Ddoscoo` or `DdoscooIntl`.
         /// </summary>
         [Input("serviceBandwidth")]
         public Input<string>? ServiceBandwidth { get; set; }

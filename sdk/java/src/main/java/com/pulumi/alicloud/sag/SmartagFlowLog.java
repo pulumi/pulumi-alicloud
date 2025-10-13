@@ -128,56 +128,56 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
         return this.inactiveAging;
     }
     /**
-     * The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     @Export(name="logstoreName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logstoreName;
 
     /**
-     * @return The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * @return The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     public Output<Optional<String>> logstoreName() {
         return Codegen.optional(this.logstoreName);
     }
     /**
-     * The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     @Export(name="netflowServerIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netflowServerIp;
 
     /**
-     * @return The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * @return The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     public Output<Optional<String>> netflowServerIp() {
         return Codegen.optional(this.netflowServerIp);
     }
     /**
-     * The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     @Export(name="netflowServerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> netflowServerPort;
 
     /**
-     * @return The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * @return The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     public Output<Integer> netflowServerPort() {
         return this.netflowServerPort;
     }
     /**
-     * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     @Export(name="netflowVersion", refs={String.class}, tree="[0]")
     private Output<String> netflowVersion;
 
     /**
-     * @return The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
+     * @return The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      * 
      */
     public Output<String> netflowVersion() {
@@ -198,28 +198,28 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
         return this.outputType;
     }
     /**
-     * The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectName;
 
     /**
-     * @return The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * @return The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     public Output<Optional<String>> projectName() {
         return Codegen.optional(this.projectName);
     }
     /**
-     * The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     @Export(name="slsRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsRegionId;
 
     /**
-     * @return The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
+     * @return The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      * 
      */
     public Output<Optional<String>> slsRegionId() {

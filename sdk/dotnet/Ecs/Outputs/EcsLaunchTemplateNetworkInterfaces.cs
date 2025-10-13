@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class EcsLaunchTemplateNetworkInterfaces
     {
         /// <summary>
-        /// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+        /// Specifies whether to release ENI N when the instance is released. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? DeleteOnRelease;
         /// <summary>

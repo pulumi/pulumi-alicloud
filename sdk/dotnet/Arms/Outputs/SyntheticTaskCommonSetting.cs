@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class SyntheticTaskCommonSetting
     {
         /// <summary>
-        /// Custom host. See `custom_host` below.
+        /// Custom host. See `CustomHost` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskCommonSettingCustomHost? CustomHost;
         /// <summary>

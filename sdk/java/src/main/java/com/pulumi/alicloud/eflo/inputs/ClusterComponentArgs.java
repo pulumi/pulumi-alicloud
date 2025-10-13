@@ -17,14 +17,14 @@ public final class ClusterComponentArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterComponentArgs Empty = new ClusterComponentArgs();
 
     /**
-     * Component Configuration See `component_config` below.
+     * Component Configuration See `componentConfig` below.
      * 
      */
     @Import(name="componentConfig")
     private @Nullable Output<ClusterComponentComponentConfigArgs> componentConfig;
 
     /**
-     * @return Component Configuration See `component_config` below.
+     * @return Component Configuration See `componentConfig` below.
      * 
      */
     public Optional<Output<ClusterComponentComponentConfigArgs>> componentConfig() {
@@ -72,7 +72,7 @@ public final class ClusterComponentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param componentConfig Component Configuration See `component_config` below.
+         * @param componentConfig Component Configuration See `componentConfig` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterComponentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param componentConfig Component Configuration See `component_config` below.
+         * @param componentConfig Component Configuration See `componentConfig` below.
          * 
          * @return builder
          * 

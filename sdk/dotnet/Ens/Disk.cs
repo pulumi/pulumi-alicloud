@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ens
     public partial class Disk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+        /// The category of the disk. Valid values: `CloudEfficiency` (high-efficiency cloud disk), `CloudSsd` (full Flash cloud disk), `LocalHdd` (local HDD), `LocalSsd` (local ssd).
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string?> DiskName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
+        /// Specifies whether to encrypt the new system disk. Valid values: `True`, `False`(default).
         /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> EnsRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
+        /// The ID of the KMS key used by the cloud disk. If `Encrypted` is set to `True`, the service default key is used when KMSKeyId is empty.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string> KmsKeyId { get; private set; } = null!;
@@ -106,8 +106,8 @@ namespace Pulumi.AliCloud.Ens
         /// The ID of the snapshot used to create the cloud disk.
         /// 
         /// The SnapshotId and Size parameters have the following limitations:
-        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+        /// - If the snapshot capacity corresponding to the `SnapshotId` parameter is greater than the specified `Size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+        /// - If the snapshot capacity corresponding to the `SnapshotId` parameter is less than the set `Size` parameter value, the Size of the cloud disk created is the specified `Size` parameter value.
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ens
     public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+        /// The category of the disk. Valid values: `CloudEfficiency` (high-efficiency cloud disk), `CloudSsd` (full Flash cloud disk), `LocalHdd` (local HDD), `LocalSsd` (local ssd).
         /// </summary>
         [Input("category", required: true)]
         public Input<string> Category { get; set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
+        /// Specifies whether to encrypt the new system disk. Valid values: `True`, `False`(default).
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string> EnsRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
+        /// The ID of the KMS key used by the cloud disk. If `Encrypted` is set to `True`, the service default key is used when KMSKeyId is empty.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -216,8 +216,8 @@ namespace Pulumi.AliCloud.Ens
         /// The ID of the snapshot used to create the cloud disk.
         /// 
         /// The SnapshotId and Size parameters have the following limitations:
-        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+        /// - If the snapshot capacity corresponding to the `SnapshotId` parameter is greater than the specified `Size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+        /// - If the snapshot capacity corresponding to the `SnapshotId` parameter is less than the set `Size` parameter value, the Size of the cloud disk created is the specified `Size` parameter value.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Ens
     public sealed class DiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
+        /// The category of the disk. Valid values: `CloudEfficiency` (high-efficiency cloud disk), `CloudSsd` (full Flash cloud disk), `LocalHdd` (local HDD), `LocalSsd` (local ssd).
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
+        /// Specifies whether to encrypt the new system disk. Valid values: `True`, `False`(default).
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
+        /// The ID of the KMS key used by the cloud disk. If `Encrypted` is set to `True`, the service default key is used when KMSKeyId is empty.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -294,8 +294,8 @@ namespace Pulumi.AliCloud.Ens
         /// The ID of the snapshot used to create the cloud disk.
         /// 
         /// The SnapshotId and Size parameters have the following limitations:
-        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
+        /// - If the snapshot capacity corresponding to the `SnapshotId` parameter is greater than the specified `Size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+        /// - If the snapshot capacity corresponding to the `SnapshotId` parameter is less than the set `Size` parameter value, the Size of the cloud disk created is the specified `Size` parameter value.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

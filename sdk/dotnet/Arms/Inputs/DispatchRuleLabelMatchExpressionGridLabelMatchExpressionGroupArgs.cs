@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         private InputList<Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>? _labelMatchExpressions;
 
         /// <summary>
-        /// Sets the dispatch rule. See `label_match_expressions` below.
+        /// Sets the dispatch rule. See `LabelMatchExpressions` below.
         /// </summary>
         public InputList<Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs> LabelMatchExpressions
         {

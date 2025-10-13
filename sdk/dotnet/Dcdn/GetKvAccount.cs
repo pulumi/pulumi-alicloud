@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class GetKvAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The status of the KV feature for your account. Valid values: `online`, `offline`.
+        /// The status of the KV feature for your account. Valid values: `Online`, `Offline`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class GetKvAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The status of the KV feature for your account. Valid values: `online`, `offline`.
+        /// The status of the KV feature for your account. Valid values: `Online`, `Offline`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

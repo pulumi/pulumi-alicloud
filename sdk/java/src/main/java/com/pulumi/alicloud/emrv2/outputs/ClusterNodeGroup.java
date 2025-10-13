@@ -24,32 +24,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeGroup {
     /**
-     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
      * 
      */
     private @Nullable ClusterNodeGroupAckConfig ackConfig;
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
      * 
      */
     private @Nullable List<String> additionalSecurityGroupIds;
     /**
-     * @return The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * @return The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
      * 
      */
     private @Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy;
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+     * @return The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
      * 
      */
     private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
     /**
-     * @return Host Ecs data disks information in this node group. See `data_disks` below.
+     * @return Host Ecs data disks information in this node group. See `dataDisks` below.
      * 
      */
     private List<ClusterNodeGroupDataDisk> dataDisks;
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
      * 
      */
     private @Nullable String deploymentSetStrategy;
@@ -59,7 +59,7 @@ public final class ClusterNodeGroup {
      */
     private @Nullable Boolean gracefulShutdown;
     /**
-     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
      * 
      */
     private List<String> instanceTypes;
@@ -89,12 +89,12 @@ public final class ClusterNodeGroup {
      */
     private @Nullable String paymentType;
     /**
-     * @return The node group specific private pool resources. See `private_pool_options` below.
+     * @return The node group specific private pool resources. See `privatePoolOptions` below.
      * 
      */
     private @Nullable ClusterNodeGroupPrivatePoolOptions privatePoolOptions;
     /**
-     * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+     * @return The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
@@ -109,64 +109,64 @@ public final class ClusterNodeGroup {
      */
     private @Nullable String spotStrategy;
     /**
-     * @return The detail configuration of subscription payment type. See `subscription_config` below.
+     * @return The detail configuration of subscription payment type. See `subscriptionConfig` below.
      * 
      */
     private @Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig;
     /**
-     * @return Host Ecs system disk information in this node group. See `system_disk` below.
+     * @return Host Ecs system disk information in this node group. See `systemDisk` below.
      * 
      */
     private ClusterNodeGroupSystemDisk systemDisk;
     /**
-     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
      * 
      */
     private @Nullable List<String> vswitchIds;
     /**
-     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
      * 
      */
     private @Nullable Boolean withPublicIp;
 
     private ClusterNodeGroup() {}
     /**
-     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
      * 
      */
     public Optional<ClusterNodeGroupAckConfig> ackConfig() {
         return Optional.ofNullable(this.ackConfig);
     }
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
      * 
      */
     public List<String> additionalSecurityGroupIds() {
         return this.additionalSecurityGroupIds == null ? List.of() : this.additionalSecurityGroupIds;
     }
     /**
-     * @return The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * @return The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
      * 
      */
     public Optional<ClusterNodeGroupAutoScalingPolicy> autoScalingPolicy() {
         return Optional.ofNullable(this.autoScalingPolicy);
     }
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+     * @return The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
      * 
      */
     public Optional<ClusterNodeGroupCostOptimizedConfig> costOptimizedConfig() {
         return Optional.ofNullable(this.costOptimizedConfig);
     }
     /**
-     * @return Host Ecs data disks information in this node group. See `data_disks` below.
+     * @return Host Ecs data disks information in this node group. See `dataDisks` below.
      * 
      */
     public List<ClusterNodeGroupDataDisk> dataDisks() {
         return this.dataDisks;
     }
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
      * 
      */
     public Optional<String> deploymentSetStrategy() {
@@ -180,7 +180,7 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.gracefulShutdown);
     }
     /**
-     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
      * 
      */
     public List<String> instanceTypes() {
@@ -222,14 +222,14 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.paymentType);
     }
     /**
-     * @return The node group specific private pool resources. See `private_pool_options` below.
+     * @return The node group specific private pool resources. See `privatePoolOptions` below.
      * 
      */
     public Optional<ClusterNodeGroupPrivatePoolOptions> privatePoolOptions() {
         return Optional.ofNullable(this.privatePoolOptions);
     }
     /**
-     * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+     * @return The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
      * 
      */
     public List<ClusterNodeGroupSpotBidPrice> spotBidPrices() {
@@ -250,28 +250,28 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.spotStrategy);
     }
     /**
-     * @return The detail configuration of subscription payment type. See `subscription_config` below.
+     * @return The detail configuration of subscription payment type. See `subscriptionConfig` below.
      * 
      */
     public Optional<ClusterNodeGroupSubscriptionConfig> subscriptionConfig() {
         return Optional.ofNullable(this.subscriptionConfig);
     }
     /**
-     * @return Host Ecs system disk information in this node group. See `system_disk` below.
+     * @return Host Ecs system disk information in this node group. See `systemDisk` below.
      * 
      */
     public ClusterNodeGroupSystemDisk systemDisk() {
         return this.systemDisk;
     }
     /**
-     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
      * 
      */
     public List<String> vswitchIds() {
         return this.vswitchIds == null ? List.of() : this.vswitchIds;
     }
     /**
-     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
      * 
      */
     public Optional<Boolean> withPublicIp() {

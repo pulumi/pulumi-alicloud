@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.122.0.
     /// 
-    /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
+    /// &gt; **NOTE:** One of `Size` or `SnapshotId` is required when specifying an ECS disk. If all of them be specified, `Size` must more than the size of snapshot which `SnapshotId` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
     /// 
     /// ## Example Usage
     /// 
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> BurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdEntry`. Default is `CloudEfficiency`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> EncryptAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `snapshot_id`.
+        /// If true, the disk will be encrypted, conflict with `SnapshotId`.
         /// </summary>
         [Output("encrypted")]
         public Output<bool> Encrypted { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `True` when KmsKeyId is not empty.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string> KmsKeyId { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
-        /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// &gt; **NOTE:** Disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `Size`, the `Size` will be ignored, conflict with `Encrypted`.
         /// </summary>
         [Output("snapshotId")]
         public Output<string> SnapshotId { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdEntry`. Default is `CloudEfficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? EncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `snapshot_id`.
+        /// If true, the disk will be encrypted, conflict with `SnapshotId`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `True` when KmsKeyId is not empty.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -333,7 +333,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
-        /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// &gt; **NOTE:** Disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `Size`, the `Size` will be ignored, conflict with `Encrypted`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -395,7 +395,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdEntry`. Default is `CloudEfficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? EncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `snapshot_id`.
+        /// If true, the disk will be encrypted, conflict with `SnapshotId`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `True` when KmsKeyId is not empty.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -480,7 +480,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
-        /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// &gt; **NOTE:** Disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `Size`, the `Size` will be ignored, conflict with `Encrypted`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

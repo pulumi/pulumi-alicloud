@@ -252,42 +252,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:arms/syntheticTask:SyntheticTask")
 public class SyntheticTask extends com.pulumi.resources.CustomResource {
     /**
-     * Assertion List. See `available_assertions` below.
+     * Assertion List. See `availableAssertions` below.
      * 
      */
     @Export(name="availableAssertions", refs={List.class,SyntheticTaskAvailableAssertion.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SyntheticTaskAvailableAssertion>> availableAssertions;
 
     /**
-     * @return Assertion List. See `available_assertions` below.
+     * @return Assertion List. See `availableAssertions` below.
      * 
      */
     public Output<Optional<List<SyntheticTaskAvailableAssertion>>> availableAssertions() {
         return Codegen.optional(this.availableAssertions);
     }
     /**
-     * Common settings. See `common_setting` below.
+     * Common settings. See `commonSetting` below.
      * 
      */
     @Export(name="commonSetting", refs={SyntheticTaskCommonSetting.class}, tree="[0]")
     private Output<SyntheticTaskCommonSetting> commonSetting;
 
     /**
-     * @return Common settings. See `common_setting` below.
+     * @return Common settings. See `commonSetting` below.
      * 
      */
     public Output<SyntheticTaskCommonSetting> commonSetting() {
         return this.commonSetting;
     }
     /**
-     * Custom Cycle. See `custom_period` below.
+     * Custom Cycle. See `customPeriod` below.
      * 
      */
     @Export(name="customPeriod", refs={SyntheticTaskCustomPeriod.class}, tree="[0]")
     private Output</* @Nullable */ SyntheticTaskCustomPeriod> customPeriod;
 
     /**
-     * @return Custom Cycle. See `custom_period` below.
+     * @return Custom Cycle. See `customPeriod` below.
      * 
      */
     public Output<Optional<SyntheticTaskCustomPeriod>> customPeriod() {
@@ -322,14 +322,14 @@ public class SyntheticTask extends com.pulumi.resources.CustomResource {
         return this.monitorCategory;
     }
     /**
-     * Monitoring configuration. See `monitor_conf` below.
+     * Monitoring configuration. See `monitorConf` below.
      * 
      */
     @Export(name="monitorConf", refs={SyntheticTaskMonitorConf.class}, tree="[0]")
     private Output<SyntheticTaskMonitorConf> monitorConf;
 
     /**
-     * @return Monitoring configuration. See `monitor_conf` below.
+     * @return Monitoring configuration. See `monitorConf` below.
      * 
      */
     public Output<SyntheticTaskMonitorConf> monitorConf() {

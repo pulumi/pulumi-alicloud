@@ -124,7 +124,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
-     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
     @Import(name="vpcOwnerId")
@@ -132,7 +132,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
     /**
      * @return The ID of the Alibaba Cloud account that owns the VPC.
-     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      * 
      */
     public Optional<Output<Integer>> vpcOwnerId() {
@@ -329,7 +329,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
         /**
          * @param vpcOwnerId The ID of the Alibaba Cloud account that owns the VPC.
-         * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+         * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class RouterVpcAssociationState extends com.pulumi.resources.Resour
 
         /**
          * @param vpcOwnerId The ID of the Alibaba Cloud account that owns the VPC.
-         * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+         * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
          * 
          * @return builder
          * 

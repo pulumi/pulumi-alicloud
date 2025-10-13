@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Governance
         public Output<string?> AccountNamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The tags of the account See `account_tags` below.
+        /// The tags of the account See `AccountTags` below.
         /// </summary>
         [Output("accountTags")]
         public Output<ImmutableArray<Outputs.AccountAccountTag>> AccountTags { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Governance
         private InputList<Inputs.AccountAccountTagArgs>? _accountTags;
 
         /// <summary>
-        /// The tags of the account See `account_tags` below.
+        /// The tags of the account See `AccountTags` below.
         /// </summary>
         public InputList<Inputs.AccountAccountTagArgs> AccountTags
         {
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Governance
         private InputList<Inputs.AccountAccountTagGetArgs>? _accountTags;
 
         /// <summary>
-        /// The tags of the account See `account_tags` below.
+        /// The tags of the account See `AccountTags` below.
         /// </summary>
         public InputList<Inputs.AccountAccountTagGetArgs> AccountTags
         {

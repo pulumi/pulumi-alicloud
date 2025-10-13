@@ -28,12 +28,12 @@ public final class GetListenersSlbListener {
      */
     private String caCertificateId;
     /**
-     * @return Cookie configured by the backend server. Only available when the sticky_session_type is `server`.
+     * @return Cookie configured by the backend server. Only available when the stickySessionType is `server`.
      * 
      */
     private String cookie;
     /**
-     * @return Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
+     * @return Cookie timeout in seconds. Only available when the stickySessionType is `insert`.
      * 
      */
     private Integer cookieTimeout;
@@ -78,12 +78,12 @@ public final class GetListenersSlbListener {
      */
     private Integer healthCheckConnectTimeout;
     /**
-     * @return Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+     * @return Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
      * 
      */
     private String healthCheckDomain;
     /**
-     * @return HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as &#34;http_2xx,http_3xx&#34;. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+     * @return HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as &#34;http_2xx,http_3xx&#34;. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
      * 
      */
     private String healthCheckHttpCode;
@@ -103,7 +103,7 @@ public final class GetListenersSlbListener {
      */
     private String healthCheckType;
     /**
-     * @return URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+     * @return URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
      * 
      */
     private String healthCheckUri;
@@ -174,12 +174,12 @@ public final class GetListenersSlbListener {
      */
     private String stickySession;
     /**
-     * @return Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and sticky_session is `on`.
+     * @return Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and stickySession is `on`.
      * 
      */
     private String stickySessionType;
     /**
-     * @return Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`.
+     * @return Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`.
      * 
      */
     private String tlsCipherPolicy;
@@ -232,14 +232,14 @@ public final class GetListenersSlbListener {
         return this.caCertificateId;
     }
     /**
-     * @return Cookie configured by the backend server. Only available when the sticky_session_type is `server`.
+     * @return Cookie configured by the backend server. Only available when the stickySessionType is `server`.
      * 
      */
     public String cookie() {
         return this.cookie;
     }
     /**
-     * @return Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
+     * @return Cookie timeout in seconds. Only available when the stickySessionType is `insert`.
      * 
      */
     public Integer cookieTimeout() {
@@ -302,14 +302,14 @@ public final class GetListenersSlbListener {
         return this.healthCheckConnectTimeout;
     }
     /**
-     * @return Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+     * @return Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
      * 
      */
     public String healthCheckDomain() {
         return this.healthCheckDomain;
     }
     /**
-     * @return HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as &#34;http_2xx,http_3xx&#34;. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+     * @return HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as &#34;http_2xx,http_3xx&#34;. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
      * 
      */
     public String healthCheckHttpCode() {
@@ -337,7 +337,7 @@ public final class GetListenersSlbListener {
         return this.healthCheckType;
     }
     /**
-     * @return URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
+     * @return URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
      * 
      */
     public String healthCheckUri() {
@@ -438,14 +438,14 @@ public final class GetListenersSlbListener {
         return this.stickySession;
     }
     /**
-     * @return Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and sticky_session is `on`.
+     * @return Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and stickySession is `on`.
      * 
      */
     public String stickySessionType() {
         return this.stickySessionType;
     }
     /**
-     * @return Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`.
+     * @return Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`.
      * 
      */
     public String tlsCipherPolicy() {

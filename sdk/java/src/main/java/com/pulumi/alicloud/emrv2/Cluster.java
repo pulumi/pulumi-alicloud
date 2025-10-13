@@ -229,14 +229,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:emrv2/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * The application configurations of EMR cluster. See `application_configs` below.
+     * The application configurations of EMR cluster. See `applicationConfigs` below.
      * 
      */
     @Export(name="applicationConfigs", refs={List.class,ClusterApplicationConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterApplicationConfig>> applicationConfigs;
 
     /**
-     * @return The application configurations of EMR cluster. See `application_configs` below.
+     * @return The application configurations of EMR cluster. See `applicationConfigs` below.
      * 
      */
     public Output<Optional<List<ClusterApplicationConfig>>> applicationConfigs() {
@@ -257,14 +257,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.applications;
     }
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      * 
      */
     @Export(name="bootstrapScripts", refs={List.class,ClusterBootstrapScript.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterBootstrapScript>> bootstrapScripts;
 
     /**
-     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      * 
      */
     public Output<Optional<List<ClusterBootstrapScript>>> bootstrapScripts() {
@@ -341,42 +341,42 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.logCollectStrategy;
     }
     /**
-     * The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+     * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      * 
      */
     @Export(name="nodeAttributes", refs={List.class,ClusterNodeAttribute.class}, tree="[0,1]")
     private Output<List<ClusterNodeAttribute>> nodeAttributes;
 
     /**
-     * @return The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+     * @return The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      * 
      */
     public Output<List<ClusterNodeAttribute>> nodeAttributes() {
         return this.nodeAttributes;
     }
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      * 
      */
     @Export(name="nodeGroups", refs={List.class,ClusterNodeGroup.class}, tree="[0,1]")
     private Output<List<ClusterNodeGroup>> nodeGroups;
 
     /**
-     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      * 
      */
     public Output<List<ClusterNodeGroup>> nodeGroups() {
         return this.nodeGroups;
     }
     /**
-     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
+     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
+     * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      * 
      */
     public Output<String> paymentType() {
@@ -425,14 +425,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.securityMode;
     }
     /**
-     * The detail configuration of subscription payment type. See `subscription_config` below.
+     * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      * 
      */
     @Export(name="subscriptionConfig", refs={ClusterSubscriptionConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterSubscriptionConfig> subscriptionConfig;
 
     /**
-     * @return The detail configuration of subscription payment type. See `subscription_config` below.
+     * @return The detail configuration of subscription payment type. See `subscriptionConfig` below.
      * 
      */
     public Output<Optional<ClusterSubscriptionConfig>> subscriptionConfig() {

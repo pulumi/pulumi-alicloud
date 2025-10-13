@@ -18,14 +18,14 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
     public static final ConsumerGroupState Empty = new ConsumerGroupState();
 
     /**
-     * Consumption retry strategy. See `consume_retry_policy` below.
+     * Consumption retry strategy. See `consumeRetryPolicy` below.
      * 
      */
     @Import(name="consumeRetryPolicy")
     private @Nullable Output<ConsumerGroupConsumeRetryPolicyArgs> consumeRetryPolicy;
 
     /**
-     * @return Consumption retry strategy. See `consume_retry_policy` below.
+     * @return Consumption retry strategy. See `consumeRetryPolicy` below.
      * 
      */
     public Optional<Output<ConsumerGroupConsumeRetryPolicyArgs>> consumeRetryPolicy() {
@@ -185,7 +185,7 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param consumeRetryPolicy Consumption retry strategy. See `consume_retry_policy` below.
+         * @param consumeRetryPolicy Consumption retry strategy. See `consumeRetryPolicy` below.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param consumeRetryPolicy Consumption retry strategy. See `consume_retry_policy` below.
+         * @param consumeRetryPolicy Consumption retry strategy. See `consumeRetryPolicy` below.
          * 
          * @return builder
          * 

@@ -28,7 +28,7 @@ public final class OtsBackupPlanRule {
      */
     private @Nullable String retention;
     /**
-     * @return The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+     * @return The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
      * 
      */
     private @Nullable String ruleName;
@@ -62,7 +62,7 @@ public final class OtsBackupPlanRule {
         return Optional.ofNullable(this.retention);
     }
     /**
-     * @return The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+     * @return The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
      * 
      */
     public Optional<String> ruleName() {

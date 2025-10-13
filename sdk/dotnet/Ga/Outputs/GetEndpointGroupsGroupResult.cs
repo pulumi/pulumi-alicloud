@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointGroupsGroupEndpointConfigurationResult> EndpointConfigurations;
         /// <summary>
-        /// The endpoint_group_id of the Endpoint Group.
+        /// The EndpointGroupId of the Endpoint Group.
         /// </summary>
         public readonly string EndpointGroupId;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointGroupsGroupPortOverrideResult> PortOverrides;
         /// <summary>
-        /// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
+        /// The status of the endpoint group. Valid values: `Active`, `Configuring`, `Creating`, `Init`.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -82,14 +82,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig")
 public class AttackPathSensitiveAssetConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+     * The attack path sensitive asset configuration list. See `attackPathAssetList` below.
      * 
      */
     @Export(name="attackPathAssetLists", refs={List.class,AttackPathSensitiveAssetConfigAttackPathAssetList.class}, tree="[0,1]")
     private Output<List<AttackPathSensitiveAssetConfigAttackPathAssetList>> attackPathAssetLists;
 
     /**
-     * @return The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+     * @return The attack path sensitive asset configuration list. See `attackPathAssetList` below.
      * 
      */
     public Output<List<AttackPathSensitiveAssetConfigAttackPathAssetList>> attackPathAssetLists() {

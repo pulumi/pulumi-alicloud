@@ -81,14 +81,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+     * Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      * 
      */
     @Import(name="encryptConf")
     private @Nullable Output<StoreEncryptConfArgs> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+     * @return Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      * 
      */
     public Optional<Output<StoreEncryptConfArgs>> encryptConf() {
@@ -126,14 +126,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      * 
      */
     @Import(name="logstoreName")
     private @Nullable Output<String> logstoreName;
 
     /**
-     * @return The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * @return The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      * 
      */
     public Optional<Output<String>> logstoreName() {
@@ -232,14 +232,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * @return The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -436,7 +436,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logstoreName The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+         * @param logstoreName The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logstoreName The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+         * @param logstoreName The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+         * @param projectName The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+         * @param projectName The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
          * 
          * @return builder
          * 

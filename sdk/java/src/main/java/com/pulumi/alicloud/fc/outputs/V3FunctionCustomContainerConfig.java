@@ -53,7 +53,7 @@ public final class V3FunctionCustomContainerConfig {
      */
     private @Nullable List<String> entrypoints;
     /**
-     * @return Function custom health check configuration See `health_check_config` below.
+     * @return Function custom health check configuration See `healthCheckConfig` below.
      * 
      */
     private @Nullable V3FunctionCustomContainerConfigHealthCheckConfig healthCheckConfig;
@@ -122,7 +122,7 @@ public final class V3FunctionCustomContainerConfig {
         return this.entrypoints == null ? List.of() : this.entrypoints;
     }
     /**
-     * @return Function custom health check configuration See `health_check_config` below.
+     * @return Function custom health check configuration See `healthCheckConfig` below.
      * 
      */
     public Optional<V3FunctionCustomContainerConfigHealthCheckConfig> healthCheckConfig() {

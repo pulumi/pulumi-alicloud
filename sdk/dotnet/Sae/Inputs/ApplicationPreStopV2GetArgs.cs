@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationPreStopV2GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Execute. See `exec` below.
+        /// Execute. See `Exec` below.
         /// </summary>
         [Input("exec")]
         public Input<Inputs.ApplicationPreStopV2ExecGetArgs>? Exec { get; set; }

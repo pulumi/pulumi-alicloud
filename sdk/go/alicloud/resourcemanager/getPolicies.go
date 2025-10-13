@@ -14,6 +14,8 @@ import (
 // This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:**  Available in 1.86.0+.
+//
+// ## Example Usage
 func GetPolicies(ctx *pulumi.Context, args *GetPoliciesArgs, opts ...pulumi.InvokeOption) (*GetPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPoliciesResult

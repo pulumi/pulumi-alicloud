@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHoneypotProbesProbe {
     /**
-     * @return ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
+     * @return ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enableDetails` is on.
      * 
      */
     private Boolean arp;
@@ -35,12 +35,12 @@ public final class GetHoneypotProbesProbe {
      */
     private String honeypotProbeId;
     /**
-     * @return The ID of the honeypot probe. Its value is the same as `honeypot_probe_id`.
+     * @return The ID of the honeypot probe. Its value is the same as `honeypotProbeId`.
      * 
      */
     private String id;
     /**
-     * @return Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enable_details` is on.
+     * @return Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enableDetails` is on.
      * 
      */
     private Boolean ping;
@@ -50,7 +50,7 @@ public final class GetHoneypotProbesProbe {
      */
     private String probeType;
     /**
-     * @return Listen to the IP address list. Available when `enable_details` is on.
+     * @return Listen to the IP address list. Available when `enableDetails` is on.
      * 
      */
     private List<String> serviceIpLists;
@@ -60,19 +60,19 @@ public final class GetHoneypotProbesProbe {
      */
     private String status;
     /**
-     * @return Machine uuid. Has a value when the type is `host_probe`.
+     * @return Machine uuid. Has a value when the type is `hostProbe`.
      * 
      */
     private String uuid;
     /**
-     * @return The ID of the VPC. Has a value when the type is `vpc_black_hole_probe`.
+     * @return The ID of the VPC. Has a value when the type is `vpcBlackHoleProbe`.
      * 
      */
     private String vpcId;
 
     private GetHoneypotProbesProbe() {}
     /**
-     * @return ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
+     * @return ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enableDetails` is on.
      * 
      */
     public Boolean arp() {
@@ -103,14 +103,14 @@ public final class GetHoneypotProbesProbe {
         return this.honeypotProbeId;
     }
     /**
-     * @return The ID of the honeypot probe. Its value is the same as `honeypot_probe_id`.
+     * @return The ID of the honeypot probe. Its value is the same as `honeypotProbeId`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enable_details` is on.
+     * @return Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enableDetails` is on.
      * 
      */
     public Boolean ping() {
@@ -124,7 +124,7 @@ public final class GetHoneypotProbesProbe {
         return this.probeType;
     }
     /**
-     * @return Listen to the IP address list. Available when `enable_details` is on.
+     * @return Listen to the IP address list. Available when `enableDetails` is on.
      * 
      */
     public List<String> serviceIpLists() {
@@ -138,14 +138,14 @@ public final class GetHoneypotProbesProbe {
         return this.status;
     }
     /**
-     * @return Machine uuid. Has a value when the type is `host_probe`.
+     * @return Machine uuid. Has a value when the type is `hostProbe`.
      * 
      */
     public String uuid() {
         return this.uuid;
     }
     /**
-     * @return The ID of the VPC. Has a value when the type is `vpc_black_hole_probe`.
+     * @return The ID of the VPC. Has a value when the type is `vpcBlackHoleProbe`.
      * 
      */
     public String vpcId() {

@@ -86,10 +86,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Attribute perm has been deprecated and suggest removing it from your template.
      * 
      * @deprecated
-     * Attribute biz_name has been deprecated and suggest removing it from your template.
+     * Attribute bizName has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute biz_name has been deprecated and suggest removing it from your template. */
+    @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
     @Export(name="bizName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bizName;
 
@@ -101,14 +101,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bizName);
     }
     /**
-     * Certificate Information. See the following `Block cert_infos`.
+     * Certificate Information. See the following `Block certInfos`.
      * 
      */
     @Export(name="certInfos", refs={List.class,DomainCertInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainCertInfo>> certInfos;
 
     /**
-     * @return Certificate Information. See the following `Block cert_infos`.
+     * @return Certificate Information. See the following `Block certInfos`.
      * 
      */
     public Output<Optional<List<DomainCertInfo>>> certInfos() {

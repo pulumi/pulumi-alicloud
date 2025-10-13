@@ -103,19 +103,19 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// The container that holds the error page configuration information. See `error_document` below.
+        /// The container that holds the error page configuration information. See `ErrorDocument` below.
         /// </summary>
         [Output("errorDocument")]
         public Output<Outputs.BucketWebsiteErrorDocument?> ErrorDocument { get; private set; } = null!;
 
         /// <summary>
-        /// Static Website Default Home Page Configuration See `index_document` below.
+        /// Static Website Default Home Page Configuration See `IndexDocument` below.
         /// </summary>
         [Output("indexDocument")]
         public Output<Outputs.BucketWebsiteIndexDocument?> IndexDocument { get; private set; } = null!;
 
         /// <summary>
-        /// The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+        /// The container that holds the jump rule or the mirroring back-to-origin rule. See `RoutingRules` below.
         /// </summary>
         [Output("routingRules")]
         public Output<Outputs.BucketWebsiteRoutingRules?> RoutingRules { get; private set; } = null!;
@@ -173,19 +173,19 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// The container that holds the error page configuration information. See `error_document` below.
+        /// The container that holds the error page configuration information. See `ErrorDocument` below.
         /// </summary>
         [Input("errorDocument")]
         public Input<Inputs.BucketWebsiteErrorDocumentArgs>? ErrorDocument { get; set; }
 
         /// <summary>
-        /// Static Website Default Home Page Configuration See `index_document` below.
+        /// Static Website Default Home Page Configuration See `IndexDocument` below.
         /// </summary>
         [Input("indexDocument")]
         public Input<Inputs.BucketWebsiteIndexDocumentArgs>? IndexDocument { get; set; }
 
         /// <summary>
-        /// The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+        /// The container that holds the jump rule or the mirroring back-to-origin rule. See `RoutingRules` below.
         /// </summary>
         [Input("routingRules")]
         public Input<Inputs.BucketWebsiteRoutingRulesArgs>? RoutingRules { get; set; }
@@ -205,19 +205,19 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// The container that holds the error page configuration information. See `error_document` below.
+        /// The container that holds the error page configuration information. See `ErrorDocument` below.
         /// </summary>
         [Input("errorDocument")]
         public Input<Inputs.BucketWebsiteErrorDocumentGetArgs>? ErrorDocument { get; set; }
 
         /// <summary>
-        /// Static Website Default Home Page Configuration See `index_document` below.
+        /// Static Website Default Home Page Configuration See `IndexDocument` below.
         /// </summary>
         [Input("indexDocument")]
         public Input<Inputs.BucketWebsiteIndexDocumentGetArgs>? IndexDocument { get; set; }
 
         /// <summary>
-        /// The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+        /// The container that holds the jump rule or the mirroring back-to-origin rule. See `RoutingRules` below.
         /// </summary>
         [Input("routingRules")]
         public Input<Inputs.BucketWebsiteRoutingRulesGetArgs>? RoutingRules { get; set; }

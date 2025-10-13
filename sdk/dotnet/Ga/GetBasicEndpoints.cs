@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+        /// The status of the Global Accelerator Basic Endpoint. Valid Value: `Init`, `Active`, `Updating`, `Binding`, `Unbinding`, `Deleting`, `Bound`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+        /// The status of the Global Accelerator Basic Endpoint. Valid Value: `Init`, `Active`, `Updating`, `Binding`, `Unbinding`, `Deleting`, `Bound`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

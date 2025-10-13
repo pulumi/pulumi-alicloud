@@ -79,14 +79,14 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      * 
      */
     @Import(name="imageRegistryCredentials")
     private @Nullable Output<List<ImageCacheImageRegistryCredentialArgs>> imageRegistryCredentials;
 
     /**
-     * @return The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+     * @return The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      * 
      */
     public Optional<Output<List<ImageCacheImageRegistryCredentialArgs>>> imageRegistryCredentials() {
@@ -318,7 +318,7 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
          * 
          * @return builder
          * 

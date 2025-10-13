@@ -34,14 +34,14 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The configuration of delivery chain node. See `node_config` below.
+     * The configuration of delivery chain node. See `nodeConfig` below.
      * 
      */
     @Import(name="nodeConfigs")
     private @Nullable Output<List<ChainChainConfigNodeNodeConfigArgs>> nodeConfigs;
 
     /**
-     * @return The configuration of delivery chain node. See `node_config` below.
+     * @return The configuration of delivery chain node. See `nodeConfig` below.
      * 
      */
     public Optional<Output<List<ChainChainConfigNodeNodeConfigArgs>>> nodeConfigs() {
@@ -111,7 +111,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeConfigs The configuration of delivery chain node. See `node_config` below.
+         * @param nodeConfigs The configuration of delivery chain node. See `nodeConfig` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeConfigs The configuration of delivery chain node. See `node_config` below.
+         * @param nodeConfigs The configuration of delivery chain node. See `nodeConfig` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeConfigs The configuration of delivery chain node. See `node_config` below.
+         * @param nodeConfigs The configuration of delivery chain node. See `nodeConfig` below.
          * 
          * @return builder
          * 

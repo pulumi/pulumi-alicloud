@@ -503,7 +503,7 @@ namespace Pulumi.AliCloud.Log
         public Output<ImmutableArray<Outputs.AlertSeverityConfiguration>> SeverityConfigurations { get; private set; } = null!;
 
         /// <summary>
-        /// Template configuration for alert, when `type` is `tpl`.
+        /// Template configuration for alert, when `Type` is `Tpl`.
         /// </summary>
         [Output("templateConfiguration")]
         public Output<Outputs.AlertTemplateConfiguration?> TemplateConfiguration { get; private set; } = null!;
@@ -521,7 +521,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Throttling { get; private set; } = null!;
 
         /// <summary>
-        /// The type of new alert, `default` for custom alert, `tpl` for template alert.
+        /// The type of new alert, `Default` for custom alert, `Tpl` for template alert.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -677,7 +677,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// Alarm information notification list, Deprecated from 1.161.0+.
         /// </summary>
-        [Obsolete(@"Deprecated from 1.161.0+, use policy_configuration for notification")]
+        [Obsolete(@"Deprecated from 1.161.0+, use PolicyConfiguration for notification")]
         public InputList<Inputs.AlertNotificationListArgs> NotificationLists
         {
             get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListArgs>());
@@ -751,7 +751,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Template configuration for alert, when `type` is `tpl`.
+        /// Template configuration for alert, when `Type` is `Tpl`.
         /// </summary>
         [Input("templateConfiguration")]
         public Input<Inputs.AlertTemplateConfigurationArgs>? TemplateConfiguration { get; set; }
@@ -769,7 +769,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Throttling { get; set; }
 
         /// <summary>
-        /// The type of new alert, `default` for custom alert, `tpl` for template alert.
+        /// The type of new alert, `Default` for custom alert, `Tpl` for template alert.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -887,7 +887,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// Alarm information notification list, Deprecated from 1.161.0+.
         /// </summary>
-        [Obsolete(@"Deprecated from 1.161.0+, use policy_configuration for notification")]
+        [Obsolete(@"Deprecated from 1.161.0+, use PolicyConfiguration for notification")]
         public InputList<Inputs.AlertNotificationListGetArgs> NotificationLists
         {
             get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListGetArgs>());
@@ -961,7 +961,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Template configuration for alert, when `type` is `tpl`.
+        /// Template configuration for alert, when `Type` is `Tpl`.
         /// </summary>
         [Input("templateConfiguration")]
         public Input<Inputs.AlertTemplateConfigurationGetArgs>? TemplateConfiguration { get; set; }
@@ -979,7 +979,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Throttling { get; set; }
 
         /// <summary>
-        /// The type of new alert, `default` for custom alert, `tpl` for template alert.
+        /// The type of new alert, `Default` for custom alert, `Tpl` for template alert.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

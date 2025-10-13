@@ -16,14 +16,14 @@ public final class PolicyBindingAdvancedOptionsArgs extends com.pulumi.resources
     public static final PolicyBindingAdvancedOptionsArgs Empty = new PolicyBindingAdvancedOptionsArgs();
 
     /**
-     * ECS Backup Advanced options. See `udm_detail` below.
+     * ECS Backup Advanced options. See `udmDetail` below.
      * 
      */
     @Import(name="udmDetail")
     private @Nullable Output<PolicyBindingAdvancedOptionsUdmDetailArgs> udmDetail;
 
     /**
-     * @return ECS Backup Advanced options. See `udm_detail` below.
+     * @return ECS Backup Advanced options. See `udmDetail` below.
      * 
      */
     public Optional<Output<PolicyBindingAdvancedOptionsUdmDetailArgs>> udmDetail() {
@@ -55,7 +55,7 @@ public final class PolicyBindingAdvancedOptionsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param udmDetail ECS Backup Advanced options. See `udm_detail` below.
+         * @param udmDetail ECS Backup Advanced options. See `udmDetail` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PolicyBindingAdvancedOptionsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param udmDetail ECS Backup Advanced options. See `udm_detail` below.
+         * @param udmDetail ECS Backup Advanced options. See `udmDetail` below.
          * 
          * @return builder
          * 

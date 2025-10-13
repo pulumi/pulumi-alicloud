@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? NasPath;
         /// <summary>
-        /// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+        /// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `True` and `False`. If you set `ReadOnly` to `False`, the application has the read and write permissions.
         /// </summary>
         public readonly bool? ReadOnly;
 

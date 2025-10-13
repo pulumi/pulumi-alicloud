@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+        /// Instance type. For more information, call ResourceAlicloudInstances to obtain the latest instance type list.
         /// </summary>
         [Output("instanceType")]
         public Output<string?> InstanceType { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<Outputs.LaunchTemplateNetworkInterfaces?> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// Network type of the instance. Value options: `classic` | `vpc`.
+        /// Network type of the instance. Value options: `Classic` | `Vpc`.
         /// </summary>
         [Output("networkType")]
         public Output<string?> NetworkType { get; private set; } = null!;
@@ -503,7 +503,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+        /// Instance type. For more information, call ResourceAlicloudInstances to obtain the latest instance type list.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -558,7 +558,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<Inputs.LaunchTemplateNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Network type of the instance. Value options: `classic` | `vpc`.
+        /// Network type of the instance. Value options: `Classic` | `Vpc`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -800,7 +800,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+        /// Instance type. For more information, call ResourceAlicloudInstances to obtain the latest instance type list.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -858,7 +858,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<Inputs.LaunchTemplateNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Network type of the instance. Value options: `classic` | `vpc`.
+        /// Network type of the instance. Value options: `Classic` | `Vpc`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }

@@ -123,6 +123,18 @@ def get_images(ids: Optional[Sequence[_builtins.str]] = None,
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    The following arguments are supported:
+
+    * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+    * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+    * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+    * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
+    * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -152,6 +164,18 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    The following arguments are supported:
+
+    * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+    * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+    * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+    * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
+    * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids

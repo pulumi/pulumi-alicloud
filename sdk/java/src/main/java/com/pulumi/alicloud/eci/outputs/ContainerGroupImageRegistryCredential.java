@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class ContainerGroupImageRegistryCredential {
     /**
-     * @return The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * @return The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     private String password;
     /**
-     * @return The address of the image repository. It is required when `image_registry_credential` is configured.
+     * @return The address of the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     private String server;
     /**
-     * @return The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * @return The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     private String userName;
 
     private ContainerGroupImageRegistryCredential() {}
     /**
-     * @return The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * @return The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The address of the image repository. It is required when `image_registry_credential` is configured.
+     * @return The address of the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     public String server() {
         return this.server;
     }
     /**
-     * @return The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+     * @return The username used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
      * 
      */
     public String userName() {

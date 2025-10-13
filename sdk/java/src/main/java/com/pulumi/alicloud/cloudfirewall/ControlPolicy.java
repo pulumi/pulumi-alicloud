@@ -109,7 +109,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
      * 
      */
     @Export(name="applicationName", refs={String.class}, tree="[0]")
@@ -117,7 +117,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
      * 
      */
     public Output<Optional<String>> applicationName() {
@@ -125,7 +125,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The application types supported by the access control policy.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
     @Export(name="applicationNameLists", refs={List.class,String.class}, tree="[0,1]")
@@ -133,7 +133,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The application types supported by the access control policy.
-     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      * 
      */
     public Output<Optional<List<String>>> applicationNameLists() {
@@ -168,28 +168,28 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+     * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
      * 
      */
     @Export(name="destPort", refs={String.class}, tree="[0]")
     private Output<String> destPort;
 
     /**
-     * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+     * @return The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
      * 
      */
     public Output<String> destPort() {
         return this.destPort;
     }
     /**
-     * The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+     * The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
      * 
      */
     @Export(name="destPortGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destPortGroup;
 
     /**
-     * @return The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+     * @return The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
      * 
      */
     public Output<Optional<String>> destPortGroup() {
@@ -273,7 +273,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
@@ -281,7 +281,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
      * 
      */
     public Output<Optional<Integer>> endTime() {
@@ -345,9 +345,9 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The days of a week or of a month on which the access control policy takes effect. Valid values:
-     * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-     * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-     * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
      * 
      */
     @Export(name="repeatDays", refs={List.class,Integer.class}, tree="[0,1]")
@@ -355,9 +355,9 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The days of a week or of a month on which the access control policy takes effect. Valid values:
-     * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
-     * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-     * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * &gt; **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
      * 
      */
     public Output<Optional<List<Integer>>> repeatDays() {
@@ -365,7 +365,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
      * 
      */
     @Export(name="repeatEndTime", refs={String.class}, tree="[0]")
@@ -373,7 +373,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-     * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+     * &gt; **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
      * 
      */
     public Output<Optional<String>> repeatEndTime() {

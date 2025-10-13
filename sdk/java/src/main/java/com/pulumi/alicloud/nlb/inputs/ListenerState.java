@@ -252,14 +252,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      * 
      */
     @Import(name="proxyProtocolConfig")
     private @Nullable Output<ListenerProxyProtocolConfigArgs> proxyProtocolConfig;
 
     /**
-     * @return The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * @return The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      * 
      */
     public Optional<Output<ListenerProxyProtocolConfigArgs>> proxyProtocolConfig() {
@@ -779,7 +779,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocolConfig The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+         * @param proxyProtocolConfig The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
          * 
          * @return builder
          * 
@@ -790,7 +790,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocolConfig The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+         * @param proxyProtocolConfig The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
          * 
          * @return builder
          * 

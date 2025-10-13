@@ -187,14 +187,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.connectionDrainTimeout;
     }
     /**
-     * Health check configuration information. See `health_check` below.
+     * Health check configuration information. See `healthCheck` below.
      * 
      */
     @Export(name="healthCheck", refs={ServerGroupHealthCheck.class}, tree="[0]")
     private Output<ServerGroupHealthCheck> healthCheck;
 
     /**
-     * @return Health check configuration information. See `health_check` below.
+     * @return Health check configuration information. See `healthCheck` below.
      * 
      */
     public Output<ServerGroupHealthCheck> healthCheck() {

@@ -30,14 +30,14 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     public static final EciScalingConfigurationArgs Empty = new EciScalingConfigurationArgs();
 
     /**
-     * Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+     * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      * 
      */
     @Import(name="acrRegistryInfos")
     private @Nullable Output<List<EciScalingConfigurationAcrRegistryInfoArgs>> acrRegistryInfos;
 
     /**
-     * @return Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+     * @return Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationAcrRegistryInfoArgs>>> acrRegistryInfos() {
@@ -111,7 +111,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
      * name_prefix: the prefix of the hostname.
      * (AUTO_INCREMENT): the sort method. This is a static field.
      * begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      * 
      */
@@ -123,7 +123,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
      * name_prefix: the prefix of the hostname.
      * (AUTO_INCREMENT): the sort method. This is a static field.
      * begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      * 
      */
@@ -224,7 +224,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      * 
      */
@@ -232,7 +232,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<EciScalingConfigurationDnsConfigOptionArgs>> dnsConfigOptions;
 
     /**
-     * @return The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * @return The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      * 
      */
@@ -333,14 +333,14 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * HostAliases. See `host_aliases` below.
+     * HostAliases. See `hostAliases` below.
      * 
      */
     @Import(name="hostAliases")
     private @Nullable Output<List<EciScalingConfigurationHostAliasArgs>> hostAliases;
 
     /**
-     * @return HostAliases. See `host_aliases` below.
+     * @return HostAliases. See `hostAliases` below.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationHostAliasArgs>>> hostAliases() {
@@ -363,7 +363,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The image registry credential.   See `image_registry_credentials` below for
+     * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      * 
      */
@@ -371,7 +371,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<EciScalingConfigurationImageRegistryCredentialArgs>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential.   See `image_registry_credentials` below for
+     * @return The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      * 
      */
@@ -410,14 +410,14 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The list of initContainers. See `init_containers` below for details.
+     * The list of initContainers. See `initContainers` below for details.
      * 
      */
     @Import(name="initContainers")
     private @Nullable Output<List<EciScalingConfigurationInitContainerArgs>> initContainers;
 
     /**
-     * @return The list of initContainers. See `init_containers` below for details.
+     * @return The list of initContainers. See `initContainers` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerArgs>>> initContainers() {
@@ -581,7 +581,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      * 
      */
@@ -589,7 +589,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<EciScalingConfigurationSecurityContextSysctlArgs>> securityContextSysctls;
 
     /**
-     * @return The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * @return The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      * 
      */
@@ -599,7 +599,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
 
     /**
      * ID of the security group used to create new instance. It is conflict
-     * with `security_group_ids`.
+     * with `securityGroupIds`.
      * 
      */
     @Import(name="securityGroupId")
@@ -607,7 +607,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
 
     /**
      * @return ID of the security group used to create new instance. It is conflict
-     * with `security_group_ids`.
+     * with `securityGroupIds`.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -765,7 +765,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
          * 
          * @return builder
          * 
@@ -776,7 +776,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
          * 
          * @return builder
          * 
@@ -786,7 +786,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
          * 
          * @return builder
          * 
@@ -886,7 +886,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
          * name_prefix: the prefix of the hostname.
          * (AUTO_INCREMENT): the sort method. This is a static field.
          * begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-         * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+         * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
          * name_suffix: the suffix of the hostname. This field is optional.
          * 
          * @return builder
@@ -902,7 +902,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
          * name_prefix: the prefix of the hostname.
          * (AUTO_INCREMENT): the sort method. This is a static field.
          * begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-         * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+         * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
          * name_suffix: the suffix of the hostname. This field is optional.
          * 
          * @return builder
@@ -1051,7 +1051,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
          * details.
          * 
          * @return builder
@@ -1063,7 +1063,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
          * details.
          * 
          * @return builder
@@ -1074,7 +1074,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
          * details.
          * 
          * @return builder
@@ -1213,7 +1213,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostAliases HostAliases. See `host_aliases` below.
+         * @param hostAliases HostAliases. See `hostAliases` below.
          * 
          * @return builder
          * 
@@ -1224,7 +1224,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostAliases HostAliases. See `host_aliases` below.
+         * @param hostAliases HostAliases. See `hostAliases` below.
          * 
          * @return builder
          * 
@@ -1234,7 +1234,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostAliases HostAliases. See `host_aliases` below.
+         * @param hostAliases HostAliases. See `hostAliases` below.
          * 
          * @return builder
          * 
@@ -1265,7 +1265,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential.   See `image_registry_credentials` below for
+         * @param imageRegistryCredentials The image registry credential.   See `imageRegistryCredentials` below for
          * details.
          * 
          * @return builder
@@ -1277,7 +1277,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential.   See `image_registry_credentials` below for
+         * @param imageRegistryCredentials The image registry credential.   See `imageRegistryCredentials` below for
          * details.
          * 
          * @return builder
@@ -1288,7 +1288,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential.   See `image_registry_credentials` below for
+         * @param imageRegistryCredentials The image registry credential.   See `imageRegistryCredentials` below for
          * details.
          * 
          * @return builder
@@ -1341,7 +1341,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param initContainers The list of initContainers. See `init_containers` below for details.
+         * @param initContainers The list of initContainers. See `initContainers` below for details.
          * 
          * @return builder
          * 
@@ -1352,7 +1352,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param initContainers The list of initContainers. See `init_containers` below for details.
+         * @param initContainers The list of initContainers. See `initContainers` below for details.
          * 
          * @return builder
          * 
@@ -1362,7 +1362,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param initContainers The list of initContainers. See `init_containers` below for details.
+         * @param initContainers The list of initContainers. See `initContainers` below for details.
          * 
          * @return builder
          * 
@@ -1598,7 +1598,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
          * details.
          * 
          * @return builder
@@ -1610,7 +1610,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
          * details.
          * 
          * @return builder
@@ -1621,7 +1621,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
          * details.
          * 
          * @return builder
@@ -1633,7 +1633,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
 
         /**
          * @param securityGroupId ID of the security group used to create new instance. It is conflict
-         * with `security_group_ids`.
+         * with `securityGroupIds`.
          * 
          * @return builder
          * 
@@ -1645,7 +1645,7 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
 
         /**
          * @param securityGroupId ID of the security group used to create new instance. It is conflict
-         * with `security_group_ids`.
+         * with `securityGroupIds`.
          * 
          * @return builder
          * 

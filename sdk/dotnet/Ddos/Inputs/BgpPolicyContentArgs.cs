@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         private InputList<Inputs.BgpPolicyContentFingerPrintRuleListArgs>? _fingerPrintRuleLists;
 
         /// <summary>
-        /// Fingerprint Rules. See `finger_print_rule_list` below.
+        /// Fingerprint Rules. See `FingerPrintRuleList` below.
         /// </summary>
         public InputList<Inputs.BgpPolicyContentFingerPrintRuleListArgs> FingerPrintRuleLists
         {
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         private InputList<Inputs.BgpPolicyContentLayer4RuleListArgs>? _layer4RuleLists;
 
         /// <summary>
-        /// L4 protection rules. See `layer4_rule_list` below.
+        /// L4 protection rules. See `Layer4RuleList` below.
         /// </summary>
         public InputList<Inputs.BgpPolicyContentLayer4RuleListArgs> Layer4RuleLists
         {
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         private InputList<Inputs.BgpPolicyContentPortRuleListArgs>? _portRuleLists;
 
         /// <summary>
-        /// Port Rule List. See `port_rule_list` below.
+        /// Port Rule List. See `PortRuleList` below.
         /// </summary>
         public InputList<Inputs.BgpPolicyContentPortRuleListArgs> PortRuleLists
         {
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         private InputList<Inputs.BgpPolicyContentSourceBlockListArgs>? _sourceBlockLists;
 
         /// <summary>
-        /// Source pull Black. See `source_block_list` below.
+        /// Source pull Black. See `SourceBlockList` below.
         /// </summary>
         public InputList<Inputs.BgpPolicyContentSourceBlockListArgs> SourceBlockLists
         {
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         }
 
         /// <summary>
-        /// Do not fill in when the source speed limit is deleted. See `source_limit` below.
+        /// Do not fill in when the source speed limit is deleted. See `SourceLimit` below.
         /// </summary>
         [Input("sourceLimit")]
         public Input<Inputs.BgpPolicyContentSourceLimitArgs>? SourceLimit { get; set; }

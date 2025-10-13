@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class AlertConfigurationSeverityConfiguration
     {
         /// <summary>
-        /// Trigger condition. See `eval_condition` below.
+        /// Trigger condition. See `EvalCondition` below.
         /// </summary>
         public readonly Outputs.AlertConfigurationSeverityConfigurationEvalCondition? EvalCondition;
         /// <summary>

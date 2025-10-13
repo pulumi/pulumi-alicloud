@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
-        /// The structure of environmentVars. See `environment_vars` below.
+        /// The structure of environmentVars. See `EnvironmentVars` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupInitContainerEnvironmentVar> EnvironmentVars;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The structure of port. See `ports` below.
+        /// The structure of port. See `Ports` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupInitContainerPort> Ports;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? RestartCount;
         /// <summary>
-        /// The security context of the container. See `security_context` below.
+        /// The security context of the container. See `SecurityContext` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupInitContainerSecurityContext> SecurityContexts;
         /// <summary>
-        /// The structure of volumeMounts. See `volume_mounts` below.
+        /// The structure of volumeMounts. See `VolumeMounts` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupInitContainerVolumeMount> VolumeMounts;
         /// <summary>

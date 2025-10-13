@@ -37,7 +37,7 @@ public final class InstanceV2EngineList {
      */
     private @Nullable String latestVersion;
     /**
-     * @return Node Group List See `node_group` below.
+     * @return Node Group List See `nodeGroup` below.
      * 
      */
     private @Nullable List<InstanceV2EngineListNodeGroup> nodeGroups;
@@ -77,7 +77,7 @@ public final class InstanceV2EngineList {
         return Optional.ofNullable(this.latestVersion);
     }
     /**
-     * @return Node Group List See `node_group` below.
+     * @return Node Group List See `nodeGroup` below.
      * 
      */
     public List<InstanceV2EngineListNodeGroup> nodeGroups() {

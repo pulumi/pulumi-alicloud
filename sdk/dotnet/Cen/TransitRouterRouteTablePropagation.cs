@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The dry run.
         /// 
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first ZoneId of ZoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The dry run.
         /// 
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first ZoneId of ZoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The dry run.
         /// 
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first ZoneId of ZoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

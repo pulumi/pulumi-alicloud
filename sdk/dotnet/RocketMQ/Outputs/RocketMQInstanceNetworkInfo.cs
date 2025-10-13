@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RocketMQInstanceNetworkInfoEndpoint> Endpoints;
         /// <summary>
-        /// instance internet info. See `internet_info` below.
+        /// instance internet info. See `InternetInfo` below.
         /// </summary>
         public readonly Outputs.RocketMQInstanceNetworkInfoInternetInfo InternetInfo;
         /// <summary>
-        /// Proprietary network information. See `vpc_info` below.
+        /// Proprietary network information. See `VpcInfo` below.
         /// </summary>
         public readonly Outputs.RocketMQInstanceNetworkInfoVpcInfo VpcInfo;
 

@@ -16,14 +16,14 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
     public static final DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs Empty = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs();
 
     /**
-     * Sets the dispatch rule. See `label_match_expressions` below.
+     * Sets the dispatch rule. See `labelMatchExpressions` below.
      * 
      */
     @Import(name="labelMatchExpressions", required=true)
     private Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions;
 
     /**
-     * @return Sets the dispatch rule. See `label_match_expressions` below.
+     * @return Sets the dispatch rule. See `labelMatchExpressions` below.
      * 
      */
     public Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions() {
@@ -55,7 +55,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         /**
-         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
+         * @param labelMatchExpressions Sets the dispatch rule. See `labelMatchExpressions` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         /**
-         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
+         * @param labelMatchExpressions Sets the dispatch rule. See `labelMatchExpressions` below.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         /**
-         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
+         * @param labelMatchExpressions Sets the dispatch rule. See `labelMatchExpressions` below.
          * 
          * @return builder
          * 

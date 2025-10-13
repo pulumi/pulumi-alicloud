@@ -30,14 +30,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:mse/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+     * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      * 
      */
     @Export(name="aclEntryLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> aclEntryLists;
 
     /**
-     * @return The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+     * @return The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      * 
      */
     public Output<Optional<List<String>>> aclEntryLists() {
@@ -86,7 +86,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
      * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
@@ -111,7 +111,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> clusterSpecification;
 
     /**
-     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
      * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
@@ -164,14 +164,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterVersion;
     }
     /**
-     * The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
+     * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mseVersion is `mseDev`,please use `singleEni`.
      * 
      */
     @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output<String> connectionType;
 
     /**
-     * @return The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
+     * @return The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mseVersion is `mseDev`,please use `singleEni`.
      * 
      */
     public Output<String> connectionType() {
@@ -192,28 +192,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskType);
     }
     /**
-     * The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
+     * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      * 
      */
     @Export(name="instanceCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceCount;
 
     /**
-     * @return The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
+     * @return The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      * 
      */
     public Output<Integer> instanceCount() {
         return this.instanceCount;
     }
     /**
-     * The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+     * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      * 
      */
     @Export(name="mseVersion", refs={String.class}, tree="[0]")
     private Output<String> mseVersion;
 
     /**
-     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+     * @return The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      * 
      */
     public Output<String> mseVersion() {

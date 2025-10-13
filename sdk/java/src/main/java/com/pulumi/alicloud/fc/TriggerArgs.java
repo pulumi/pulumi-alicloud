@@ -17,14 +17,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     public static final TriggerArgs Empty = new TriggerArgs();
 
     /**
-     * The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * The config of Function Compute trigger.It is valid when `type` is not &#34;mnsTopic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * @return The config of Function Compute trigger.It is valid when `type` is not &#34;mnsTopic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
      */
     public Optional<Output<String>> config() {
@@ -32,14 +32,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
+     * The config of Function Compute trigger when the type is &#34;mnsTopic&#34;.It is conflict with `config`.
      * 
      */
     @Import(name="configMns")
     private @Nullable Output<String> configMns;
 
     /**
-     * @return The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
+     * @return The config of Function Compute trigger when the type is &#34;mnsTopic&#34;.It is conflict with `config`.
      * 
      */
     public Optional<Output<String>> configMns() {
@@ -62,14 +62,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * The Function Compute trigger name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * @return The Function Compute trigger name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -137,7 +137,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+     * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
      * **NOTE:** type = cdn_events, available in 1.47.0+.
@@ -148,7 +148,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> type;
 
     /**
-     * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+     * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
      * **NOTE:** type = cdn_events, available in 1.47.0+.
@@ -192,7 +192,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+         * @param config The config of Function Compute trigger.It is valid when `type` is not &#34;mnsTopic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+         * @param config The config of Function Compute trigger.It is valid when `type` is not &#34;mnsTopic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configMns The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
+         * @param configMns The config of Function Compute trigger when the type is &#34;mnsTopic&#34;.It is conflict with `config`.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configMns The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
+         * @param configMns The config of Function Compute trigger when the type is &#34;mnsTopic&#34;.It is conflict with `config`.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+         * @param name The Function Compute trigger name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+         * @param name The Function Compute trigger name. It is the only in one service and is conflict with &#34;namePrefix&#34;.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+         * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
          * 
          * &gt; **NOTE:** Config does not support modification when type is mns_topic.
          * **NOTE:** type = cdn_events, available in 1.47.0+.
@@ -375,7 +375,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+         * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
          * 
          * &gt; **NOTE:** Config does not support modification when type is mns_topic.
          * **NOTE:** type = cdn_events, available in 1.47.0+.

@@ -179,25 +179,25 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> FromTime { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        /// An KMS encrypts access key id used to a log etl job. If the `AccessKeyId` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedAccessKeyId")]
         public Output<string?> KmsEncryptedAccessKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        /// An KMS encrypts access key secret used to a log etl job. If the `AccessKeySecret` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedAccessKeySecret")]
         public Output<string?> KmsEncryptedAccessKeySecret { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedAccessKeyId` before creating or updating an instance with `KmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptionAccessKeyIdContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionAccessKeyIdContext { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedAccessKeySecret` before creating or updating an instance with `KmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptionAccessKeySecretContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionAccessKeySecretContext { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        /// Sts role info under source logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Output("roleArn")]
         public Output<string?> RoleArn { get; private set; } = null!;
@@ -394,13 +394,13 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? FromTime { get; set; }
 
         /// <summary>
-        /// An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        /// An KMS encrypts access key id used to a log etl job. If the `AccessKeyId` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedAccessKeyId")]
         public Input<string>? KmsEncryptedAccessKeyId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        /// An KMS encrypts access key secret used to a log etl job. If the `AccessKeySecret` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedAccessKeySecret")]
         public Input<string>? KmsEncryptedAccessKeySecret { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Log
         private InputMap<string>? _kmsEncryptionAccessKeyIdContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedAccessKeyId` before creating or updating an instance with `KmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         public InputMap<string> KmsEncryptionAccessKeyIdContext
         {
@@ -421,7 +421,7 @@ namespace Pulumi.AliCloud.Log
         private InputMap<string>? _kmsEncryptionAccessKeySecretContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedAccessKeySecret` before creating or updating an instance with `KmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         public InputMap<string> KmsEncryptionAccessKeySecretContext
         {
@@ -460,7 +460,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        /// Sts role info under source logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -584,13 +584,13 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? FromTime { get; set; }
 
         /// <summary>
-        /// An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        /// An KMS encrypts access key id used to a log etl job. If the `AccessKeyId` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedAccessKeyId")]
         public Input<string>? KmsEncryptedAccessKeyId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        /// An KMS encrypts access key secret used to a log etl job. If the `AccessKeySecret` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedAccessKeySecret")]
         public Input<string>? KmsEncryptedAccessKeySecret { get; set; }
@@ -599,7 +599,7 @@ namespace Pulumi.AliCloud.Log
         private InputMap<string>? _kmsEncryptionAccessKeyIdContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedAccessKeyId` before creating or updating an instance with `KmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         public InputMap<string> KmsEncryptionAccessKeyIdContext
         {
@@ -611,7 +611,7 @@ namespace Pulumi.AliCloud.Log
         private InputMap<string>? _kmsEncryptionAccessKeySecretContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        /// An KMS encryption context used to decrypt `KmsEncryptedAccessKeySecret` before creating or updating an instance with `KmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         public InputMap<string> KmsEncryptionAccessKeySecretContext
         {
@@ -650,7 +650,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        /// Sts role info under source logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }

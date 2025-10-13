@@ -130,14 +130,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+     * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
      * 
      */
     @Import(name="tableLifecycle")
     private @Nullable Output<ProjectPropertiesTableLifecycleArgs> tableLifecycle;
 
     /**
-     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
      * 
      */
     public Optional<Output<ProjectPropertiesTableLifecycleArgs>> tableLifecycle() {
@@ -359,7 +359,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tableLifecycle Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+         * @param tableLifecycle Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tableLifecycle Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+         * @param tableLifecycle Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
          * 
          * @return builder
          * 

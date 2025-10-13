@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyResult
     {
         /// <summary>
-        /// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        /// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool RestartNode;
         /// <summary>

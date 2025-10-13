@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Eflo.Outputs
     public sealed class ClusterNetworksIpAllocationPolicy
     {
         /// <summary>
-        /// Bond policy See `bond_policy` below.
+        /// Bond policy See `BondPolicy` below.
         /// </summary>
         public readonly Outputs.ClusterNetworksIpAllocationPolicyBondPolicy? BondPolicy;
         /// <summary>
-        /// Model Assignment Policy See `machine_type_policy` below.
+        /// Model Assignment Policy See `MachineTypePolicy` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNetworksIpAllocationPolicyMachineTypePolicy> MachineTypePolicies;
         /// <summary>
-        /// Node allocation policy See `node_policy` below.
+        /// Node allocation policy See `NodePolicy` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNetworksIpAllocationPolicyNodePolicy> NodePolicies;
 

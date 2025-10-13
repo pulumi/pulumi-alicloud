@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Quotas.Inputs
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// Quota dimension. See `dimensions` below.
+        /// Quota dimension. See `Dimensions` below.
         /// </summary>
         public InputMap<string> Dimensions
         {

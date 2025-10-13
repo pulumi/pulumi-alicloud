@@ -257,14 +257,14 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.detectionStrategy);
     }
     /**
-     * Snapshot information for the image See `disk_device_mapping` below.
+     * Snapshot information for the image See `diskDeviceMapping` below.
      * 
      */
     @Export(name="diskDeviceMappings", refs={List.class,ImageDiskDeviceMapping.class}, tree="[0,1]")
     private Output<List<ImageDiskDeviceMapping>> diskDeviceMappings;
 
     /**
-     * @return Snapshot information for the image See `disk_device_mapping` below.
+     * @return Snapshot information for the image See `diskDeviceMapping` below.
      * 
      */
     public Output<List<ImageDiskDeviceMapping>> diskDeviceMappings() {

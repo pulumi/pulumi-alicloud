@@ -49,14 +49,14 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The bootstrap scripts execution target. See `node_selector` below.
+     * The bootstrap scripts execution target. See `nodeSelector` below.
      * 
      */
     @Import(name="nodeSelector", required=true)
     private Output<ClusterBootstrapScriptNodeSelectorArgs> nodeSelector;
 
     /**
-     * @return The bootstrap scripts execution target. See `node_selector` below.
+     * @return The bootstrap scripts execution target. See `nodeSelector` below.
      * 
      */
     public Output<ClusterBootstrapScriptNodeSelectorArgs> nodeSelector() {
@@ -204,7 +204,7 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param nodeSelector The bootstrap scripts execution target. See `node_selector` below.
+         * @param nodeSelector The bootstrap scripts execution target. See `nodeSelector` below.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param nodeSelector The bootstrap scripts execution target. See `node_selector` below.
+         * @param nodeSelector The bootstrap scripts execution target. See `nodeSelector` below.
          * 
          * @return builder
          * 

@@ -145,14 +145,14 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbInstanceDescription);
     }
     /**
-     * The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+     * The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      * 
      */
     @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
-     * @return The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+     * @return The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      * 
      */
     public Output<Optional<String>> encryptionKey() {
@@ -216,8 +216,8 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The specification of segment nodes.
-     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * 
      */
     @Export(name="instanceSpec", refs={String.class}, tree="[0]")
@@ -225,40 +225,40 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The specification of segment nodes.
-     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * 
      */
     public Output<String> instanceSpec() {
         return this.instanceSpec;
     }
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Export(name="paymentDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> paymentDuration;
 
     /**
-     * @return The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Output<Optional<Integer>> paymentDuration() {
         return Codegen.optional(this.paymentDuration);
     }
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Export(name="paymentDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentDurationUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Output<Optional<String>> paymentDurationUnit() {
@@ -321,14 +321,14 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
         return this.segNodeNum;
     }
     /**
-     * The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      * 
      */
     @Export(name="segStorageType", refs={String.class}, tree="[0]")
     private Output<String> segStorageType;
 
     /**
-     * @return The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * @return The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      * 
      */
     public Output<String> segStorageType() {

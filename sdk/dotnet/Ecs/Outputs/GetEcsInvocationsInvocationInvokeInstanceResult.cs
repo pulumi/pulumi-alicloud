@@ -61,8 +61,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string StopTime;
         /// <summary>
         /// Indicates whether the commands are to be automatically run.
-        /// * `error_code	` - The code that indicates why the command failed to be sent or run.
-        /// * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        /// * `ErrorCode	` - The code that indicates why the command failed to be sent or run.
+        /// * `InstanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `InvocationStatus` response parameter for the overall execution state.
         /// </summary>
         public readonly bool Timed;
         /// <summary>

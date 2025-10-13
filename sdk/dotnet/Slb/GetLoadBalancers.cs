@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Slb
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         [Input("networkType")]
         public string? NetworkType { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Slb
         public string? SlaveZoneId { get; set; }
 
         /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Slb
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? SlaveZoneId { get; set; }
 
         /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -417,7 +417,7 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>
-        /// Network type of the SLB. Possible values: `vpc` and `classic`.
+        /// Network type of the SLB. Possible values: `Vpc` and `Classic`.
         /// </summary>
         public readonly string? NetworkType;
         public readonly string? OutputFile;
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersSlbResult> Slbs;
         /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
         /// </summary>
         public readonly string? Status;
         /// <summary>

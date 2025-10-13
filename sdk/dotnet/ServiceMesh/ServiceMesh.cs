@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<string?> Edition { get; private set; } = null!;
 
         /// <summary>
-        /// Data plane KubeAPI access capability See `extra_configuration` below.
+        /// Data plane KubeAPI access capability See `ExtraConfiguration` below.
         /// </summary>
         [Output("extraConfiguration")]
         public Output<Outputs.ServiceMeshExtraConfiguration> ExtraConfiguration { get; private set; } = null!;
@@ -84,19 +84,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<string> Kubeconfig { get; private set; } = null!;
 
         /// <summary>
-        /// Load balancing information See `load_balancer` below.
+        /// Load balancing information See `LoadBalancer` below.
         /// </summary>
         [Output("loadBalancer")]
         public Output<Outputs.ServiceMeshLoadBalancer> LoadBalancer { get; private set; } = null!;
 
         /// <summary>
-        /// Service grid configuration information See `mesh_config` below.
+        /// Service grid configuration information See `MeshConfig` below.
         /// </summary>
         [Output("meshConfig")]
         public Output<Outputs.ServiceMeshMeshConfig> MeshConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Service grid network configuration information See `network` below.
+        /// Service grid network configuration information See `Network` below.
         /// </summary>
         [Output("network")]
         public Output<Outputs.ServiceMeshNetwork> Network { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? Edition { get; set; }
 
         /// <summary>
-        /// Data plane KubeAPI access capability See `extra_configuration` below.
+        /// Data plane KubeAPI access capability See `ExtraConfiguration` below.
         /// </summary>
         [Input("extraConfiguration")]
         public Input<Inputs.ServiceMeshExtraConfigurationArgs>? ExtraConfiguration { get; set; }
@@ -228,19 +228,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Load balancing information See `load_balancer` below.
+        /// Load balancing information See `LoadBalancer` below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ServiceMeshLoadBalancerArgs>? LoadBalancer { get; set; }
 
         /// <summary>
-        /// Service grid configuration information See `mesh_config` below.
+        /// Service grid configuration information See `MeshConfig` below.
         /// </summary>
         [Input("meshConfig")]
         public Input<Inputs.ServiceMeshMeshConfigArgs>? MeshConfig { get; set; }
 
         /// <summary>
-        /// Service grid network configuration information See `network` below.
+        /// Service grid network configuration information See `Network` below.
         /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.ServiceMeshNetworkArgs> Network { get; set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? Edition { get; set; }
 
         /// <summary>
-        /// Data plane KubeAPI access capability See `extra_configuration` below.
+        /// Data plane KubeAPI access capability See `ExtraConfiguration` below.
         /// </summary>
         [Input("extraConfiguration")]
         public Input<Inputs.ServiceMeshExtraConfigurationGetArgs>? ExtraConfiguration { get; set; }
@@ -346,19 +346,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? Kubeconfig { get; set; }
 
         /// <summary>
-        /// Load balancing information See `load_balancer` below.
+        /// Load balancing information See `LoadBalancer` below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ServiceMeshLoadBalancerGetArgs>? LoadBalancer { get; set; }
 
         /// <summary>
-        /// Service grid configuration information See `mesh_config` below.
+        /// Service grid configuration information See `MeshConfig` below.
         /// </summary>
         [Input("meshConfig")]
         public Input<Inputs.ServiceMeshMeshConfigGetArgs>? MeshConfig { get; set; }
 
         /// <summary>
-        /// Service grid network configuration information See `network` below.
+        /// Service grid network configuration information See `Network` below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.ServiceMeshNetworkGetArgs>? Network { get; set; }

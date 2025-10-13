@@ -123,21 +123,21 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> CsvConfigQuote { get; private set; } = null!;
 
         /// <summary>
-        /// Storage format, only supports three types: `json`, `parquet`, `csv`.
+        /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
-        /// - format = `json`
-        /// `json_enable_tag` - (Optional) Whether to deliver the label.
-        /// - format = `csv`
-        /// `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-        /// `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-        /// `csv_config_nullidentifier` - (Optional) Invalid field content.
-        /// `csv_config_quote` - (Optional) Escape character under csv configuration.
-        /// `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        /// `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-        /// - format = `parquet`
-        /// `parquet_config` - (Optional) Configure to use parquet storage format.
-        /// `name` - (Required) The name of the key.
-        /// `type` - (Required) Type of configuration name.
+        /// - format = `Json`
+        /// `JsonEnableTag` - (Optional) Whether to deliver the label.
+        /// - format = `Csv`
+        /// `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+        /// `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
+        /// `CsvConfigNullidentifier` - (Optional) Invalid field content.
+        /// `CsvConfigQuote` - (Optional) Escape character under csv configuration.
+        /// `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
+        /// `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+        /// - format = `Parquet`
+        /// `ParquetConfig` - (Optional) Configure to use parquet storage format.
+        /// `Name` - (Required) The name of the key.
+        /// `Type` - (Required) Type of configuration name.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -278,21 +278,21 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? CsvConfigQuote { get; set; }
 
         /// <summary>
-        /// Storage format, only supports three types: `json`, `parquet`, `csv`.
+        /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
-        /// - format = `json`
-        /// `json_enable_tag` - (Optional) Whether to deliver the label.
-        /// - format = `csv`
-        /// `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-        /// `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-        /// `csv_config_nullidentifier` - (Optional) Invalid field content.
-        /// `csv_config_quote` - (Optional) Escape character under csv configuration.
-        /// `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        /// `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-        /// - format = `parquet`
-        /// `parquet_config` - (Optional) Configure to use parquet storage format.
-        /// `name` - (Required) The name of the key.
-        /// `type` - (Required) Type of configuration name.
+        /// - format = `Json`
+        /// `JsonEnableTag` - (Optional) Whether to deliver the label.
+        /// - format = `Csv`
+        /// `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+        /// `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
+        /// `CsvConfigNullidentifier` - (Optional) Invalid field content.
+        /// `CsvConfigQuote` - (Optional) Escape character under csv configuration.
+        /// `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
+        /// `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+        /// - format = `Parquet`
+        /// `ParquetConfig` - (Optional) Configure to use parquet storage format.
+        /// `Name` - (Required) The name of the key.
+        /// `Type` - (Required) Type of configuration name.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -400,21 +400,21 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? CsvConfigQuote { get; set; }
 
         /// <summary>
-        /// Storage format, only supports three types: `json`, `parquet`, `csv`.
+        /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
-        /// - format = `json`
-        /// `json_enable_tag` - (Optional) Whether to deliver the label.
-        /// - format = `csv`
-        /// `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-        /// `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-        /// `csv_config_nullidentifier` - (Optional) Invalid field content.
-        /// `csv_config_quote` - (Optional) Escape character under csv configuration.
-        /// `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        /// `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
-        /// - format = `parquet`
-        /// `parquet_config` - (Optional) Configure to use parquet storage format.
-        /// `name` - (Required) The name of the key.
-        /// `type` - (Required) Type of configuration name.
+        /// - format = `Json`
+        /// `JsonEnableTag` - (Optional) Whether to deliver the label.
+        /// - format = `Csv`
+        /// `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+        /// `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
+        /// `CsvConfigNullidentifier` - (Optional) Invalid field content.
+        /// `CsvConfigQuote` - (Optional) Escape character under csv configuration.
+        /// `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
+        /// `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+        /// - format = `Parquet`
+        /// `ParquetConfig` - (Optional) Configure to use parquet storage format.
+        /// `Name` - (Required) The name of the key.
+        /// `Type` - (Required) Type of configuration name.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

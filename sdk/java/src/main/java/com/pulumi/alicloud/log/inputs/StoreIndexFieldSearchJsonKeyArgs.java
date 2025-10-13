@@ -35,7 +35,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
     /**
      * Whether to enable statistics. default to true.
      * 
-     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     @Import(name="docValue")
@@ -44,7 +44,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
     /**
      * @return Whether to enable statistics. default to true.
      * 
-     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     public Optional<Output<Boolean>> docValue() {
@@ -52,14 +52,14 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
     }
 
     /**
-     * When using the json_keys field, this field is required.
+     * When using the jsonKeys field, this field is required.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return When using the json_keys field, this field is required.
+     * @return When using the jsonKeys field, this field is required.
      * 
      */
     public Output<String> name() {
@@ -132,7 +132,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         /**
          * @param docValue Whether to enable statistics. default to true.
          * 
-         * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+         * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         /**
          * @param docValue Whether to enable statistics. default to true.
          * 
-         * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+         * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name When using the json_keys field, this field is required.
+         * @param name When using the jsonKeys field, this field is required.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name When using the json_keys field, this field is required.
+         * @param name When using the jsonKeys field, this field is required.
          * 
          * @return builder
          * 

@@ -99,14 +99,14 @@ public class Er extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The configurations of the specified environment. See `env_conf` below.
+     * The configurations of the specified environment. See `envConf` below.
      * 
      */
     @Export(name="envConf", refs={ErEnvConf.class}, tree="[0]")
     private Output<ErEnvConf> envConf;
 
     /**
-     * @return The configurations of the specified environment. See `env_conf` below.
+     * @return The configurations of the specified environment. See `envConf` below.
      * 
      */
     public Output<ErEnvConf> envConf() {

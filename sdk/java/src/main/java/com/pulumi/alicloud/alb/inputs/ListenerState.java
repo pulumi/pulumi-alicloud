@@ -46,14 +46,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Xtrace Configuration Information. See `access_log_tracing_config` below.
+     * Xtrace Configuration Information. See `accessLogTracingConfig` below.
      * 
      */
     @Import(name="accessLogTracingConfig")
     private @Nullable Output<ListenerAccessLogTracingConfigArgs> accessLogTracingConfig;
 
     /**
-     * @return Xtrace Configuration Information. See `access_log_tracing_config` below.
+     * @return Xtrace Configuration Information. See `accessLogTracingConfig` below.
      * 
      */
     public Optional<Output<ListenerAccessLogTracingConfigArgs>> accessLogTracingConfig() {
@@ -61,7 +61,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
      * @deprecated
      * Field &#39;acl_config&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_listener_acl_attachment&#39;.
@@ -72,7 +72,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ListenerAclConfigArgs> aclConfig;
 
     /**
-     * @return The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * @return The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
      * @deprecated
      * Field &#39;acl_config&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_listener_acl_attachment&#39;.
@@ -84,14 +84,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of certificates. See `ca_certificates` below.
+     * The list of certificates. See `caCertificates` below.
      * 
      */
     @Import(name="caCertificates")
     private @Nullable Output<List<ListenerCaCertificateArgs>> caCertificates;
 
     /**
-     * @return The list of certificates. See `ca_certificates` below.
+     * @return The list of certificates. See `caCertificates` below.
      * 
      */
     public Optional<Output<List<ListenerCaCertificateArgs>>> caCertificates() {
@@ -129,14 +129,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Default Rule Action List See `default_actions` below.
+     * The Default Rule Action List See `defaultActions` below.
      * 
      */
     @Import(name="defaultActions")
     private @Nullable Output<List<ListenerDefaultActionArgs>> defaultActions;
 
     /**
-     * @return The Default Rule Action List See `default_actions` below.
+     * @return The Default Rule Action List See `defaultActions` below.
      * 
      */
     public Optional<Output<List<ListenerDefaultActionArgs>>> defaultActions() {
@@ -264,14 +264,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration Associated with the QuIC Listening See `quic_config` below.
+     * Configuration Associated with the QuIC Listening See `quicConfig` below.
      * 
      */
     @Import(name="quicConfig")
     private @Nullable Output<ListenerQuicConfigArgs> quicConfig;
 
     /**
-     * @return Configuration Associated with the QuIC Listening See `quic_config` below.
+     * @return Configuration Associated with the QuIC Listening See `quicConfig` below.
      * 
      */
     public Optional<Output<ListenerQuicConfigArgs>> quicConfig() {
@@ -339,14 +339,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+     * xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
      * 
      */
     @Import(name="xForwardedForConfig")
     private @Nullable Output<ListenerXForwardedForConfigArgs> xForwardedForConfig;
 
     /**
-     * @return xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+     * @return xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
      * 
      */
     public Optional<Output<ListenerXForwardedForConfigArgs>> xForwardedForConfig() {
@@ -423,7 +423,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogTracingConfig Xtrace Configuration Information. See `access_log_tracing_config` below.
+         * @param accessLogTracingConfig Xtrace Configuration Information. See `accessLogTracingConfig` below.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogTracingConfig Xtrace Configuration Information. See `access_log_tracing_config` below.
+         * @param accessLogTracingConfig Xtrace Configuration Information. See `accessLogTracingConfig` below.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclConfig The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+         * @param aclConfig The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclConfig The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+         * @param aclConfig The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificates The list of certificates. See `ca_certificates` below.
+         * @param caCertificates The list of certificates. See `caCertificates` below.
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificates The list of certificates. See `ca_certificates` below.
+         * @param caCertificates The list of certificates. See `caCertificates` below.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificates The list of certificates. See `ca_certificates` below.
+         * @param caCertificates The list of certificates. See `caCertificates` below.
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultActions The Default Rule Action List See `default_actions` below.
+         * @param defaultActions The Default Rule Action List See `defaultActions` below.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultActions The Default Rule Action List See `default_actions` below.
+         * @param defaultActions The Default Rule Action List See `defaultActions` below.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultActions The Default Rule Action List See `default_actions` below.
+         * @param defaultActions The Default Rule Action List See `defaultActions` below.
          * 
          * @return builder
          * 
@@ -745,7 +745,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quicConfig Configuration Associated with the QuIC Listening See `quic_config` below.
+         * @param quicConfig Configuration Associated with the QuIC Listening See `quicConfig` below.
          * 
          * @return builder
          * 
@@ -756,7 +756,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quicConfig Configuration Associated with the QuIC Listening See `quic_config` below.
+         * @param quicConfig Configuration Associated with the QuIC Listening See `quicConfig` below.
          * 
          * @return builder
          * 
@@ -850,7 +850,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedForConfig xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+         * @param xForwardedForConfig xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
          * 
          * @return builder
          * 
@@ -861,7 +861,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedForConfig xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+         * @param xForwardedForConfig xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
          * 
          * @return builder
          * 

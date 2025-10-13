@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The Zone ID in the current region.
         /// System will create resources under the Zone that you specify.
-        /// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+        /// Left blank if associated IPSec connection is in dual-tunnel mode. See `Zone` below.
         /// </summary>
         [Output("zones")]
         public Output<ImmutableArray<Outputs.TransitRouterVpnAttachmentZone>> Zones { get; private set; } = null!;
@@ -469,7 +469,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The Zone ID in the current region.
         /// System will create resources under the Zone that you specify.
-        /// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+        /// Left blank if associated IPSec connection is in dual-tunnel mode. See `Zone` below.
         /// </summary>
         public InputList<Inputs.TransitRouterVpnAttachmentZoneArgs> Zones
         {
@@ -575,7 +575,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The Zone ID in the current region.
         /// System will create resources under the Zone that you specify.
-        /// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
+        /// Left blank if associated IPSec connection is in dual-tunnel mode. See `Zone` below.
         /// </summary>
         public InputList<Inputs.TransitRouterVpnAttachmentZoneGetArgs> Zones
         {

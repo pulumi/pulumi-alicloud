@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
         private InputList<Inputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>? _serverGroupTuples;
 
         /// <summary>
-        /// The information about the endpoint group. See `server_group_tuples` below.
+        /// The information about the endpoint group. See `ServerGroupTuples` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs> ServerGroupTuples
         {

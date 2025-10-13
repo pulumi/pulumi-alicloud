@@ -146,14 +146,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ess/eciScalingConfiguration:EciScalingConfiguration")
 public class EciScalingConfiguration extends com.pulumi.resources.CustomResource {
     /**
-     * Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+     * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      * 
      */
     @Export(name="acrRegistryInfos", refs={List.class,EciScalingConfigurationAcrRegistryInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationAcrRegistryInfo>> acrRegistryInfos;
 
     /**
-     * @return Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+     * @return Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationAcrRegistryInfo>>> acrRegistryInfos() {
@@ -222,7 +222,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * name_prefix: the prefix of the hostname.
      * (AUTO_INCREMENT): the sort method. This is a static field.
      * begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      * 
      */
@@ -234,7 +234,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * name_prefix: the prefix of the hostname.
      * (AUTO_INCREMENT): the sort method. This is a static field.
      * begin_number: the start value of the sequential values. Valid values: 0 to 999999.
-     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+     * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      * 
      */
@@ -328,7 +328,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.description);
     }
     /**
-     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      * 
      */
@@ -336,7 +336,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
     private Output</* @Nullable */ List<EciScalingConfigurationDnsConfigOption>> dnsConfigOptions;
 
     /**
-     * @return The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * @return The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      * 
      */
@@ -430,14 +430,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.forceDelete);
     }
     /**
-     * HostAliases. See `host_aliases` below.
+     * HostAliases. See `hostAliases` below.
      * 
      */
     @Export(name="hostAliases", refs={List.class,EciScalingConfigurationHostAlias.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationHostAlias>> hostAliases;
 
     /**
-     * @return HostAliases. See `host_aliases` below.
+     * @return HostAliases. See `hostAliases` below.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationHostAlias>>> hostAliases() {
@@ -458,7 +458,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.hostName);
     }
     /**
-     * The image registry credential.   See `image_registry_credentials` below for
+     * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      * 
      */
@@ -466,7 +466,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
     private Output</* @Nullable */ List<EciScalingConfigurationImageRegistryCredential>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential.   See `image_registry_credentials` below for
+     * @return The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      * 
      */
@@ -502,14 +502,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.ingressBandwidth);
     }
     /**
-     * The list of initContainers. See `init_containers` below for details.
+     * The list of initContainers. See `initContainers` below for details.
      * 
      */
     @Export(name="initContainers", refs={List.class,EciScalingConfigurationInitContainer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationInitContainer>> initContainers;
 
     /**
-     * @return The list of initContainers. See `init_containers` below for details.
+     * @return The list of initContainers. See `initContainers` below for details.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationInitContainer>>> initContainers() {
@@ -662,7 +662,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return this.scalingGroupId;
     }
     /**
-     * The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      * 
      */
@@ -670,7 +670,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
     private Output</* @Nullable */ List<EciScalingConfigurationSecurityContextSysctl>> securityContextSysctls;
 
     /**
-     * @return The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * @return The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      * 
      */
@@ -679,7 +679,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
     }
     /**
      * ID of the security group used to create new instance. It is conflict
-     * with `security_group_ids`.
+     * with `securityGroupIds`.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
@@ -687,7 +687,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
 
     /**
      * @return ID of the security group used to create new instance. It is conflict
-     * with `security_group_ids`.
+     * with `securityGroupIds`.
      * 
      */
     public Output<Optional<String>> securityGroupId() {

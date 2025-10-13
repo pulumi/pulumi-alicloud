@@ -153,8 +153,8 @@ import javax.annotation.Nullable;
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
      * The type of operations that can be performed on the resource. Valid values:
-     * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-     * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      * 
      */
     @Export(name="actions", refs={List.class,String.class}, tree="[0,1]")
@@ -162,8 +162,8 @@ public class Acl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of operations that can be performed on the resource. Valid values:
-     * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
-     * - If `resource_type` is set to `Group`. Valid values: `Sub`.
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      * 
      */
     public Output<List<String>> actions() {

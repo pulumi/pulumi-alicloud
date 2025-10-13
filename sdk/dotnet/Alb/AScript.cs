@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> ExtAttributeEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ExtAttributes` below.
         /// </summary>
         [Output("extAttributes")]
         public Output<ImmutableArray<Outputs.AScriptExtAttribute>> ExtAttributes { get; private set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AScriptExtAttributeArgs>? _extAttributes;
 
         /// <summary>
-        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ExtAttributes` below.
         /// </summary>
         public InputList<Inputs.AScriptExtAttributeArgs> ExtAttributes
         {
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AScriptExtAttributeGetArgs>? _extAttributes;
 
         /// <summary>
-        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ExtAttributes` below.
         /// </summary>
         public InputList<Inputs.AScriptExtAttributeGetArgs> ExtAttributes
         {

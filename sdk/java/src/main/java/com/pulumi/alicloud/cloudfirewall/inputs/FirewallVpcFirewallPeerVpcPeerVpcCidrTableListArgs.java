@@ -17,14 +17,14 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
     public static final FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs Empty = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs();
 
     /**
-     * Peer VPC route entry list information. See `peer_route_entry_list` below.
+     * Peer VPC route entry list information. See `peerRouteEntryList` below.
      * 
      */
     @Import(name="peerRouteEntryLists", required=true)
     private Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists;
 
     /**
-     * @return Peer VPC route entry list information. See `peer_route_entry_list` below.
+     * @return Peer VPC route entry list information. See `peerRouteEntryList` below.
      * 
      */
     public Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists() {
@@ -72,7 +72,7 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
         }
 
         /**
-         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peerRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
         }
 
         /**
-         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peerRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
         }
 
         /**
-         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peerRouteEntryList` below.
          * 
          * @return builder
          * 

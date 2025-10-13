@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Message
         public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// The dead-letter queue policy. See `DlqPolicy` below.
         /// </summary>
         [Output("dlqPolicy")]
         public Output<Outputs.ServiceSubscriptionDlqPolicy> DlqPolicy { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Message
         public Output<string> NotifyStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
+        /// The Push type of Subscription. The Valid values: `Http`, `Queue`, `Mpush`, `Alisms` and `Email`.
         /// </summary>
         [Output("pushType")]
         public Output<string> PushType { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// The dead-letter queue policy. See `DlqPolicy` below.
         /// </summary>
         [Input("dlqPolicy")]
         public Input<Inputs.ServiceSubscriptionDlqPolicyArgs>? DlqPolicy { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Message
         public Input<string>? NotifyStrategy { get; set; }
 
         /// <summary>
-        /// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
+        /// The Push type of Subscription. The Valid values: `Http`, `Queue`, `Mpush`, `Alisms` and `Email`.
         /// </summary>
         [Input("pushType", required: true)]
         public Input<string> PushType { get; set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Message
         public Input<int>? CreateTime { get; set; }
 
         /// <summary>
-        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// The dead-letter queue policy. See `DlqPolicy` below.
         /// </summary>
         [Input("dlqPolicy")]
         public Input<Inputs.ServiceSubscriptionDlqPolicyGetArgs>? DlqPolicy { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Message
         public Input<string>? NotifyStrategy { get; set; }
 
         /// <summary>
-        /// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
+        /// The Push type of Subscription. The Valid values: `Http`, `Queue`, `Mpush`, `Alisms` and `Email`.
         /// </summary>
         [Input("pushType")]
         public Input<string>? PushType { get; set; }

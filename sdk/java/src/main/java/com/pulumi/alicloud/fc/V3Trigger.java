@@ -369,14 +369,14 @@ public class V3Trigger extends com.pulumi.resources.CustomResource {
         return this.triggerName;
     }
     /**
-     * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+     * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      * 
      */
     @Export(name="triggerType", refs={String.class}, tree="[0]")
     private Output<String> triggerType;
 
     /**
-     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+     * @return The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      * 
      */
     public Output<String> triggerType() {

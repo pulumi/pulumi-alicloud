@@ -54,15 +54,15 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         /// </summary>
         public readonly string CrossAccountRoleName;
         /// <summary>
-        /// The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// The type of the cross account backup. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         /// </summary>
         public readonly string CrossAccountType;
         /// <summary>
-        /// The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// The original account ID of the cross account backup managed by the current account. It is valid only when `SourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         /// </summary>
         public readonly int CrossAccountUserId;
         /// <summary>

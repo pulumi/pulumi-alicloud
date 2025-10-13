@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `ActiveAddressType` parameter is set to `Private`.
         /// </summary>
         [Output("hostPrivateAddress")]
         public Output<string?> HostPrivateAddress { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> Source { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `Source` parameter is set to `Ecs` or `Rds`.
         /// </summary>
         [Output("sourceInstanceId")]
         public Output<string?> SourceInstanceId { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> HostName { get; set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `ActiveAddressType` parameter is set to `Private`.
         /// </summary>
         [Input("hostPrivateAddress")]
         public Input<string>? HostPrivateAddress { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> Source { get; set; } = null!;
 
         /// <summary>
-        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `Source` parameter is set to `Ecs` or `Rds`.
         /// </summary>
         [Input("sourceInstanceId")]
         public Input<string>? SourceInstanceId { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `ActiveAddressType` parameter is set to `Private`.
         /// </summary>
         [Input("hostPrivateAddress")]
         public Input<string>? HostPrivateAddress { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `Source` parameter is set to `Ecs` or `Rds`.
         /// </summary>
         [Input("sourceInstanceId")]
         public Input<string>? SourceInstanceId { get; set; }

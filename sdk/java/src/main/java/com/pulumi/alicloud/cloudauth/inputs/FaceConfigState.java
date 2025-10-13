@@ -31,14 +31,14 @@ public final class FaceConfigState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+     * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
     @Import(name="bizType")
     private @Nullable Output<String> bizType;
 
     /**
-     * @return Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+     * @return Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
     public Optional<Output<String>> bizType() {
@@ -108,7 +108,7 @@ public final class FaceConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bizType Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+         * @param bizType Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class FaceConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bizType Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+         * @param bizType Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
          * 
          * @return builder
          * 

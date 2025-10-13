@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Alb
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration of the access log. See `access_log_config` below.
+        /// The configuration of the access log. See `AccessLogConfig` below.
         /// </summary>
         [Output("accessLogConfig")]
         public Output<Outputs.LoadBalancerAccessLogConfig?> AccessLogConfig { get; private set; } = null!;
@@ -146,13 +146,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The Protection Configuration See `deletion_protection_config` below.
+        /// The Protection Configuration See `DeletionProtectionConfig` below.
         /// </summary>
         [Output("deletionProtectionConfig")]
         public Output<Outputs.LoadBalancerDeletionProtectionConfig> DeletionProtectionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
         /// </summary>
         [Output("deletionProtectionEnabled")]
         public Output<bool> DeletionProtectionEnabled { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> Ipv6AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the billing method. See `load_balancer_billing_config` below.
+        /// The configuration of the billing method. See `LoadBalancerBillingConfig` below.
         /// </summary>
         [Output("loadBalancerBillingConfig")]
         public Output<Outputs.LoadBalancerLoadBalancerBillingConfig> LoadBalancerBillingConfig { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string?> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// Modify the Protection Configuration See `modification_protection_config` below.
+        /// Modify the Protection Configuration See `ModificationProtectionConfig` below.
         /// </summary>
         [Output("modificationProtectionConfig")]
         public Output<Outputs.LoadBalancerModificationProtectionConfig> ModificationProtectionConfig { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        /// The zones and vSwitches. You must specify at least two zones. See `ZoneMappings` below.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of the access log. See `access_log_config` below.
+        /// The configuration of the access log. See `AccessLogConfig` below.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigArgs>? AccessLogConfig { get; set; }
@@ -314,13 +314,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? BandwidthPackageId { get; set; }
 
         /// <summary>
-        /// The Protection Configuration See `deletion_protection_config` below.
+        /// The Protection Configuration See `DeletionProtectionConfig` below.
         /// </summary>
         [Input("deletionProtectionConfig")]
         public Input<Inputs.LoadBalancerDeletionProtectionConfigArgs>? DeletionProtectionConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Ipv6AddressType { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method. See `load_balancer_billing_config` below.
+        /// The configuration of the billing method. See `LoadBalancerBillingConfig` below.
         /// </summary>
         [Input("loadBalancerBillingConfig", required: true)]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigArgs> LoadBalancerBillingConfig { get; set; } = null!;
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Modify the Protection Configuration See `modification_protection_config` below.
+        /// Modify the Protection Configuration See `ModificationProtectionConfig` below.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigArgs>? ModificationProtectionConfig { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        /// The zones and vSwitches. You must specify at least two zones. See `ZoneMappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -406,7 +406,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of the access log. See `access_log_config` below.
+        /// The configuration of the access log. See `AccessLogConfig` below.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigGetArgs>? AccessLogConfig { get; set; }
@@ -444,13 +444,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The Protection Configuration See `deletion_protection_config` below.
+        /// The Protection Configuration See `DeletionProtectionConfig` below.
         /// </summary>
         [Input("deletionProtectionConfig")]
         public Input<Inputs.LoadBalancerDeletionProtectionConfigGetArgs>? DeletionProtectionConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// Specifies whether to enable deletion protection. Default value: `False`. Valid values:
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Ipv6AddressType { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method. See `load_balancer_billing_config` below.
+        /// The configuration of the billing method. See `LoadBalancerBillingConfig` below.
         /// </summary>
         [Input("loadBalancerBillingConfig")]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigGetArgs>? LoadBalancerBillingConfig { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Modify the Protection Configuration See `modification_protection_config` below.
+        /// Modify the Protection Configuration See `ModificationProtectionConfig` below.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigGetArgs>? ModificationProtectionConfig { get; set; }
@@ -537,7 +537,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        /// The zones and vSwitches. You must specify at least two zones. See `ZoneMappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly string AppGroupName;
         /// <summary>
-        /// Billing model. Valid values:`compute_resource` and `qps`.
+        /// Billing model. Valid values:`ComputeResource` and `Qps`.
         /// </summary>
         public readonly int ChargeWay;
         /// <summary>
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly int SecondRankAlgoDeploymentId;
         /// <summary>
-        /// The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
+        /// The status of the resource. Valid values: `Producing`,`ReviewPending`,`ConfigPending`,`Normal`,`Frozen`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly int SwitchedTime;
         /// <summary>
-        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
         /// </summary>
         public readonly string Type;
 

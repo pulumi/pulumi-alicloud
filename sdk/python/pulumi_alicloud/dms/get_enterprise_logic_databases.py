@@ -91,6 +91,10 @@ def get_enterprise_logic_databases(ids: Optional[Sequence[_builtins.str]] = None
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    Basic Usage
+
 
     :param Sequence[_builtins.str] ids: A list of Logic Database IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -113,6 +117,10 @@ def get_enterprise_logic_databases_output(ids: Optional[pulumi.Input[Optional[Se
     This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    Basic Usage
 
 
     :param Sequence[_builtins.str] ids: A list of Logic Database IDs.

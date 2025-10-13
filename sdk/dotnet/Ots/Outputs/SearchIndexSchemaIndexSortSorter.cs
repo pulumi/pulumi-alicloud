@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ots.Outputs
     public sealed class SearchIndexSchemaIndexSortSorter
     {
         /// <summary>
-        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        /// The name of the field that is used to sort data. only required if SorterType is FieldSort.
         /// </summary>
         public readonly string? FieldName;
         /// <summary>
-        /// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+        /// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if SorterType is FieldSort.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

@@ -101,10 +101,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls() {
@@ -157,10 +157,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -213,10 +213,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
@@ -269,10 +269,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -325,10 +325,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
@@ -381,10 +381,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOutputOptions options) {
@@ -437,10 +437,10 @@ public final class SlbFunctions {
      * 
      * The Listener mapping supports the following:
      * 
-     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-     * * `frontend_port` - the listener port.
+     * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
+     * * `frontendPort` - the listener port.
      * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-     * * `acl_type`      - the type of acl (such as white/black).
+     * * `aclType`      - the type of acl (such as white/black).
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {

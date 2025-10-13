@@ -220,7 +220,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * - `MULTI_BINDED`: multi-EIP-to-ENI mode
      * - `BINDED`: cut-network interface controller mode
      * 
-     * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
+     * &gt; **NOTE:**   This parameter is required only when `instanceType` is set to `NetworkInterface`.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
@@ -232,7 +232,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * - `MULTI_BINDED`: multi-EIP-to-ENI mode
      * - `BINDED`: cut-network interface controller mode
      * 
-     * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
+     * &gt; **NOTE:**   This parameter is required only when `instanceType` is set to `NetworkInterface`.
      * 
      */
     public Output<String> mode() {
@@ -243,7 +243,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * 
      * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
      * 
-     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * &gt; **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
@@ -254,7 +254,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * 
      * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
      * 
-     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * &gt; **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     public Output<Optional<String>> privateIpAddress() {
@@ -265,7 +265,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * 
      * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
      * 
-     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * &gt; **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
@@ -276,7 +276,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * 
      * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
      * 
-     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * &gt; **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     public Output<Optional<String>> vpcId() {

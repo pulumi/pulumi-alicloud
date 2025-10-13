@@ -98,14 +98,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data disk See `data_disk` below.
+     * Data disk See `dataDisk` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<CustomDataDiskArgs>> dataDisks;
 
     /**
-     * @return Data disk See `data_disk` below.
+     * @return Data disk See `dataDisk` below.
      * 
      */
     public Optional<Output<List<CustomDataDiskArgs>>> dataDisks() {
@@ -478,14 +478,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * System disk specifications. See `system_disk` below.
+     * System disk specifications. See `systemDisk` below.
      * 
      */
     @Import(name="systemDisk")
     private @Nullable Output<CustomSystemDiskArgs> systemDisk;
 
     /**
-     * @return System disk specifications. See `system_disk` below.
+     * @return System disk specifications. See `systemDisk` below.
      * 
      */
     public Optional<Output<CustomSystemDiskArgs>> systemDisk() {
@@ -701,7 +701,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk See `data_disk` below.
+         * @param dataDisks Data disk See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk See `data_disk` below.
+         * @param dataDisks Data disk See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk See `data_disk` below.
+         * @param dataDisks Data disk See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -1245,7 +1245,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDisk System disk specifications. See `system_disk` below.
+         * @param systemDisk System disk specifications. See `systemDisk` below.
          * 
          * @return builder
          * 
@@ -1256,7 +1256,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDisk System disk specifications. See `system_disk` below.
+         * @param systemDisk System disk specifications. See `systemDisk` below.
          * 
          * @return builder
          * 

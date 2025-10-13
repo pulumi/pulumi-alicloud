@@ -20,6 +20,10 @@ namespace Pulumi.AliCloud.Scdn
     /// 
     /// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
     /// ## Import
     /// 
     /// SCDN domain config can be imported using the id, e.g.

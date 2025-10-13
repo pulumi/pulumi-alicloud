@@ -59,14 +59,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * Setting environment variables in eais instance on Initialization See `environmentVar` below.
      * 
      */
     @Export(name="environmentVars", refs={List.class,InstanceEnvironmentVar.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceEnvironmentVar>> environmentVars;
 
     /**
-     * @return Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * @return Setting environment variables in eais instance on Initialization See `environmentVar` below.
      * 
      */
     public Output<Optional<List<InstanceEnvironmentVar>>> environmentVars() {

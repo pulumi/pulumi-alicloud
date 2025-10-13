@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Kms.Outputs
     public sealed class GetSecretVersionsVersionResult
     {
         /// <summary>
-        /// The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
+        /// The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `EnableDetails` is true).
         /// </summary>
         public readonly string SecretData;
         /// <summary>
-        /// The type of the secret value. (Returned when `enable_details` is true).
+        /// The type of the secret value. (Returned when `EnableDetails` is true).
         /// </summary>
         public readonly string SecretDataType;
         /// <summary>

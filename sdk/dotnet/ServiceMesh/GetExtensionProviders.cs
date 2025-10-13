@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public string ServiceMeshId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
+        /// The type of the Service Mesh Extension Provider. Valid values: `Httpextauth`, `Grpcextauth`.
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string> ServiceMeshId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
+        /// The type of the Service Mesh Extension Provider. Valid values: `Httpextauth`, `Grpcextauth`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

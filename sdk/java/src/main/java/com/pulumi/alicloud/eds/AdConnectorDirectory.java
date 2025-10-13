@@ -252,14 +252,14 @@ public class AdConnectorDirectory extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+     * The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
      * 
      */
     @Export(name="subDomainDnsAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> subDomainDnsAddresses;
 
     /**
-     * @return The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
+     * @return The Enterprise already has the DNS address of the AD subdomain. If `subDomainName` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
      * 
      */
     public Output<Optional<List<String>>> subDomainDnsAddresses() {

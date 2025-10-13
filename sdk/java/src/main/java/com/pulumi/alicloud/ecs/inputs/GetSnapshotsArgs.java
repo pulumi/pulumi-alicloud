@@ -164,14 +164,14 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      * 
      */
     public Optional<Output<String>> usage() {
@@ -423,7 +423,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
          * 
          * @return builder
          * 

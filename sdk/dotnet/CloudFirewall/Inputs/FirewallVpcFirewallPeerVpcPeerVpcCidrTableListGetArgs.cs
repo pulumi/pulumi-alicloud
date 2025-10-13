@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         private InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListGetArgs>? _peerRouteEntryLists;
 
         /// <summary>
-        /// Peer VPC route entry list information. See `peer_route_entry_list` below.
+        /// Peer VPC route entry list information. See `PeerRouteEntryList` below.
         /// </summary>
         public InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListGetArgs> PeerRouteEntryLists
         {

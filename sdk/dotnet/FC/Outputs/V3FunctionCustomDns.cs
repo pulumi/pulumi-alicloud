@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionCustomDns
     {
         /// <summary>
-        /// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+        /// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `DnsOptions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3FunctionCustomDnsDnsOption> DnsOptions;
         /// <summary>

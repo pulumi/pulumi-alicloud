@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The type of endpoint. Valid values: `internet`.
+        /// The type of endpoint. Valid values: `Internet`.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of endpoint. Valid values: `internet`.
+        /// The type of endpoint. Valid values: `Internet`.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of endpoint. Valid values: `internet`.
+        /// The type of endpoint. Valid values: `Internet`.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }

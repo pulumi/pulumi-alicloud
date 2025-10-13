@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+        /// Time-sharing configuration parameters. See `TunnelQuotaParameter` below.
         /// </summary>
         public readonly Outputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameter? TunnelQuotaParameter;
 

@@ -95,14 +95,14 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigArgs extends com
     }
 
     /**
-     * The alert triggers. See `target_list` below.
+     * The alert triggers. See `targetList` below.
      * 
      */
     @Import(name="targetLists")
     private @Nullable Output<List<ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs>> targetLists;
 
     /**
-     * @return The alert triggers. See `target_list` below.
+     * @return The alert triggers. See `targetList` below.
      * 
      */
     public Optional<Output<List<ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs>>> targetLists() {
@@ -292,7 +292,7 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigArgs extends com
         }
 
         /**
-         * @param targetLists The alert triggers. See `target_list` below.
+         * @param targetLists The alert triggers. See `targetList` below.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigArgs extends com
         }
 
         /**
-         * @param targetLists The alert triggers. See `target_list` below.
+         * @param targetLists The alert triggers. See `targetList` below.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigArgs extends com
         }
 
         /**
-         * @param targetLists The alert triggers. See `target_list` below.
+         * @param targetLists The alert triggers. See `targetList` below.
          * 
          * @return builder
          * 

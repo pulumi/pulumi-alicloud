@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetDbClustersClusterDbClusterAccessWhiteList {
     /**
-     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
      * 
      */
     private String dbClusterIpArrayAttribute;
@@ -28,7 +28,7 @@ public final class GetDbClustersClusterDbClusterAccessWhiteList {
 
     private GetDbClustersClusterDbClusterAccessWhiteList() {}
     /**
-     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
      * 
      */
     public String dbClusterIpArrayAttribute() {

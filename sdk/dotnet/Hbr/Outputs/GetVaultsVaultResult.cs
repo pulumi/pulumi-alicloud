@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of vault, same as `id`.
+        /// The ID of vault, same as `Id`.
         /// </summary>
         public readonly string VaultId;
         /// <summary>

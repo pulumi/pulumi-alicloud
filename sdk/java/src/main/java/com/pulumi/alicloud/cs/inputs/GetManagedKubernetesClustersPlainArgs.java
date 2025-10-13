@@ -17,14 +17,14 @@ public final class GetManagedKubernetesClustersPlainArgs extends com.pulumi.reso
     public static final GetManagedKubernetesClustersPlainArgs Empty = new GetManagedKubernetesClustersPlainArgs();
 
     /**
-     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -47,7 +47,7 @@ public final class GetManagedKubernetesClustersPlainArgs extends com.pulumi.reso
     }
 
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
      * 
      * @deprecated
      * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -58,7 +58,7 @@ public final class GetManagedKubernetesClustersPlainArgs extends com.pulumi.reso
     private @Nullable String kubeConfigFilePrefix;
 
     /**
-     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
      * 
      * @deprecated
      * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -128,7 +128,7 @@ public final class GetManagedKubernetesClustersPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class GetManagedKubernetesClustersPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
          * 
          * @return builder
          * 

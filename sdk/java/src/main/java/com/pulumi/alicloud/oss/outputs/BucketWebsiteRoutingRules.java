@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketWebsiteRoutingRules {
     /**
-     * @return Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+     * @return Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
      * 
      */
     private @Nullable List<BucketWebsiteRoutingRulesRoutingRule> routingRules;
 
     private BucketWebsiteRoutingRules() {}
     /**
-     * @return Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+     * @return Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
      * 
      */
     public List<BucketWebsiteRoutingRulesRoutingRule> routingRules() {

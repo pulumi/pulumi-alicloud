@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<int> CacheSize { get; private set; } = null!;
 
         /// <summary>
-        /// The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+        /// The cpu resource amount of DBCluster. Depends on `DbClusterClass`.
         /// </summary>
         [Output("cpu")]
         public Output<int> Cpu { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The DBCluster class. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         [Output("dbClusterClass")]
         public Output<string> DbClusterClass { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The modified parameter in DBCluster. See `desired_params` below.
+        /// The modified parameter in DBCluster. See `DesiredParams` below.
         /// </summary>
         [Output("desiredParams")]
         public Output<ImmutableArray<Outputs.DbClusterDesiredParam>> DesiredParams { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string?> DesiredStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The engine of DBCluster. Always `selectdb`.
+        /// The engine of DBCluster. Always `Selectdb`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+        /// The memory resource amount of DBCluster. Depends on `DbClusterClass`.
         /// </summary>
         [Output("memory")]
         public Output<int> Memory { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<int> CacheSize { get; set; } = null!;
 
         /// <summary>
-        /// The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The DBCluster class. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         [Input("dbClusterClass", required: true)]
         public Input<string> DbClusterClass { get; set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.SelectDB
         private InputList<Inputs.DbClusterDesiredParamArgs>? _desiredParams;
 
         /// <summary>
-        /// The modified parameter in DBCluster. See `desired_params` below.
+        /// The modified parameter in DBCluster. See `DesiredParams` below.
         /// </summary>
         public InputList<Inputs.DbClusterDesiredParamArgs> DesiredParams
         {
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<int>? CacheSize { get; set; }
 
         /// <summary>
-        /// The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
+        /// The cpu resource amount of DBCluster. Depends on `DbClusterClass`.
         /// </summary>
         [Input("cpu")]
         public Input<int>? Cpu { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The DBCluster class. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -337,7 +337,7 @@ namespace Pulumi.AliCloud.SelectDB
         private InputList<Inputs.DbClusterDesiredParamGetArgs>? _desiredParams;
 
         /// <summary>
-        /// The modified parameter in DBCluster. See `desired_params` below.
+        /// The modified parameter in DBCluster. See `DesiredParams` below.
         /// </summary>
         public InputList<Inputs.DbClusterDesiredParamGetArgs> DesiredParams
         {
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<string>? DesiredStatus { get; set; }
 
         /// <summary>
-        /// The engine of DBCluster. Always `selectdb`.
+        /// The engine of DBCluster. Always `Selectdb`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// The memory resource amount of DBCluster. Depends on `db_cluster_class`.
+        /// The memory resource amount of DBCluster. Depends on `DbClusterClass`.
         /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }

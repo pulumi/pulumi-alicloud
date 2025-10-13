@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public partial class ConsumerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Consumption retry strategy. See `consume_retry_policy` below.
+        /// Consumption retry strategy. See `ConsumeRetryPolicy` below.
         /// </summary>
         [Output("consumeRetryPolicy")]
         public Output<Outputs.ConsumerGroupConsumeRetryPolicy> ConsumeRetryPolicy { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class ConsumerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Consumption retry strategy. See `consume_retry_policy` below.
+        /// Consumption retry strategy. See `ConsumeRetryPolicy` below.
         /// </summary>
         [Input("consumeRetryPolicy", required: true)]
         public Input<Inputs.ConsumerGroupConsumeRetryPolicyArgs> ConsumeRetryPolicy { get; set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class ConsumerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Consumption retry strategy. See `consume_retry_policy` below.
+        /// Consumption retry strategy. See `ConsumeRetryPolicy` below.
         /// </summary>
         [Input("consumeRetryPolicy")]
         public Input<Inputs.ConsumerGroupConsumeRetryPolicyGetArgs>? ConsumeRetryPolicy { get; set; }

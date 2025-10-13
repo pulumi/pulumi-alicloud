@@ -188,14 +188,14 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return this.defaultAddrPoolType;
     }
     /**
-     * List of primary address pool collections. See `default_addr_pools` below for details.
+     * List of primary address pool collections. See `defaultAddrPools` below for details.
      * 
      */
     @Export(name="defaultAddrPools", refs={List.class,AccessStrategyDefaultAddrPool.class}, tree="[0,1]")
     private Output<List<AccessStrategyDefaultAddrPool>> defaultAddrPools;
 
     /**
-     * @return List of primary address pool collections. See `default_addr_pools` below for details.
+     * @return List of primary address pool collections. See `defaultAddrPools` below for details.
      * 
      */
     public Output<List<AccessStrategyDefaultAddrPool>> defaultAddrPools() {
@@ -216,28 +216,28 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultLatencyOptimization);
     }
     /**
-     * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+     * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     @Export(name="defaultLbaStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultLbaStrategy;
 
     /**
-     * @return The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
+     * @return The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     public Output<Optional<String>> defaultLbaStrategy() {
         return Codegen.optional(this.defaultLbaStrategy);
     }
     /**
-     * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+     * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      * 
      */
     @Export(name="defaultMaxReturnAddrNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> defaultMaxReturnAddrNum;
 
     /**
-     * @return The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
+     * @return The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      * 
      */
     public Output<Optional<Integer>> defaultMaxReturnAddrNum() {
@@ -272,14 +272,14 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.failoverAddrPoolType);
     }
     /**
-     * List of backup address pool sets. See `failover_addr_pools` below for details.
+     * List of backup address pool sets. See `failoverAddrPools` below for details.
      * 
      */
     @Export(name="failoverAddrPools", refs={List.class,AccessStrategyFailoverAddrPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessStrategyFailoverAddrPool>> failoverAddrPools;
 
     /**
-     * @return List of backup address pool sets. See `failover_addr_pools` below for details.
+     * @return List of backup address pool sets. See `failoverAddrPools` below for details.
      * 
      */
     public Output<Optional<List<AccessStrategyFailoverAddrPool>>> failoverAddrPools() {
@@ -370,14 +370,14 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     @Export(name="lines", refs={List.class,AccessStrategyLine.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessStrategyLine>> lines;
 
     /**
-     * @return The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * @return The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      * 
      */
     public Output<Optional<List<AccessStrategyLine>>> lines() {

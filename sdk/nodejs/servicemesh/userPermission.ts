@@ -13,6 +13,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.174.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
  * ## Import
  *
  * Service Mesh User Permission can be imported using the id, e.g.

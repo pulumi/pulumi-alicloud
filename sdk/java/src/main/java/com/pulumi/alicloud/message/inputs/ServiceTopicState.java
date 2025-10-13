@@ -49,24 +49,24 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      * @deprecated
-     * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      */
-    @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
+    @Deprecated /* Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead. */
     @Import(name="loggingEnabled")
     private @Nullable Output<Boolean> loggingEnabled;
 
     /**
-     * @return . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * @return . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      * @deprecated
-     * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      */
-    @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
+    @Deprecated /* Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead. */
     public Optional<Output<Boolean>> loggingEnabled() {
         return Optional.ofNullable(this.loggingEnabled);
     }
@@ -192,30 +192,30 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingEnabled . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * @param loggingEnabled . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
          * 
          */
-        @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
+        @Deprecated /* Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead. */
         public Builder loggingEnabled(@Nullable Output<Boolean> loggingEnabled) {
             $.loggingEnabled = loggingEnabled;
             return this;
         }
 
         /**
-         * @param loggingEnabled . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * @param loggingEnabled . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
          * 
          */
-        @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
+        @Deprecated /* Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead. */
         public Builder loggingEnabled(Boolean loggingEnabled) {
             return loggingEnabled(Output.of(loggingEnabled));
         }

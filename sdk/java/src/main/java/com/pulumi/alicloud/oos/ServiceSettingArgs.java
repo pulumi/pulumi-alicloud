@@ -17,14 +17,14 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
     public static final ServiceSettingArgs Empty = new ServiceSettingArgs();
 
     /**
-     * The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     @Import(name="deliveryOssBucketName")
     private @Nullable Output<String> deliveryOssBucketName;
 
     /**
-     * @return The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * @return The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     public Optional<Output<String>> deliveryOssBucketName() {
@@ -47,14 +47,14 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     @Import(name="deliveryOssKeyPrefix")
     private @Nullable Output<String> deliveryOssKeyPrefix;
 
     /**
-     * @return The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+     * @return The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      * 
      */
     public Optional<Output<String>> deliveryOssKeyPrefix() {
@@ -77,14 +77,14 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+     * The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      * 
      */
     @Import(name="deliverySlsProjectName")
     private @Nullable Output<String> deliverySlsProjectName;
 
     /**
-     * @return The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+     * @return The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      * 
      */
     public Optional<Output<String>> deliverySlsProjectName() {
@@ -120,7 +120,7 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deliveryOssBucketName The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+         * @param deliveryOssBucketName The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deliveryOssBucketName The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+         * @param deliveryOssBucketName The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deliveryOssKeyPrefix The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+         * @param deliveryOssKeyPrefix The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deliveryOssKeyPrefix The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
+         * @param deliveryOssKeyPrefix The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deliverySlsProjectName The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+         * @param deliverySlsProjectName The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ServiceSettingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deliverySlsProjectName The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
+         * @param deliverySlsProjectName The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
          * 
          * @return builder
          * 

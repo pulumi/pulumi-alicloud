@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Cddc
         public Output<int> DiskAllocationRatio { get; private set; } = null!;
 
         /// <summary>
-        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
+        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `Alisql`, `Tair`, `Mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -107,8 +107,8 @@ namespace Pulumi.AliCloud.Cddc
         public Output<int> MemAllocationRatio { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-        /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
+        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `True` and `False`.
+        /// **NOTE:** The `OpenPermission` should be `True` when `engine = "SQLServer"`
         /// </summary>
         [Output("openPermission")]
         public Output<bool> OpenPermission { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<int>? DiskAllocationRatio { get; set; }
 
         /// <summary>
-        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
+        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `Alisql`, `Tair`, `Mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -208,8 +208,8 @@ namespace Pulumi.AliCloud.Cddc
         public Input<int>? MemAllocationRatio { get; set; }
 
         /// <summary>
-        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-        /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
+        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `True` and `False`.
+        /// **NOTE:** The `OpenPermission` should be `True` when `engine = "SQLServer"`
         /// </summary>
         [Input("openPermission")]
         public Input<bool>? OpenPermission { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<int>? DiskAllocationRatio { get; set; }
 
         /// <summary>
-        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
+        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `Alisql`, `Tair`, `Mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -271,8 +271,8 @@ namespace Pulumi.AliCloud.Cddc
         public Input<int>? MemAllocationRatio { get; set; }
 
         /// <summary>
-        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
-        /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
+        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `True` and `False`.
+        /// **NOTE:** The `OpenPermission` should be `True` when `engine = "SQLServer"`
         /// </summary>
         [Input("openPermission")]
         public Input<bool>? OpenPermission { get; set; }

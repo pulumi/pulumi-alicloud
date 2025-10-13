@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> AlertRobotName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
+        /// Specifies whether the alert robot receives daily notifications. Valid values: `True`: receives daily notifications. `False`: does not receive daily notifications, default to `False`.
         /// </summary>
         [Output("dailyNoc")]
         public Output<bool?> DailyNoc { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> RobotAddr { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
+        /// The type of the robot, Valid values: `Wechat`, `Dingding`, `Feishu`.
         /// </summary>
         [Output("robotType")]
         public Output<string> RobotType { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string> AlertRobotName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
+        /// Specifies whether the alert robot receives daily notifications. Valid values: `True`: receives daily notifications. `False`: does not receive daily notifications, default to `False`.
         /// </summary>
         [Input("dailyNoc")]
         public Input<bool>? DailyNoc { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string> RobotAddr { get; set; } = null!;
 
         /// <summary>
-        /// The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
+        /// The type of the robot, Valid values: `Wechat`, `Dingding`, `Feishu`.
         /// </summary>
         [Input("robotType", required: true)]
         public Input<string> RobotType { get; set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? AlertRobotName { get; set; }
 
         /// <summary>
-        /// Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
+        /// Specifies whether the alert robot receives daily notifications. Valid values: `True`: receives daily notifications. `False`: does not receive daily notifications, default to `False`.
         /// </summary>
         [Input("dailyNoc")]
         public Input<bool>? DailyNoc { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? RobotAddr { get; set; }
 
         /// <summary>
-        /// The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
+        /// The type of the robot, Valid values: `Wechat`, `Dingding`, `Feishu`.
         /// </summary>
         [Input("robotType")]
         public Input<string>? RobotType { get; set; }

@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string LoadBalancerBusinessStatus;
         /// <summary>
-        /// Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
+        /// Field `LoadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `LoadBalancerBusinessStatus` instead.
         /// </summary>
         public readonly string LoadBalancerBussinessStatus;
         /// <summary>

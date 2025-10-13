@@ -80,7 +80,7 @@ public final class GetInstancesInstance {
      */
     private String performanceLevel;
     /**
-     * @return The number of strip . When `enable_raid` parameter is set to `true` will transfer. This parameter is valid When `enable_raid` parameter is set to `true`.
+     * @return The number of strip . When `enableRaid` parameter is set to `true` will transfer. This parameter is valid When `enableRaid` parameter is set to `true`.
      * 
      */
     private String raidStripeUnitNumber;
@@ -193,7 +193,7 @@ public final class GetInstancesInstance {
         return this.performanceLevel;
     }
     /**
-     * @return The number of strip . When `enable_raid` parameter is set to `true` will transfer. This parameter is valid When `enable_raid` parameter is set to `true`.
+     * @return The number of strip . When `enableRaid` parameter is set to `true` will transfer. This parameter is valid When `enableRaid` parameter is set to `true`.
      * 
      */
     public String raidStripeUnitNumber() {

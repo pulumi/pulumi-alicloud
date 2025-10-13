@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
     /**
-     * @return The list of response header rules for mirroring back-to-source return. See `return_header` below.
+     * @return The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
      * 
      */
     private @Nullable List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader> returnHeaders;
 
     private BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders() {}
     /**
-     * @return The list of response header rules for mirroring back-to-source return. See `return_header` below.
+     * @return The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
      * 
      */
     public List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader> returnHeaders() {

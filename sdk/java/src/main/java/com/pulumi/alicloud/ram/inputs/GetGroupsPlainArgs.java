@@ -45,14 +45,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+     * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
      * 
      */
     @Import(name="policyName")
     private @Nullable String policyName;
 
     /**
-     * @return Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+     * @return Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
      * 
      */
     public Optional<String> policyName() {
@@ -60,14 +60,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      * 
      */
     @Import(name="policyType")
     private @Nullable String policyType;
 
     /**
-     * @return Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * @return Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      * 
      */
     public Optional<String> policyType() {
@@ -140,7 +140,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyName Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+         * @param policyName Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyType Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+         * @param policyType Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
          * 
          * @return builder
          * 

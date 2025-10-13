@@ -35,7 +35,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * &gt; **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      * 
      */
     @Import(name="description")
@@ -44,7 +44,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * &gt; **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +67,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
      * 
      */
     @Import(name="ipv6CidrIp")
     private @Nullable Output<String> ipv6CidrIp;
 
     /**
-     * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+     * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
      * 
      */
     public Optional<Output<String>> ipv6CidrIp() {
@@ -129,14 +129,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      * 
      */
     @Import(name="prefixListId")
     private @Nullable Output<String> prefixListId;
 
     /**
-     * @return The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+     * @return The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      * 
      */
     public Optional<Output<String>> prefixListId() {
@@ -174,14 +174,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     @Import(name="sourceGroupOwnerAccount")
     private @Nullable Output<String> sourceGroupOwnerAccount;
 
     /**
-     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     public Optional<Output<String>> sourceGroupOwnerAccount() {
@@ -189,14 +189,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+     * The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      * 
      */
     @Import(name="sourceSecurityGroupId")
     private @Nullable Output<String> sourceSecurityGroupId;
 
     /**
-     * @return The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+     * @return The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      * 
      */
     public Optional<Output<String>> sourceSecurityGroupId() {
@@ -278,7 +278,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param description The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
          * 
-         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+         * &gt; **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param description The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
          * 
-         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+         * &gt; **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+         * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+         * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param prefixListId The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+         * @param prefixListId The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param prefixListId The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
+         * @param prefixListId The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceSecurityGroupId The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+         * @param sourceSecurityGroupId The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceSecurityGroupId The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+         * @param sourceSecurityGroupId The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
          * 
          * @return builder
          * 

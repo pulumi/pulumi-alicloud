@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+        /// Default to `True`. If false, the attributes `RamRoleName` and `DiskDeviceMappings` will not be fetched and output.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+        /// Default to `True`. If false, the attributes `RamRoleName` and `DiskDeviceMappings` will not be fetched and output.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

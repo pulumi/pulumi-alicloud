@@ -99,14 +99,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+     * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      * 
      */
     @Import(name="versionCode")
     private @Nullable Output<String> versionCode;
 
     /**
-     * @return Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+     * @return Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      * 
      */
     public Optional<Output<String>> versionCode() {
@@ -274,7 +274,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionCode Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+         * @param versionCode Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionCode Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
+         * @param versionCode Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
          * 
          * @return builder
          * 

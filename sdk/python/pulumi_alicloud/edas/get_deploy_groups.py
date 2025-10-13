@@ -113,6 +113,8 @@ def get_deploy_groups(app_id: Optional[_builtins.str] = None,
 
     > **NOTE:** Available in 1.82.0+
 
+    ## Example Usage
+
 
     :param _builtins.str app_id: ID of the EDAS application.
     :param _builtins.str name_regex: A regex string to filter results by the deploy group name.
@@ -140,6 +142,8 @@ def get_deploy_groups_output(app_id: Optional[pulumi.Input[_builtins.str]] = Non
     This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.82.0+
+
+    ## Example Usage
 
 
     :param _builtins.str app_id: ID of the EDAS application.

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
+        /// The ID of the Patch Baseline. Its value is same as `PatchBaselineName`.
         /// </summary>
         public readonly string Id;
         /// <summary>

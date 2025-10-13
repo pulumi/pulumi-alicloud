@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string Arn;
         /// <summary>
-        /// Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+        /// Authorization strategy of the role. This parameter is deprecated and replaced by `Document`.
         /// </summary>
         public readonly string AssumeRolePolicyDocument;
         /// <summary>

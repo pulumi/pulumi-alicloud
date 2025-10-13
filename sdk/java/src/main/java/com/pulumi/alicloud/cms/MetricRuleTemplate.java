@@ -90,14 +90,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/metricRuleTemplate:MetricRuleTemplate")
 public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+     * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      * 
      */
     @Export(name="alertTemplates", refs={List.class,MetricRuleTemplateAlertTemplate.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MetricRuleTemplateAlertTemplate>> alertTemplates;
 
     /**
-     * @return The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+     * @return The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      * 
      */
     public Output<Optional<List<MetricRuleTemplateAlertTemplate>>> alertTemplates() {

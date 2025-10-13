@@ -30,14 +30,14 @@ public final class AdditionalCertificateArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
+     * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      * 
      */
     @Import(name="certificateId", required=true)
     private Output<String> certificateId;
 
     /**
-     * @return The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
+     * @return The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      * 
      */
     public Output<String> certificateId() {
@@ -123,7 +123,7 @@ public final class AdditionalCertificateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param certificateId The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
+         * @param certificateId The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class AdditionalCertificateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param certificateId The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
+         * @param certificateId The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
          * 
          * @return builder
          * 

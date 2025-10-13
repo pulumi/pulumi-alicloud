@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationKafkaConfigs {
     /**
-     * @return One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * @return One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      * 
      */
     private @Nullable List<ApplicationKafkaConfigsKafkaConfig> kafkaConfigs;
@@ -31,7 +31,7 @@ public final class ApplicationKafkaConfigs {
 
     private ApplicationKafkaConfigs() {}
     /**
-     * @return One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * @return One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      * 
      */
     public List<ApplicationKafkaConfigsKafkaConfig> kafkaConfigs() {

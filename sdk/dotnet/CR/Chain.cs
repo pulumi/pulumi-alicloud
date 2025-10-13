@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.CR
     public partial class Chain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        /// The configuration of delivery chain. See `ChainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         /// </summary>
         [Output("chainConfigs")]
         public Output<ImmutableArray<Outputs.ChainChainConfig>> ChainConfigs { get; private set; } = null!;
@@ -405,7 +405,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<Inputs.ChainChainConfigArgs>? _chainConfigs;
 
         /// <summary>
-        /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        /// The configuration of delivery chain. See `ChainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         /// </summary>
         public InputList<Inputs.ChainChainConfigArgs> ChainConfigs
         {
@@ -455,7 +455,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<Inputs.ChainChainConfigGetArgs>? _chainConfigs;
 
         /// <summary>
-        /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        /// The configuration of delivery chain. See `ChainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         /// </summary>
         public InputList<Inputs.ChainChainConfigGetArgs> ChainConfigs
         {

@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Rds
         public string? Category { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// The DB instance storage space required by the user. Valid values: "CloudSsd", "LocalSsd", "CloudEssd", "CloudEssd2", "CloudEssd3".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public string? DbInstanceStorageType { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// The DB instance storage space required by the user. Valid values: "CloudSsd", "LocalSsd", "CloudEssd", "CloudEssd2", "CloudEssd3".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }

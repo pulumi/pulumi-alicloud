@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlertConfigurationSeverityConfiguration {
     /**
-     * @return Trigger condition. See `eval_condition` below.
+     * @return Trigger condition. See `evalCondition` below.
      * 
      */
     private @Nullable AlertConfigurationSeverityConfigurationEvalCondition evalCondition;
@@ -25,7 +25,7 @@ public final class AlertConfigurationSeverityConfiguration {
 
     private AlertConfigurationSeverityConfiguration() {}
     /**
-     * @return Trigger condition. See `eval_condition` below.
+     * @return Trigger condition. See `evalCondition` below.
      * 
      */
     public Optional<AlertConfigurationSeverityConfigurationEvalCondition> evalCondition() {

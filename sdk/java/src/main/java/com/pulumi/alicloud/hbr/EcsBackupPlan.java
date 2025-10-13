@@ -388,18 +388,18 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.speedLimit);
     }
     /**
-     * Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
      * @deprecated
-     * Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      * 
      */
-    @Deprecated /* Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+    @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
     @Export(name="updatePaths", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updatePaths;
 
     /**
-     * @return Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     * @return Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
      */
     public Output<Optional<Boolean>> updatePaths() {

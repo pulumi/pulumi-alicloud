@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+        /// Site version status:：`Online`.：`Configuring`._faild`：`ConfigureFaild`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteVersion { get; set; }
 
         /// <summary>
-        /// Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
+        /// Site version status:：`Online`.：`Configuring`._faild`：`ConfigureFaild`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

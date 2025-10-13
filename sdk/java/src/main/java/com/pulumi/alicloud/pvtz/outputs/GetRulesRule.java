@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRule {
     /**
-     * @return The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+     * @return The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
      * 
      */
     private List<GetRulesRuleBindVpc> bindVpcs;
@@ -62,7 +62,7 @@ public final class GetRulesRule {
 
     private GetRulesRule() {}
     /**
-     * @return The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+     * @return The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
      * 
      */
     public List<GetRulesRuleBindVpc> bindVpcs() {

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? VpcCloudInstanceId;
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+        /// The ID of the VPC. &gt; **NOTE:** `VpcId` is valid only when `NetworkType` is set to `VPC`.
         /// </summary>
         public readonly string? VpcId;
         /// <summary>

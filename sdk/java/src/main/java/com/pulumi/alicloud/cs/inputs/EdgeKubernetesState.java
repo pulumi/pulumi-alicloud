@@ -57,7 +57,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -68,7 +68,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<EdgeKubernetesCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -232,14 +232,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
-     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> keyName() {
@@ -247,7 +247,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -258,7 +258,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> kubeConfig;
 
     /**
-     * @return The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
@@ -271,7 +271,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      * 
      * *Worker params*
      * 
@@ -281,7 +281,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      * 
      * *Worker params*
      * 
@@ -291,7 +291,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of one element containing information about the associated log store. See `log_config` below.
+     * A list of one element containing information about the associated log store. See `logConfig` below.
      * 
      * @deprecated
      * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
@@ -302,7 +302,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<EdgeKubernetesLogConfigArgs> logConfig;
 
     /**
-     * @return A list of one element containing information about the associated log store. See `log_config` below.
+     * @return A list of one element containing information about the associated log store. See `logConfig` below.
      * 
      * @deprecated
      * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
@@ -381,14 +381,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+     * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+     * @return The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      * 
      */
     public Optional<Output<String>> password() {
@@ -508,7 +508,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -517,7 +517,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Boolean> skipSetCertificateAuthority;
 
     /**
-     * @return Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
      * *Network params*
      * 
@@ -632,14 +632,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      * 
      */
     @Import(name="workerDataDisks")
     private @Nullable Output<List<EdgeKubernetesWorkerDataDiskArgs>> workerDataDisks;
 
     /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      * 
      */
     public Optional<Output<List<EdgeKubernetesWorkerDataDiskArgs>>> workerDataDisks() {
@@ -647,14 +647,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+     * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      * 
      */
     @Import(name="workerDiskCategory")
     private @Nullable Output<String> workerDiskCategory;
 
     /**
-     * @return The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+     * @return The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      * 
      */
     public Optional<Output<String>> workerDiskCategory() {
@@ -662,14 +662,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     @Import(name="workerDiskPerformanceLevel")
     private @Nullable Output<String> workerDiskPerformanceLevel;
 
     /**
-     * @return Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<Output<String>> workerDiskPerformanceLevel() {
@@ -696,7 +696,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
      * 
      * *Computed params*
      * 
-     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+     * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
      */
     @Import(name="workerDiskSnapshotPolicyId")
@@ -707,7 +707,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
      * 
      * *Computed params*
      * 
-     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+     * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
      */
     public Optional<Output<String>> workerDiskSnapshotPolicyId() {
@@ -928,7 +928,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -943,7 +943,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1157,7 +1157,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1168,7 +1168,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1178,7 +1178,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1193,7 +1193,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param kubeConfig The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1208,7 +1208,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-         * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
          * 
          * *Worker params*
          * 
@@ -1222,7 +1222,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-         * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
          * 
          * *Worker params*
          * 
@@ -1234,7 +1234,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param logConfig A list of one element containing information about the associated log store. See `log_config` below.
+         * @param logConfig A list of one element containing information about the associated log store. See `logConfig` below.
          * 
          * @return builder
          * 
@@ -1249,7 +1249,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param logConfig A list of one element containing information about the associated log store. See `log_config` below.
+         * @param logConfig A list of one element containing information about the associated log store. See `logConfig` below.
          * 
          * @return builder
          * 
@@ -1356,7 +1356,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+         * @param password The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1367,7 +1367,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
+         * @param password The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
          * 
          * @return builder
          * 
@@ -1547,7 +1547,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
          * *Network params*
          * 
@@ -1560,7 +1560,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
          * *Network params*
          * 
@@ -1719,7 +1719,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
          * 
          * @return builder
          * 
@@ -1730,7 +1730,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
          * 
          * @return builder
          * 
@@ -1740,7 +1740,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
          * 
          * @return builder
          * 
@@ -1750,7 +1750,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDiskCategory The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+         * @param workerDiskCategory The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -1761,7 +1761,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDiskCategory The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+         * @param workerDiskCategory The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
          * 
          * @return builder
          * 
@@ -1771,7 +1771,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDiskPerformanceLevel Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param workerDiskPerformanceLevel Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -1782,7 +1782,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerDiskPerformanceLevel Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param workerDiskPerformanceLevel Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -1817,7 +1817,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          * 
          * *Computed params*
          * 
-         * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+         * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
          * 
          * @return builder
          * 
@@ -1832,7 +1832,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          * 
          * *Computed params*
          * 
-         * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+         * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
          * 
          * @return builder
          * 

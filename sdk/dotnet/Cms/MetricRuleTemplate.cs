@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class MetricRuleTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+        /// The details of alert rules that are generated based on the alert template. See `AlertTemplates` below.
         /// </summary>
         [Output("alertTemplates")]
         public Output<ImmutableArray<Outputs.MetricRuleTemplateAlertTemplate>> AlertTemplates { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MetricRuleTemplateAlertTemplateArgs>? _alertTemplates;
 
         /// <summary>
-        /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+        /// The details of alert rules that are generated based on the alert template. See `AlertTemplates` below.
         /// </summary>
         public InputList<Inputs.MetricRuleTemplateAlertTemplateArgs> AlertTemplates
         {
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MetricRuleTemplateAlertTemplateGetArgs>? _alertTemplates;
 
         /// <summary>
-        /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+        /// The details of alert rules that are generated based on the alert template. See `AlertTemplates` below.
         /// </summary>
         public InputList<Inputs.MetricRuleTemplateAlertTemplateGetArgs> AlertTemplates
         {

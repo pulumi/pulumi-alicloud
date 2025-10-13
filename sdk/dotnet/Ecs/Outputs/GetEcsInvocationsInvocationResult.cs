@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsInvocationsInvocationInvokeInstanceResult> InvokeInstances;
         /// <summary>
-        /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `InvocationStatus` response parameter for the overall execution state.
         /// </summary>
         public readonly string InvokeStatus;
         /// <summary>

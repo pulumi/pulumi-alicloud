@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource specifications. See `resource_spec` below.
+        /// Resource specifications. See `ResourceSpec` below.
         /// </summary>
         [Output("resourceSpec")]
         public Output<Outputs.VvpInstanceResourceSpec> ResourceSpec { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Store information. See `storage` below.
+        /// Store information. See `Storage` below.
         /// </summary>
         [Output("storage")]
         public Output<Outputs.VvpInstanceStorage> Storage { get; private set; } = null!;
@@ -170,13 +170,13 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Resource specifications. See `resource_spec` below.
+        /// Resource specifications. See `ResourceSpec` below.
         /// </summary>
         [Input("resourceSpec")]
         public Input<Inputs.VvpInstanceResourceSpecArgs>? ResourceSpec { get; set; }
 
         /// <summary>
-        /// Store information. See `storage` below.
+        /// Store information. See `Storage` below.
         /// </summary>
         [Input("storage", required: true)]
         public Input<Inputs.VvpInstanceStorageArgs> Storage { get; set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Resource specifications. See `resource_spec` below.
+        /// Resource specifications. See `ResourceSpec` below.
         /// </summary>
         [Input("resourceSpec")]
         public Input<Inputs.VvpInstanceResourceSpecGetArgs>? ResourceSpec { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Store information. See `storage` below.
+        /// Store information. See `Storage` below.
         /// </summary>
         [Input("storage")]
         public Input<Inputs.VvpInstanceStorageGetArgs>? Storage { get; set; }

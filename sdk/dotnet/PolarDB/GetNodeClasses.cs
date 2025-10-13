@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.PolarDB
         public string? DbNodeClass { get; set; }
 
         /// <summary>
-        /// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+        /// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If DbType is set, DbVersion also needs to be set.
         /// </summary>
         [Input("dbType")]
         public string? DbType { get; set; }
 
         /// <summary>
-        /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+        /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If DbVersion is set, DbType also needs to be set.
         /// </summary>
         [Input("dbVersion")]
         public string? DbVersion { get; set; }
@@ -183,13 +183,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+        /// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If DbType is set, DbVersion also needs to be set.
         /// </summary>
         [Input("dbType")]
         public Input<string>? DbType { get; set; }
 
         /// <summary>
-        /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+        /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If DbVersion is set, DbType also needs to be set.
         /// </summary>
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }

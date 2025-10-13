@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// The unique ARN of the Log Service role.
         /// 
-        /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+        /// &gt; **NOTE:** `SlsProjectArn` and `SlsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
         /// </summary>
         [Output("slsWriteRoleArn")]
         public Output<string> SlsWriteRoleArn { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// The unique ARN of the Log Service role.
         /// 
-        /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+        /// &gt; **NOTE:** `SlsProjectArn` and `SlsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }
@@ -307,7 +307,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// The unique ARN of the Log Service role.
         /// 
-        /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+        /// &gt; **NOTE:** `SlsProjectArn` and `SlsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }

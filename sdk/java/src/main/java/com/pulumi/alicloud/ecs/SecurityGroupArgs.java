@@ -33,24 +33,24 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      * @deprecated
-     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      */
-    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
+    @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
     @Import(name="innerAccess")
     private @Nullable Output<Boolean> innerAccess;
 
     /**
-     * @return Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * @return Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      * @deprecated
-     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      */
-    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
+    @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
     public Optional<Output<Boolean>> innerAccess() {
         return Optional.ofNullable(this.innerAccess);
     }
@@ -75,37 +75,37 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+     * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -226,30 +226,30 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param innerAccess Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+         * @param innerAccess Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+         * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
          * 
          */
-        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
+        @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
         public Builder innerAccess(@Nullable Output<Boolean> innerAccess) {
             $.innerAccess = innerAccess;
             return this;
         }
 
         /**
-         * @param innerAccess Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+         * @param innerAccess Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+         * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
          * 
          */
-        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
+        @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
         public Builder innerAccess(Boolean innerAccess) {
             return innerAccess(Output.of(innerAccess));
         }
@@ -280,36 +280,36 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+         * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+         * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+         * @param resourceGroupId The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+         * @param resourceGroupId The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 

@@ -48,7 +48,7 @@ public final class GetServerGroupsResult {
      */
     private @Nullable String status;
     /**
-     * @return The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
+     * @return The tags of the resource. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -113,7 +113,7 @@ public final class GetServerGroupsResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
+     * @return The tags of the resource. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Map<String,String> tags() {

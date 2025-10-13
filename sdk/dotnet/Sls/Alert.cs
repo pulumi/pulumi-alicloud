@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> AlertName { get; private set; } = null!;
 
         /// <summary>
-        /// Detailed configuration of alarm monitoring rules. See `configuration` below.
+        /// Detailed configuration of alarm monitoring rules. See `Configuration` below.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.AlertConfiguration> Configuration { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Check the frequency-dependent configuration. See `schedule` below.
+        /// Check the frequency-dependent configuration. See `Schedule` below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.AlertSchedule> Schedule { get; private set; } = null!;
@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string> AlertName { get; set; } = null!;
 
         /// <summary>
-        /// Detailed configuration of alarm monitoring rules. See `configuration` below.
+        /// Detailed configuration of alarm monitoring rules. See `Configuration` below.
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.AlertConfigurationArgs> Configuration { get; set; } = null!;
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string> ProjectName { get; set; } = null!;
 
         /// <summary>
-        /// Check the frequency-dependent configuration. See `schedule` below.
+        /// Check the frequency-dependent configuration. See `Schedule` below.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.AlertScheduleArgs> Schedule { get; set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? AlertName { get; set; }
 
         /// <summary>
-        /// Detailed configuration of alarm monitoring rules. See `configuration` below.
+        /// Detailed configuration of alarm monitoring rules. See `Configuration` below.
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.AlertConfigurationGetArgs>? Configuration { get; set; }
@@ -401,7 +401,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Check the frequency-dependent configuration. See `schedule` below.
+        /// Check the frequency-dependent configuration. See `Schedule` below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.AlertScheduleGetArgs>? Schedule { get; set; }

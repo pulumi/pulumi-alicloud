@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.DataWorks.Outputs
         /// </summary>
         public readonly string? DataSourceName;
         /// <summary>
-        /// Single Source Data Source Properties See `data_source_properties` below.
+        /// Single Source Data Source Properties See `DataSourceProperties` below.
         /// </summary>
         public readonly Outputs.DiJobSourceDataSourceSettingDataSourceProperties? DataSourceProperties;
 

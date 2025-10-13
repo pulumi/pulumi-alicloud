@@ -22,6 +22,8 @@ import (
 // > **NOTE:** This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
 //
 // > **NOTE:** Available since v1.122.0.
+//
+// ## Example Usage
 type KubernetesPermission struct {
 	pulumi.CustomResourceState
 

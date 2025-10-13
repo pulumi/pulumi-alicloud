@@ -208,14 +208,14 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+     * @return Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -1059,7 +1059,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param instanceType Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+         * @param instanceType Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
          * 
          * @return builder
          * 
@@ -1070,7 +1070,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param instanceType Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
+         * @param instanceType Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
          * 
          * @return builder
          * 

@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationScalingRuleScalingRuleTimer {
     /**
-     * @return The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * @return The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     private @Nullable String beginDate;
     /**
-     * @return The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * @return The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     private @Nullable String endDate;
@@ -36,14 +36,14 @@ public final class ApplicationScalingRuleScalingRuleTimer {
 
     private ApplicationScalingRuleScalingRuleTimer() {}
     /**
-     * @return The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * @return The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     public Optional<String> beginDate() {
         return Optional.ofNullable(this.beginDate);
     }
     /**
-     * @return The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+     * @return The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
      * 
      */
     public Optional<String> endDate() {

@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<int> CpuPrepaid { get; private set; } = null!;
 
         /// <summary>
-        /// The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The class for default cluster in DBInstance. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         [Output("dbInstanceClass")]
         public Output<string> DbInstanceClass { get; private set; } = null!;
@@ -133,19 +133,19 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string> DbInstanceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The modified IP address whitelists. See `desired_security_ip_lists` below.
+        /// The modified IP address whitelists. See `DesiredSecurityIpLists` below.
         /// </summary>
         [Output("desiredSecurityIpLists")]
         public Output<ImmutableArray<Outputs.DbInstanceDesiredSecurityIpList>> DesiredSecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// If DBInstance need to open public network, set it to `true`.
+        /// If DBInstance need to open public network, set it to `True`.
         /// </summary>
         [Output("enablePublicNetwork")]
         public Output<bool?> EnablePublicNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// The engine of DBInstance. Always `selectdb`.
+        /// The engine of DBInstance. Always `Selectdb`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -211,13 +211,13 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+        /// It is valid when PaymentType is `Subscription`. Valid values are `Year`, `Month`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DBInstance. It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Output("periodTime")]
         public Output<int?> PeriodTime { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+        /// Field `UpgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `EngineMinorVersion` instead.
         /// </summary>
         [Output("upgradedEngineMinorVersion")]
         public Output<string> UpgradedEngineMinorVersion { get; private set; } = null!;
@@ -351,7 +351,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<int> CacheSize { get; set; } = null!;
 
         /// <summary>
-        /// The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The class for default cluster in DBInstance. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         [Input("dbInstanceClass", required: true)]
         public Input<string> DbInstanceClass { get; set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.SelectDB
         private InputList<Inputs.DbInstanceDesiredSecurityIpListArgs>? _desiredSecurityIpLists;
 
         /// <summary>
-        /// The modified IP address whitelists. See `desired_security_ip_lists` below.
+        /// The modified IP address whitelists. See `DesiredSecurityIpLists` below.
         /// </summary>
         public InputList<Inputs.DbInstanceDesiredSecurityIpListArgs> DesiredSecurityIpLists
         {
@@ -375,7 +375,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// If DBInstance need to open public network, set it to `true`.
+        /// If DBInstance need to open public network, set it to `True`.
         /// </summary>
         [Input("enablePublicNetwork")]
         public Input<bool>? EnablePublicNetwork { get; set; }
@@ -393,13 +393,13 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+        /// It is valid when PaymentType is `Subscription`. Valid values are `Year`, `Month`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DBInstance. It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("periodTime")]
         public Input<int>? PeriodTime { get; set; }
@@ -419,7 +419,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+        /// Field `UpgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `EngineMinorVersion` instead.
         /// </summary>
         [Input("upgradedEngineMinorVersion")]
         public Input<string>? UpgradedEngineMinorVersion { get; set; }
@@ -509,7 +509,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<int>? CpuPrepaid { get; set; }
 
         /// <summary>
-        /// The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+        /// The class for default cluster in DBInstance. DbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         /// </summary>
         [Input("dbInstanceClass")]
         public Input<string>? DbInstanceClass { get; set; }
@@ -524,7 +524,7 @@ namespace Pulumi.AliCloud.SelectDB
         private InputList<Inputs.DbInstanceDesiredSecurityIpListGetArgs>? _desiredSecurityIpLists;
 
         /// <summary>
-        /// The modified IP address whitelists. See `desired_security_ip_lists` below.
+        /// The modified IP address whitelists. See `DesiredSecurityIpLists` below.
         /// </summary>
         public InputList<Inputs.DbInstanceDesiredSecurityIpListGetArgs> DesiredSecurityIpLists
         {
@@ -533,13 +533,13 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// If DBInstance need to open public network, set it to `true`.
+        /// If DBInstance need to open public network, set it to `True`.
         /// </summary>
         [Input("enablePublicNetwork")]
         public Input<bool>? EnablePublicNetwork { get; set; }
 
         /// <summary>
-        /// The engine of DBInstance. Always `selectdb`.
+        /// The engine of DBInstance. Always `Selectdb`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -611,13 +611,13 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+        /// It is valid when PaymentType is `Subscription`. Valid values are `Year`, `Month`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DBInstance. It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("periodTime")]
         public Input<int>? PeriodTime { get; set; }
@@ -667,7 +667,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+        /// Field `UpgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `EngineMinorVersion` instead.
         /// </summary>
         [Input("upgradedEngineMinorVersion")]
         public Input<string>? UpgradedEngineMinorVersion { get; set; }
