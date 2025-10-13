@@ -299,14 +299,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nimizVswitches);
     }
     /**
-     * Node Group List See `node_groups` below.
+     * Node Group List See `nodeGroups` below.
      * 
      */
     @Export(name="nodeGroups", refs={List.class,ClusterNodeGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterNodeGroup>> nodeGroups;
 
     /**
-     * @return Node Group List See `node_groups` below.
+     * @return Node Group List See `nodeGroups` below.
      * 
      */
     public Output<Optional<List<ClusterNodeGroup>>> nodeGroups() {

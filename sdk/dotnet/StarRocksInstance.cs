@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// BackendNodeGroups See `backend_node_groups` below.
+        /// BackendNodeGroups See `BackendNodeGroups` below.
         /// </summary>
         [Output("backendNodeGroups")]
         public Output<ImmutableArray<Outputs.StarRocksInstanceBackendNodeGroup>> BackendNodeGroups { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud
         public Output<bool?> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// FrontendNodeGroups See `frontend_node_groups` below.
+        /// FrontendNodeGroups See `FrontendNodeGroups` below.
         /// </summary>
         [Output("frontendNodeGroups")]
         public Output<ImmutableArray<Outputs.StarRocksInstanceFrontendNodeGroup>> FrontendNodeGroups { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// ObserverNodeGroups See `observer_node_groups` below.
+        /// ObserverNodeGroups See `ObserverNodeGroups` below.
         /// </summary>
         [Output("observerNodeGroups")]
         public Output<ImmutableArray<Outputs.StarRocksInstanceObserverNodeGroup>> ObserverNodeGroups { get; private set; } = null!;
@@ -247,8 +247,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The run mode of the instance:
-        /// - shared_nothing
-        /// - shared_data
+        /// - SharedNothing
+        /// - SharedData
         /// - lakehouse
         /// </summary>
         [Output("runMode")]
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitches info of the instance. See `vswitches` below.
+        /// The VSwitches info of the instance. See `Vswitches` below.
         /// </summary>
         [Output("vswitches")]
         public Output<ImmutableArray<Outputs.StarRocksInstanceVswitch>> Vswitches { get; private set; } = null!;
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceBackendNodeGroupArgs>? _backendNodeGroups;
 
         /// <summary>
-        /// BackendNodeGroups See `backend_node_groups` below.
+        /// BackendNodeGroups See `BackendNodeGroups` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceBackendNodeGroupArgs> BackendNodeGroups
         {
@@ -376,7 +376,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceFrontendNodeGroupArgs>? _frontendNodeGroups;
 
         /// <summary>
-        /// FrontendNodeGroups See `frontend_node_groups` below.
+        /// FrontendNodeGroups See `FrontendNodeGroups` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceFrontendNodeGroupArgs> FrontendNodeGroups
         {
@@ -400,7 +400,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceObserverNodeGroupArgs>? _observerNodeGroups;
 
         /// <summary>
-        /// ObserverNodeGroups See `observer_node_groups` below.
+        /// ObserverNodeGroups See `ObserverNodeGroups` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceObserverNodeGroupArgs> ObserverNodeGroups
         {
@@ -453,8 +453,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The run mode of the instance:
-        /// - shared_nothing
-        /// - shared_data
+        /// - SharedNothing
+        /// - SharedData
         /// - lakehouse
         /// </summary>
         [Input("runMode", required: true)]
@@ -488,7 +488,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceVswitchArgs>? _vswitches;
 
         /// <summary>
-        /// The VSwitches info of the instance. See `vswitches` below.
+        /// The VSwitches info of the instance. See `Vswitches` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceVswitchArgs> Vswitches
         {
@@ -520,7 +520,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceBackendNodeGroupGetArgs>? _backendNodeGroups;
 
         /// <summary>
-        /// BackendNodeGroups See `backend_node_groups` below.
+        /// BackendNodeGroups See `BackendNodeGroups` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceBackendNodeGroupGetArgs> BackendNodeGroups
         {
@@ -556,7 +556,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceFrontendNodeGroupGetArgs>? _frontendNodeGroups;
 
         /// <summary>
-        /// FrontendNodeGroups See `frontend_node_groups` below.
+        /// FrontendNodeGroups See `FrontendNodeGroups` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceFrontendNodeGroupGetArgs> FrontendNodeGroups
         {
@@ -580,7 +580,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceObserverNodeGroupGetArgs>? _observerNodeGroups;
 
         /// <summary>
-        /// ObserverNodeGroups See `observer_node_groups` below.
+        /// ObserverNodeGroups See `ObserverNodeGroups` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceObserverNodeGroupGetArgs> ObserverNodeGroups
         {
@@ -639,8 +639,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// The run mode of the instance:
-        /// - shared_nothing
-        /// - shared_data
+        /// - SharedNothing
+        /// - SharedData
         /// - lakehouse
         /// </summary>
         [Input("runMode")]
@@ -680,7 +680,7 @@ namespace Pulumi.AliCloud
         private InputList<Inputs.StarRocksInstanceVswitchGetArgs>? _vswitches;
 
         /// <summary>
-        /// The VSwitches info of the instance. See `vswitches` below.
+        /// The VSwitches info of the instance. See `Vswitches` below.
         /// </summary>
         public InputList<Inputs.StarRocksInstanceVswitchGetArgs> Vswitches
         {

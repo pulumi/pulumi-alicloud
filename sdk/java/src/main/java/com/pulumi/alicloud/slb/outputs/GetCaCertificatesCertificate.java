@@ -53,7 +53,7 @@ public final class GetCaCertificatesCertificate {
      */
     private String id;
     /**
-     * @return (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
+     * @return (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
      * 
      */
     private String name;
@@ -126,7 +126,7 @@ public final class GetCaCertificatesCertificate {
         return this.id;
     }
     /**
-     * @return (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
+     * @return (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
      * 
      */
     public String name() {

@@ -18,14 +18,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     public static final BackupPlanState Empty = new BackupPlanState();
 
     /**
-     * The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+     * The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      * 
      */
     @Import(name="backupGatewayId")
     private @Nullable Output<String> backupGatewayId;
 
     /**
-     * @return The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+     * @return The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      * 
      */
     public Optional<Output<String>> backupGatewayId() {
@@ -393,14 +393,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+     * The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      * 
      */
     @Import(name="sourceEndpointDatabaseName")
     private @Nullable Output<String> sourceEndpointDatabaseName;
 
     /**
-     * @return The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+     * @return The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      * 
      */
     public Optional<Output<String>> sourceEndpointDatabaseName() {
@@ -408,14 +408,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+     * The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      * 
      */
     @Import(name="sourceEndpointInstanceId")
     private @Nullable Output<String> sourceEndpointInstanceId;
 
     /**
-     * @return The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+     * @return The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      * 
      */
     public Optional<Output<String>> sourceEndpointInstanceId() {
@@ -453,14 +453,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     @Import(name="sourceEndpointOracleSid")
     private @Nullable Output<String> sourceEndpointOracleSid;
 
     /**
-     * @return Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * @return Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     public Optional<Output<String>> sourceEndpointOracleSid() {
@@ -468,14 +468,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     @Import(name="sourceEndpointPassword")
     private @Nullable Output<String> sourceEndpointPassword;
 
     /**
-     * @return The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * @return The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     public Optional<Output<String>> sourceEndpointPassword() {
@@ -498,14 +498,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+     * The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      * 
      */
     @Import(name="sourceEndpointRegion")
     private @Nullable Output<String> sourceEndpointRegion;
 
     /**
-     * @return The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+     * @return The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      * 
      */
     public Optional<Output<String>> sourceEndpointRegion() {
@@ -513,14 +513,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     @Import(name="sourceEndpointSid")
     private @Nullable Output<String> sourceEndpointSid;
 
     /**
-     * @return Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * @return Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     public Optional<Output<String>> sourceEndpointSid() {
@@ -528,14 +528,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     @Import(name="sourceEndpointUserName")
     private @Nullable Output<String> sourceEndpointUserName;
 
     /**
-     * @return The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * @return The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     public Optional<Output<String>> sourceEndpointUserName() {
@@ -573,14 +573,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+     * Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      * 
      */
     @Import(name="usedTime")
     private @Nullable Output<Integer> usedTime;
 
     /**
-     * @return Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+     * @return Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      * 
      */
     public Optional<Output<Integer>> usedTime() {
@@ -649,7 +649,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupGatewayId The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+         * @param backupGatewayId The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupGatewayId The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+         * @param backupGatewayId The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
          * 
          * @return builder
          * 
@@ -1174,7 +1174,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointDatabaseName The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+         * @param sourceEndpointDatabaseName The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
          * 
          * @return builder
          * 
@@ -1185,7 +1185,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointDatabaseName The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+         * @param sourceEndpointDatabaseName The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
          * 
          * @return builder
          * 
@@ -1195,7 +1195,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointInstanceId The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+         * @param sourceEndpointInstanceId The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
          * 
          * @return builder
          * 
@@ -1206,7 +1206,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointInstanceId The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+         * @param sourceEndpointInstanceId The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
          * 
          * @return builder
          * 
@@ -1258,7 +1258,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointOracleSid Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+         * @param sourceEndpointOracleSid Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
          * 
          * @return builder
          * 
@@ -1269,7 +1269,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointOracleSid Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+         * @param sourceEndpointOracleSid Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
          * 
          * @return builder
          * 
@@ -1279,7 +1279,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointPassword The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+         * @param sourceEndpointPassword The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
          * 
          * @return builder
          * 
@@ -1290,7 +1290,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointPassword The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+         * @param sourceEndpointPassword The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
          * 
          * @return builder
          * 
@@ -1321,7 +1321,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointRegion The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+         * @param sourceEndpointRegion The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
          * 
          * @return builder
          * 
@@ -1332,7 +1332,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointRegion The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+         * @param sourceEndpointRegion The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
          * 
          * @return builder
          * 
@@ -1342,7 +1342,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointSid Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+         * @param sourceEndpointSid Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
          * 
          * @return builder
          * 
@@ -1353,7 +1353,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointSid Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+         * @param sourceEndpointSid Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
          * 
          * @return builder
          * 
@@ -1363,7 +1363,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointUserName The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+         * @param sourceEndpointUserName The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
          * 
          * @return builder
          * 
@@ -1374,7 +1374,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceEndpointUserName The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+         * @param sourceEndpointUserName The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
          * 
          * @return builder
          * 
@@ -1426,7 +1426,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+         * @param usedTime Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
          * 
          * @return builder
          * 
@@ -1437,7 +1437,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+         * @param usedTime Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
          * 
          * @return builder
          * 

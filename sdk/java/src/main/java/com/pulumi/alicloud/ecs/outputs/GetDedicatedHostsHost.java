@@ -99,7 +99,7 @@ public final class GetDedicatedHostsHost {
      */
     private List<GetDedicatedHostsHostNetworkAttribute> networkAttributes;
     /**
-     * @return The reason why the dedicated host resource is locked. See `operation_locks` below.
+     * @return The reason why the dedicated host resource is locked. See `operationLocks` below.
      * 
      */
     private List<GetDedicatedHostsHostOperationLock> operationLocks;
@@ -273,7 +273,7 @@ public final class GetDedicatedHostsHost {
         return this.networkAttributes;
     }
     /**
-     * @return The reason why the dedicated host resource is locked. See `operation_locks` below.
+     * @return The reason why the dedicated host resource is locked. See `operationLocks` below.
      * 
      */
     public List<GetDedicatedHostsHostOperationLock> operationLocks() {

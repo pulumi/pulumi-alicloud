@@ -16,14 +16,14 @@ public final class AppAttachmentState extends com.pulumi.resources.ResourceArgs 
     public static final AppAttachmentState Empty = new AppAttachmentState();
 
     /**
-     * The api_id that app apply to access.
+     * The apiId that app apply to access.
      * 
      */
     @Import(name="apiId")
     private @Nullable Output<String> apiId;
 
     /**
-     * @return The api_id that app apply to access.
+     * @return The apiId that app apply to access.
      * 
      */
     public Optional<Output<String>> apiId() {
@@ -103,7 +103,7 @@ public final class AppAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiId The api_id that app apply to access.
+         * @param apiId The apiId that app apply to access.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class AppAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiId The api_id that app apply to access.
+         * @param apiId The apiId that app apply to access.
          * 
          * @return builder
          * 

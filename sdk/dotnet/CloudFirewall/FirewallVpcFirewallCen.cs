@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the VPC. See `local_vpc` below.
+        /// The details of the VPC. See `LocalVpc` below.
         /// </summary>
         [Output("localVpc")]
         public Output<Outputs.FirewallVpcFirewallCenLocalVpc> LocalVpc { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the VPC. See `local_vpc` below.
+        /// The details of the VPC. See `LocalVpc` below.
         /// </summary>
         [Input("localVpc", required: true)]
         public Input<Inputs.FirewallVpcFirewallCenLocalVpcArgs> LocalVpc { get; set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the VPC. See `local_vpc` below.
+        /// The details of the VPC. See `LocalVpc` below.
         /// </summary>
         [Input("localVpc")]
         public Input<Inputs.FirewallVpcFirewallCenLocalVpcGetArgs>? LocalVpc { get; set; }

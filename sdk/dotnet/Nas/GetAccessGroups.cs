@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Nas
         public string? Description { get; set; }
 
         /// <summary>
-        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+        /// The type of file system. Valid values: `Standard` and `Extreme`. Default to `Standard`.
         /// </summary>
         [Input("fileSystemType")]
         public string? FileSystemType { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+        /// Field `Type` has been deprecated from version 1.95.0. Use `AccessGroupType` instead.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+        /// The type of file system. Valid values: `Standard` and `Extreme`. Default to `Standard`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+        /// Field `Type` has been deprecated from version 1.95.0. Use `AccessGroupType` instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `&lt;access_group_id&gt;:&lt;file_system_type&gt;`.
+        /// A list of AccessGroup IDs, the value is set to `Names`. After version 1.95.0 the item value as `&lt;access_group_id&gt;:&lt;file_system_type&gt;`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Nas
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
+        /// (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `AccessGroupType` after version 1.95.0.
         /// </summary>
         public readonly string? Type;
         public readonly bool? UseutcDateTime;

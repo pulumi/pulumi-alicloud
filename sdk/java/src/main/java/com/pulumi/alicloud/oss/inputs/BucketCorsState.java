@@ -34,14 +34,14 @@ public final class BucketCorsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+     * The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
      * 
      */
     @Import(name="corsRules")
     private @Nullable Output<List<BucketCorsCorsRuleArgs>> corsRules;
 
     /**
-     * @return The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+     * @return The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
      * 
      */
     public Optional<Output<List<BucketCorsCorsRuleArgs>>> corsRules() {
@@ -111,7 +111,7 @@ public final class BucketCorsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+         * @param corsRules The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class BucketCorsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+         * @param corsRules The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class BucketCorsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+         * @param corsRules The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
          * 
          * @return builder
          * 

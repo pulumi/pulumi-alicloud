@@ -170,14 +170,14 @@ public class Host extends com.pulumi.resources.CustomResource {
         return this.hostName;
     }
     /**
-     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      * 
      */
     @Export(name="hostPrivateAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostPrivateAddress;
 
     /**
-     * @return Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
+     * @return Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      * 
      */
     public Output<Optional<String>> hostPrivateAddress() {

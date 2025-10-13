@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfig {
     /**
-     * @return The access logging configuration See `access_log` below.
+     * @return The access logging configuration See `accessLog` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
@@ -32,7 +32,7 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable ServiceMeshMeshConfigAudit audit;
     /**
-     * @return Control plane log collection configuration. See `control_plane_log` below.
+     * @return Control plane log collection configuration. See `controlPlaneLog` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
@@ -82,7 +82,7 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable ServiceMeshMeshConfigProxy proxy;
     /**
-     * @return Sidecar injector configuration See `sidecar_injector` below.
+     * @return Sidecar injector configuration See `sidecarInjector` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
@@ -99,7 +99,7 @@ public final class ServiceMeshMeshConfig {
 
     private ServiceMeshMeshConfig() {}
     /**
-     * @return The access logging configuration See `access_log` below.
+     * @return The access logging configuration See `accessLog` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAccessLog> accessLog() {
@@ -113,7 +113,7 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.audit);
     }
     /**
-     * @return Control plane log collection configuration. See `control_plane_log` below.
+     * @return Control plane log collection configuration. See `controlPlaneLog` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigControlPlaneLog> controlPlaneLog() {
@@ -183,7 +183,7 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.proxy);
     }
     /**
-     * @return Sidecar injector configuration See `sidecar_injector` below.
+     * @return Sidecar injector configuration See `sidecarInjector` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjector> sidecarInjector() {

@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class DhcpOptionsSet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `AssociateVpcs` below.
         /// </summary>
         [Output("associateVpcs")]
         public Output<ImmutableArray<Outputs.DhcpOptionsSetAssociateVpc>> AssociateVpcs { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.DhcpOptionsSetAssociateVpcArgs>? _associateVpcs;
 
         /// <summary>
-        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `AssociateVpcs` below.
         /// </summary>
         [Obsolete(@"Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.")]
         public InputList<Inputs.DhcpOptionsSetAssociateVpcArgs> AssociateVpcs
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.DhcpOptionsSetAssociateVpcGetArgs>? _associateVpcs;
 
         /// <summary>
-        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `AssociateVpcs` below.
         /// </summary>
         [Obsolete(@"Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.")]
         public InputList<Inputs.DhcpOptionsSetAssociateVpcGetArgs> AssociateVpcs

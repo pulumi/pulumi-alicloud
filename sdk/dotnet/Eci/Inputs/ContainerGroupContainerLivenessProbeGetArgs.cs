@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerLivenessProbeExecGetArgs>? _execs;
 
         /// <summary>
-        /// Health check using command line method. See `exec` below.
+        /// Health check using command line method. See `Exec` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeExecGetArgs> Execs
         {
@@ -34,9 +34,9 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerLivenessProbeHttpGetGetArgs>? _httpGets;
 
         /// <summary>
-        /// Health check using HTTP request method. See `http_get` below.
+        /// Health check using HTTP request method. See `HttpGet` below.
         /// 
-        /// &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+        /// &gt; **NOTE:** When you configure `ReadinessProbe`, you can select only one of the `Exec`, `TcpSocket`, `HttpGet`.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeHttpGetGetArgs> HttpGets
         {
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerLivenessProbeTcpSocketGetArgs>? _tcpSockets;
 
         /// <summary>
-        /// Health check using TCP socket method. See `tcp_socket` below.
+        /// Health check using TCP socket method. See `TcpSocket` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeTcpSocketGetArgs> TcpSockets
         {

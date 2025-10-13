@@ -40,7 +40,7 @@ public final class BgpPolicyContent {
      */
     private @Nullable Boolean enableIntelligence;
     /**
-     * @return Fingerprint Rules. See `finger_print_rule_list` below.
+     * @return Fingerprint Rules. See `fingerPrintRuleList` below.
      * 
      */
     private @Nullable List<BgpPolicyContentFingerPrintRuleList> fingerPrintRuleLists;
@@ -50,12 +50,12 @@ public final class BgpPolicyContent {
      */
     private @Nullable String intelligenceLevel;
     /**
-     * @return L4 protection rules. See `layer4_rule_list` below.
+     * @return L4 protection rules. See `layer4RuleList` below.
      * 
      */
     private @Nullable List<BgpPolicyContentLayer4RuleList> layer4RuleLists;
     /**
-     * @return Port Rule List. See `port_rule_list` below.
+     * @return Port Rule List. See `portRuleList` below.
      * 
      */
     private @Nullable List<BgpPolicyContentPortRuleList> portRuleLists;
@@ -75,12 +75,12 @@ public final class BgpPolicyContent {
      */
     private @Nullable List<Integer> regionBlockProvinceLists;
     /**
-     * @return Source pull Black. See `source_block_list` below.
+     * @return Source pull Black. See `sourceBlockList` below.
      * 
      */
     private @Nullable List<BgpPolicyContentSourceBlockList> sourceBlockLists;
     /**
-     * @return Do not fill in when the source speed limit is deleted. See `source_limit` below.
+     * @return Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
      * 
      */
     private @Nullable BgpPolicyContentSourceLimit sourceLimit;
@@ -120,7 +120,7 @@ public final class BgpPolicyContent {
         return Optional.ofNullable(this.enableIntelligence);
     }
     /**
-     * @return Fingerprint Rules. See `finger_print_rule_list` below.
+     * @return Fingerprint Rules. See `fingerPrintRuleList` below.
      * 
      */
     public List<BgpPolicyContentFingerPrintRuleList> fingerPrintRuleLists() {
@@ -134,14 +134,14 @@ public final class BgpPolicyContent {
         return Optional.ofNullable(this.intelligenceLevel);
     }
     /**
-     * @return L4 protection rules. See `layer4_rule_list` below.
+     * @return L4 protection rules. See `layer4RuleList` below.
      * 
      */
     public List<BgpPolicyContentLayer4RuleList> layer4RuleLists() {
         return this.layer4RuleLists == null ? List.of() : this.layer4RuleLists;
     }
     /**
-     * @return Port Rule List. See `port_rule_list` below.
+     * @return Port Rule List. See `portRuleList` below.
      * 
      */
     public List<BgpPolicyContentPortRuleList> portRuleLists() {
@@ -169,14 +169,14 @@ public final class BgpPolicyContent {
         return this.regionBlockProvinceLists == null ? List.of() : this.regionBlockProvinceLists;
     }
     /**
-     * @return Source pull Black. See `source_block_list` below.
+     * @return Source pull Black. See `sourceBlockList` below.
      * 
      */
     public List<BgpPolicyContentSourceBlockList> sourceBlockLists() {
         return this.sourceBlockLists == null ? List.of() : this.sourceBlockLists;
     }
     /**
-     * @return Do not fill in when the source speed limit is deleted. See `source_limit` below.
+     * @return Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
      * 
      */
     public Optional<BgpPolicyContentSourceLimit> sourceLimit() {

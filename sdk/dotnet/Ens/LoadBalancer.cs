@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ens
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of backend servers. See `backend_servers` below.
+        /// The list of backend servers. See `BackendServers` below.
         /// </summary>
         [Output("backendServers")]
         public Output<ImmutableArray<Outputs.LoadBalancerBackendServer>> BackendServers { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Ens
         private InputList<Inputs.LoadBalancerBackendServerArgs>? _backendServers;
 
         /// <summary>
-        /// The list of backend servers. See `backend_servers` below.
+        /// The list of backend servers. See `BackendServers` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerBackendServerArgs> BackendServers
         {
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Ens
         private InputList<Inputs.LoadBalancerBackendServerGetArgs>? _backendServers;
 
         /// <summary>
-        /// The list of backend servers. See `backend_servers` below.
+        /// The list of backend servers. See `BackendServers` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerBackendServerGetArgs> BackendServers
         {

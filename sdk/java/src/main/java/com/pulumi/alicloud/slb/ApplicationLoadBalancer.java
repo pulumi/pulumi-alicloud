@@ -75,14 +75,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.addressType;
     }
     /**
-     * Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+     * Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
-     * @return Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
+     * @return Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     public Output<Optional<Integer>> bandwidth() {
@@ -117,14 +117,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.instanceChargeType;
     }
     /**
-     * Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+     * Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+     * @return Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
@@ -139,7 +139,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
      * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
+     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = &#34;PayByCLCU&#34;`.
      * 
      */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
@@ -148,7 +148,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     /**
      * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
      * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
+     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = &#34;PayByCLCU&#34;`.
      * 
      */
     public Output<String> loadBalancerSpec() {
@@ -169,14 +169,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.masterZoneId;
     }
     /**
-     * The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
      * 
      */
     @Export(name="modificationProtectionReason", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modificationProtectionReason;
 
     /**
-     * @return The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * @return The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
      * 
      */
     public Output<Optional<String>> modificationProtectionReason() {
@@ -197,7 +197,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.modificationProtectionStatus;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
@@ -208,7 +208,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
      */
     public Output<String> name() {
@@ -271,7 +271,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.slaveZoneId;
     }
     /**
-     * Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+     * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      * 
      * @deprecated
      * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
@@ -282,7 +282,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     private Output<String> specification;
 
     /**
-     * @return Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+     * @return Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      * 
      */
     public Output<String> specification() {
@@ -317,14 +317,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.tags;
     }
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
+     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      * 
      */
     public Output<Optional<String>> vswitchId() {

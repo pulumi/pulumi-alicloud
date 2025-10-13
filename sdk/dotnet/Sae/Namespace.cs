@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Sae
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `EnableMicroRegistration` to `False` to accelerate the creation of the namespace. Default value: `True`. Valid values:
         /// </summary>
         [Output("enableMicroRegistration")]
         public Output<bool> EnableMicroRegistration { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> NamespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `NamespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
         /// </summary>
         [Output("namespaceShortId")]
         public Output<string> NamespaceShortId { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Sae
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `EnableMicroRegistration` to `False` to accelerate the creation of the namespace. Default value: `True`. Valid values:
         /// </summary>
         [Input("enableMicroRegistration")]
         public Input<bool>? EnableMicroRegistration { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string> NamespaceName { get; set; } = null!;
 
         /// <summary>
-        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `NamespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
         /// </summary>
         [Input("namespaceShortId")]
         public Input<string>? NamespaceShortId { get; set; }
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Sae
     public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `EnableMicroRegistration` to `False` to accelerate the creation of the namespace. Default value: `True`. Valid values:
         /// </summary>
         [Input("enableMicroRegistration")]
         public Input<bool>? EnableMicroRegistration { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? NamespaceName { get; set; }
 
         /// <summary>
-        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `NamespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
         /// </summary>
         [Input("namespaceShortId")]
         public Input<string>? NamespaceShortId { get; set; }

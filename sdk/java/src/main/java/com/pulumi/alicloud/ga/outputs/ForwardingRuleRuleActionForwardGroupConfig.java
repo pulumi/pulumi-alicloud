@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class ForwardingRuleRuleActionForwardGroupConfig {
     /**
-     * @return The information about the endpoint group. See `server_group_tuples` below.
+     * @return The information about the endpoint group. See `serverGroupTuples` below.
      * 
      */
     private List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
     private ForwardingRuleRuleActionForwardGroupConfig() {}
     /**
-     * @return The information about the endpoint group. See `server_group_tuples` below.
+     * @return The information about the endpoint group. See `serverGroupTuples` below.
      * 
      */
     public List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples() {

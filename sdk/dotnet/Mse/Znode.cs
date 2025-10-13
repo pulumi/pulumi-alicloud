@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Mse
     public partial class Znode : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh` or `en`.
+        /// The language type of the returned information. Valid values: `Zh` or `En`.
         /// </summary>
         [Output("acceptLanguage")]
         public Output<string?> AcceptLanguage { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class ZnodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh` or `en`.
+        /// The language type of the returned information. Valid values: `Zh` or `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class ZnodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh` or `en`.
+        /// The language type of the returned information. Valid values: `Zh` or `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }

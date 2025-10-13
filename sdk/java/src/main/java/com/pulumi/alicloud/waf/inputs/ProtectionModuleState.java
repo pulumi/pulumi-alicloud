@@ -17,14 +17,14 @@ public final class ProtectionModuleState extends com.pulumi.resources.ResourceAr
     public static final ProtectionModuleState Empty = new ProtectionModuleState();
 
     /**
-     * The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+     * The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
      * 
      */
     @Import(name="defenseType")
     private @Nullable Output<String> defenseType;
 
     /**
-     * @return The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+     * @return The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
      * 
      */
     public Optional<Output<String>> defenseType() {
@@ -62,24 +62,24 @@ public final class ProtectionModuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-     * * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-     * * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-     * * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-     * * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-     * * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+     * The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
+     * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
+     * * The `defenseType` is `dld`. `0`: warn mode. `1`: block mode.
+     * * The `defenseType` is `acCc`. `0`: prevention mode. `1`: protection-emergency mode.
+     * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+     * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<Integer> mode;
 
     /**
-     * @return The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-     * * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-     * * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-     * * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-     * * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-     * * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+     * @return The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
+     * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
+     * * The `defenseType` is `dld`. `0`: warn mode. `1`: block mode.
+     * * The `defenseType` is `acCc`. `0`: prevention mode. `1`: protection-emergency mode.
+     * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+     * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
      * 
      */
     public Optional<Output<Integer>> mode() {
@@ -130,7 +130,7 @@ public final class ProtectionModuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defenseType The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+         * @param defenseType The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ProtectionModuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defenseType The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
+         * @param defenseType The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
          * 
          * @return builder
          * 
@@ -193,12 +193,12 @@ public final class ProtectionModuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mode The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-         * * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-         * * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-         * * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-         * * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-         * * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+         * @param mode The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
+         * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
+         * * The `defenseType` is `dld`. `0`: warn mode. `1`: block mode.
+         * * The `defenseType` is `acCc`. `0`: prevention mode. `1`: protection-emergency mode.
+         * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+         * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
          * 
          * @return builder
          * 
@@ -209,12 +209,12 @@ public final class ProtectionModuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mode The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
-         * * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
-         * * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
-         * * The `defense_type` is `ac_cc`. `0`: prevention mode. `1`: protection-emergency mode.
-         * * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
-         * * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
+         * @param mode The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
+         * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
+         * * The `defenseType` is `dld`. `0`: warn mode. `1`: block mode.
+         * * The `defenseType` is `acCc`. `0`: prevention mode. `1`: protection-emergency mode.
+         * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+         * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
          * 
          * @return builder
          * 

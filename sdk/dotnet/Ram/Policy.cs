@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
-    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `Force`  with `True` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
     /// 
     /// &gt; **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
     /// 
@@ -104,19 +104,19 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+        /// Field `Document` has been deprecated from provider version 1.114.0. New field `PolicyDocument` instead.
         /// </summary>
         [Output("document")]
         public Output<string> Document { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
+        /// Specifies whether to force delete the Policy. Default value: `False`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.114.0. New field `PolicyName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> RotateStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
+        /// Field `Statement` has been deprecated from provider version 1.49.0. New field `Document` instead. See `Statement` below.
         /// </summary>
         [Output("statements")]
         public Output<ImmutableArray<Outputs.PolicyStatement>> Statements { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
+        /// Field `Version` has been deprecated from provider version 1.49.0. New field `Document` instead.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -224,19 +224,19 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+        /// Field `Document` has been deprecated from provider version 1.114.0. New field `PolicyDocument` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
 
         /// <summary>
-        /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
+        /// Specifies whether to force delete the Policy. Default value: `False`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.114.0. New field `PolicyName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.PolicyStatementArgs>? _statements;
 
         /// <summary>
-        /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
+        /// Field `Statement` has been deprecated from provider version 1.49.0. New field `Document` instead. See `Statement` below.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
         public InputList<Inputs.PolicyStatementArgs> Statements
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
+        /// Field `Version` has been deprecated from provider version 1.49.0. New field `Document` instead.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -325,19 +325,19 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
+        /// Field `Document` has been deprecated from provider version 1.114.0. New field `PolicyDocument` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
 
         /// <summary>
-        /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
+        /// Specifies whether to force delete the Policy. Default value: `False`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.114.0. New field `PolicyName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.PolicyStatementGetArgs>? _statements;
 
         /// <summary>
-        /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
+        /// Field `Statement` has been deprecated from provider version 1.49.0. New field `Document` instead. See `Statement` below.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
         public InputList<Inputs.PolicyStatementGetArgs> Statements
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
+        /// Field `Version` has been deprecated from provider version 1.49.0. New field `Document` instead.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

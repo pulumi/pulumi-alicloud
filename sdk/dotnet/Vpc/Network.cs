@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The IPv6 CIDR block of the default VPC.
         /// 
-        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
         [Output("ipv6CidrBlock")]
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterTableId { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `SecondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
         [Output("secondaryCidrBlocks")]
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The IPv6 CIDR block of the default VPC.
         /// 
-        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
@@ -407,9 +407,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _secondaryCidrBlocks;
 
         /// <summary>
-        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `SecondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
-        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.")]
+        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `SecondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.")]
         public InputList<string> SecondaryCidrBlocks
         {
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
@@ -552,7 +552,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The IPv6 CIDR block of the default VPC.
         /// 
-        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
@@ -629,9 +629,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _secondaryCidrBlocks;
 
         /// <summary>
-        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `SecondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
-        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.")]
+        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `SecondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.")]
         public InputList<string> SecondaryCidrBlocks
         {
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());

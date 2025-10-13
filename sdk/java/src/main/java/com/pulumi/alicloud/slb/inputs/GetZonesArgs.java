@@ -56,10 +56,10 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      * 
      * @deprecated
-     * The parameter enable_details has been deprecated from version v1.154.0+
+     * The parameter enableDetails has been deprecated from version v1.154.0+
      * 
      */
-    @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
+    @Deprecated /* The parameter enableDetails has been deprecated from version v1.154.0+ */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
@@ -67,10 +67,10 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
      * @return Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      * 
      * @deprecated
-     * The parameter enable_details has been deprecated from version v1.154.0+
+     * The parameter enableDetails has been deprecated from version v1.154.0+
      * 
      */
-    @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
+    @Deprecated /* The parameter enableDetails has been deprecated from version v1.154.0+ */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -203,10 +203,10 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          * @deprecated
-         * The parameter enable_details has been deprecated from version v1.154.0+
+         * The parameter enableDetails has been deprecated from version v1.154.0+
          * 
          */
-        @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
+        @Deprecated /* The parameter enableDetails has been deprecated from version v1.154.0+ */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
@@ -218,10 +218,10 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          * @deprecated
-         * The parameter enable_details has been deprecated from version v1.154.0+
+         * The parameter enableDetails has been deprecated from version v1.154.0+
          * 
          */
-        @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
+        @Deprecated /* The parameter enableDetails has been deprecated from version v1.154.0+ */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }

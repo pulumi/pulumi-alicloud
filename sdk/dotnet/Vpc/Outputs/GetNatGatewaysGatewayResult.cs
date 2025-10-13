@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatType;
         /// <summary>
-        /// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
+        /// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`.
         /// </summary>
         public readonly string NetworkType;
         /// <summary>

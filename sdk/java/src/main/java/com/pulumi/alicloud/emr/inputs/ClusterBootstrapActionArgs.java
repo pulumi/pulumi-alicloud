@@ -61,14 +61,14 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * bootstrap action execution target, you can specify the host group name, e.g. &#34;coreGroup&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
      * 
      */
     @Import(name="executionTarget")
     private @Nullable Output<String> executionTarget;
 
     /**
-     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;coreGroup&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
      * 
      */
     public Optional<Output<String>> executionTarget() {
@@ -198,7 +198,7 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param executionTarget bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+         * @param executionTarget bootstrap action execution target, you can specify the host group name, e.g. &#34;coreGroup&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param executionTarget bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+         * @param executionTarget bootstrap action execution target, you can specify the host group name, e.g. &#34;coreGroup&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
          * 
          * @return builder
          * 

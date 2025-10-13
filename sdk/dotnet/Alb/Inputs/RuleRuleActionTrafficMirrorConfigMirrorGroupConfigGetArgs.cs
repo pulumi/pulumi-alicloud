@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         private InputList<Inputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleGetArgs>? _serverGroupTuples;
 
         /// <summary>
-        /// The destination server group to which requests are forwarded. See `server_group_tuples` below.
+        /// The destination server group to which requests are forwarded. See `ServerGroupTuples` below.
         /// </summary>
         public InputList<Inputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleGetArgs> ServerGroupTuples
         {

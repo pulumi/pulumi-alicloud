@@ -66,14 +66,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountNamePrefix);
     }
     /**
-     * The tags of the account See `account_tags` below.
+     * The tags of the account See `accountTags` below.
      * 
      */
     @Export(name="accountTags", refs={List.class,AccountAccountTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccountAccountTag>> accountTags;
 
     /**
-     * @return The tags of the account See `account_tags` below.
+     * @return The tags of the account See `accountTags` below.
      * 
      */
     public Output<Optional<List<AccountAccountTag>>> accountTags() {

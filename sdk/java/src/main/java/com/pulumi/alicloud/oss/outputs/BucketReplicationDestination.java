@@ -23,9 +23,9 @@ public final class BucketReplicationDestination {
      */
     private String location;
     /**
-     * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+     * @return The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
      * 
-     * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+     * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
      * 
      */
     private @Nullable String transferType;
@@ -46,9 +46,9 @@ public final class BucketReplicationDestination {
         return this.location;
     }
     /**
-     * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+     * @return The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
      * 
-     * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+     * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
      * 
      */
     public Optional<String> transferType() {

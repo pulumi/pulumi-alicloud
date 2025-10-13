@@ -156,14 +156,14 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.dbClusterId;
     }
     /**
-     * The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+     * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
-     * @return The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+     * @return The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     public Output<String> groupName() {

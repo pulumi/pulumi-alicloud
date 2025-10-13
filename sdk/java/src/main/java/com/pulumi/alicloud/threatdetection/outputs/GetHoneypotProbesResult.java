@@ -35,7 +35,7 @@ public final class GetHoneypotProbesResult {
     private @Nullable String outputFile;
     private @Nullable String probeStatus;
     /**
-     * @return Probe type, support `host_probe` and `vpc_black_hole_probe`.
+     * @return Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      * 
      */
     private @Nullable String probeType;
@@ -80,7 +80,7 @@ public final class GetHoneypotProbesResult {
         return Optional.ofNullable(this.probeStatus);
     }
     /**
-     * @return Probe type, support `host_probe` and `vpc_black_hole_probe`.
+     * @return Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      * 
      */
     public Optional<String> probeType() {

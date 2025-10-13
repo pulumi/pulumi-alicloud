@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Target Configuration See `destination_config` below.
+        /// Target Configuration See `DestinationConfig` below.
         /// </summary>
         [Output("destinationConfig")]
         public Output<Outputs.V3AsyncInvokeConfigDestinationConfig?> DestinationConfig { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.FC
         public Input<bool>? AsyncTask { get; set; }
 
         /// <summary>
-        /// Target Configuration See `destination_config` below.
+        /// Target Configuration See `DestinationConfig` below.
         /// </summary>
         [Input("destinationConfig")]
         public Input<Inputs.V3AsyncInvokeConfigDestinationConfigArgs>? DestinationConfig { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Target Configuration See `destination_config` below.
+        /// Target Configuration See `DestinationConfig` below.
         /// </summary>
         [Input("destinationConfig")]
         public Input<Inputs.V3AsyncInvokeConfigDestinationConfigGetArgs>? DestinationConfig { get; set; }

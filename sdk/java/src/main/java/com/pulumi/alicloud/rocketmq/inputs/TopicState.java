@@ -90,7 +90,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
-     * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+     * &gt; **NOTE:** At least one of `topicName` and `topic` should be set.
      * 
      */
     @Import(name="tags")
@@ -101,7 +101,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
-     * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+     * &gt; **NOTE:** At least one of `topicName` and `topic` should be set.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -109,7 +109,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replaced by `topic_name` after version 1.97.0.
+     * Replaced by `topicName` after version 1.97.0.
      * 
      * @deprecated
      * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
@@ -120,7 +120,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> topic;
 
     /**
-     * @return Replaced by `topic_name` after version 1.97.0.
+     * @return Replaced by `topicName` after version 1.97.0.
      * 
      * @deprecated
      * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
@@ -273,7 +273,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
          * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
          * 
-         * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+         * &gt; **NOTE:** At least one of `topicName` and `topic` should be set.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
          * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
          * 
-         * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
+         * &gt; **NOTE:** At least one of `topicName` and `topic` should be set.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Replaced by `topic_name` after version 1.97.0.
+         * @param topic Replaced by `topicName` after version 1.97.0.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Replaced by `topic_name` after version 1.97.0.
+         * @param topic Replaced by `topicName` after version 1.97.0.
          * 
          * @return builder
          * 

@@ -19,14 +19,14 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
     public static final ConnectionAuthParametersArgs Empty = new ConnectionAuthParametersArgs();
 
     /**
-     * The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+     * The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
      * 
      */
     @Import(name="apiKeyAuthParameters")
     private @Nullable Output<ConnectionAuthParametersApiKeyAuthParametersArgs> apiKeyAuthParameters;
 
     /**
-     * @return The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+     * @return The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
      * 
      */
     public Optional<Output<ConnectionAuthParametersApiKeyAuthParametersArgs>> apiKeyAuthParameters() {
@@ -49,14 +49,14 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+     * The parameters that are configured for basic authentication. See `basicAuthParameters` below.
      * 
      */
     @Import(name="basicAuthParameters")
     private @Nullable Output<ConnectionAuthParametersBasicAuthParametersArgs> basicAuthParameters;
 
     /**
-     * @return The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+     * @return The parameters that are configured for basic authentication. See `basicAuthParameters` below.
      * 
      */
     public Optional<Output<ConnectionAuthParametersBasicAuthParametersArgs>> basicAuthParameters() {
@@ -64,14 +64,14 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+     * The parameters that are configured for OAuth authentication. See `oauthParameters` below.
      * 
      */
     @Import(name="oauthParameters")
     private @Nullable Output<ConnectionAuthParametersOauthParametersArgs> oauthParameters;
 
     /**
-     * @return The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+     * @return The parameters that are configured for OAuth authentication. See `oauthParameters` below.
      * 
      */
     public Optional<Output<ConnectionAuthParametersOauthParametersArgs>> oauthParameters() {
@@ -106,7 +106,7 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param apiKeyAuthParameters The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+         * @param apiKeyAuthParameters The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param apiKeyAuthParameters The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+         * @param apiKeyAuthParameters The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param basicAuthParameters The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+         * @param basicAuthParameters The parameters that are configured for basic authentication. See `basicAuthParameters` below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param basicAuthParameters The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+         * @param basicAuthParameters The parameters that are configured for basic authentication. See `basicAuthParameters` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param oauthParameters The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+         * @param oauthParameters The parameters that are configured for OAuth authentication. See `oauthParameters` below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ConnectionAuthParametersArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param oauthParameters The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+         * @param oauthParameters The parameters that are configured for OAuth authentication. See `oauthParameters` below.
          * 
          * @return builder
          * 

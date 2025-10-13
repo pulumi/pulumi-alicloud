@@ -61,17 +61,17 @@ public final class ServiceMeshMeshConfigKiali {
      */
     private @Nullable String kialiServiceAnnotations;
     /**
-     * @return When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+     * @return When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKialiOpenIdConfig openIdConfig;
     /**
-     * @return When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+     * @return When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKialiRamOauthConfig ramOauthConfig;
     /**
-     * @return When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+     * @return When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKialiServerConfig serverConfig;
@@ -151,21 +151,21 @@ public final class ServiceMeshMeshConfigKiali {
         return Optional.ofNullable(this.kialiServiceAnnotations);
     }
     /**
-     * @return When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
+     * @return When the mesh topology&#39;s authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKialiOpenIdConfig> openIdConfig() {
         return Optional.ofNullable(this.openIdConfig);
     }
     /**
-     * @return When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
+     * @return When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKialiRamOauthConfig> ramOauthConfig() {
         return Optional.ofNullable(this.ramOauthConfig);
     }
     /**
-     * @return When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
+     * @return When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKialiServerConfig> serverConfig() {

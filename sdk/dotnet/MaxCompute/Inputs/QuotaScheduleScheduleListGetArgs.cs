@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
     public sealed class QuotaScheduleScheduleListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of effective condition. See `condition` below.
+        /// The value of effective condition. See `Condition` below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.QuotaScheduleScheduleListConditionGetArgs>? Condition { get; set; }

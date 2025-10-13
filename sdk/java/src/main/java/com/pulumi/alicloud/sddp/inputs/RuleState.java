@@ -47,14 +47,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      * 
      */
     @Import(name="contentCategory")
     private @Nullable Output<String> contentCategory;
 
     /**
-     * @return The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+     * @return The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      * 
      */
     public Optional<Output<String>> contentCategory() {
@@ -62,14 +62,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      * 
      */
     @Import(name="customType")
     private @Nullable Output<Integer> customType;
 
     /**
-     * @return The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+     * @return The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      * 
      */
     public Optional<Output<Integer>> customType() {
@@ -152,14 +152,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+     * @return The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -182,14 +182,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+     * The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      * 
      */
     @Import(name="statExpress")
     private @Nullable Output<String> statExpress;
 
     /**
-     * @return The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+     * @return The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      * 
      */
     public Optional<Output<String>> statExpress() {
@@ -322,7 +322,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentCategory The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+         * @param contentCategory The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentCategory The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+         * @param contentCategory The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customType The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+         * @param customType The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customType The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+         * @param customType The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+         * @param ruleName The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+         * @param ruleName The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statExpress The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+         * @param statExpress The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statExpress The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+         * @param statExpress The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
          * 
          * @return builder
          * 

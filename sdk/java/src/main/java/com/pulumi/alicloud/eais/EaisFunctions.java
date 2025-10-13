@@ -20,6 +20,10 @@ public final class EaisFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -28,6 +32,10 @@ public final class EaisFunctions {
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -38,6 +46,10 @@ public final class EaisFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -46,6 +58,10 @@ public final class EaisFunctions {
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -56,6 +72,10 @@ public final class EaisFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eais/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -65,6 +85,10 @@ public final class EaisFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eais/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -73,6 +97,10 @@ public final class EaisFunctions {
      * This data source provides the Eais Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {

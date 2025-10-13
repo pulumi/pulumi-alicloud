@@ -14,6 +14,8 @@ import (
 // This data source provides Express Connect Virtual Physical Connection available to the user.
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
 func GetVirtualPhysicalConnections(ctx *pulumi.Context, args *GetVirtualPhysicalConnectionsArgs, opts ...pulumi.InvokeOption) (*GetVirtualPhysicalConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualPhysicalConnectionsResult

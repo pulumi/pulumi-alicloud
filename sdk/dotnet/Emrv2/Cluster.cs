@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Emrv2
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The application configurations of EMR cluster. See `application_configs` below.
+        /// The application configurations of EMR cluster. See `ApplicationConfigs` below.
         /// </summary>
         [Output("applicationConfigs")]
         public Output<ImmutableArray<Outputs.ClusterApplicationConfig>> ApplicationConfigs { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Emrv2
         public Output<ImmutableArray<string>> Applications { get; private set; } = null!;
 
         /// <summary>
-        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `BootstrapScripts` below.
         /// </summary>
         [Output("bootstrapScripts")]
         public Output<ImmutableArray<Outputs.ClusterBootstrapScript>> BootstrapScripts { get; private set; } = null!;
@@ -270,19 +270,19 @@ namespace Pulumi.AliCloud.Emrv2
         public Output<string> LogCollectStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        /// The node attributes of ecs instances which the emr-cluster belongs. See `NodeAttributes` below.
         /// </summary>
         [Output("nodeAttributes")]
         public Output<ImmutableArray<Outputs.ClusterNodeAttribute>> NodeAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `NodeGroups` below. **NOTE:** Since version 1.227.0, the type of `NodeGroups` changed from Set to List.
         /// </summary>
         [Output("nodeGroups")]
         public Output<ImmutableArray<Outputs.ClusterNodeGroup>> NodeGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
+        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `PaymentType` can be modified.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -306,7 +306,7 @@ namespace Pulumi.AliCloud.Emrv2
         public Output<string> SecurityMode { get; private set; } = null!;
 
         /// <summary>
-        /// The detail configuration of subscription payment type. See `subscription_config` below.
+        /// The detail configuration of subscription payment type. See `SubscriptionConfig` below.
         /// </summary>
         [Output("subscriptionConfig")]
         public Output<Outputs.ClusterSubscriptionConfig?> SubscriptionConfig { get; private set; } = null!;
@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterApplicationConfigArgs>? _applicationConfigs;
 
         /// <summary>
-        /// The application configurations of EMR cluster. See `application_configs` below.
+        /// The application configurations of EMR cluster. See `ApplicationConfigs` below.
         /// </summary>
         public InputList<Inputs.ClusterApplicationConfigArgs> ApplicationConfigs
         {
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterBootstrapScriptArgs>? _bootstrapScripts;
 
         /// <summary>
-        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `BootstrapScripts` below.
         /// </summary>
         public InputList<Inputs.ClusterBootstrapScriptArgs> BootstrapScripts
         {
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterNodeAttributeArgs>? _nodeAttributes;
 
         /// <summary>
-        /// The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        /// The node attributes of ecs instances which the emr-cluster belongs. See `NodeAttributes` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeAttributeArgs> NodeAttributes
         {
@@ -445,7 +445,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterNodeGroupArgs>? _nodeGroups;
 
         /// <summary>
-        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `NodeGroups` below. **NOTE:** Since version 1.227.0, the type of `NodeGroups` changed from Set to List.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupArgs> NodeGroups
         {
@@ -454,7 +454,7 @@ namespace Pulumi.AliCloud.Emrv2
         }
 
         /// <summary>
-        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
+        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `PaymentType` can be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -478,7 +478,7 @@ namespace Pulumi.AliCloud.Emrv2
         public Input<string>? SecurityMode { get; set; }
 
         /// <summary>
-        /// The detail configuration of subscription payment type. See `subscription_config` below.
+        /// The detail configuration of subscription payment type. See `SubscriptionConfig` below.
         /// </summary>
         [Input("subscriptionConfig")]
         public Input<Inputs.ClusterSubscriptionConfigArgs>? SubscriptionConfig { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterApplicationConfigGetArgs>? _applicationConfigs;
 
         /// <summary>
-        /// The application configurations of EMR cluster. See `application_configs` below.
+        /// The application configurations of EMR cluster. See `ApplicationConfigs` below.
         /// </summary>
         public InputList<Inputs.ClusterApplicationConfigGetArgs> ApplicationConfigs
         {
@@ -531,7 +531,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterBootstrapScriptGetArgs>? _bootstrapScripts;
 
         /// <summary>
-        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `BootstrapScripts` below.
         /// </summary>
         public InputList<Inputs.ClusterBootstrapScriptGetArgs> BootstrapScripts
         {
@@ -573,7 +573,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterNodeAttributeGetArgs>? _nodeAttributes;
 
         /// <summary>
-        /// The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        /// The node attributes of ecs instances which the emr-cluster belongs. See `NodeAttributes` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeAttributeGetArgs> NodeAttributes
         {
@@ -585,7 +585,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterNodeGroupGetArgs>? _nodeGroups;
 
         /// <summary>
-        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `NodeGroups` below. **NOTE:** Since version 1.227.0, the type of `NodeGroups` changed from Set to List.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupGetArgs> NodeGroups
         {
@@ -594,7 +594,7 @@ namespace Pulumi.AliCloud.Emrv2
         }
 
         /// <summary>
-        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
+        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `PaymentType` can be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -618,7 +618,7 @@ namespace Pulumi.AliCloud.Emrv2
         public Input<string>? SecurityMode { get; set; }
 
         /// <summary>
-        /// The detail configuration of subscription payment type. See `subscription_config` below.
+        /// The detail configuration of subscription payment type. See `SubscriptionConfig` below.
         /// </summary>
         [Input("subscriptionConfig")]
         public Input<Inputs.ClusterSubscriptionConfigGetArgs>? SubscriptionConfig { get; set; }

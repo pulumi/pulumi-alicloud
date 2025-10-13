@@ -143,7 +143,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration of charts in the dashboard.
-     * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
+     * **Note:** From version 1.164.0, `charList` can set parameter &#34;action&#34;.
      * 
      */
     @Export(name="charList", refs={String.class}, tree="[0]")
@@ -151,7 +151,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration of charts in the dashboard.
-     * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
+     * **Note:** From version 1.164.0, `charList` can set parameter &#34;action&#34;.
      * 
      */
     public Output<String> charList() {

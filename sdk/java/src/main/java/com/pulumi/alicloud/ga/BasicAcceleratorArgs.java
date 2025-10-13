@@ -49,14 +49,14 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * @return The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -64,14 +64,14 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+     * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      * 
      */
     @Import(name="autoUseCoupon")
     private @Nullable Output<String> autoUseCoupon;
 
     /**
-     * @return Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+     * @return Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      * 
      */
     public Optional<Output<String>> autoUseCoupon() {
@@ -140,8 +140,8 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The subscription duration. Default value: `1`.
-     * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-     * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      * 
      */
     @Import(name="duration")
@@ -149,8 +149,8 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The subscription duration. Default value: `1`.
-     * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-     * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      * 
      */
     public Optional<Output<Integer>> duration() {
@@ -188,14 +188,14 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     @Import(name="promotionOptionNo")
     private @Nullable Output<String> promotionOptionNo;
 
     /**
-     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * @return The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
     public Optional<Output<String>> promotionOptionNo() {
@@ -312,7 +312,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoUseCoupon Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+         * @param autoUseCoupon Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoUseCoupon Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
+         * @param autoUseCoupon Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
          * 
          * @return builder
          * 
@@ -439,8 +439,8 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param duration The subscription duration. Default value: `1`.
-         * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-         * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+         * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
+         * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
          * 
          * @return builder
          * 
@@ -452,8 +452,8 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param duration The subscription duration. Default value: `1`.
-         * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
-         * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+         * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
+         * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
          * 
          * @return builder
          * 

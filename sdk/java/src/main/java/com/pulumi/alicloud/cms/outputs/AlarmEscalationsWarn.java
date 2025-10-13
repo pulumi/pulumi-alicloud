@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlarmEscalationsWarn {
     /**
-     * @return Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
+     * @return Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
      * 
      */
     private @Nullable String comparisonOperator;
@@ -35,7 +35,7 @@ public final class AlarmEscalationsWarn {
 
     private AlarmEscalationsWarn() {}
     /**
-     * @return Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
+     * @return Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
      * 
      */
     public Optional<String> comparisonOperator() {

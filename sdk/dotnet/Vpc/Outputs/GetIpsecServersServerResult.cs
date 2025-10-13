@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Psk;
         /// <summary>
-        /// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+        /// Whether to enable the pre-shared key authentication method. The value is only `True`, which indicates that the pre-shared key authentication method is enabled.
         /// </summary>
         public readonly bool PskEnabled;
         /// <summary>

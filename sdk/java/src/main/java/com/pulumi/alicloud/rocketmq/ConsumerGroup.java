@@ -149,14 +149,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rocketmq/consumerGroup:ConsumerGroup")
 public class ConsumerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Consumption retry strategy. See `consume_retry_policy` below.
+     * Consumption retry strategy. See `consumeRetryPolicy` below.
      * 
      */
     @Export(name="consumeRetryPolicy", refs={ConsumerGroupConsumeRetryPolicy.class}, tree="[0]")
     private Output<ConsumerGroupConsumeRetryPolicy> consumeRetryPolicy;
 
     /**
-     * @return Consumption retry strategy. See `consume_retry_policy` below.
+     * @return Consumption retry strategy. See `consumeRetryPolicy` below.
      * 
      */
     public Output<ConsumerGroupConsumeRetryPolicy> consumeRetryPolicy() {

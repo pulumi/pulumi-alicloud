@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> DtsJobName { get; private set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`.
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
@@ -558,7 +558,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DtsJobName { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -752,7 +752,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DtsJobName { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }

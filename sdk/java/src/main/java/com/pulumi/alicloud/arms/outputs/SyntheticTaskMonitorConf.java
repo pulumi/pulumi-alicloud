@@ -18,27 +18,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SyntheticTaskMonitorConf {
     /**
-     * @return HTTP(S) task configuration information. See `api_http` below.
+     * @return HTTP(S) task configuration information. See `apiHttp` below.
      * 
      */
     private @Nullable SyntheticTaskMonitorConfApiHttp apiHttp;
     /**
-     * @return File download type task configuration. See `file_download` below.
+     * @return File download type task configuration. See `fileDownload` below.
      * 
      */
     private @Nullable SyntheticTaskMonitorConfFileDownload fileDownload;
     /**
-     * @return The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+     * @return The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
      * 
      */
     private @Nullable SyntheticTaskMonitorConfNetDns netDns;
     /**
-     * @return ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+     * @return ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
      * 
      */
     private @Nullable SyntheticTaskMonitorConfNetIcmp netIcmp;
     /**
-     * @return The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+     * @return The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
      * 
      */
     private @Nullable SyntheticTaskMonitorConfNetTcp netTcp;
@@ -55,35 +55,35 @@ public final class SyntheticTaskMonitorConf {
 
     private SyntheticTaskMonitorConf() {}
     /**
-     * @return HTTP(S) task configuration information. See `api_http` below.
+     * @return HTTP(S) task configuration information. See `apiHttp` below.
      * 
      */
     public Optional<SyntheticTaskMonitorConfApiHttp> apiHttp() {
         return Optional.ofNullable(this.apiHttp);
     }
     /**
-     * @return File download type task configuration. See `file_download` below.
+     * @return File download type task configuration. See `fileDownload` below.
      * 
      */
     public Optional<SyntheticTaskMonitorConfFileDownload> fileDownload() {
         return Optional.ofNullable(this.fileDownload);
     }
     /**
-     * @return The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+     * @return The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
      * 
      */
     public Optional<SyntheticTaskMonitorConfNetDns> netDns() {
         return Optional.ofNullable(this.netDns);
     }
     /**
-     * @return ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+     * @return ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
      * 
      */
     public Optional<SyntheticTaskMonitorConfNetIcmp> netIcmp() {
         return Optional.ofNullable(this.netIcmp);
     }
     /**
-     * @return The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+     * @return The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
      * 
      */
     public Optional<SyntheticTaskMonitorConfNetTcp> netTcp() {

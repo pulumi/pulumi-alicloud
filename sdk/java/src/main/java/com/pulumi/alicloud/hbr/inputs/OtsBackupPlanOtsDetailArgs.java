@@ -17,14 +17,14 @@ public final class OtsBackupPlanOtsDetailArgs extends com.pulumi.resources.Resou
     public static final OtsBackupPlanOtsDetailArgs Empty = new OtsBackupPlanOtsDetailArgs();
 
     /**
-     * The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     @Import(name="tableNames")
     private @Nullable Output<List<String>> tableNames;
 
     /**
-     * @return The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
      * 
      */
     public Optional<Output<List<String>>> tableNames() {
@@ -56,7 +56,7 @@ public final class OtsBackupPlanOtsDetailArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class OtsBackupPlanOtsDetailArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class OtsBackupPlanOtsDetailArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
          * 
          * @return builder
          * 

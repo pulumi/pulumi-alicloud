@@ -27,7 +27,7 @@ public final class ClusterBootstrapAction {
      */
     private @Nullable String executionMoment;
     /**
-     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;coreGroup&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
      * 
      */
     private @Nullable String executionTarget;
@@ -65,7 +65,7 @@ public final class ClusterBootstrapAction {
         return Optional.ofNullable(this.executionMoment);
     }
     /**
-     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;coreGroup&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
      * 
      */
     public Optional<String> executionTarget() {

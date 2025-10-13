@@ -63,7 +63,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replaced by `instance_name` after version 1.97.0.
+     * Replaced by `instanceName` after version 1.97.0.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from version 1.97.0. Use &#39;instance_name&#39; instead.
@@ -74,7 +74,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Replaced by `instance_name` after version 1.97.0.
+     * @return Replaced by `instanceName` after version 1.97.0.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from version 1.97.0. Use &#39;instance_name&#39; instead.
@@ -244,7 +244,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Replaced by `instance_name` after version 1.97.0.
+         * @param name Replaced by `instanceName` after version 1.97.0.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Replaced by `instance_name` after version 1.97.0.
+         * @param name Replaced by `instanceName` after version 1.97.0.
          * 
          * @return builder
          * 

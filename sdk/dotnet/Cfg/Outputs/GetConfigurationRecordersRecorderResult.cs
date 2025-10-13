@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The ID of the Config Configuration Recorder. Value as the `account_id`.
+        /// The ID of the Config Configuration Recorder. Value as the `AccountId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

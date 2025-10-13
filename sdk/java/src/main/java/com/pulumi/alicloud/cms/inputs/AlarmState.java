@@ -26,14 +26,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     public static final AlarmState Empty = new AlarmState();
 
     /**
-     * The trigger conditions for multiple metrics. See `composite_expression` below.
+     * The trigger conditions for multiple metrics. See `compositeExpression` below.
      * 
      */
     @Import(name="compositeExpression")
     private @Nullable Output<AlarmCompositeExpressionArgs> compositeExpression;
 
     /**
-     * @return The trigger conditions for multiple metrics. See `composite_expression` below.
+     * @return The trigger conditions for multiple metrics. See `compositeExpression` below.
      * 
      */
     public Optional<Output<AlarmCompositeExpressionArgs>> compositeExpression() {
@@ -56,24 +56,24 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      * @deprecated
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
-    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
+    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
     @Import(name="dimensions")
     private @Nullable Output<Map<String,String>> dimensions;
 
     /**
-     * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      * @deprecated
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
-    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
+    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
     public Optional<Output<Map<String,String>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
@@ -109,37 +109,37 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      * @deprecated
-     * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+    @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @return Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      * @deprecated
-     * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+    @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
     public Optional<Output<Integer>> endTime() {
         return Optional.ofNullable(this.endTime);
     }
 
     /**
-     * A configuration of critical alarm. See `escalations_critical` below.
+     * A configuration of critical alarm. See `escalationsCritical` below.
      * 
      */
     @Import(name="escalationsCritical")
     private @Nullable Output<AlarmEscalationsCriticalArgs> escalationsCritical;
 
     /**
-     * @return A configuration of critical alarm. See `escalations_critical` below.
+     * @return A configuration of critical alarm. See `escalationsCritical` below.
      * 
      */
     public Optional<Output<AlarmEscalationsCriticalArgs>> escalationsCritical() {
@@ -147,14 +147,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of critical info. See `escalations_info` below.
+     * A configuration of critical info. See `escalationsInfo` below.
      * 
      */
     @Import(name="escalationsInfo")
     private @Nullable Output<AlarmEscalationsInfoArgs> escalationsInfo;
 
     /**
-     * @return A configuration of critical info. See `escalations_info` below.
+     * @return A configuration of critical info. See `escalationsInfo` below.
      * 
      */
     public Optional<Output<AlarmEscalationsInfoArgs>> escalationsInfo() {
@@ -162,14 +162,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of critical warn. See `escalations_warn` below.
+     * A configuration of critical warn. See `escalationsWarn` below.
      * 
      */
     @Import(name="escalationsWarn")
     private @Nullable Output<AlarmEscalationsWarnArgs> escalationsWarn;
 
     /**
-     * @return A configuration of critical warn. See `escalations_warn` below.
+     * @return A configuration of critical warn. See `escalationsWarn` below.
      * 
      */
     public Optional<Output<AlarmEscalationsWarnArgs>> escalationsWarn() {
@@ -177,14 +177,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     @Import(name="metric")
     private @Nullable Output<String> metric;
 
     /**
-     * @return The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * @return The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     public Optional<Output<String>> metric() {
@@ -237,16 +237,16 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+     * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+     * @return The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      * 
      */
     public Optional<Output<String>> project() {
@@ -284,24 +284,24 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      * @deprecated
-     * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+    @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @return Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      * @deprecated
-     * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+    @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
     public Optional<Output<Integer>> startTime() {
         return Optional.ofNullable(this.startTime);
     }
@@ -411,7 +411,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compositeExpression The trigger conditions for multiple metrics. See `composite_expression` below.
+         * @param compositeExpression The trigger conditions for multiple metrics. See `compositeExpression` below.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compositeExpression The trigger conditions for multiple metrics. See `composite_expression` below.
+         * @param compositeExpression The trigger conditions for multiple metrics. See `compositeExpression` below.
          * 
          * @return builder
          * 
@@ -463,30 +463,30 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dimensions Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+         * @param dimensions Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+         * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
          * 
          */
-        @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
+        @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
         public Builder dimensions(@Nullable Output<Map<String,String>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
         /**
-         * @param dimensions Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+         * @param dimensions Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+         * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
          * 
          */
-        @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
+        @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
         public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
@@ -534,36 +534,36 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * @param endTime Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+        @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
         public Builder endTime(@Nullable Output<Integer> endTime) {
             $.endTime = endTime;
             return this;
         }
 
         /**
-         * @param endTime Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * @param endTime Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+        @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
         public Builder endTime(Integer endTime) {
             return endTime(Output.of(endTime));
         }
 
         /**
-         * @param escalationsCritical A configuration of critical alarm. See `escalations_critical` below.
+         * @param escalationsCritical A configuration of critical alarm. See `escalationsCritical` below.
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsCritical A configuration of critical alarm. See `escalations_critical` below.
+         * @param escalationsCritical A configuration of critical alarm. See `escalationsCritical` below.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsInfo A configuration of critical info. See `escalations_info` below.
+         * @param escalationsInfo A configuration of critical info. See `escalationsInfo` below.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsInfo A configuration of critical info. See `escalations_info` below.
+         * @param escalationsInfo A configuration of critical info. See `escalationsInfo` below.
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsWarn A configuration of critical warn. See `escalations_warn` below.
+         * @param escalationsWarn A configuration of critical warn. See `escalationsWarn` below.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsWarn A configuration of critical warn. See `escalations_warn` below.
+         * @param escalationsWarn A configuration of critical warn. See `escalationsWarn` below.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metric The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * @param metric The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metric The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * @param metric The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
          * 
@@ -710,8 +710,8 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-         * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+         * @param project The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
          * 
          * @return builder
          * 
@@ -722,8 +722,8 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-         * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+         * @param project The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
          * 
          * @return builder
          * 
@@ -785,30 +785,30 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * @param startTime Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+        @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
         public Builder startTime(@Nullable Output<Integer> startTime) {
             $.startTime = startTime;
             return this;
         }
 
         /**
-         * @param startTime Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * @param startTime Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+         * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead. */
+        @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
         public Builder startTime(Integer startTime) {
             return startTime(Output.of(startTime));
         }

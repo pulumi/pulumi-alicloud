@@ -138,14 +138,14 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to enable default allocation of resources to user_default resource groups.
+     * Whether to enable default allocation of resources to userDefault resource groups.
      * 
      */
     @Import(name="enableDefaultResourceGroup")
     private @Nullable Output<Boolean> enableDefaultResourceGroup;
 
     /**
-     * @return Whether to enable default allocation of resources to user_default resource groups.
+     * @return Whether to enable default allocation of resources to userDefault resource groups.
      * 
      */
     public Optional<Output<Boolean>> enableDefaultResourceGroup() {
@@ -228,14 +228,14 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      * 
      */
     @Import(name="kmsId")
     private @Nullable Output<String> kmsId;
 
     /**
-     * @return The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * @return The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      * 
      */
     public Optional<Output<String>> kmsId() {
@@ -273,14 +273,14 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -340,7 +340,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
-     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
     @Import(name="productVersion")
@@ -350,7 +350,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
      * @return The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
-     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
     public Optional<Output<String>> productVersion() {
@@ -799,7 +799,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableDefaultResourceGroup Whether to enable default allocation of resources to user_default resource groups.
+         * @param enableDefaultResourceGroup Whether to enable default allocation of resources to userDefault resource groups.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableDefaultResourceGroup Whether to enable default allocation of resources to user_default resource groups.
+         * @param enableDefaultResourceGroup Whether to enable default allocation of resources to userDefault resource groups.
          * 
          * @return builder
          * 
@@ -925,7 +925,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kmsId The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+         * @param kmsId The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kmsId The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+         * @param kmsId The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
          * 
          * @return builder
          * 
@@ -988,7 +988,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
          * 
          * @return builder
          * 
@@ -999,7 +999,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
          * 
          * @return builder
          * 
@@ -1079,7 +1079,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          * @param productVersion The edition of the cluster. Valid values:
          * - `BasicVersion`: Basic Edition.
          * - `EnterpriseVersion`: Enterprise Edition.
-         * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+         * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
          * 
          * @return builder
          * 
@@ -1093,7 +1093,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          * @param productVersion The edition of the cluster. Valid values:
          * - `BasicVersion`: Basic Edition.
          * - `EnterpriseVersion`: Enterprise Edition.
-         * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+         * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
          * 
          * @return builder
          * 

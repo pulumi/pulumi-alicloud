@@ -34,14 +34,14 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
     }
 
     /**
-     * Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      * 
      */
     @Import(name="responseHeaderModifications")
     private @Nullable Output<List<HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>> responseHeaderModifications;
 
     /**
-     * @return Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+     * @return Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      * 
      */
     public Optional<Output<List<HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>>> responseHeaderModifications() {
@@ -175,7 +175,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
          * 
          * @return builder
          * 

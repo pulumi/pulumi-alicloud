@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "ScalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `Dimensions` below.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, string>> Dimensions { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> EvaluationCount { get; private set; } = null!;
 
         /// <summary>
-        /// Support multi alert rule. See `expressions` below for details.
+        /// Support multi alert rule. See `Expressions` below for details.
         /// </summary>
         [Output("expressions")]
         public Output<ImmutableArray<Outputs.AlarmExpression>> Expressions { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ExpressionsLogicOperator { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the alarm's associated metric. See `dimensions` below for details.
+        /// The name for the alarm's associated metric. See `Dimensions` below for details.
         /// </summary>
         [Output("metricName")]
         public Output<string> MetricName { get; private set; } = null!;
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.Ess
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "ScalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `Dimensions` below.
         /// </summary>
         public InputMap<string> Dimensions
         {
@@ -382,7 +382,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.AlarmExpressionArgs>? _expressions;
 
         /// <summary>
-        /// Support multi alert rule. See `expressions` below for details.
+        /// Support multi alert rule. See `Expressions` below for details.
         /// </summary>
         public InputList<Inputs.AlarmExpressionArgs> Expressions
         {
@@ -397,7 +397,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ExpressionsLogicOperator { get; set; }
 
         /// <summary>
-        /// The name for the alarm's associated metric. See `dimensions` below for details.
+        /// The name for the alarm's associated metric. See `Dimensions` below for details.
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
@@ -480,7 +480,7 @@ namespace Pulumi.AliCloud.Ess
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "ScalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `Dimensions` below.
         /// </summary>
         public InputMap<string> Dimensions
         {
@@ -510,7 +510,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.AlarmExpressionGetArgs>? _expressions;
 
         /// <summary>
-        /// Support multi alert rule. See `expressions` below for details.
+        /// Support multi alert rule. See `Expressions` below for details.
         /// </summary>
         public InputList<Inputs.AlarmExpressionGetArgs> Expressions
         {
@@ -525,7 +525,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ExpressionsLogicOperator { get; set; }
 
         /// <summary>
-        /// The name for the alarm's associated metric. See `dimensions` below for details.
+        /// The name for the alarm's associated metric. See `Dimensions` below for details.
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }

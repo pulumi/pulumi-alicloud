@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+        /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `I386`, `x86\_64`, `Arm64`. Default value: `x86\_64`.
         /// </summary>
         [Output("architecture")]
         public Output<string?> Architecture { get; private set; } = null!;
@@ -169,13 +169,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> DetectionStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot information for the image See `disk_device_mapping` below.
+        /// Snapshot information for the image See `DiskDeviceMapping` below.
         /// </summary>
         [Output("diskDeviceMappings")]
         public Output<ImmutableArray<Outputs.ImageDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// Features See `features` below.
+        /// Features See `Features` below.
         /// </summary>
         [Output("features")]
         public Output<Outputs.ImageFeatures> Features { get; private set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+        /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `I386`, `x86\_64`, `Arm64`. Default value: `x86\_64`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.ImageDiskDeviceMappingArgs>? _diskDeviceMappings;
 
         /// <summary>
-        /// Snapshot information for the image See `disk_device_mapping` below.
+        /// Snapshot information for the image See `DiskDeviceMapping` below.
         /// </summary>
         public InputList<Inputs.ImageDiskDeviceMappingArgs> DiskDeviceMappings
         {
@@ -363,7 +363,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Features See `features` below.
+        /// Features See `Features` below.
         /// </summary>
         [Input("features")]
         public Input<Inputs.ImageFeaturesArgs>? Features { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+        /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `I386`, `x86\_64`, `Arm64`. Default value: `x86\_64`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -510,7 +510,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.ImageDiskDeviceMappingGetArgs>? _diskDeviceMappings;
 
         /// <summary>
-        /// Snapshot information for the image See `disk_device_mapping` below.
+        /// Snapshot information for the image See `DiskDeviceMapping` below.
         /// </summary>
         public InputList<Inputs.ImageDiskDeviceMappingGetArgs> DiskDeviceMappings
         {
@@ -519,7 +519,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Features See `features` below.
+        /// Features See `Features` below.
         /// </summary>
         [Input("features")]
         public Input<Inputs.ImageFeaturesGetArgs>? Features { get; set; }

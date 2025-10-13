@@ -33,14 +33,14 @@ public final class LifecycleHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+     * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      * 
      */
     @Import(name="heartbeatTimeout")
     private @Nullable Output<Integer> heartbeatTimeout;
 
     /**
-     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+     * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      * 
      */
     public Optional<Output<Integer>> heartbeatTimeout() {
@@ -174,7 +174,7 @@ public final class LifecycleHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param heartbeatTimeout Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+         * @param heartbeatTimeout Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class LifecycleHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param heartbeatTimeout Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+         * @param heartbeatTimeout Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
          * 
          * @return builder
          * 

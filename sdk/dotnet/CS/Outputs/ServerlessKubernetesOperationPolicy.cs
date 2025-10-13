@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ServerlessKubernetesOperationPolicy
     {
         /// <summary>
-        /// Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+        /// Automatic cluster upgrade policy. See `ClusterAutoUpgrade` below.
         /// </summary>
         public readonly Outputs.ServerlessKubernetesOperationPolicyClusterAutoUpgrade? ClusterAutoUpgrade;
 

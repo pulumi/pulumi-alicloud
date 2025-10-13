@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.DBS
     public partial class BackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+        /// The ID of the backup gateway. This parameter is required when the `SourceEndpointInstanceType` is `Agent`.
         /// </summary>
         [Output("backupGatewayId")]
         public Output<string> BackupGatewayId { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.DBS
         public Output<int?> BackupLogIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Backup method. Valid values: `duplication`, `logical`, `physical`.
+        /// Backup method. Valid values: `Duplication`, `Logical`, `Physical`.
         /// </summary>
         [Output("backupMethod")]
         public Output<string> BackupMethod { get; private set; } = null!;
@@ -208,13 +208,13 @@ namespace Pulumi.AliCloud.DBS
         public Output<string> BackupStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Built-in storage type, Valid values: `system`.
+        /// Built-in storage type, Valid values: `System`.
         /// </summary>
         [Output("backupStorageType")]
         public Output<string> BackupStorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The backup strategy type. Valid values: `simple`, `manual`.
+        /// The backup strategy type. Valid values: `Simple`, `Manual`.
         /// </summary>
         [Output("backupStrategyType")]
         public Output<string?> BackupStrategyType { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.DBS
         public Output<bool> EnableBackupLog { get; private set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`.
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
@@ -298,13 +298,13 @@ namespace Pulumi.AliCloud.DBS
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+        /// The name of the database. This parameter is required when the `DatabaseType` is `PostgreSQL` or `MongoDB`.
         /// </summary>
         [Output("sourceEndpointDatabaseName")]
         public Output<string> SourceEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+        /// The ID of the database instance. This parameter is required when the `SourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
         /// </summary>
         [Output("sourceEndpointInstanceId")]
         public Output<string> SourceEndpointInstanceId { get; private set; } = null!;
@@ -322,13 +322,13 @@ namespace Pulumi.AliCloud.DBS
         public Output<string?> SourceEndpointIp { get; private set; } = null!;
 
         /// <summary>
-        /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+        /// Oracle SID name. This parameter is required when the `DatabaseType` is `Oracle`.
         /// </summary>
         [Output("sourceEndpointOracleSid")]
         public Output<string?> SourceEndpointOracleSid { get; private set; } = null!;
 
         /// <summary>
-        /// The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+        /// The source endpoint password.  This parameter is not required when the `DatabaseType` is `Redis`, or when the `SourceEndpointInstanceType` is `Agent` and the `DatabaseType` is `MSSQL`. This parameter is required in other scenarios.
         /// </summary>
         [Output("sourceEndpointPassword")]
         public Output<string?> SourceEndpointPassword { get; private set; } = null!;
@@ -340,25 +340,25 @@ namespace Pulumi.AliCloud.DBS
         public Output<int?> SourceEndpointPort { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+        /// The region of the database. This parameter is required when the `SourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
         /// </summary>
         [Output("sourceEndpointRegion")]
         public Output<string> SourceEndpointRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+        /// Oracle SID name. This parameter is required when the `DatabaseType` is `Oracle`.
         /// </summary>
         [Output("sourceEndpointSid")]
         public Output<string> SourceEndpointSid { get; private set; } = null!;
 
         /// <summary>
-        /// The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+        /// The source endpoint username. This parameter is not required when the `DatabaseType` is `Redis`, or when the `SourceEndpointInstanceType` is `Agent` and the `DatabaseType` is `MSSQL`. This parameter is required in other scenarios.
         /// </summary>
         [Output("sourceEndpointUserName")]
         public Output<string> SourceEndpointUserName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `pause`, `running`.
+        /// The status of the resource. Valid values: `Pause`, `Running`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.AliCloud.DBS
         public Output<string?> StorageRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+        /// Specify purchase duration. When the parameter `Period` is `Year`, the `UsedTime` value is 1 to 9. When the parameter `Period` is `Month`, the `UsedTime` value is 1 to 11.
         /// </summary>
         [Output("usedTime")]
         public Output<int?> UsedTime { get; private set; } = null!;
@@ -426,7 +426,7 @@ namespace Pulumi.AliCloud.DBS
     public sealed class BackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+        /// The ID of the backup gateway. This parameter is required when the `SourceEndpointInstanceType` is `Agent`.
         /// </summary>
         [Input("backupGatewayId")]
         public Input<string>? BackupGatewayId { get; set; }
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<int>? BackupLogIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Backup method. Valid values: `duplication`, `logical`, `physical`.
+        /// Backup method. Valid values: `Duplication`, `Logical`, `Physical`.
         /// </summary>
         [Input("backupMethod", required: true)]
         public Input<string> BackupMethod { get; set; } = null!;
@@ -486,13 +486,13 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? BackupStartTime { get; set; }
 
         /// <summary>
-        /// Built-in storage type, Valid values: `system`.
+        /// Built-in storage type, Valid values: `System`.
         /// </summary>
         [Input("backupStorageType")]
         public Input<string>? BackupStorageType { get; set; }
 
         /// <summary>
-        /// The backup strategy type. Valid values: `simple`, `manual`.
+        /// The backup strategy type. Valid values: `Simple`, `Manual`.
         /// </summary>
         [Input("backupStrategyType")]
         public Input<string>? BackupStrategyType { get; set; }
@@ -540,7 +540,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<bool>? EnableBackupLog { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`.
         /// </summary>
         [Input("instanceClass", required: true)]
         public Input<string> InstanceClass { get; set; } = null!;
@@ -576,13 +576,13 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+        /// The name of the database. This parameter is required when the `DatabaseType` is `PostgreSQL` or `MongoDB`.
         /// </summary>
         [Input("sourceEndpointDatabaseName")]
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+        /// The ID of the database instance. This parameter is required when the `SourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
@@ -600,7 +600,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? SourceEndpointIp { get; set; }
 
         /// <summary>
-        /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+        /// Oracle SID name. This parameter is required when the `DatabaseType` is `Oracle`.
         /// </summary>
         [Input("sourceEndpointOracleSid")]
         public Input<string>? SourceEndpointOracleSid { get; set; }
@@ -609,7 +609,7 @@ namespace Pulumi.AliCloud.DBS
         private Input<string>? _sourceEndpointPassword;
 
         /// <summary>
-        /// The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+        /// The source endpoint password.  This parameter is not required when the `DatabaseType` is `Redis`, or when the `SourceEndpointInstanceType` is `Agent` and the `DatabaseType` is `MSSQL`. This parameter is required in other scenarios.
         /// </summary>
         public Input<string>? SourceEndpointPassword
         {
@@ -628,25 +628,25 @@ namespace Pulumi.AliCloud.DBS
         public Input<int>? SourceEndpointPort { get; set; }
 
         /// <summary>
-        /// The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+        /// The region of the database. This parameter is required when the `SourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
         /// </summary>
         [Input("sourceEndpointRegion")]
         public Input<string>? SourceEndpointRegion { get; set; }
 
         /// <summary>
-        /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+        /// Oracle SID name. This parameter is required when the `DatabaseType` is `Oracle`.
         /// </summary>
         [Input("sourceEndpointSid")]
         public Input<string>? SourceEndpointSid { get; set; }
 
         /// <summary>
-        /// The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+        /// The source endpoint username. This parameter is not required when the `DatabaseType` is `Redis`, or when the `SourceEndpointInstanceType` is `Agent` and the `DatabaseType` is `MSSQL`. This parameter is required in other scenarios.
         /// </summary>
         [Input("sourceEndpointUserName")]
         public Input<string>? SourceEndpointUserName { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `pause`, `running`.
+        /// The status of the resource. Valid values: `Pause`, `Running`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -658,7 +658,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? StorageRegion { get; set; }
 
         /// <summary>
-        /// Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+        /// Specify purchase duration. When the parameter `Period` is `Year`, the `UsedTime` value is 1 to 9. When the parameter `Period` is `Month`, the `UsedTime` value is 1 to 11.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
@@ -672,7 +672,7 @@ namespace Pulumi.AliCloud.DBS
     public sealed class BackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+        /// The ID of the backup gateway. This parameter is required when the `SourceEndpointInstanceType` is `Agent`.
         /// </summary>
         [Input("backupGatewayId")]
         public Input<string>? BackupGatewayId { get; set; }
@@ -684,7 +684,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<int>? BackupLogIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Backup method. Valid values: `duplication`, `logical`, `physical`.
+        /// Backup method. Valid values: `Duplication`, `Logical`, `Physical`.
         /// </summary>
         [Input("backupMethod")]
         public Input<string>? BackupMethod { get; set; }
@@ -732,13 +732,13 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? BackupStartTime { get; set; }
 
         /// <summary>
-        /// Built-in storage type, Valid values: `system`.
+        /// Built-in storage type, Valid values: `System`.
         /// </summary>
         [Input("backupStorageType")]
         public Input<string>? BackupStorageType { get; set; }
 
         /// <summary>
-        /// The backup strategy type. Valid values: `simple`, `manual`.
+        /// The backup strategy type. Valid values: `Simple`, `Manual`.
         /// </summary>
         [Input("backupStrategyType")]
         public Input<string>? BackupStrategyType { get; set; }
@@ -786,7 +786,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<bool>? EnableBackupLog { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
+        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -822,13 +822,13 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+        /// The name of the database. This parameter is required when the `DatabaseType` is `PostgreSQL` or `MongoDB`.
         /// </summary>
         [Input("sourceEndpointDatabaseName")]
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+        /// The ID of the database instance. This parameter is required when the `SourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
@@ -846,7 +846,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? SourceEndpointIp { get; set; }
 
         /// <summary>
-        /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+        /// Oracle SID name. This parameter is required when the `DatabaseType` is `Oracle`.
         /// </summary>
         [Input("sourceEndpointOracleSid")]
         public Input<string>? SourceEndpointOracleSid { get; set; }
@@ -855,7 +855,7 @@ namespace Pulumi.AliCloud.DBS
         private Input<string>? _sourceEndpointPassword;
 
         /// <summary>
-        /// The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+        /// The source endpoint password.  This parameter is not required when the `DatabaseType` is `Redis`, or when the `SourceEndpointInstanceType` is `Agent` and the `DatabaseType` is `MSSQL`. This parameter is required in other scenarios.
         /// </summary>
         public Input<string>? SourceEndpointPassword
         {
@@ -874,25 +874,25 @@ namespace Pulumi.AliCloud.DBS
         public Input<int>? SourceEndpointPort { get; set; }
 
         /// <summary>
-        /// The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+        /// The region of the database. This parameter is required when the `SourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
         /// </summary>
         [Input("sourceEndpointRegion")]
         public Input<string>? SourceEndpointRegion { get; set; }
 
         /// <summary>
-        /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+        /// Oracle SID name. This parameter is required when the `DatabaseType` is `Oracle`.
         /// </summary>
         [Input("sourceEndpointSid")]
         public Input<string>? SourceEndpointSid { get; set; }
 
         /// <summary>
-        /// The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+        /// The source endpoint username. This parameter is not required when the `DatabaseType` is `Redis`, or when the `SourceEndpointInstanceType` is `Agent` and the `DatabaseType` is `MSSQL`. This parameter is required in other scenarios.
         /// </summary>
         [Input("sourceEndpointUserName")]
         public Input<string>? SourceEndpointUserName { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `pause`, `running`.
+        /// The status of the resource. Valid values: `Pause`, `Running`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -904,7 +904,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<string>? StorageRegion { get; set; }
 
         /// <summary>
-        /// Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+        /// Specify purchase duration. When the parameter `Period` is `Year`, the `UsedTime` value is 1 to 9. When the parameter `Period` is `Month`, the `UsedTime` value is 1 to 11.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }

@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available in v1.73.0+.
+ *
+ * ## Example Usage
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -57,6 +59,8 @@ export interface GetZonesResult {
  * This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available in v1.73.0+.
+ *
+ * ## Example Usage
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};

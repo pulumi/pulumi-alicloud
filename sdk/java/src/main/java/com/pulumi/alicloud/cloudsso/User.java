@@ -159,28 +159,28 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.email);
     }
     /**
-     * The first name of user. The first_name can be up to `64` characters long.
+     * The first name of user. The firstName can be up to `64` characters long.
      * 
      */
     @Export(name="firstName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firstName;
 
     /**
-     * @return The first name of user. The first_name can be up to `64` characters long.
+     * @return The first name of user. The firstName can be up to `64` characters long.
      * 
      */
     public Output<Optional<String>> firstName() {
         return Codegen.optional(this.firstName);
     }
     /**
-     * The last name of user. The last_name can be up to `64` characters long.
+     * The last name of user. The lastName can be up to `64` characters long.
      * 
      */
     @Export(name="lastName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastName;
 
     /**
-     * @return The last name of user. The last_name can be up to `64` characters long.
+     * @return The last name of user. The lastName can be up to `64` characters long.
      * 
      */
     public Output<Optional<String>> lastName() {

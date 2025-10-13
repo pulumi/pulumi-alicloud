@@ -161,13 +161,13 @@ namespace Pulumi.AliCloud.Log
     public partial class Store : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `True`.
         /// </summary>
         [Output("appendMeta")]
         public Output<bool?> AppendMeta { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to `false`.
+        /// Determines whether to automatically split a shard. Default to `False`.
         /// </summary>
         [Output("autoSplit")]
         public Output<bool?> AutoSplit { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> EnableWebTracking { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        /// Encrypted storage of data, providing data static protection capability, EncryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `EncryptConf` below.
         /// </summary>
         [Output("encryptConf")]
         public Output<Outputs.StoreEncryptConf> EncryptConf { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> InfrequentAccessTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        /// The log store, which is unique in the same project. You need to specify one of the attributes: `LogstoreName`, `Name`.
         /// </summary>
         [Output("logstoreName")]
         public Output<string> LogstoreName { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> MeteringMode { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        /// The mode of storage. Default to `Standard`, must be `Standard` or `Query`, `Lite`.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        /// The project name to the log store belongs. You need to specify one of the attributes: `ProjectName`, `Project`.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -317,13 +317,13 @@ namespace Pulumi.AliCloud.Log
     public sealed class StoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `True`.
         /// </summary>
         [Input("appendMeta")]
         public Input<bool>? AppendMeta { get; set; }
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to `false`.
+        /// Determines whether to automatically split a shard. Default to `False`.
         /// </summary>
         [Input("autoSplit")]
         public Input<bool>? AutoSplit { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        /// Encrypted storage of data, providing data static protection capability, EncryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `EncryptConf` below.
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfArgs>? EncryptConf { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? InfrequentAccessTtl { get; set; }
 
         /// <summary>
-        /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        /// The log store, which is unique in the same project. You need to specify one of the attributes: `LogstoreName`, `Name`.
         /// </summary>
         [Input("logstoreName")]
         public Input<string>? LogstoreName { get; set; }
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? MeteringMode { get; set; }
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        /// The mode of storage. Default to `Standard`, must be `Standard` or `Query`, `Lite`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        /// The project name to the log store belongs. You need to specify one of the attributes: `ProjectName`, `Project`.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
@@ -423,13 +423,13 @@ namespace Pulumi.AliCloud.Log
     public sealed class StoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `True`.
         /// </summary>
         [Input("appendMeta")]
         public Input<bool>? AppendMeta { get; set; }
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to `false`.
+        /// Determines whether to automatically split a shard. Default to `False`.
         /// </summary>
         [Input("autoSplit")]
         public Input<bool>? AutoSplit { get; set; }
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        /// Encrypted storage of data, providing data static protection capability, EncryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `EncryptConf` below.
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfGetArgs>? EncryptConf { get; set; }
@@ -465,7 +465,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? InfrequentAccessTtl { get; set; }
 
         /// <summary>
-        /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        /// The log store, which is unique in the same project. You need to specify one of the attributes: `LogstoreName`, `Name`.
         /// </summary>
         [Input("logstoreName")]
         public Input<string>? LogstoreName { get; set; }
@@ -483,7 +483,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? MeteringMode { get; set; }
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        /// The mode of storage. Default to `Standard`, must be `Standard` or `Query`, `Lite`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -501,7 +501,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        /// The project name to the log store belongs. You need to specify one of the attributes: `ProjectName`, `Project`.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

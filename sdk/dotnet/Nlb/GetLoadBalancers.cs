@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The IP version. Valid values: `ipv4`, `DualStack`.
+        /// The IP version. Valid values: `Ipv4`, `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public string? AddressIpVersion { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The IP version. Valid values: `ipv4`, `DualStack`.
+        /// The IP version. Valid values: `Ipv4`, `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }

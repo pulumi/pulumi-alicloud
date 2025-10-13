@@ -19,7 +19,7 @@ public final class ClusterNodeGroupAutoScalingPolicy {
      */
     private @Nullable ClusterNodeGroupAutoScalingPolicyConstraints constraints;
     /**
-     * @return The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * @return The scaling rules of auto scaling policy. See `scalingRules` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupAutoScalingPolicyScalingRule> scalingRules;
@@ -33,7 +33,7 @@ public final class ClusterNodeGroupAutoScalingPolicy {
         return Optional.ofNullable(this.constraints);
     }
     /**
-     * @return The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * @return The scaling rules of auto scaling policy. See `scalingRules` below.
      * 
      */
     public List<ClusterNodeGroupAutoScalingPolicyScalingRule> scalingRules() {

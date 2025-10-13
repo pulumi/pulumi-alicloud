@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<bool>? AutoAnnotation { get; set; }
 
         /// <summary>
-        /// Alarm trigger condition. See `condition_configuration` below.
+        /// Alarm trigger condition. See `ConditionConfiguration` below.
         /// </summary>
         [Input("conditionConfiguration")]
         public Input<Inputs.AlertConfigurationConditionConfigurationGetArgs>? ConditionConfiguration { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<string>? Dashboard { get; set; }
 
         /// <summary>
-        /// Group evaluation configuration. See `group_configuration` below.
+        /// Group evaluation configuration. See `GroupConfiguration` below.
         /// </summary>
         [Input("groupConfiguration")]
         public Input<Inputs.AlertConfigurationGroupConfigurationGetArgs>? GroupConfiguration { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<Inputs.AlertConfigurationJoinConfigurationGetArgs>? _joinConfigurations;
 
         /// <summary>
-        /// Set operation configuration. See `join_configurations` below.
+        /// Set operation configuration. See `JoinConfigurations` below.
         /// </summary>
         public InputList<Inputs.AlertConfigurationJoinConfigurationGetArgs> JoinConfigurations
         {
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<Inputs.AlertConfigurationLabelGetArgs>? _labels;
 
         /// <summary>
-        /// Label. See `labels` below.
+        /// Label. See `Labels` below.
         /// </summary>
         public InputList<Inputs.AlertConfigurationLabelGetArgs> Labels
         {
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<int>? NoDataSeverity { get; set; }
 
         /// <summary>
-        /// Alert policy configuration. See `policy_configuration` below.
+        /// Alert policy configuration. See `PolicyConfiguration` below.
         /// </summary>
         [Input("policyConfiguration")]
         public Input<Inputs.AlertConfigurationPolicyConfigurationGetArgs>? PolicyConfiguration { get; set; }
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<Inputs.AlertConfigurationQueryListGetArgs>? _queryLists;
 
         /// <summary>
-        /// Query the statistical list. See `query_list` below.
+        /// Query the statistical list. See `QueryList` below.
         /// </summary>
         public InputList<Inputs.AlertConfigurationQueryListGetArgs> QueryLists
         {
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<Inputs.AlertConfigurationSeverityConfigurationGetArgs>? _severityConfigurations;
 
         /// <summary>
-        /// Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+        /// Trigger condition, set at least one trigger condition. See `SeverityConfigurations` below.
         /// </summary>
         public InputList<Inputs.AlertConfigurationSeverityConfigurationGetArgs> SeverityConfigurations
         {
@@ -127,19 +127,19 @@ namespace Pulumi.AliCloud.Sls.Inputs
         }
 
         /// <summary>
-        /// Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+        /// Configuration of Alerts Sent to Alerthub. See `SinkAlerthub` below.
         /// </summary>
         [Input("sinkAlerthub")]
         public Input<Inputs.AlertConfigurationSinkAlerthubGetArgs>? SinkAlerthub { get; set; }
 
         /// <summary>
-        /// Configure alerts sent to CloudMonitor. See `sink_cms` below.
+        /// Configure alerts sent to CloudMonitor. See `SinkCms` below.
         /// </summary>
         [Input("sinkCms")]
         public Input<Inputs.AlertConfigurationSinkCmsGetArgs>? SinkCms { get; set; }
 
         /// <summary>
-        /// Configuration of sending alarms to EventStore. See `sink_event_store` below.
+        /// Configuration of sending alarms to EventStore. See `SinkEventStore` below.
         /// </summary>
         [Input("sinkEventStore")]
         public Input<Inputs.AlertConfigurationSinkEventStoreGetArgs>? SinkEventStore { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         }
 
         /// <summary>
-        /// Alarm rule template configuration. See `template_configuration` below.
+        /// Alarm rule template configuration. See `TemplateConfiguration` below.
         /// </summary>
         [Input("templateConfiguration")]
         public Input<Inputs.AlertConfigurationTemplateConfigurationGetArgs>? TemplateConfiguration { get; set; }

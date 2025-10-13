@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
+        /// Specifies whether to pre-check the API request. Valid values: `True` and `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// platform of the capacity reservation, value range `windows`, `linux`.
+        /// platform of the capacity reservation, value range `Windows`, `Linux`.
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
+        /// Specifies whether to pre-check the API request. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? MatchCriteria { get; set; }
 
         /// <summary>
-        /// platform of the capacity reservation, value range `windows`, `linux`.
+        /// platform of the capacity reservation, value range `Windows`, `Linux`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
+        /// Specifies whether to pre-check the API request. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// platform of the capacity reservation, value range `windows`, `linux`.
+        /// platform of the capacity reservation, value range `Windows`, `Linux`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

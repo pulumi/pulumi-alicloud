@@ -18,17 +18,17 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? Alias;
         /// <summary>
-        /// The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+        /// The function that is used to aggregate log data within a statistical period. Valid values: `Count`, `Sum`, `Avg`, `Max`, `Min`, `Value`, `Countps`, `Sumps`, `Distinct`, `Distribution`, `Percentile`.
         /// </summary>
         public readonly string? Function;
         /// <summary>
         /// The value of the function that is used to aggregate logs imported from Log Service.
-        /// - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
-        /// - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+        /// - If you set the `Function` parameter to `Distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+        /// - If you set the `Function` parameter to `Percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
         /// </summary>
         public readonly string? ParameterOne;
         /// <summary>
-        /// The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+        /// The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `Function` parameter is set to `Distribution`. This parameter specifies the upper limit of the statistical interval.
         /// </summary>
         public readonly string? ParameterTwo;
         /// <summary>

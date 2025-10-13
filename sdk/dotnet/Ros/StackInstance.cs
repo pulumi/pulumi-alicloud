@@ -104,13 +104,13 @@ namespace Pulumi.AliCloud.Ros
         public Output<string?> OperationPreferences { get; private set; } = null!;
 
         /// <summary>
-        /// ParameterOverrides. See the following `Block parameter_overrides`.
+        /// ParameterOverrides. See the following `Block ParameterOverrides`.
         /// </summary>
         [Output("parameterOverrides")]
         public Output<ImmutableArray<Outputs.StackInstanceParameterOverride>> ParameterOverrides { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+        /// Specifies whether to retain the stack corresponding to the stack instance.Default value `False`. **NOTE:** When `RetainStacks` is `True`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         /// </summary>
         [Output("retainStacks")]
         public Output<bool?> RetainStacks { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
+        /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `Minutes`.
         /// </summary>
         [Output("timeoutInMinutes")]
         public Output<string?> TimeoutInMinutes { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackInstanceParameterOverrideArgs>? _parameterOverrides;
 
         /// <summary>
-        /// ParameterOverrides. See the following `Block parameter_overrides`.
+        /// ParameterOverrides. See the following `Block ParameterOverrides`.
         /// </summary>
         public InputList<Inputs.StackInstanceParameterOverrideArgs> ParameterOverrides
         {
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+        /// Specifies whether to retain the stack corresponding to the stack instance.Default value `False`. **NOTE:** When `RetainStacks` is `True`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         /// </summary>
         [Input("retainStacks")]
         public Input<bool>? RetainStacks { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string> StackInstanceRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
+        /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `Minutes`.
         /// </summary>
         [Input("timeoutInMinutes")]
         public Input<string>? TimeoutInMinutes { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackInstanceParameterOverrideGetArgs>? _parameterOverrides;
 
         /// <summary>
-        /// ParameterOverrides. See the following `Block parameter_overrides`.
+        /// ParameterOverrides. See the following `Block ParameterOverrides`.
         /// </summary>
         public InputList<Inputs.StackInstanceParameterOverrideGetArgs> ParameterOverrides
         {
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+        /// Specifies whether to retain the stack corresponding to the stack instance.Default value `False`. **NOTE:** When `RetainStacks` is `True`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         /// </summary>
         [Input("retainStacks")]
         public Input<bool>? RetainStacks { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
+        /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `Minutes`.
         /// </summary>
         [Input("timeoutInMinutes")]
         public Input<string>? TimeoutInMinutes { get; set; }

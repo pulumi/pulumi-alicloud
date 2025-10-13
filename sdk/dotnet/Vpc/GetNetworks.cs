@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.Vpc
         public string? DhcpOptionsSetId { get; set; }
 
         /// <summary>
-        /// Indicates whether to check this request only. Valid values: `true` and `false`.
+        /// Indicates whether to check this request only. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// Default to `true`. Set it to true can output the `route_table_id`.
+        /// Default to `True`. Set it to true can output the `RouteTableId`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -228,13 +228,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DhcpOptionsSetId { get; set; }
 
         /// <summary>
-        /// Indicates whether to check this request only. Valid values: `true` and `false`.
+        /// Indicates whether to check this request only. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Default to `true`. Set it to true can output the `route_table_id`.
+        /// Default to `True`. Set it to true can output the `RouteTableId`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

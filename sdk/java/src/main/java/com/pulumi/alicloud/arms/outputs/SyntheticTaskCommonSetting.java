@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SyntheticTaskCommonSetting {
     /**
-     * @return Custom host. See `custom_host` below.
+     * @return Custom host. See `customHost` below.
      * 
      */
     private @Nullable SyntheticTaskCommonSettingCustomHost customHost;
@@ -52,7 +52,7 @@ public final class SyntheticTaskCommonSetting {
 
     private SyntheticTaskCommonSetting() {}
     /**
-     * @return Custom host. See `custom_host` below.
+     * @return Custom host. See `customHost` below.
      * 
      */
     public Optional<SyntheticTaskCommonSettingCustomHost> customHost() {

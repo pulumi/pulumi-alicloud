@@ -32,7 +32,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
+     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
      * As a note, the updated internet charge type will be effective in the next day zero time.
      * 
      * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
@@ -43,7 +43,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
+     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
      * As a note, the updated internet charge type will be effective in the next day zero time.
      * 
      * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
@@ -101,7 +101,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param internetChargeType The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-         * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
+         * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
          * As a note, the updated internet charge type will be effective in the next day zero time.
          * 
          * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
@@ -116,7 +116,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param internetChargeType The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-         * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
+         * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
          * As a note, the updated internet charge type will be effective in the next day zero time.
          * 
          * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.

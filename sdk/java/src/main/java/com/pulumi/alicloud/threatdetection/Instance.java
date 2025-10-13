@@ -99,7 +99,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+     * &gt; **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      * 
      */
     @Export(name="honeypot", refs={String.class}, tree="[0]")
@@ -108,7 +108,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Number of cloud honeypot licenses. Interval type, value interval:[20,500].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+     * &gt; **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      * 
      */
     public Output<Optional<String>> honeypot() {
@@ -327,7 +327,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
      * 
-     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+     * &gt; **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      * 
      */
     @Export(name="sasCspm", refs={String.class}, tree="[0]")
@@ -336,7 +336,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
      * 
-     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
+     * &gt; **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      * 
      */
     public Output<Optional<String>> sasCspm() {
@@ -381,7 +381,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     @Export(name="sasSdk", refs={String.class}, tree="[0]")
@@ -390,7 +390,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Output<Optional<String>> sasSdk() {
@@ -627,7 +627,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      * 
      */
     @Export(name="vulCount", refs={String.class}, tree="[0]")
@@ -636,7 +636,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Vulnerability repair times, interval type, value range:[20,100000000].
      * 
-     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      * 
      */
     public Output<Optional<String>> vulCount() {
@@ -647,7 +647,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 0: No.
      * - 1: Yes.
      * 
-     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      * 
      */
     @Export(name="vulSwitch", refs={String.class}, tree="[0]")
@@ -658,7 +658,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 0: No.
      * - 1: Yes.
      * 
-     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * &gt; **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      * 
      */
     public Output<String> vulSwitch() {

@@ -30,14 +30,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     public static final ContainerGroupArgs Empty = new ContainerGroupArgs();
 
     /**
-     * The ACR enterprise edition example properties. See `acr_registry_info` below.
+     * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      * 
      */
     @Import(name="acrRegistryInfos")
     private @Nullable Output<List<ContainerGroupAcrRegistryInfoArgs>> acrRegistryInfos;
 
     /**
-     * @return The ACR enterprise edition example properties. See `acr_registry_info` below.
+     * @return The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      * 
      */
     public Optional<Output<List<ContainerGroupAcrRegistryInfoArgs>>> acrRegistryInfos() {
@@ -120,14 +120,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The structure of dnsConfig. See `dns_config` below.
+     * The structure of dnsConfig. See `dnsConfig` below.
      * 
      */
     @Import(name="dnsConfig")
     private @Nullable Output<ContainerGroupDnsConfigArgs> dnsConfig;
 
     /**
-     * @return The structure of dnsConfig. See `dns_config` below.
+     * @return The structure of dnsConfig. See `dnsConfig` below.
      * 
      */
     public Optional<Output<ContainerGroupDnsConfigArgs>> dnsConfig() {
@@ -180,14 +180,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * HostAliases. See `host_aliases` below.
+     * HostAliases. See `hostAliases` below.
      * 
      */
     @Import(name="hostAliases")
     private @Nullable Output<List<ContainerGroupHostAliasArgs>> hostAliases;
 
     /**
-     * @return HostAliases. See `host_aliases` below.
+     * @return HostAliases. See `hostAliases` below.
      * 
      */
     public Optional<Output<List<ContainerGroupHostAliasArgs>>> hostAliases() {
@@ -195,14 +195,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The image registry credential. See `image_registry_credential` below.
+     * The image registry credential. See `imageRegistryCredential` below.
      * 
      */
     @Import(name="imageRegistryCredentials")
     private @Nullable Output<List<ContainerGroupImageRegistryCredentialArgs>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential. See `image_registry_credential` below.
+     * @return The image registry credential. See `imageRegistryCredential` below.
      * 
      */
     public Optional<Output<List<ContainerGroupImageRegistryCredentialArgs>>> imageRegistryCredentials() {
@@ -210,14 +210,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of initContainers. See `init_containers` below.
+     * The list of initContainers. See `initContainers` below.
      * 
      */
     @Import(name="initContainers")
     private @Nullable Output<List<ContainerGroupInitContainerArgs>> initContainers;
 
     /**
-     * @return The list of initContainers. See `init_containers` below.
+     * @return The list of initContainers. See `initContainers` below.
      * 
      */
     public Optional<Output<List<ContainerGroupInitContainerArgs>>> initContainers() {
@@ -300,14 +300,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
+     * @return The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -330,14 +330,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The security context of the container group. See `security_context` below.
+     * The security context of the container group. See `securityContext` below.
      * 
      */
     @Import(name="securityContext")
     private @Nullable Output<ContainerGroupSecurityContextArgs> securityContext;
 
     /**
-     * @return The security context of the container group. See `security_context` below.
+     * @return The security context of the container group. See `securityContext` below.
      * 
      */
     public Optional<Output<ContainerGroupSecurityContextArgs>> securityContext() {
@@ -440,7 +440,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      * 
      */
     @Import(name="vswitchId", required=true)
@@ -448,7 +448,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      * 
      */
     public Output<String> vswitchId() {
@@ -523,7 +523,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acr_registry_info` below.
+         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acrRegistryInfo` below.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acr_registry_info` below.
+         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acrRegistryInfo` below.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acr_registry_info` below.
+         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acrRegistryInfo` below.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dnsConfig The structure of dnsConfig. See `dns_config` below.
+         * @param dnsConfig The structure of dnsConfig. See `dnsConfig` below.
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dnsConfig The structure of dnsConfig. See `dns_config` below.
+         * @param dnsConfig The structure of dnsConfig. See `dnsConfig` below.
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostAliases HostAliases. See `host_aliases` below.
+         * @param hostAliases HostAliases. See `hostAliases` below.
          * 
          * @return builder
          * 
@@ -764,7 +764,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostAliases HostAliases. See `host_aliases` below.
+         * @param hostAliases HostAliases. See `hostAliases` below.
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostAliases HostAliases. See `host_aliases` below.
+         * @param hostAliases HostAliases. See `hostAliases` below.
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. See `image_registry_credential` below.
+         * @param imageRegistryCredentials The image registry credential. See `imageRegistryCredential` below.
          * 
          * @return builder
          * 
@@ -795,7 +795,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. See `image_registry_credential` below.
+         * @param imageRegistryCredentials The image registry credential. See `imageRegistryCredential` below.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. See `image_registry_credential` below.
+         * @param imageRegistryCredentials The image registry credential. See `imageRegistryCredential` below.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initContainers The list of initContainers. See `init_containers` below.
+         * @param initContainers The list of initContainers. See `initContainers` below.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initContainers The list of initContainers. See `init_containers` below.
+         * @param initContainers The list of initContainers. See `initContainers` below.
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initContainers The list of initContainers. See `init_containers` below.
+         * @param initContainers The list of initContainers. See `initContainers` below.
          * 
          * @return builder
          * 
@@ -951,7 +951,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -962,7 +962,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityContext The security context of the container group. See `security_context` below.
+         * @param securityContext The security context of the container group. See `securityContext` below.
          * 
          * @return builder
          * 
@@ -1004,7 +1004,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityContext The security context of the container group. See `security_context` below.
+         * @param securityContext The security context of the container group. See `securityContext` below.
          * 
          * @return builder
          * 
@@ -1155,7 +1155,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-         * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+         * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-         * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+         * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
          * 
          * @return builder
          * 

@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+        /// Disk category. Possible values: `Cloud` (basic cloud disk), `CloudEfficiency` (ultra cloud disk), `EphemeralSsd` (local SSD cloud disk), `CloudSsd` (SSD cloud disk), and `CloudEssd` (ESSD cloud disk), `CloudEssdEntry`.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly bool EnableAutoSnapshot;
         public readonly bool EnableAutomatedSnapshotPolicy;
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Possible values: `On` and `Off`.
         /// </summary>
         public readonly string Encrypted;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// Disk type. Possible values: `system` and `data`.
+        /// Disk type. Possible values: `System` and `Data`.
         /// </summary>
         public readonly string Type;
         public readonly string ZoneId;

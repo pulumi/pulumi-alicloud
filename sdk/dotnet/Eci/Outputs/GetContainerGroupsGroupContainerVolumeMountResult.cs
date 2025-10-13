@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Default value: `false`.
+        /// Default value: `False`.
         /// </summary>
         public readonly bool ReadOnly;
 

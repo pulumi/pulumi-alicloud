@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
  * 
- * &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
+ * &gt; **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
  * 
  * ## Example Usage
  * 
@@ -225,7 +225,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
         return this.privateIpAddresses;
     }
     /**
-     * List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      * @deprecated
      * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
@@ -236,14 +236,14 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<List<String>> privateIps;
 
     /**
-     * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      */
     public Output<List<String>> privateIps() {
         return this.privateIps;
     }
     /**
-     * Number of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      * @deprecated
      * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
@@ -254,7 +254,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<Integer> privateIpsCount;
 
     /**
-     * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      */
     public Output<Integer> privateIpsCount() {

@@ -24,7 +24,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
      */
     private @Nullable Boolean enableNamespacesByDefault;
     /**
-     * @return CNI configuration See `init_cni_configuration` below.
+     * @return CNI configuration See `initCniConfiguration` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration;
@@ -70,7 +70,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         return Optional.ofNullable(this.enableNamespacesByDefault);
     }
     /**
-     * @return CNI configuration See `init_cni_configuration` below.
+     * @return CNI configuration See `initCniConfiguration` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfiguration() {

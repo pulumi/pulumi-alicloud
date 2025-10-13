@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketReplicationSourceSelectionCriteria {
     /**
-     * @return Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
+     * @return Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
      * 
      */
     private @Nullable BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects sseKmsEncryptedObjects;
 
     private BucketReplicationSourceSelectionCriteria() {}
     /**
-     * @return Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
+     * @return Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
      * 
      */
     public Optional<BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects> sseKmsEncryptedObjects() {

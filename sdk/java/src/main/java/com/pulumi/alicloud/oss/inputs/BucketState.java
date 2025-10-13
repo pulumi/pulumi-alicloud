@@ -28,14 +28,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     public static final BucketState Empty = new BucketState();
 
     /**
-     * A access monitor status of a bucket. See `access_monitor` below.
+     * A access monitor status of a bucket. See `accessMonitor` below.
      * 
      */
     @Import(name="accessMonitor")
     private @Nullable Output<BucketAccessMonitorArgs> accessMonitor;
 
     /**
-     * @return A access monitor status of a bucket. See `access_monitor` below.
+     * @return A access monitor status of a bucket. See `accessMonitor` below.
      * 
      */
     public Optional<Output<BucketAccessMonitorArgs>> accessMonitor() {
@@ -73,14 +73,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      * 
      */
     @Import(name="corsRules")
     private @Nullable Output<List<BucketCorsRuleArgs>> corsRules;
 
     /**
-     * @return A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+     * @return A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      * 
      */
     public Optional<Output<List<BucketCorsRuleArgs>>> corsRules() {
@@ -163,14 +163,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
      * 
      */
     @Import(name="lifecycleRules")
     private @Nullable Output<List<BucketLifecycleRuleArgs>> lifecycleRules;
 
     /**
-     * @return A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+     * @return A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleArgs>>> lifecycleRules() {
@@ -276,14 +276,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
      * 
      */
     @Import(name="refererConfig")
     private @Nullable Output<BucketRefererConfigArgs> refererConfig;
 
     /**
-     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
+     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
      * 
      */
     public Optional<Output<BucketRefererConfigArgs>> refererConfig() {
@@ -306,14 +306,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of server-side encryption. See `server_side_encryption_rule` below.
+     * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      * 
      */
     @Import(name="serverSideEncryptionRule")
     private @Nullable Output<BucketServerSideEncryptionRuleArgs> serverSideEncryptionRule;
 
     /**
-     * @return A configuration of server-side encryption. See `server_side_encryption_rule` below.
+     * @return A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      * 
      */
     public Optional<Output<BucketServerSideEncryptionRuleArgs>> serverSideEncryptionRule() {
@@ -351,14 +351,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A transfer acceleration status of a bucket. See `transfer_acceleration` below.
+     * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      * 
      */
     @Import(name="transferAcceleration")
     private @Nullable Output<BucketTransferAccelerationArgs> transferAcceleration;
 
     /**
-     * @return A transfer acceleration status of a bucket. See `transfer_acceleration` below.
+     * @return A transfer acceleration status of a bucket. See `transferAcceleration` below.
      * 
      */
     public Optional<Output<BucketTransferAccelerationArgs>> transferAcceleration() {
@@ -443,7 +443,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMonitor A access monitor status of a bucket. See `access_monitor` below.
+         * @param accessMonitor A access monitor status of a bucket. See `accessMonitor` below.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMonitor A access monitor status of a bucket. See `access_monitor` below.
+         * @param accessMonitor A access monitor status of a bucket. See `accessMonitor` below.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
          * 
          * @return builder
          * 
@@ -659,7 +659,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
+         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
+         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverSideEncryptionRule A configuration of server-side encryption. See `server_side_encryption_rule` below.
+         * @param serverSideEncryptionRule A configuration of server-side encryption. See `serverSideEncryptionRule` below.
          * 
          * @return builder
          * 
@@ -856,7 +856,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverSideEncryptionRule A configuration of server-side encryption. See `server_side_encryption_rule` below.
+         * @param serverSideEncryptionRule A configuration of server-side encryption. See `serverSideEncryptionRule` below.
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transferAcceleration A transfer acceleration status of a bucket. See `transfer_acceleration` below.
+         * @param transferAcceleration A transfer acceleration status of a bucket. See `transferAcceleration` below.
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transferAcceleration A transfer acceleration status of a bucket. See `transfer_acceleration` below.
+         * @param transferAcceleration A transfer acceleration status of a bucket. See `transferAcceleration` below.
          * 
          * @return builder
          * 

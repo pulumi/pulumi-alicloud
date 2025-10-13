@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     public sealed class ConnectionNetworkParametersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+        /// The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `NetworkType` to `PrivateNetwork`, you must configure `VpcId`, `VswitcheId`, and `SecurityGroupId`.
         /// </summary>
         [Input("networkType", required: true)]
         public Input<string> NetworkType { get; set; } = null!;

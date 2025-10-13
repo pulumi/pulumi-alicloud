@@ -257,14 +257,14 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableWebTracking);
     }
     /**
-     * Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+     * Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      * 
      */
     @Export(name="encryptConf", refs={StoreEncryptConf.class}, tree="[0]")
     private Output<StoreEncryptConf> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+     * @return Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      * 
      */
     public Output<StoreEncryptConf> encryptConf() {
@@ -299,14 +299,14 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.infrequentAccessTtl);
     }
     /**
-     * The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      * 
      */
     @Export(name="logstoreName", refs={String.class}, tree="[0]")
     private Output<String> logstoreName;
 
     /**
-     * @return The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * @return The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      * 
      */
     public Output<String> logstoreName() {
@@ -391,14 +391,14 @@ public class Store extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * @return The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      * 
      */
     public Output<String> projectName() {

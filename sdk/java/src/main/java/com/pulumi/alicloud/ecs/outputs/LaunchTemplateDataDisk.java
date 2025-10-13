@@ -21,12 +21,12 @@ public final class LaunchTemplateDataDisk {
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
      * 
-     * Default to `cloud_efficiency`.
+     * Default to `cloudEfficiency`.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
      * 
      * Default to true
      * 
@@ -77,14 +77,14 @@ public final class LaunchTemplateDataDisk {
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
      * 
-     * Default to `cloud_efficiency`.
+     * Default to `cloudEfficiency`.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
      * 
      * Default to true
      * 

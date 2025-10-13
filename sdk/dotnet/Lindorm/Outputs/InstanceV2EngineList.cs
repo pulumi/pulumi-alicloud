@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Lindorm.Outputs
         /// </summary>
         public readonly string? LatestVersion;
         /// <summary>
-        /// Node Group List See `node_group` below.
+        /// Node Group List See `NodeGroup` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceV2EngineListNodeGroup> NodeGroups;
         /// <summary>

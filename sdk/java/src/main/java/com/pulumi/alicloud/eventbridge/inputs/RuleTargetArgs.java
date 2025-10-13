@@ -20,14 +20,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleTargetArgs Empty = new RuleTargetArgs();
 
     /**
-     * The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
      * 
      */
     @Import(name="deadLetterQueue")
     private @Nullable Output<RuleTargetDeadLetterQueueArgs> deadLetterQueue;
 
     /**
-     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
      * 
      */
     public Optional<Output<RuleTargetDeadLetterQueueArgs>> deadLetterQueue() {
@@ -50,14 +50,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The parameters that are configured for the event target. See `param_list` below.
+     * The parameters that are configured for the event target. See `paramList` below.
      * 
      */
     @Import(name="paramLists", required=true)
     private Output<List<RuleTargetParamListArgs>> paramLists;
 
     /**
-     * @return The parameters that are configured for the event target. See `param_list` below.
+     * @return The parameters that are configured for the event target. See `paramList` below.
      * 
      */
     public Output<List<RuleTargetParamListArgs>> paramLists() {
@@ -145,7 +145,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterQueue The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+         * @param deadLetterQueue The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterQueue The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+         * @param deadLetterQueue The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists The parameters that are configured for the event target. See `param_list` below.
+         * @param paramLists The parameters that are configured for the event target. See `paramList` below.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists The parameters that are configured for the event target. See `param_list` below.
+         * @param paramLists The parameters that are configured for the event target. See `paramList` below.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists The parameters that are configured for the event target. See `param_list` below.
+         * @param paramLists The parameters that are configured for the event target. See `paramList` below.
          * 
          * @return builder
          * 

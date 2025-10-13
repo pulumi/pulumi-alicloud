@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        /// platform of the capacity reservation , value range `Windows`, `Linux`, `All`.
         /// </summary>
         [Input("platform")]
         public string? Platform { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        /// platform of the capacity reservation , value range `Windows`, `Linux`, `All`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eais
     public partial class ClientInstanceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
+        /// EAIS instance category, valid values: `Eais`, `Ei`, default is `Eais`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Eais
     public sealed class ClientInstanceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
+        /// EAIS instance category, valid values: `Eais`, `Ei`, default is `Eais`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Eais
     public sealed class ClientInstanceAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
+        /// EAIS instance category, valid values: `Eais`, `Ei`, default is `Eais`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

@@ -46,7 +46,7 @@ public class TunnelQuotaTimer extends com.pulumi.resources.CustomResource {
      * Time-Sharing configuration
      * 
      * &gt; **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
-     * See `quota_timer` below.
+     * See `quotaTimer` below.
      * 
      */
     @Export(name="quotaTimers", refs={List.class,TunnelQuotaTimerQuotaTimer.class}, tree="[0,1]")
@@ -56,7 +56,7 @@ public class TunnelQuotaTimer extends com.pulumi.resources.CustomResource {
      * @return Time-Sharing configuration
      * 
      * &gt; **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
-     * See `quota_timer` below.
+     * See `quotaTimer` below.
      * 
      */
     public Output<Optional<List<TunnelQuotaTimerQuotaTimer>>> quotaTimers() {

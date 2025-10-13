@@ -104,14 +104,14 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The IP segment list. See `ip_segment_list` below for details.
+     * The IP segment list. See `ipSegmentList` below for details.
      * 
      */
     @Export(name="ipSegmentLists", refs={List.class,CustomLineIpSegmentList.class}, tree="[0,1]")
     private Output<List<CustomLineIpSegmentList>> ipSegmentLists;
 
     /**
-     * @return The IP segment list. See `ip_segment_list` below for details.
+     * @return The IP segment list. See `ipSegmentList` below for details.
      * 
      */
     public Output<List<CustomLineIpSegmentList>> ipSegmentLists() {

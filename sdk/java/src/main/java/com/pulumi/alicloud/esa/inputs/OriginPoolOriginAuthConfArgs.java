@@ -16,14 +16,14 @@ public final class OriginPoolOriginAuthConfArgs extends com.pulumi.resources.Res
     public static final OriginPoolOriginAuthConfArgs Empty = new OriginPoolOriginAuthConfArgs();
 
     /**
-     * The AccessKey to be passed when AuthType is set to private_cross_account or private.
+     * The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The AccessKey to be passed when AuthType is set to private_cross_account or private.
+     * @return The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -61,14 +61,14 @@ public final class OriginPoolOriginAuthConfArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The SecretKey to be passed when AuthType is set to private_cross_account or private.
+     * The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return The SecretKey to be passed when AuthType is set to private_cross_account or private.
+     * @return The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -119,7 +119,7 @@ public final class OriginPoolOriginAuthConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accessKey The AccessKey to be passed when AuthType is set to private_cross_account or private.
+         * @param accessKey The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OriginPoolOriginAuthConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accessKey The AccessKey to be passed when AuthType is set to private_cross_account or private.
+         * @param accessKey The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class OriginPoolOriginAuthConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param secretKey The SecretKey to be passed when AuthType is set to private_cross_account or private.
+         * @param secretKey The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class OriginPoolOriginAuthConfArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param secretKey The SecretKey to be passed when AuthType is set to private_cross_account or private.
+         * @param secretKey The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
          * 
          * @return builder
          * 

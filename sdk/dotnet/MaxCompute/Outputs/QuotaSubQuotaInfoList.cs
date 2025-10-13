@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string NickName;
         /// <summary>
-        /// Parameter See `parameter` below.
+        /// Parameter See `Parameter` below.
         /// </summary>
         public readonly Outputs.QuotaSubQuotaInfoListParameter? Parameter;
         /// <summary>

@@ -150,10 +150,10 @@ import javax.annotation.Nullable;
 public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * @deprecated
-     * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+     * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      * 
      */
-    @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
+    @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
     @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 

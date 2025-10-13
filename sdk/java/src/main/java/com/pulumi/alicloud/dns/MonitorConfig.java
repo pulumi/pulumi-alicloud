@@ -179,14 +179,14 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
         return this.interval;
     }
     /**
-     * The Monitoring node. See `isp_city_node` below for details.
+     * The Monitoring node. See `ispCityNode` below for details.
      * 
      */
     @Export(name="ispCityNodes", refs={List.class,MonitorConfigIspCityNode.class}, tree="[0,1]")
     private Output<List<MonitorConfigIspCityNode>> ispCityNodes;
 
     /**
-     * @return The Monitoring node. See `isp_city_node` below for details.
+     * @return The Monitoring node. See `ispCityNode` below for details.
      * 
      */
     public Output<List<MonitorConfigIspCityNode>> ispCityNodes() {

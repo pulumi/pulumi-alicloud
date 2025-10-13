@@ -38,14 +38,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The additional volumes. See `additional_volumes` below.
+     * The additional volumes. See `additionalVolumes` below.
      * 
      */
     @Import(name="additionalVolumes")
     private @Nullable Output<List<ClusterAdditionalVolumeArgs>> additionalVolumes;
 
     /**
-     * @return The additional volumes. See `additional_volumes` below.
+     * @return The additional volumes. See `additionalVolumes` below.
      * 
      */
     public Optional<Output<List<ClusterAdditionalVolumeArgs>>> additionalVolumes() {
@@ -485,14 +485,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      * 
      */
     public Optional<Output<String>> password() {
@@ -500,7 +500,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+     * The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -510,7 +510,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+     * @return The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -561,14 +561,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The post install script. See `post_install_script` below.
+     * The post install script. See `postInstallScript` below.
      * 
      */
     @Import(name="postInstallScripts")
     private @Nullable Output<List<ClusterPostInstallScriptArgs>> postInstallScripts;
 
     /**
-     * @return The post install script. See `post_install_script` below.
+     * @return The post install script. See `postInstallScript` below.
      * 
      */
     public Optional<Output<List<ClusterPostInstallScriptArgs>>> postInstallScripts() {
@@ -764,14 +764,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+     * The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      * 
      */
     @Import(name="systemDiskType")
     private @Nullable Output<String> systemDiskType;
 
     /**
-     * @return The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+     * @return The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      * 
      */
     public Optional<Output<String>> systemDiskType() {
@@ -1035,7 +1035,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalVolumes The additional volumes. See `additional_volumes` below.
+         * @param additionalVolumes The additional volumes. See `additionalVolumes` below.
          * 
          * @return builder
          * 
@@ -1046,7 +1046,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalVolumes The additional volumes. See `additional_volumes` below.
+         * @param additionalVolumes The additional volumes. See `additionalVolumes` below.
          * 
          * @return builder
          * 
@@ -1056,7 +1056,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalVolumes The additional volumes. See `additional_volumes` below.
+         * @param additionalVolumes The additional volumes. See `additionalVolumes` below.
          * 
          * @return builder
          * 
@@ -1676,7 +1676,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
          * 
          * @return builder
          * 
@@ -1687,7 +1687,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
          * 
          * @return builder
          * 
@@ -1697,7 +1697,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+         * @param period The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
          * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
          * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
          * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -1711,7 +1711,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+         * @param period The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
          * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
          * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
          * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -1776,7 +1776,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postInstallScripts The post install script. See `post_install_script` below.
+         * @param postInstallScripts The post install script. See `postInstallScript` below.
          * 
          * @return builder
          * 
@@ -1787,7 +1787,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postInstallScripts The post install script. See `post_install_script` below.
+         * @param postInstallScripts The post install script. See `postInstallScript` below.
          * 
          * @return builder
          * 
@@ -1797,7 +1797,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postInstallScripts The post install script. See `post_install_script` below.
+         * @param postInstallScripts The post install script. See `postInstallScript` below.
          * 
          * @return builder
          * 
@@ -2077,7 +2077,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskType The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+         * @param systemDiskType The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
          * 
          * @return builder
          * 
@@ -2088,7 +2088,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskType The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+         * @param systemDiskType The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
          * 
          * @return builder
          * 

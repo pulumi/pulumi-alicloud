@@ -62,7 +62,7 @@ public final class GetMountTargetsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+     * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
      * @deprecated
      * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
@@ -73,7 +73,7 @@ public final class GetMountTargetsPlainArgs extends com.pulumi.resources.InvokeA
     private @Nullable String mountTargetDomain;
 
     /**
-     * @return Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+     * @return Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
      * @deprecated
      * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
@@ -130,7 +130,7 @@ public final class GetMountTargetsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
@@ -141,7 +141,7 @@ public final class GetMountTargetsPlainArgs extends com.pulumi.resources.InvokeA
     private @Nullable String type;
 
     /**
-     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
@@ -259,7 +259,7 @@ public final class GetMountTargetsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param mountTargetDomain Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+         * @param mountTargetDomain Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class GetMountTargetsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param type Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+         * @param type Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
          * 
          * @return builder
          * 

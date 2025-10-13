@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Mse
     public partial class EngineNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Output("acceptLanguage")]
         public Output<string?> AcceptLanguage { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// The description of the namespace.
         /// 
-        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// **NOTE:** You must set `ClusterId` or `InstanceId` or both.
         /// </summary>
         [Output("namespaceDesc")]
         public Output<string> NamespaceDesc { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class EngineNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// The description of the namespace.
         /// 
-        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// **NOTE:** You must set `ClusterId` or `InstanceId` or both.
         /// </summary>
         [Input("namespaceDesc")]
         public Input<string>? NamespaceDesc { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Mse
     public sealed class EngineNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the returned information. Valid values: `zh`, `en`.
+        /// The language type of the returned information. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("acceptLanguage")]
         public Input<string>? AcceptLanguage { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// The description of the namespace.
         /// 
-        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// **NOTE:** You must set `ClusterId` or `InstanceId` or both.
         /// </summary>
         [Input("namespaceDesc")]
         public Input<string>? NamespaceDesc { get; set; }

@@ -103,14 +103,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Health check configuration information. See `health_check` below.
+     * Health check configuration information. See `healthCheck` below.
      * 
      */
     @Import(name="healthCheck")
     private @Nullable Output<ServerGroupHealthCheckArgs> healthCheck;
 
     /**
-     * @return Health check configuration information. See `health_check` below.
+     * @return Health check configuration information. See `healthCheck` below.
      * 
      */
     public Optional<Output<ServerGroupHealthCheckArgs>> healthCheck() {
@@ -458,7 +458,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck Health check configuration information. See `health_check` below.
+         * @param healthCheck Health check configuration information. See `healthCheck` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck Health check configuration information. See `health_check` below.
+         * @param healthCheck Health check configuration information. See `healthCheck` below.
          * 
          * @return builder
          * 

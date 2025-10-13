@@ -143,14 +143,14 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxSessionDuration);
     }
     /**
-     * This ID of Resource Manager role. The value is set to `role_name`.
+     * This ID of Resource Manager role. The value is set to `roleName`.
      * 
      */
     @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
-     * @return This ID of Resource Manager role. The value is set to `role_name`.
+     * @return This ID of Resource Manager role. The value is set to `roleName`.
      * 
      */
     public Output<String> roleId() {

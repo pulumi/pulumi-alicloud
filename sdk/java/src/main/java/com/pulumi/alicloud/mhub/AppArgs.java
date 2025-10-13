@@ -32,14 +32,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     @Import(name="bundleId")
     private @Nullable Output<String> bundleId;
 
     /**
-     * @return The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     public Optional<Output<String>> bundleId() {
@@ -77,14 +77,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     @Import(name="packageName")
     private @Nullable Output<String> packageName;
 
     /**
-     * @return Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     public Optional<Output<String>> packageName() {
@@ -173,7 +173,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bundleId The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+         * @param bundleId The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bundleId The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
+         * @param bundleId The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageName Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+         * @param packageName Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageName Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
+         * @param packageName Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
          * 
          * @return builder
          * 

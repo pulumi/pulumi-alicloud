@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+        /// The access protocol type of the instance. Valid values: `Mongodb`, `Dynamodb`.
         /// </summary>
         public readonly string ProtocolType;
         /// <summary>

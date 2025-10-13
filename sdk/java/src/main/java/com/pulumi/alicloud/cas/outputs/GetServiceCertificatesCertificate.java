@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceCertificatesCertificate {
     /**
-     * @return Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
+     * @return Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private Boolean buyInAliyun;
     /**
-     * @return The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
+     * @return The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String cert;
@@ -72,18 +72,18 @@ public final class GetServiceCertificatesCertificate {
      */
     private String issuer;
     /**
-     * @return The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
+     * @return The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String key;
     /**
-     * @return (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+     * @return (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+     * Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead. */
     private String name;
     /**
      * @return The name of the organization that is associated with the certificate.
@@ -108,14 +108,14 @@ public final class GetServiceCertificatesCertificate {
 
     private GetServiceCertificatesCertificate() {}
     /**
-     * @return Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
+     * @return Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Boolean buyInAliyun() {
         return this.buyInAliyun;
     }
     /**
-     * @return The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
+     * @return The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String cert() {
@@ -192,20 +192,20 @@ public final class GetServiceCertificatesCertificate {
         return this.issuer;
     }
     /**
-     * @return The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
+     * @return The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+     * @return (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+     * Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead. */
     public String name() {
         return this.name;
     }

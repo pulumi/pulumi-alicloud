@@ -26,17 +26,17 @@ namespace Pulumi.AliCloud.Slb.Outputs
         public readonly string MasterAvailabilityZone;
         public readonly string Name;
         /// <summary>
-        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         public readonly string NetworkType;
         public readonly string RegionId;
         public readonly string SlaveAvailabilityZone;
         /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

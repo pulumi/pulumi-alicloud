@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<int?> Mss { get; private set; } = null!;
 
         /// <summary>
-        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `ProxyProtocolConfig` below.
         /// </summary>
         [Output("proxyProtocolConfig")]
         public Output<Outputs.ListenerProxyProtocolConfig> ProxyProtocolConfig { get; private set; } = null!;
@@ -464,7 +464,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? Mss { get; set; }
 
         /// <summary>
-        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `ProxyProtocolConfig` below.
         /// </summary>
         [Input("proxyProtocolConfig")]
         public Input<Inputs.ListenerProxyProtocolConfigArgs>? ProxyProtocolConfig { get; set; }
@@ -640,7 +640,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? Mss { get; set; }
 
         /// <summary>
-        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `ProxyProtocolConfig` below.
         /// </summary>
         [Input("proxyProtocolConfig")]
         public Input<Inputs.ListenerProxyProtocolConfigGetArgs>? ProxyProtocolConfig { get; set; }

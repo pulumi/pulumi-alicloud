@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable traffic mirror sessions. default to `false`.
+        /// Specifies whether to enable traffic mirror sessions. default to `False`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable traffic mirror sessions. default to `false`.
+        /// Specifies whether to enable traffic mirror sessions. default to `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable traffic mirror sessions. default to `false`.
+        /// Specifies whether to enable traffic mirror sessions. default to `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Alert template language including `cn`, `en`.
+        /// Alert template language including `Cn`, `En`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         }
 
         /// <summary>
-        /// Alert template type including `sys`, `user`.
+        /// Alert template type including `Sys`, `User`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

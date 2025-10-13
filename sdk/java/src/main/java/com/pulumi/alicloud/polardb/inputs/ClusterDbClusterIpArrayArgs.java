@@ -35,7 +35,7 @@ public final class ClusterDbClusterIpArrayArgs extends com.pulumi.resources.Reso
 
     /**
      * The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-     * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+     * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
      * 
      */
     @Import(name="modifyMode")
@@ -43,7 +43,7 @@ public final class ClusterDbClusterIpArrayArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-     * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+     * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
      * 
      */
     public Optional<Output<String>> modifyMode() {
@@ -116,7 +116,7 @@ public final class ClusterDbClusterIpArrayArgs extends com.pulumi.resources.Reso
 
         /**
          * @param modifyMode The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-         * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+         * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ClusterDbClusterIpArrayArgs extends com.pulumi.resources.Reso
 
         /**
          * @param modifyMode The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-         * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+         * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
          * 
          * @return builder
          * 

@@ -65,10 +65,10 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// Subscription plan:
-        /// * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
-        /// * China site customers can purchase the following versions of International region, valid values: ["version_pro_asia", "version_business_asia", "version_enterprise_asia"]
-        /// * International site customers can purchase the following versions of China Mainland region: ["version_pro_china", "version_business_china", "version_enterprise_china"]
-        /// * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
+        /// * China site customers can purchase the following versions of China Mainland region, valid values: ["Version3", "Version4", "Version5"].
+        /// * China site customers can purchase the following versions of International region, valid values: ["VersionProAsia", "VersionBusinessAsia", "VersionEnterpriseAsia"]
+        /// * International site customers can purchase the following versions of China Mainland region: ["VersionProChina", "VersionBusinessChina", "VersionEnterpriseChina"]
+        /// * International site customers can purchase the following versions of International region: ["VersionPro", "VersionBusiness", "VersionEnterprise"].
         /// </summary>
         [Output("packageCode")]
         public Output<string> PackageCode { get; private set; } = null!;
@@ -219,10 +219,10 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// Subscription plan:
-        /// * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
-        /// * China site customers can purchase the following versions of International region, valid values: ["version_pro_asia", "version_business_asia", "version_enterprise_asia"]
-        /// * International site customers can purchase the following versions of China Mainland region: ["version_pro_china", "version_business_china", "version_enterprise_china"]
-        /// * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
+        /// * China site customers can purchase the following versions of China Mainland region, valid values: ["Version3", "Version4", "Version5"].
+        /// * China site customers can purchase the following versions of International region, valid values: ["VersionProAsia", "VersionBusinessAsia", "VersionEnterpriseAsia"]
+        /// * International site customers can purchase the following versions of China Mainland region: ["VersionProChina", "VersionBusinessChina", "VersionEnterpriseChina"]
+        /// * International site customers can purchase the following versions of International region: ["VersionPro", "VersionBusiness", "VersionEnterprise"].
         /// </summary>
         [Input("packageCode", required: true)]
         public Input<string> PackageCode { get; set; } = null!;
@@ -329,10 +329,10 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// Subscription plan:
-        /// * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
-        /// * China site customers can purchase the following versions of International region, valid values: ["version_pro_asia", "version_business_asia", "version_enterprise_asia"]
-        /// * International site customers can purchase the following versions of China Mainland region: ["version_pro_china", "version_business_china", "version_enterprise_china"]
-        /// * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
+        /// * China site customers can purchase the following versions of China Mainland region, valid values: ["Version3", "Version4", "Version5"].
+        /// * China site customers can purchase the following versions of International region, valid values: ["VersionProAsia", "VersionBusinessAsia", "VersionEnterpriseAsia"]
+        /// * International site customers can purchase the following versions of China Mainland region: ["VersionProChina", "VersionBusinessChina", "VersionEnterpriseChina"]
+        /// * International site customers can purchase the following versions of International region: ["VersionPro", "VersionBusiness", "VersionEnterprise"].
         /// </summary>
         [Input("packageCode")]
         public Input<string>? PackageCode { get; set; }

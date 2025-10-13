@@ -25,14 +25,14 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
     public static final SyntheticTaskArgs Empty = new SyntheticTaskArgs();
 
     /**
-     * Assertion List. See `available_assertions` below.
+     * Assertion List. See `availableAssertions` below.
      * 
      */
     @Import(name="availableAssertions")
     private @Nullable Output<List<SyntheticTaskAvailableAssertionArgs>> availableAssertions;
 
     /**
-     * @return Assertion List. See `available_assertions` below.
+     * @return Assertion List. See `availableAssertions` below.
      * 
      */
     public Optional<Output<List<SyntheticTaskAvailableAssertionArgs>>> availableAssertions() {
@@ -40,14 +40,14 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Common settings. See `common_setting` below.
+     * Common settings. See `commonSetting` below.
      * 
      */
     @Import(name="commonSetting")
     private @Nullable Output<SyntheticTaskCommonSettingArgs> commonSetting;
 
     /**
-     * @return Common settings. See `common_setting` below.
+     * @return Common settings. See `commonSetting` below.
      * 
      */
     public Optional<Output<SyntheticTaskCommonSettingArgs>> commonSetting() {
@@ -55,14 +55,14 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom Cycle. See `custom_period` below.
+     * Custom Cycle. See `customPeriod` below.
      * 
      */
     @Import(name="customPeriod")
     private @Nullable Output<SyntheticTaskCustomPeriodArgs> customPeriod;
 
     /**
-     * @return Custom Cycle. See `custom_period` below.
+     * @return Custom Cycle. See `customPeriod` below.
      * 
      */
     public Optional<Output<SyntheticTaskCustomPeriodArgs>> customPeriod() {
@@ -100,14 +100,14 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Monitoring configuration. See `monitor_conf` below.
+     * Monitoring configuration. See `monitorConf` below.
      * 
      */
     @Import(name="monitorConf", required=true)
     private Output<SyntheticTaskMonitorConfArgs> monitorConf;
 
     /**
-     * @return Monitoring configuration. See `monitor_conf` below.
+     * @return Monitoring configuration. See `monitorConf` below.
      * 
      */
     public Output<SyntheticTaskMonitorConfArgs> monitorConf() {
@@ -240,7 +240,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availableAssertions Assertion List. See `available_assertions` below.
+         * @param availableAssertions Assertion List. See `availableAssertions` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availableAssertions Assertion List. See `available_assertions` below.
+         * @param availableAssertions Assertion List. See `availableAssertions` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availableAssertions Assertion List. See `available_assertions` below.
+         * @param availableAssertions Assertion List. See `availableAssertions` below.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param commonSetting Common settings. See `common_setting` below.
+         * @param commonSetting Common settings. See `commonSetting` below.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param commonSetting Common settings. See `common_setting` below.
+         * @param commonSetting Common settings. See `commonSetting` below.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customPeriod Custom Cycle. See `custom_period` below.
+         * @param customPeriod Custom Cycle. See `customPeriod` below.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customPeriod Custom Cycle. See `custom_period` below.
+         * @param customPeriod Custom Cycle. See `customPeriod` below.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param monitorConf Monitoring configuration. See `monitor_conf` below.
+         * @param monitorConf Monitoring configuration. See `monitorConf` below.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class SyntheticTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param monitorConf Monitoring configuration. See `monitor_conf` below.
+         * @param monitorConf Monitoring configuration. See `monitorConf` below.
          * 
          * @return builder
          * 

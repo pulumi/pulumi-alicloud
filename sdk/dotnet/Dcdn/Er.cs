@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of the specified environment. See `env_conf` below.
+        /// The configurations of the specified environment. See `EnvConf` below.
         /// </summary>
         [Output("envConf")]
         public Output<Outputs.ErEnvConf> EnvConf { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The configurations of the specified environment. See `env_conf` below.
+        /// The configurations of the specified environment. See `EnvConf` below.
         /// </summary>
         [Input("envConf")]
         public Input<Inputs.ErEnvConfArgs>? EnvConf { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The configurations of the specified environment. See `env_conf` below.
+        /// The configurations of the specified environment. See `EnvConf` below.
         /// </summary>
         [Input("envConf")]
         public Input<Inputs.ErEnvConfGetArgs>? EnvConf { get; set; }

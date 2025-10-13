@@ -120,14 +120,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack")
 public class AggregateCompliancePack extends com.pulumi.resources.CustomResource {
     /**
-     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      * 
      */
     @Export(name="aggregateCompliancePackName", refs={String.class}, tree="[0]")
     private Output<String> aggregateCompliancePackName;
 
     /**
-     * @return The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+     * @return The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      * 
      */
     public Output<String> aggregateCompliancePackName() {
@@ -176,32 +176,32 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.compliancePackTemplateId);
     }
     /**
-     * A list of Config Rule IDs. See `config_rule_ids` below.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      * 
      */
     @Export(name="configRuleIds", refs={List.class,AggregateCompliancePackConfigRuleId.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRuleId>> configRuleIds;
 
     /**
-     * @return A list of Config Rule IDs. See `config_rule_ids` below.
+     * @return A list of Config Rule IDs. See `configRuleIds` below.
      * 
      */
     public Output<Optional<List<AggregateCompliancePackConfigRuleId>>> configRuleIds() {
         return Codegen.optional(this.configRuleIds);
     }
     /**
-     * A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      * @deprecated
-     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
-    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
+    @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
     @Export(name="configRules", refs={List.class,AggregateCompliancePackConfigRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRule>> configRules;
 
     /**
-     * @return A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+     * @return A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
     public Output<Optional<List<AggregateCompliancePackConfigRule>>> configRules() {

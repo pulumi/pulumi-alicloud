@@ -65,14 +65,14 @@ public final class NatFirewallArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+     * The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      * 
      */
     @Import(name="natRouteEntryLists", required=true)
     private Output<List<NatFirewallNatRouteEntryListArgs>> natRouteEntryLists;
 
     /**
-     * @return The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+     * @return The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      * 
      */
     public Output<List<NatFirewallNatRouteEntryListArgs>> natRouteEntryLists() {
@@ -298,7 +298,7 @@ public final class NatFirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class NatFirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class NatFirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+         * @param natRouteEntryLists The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class PolicyBindingAdvancedOptions
     {
         /// <summary>
-        /// ECS Backup Advanced options. See `udm_detail` below.
+        /// ECS Backup Advanced options. See `UdmDetail` below.
         /// </summary>
         public readonly Outputs.PolicyBindingAdvancedOptionsUdmDetail? UdmDetail;
 

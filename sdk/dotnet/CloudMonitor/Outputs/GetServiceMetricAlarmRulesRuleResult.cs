@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
         /// </summary>
         public readonly string SourceType;
         /// <summary>
-        /// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+        /// Specifies whether to query enabled or disabled alert rules. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool Status;
         /// <summary>

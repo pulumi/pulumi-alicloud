@@ -125,14 +125,14 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
     }
 
     /**
-     * The bgp config of Tunnel. See `tunnel_bgp_config` below.
+     * The bgp config of Tunnel. See `tunnelBgpConfig` below.
      * 
      */
     @Import(name="tunnelBgpConfig")
     private @Nullable Output<ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs> tunnelBgpConfig;
 
     /**
-     * @return The bgp config of Tunnel. See `tunnel_bgp_config` below.
+     * @return The bgp config of Tunnel. See `tunnelBgpConfig` below.
      * 
      */
     public Optional<Output<ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs>> tunnelBgpConfig() {
@@ -155,14 +155,14 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
     }
 
     /**
-     * The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+     * The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
      * 
      */
     @Import(name="tunnelIkeConfig")
     private @Nullable Output<ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs> tunnelIkeConfig;
 
     /**
-     * @return The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+     * @return The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
      * 
      */
     public Optional<Output<ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs>> tunnelIkeConfig() {
@@ -170,14 +170,14 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
     }
 
     /**
-     * IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+     * IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
      * 
      */
     @Import(name="tunnelIpsecConfig")
     private @Nullable Output<ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs> tunnelIpsecConfig;
 
     /**
-     * @return IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+     * @return IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
      * 
      */
     public Optional<Output<ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs>> tunnelIpsecConfig() {
@@ -382,7 +382,7 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
         }
 
         /**
-         * @param tunnelBgpConfig The bgp config of Tunnel. See `tunnel_bgp_config` below.
+         * @param tunnelBgpConfig The bgp config of Tunnel. See `tunnelBgpConfig` below.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
         }
 
         /**
-         * @param tunnelBgpConfig The bgp config of Tunnel. See `tunnel_bgp_config` below.
+         * @param tunnelBgpConfig The bgp config of Tunnel. See `tunnelBgpConfig` below.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
         }
 
         /**
-         * @param tunnelIkeConfig The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+         * @param tunnelIkeConfig The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
         }
 
         /**
-         * @param tunnelIkeConfig The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+         * @param tunnelIkeConfig The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
         }
 
         /**
-         * @param tunnelIpsecConfig IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+         * @param tunnelIpsecConfig IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class ConnectionTunnelOptionsSpecificationArgs extends com.pulumi.r
         }
 
         /**
-         * @param tunnelIpsecConfig IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+         * @param tunnelIpsecConfig IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
          * 
          * @return builder
          * 

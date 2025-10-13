@@ -33,14 +33,14 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
     }
 
     /**
-     * Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
      * 
      */
     @Import(name="enableSortAndAgg")
     private @Nullable Output<Boolean> enableSortAndAgg;
 
     /**
-     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
      * 
      */
     public Optional<Output<Boolean>> enableSortAndAgg() {
@@ -48,14 +48,14 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     @Import(name="fieldName", required=true)
     private Output<String> fieldName;
 
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return The name of the field that is used to sort data. only required if sorterType is FieldSort.
      * 
      */
     public Output<String> fieldName() {
@@ -174,7 +174,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enableSortAndAgg Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+         * @param enableSortAndAgg Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enableSortAndAgg Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+         * @param enableSortAndAgg Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * @param fieldName The name of the field that is used to sort data. only required if sorterType is FieldSort.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * @param fieldName The name of the field that is used to sort data. only required if sorterType is FieldSort.
          * 
          * @return builder
          * 

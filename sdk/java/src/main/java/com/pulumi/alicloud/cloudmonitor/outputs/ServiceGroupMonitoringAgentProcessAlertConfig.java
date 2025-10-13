@@ -41,7 +41,7 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfig {
      */
     private String statistics;
     /**
-     * @return The alert triggers. See `target_list` below.
+     * @return The alert triggers. See `targetList` below.
      * 
      */
     private @Nullable List<ServiceGroupMonitoringAgentProcessAlertConfigTargetList> targetLists;
@@ -98,7 +98,7 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfig {
         return this.statistics;
     }
     /**
-     * @return The alert triggers. See `target_list` below.
+     * @return The alert triggers. See `targetList` below.
      * 
      */
     public List<ServiceGroupMonitoringAgentProcessAlertConfigTargetList> targetLists() {

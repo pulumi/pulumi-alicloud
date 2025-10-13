@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class ProjectProperties
     {
         /// <summary>
-        /// Whether to allow full table scan. Default: `false`.
+        /// Whether to allow full table scan. Default: `False`.
         /// </summary>
         public readonly bool? AllowFullScan;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly bool? EnableDecimal2;
         /// <summary>
-        /// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+        /// Enable multi-AZ storage disaster tolerance. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? EnableDr;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// 
         /// To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
         /// 
-        /// You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+        /// You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `Encryption` below.
         /// </summary>
         public readonly Outputs.ProjectPropertiesEncryption? Encryption;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string? SqlMeteringMax;
         /// <summary>
-        /// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+        /// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `TableLifecycle` below.
         /// </summary>
         public readonly Outputs.ProjectPropertiesTableLifecycle? TableLifecycle;
         /// <summary>

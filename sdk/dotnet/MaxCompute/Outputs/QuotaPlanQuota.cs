@@ -14,14 +14,14 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class QuotaPlanQuota
     {
         /// <summary>
-        /// Level 2 Quota CU configuration See `parameter` below.
+        /// Level 2 Quota CU configuration See `Parameter` below.
         /// </summary>
         public readonly Outputs.QuotaPlanQuotaParameter? Parameter;
         /// <summary>
         /// Secondary Quota list
         /// 
         /// &gt; **NOTE:** need to list all secondary Quota
-        /// See `sub_quota_info_list` below.
+        /// See `SubQuotaInfoList` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.QuotaPlanQuotaSubQuotaInfoList> SubQuotaInfoLists;
 

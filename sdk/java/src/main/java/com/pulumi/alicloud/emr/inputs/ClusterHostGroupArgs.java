@@ -160,14 +160,14 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
+     * Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instanceId1&#34;,&#34;instanceId2&#34;]. escape character for &#34; is \&#34;.
      * 
      */
     @Import(name="instanceList")
     private @Nullable Output<String> instanceList;
 
     /**
-     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
+     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instanceId1&#34;,&#34;instanceId2&#34;]. escape character for &#34; is \&#34;.
      * 
      */
     public Optional<Output<String>> instanceList() {
@@ -487,7 +487,7 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceList Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
+         * @param instanceList Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instanceId1&#34;,&#34;instanceId2&#34;]. escape character for &#34; is \&#34;.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceList Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
+         * @param instanceList Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instanceId1&#34;,&#34;instanceId2&#34;]. escape character for &#34; is \&#34;.
          * 
          * @return builder
          * 

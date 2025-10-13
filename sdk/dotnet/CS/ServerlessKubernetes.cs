@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
     /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
-    /// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+    /// VPC, you can set `NewNatGateway` to "true" to create one automatically.
     /// 
     /// &gt; **NOTE:** Creating serverless kubernetes cluster need to install several packages and it will cost about 5 minutes. Please be patient.
     /// 
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.CS
     public partial class ServerlessKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// You can specific network plugin, log component, ingress component and so on. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CustomSan { get; private set; } = null!;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         [Output("deleteOptions")]
         public Output<ImmutableArray<Outputs.ServerlessKubernetesDeleteOption>> DeleteOptions { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Output("enableRrsa")]
         public Output<bool?> EnableRrsa { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EndpointPublicAccessEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("kubeConfig")]
         public Output<string?> KubeConfig { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> LoggingType { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `MaintenanceWindow` below.
         /// </summary>
         [Output("maintenanceWindow")]
         public Output<Outputs.ServerlessKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
@@ -199,13 +199,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `True`.
         /// </summary>
         [Output("newNatGateway")]
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// The cluster automatic operation policy. See `OperationPolicy` below.
         /// 
         /// *Removed params*
         /// </summary>
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.ServerlessKubernetesOperationPolicy> OperationPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `ServiceDiscoveryTypes`.
         /// </summary>
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> ServiceDiscoveryTypes { get; private set; } = null!;
 
         /// <summary>
-        /// If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+        /// If you use an existing SLS project, you must specify `SlsProjectName`. Only works for **Create** Operation.
         /// </summary>
         [Output("slsProjectName")]
         public Output<string> SlsProjectName { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see ClusterAutoUpgrade for more information.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// You can specific network plugin, log component, ingress component and so on. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonArgs> Addons
         {
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesDeleteOptionArgs>? _deleteOptions;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesDeleteOptionArgs> DeleteOptions
         {
@@ -405,7 +405,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
 
         /// <summary>
-        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoggingType { get; set; }
 
         /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `MaintenanceWindow` below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ServerlessKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
@@ -450,13 +450,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `True`.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// The cluster automatic operation policy. See `OperationPolicy` below.
         /// 
         /// *Removed params*
         /// </summary>
@@ -464,7 +464,7 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ServerlessKubernetesOperationPolicyArgs>? OperationPolicy { get; set; }
 
         /// <summary>
-        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `ServiceDiscoveryTypes`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -508,7 +508,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+        /// If you use an existing SLS project, you must specify `SlsProjectName`. Only works for **Create** Operation.
         /// </summary>
         [Input("slsProjectName")]
         public Input<string>? SlsProjectName { get; set; }
@@ -532,7 +532,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see ClusterAutoUpgrade for more information.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -573,7 +573,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        /// You can specific network plugin, log component, ingress component and so on. See `Addons` below. Only works for **Create** Operation, use resource CsKubernetesAddon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonGetArgs> Addons
         {
@@ -618,7 +618,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesDeleteOptionGetArgs>? _deleteOptions;
 
         /// <summary>
-        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `DeleteOptions` below.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesDeleteOptionGetArgs> DeleteOptions
         {
@@ -635,7 +635,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `False`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -647,7 +647,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
 
         /// <summary>
-        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute OutputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
@@ -665,7 +665,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoggingType { get; set; }
 
         /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `MaintenanceWindow` below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ServerlessKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
@@ -680,13 +680,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `True`.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// The cluster automatic operation policy. See `OperationPolicy` below.
         /// 
         /// *Removed params*
         /// </summary>
@@ -694,7 +694,7 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ServerlessKubernetesOperationPolicyGetArgs>? OperationPolicy { get; set; }
 
         /// <summary>
-        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `ServiceDiscoveryTypes`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -744,7 +744,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
+        /// If you use an existing SLS project, you must specify `SlsProjectName`. Only works for **Create** Operation.
         /// </summary>
         [Input("slsProjectName")]
         public Input<string>? SlsProjectName { get; set; }
@@ -768,7 +768,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see ClusterAutoUpgrade for more information.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

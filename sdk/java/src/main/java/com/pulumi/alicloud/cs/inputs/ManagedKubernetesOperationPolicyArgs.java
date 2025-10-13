@@ -16,14 +16,14 @@ public final class ManagedKubernetesOperationPolicyArgs extends com.pulumi.resou
     public static final ManagedKubernetesOperationPolicyArgs Empty = new ManagedKubernetesOperationPolicyArgs();
 
     /**
-     * Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+     * Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
      * 
      */
     @Import(name="clusterAutoUpgrade")
     private @Nullable Output<ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs> clusterAutoUpgrade;
 
     /**
-     * @return Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+     * @return Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
      * 
      */
     public Optional<Output<ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs>> clusterAutoUpgrade() {
@@ -55,7 +55,7 @@ public final class ManagedKubernetesOperationPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ManagedKubernetesOperationPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+         * @param clusterAutoUpgrade Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
          * 
          * @return builder
          * 

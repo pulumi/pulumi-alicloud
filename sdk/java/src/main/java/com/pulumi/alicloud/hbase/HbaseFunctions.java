@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class HbaseFunctions {
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
@@ -31,7 +31,7 @@ public final class HbaseFunctions {
         return getInstanceTypes(GetInstanceTypesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
@@ -40,7 +40,7 @@ public final class HbaseFunctions {
         return getInstanceTypesPlain(GetInstanceTypesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
@@ -49,7 +49,7 @@ public final class HbaseFunctions {
         return getInstanceTypes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
@@ -58,7 +58,7 @@ public final class HbaseFunctions {
         return getInstanceTypesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
@@ -67,7 +67,7 @@ public final class HbaseFunctions {
         return Deployment.getInstance().invoke("alicloud:hbase/getInstanceTypes:getInstanceTypes", TypeShape.of(GetInstanceTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
@@ -76,7 +76,7 @@ public final class HbaseFunctions {
         return Deployment.getInstance().invoke("alicloud:hbase/getInstanceTypes:getInstanceTypes", TypeShape.of(GetInstanceTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 

@@ -22,25 +22,25 @@ namespace Pulumi.AliCloud.KVStore
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when PaymentType is `PrePaid`. Default value: `False`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when PaymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to use a coupon. Default value: `false`.
+        /// Specifies whether to use a coupon. Default value: `False`.
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+        /// It has been deprecated from provider version 1.101.0 and `ZoneId` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `Bandwidth` can be set. If the instance is a cluster instance, `Bandwidth` must be divisible by the number of `ShardCount` in the instance, and if the instance is a read/write splitting instance, `Bandwidth` cannot be set.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
+        /// The coupon code. **NOTE:** The default value `YouhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         /// </summary>
         [Output("couponNo")]
         public Output<string?> CouponNo { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
         /// - `Immediately` (Default): The configurations are immediately changed.
-        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `MaintainStartTime` and `MaintainEndTime` to change the maintenance window.
         /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
@@ -169,19 +169,19 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
-        /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
+        /// **NOTE:** When `InstanceType = Memcache`, the `EngineVersion` only supports "4.0".
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to forcibly change the type. Default value: `true`.
+        /// Specifies whether to forcibly change the type. Default value: `True`.
         /// </summary>
         [Output("forceUpgrade")]
         public Output<bool?> ForceUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a distributed cache. Default value: `false`.
+        /// Whether to create a distributed cache. Default value: `False`.
         /// </summary>
         [Output("globalInstance")]
         public Output<bool?> GlobalInstance { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> GlobalInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+        /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+        /// It has been deprecated from provider version 1.101.0 and `DbInstanceName` instead.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
@@ -230,13 +230,13 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> IsAutoUpgradeOpen { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> OrderType { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+        /// It has been deprecated from provider version 1.101.0 and `Config` instead. See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+        /// The duration that you will buy KVStore DBInstance (in month). It is valid when PaymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -377,14 +377,14 @@ namespace Pulumi.AliCloud.KVStore
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `ShardCount` can be modified.
         /// </summary>
         [Output("shardCount")]
         public Output<int> ShardCount { get; private set; } = null!;
 
         /// <summary>
-        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
-        /// &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Output("slaveReadOnlyCount")]
         public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if InstanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Output("vpcAuthMode")]
         public Output<string?> VpcAuthMode { get; private set; } = null!;
@@ -491,25 +491,25 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when PaymentType is `PrePaid`. Default value: `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when PaymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Specifies whether to use a coupon. Default value: `false`.
+        /// Specifies whether to use a coupon. Default value: `False`.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+        /// It has been deprecated from provider version 1.101.0 and `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -539,7 +539,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `Bandwidth` can be set. If the instance is a cluster instance, `Bandwidth` must be divisible by the number of `ShardCount` in the instance, and if the instance is a read/write splitting instance, `Bandwidth` cannot be set.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -575,7 +575,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
+        /// The coupon code. **NOTE:** The default value `YouhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -601,7 +601,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
         /// - `Immediately` (Default): The configurations are immediately changed.
-        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `MaintainStartTime` and `MaintainEndTime` to change the maintenance window.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -632,19 +632,19 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
-        /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
+        /// **NOTE:** When `InstanceType = Memcache`, the `EngineVersion` only supports "4.0".
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly change the type. Default value: `true`.
+        /// Specifies whether to forcibly change the type. Default value: `True`.
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
 
         /// <summary>
-        /// Whether to create a distributed cache. Default value: `false`.
+        /// Whether to create a distributed cache. Default value: `False`.
         /// </summary>
         [Input("globalInstance")]
         public Input<bool>? GlobalInstance { get; set; }
@@ -656,7 +656,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? GlobalInstanceId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+        /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -669,7 +669,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+        /// It has been deprecated from provider version 1.101.0 and `DbInstanceName` instead.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -693,7 +693,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? IsAutoUpgradeOpen { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -702,7 +702,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -740,7 +740,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+        /// It has been deprecated from provider version 1.101.0 and `Config` instead. See `Parameters` below.
         /// </summary>
         [Obsolete(@"Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")]
         public InputList<Inputs.InstanceParameterArgs> Parameters
@@ -772,7 +772,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+        /// The duration that you will buy KVStore DBInstance (in month). It is valid when PaymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -863,14 +863,14 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `ShardCount` can be modified.
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
 
         /// <summary>
-        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
-        /// &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Input("slaveReadOnlyCount")]
         public Input<int>? SlaveReadOnlyCount { get; set; }
@@ -909,7 +909,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if InstanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Input("vpcAuthMode")]
         public Input<string>? VpcAuthMode { get; set; }
@@ -935,25 +935,25 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when PaymentType is `PrePaid`. Default value: `False`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when PaymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Specifies whether to use a coupon. Default value: `false`.
+        /// Specifies whether to use a coupon. Default value: `False`.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+        /// It has been deprecated from provider version 1.101.0 and `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -983,7 +983,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `Bandwidth` can be set. If the instance is a cluster instance, `Bandwidth` must be divisible by the number of `ShardCount` in the instance, and if the instance is a read/write splitting instance, `Bandwidth` cannot be set.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -1031,7 +1031,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
+        /// The coupon code. **NOTE:** The default value `YouhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -1057,7 +1057,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
         /// - `Immediately` (Default): The configurations are immediately changed.
-        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `MaintainStartTime` and `MaintainEndTime` to change the maintenance window.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -1094,19 +1094,19 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
-        /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
+        /// **NOTE:** When `InstanceType = Memcache`, the `EngineVersion` only supports "4.0".
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly change the type. Default value: `true`.
+        /// Specifies whether to forcibly change the type. Default value: `True`.
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
 
         /// <summary>
-        /// Whether to create a distributed cache. Default value: `false`.
+        /// Whether to create a distributed cache. Default value: `False`.
         /// </summary>
         [Input("globalInstance")]
         public Input<bool>? GlobalInstance { get; set; }
@@ -1118,7 +1118,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? GlobalInstanceId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+        /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1131,7 +1131,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+        /// It has been deprecated from provider version 1.101.0 and `DbInstanceName` instead.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -1155,7 +1155,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? IsAutoUpgradeOpen { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -1164,7 +1164,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1202,7 +1202,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+        /// It has been deprecated from provider version 1.101.0 and `Config` instead. See `Parameters` below.
         /// </summary>
         [Obsolete(@"Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")]
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
@@ -1234,7 +1234,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+        /// The duration that you will buy KVStore DBInstance (in month). It is valid when PaymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -1331,14 +1331,14 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `ShardCount` can be modified.
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
 
         /// <summary>
-        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
-        /// &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Input("slaveReadOnlyCount")]
         public Input<int>? SlaveReadOnlyCount { get; set; }
@@ -1383,7 +1383,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if InstanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Input("vpcAuthMode")]
         public Input<string>? VpcAuthMode { get; set; }

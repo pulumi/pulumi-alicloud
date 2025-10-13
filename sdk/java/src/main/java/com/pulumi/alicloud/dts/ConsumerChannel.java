@@ -211,28 +211,28 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
         return this.consumerGroupName;
     }
     /**
-     * The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+     * The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      * 
      */
     @Export(name="consumerGroupPassword", refs={String.class}, tree="[0]")
     private Output<String> consumerGroupPassword;
 
     /**
-     * @return The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+     * @return The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      * 
      */
     public Output<String> consumerGroupPassword() {
         return this.consumerGroupPassword;
     }
     /**
-     * The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+     * The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      * 
      */
     @Export(name="consumerGroupUserName", refs={String.class}, tree="[0]")
     private Output<String> consumerGroupUserName;
 
     /**
-     * @return The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+     * @return The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      * 
      */
     public Output<String> consumerGroupUserName() {

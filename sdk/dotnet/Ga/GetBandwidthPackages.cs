@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Ga
     public sealed class GetBandwidthPackagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
+        /// The status of the bandwidth plan. Valid values: `Active`, `Binded`, `Binding`, `finacialLocked`, `Init`, `Unbinding`, `Updating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Ga
     public sealed class GetBandwidthPackagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
+        /// The status of the bandwidth plan. Valid values: `Active`, `Binded`, `Binding`, `finacialLocked`, `Init`, `Unbinding`, `Updating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

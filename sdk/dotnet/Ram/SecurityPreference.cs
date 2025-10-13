@@ -70,8 +70,8 @@ namespace Pulumi.AliCloud.Ram
         public Output<bool> EnableSaveMfaTicket { get; private set; } = null!;
 
         /// <summary>
-        /// Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
-        /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead. 
+        /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `True` and `False`
         /// </summary>
         [Output("enforceMfaForLogin")]
         public Output<bool> EnforceMfaForLogin { get; private set; } = null!;
@@ -218,8 +218,8 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? EnableSaveMfaTicket { get; set; }
 
         /// <summary>
-        /// Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
-        /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead. 
+        /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `True` and `False`
         /// </summary>
         [Input("enforceMfaForLogin")]
         public Input<bool>? EnforceMfaForLogin { get; set; }
@@ -334,8 +334,8 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? EnableSaveMfaTicket { get; set; }
 
         /// <summary>
-        /// Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
-        /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead. 
+        /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `True` and `False`
         /// </summary>
         [Input("enforceMfaForLogin")]
         public Input<bool>? EnforceMfaForLogin { get; set; }

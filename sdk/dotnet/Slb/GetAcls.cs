@@ -37,17 +37,17 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// The entry mapping supports the following:
         /// 
-        /// * `entry`   - An IP addresses or CIDR blocks.
-        /// * `comment` - the comment of the entry.
+        /// * `Entry`   - An IP addresses or CIDR blocks.
+        /// * `Comment` - the comment of the entry.
         /// 
         /// ## Listener Block
         /// 
         /// The Listener mapping supports the following:
         /// 
-        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-        /// * `frontend_port` - the listener port.
-        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `acl_type`      - the type of acl (such as white/black).
+        /// * `LoadBalancerId` - the id of load balancer instance, the listener belongs to.
+        /// * `FrontendPort` - the listener port.
+        /// * `Protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+        /// * `AclType`      - the type of acl (such as white/black).
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
@@ -78,17 +78,17 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// The entry mapping supports the following:
         /// 
-        /// * `entry`   - An IP addresses or CIDR blocks.
-        /// * `comment` - the comment of the entry.
+        /// * `Entry`   - An IP addresses or CIDR blocks.
+        /// * `Comment` - the comment of the entry.
         /// 
         /// ## Listener Block
         /// 
         /// The Listener mapping supports the following:
         /// 
-        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-        /// * `frontend_port` - the listener port.
-        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `acl_type`      - the type of acl (such as white/black).
+        /// * `LoadBalancerId` - the id of load balancer instance, the listener belongs to.
+        /// * `FrontendPort` - the listener port.
+        /// * `Protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+        /// * `AclType`      - the type of acl (such as white/black).
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
@@ -119,17 +119,17 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// The entry mapping supports the following:
         /// 
-        /// * `entry`   - An IP addresses or CIDR blocks.
-        /// * `comment` - the comment of the entry.
+        /// * `Entry`   - An IP addresses or CIDR blocks.
+        /// * `Comment` - the comment of the entry.
         /// 
         /// ## Listener Block
         /// 
         /// The Listener mapping supports the following:
         /// 
-        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-        /// * `frontend_port` - the listener port.
-        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `acl_type`      - the type of acl (such as white/black).
+        /// * `LoadBalancerId` - the id of load balancer instance, the listener belongs to.
+        /// * `FrontendPort` - the listener port.
+        /// * `Protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+        /// * `AclType`      - the type of acl (such as white/black).
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());

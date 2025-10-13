@@ -119,14 +119,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/slsGroup:SlsGroup")
 public class SlsGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      * 
      */
     @Export(name="slsGroupConfigs", refs={List.class,SlsGroupSlsGroupConfig.class}, tree="[0,1]")
     private Output<List<SlsGroupSlsGroupConfig>> slsGroupConfigs;
 
     /**
-     * @return The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+     * @return The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      * 
      */
     public Output<List<SlsGroupSlsGroupConfig>> slsGroupConfigs() {

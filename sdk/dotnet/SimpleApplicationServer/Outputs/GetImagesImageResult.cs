@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
         /// </summary>
         public readonly string ImageName;
         /// <summary>
-        /// The type of the image. Valid values: `app`, `custom`, `system`.
+        /// The type of the image. Valid values: `App`, `Custom`, `System`.
         /// </summary>
         public readonly string ImageType;
         /// <summary>

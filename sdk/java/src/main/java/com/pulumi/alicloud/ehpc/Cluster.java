@@ -159,14 +159,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.accountType;
     }
     /**
-     * The additional volumes. See `additional_volumes` below.
+     * The additional volumes. See `additionalVolumes` below.
      * 
      */
     @Export(name="additionalVolumes", refs={List.class,ClusterAdditionalVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterAdditionalVolume>> additionalVolumes;
 
     /**
-     * @return The additional volumes. See `additional_volumes` below.
+     * @return The additional volumes. See `additionalVolumes` below.
      * 
      */
     public Output<Optional<List<ClusterAdditionalVolume>>> additionalVolumes() {
@@ -577,21 +577,21 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.osTag;
     }
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+     * The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -601,7 +601,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
+     * @return The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
@@ -649,14 +649,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.plugin);
     }
     /**
-     * The post install script. See `post_install_script` below.
+     * The post install script. See `postInstallScript` below.
      * 
      */
     @Export(name="postInstallScripts", refs={List.class,ClusterPostInstallScript.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterPostInstallScript>> postInstallScripts;
 
     /**
-     * @return The post install script. See `post_install_script` below.
+     * @return The post install script. See `postInstallScript` below.
      * 
      */
     public Output<Optional<List<ClusterPostInstallScript>>> postInstallScripts() {
@@ -853,14 +853,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskSize);
     }
     /**
-     * The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+     * The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      * 
      */
     @Export(name="systemDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskType;
 
     /**
-     * @return The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
+     * @return The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      * 
      */
     public Output<Optional<String>> systemDiskType() {

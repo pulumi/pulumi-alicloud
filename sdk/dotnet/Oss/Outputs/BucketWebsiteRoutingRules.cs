@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketWebsiteRoutingRules
     {
         /// <summary>
-        /// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+        /// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `RoutingRule` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketWebsiteRoutingRulesRoutingRule> RoutingRules;
 

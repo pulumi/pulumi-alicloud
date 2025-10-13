@@ -35,14 +35,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+     * Default to `true`. If false, the attributes `ramRoleName` and `diskDeviceMappings` will not be fetched and output.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+     * @return Default to `true`. If false, the attributes `ramRoleName` and `diskDeviceMappings` will not be fetched and output.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -354,7 +354,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+         * @param enableDetails Default to `true`. If false, the attributes `ramRoleName` and `diskDeviceMappings` will not be fetched and output.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+         * @param enableDetails Default to `true`. If false, the attributes `ramRoleName` and `diskDeviceMappings` will not be fetched and output.
          * 
          * @return builder
          * 

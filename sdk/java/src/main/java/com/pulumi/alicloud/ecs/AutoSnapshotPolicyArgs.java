@@ -54,14 +54,14 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+     * The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      * 
      */
     @Import(name="copyEncryptionConfiguration")
     private @Nullable Output<AutoSnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration;
 
     /**
-     * @return The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+     * @return The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      * 
      */
     public Optional<Output<AutoSnapshotPolicyCopyEncryptionConfigurationArgs>> copyEncryptionConfiguration() {
@@ -84,24 +84,24 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * @return . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -289,7 +289,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param copyEncryptionConfiguration The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+         * @param copyEncryptionConfiguration The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param copyEncryptionConfiguration The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+         * @param copyEncryptionConfiguration The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
          * 
          * @return builder
          * 
@@ -331,30 +331,30 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * @param name . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * @param name . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }

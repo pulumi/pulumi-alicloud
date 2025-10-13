@@ -24,7 +24,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKubernetesNodePoolsNodepool {
     /**
-     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
      * 
      */
     private Boolean autoRenew;
@@ -34,12 +34,12 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private Integer autoRenewPeriod;
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
     private Boolean cisEnabled;
     /**
-     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      * 
      */
     private Boolean compensateWithOnDemand;
@@ -79,7 +79,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private Boolean installCloudMonitor;
     /**
-     * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+     * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      * 
      */
     private String instanceChargeType;
@@ -89,7 +89,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private List<String> instanceTypes;
     /**
-     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      * 
      */
     private String internetChargeType;
@@ -99,12 +99,12 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private Integer internetMaxBandwidthOut;
     /**
-     * @return The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+     * @return The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
      * 
      */
     private String keyName;
     /**
-     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * @return Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
     private GetKubernetesNodePoolsNodepoolKubeletConfiguration kubeletConfiguration;
@@ -149,12 +149,12 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String onDemandBaseCapacity;
     /**
-     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      * 
      */
     private String onDemandPercentageAboveBaseCapacity;
     /**
-     * @return The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+     * @return The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      * 
      */
     private String password;
@@ -169,7 +169,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String periodUnit;
     /**
-     * @return Operating system release, using `image_type` instead.
+     * @return Operating system release, using `imageType` instead.
      * 
      */
     private String platform;
@@ -224,12 +224,12 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String scalingPolicy;
     /**
-     * @return The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * @return The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
     private String securityGroupId;
     /**
-     * @return Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+     * @return Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
      * 
      */
     private List<String> securityGroupIds;
@@ -239,7 +239,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private Boolean securityHardeningOs;
     /**
-     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).&gt; It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).&gt; It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      * 
      */
     private Boolean socEnabled;
@@ -264,17 +264,17 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String spotStrategy;
     /**
-     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     private Boolean systemDiskBurstingEnabled;
     /**
-     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
      * 
      */
     private List<String> systemDiskCategories;
     /**
-     * @return The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: ESSD.- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.
+     * @return The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: ESSD.- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.
      * 
      */
     private String systemDiskCategory;
@@ -299,7 +299,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String systemDiskPerformanceLevel;
     /**
-     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     private Integer systemDiskProvisionedIops;
@@ -346,7 +346,7 @@ public final class GetKubernetesNodePoolsNodepool {
 
     private GetKubernetesNodePoolsNodepool() {}
     /**
-     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
      * 
      */
     public Boolean autoRenew() {
@@ -360,14 +360,14 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.autoRenewPeriod;
     }
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
     public Boolean cisEnabled() {
         return this.cisEnabled;
     }
     /**
-     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      * 
      */
     public Boolean compensateWithOnDemand() {
@@ -423,7 +423,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.installCloudMonitor;
     }
     /**
-     * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+     * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      * 
      */
     public String instanceChargeType() {
@@ -437,7 +437,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.instanceTypes;
     }
     /**
-     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      * 
      */
     public String internetChargeType() {
@@ -451,14 +451,14 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.internetMaxBandwidthOut;
     }
     /**
-     * @return The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+     * @return The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
      * 
      */
     public String keyName() {
         return this.keyName;
     }
     /**
-     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * @return Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
     public GetKubernetesNodePoolsNodepoolKubeletConfiguration kubeletConfiguration() {
@@ -521,14 +521,14 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.onDemandBaseCapacity;
     }
     /**
-     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      * 
      */
     public String onDemandPercentageAboveBaseCapacity() {
         return this.onDemandPercentageAboveBaseCapacity;
     }
     /**
-     * @return The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+     * @return The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      * 
      */
     public String password() {
@@ -549,7 +549,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.periodUnit;
     }
     /**
-     * @return Operating system release, using `image_type` instead.
+     * @return Operating system release, using `imageType` instead.
      * 
      */
     public String platform() {
@@ -626,14 +626,14 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.scalingPolicy;
     }
     /**
-     * @return The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * @return The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
     public String securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * @return Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+     * @return Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
      * 
      */
     public List<String> securityGroupIds() {
@@ -647,7 +647,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.securityHardeningOs;
     }
     /**
-     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).&gt; It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).&gt; It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      * 
      */
     public Boolean socEnabled() {
@@ -682,21 +682,21 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.spotStrategy;
     }
     /**
-     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     public Boolean systemDiskBurstingEnabled() {
         return this.systemDiskBurstingEnabled;
     }
     /**
-     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
      * 
      */
     public List<String> systemDiskCategories() {
         return this.systemDiskCategories;
     }
     /**
-     * @return The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: ESSD.- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.
+     * @return The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: ESSD.- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.
      * 
      */
     public String systemDiskCategory() {
@@ -731,7 +731,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.systemDiskPerformanceLevel;
     }
     /**
-     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      * 
      */
     public Integer systemDiskProvisionedIops() {

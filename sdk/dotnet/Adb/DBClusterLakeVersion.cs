@@ -110,19 +110,19 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        /// Specifies whether to enable disk encryption. Valid values: `True`, `False`.
         /// </summary>
         [Output("diskEncryption")]
         public Output<bool?> DiskEncryption { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable default allocation of resources to user_default resource groups.
+        /// Whether to enable default allocation of resources to UserDefault resource groups.
         /// </summary>
         [Output("enableDefaultResourceGroup")]
         public Output<bool?> EnableDefaultResourceGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        /// Specifies whether to enable SSL encryption. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableSsl")]
         public Output<bool?> EnableSsl { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<bool> Expired { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// The ID of the key that is used to encrypt disk data. `KmsId` is valid only when `DiskEncryption` is set to `True`.
         /// </summary>
         [Output("kmsId")]
         public Output<string?> KmsId { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> LockReason { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Adb
         /// The edition of the cluster. Valid values:
         /// - `BasicVersion`: Basic Edition.
         /// - `EnterpriseVersion`: Enterprise Edition.
-        /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        /// &gt; **NOTE:** `ProductVersion` must be specified only when `ProductForm` is set to `IntegrationForm`.
         /// </summary>
         [Output("productVersion")]
         public Output<string> ProductVersion { get; private set; } = null!;
@@ -361,31 +361,31 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> DbClusterVersion { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        /// Specifies whether to enable disk encryption. Valid values: `True`, `False`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// Whether to enable default allocation of resources to user_default resource groups.
+        /// Whether to enable default allocation of resources to UserDefault resource groups.
         /// </summary>
         [Input("enableDefaultResourceGroup")]
         public Input<bool>? EnableDefaultResourceGroup { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        /// Specifies whether to enable SSL encryption. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// The ID of the key that is used to encrypt disk data. `KmsId` is valid only when `DiskEncryption` is set to `True`.
         /// </summary>
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.Adb
         /// The edition of the cluster. Valid values:
         /// - `BasicVersion`: Basic Edition.
         /// - `EnterpriseVersion`: Enterprise Edition.
-        /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        /// &gt; **NOTE:** `ProductVersion` must be specified only when `ProductForm` is set to `IntegrationForm`.
         /// </summary>
         [Input("productVersion")]
         public Input<string>? ProductVersion { get; set; }
@@ -544,19 +544,19 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        /// Specifies whether to enable disk encryption. Valid values: `True`, `False`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// Whether to enable default allocation of resources to user_default resource groups.
+        /// Whether to enable default allocation of resources to UserDefault resource groups.
         /// </summary>
         [Input("enableDefaultResourceGroup")]
         public Input<bool>? EnableDefaultResourceGroup { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        /// Specifies whether to enable SSL encryption. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
@@ -586,7 +586,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<bool>? Expired { get; set; }
 
         /// <summary>
-        /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// The ID of the key that is used to encrypt disk data. `KmsId` is valid only when `DiskEncryption` is set to `True`.
         /// </summary>
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? LockReason { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `PaymentType` can be set to `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -633,7 +633,7 @@ namespace Pulumi.AliCloud.Adb
         /// The edition of the cluster. Valid values:
         /// - `BasicVersion`: Basic Edition.
         /// - `EnterpriseVersion`: Enterprise Edition.
-        /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        /// &gt; **NOTE:** `ProductVersion` must be specified only when `ProductForm` is set to `IntegrationForm`.
         /// </summary>
         [Input("productVersion")]
         public Input<string>? ProductVersion { get; set; }

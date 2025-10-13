@@ -107,7 +107,7 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+     * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
@@ -118,7 +118,7 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+     * @return Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
@@ -302,7 +302,7 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+         * @param type Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+         * @param type Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
          * 
          * @return builder
          * 

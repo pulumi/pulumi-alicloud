@@ -54,7 +54,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
+     * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
      * 
      */
     @Import(name="instanceType")
@@ -66,7 +66,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
+     * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -411,7 +411,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - enterprise: enterprise Edition
          * - vip: Platinum Edition.
          * - serverless: Serverless Edition.
-         * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
+         * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - enterprise: enterprise Edition
          * - vip: Platinum Edition.
          * - serverless: Serverless Edition.
-         * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
+         * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
          * 
          * @return builder
          * 

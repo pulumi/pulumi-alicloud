@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Supported encryption type, only supports `default`(AES), `m4`.
+        /// Supported encryption type, only supports `Default`(AES), `M4`.
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
 
         /// <summary>
-        /// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
+        /// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See UserCmkInfo below. `{ "CmkKeyId": "YourCmkKeyId", "arn": "YourRoleArn", "RegionId": "YouCmkRegionId" }`. See `UserCmkInfo` below.
         /// </summary>
         [Input("userCmkInfo")]
         public Input<Inputs.StoreEncryptConfUserCmkInfoGetArgs>? UserCmkInfo { get; set; }

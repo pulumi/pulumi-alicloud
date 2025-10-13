@@ -181,14 +181,14 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+     * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      * 
      */
     @Export(name="passPhrase", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passPhrase;
 
     /**
-     * @return The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
+     * @return The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      * 
      */
     public Output<Optional<String>> passPhrase() {
@@ -209,14 +209,14 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+     * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
-     * @return The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
+     * @return The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      * 
      */
     public Output<Optional<String>> privateKey() {

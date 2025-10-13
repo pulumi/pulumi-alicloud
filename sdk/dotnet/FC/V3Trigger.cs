@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> TriggerName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, MnsTopic and eventbridge.
         /// </summary>
         [Output("triggerType")]
         public Output<string> TriggerType { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? TriggerName { get; set; }
 
         /// <summary>
-        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, MnsTopic and eventbridge.
         /// </summary>
         [Input("triggerType", required: true)]
         public Input<string> TriggerType { get; set; } = null!;
@@ -419,7 +419,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? TriggerName { get; set; }
 
         /// <summary>
-        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+        /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, MnsTopic and eventbridge.
         /// </summary>
         [Input("triggerType")]
         public Input<string>? TriggerType { get; set; }

@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string? HostGroupType;
         /// <summary>
-        /// Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
+        /// Instance list for cluster scale down. This value follows the json format, e.g. ["InstanceId1","InstanceId2"]. escape character for " is \".
         /// </summary>
         public readonly string? InstanceList;
         /// <summary>

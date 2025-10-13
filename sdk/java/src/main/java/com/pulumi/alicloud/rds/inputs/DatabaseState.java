@@ -51,7 +51,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
-     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;character_set&#34;  does not support modification.
+     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      */
     @Import(name="description")
@@ -60,7 +60,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
-     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;character_set&#34;  does not support modification.
+     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      */
     public Optional<Output<String>> description() {
@@ -178,7 +178,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
          * 
-         * &gt; **NOTE:** The value of &#34;name&#34; or &#34;character_set&#34;  does not support modification.
+         * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
          * 
-         * &gt; **NOTE:** The value of &#34;name&#34; or &#34;character_set&#34;  does not support modification.
+         * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
          * 
          * @return builder
          * 

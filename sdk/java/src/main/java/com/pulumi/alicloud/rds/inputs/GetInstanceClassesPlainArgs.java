@@ -16,14 +16,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     public static final GetInstanceClassesPlainArgs Empty = new GetInstanceClassesPlainArgs();
 
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     @Import(name="category")
     private @Nullable String category;
 
     /**
-     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     public Optional<String> category() {
@@ -43,7 +43,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
      * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
      * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      * 
-     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+     * &gt; **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      * 
      */
     @Import(name="commodityCode")
@@ -62,7 +62,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
      * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
      * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      * 
-     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+     * &gt; **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      * 
      */
     public Optional<String> commodityCode() {
@@ -87,7 +87,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     /**
      * The ID of the instance.
      * 
-     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+     * &gt; **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      * 
      */
     @Import(name="dbInstanceId")
@@ -96,7 +96,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     /**
      * @return The ID of the instance.
      * 
-     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+     * &gt; **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      * 
      */
     public Optional<String> dbInstanceId() {
@@ -104,14 +104,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
+     * The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;, &#34;generalEssd&#34;.
      * 
      */
     @Import(name="dbInstanceStorageType")
     private @Nullable String dbInstanceStorageType;
 
     /**
-     * @return The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
+     * @return The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;, &#34;generalEssd&#34;.
      * 
      */
     public Optional<String> dbInstanceStorageType() {
@@ -209,14 +209,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
+     * It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
      * 
      */
     @Import(name="storageType")
     private @Nullable String storageType;
 
     /**
-     * @return It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
+     * @return It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
      * 
      */
     public Optional<String> storageType() {
@@ -275,7 +275,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
          * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
          * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
          * 
-         * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+         * &gt; **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         /**
          * @param dbInstanceId The ID of the instance.
          * 
-         * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+         * &gt; **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
+         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloudSsd&#34;, &#34;localSsd&#34;, &#34;cloudEssd&#34;, &#34;cloudEssd2&#34;, &#34;cloudEssd3&#34;, &#34;generalEssd&#34;.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param storageType It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
+         * @param storageType It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
          * 
          * @return builder
          * 

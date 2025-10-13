@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Cen.Inputs
     public sealed class TransitRouterMulticastDomainOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        /// Whether to enable IGMP function for multicast domain. Default value: `Disable`. Valid values: `Enable`, `Disable`.
         /// </summary>
         [Input("igmpv2Support")]
         public Input<string>? Igmpv2Support { get; set; }

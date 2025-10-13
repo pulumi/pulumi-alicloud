@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> AutoConfigRoute { get; private set; } = null!;
 
         /// <summary>
-        /// vpnBgp configuration. See `bgp_config` below.
+        /// vpnBgp configuration. See `BgpConfig` below.
         /// </summary>
         [Output("bgpConfig")]
         public Output<Outputs.ConnectionBgpConfig> BgpConfig { get; private set; } = null!;
@@ -231,19 +231,19 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool> EnableTunnelsBgp { get; private set; } = null!;
 
         /// <summary>
-        /// Health Check information. See `health_check_config` below.
+        /// Health Check information. See `HealthCheckConfig` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ConnectionHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `IkeConfig` below.
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.ConnectionIkeConfig> IkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// IPsec configuration. See `ipsec_config` below.
+        /// IPsec configuration. See `IpsecConfig` below.
         /// </summary>
         [Output("ipsecConfig")]
         public Output<Outputs.ConnectionIpsecConfig> IpsecConfig { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The tunnel options of IPsec. See `tunnel_options_specification` below.
+        /// The tunnel options of IPsec. See `TunnelOptionsSpecification` below.
         /// </summary>
         [Output("tunnelOptionsSpecifications")]
         public Output<ImmutableArray<Outputs.ConnectionTunnelOptionsSpecification>> TunnelOptionsSpecifications { get; private set; } = null!;
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? AutoConfigRoute { get; set; }
 
         /// <summary>
-        /// vpnBgp configuration. See `bgp_config` below.
+        /// vpnBgp configuration. See `BgpConfig` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ConnectionBgpConfigArgs>? BgpConfig { get; set; }
@@ -401,19 +401,19 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableTunnelsBgp { get; set; }
 
         /// <summary>
-        /// Health Check information. See `health_check_config` below.
+        /// Health Check information. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ConnectionHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `IkeConfig` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.ConnectionIkeConfigArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// IPsec configuration. See `ipsec_config` below.
+        /// IPsec configuration. See `IpsecConfig` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.ConnectionIpsecConfigArgs>? IpsecConfig { get; set; }
@@ -472,7 +472,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.ConnectionTunnelOptionsSpecificationArgs>? _tunnelOptionsSpecifications;
 
         /// <summary>
-        /// The tunnel options of IPsec. See `tunnel_options_specification` below.
+        /// The tunnel options of IPsec. See `TunnelOptionsSpecification` below.
         /// </summary>
         public InputList<Inputs.ConnectionTunnelOptionsSpecificationArgs> TunnelOptionsSpecifications
         {
@@ -509,7 +509,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? AutoConfigRoute { get; set; }
 
         /// <summary>
-        /// vpnBgp configuration. See `bgp_config` below.
+        /// vpnBgp configuration. See `BgpConfig` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ConnectionBgpConfigGetArgs>? BgpConfig { get; set; }
@@ -551,19 +551,19 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableTunnelsBgp { get; set; }
 
         /// <summary>
-        /// Health Check information. See `health_check_config` below.
+        /// Health Check information. See `HealthCheckConfig` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ConnectionHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `IkeConfig` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.ConnectionIkeConfigGetArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// IPsec configuration. See `ipsec_config` below.
+        /// IPsec configuration. See `IpsecConfig` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.ConnectionIpsecConfigGetArgs>? IpsecConfig { get; set; }
@@ -634,7 +634,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.ConnectionTunnelOptionsSpecificationGetArgs>? _tunnelOptionsSpecifications;
 
         /// <summary>
-        /// The tunnel options of IPsec. See `tunnel_options_specification` below.
+        /// The tunnel options of IPsec. See `TunnelOptionsSpecification` below.
         /// </summary>
         public InputList<Inputs.ConnectionTunnelOptionsSpecificationGetArgs> TunnelOptionsSpecifications
         {

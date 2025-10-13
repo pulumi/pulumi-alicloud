@@ -17,14 +17,14 @@ public final class V3AsyncInvokeConfigDestinationConfigArgs extends com.pulumi.r
     public static final V3AsyncInvokeConfigDestinationConfigArgs Empty = new V3AsyncInvokeConfigDestinationConfigArgs();
 
     /**
-     * Failed callback target structure See `on_failure` below.
+     * Failed callback target structure See `onFailure` below.
      * 
      */
     @Import(name="onFailure")
     private @Nullable Output<V3AsyncInvokeConfigDestinationConfigOnFailureArgs> onFailure;
 
     /**
-     * @return Failed callback target structure See `on_failure` below.
+     * @return Failed callback target structure See `onFailure` below.
      * 
      */
     public Optional<Output<V3AsyncInvokeConfigDestinationConfigOnFailureArgs>> onFailure() {
@@ -32,14 +32,14 @@ public final class V3AsyncInvokeConfigDestinationConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Successful callback target structure See `on_success` below.
+     * Successful callback target structure See `onSuccess` below.
      * 
      */
     @Import(name="onSuccess")
     private @Nullable Output<V3AsyncInvokeConfigDestinationConfigOnSuccessArgs> onSuccess;
 
     /**
-     * @return Successful callback target structure See `on_success` below.
+     * @return Successful callback target structure See `onSuccess` below.
      * 
      */
     public Optional<Output<V3AsyncInvokeConfigDestinationConfigOnSuccessArgs>> onSuccess() {
@@ -72,7 +72,7 @@ public final class V3AsyncInvokeConfigDestinationConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param onFailure Failed callback target structure See `on_failure` below.
+         * @param onFailure Failed callback target structure See `onFailure` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class V3AsyncInvokeConfigDestinationConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param onFailure Failed callback target structure See `on_failure` below.
+         * @param onFailure Failed callback target structure See `onFailure` below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class V3AsyncInvokeConfigDestinationConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param onSuccess Successful callback target structure See `on_success` below.
+         * @param onSuccess Successful callback target structure See `onSuccess` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class V3AsyncInvokeConfigDestinationConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param onSuccess Successful callback target structure See `on_success` below.
+         * @param onSuccess Successful callback target structure See `onSuccess` below.
          * 
          * @return builder
          * 

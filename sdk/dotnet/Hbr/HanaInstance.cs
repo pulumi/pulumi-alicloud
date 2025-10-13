@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available since v1.178.0.
     /// 
-    /// &gt; **NOTE:** The `sid` attribute is required when destroying resources.
+    /// &gt; **NOTE:** The `Sid` attribute is required when destroying resources.
     /// 
     /// ## Example Usage
     /// 

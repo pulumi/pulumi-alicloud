@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetKubernetesPermissionPermissionResult
     {
         /// <summary>
-        /// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
+        /// Indicates whether the permissions are granted to the cluster owner. Valid values `False`, `True`.
         /// </summary>
         public readonly bool IsOwner;
         /// <summary>
-        /// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
+        /// Indicates whether the permissions are granted to the RAM role. Valid values `False`, `True`.
         /// </summary>
         public readonly bool IsRamRole;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string ResourceId;
         /// <summary>
-        /// The authorization type. Valid values `cluster`, `namespace` and `console`.
+        /// The authorization type. Valid values `Cluster`, `Namespace` and `Console`.
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string RoleName;
         /// <summary>
-        /// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+        /// The predefined role. Valid values `Admin`,`Ops`,`Dev`,`Restricted` and `Custom`.
         /// </summary>
         public readonly string RoleType;
 

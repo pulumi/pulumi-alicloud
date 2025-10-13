@@ -106,19 +106,19 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        /// The type of the architecture. Valid values: `Cluster`, `Standard` and `SplitRW`.
         /// </summary>
         [Input("architectureType")]
         public string? ArchitectureType { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.  Valid values: `Enterprise`, `Community`.
         /// </summary>
         [Input("editionType")]
         public string? EditionType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.KVStore
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// Query the instance bound to the tag. The format of the incoming value is `Json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -246,19 +246,19 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        /// The type of the architecture. Valid values: `Cluster`, `Standard` and `SplitRW`.
         /// </summary>
         [Input("architectureType")]
         public Input<string>? ArchitectureType { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.  Valid values: `Enterprise`, `Community`.
         /// </summary>
         [Input("editionType")]
         public Input<string>? EditionType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Default to `False`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// Query the instance bound to the tag. The format of the incoming value is `Json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

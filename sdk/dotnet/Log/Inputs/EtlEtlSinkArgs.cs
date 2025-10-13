@@ -51,13 +51,13 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        /// An KMS encrypts access key id used to a log etl job. If the `AccessKeyId` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedAccessKeyId")]
         public Input<string>? KmsEncryptedAccessKeyId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        /// An KMS encrypts access key secret used to a log etl job. If the `AccessKeySecret` is filled in, this field will be ignored.
         /// </summary>
         [Input("kmsEncryptedAccessKeySecret")]
         public Input<string>? KmsEncryptedAccessKeySecret { get; set; }
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        /// Sts role info under delivery target logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         /// <summary>
         /// ETL sinks type, the default value is AliyunLOG.
         /// 
-        /// &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+        /// &gt; **Note:** `FromTime` and `ToTime` no modification allowed after successful creation.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

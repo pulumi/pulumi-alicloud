@@ -78,7 +78,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Whether to PreCheck only this request, value:
      * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     * false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
+     * false (default): Sends a normal request, returns the http2xx status code after the check, and directly performs the operation.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
@@ -87,7 +87,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to PreCheck only this request, value:
      * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     * false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
+     * false (default): Sends a normal request, returns the http2xx status code after the check, and directly performs the operation.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {

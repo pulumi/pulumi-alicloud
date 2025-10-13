@@ -17,14 +17,14 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
     public static final FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs Empty = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs();
 
     /**
-     * The list of route entries of the local VPC. See `local_route_entry_list` below.
+     * The list of route entries of the local VPC. See `localRouteEntryList` below.
      * 
      */
     @Import(name="localRouteEntryLists", required=true)
     private Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs>> localRouteEntryLists;
 
     /**
-     * @return The list of route entries of the local VPC. See `local_route_entry_list` below.
+     * @return The list of route entries of the local VPC. See `localRouteEntryList` below.
      * 
      */
     public Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs>> localRouteEntryLists() {
@@ -72,7 +72,7 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
         }
 
         /**
-         * @param localRouteEntryLists The list of route entries of the local VPC. See `local_route_entry_list` below.
+         * @param localRouteEntryLists The list of route entries of the local VPC. See `localRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
         }
 
         /**
-         * @param localRouteEntryLists The list of route entries of the local VPC. See `local_route_entry_list` below.
+         * @param localRouteEntryLists The list of route entries of the local VPC. See `localRouteEntryList` below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
         }
 
         /**
-         * @param localRouteEntryLists The list of route entries of the local VPC. See `local_route_entry_list` below.
+         * @param localRouteEntryLists The list of route entries of the local VPC. See `localRouteEntryList` below.
          * 
          * @return builder
          * 

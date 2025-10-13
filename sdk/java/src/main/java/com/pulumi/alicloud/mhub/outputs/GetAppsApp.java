@@ -21,7 +21,7 @@ public final class GetAppsApp {
      */
     private String appName;
     /**
-     * @return iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     private String bundleId;
@@ -46,7 +46,7 @@ public final class GetAppsApp {
      */
     private String industryId;
     /**
-     * @return Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return Android App package name.  **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     private String packageName;
@@ -77,7 +77,7 @@ public final class GetAppsApp {
         return this.appName;
     }
     /**
-     * @return iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     public String bundleId() {
@@ -112,7 +112,7 @@ public final class GetAppsApp {
         return this.industryId;
     }
     /**
-     * @return Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
+     * @return Android App package name.  **NOTE:** Either `bundleId` or `packageName` must be set.
      * 
      */
     public String packageName() {

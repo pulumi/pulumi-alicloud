@@ -87,14 +87,14 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Alarm notification settings See `notification_settings` below.
+     * Alarm notification settings See `notificationSettings` below.
      * 
      */
     @Import(name="notificationSettings", required=true)
     private Output<DiAlarmRuleNotificationSettingsArgs> notificationSettings;
 
     /**
-     * @return Alarm notification settings See `notification_settings` below.
+     * @return Alarm notification settings See `notificationSettings` below.
      * 
      */
     public Output<DiAlarmRuleNotificationSettingsArgs> notificationSettings() {
@@ -102,14 +102,14 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+     * Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
      * 
      */
     @Import(name="triggerConditions", required=true)
     private Output<List<DiAlarmRuleTriggerConditionArgs>> triggerConditions;
 
     /**
-     * @return Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+     * @return Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
      * 
      */
     public Output<List<DiAlarmRuleTriggerConditionArgs>> triggerConditions() {
@@ -234,7 +234,7 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationSettings Alarm notification settings See `notification_settings` below.
+         * @param notificationSettings Alarm notification settings See `notificationSettings` below.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationSettings Alarm notification settings See `notification_settings` below.
+         * @param notificationSettings Alarm notification settings See `notificationSettings` below.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerConditions Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+         * @param triggerConditions Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerConditions Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+         * @param triggerConditions Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class DiAlarmRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerConditions Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+         * @param triggerConditions Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
          * 
          * @return builder
          * 

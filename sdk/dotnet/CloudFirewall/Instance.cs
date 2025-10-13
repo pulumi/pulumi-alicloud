@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The number of multi account. It will be ignored when `cfw_account = false`.
+        /// The number of multi account. It will be ignored when `CfwAccount = false`.
         /// </summary>
         [Output("accountNumber")]
         public Output<int?> AccountNumber { get; private set; } = null!;
@@ -85,19 +85,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<int?> BandWidth { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use multi-account. Valid values: `true`, `false`.
+        /// Whether to use multi-account. Valid values: `True`, `False`.
         /// </summary>
         [Output("cfwAccount")]
         public Output<bool?> CfwAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        /// Whether to use log audit. Valid values: `True`, `False`. **NOTE:** From version 1.232.0, When `PaymentType` is set to `PayAsYouGo`, `CfwLog` can only be set to `True`, `CfwLog` cannot be modified to `False`.
         /// </summary>
         [Output("cfwLog")]
         public Output<bool?> CfwLog { get; private set; } = null!;
 
         /// <summary>
-        /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
+        /// The log storage capacity. **NOTE:** From version 1.232.0, When `PaymentType` is set to `PayAsYouGo`, or `CfwLog` is set to `False`, `CfwLogStorage` will be ignored.
         /// </summary>
         [Output("cfwLogStorage")]
         public Output<int?> CfwLogStorage { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
+        /// The number of protected VPCs. It will be ignored when `spec = "PremiumVersion"`. Valid values between 2 and 500.
         /// </summary>
         [Output("fwVpcNumber")]
         public Output<int> FwVpcNumber { get; private set; } = null!;
@@ -139,19 +139,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Logistics { get; private set; } = null!;
 
         /// <summary>
-        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `ModifyType` is required when you execute an update operation.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `PaymentType` can be set to `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `PaymentType` is set to `Subscription`, `Period` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -163,14 +163,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> ReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        /// Automatic renewal period. Attribute `RenewPeriod` has been deprecated since 1.209.1. Using `RenewalDuration` instead.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
-        /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
+        /// Auto-Renewal Duration. It is required under the condition that `RenewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// **NOTE:** `RenewalDuration` takes effect only if `PaymentType` is set to `Subscription`, and `RenewalStatus` is set to `AutoRenewal`.
         /// </summary>
         [Output("renewalDuration")]
         public Output<int> RenewalDuration { get; private set; } = null!;
@@ -186,13 +186,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+        /// **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
+        /// Current version. Valid values: `PremiumVersion`, `EnterpriseVersion`,`UltimateVersion`.
         /// </summary>
         [Output("spec")]
         public Output<string> Spec { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of multi account. It will be ignored when `cfw_account = false`.
+        /// The number of multi account. It will be ignored when `CfwAccount = false`.
         /// </summary>
         [Input("accountNumber")]
         public Input<int>? AccountNumber { get; set; }
@@ -268,25 +268,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? BandWidth { get; set; }
 
         /// <summary>
-        /// Whether to use multi-account. Valid values: `true`, `false`.
+        /// Whether to use multi-account. Valid values: `True`, `False`.
         /// </summary>
         [Input("cfwAccount")]
         public Input<bool>? CfwAccount { get; set; }
 
         /// <summary>
-        /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        /// Whether to use log audit. Valid values: `True`, `False`. **NOTE:** From version 1.232.0, When `PaymentType` is set to `PayAsYouGo`, `CfwLog` can only be set to `True`, `CfwLog` cannot be modified to `False`.
         /// </summary>
         [Input("cfwLog")]
         public Input<bool>? CfwLog { get; set; }
 
         /// <summary>
-        /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
+        /// The log storage capacity. **NOTE:** From version 1.232.0, When `PaymentType` is set to `PayAsYouGo`, or `CfwLog` is set to `False`, `CfwLogStorage` will be ignored.
         /// </summary>
         [Input("cfwLogStorage")]
         public Input<int>? CfwLogStorage { get; set; }
 
         /// <summary>
-        /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
+        /// The number of protected VPCs. It will be ignored when `spec = "PremiumVersion"`. Valid values between 2 and 500.
         /// </summary>
         [Input("fwVpcNumber")]
         public Input<int>? FwVpcNumber { get; set; }
@@ -310,32 +310,32 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `ModifyType` is required when you execute an update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `PaymentType` can be set to `PayAsYouGo`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `PaymentType` is set to `Subscription`, `Period` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        /// Automatic renewal period. Attribute `RenewPeriod` has been deprecated since 1.209.1. Using `RenewalDuration` instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
-        /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
+        /// Auto-Renewal Duration. It is required under the condition that `RenewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// **NOTE:** `RenewalDuration` takes effect only if `PaymentType` is set to `Subscription`, and `RenewalStatus` is set to `AutoRenewal`.
         /// </summary>
         [Input("renewalDuration")]
         public Input<int>? RenewalDuration { get; set; }
@@ -351,13 +351,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+        /// **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
+        /// Current version. Valid values: `PremiumVersion`, `EnterpriseVersion`,`UltimateVersion`.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of multi account. It will be ignored when `cfw_account = false`.
+        /// The number of multi account. It will be ignored when `CfwAccount = false`.
         /// </summary>
         [Input("accountNumber")]
         public Input<int>? AccountNumber { get; set; }
@@ -383,19 +383,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? BandWidth { get; set; }
 
         /// <summary>
-        /// Whether to use multi-account. Valid values: `true`, `false`.
+        /// Whether to use multi-account. Valid values: `True`, `False`.
         /// </summary>
         [Input("cfwAccount")]
         public Input<bool>? CfwAccount { get; set; }
 
         /// <summary>
-        /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        /// Whether to use log audit. Valid values: `True`, `False`. **NOTE:** From version 1.232.0, When `PaymentType` is set to `PayAsYouGo`, `CfwLog` can only be set to `True`, `CfwLog` cannot be modified to `False`.
         /// </summary>
         [Input("cfwLog")]
         public Input<bool>? CfwLog { get; set; }
 
         /// <summary>
-        /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
+        /// The log storage capacity. **NOTE:** From version 1.232.0, When `PaymentType` is set to `PayAsYouGo`, or `CfwLog` is set to `False`, `CfwLogStorage` will be ignored.
         /// </summary>
         [Input("cfwLogStorage")]
         public Input<int>? CfwLogStorage { get; set; }
@@ -413,7 +413,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
+        /// The number of protected VPCs. It will be ignored when `spec = "PremiumVersion"`. Valid values between 2 and 500.
         /// </summary>
         [Input("fwVpcNumber")]
         public Input<int>? FwVpcNumber { get; set; }
@@ -437,19 +437,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `ModifyType` is required when you execute an update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `PaymentType` can be set to `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `PaymentType` is set to `Subscription`, `Period` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -461,14 +461,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ReleaseTime { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        /// Automatic renewal period. Attribute `RenewPeriod` has been deprecated since 1.209.1. Using `RenewalDuration` instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
-        /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
+        /// Auto-Renewal Duration. It is required under the condition that `RenewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// **NOTE:** `RenewalDuration` takes effect only if `PaymentType` is set to `Subscription`, and `RenewalStatus` is set to `AutoRenewal`.
         /// </summary>
         [Input("renewalDuration")]
         public Input<int>? RenewalDuration { get; set; }
@@ -484,13 +484,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+        /// **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
+        /// Current version. Valid values: `PremiumVersion`, `EnterpriseVersion`,`UltimateVersion`.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }

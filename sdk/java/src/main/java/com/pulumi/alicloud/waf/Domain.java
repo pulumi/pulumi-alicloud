@@ -128,7 +128,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionTime);
     }
     /**
-     * Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+     * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
      * @deprecated
      * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
@@ -139,21 +139,21 @@ public class Domain extends com.pulumi.resources.CustomResource {
     private Output<String> domain;
 
     /**
-     * @return Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+     * @return Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
+     * The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      * 
      */
     @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
-     * @return The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
+     * @return The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      * 
      */
     public Output<String> domainName() {

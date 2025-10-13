@@ -28,7 +28,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
      */
     private String endpointGroupId;
     /**
-     * @return The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     private Integer fromPort;
@@ -48,7 +48,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
      */
     private List<String> protocols;
     /**
-     * @return The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     private Integer toPort;
@@ -76,7 +76,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
         return this.endpointGroupId;
     }
     /**
-     * @return The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     public Integer fromPort() {
@@ -104,7 +104,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
         return this.protocols;
     }
     /**
-     * @return The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+     * @return The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      * 
      */
     public Integer toPort() {

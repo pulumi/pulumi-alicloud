@@ -19,7 +19,7 @@ public final class BgpPolicyContentLayer4RuleList {
      */
     private String action;
     /**
-     * @return Matching Condition. See `condition_list` below.
+     * @return Matching Condition. See `conditionList` below.
      * 
      */
     private List<BgpPolicyContentLayer4RuleListConditionList> conditionLists;
@@ -58,7 +58,7 @@ public final class BgpPolicyContentLayer4RuleList {
         return this.action;
     }
     /**
-     * @return Matching Condition. See `condition_list` below.
+     * @return Matching Condition. See `conditionList` below.
      * 
      */
     public List<BgpPolicyContentLayer4RuleListConditionList> conditionLists() {

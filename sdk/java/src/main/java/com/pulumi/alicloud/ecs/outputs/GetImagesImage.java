@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetImagesImage {
     /**
-     * @return The image architecture. Valid values: `i386` and `x86_64`.
+     * @return The image architecture. Valid values: `i386` and `x8664`.
      * 
      */
     private String architecture;
@@ -125,7 +125,7 @@ public final class GetImagesImage {
 
     private GetImagesImage() {}
     /**
-     * @return The image architecture. Valid values: `i386` and `x86_64`.
+     * @return The image architecture. Valid values: `i386` and `x8664`.
      * 
      */
     public String architecture() {

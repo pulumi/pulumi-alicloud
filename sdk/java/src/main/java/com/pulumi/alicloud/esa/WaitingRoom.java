@@ -178,14 +178,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSessionRenewalEnable);
     }
     /**
-     * Host name and path. See `host_name_and_path` below.
+     * Host name and path. See `hostNameAndPath` below.
      * 
      */
     @Export(name="hostNameAndPaths", refs={List.class,WaitingRoomHostNameAndPath.class}, tree="[0,1]")
     private Output<List<WaitingRoomHostNameAndPath>> hostNameAndPaths;
 
     /**
-     * @return Host name and path. See `host_name_and_path` below.
+     * @return Host name and path. See `hostNameAndPath` below.
      * 
      */
     public Output<List<WaitingRoomHostNameAndPath>> hostNameAndPaths() {

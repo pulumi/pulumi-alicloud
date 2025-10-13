@@ -90,14 +90,14 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
         return this.propertyKey;
     }
     /**
-     * Custom attribute sets the value of. See `property_values` below.
+     * Custom attribute sets the value of. See `propertyValues` below.
      * 
      */
     @Export(name="propertyValues", refs={List.class,CustomPropertyPropertyValue.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomPropertyPropertyValue>> propertyValues;
 
     /**
-     * @return Custom attribute sets the value of. See `property_values` below.
+     * @return Custom attribute sets the value of. See `propertyValues` below.
      * 
      */
     public Output<Optional<List<CustomPropertyPropertyValue>>> propertyValues() {

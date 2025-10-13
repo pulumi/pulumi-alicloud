@@ -124,13 +124,13 @@ namespace Pulumi.AliCloud.Dcdn
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
+        /// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"WafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
         /// </summary>
         [Input("queryArgs")]
         public string? QueryArgs { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `on`, `off`.
+        /// The status of the resource. Valid values: `On`, `Off`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -165,13 +165,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
+        /// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"WafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
         /// </summary>
         [Input("queryArgs")]
         public Input<string>? QueryArgs { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `on`, `off`.
+        /// The status of the resource. Valid values: `On`, `Off`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

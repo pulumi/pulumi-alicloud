@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Alb
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `AclEntries` below for details.
         /// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Output("aclEntries")]
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `AclEntries` below for details.
         /// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.")]
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `AclEntries` below for details.
         /// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.")]

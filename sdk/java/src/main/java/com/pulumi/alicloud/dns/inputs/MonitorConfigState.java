@@ -64,14 +64,14 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Monitoring node. See `isp_city_node` below for details.
+     * The Monitoring node. See `ispCityNode` below for details.
      * 
      */
     @Import(name="ispCityNodes")
     private @Nullable Output<List<MonitorConfigIspCityNodeArgs>> ispCityNodes;
 
     /**
-     * @return The Monitoring node. See `isp_city_node` below for details.
+     * @return The Monitoring node. See `ispCityNode` below for details.
      * 
      */
     public Optional<Output<List<MonitorConfigIspCityNodeArgs>>> ispCityNodes() {
@@ -233,7 +233,7 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ispCityNodes The Monitoring node. See `isp_city_node` below for details.
+         * @param ispCityNodes The Monitoring node. See `ispCityNode` below for details.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ispCityNodes The Monitoring node. See `isp_city_node` below for details.
+         * @param ispCityNodes The Monitoring node. See `ispCityNode` below for details.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ispCityNodes The Monitoring node. See `isp_city_node` below for details.
+         * @param ispCityNodes The Monitoring node. See `ispCityNode` below for details.
          * 
          * @return builder
          * 

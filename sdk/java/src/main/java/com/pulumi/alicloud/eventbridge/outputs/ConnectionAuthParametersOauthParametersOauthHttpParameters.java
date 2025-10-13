@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionAuthParametersOauthParametersOauthHttpParameters {
     /**
-     * @return The parameters that are configured for the request body. See `body_parameters` below.
+     * @return The parameters that are configured for the request body. See `bodyParameters` below.
      * 
      */
     private @Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter> bodyParameters;
     /**
-     * @return The parameters that are configured for the request header. See `header_parameters` below.
+     * @return The parameters that are configured for the request header. See `headerParameters` below.
      * 
      */
     private @Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter> headerParameters;
     /**
-     * @return The parameters that are configured for the request path. See `query_string_parameters` below.
+     * @return The parameters that are configured for the request path. See `queryStringParameters` below.
      * 
      */
     private @Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter> queryStringParameters;
 
     private ConnectionAuthParametersOauthParametersOauthHttpParameters() {}
     /**
-     * @return The parameters that are configured for the request body. See `body_parameters` below.
+     * @return The parameters that are configured for the request body. See `bodyParameters` below.
      * 
      */
     public List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter> bodyParameters() {
         return this.bodyParameters == null ? List.of() : this.bodyParameters;
     }
     /**
-     * @return The parameters that are configured for the request header. See `header_parameters` below.
+     * @return The parameters that are configured for the request header. See `headerParameters` below.
      * 
      */
     public List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter> headerParameters() {
         return this.headerParameters == null ? List.of() : this.headerParameters;
     }
     /**
-     * @return The parameters that are configured for the request path. See `query_string_parameters` below.
+     * @return The parameters that are configured for the request path. See `queryStringParameters` below.
      * 
      */
     public List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter> queryStringParameters() {

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public Input<bool>? AutoPause { get; set; }
 
         /// <summary>
-        /// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+        /// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `MinCapacity` and only supports passing integers. Valid values:
         /// - MySQL: 1~8
         /// - SQLServer: 2~8
         /// - PostgreSQL: 1~12
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public Input<double> MaxCapacity { get; set; } = null!;
 
         /// <summary>
-        /// The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+        /// The minimum number of RCUs. The value of this parameter must be less than or equal to `MaxCapacity`. Valid values:
         /// - MySQL: 0.5~8
         /// - SQLServer: 2~8 \(Supports integers only\).
         /// - PostgreSQL: 0.5~12

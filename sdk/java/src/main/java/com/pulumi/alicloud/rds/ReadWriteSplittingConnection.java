@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+ * &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
  * 
  * ## Import
  * 
@@ -228,14 +228,14 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
         return this.port;
     }
     /**
-     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
+     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distributionType is set to Custom.
      * 
      */
     @Export(name="weight", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> weight;
 
     /**
-     * @return Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
+     * @return Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distributionType is set to Custom.
      * 
      */
     public Output<Optional<Map<String,String>>> weight() {

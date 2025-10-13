@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceClassesResult {
     private @Nullable String architecture;
     /**
-     * @return A list of KVStore available instance classes when the `sorted_by` is &#34;Price&#34;. include:
+     * @return A list of KVStore available instance classes when the `sortedBy` is &#34;Price&#34;. include:
      * 
      */
     private List<GetInstanceClassesClass> classes;
@@ -69,7 +69,7 @@ public final class GetInstanceClassesResult {
         return Optional.ofNullable(this.architecture);
     }
     /**
-     * @return A list of KVStore available instance classes when the `sorted_by` is &#34;Price&#34;. include:
+     * @return A list of KVStore available instance classes when the `sortedBy` is &#34;Price&#34;. include:
      * 
      */
     public List<GetInstanceClassesClass> classes() {

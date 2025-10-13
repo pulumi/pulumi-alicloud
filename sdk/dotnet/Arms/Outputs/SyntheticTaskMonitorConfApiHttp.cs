@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// HTTP request body. See `request_body` below.
+        /// HTTP request body. See `RequestBody` below.
         /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfApiHttpRequestBody? RequestBody;
         /// <summary>

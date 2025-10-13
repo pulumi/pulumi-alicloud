@@ -166,14 +166,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.endpointId;
     }
     /**
-     * Forwarding target. See `forward_ips` below.
+     * Forwarding target. See `forwardIps` below.
      * 
      */
     @Export(name="forwardIps", refs={List.class,RuleForwardIp.class}, tree="[0,1]")
     private Output<List<RuleForwardIp>> forwardIps;
 
     /**
-     * @return Forwarding target. See `forward_ips` below.
+     * @return Forwarding target. See `forwardIps` below.
      * 
      */
     public Output<List<RuleForwardIp>> forwardIps() {

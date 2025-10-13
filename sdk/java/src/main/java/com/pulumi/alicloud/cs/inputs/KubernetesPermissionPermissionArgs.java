@@ -18,14 +18,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     public static final KubernetesPermissionPermissionArgs Empty = new KubernetesPermissionPermissionArgs();
 
     /**
-     * The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
+     * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
      * 
      */
     @Import(name="cluster", required=true)
     private Output<String> cluster;
 
     /**
-     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
+     * @return The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
      * 
      */
     public Output<String> cluster() {
@@ -33,14 +33,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     }
 
     /**
-     * Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+     * Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
      * 
      */
     @Import(name="isCustom")
     private @Nullable Output<Boolean> isCustom;
 
     /**
-     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
      * 
      */
     public Optional<Output<Boolean>> isCustom() {
@@ -48,14 +48,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     }
 
     /**
-     * Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+     * Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
      * 
      */
     @Import(name="isRamRole")
     private @Nullable Output<Boolean> isRamRole;
 
     /**
-     * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+     * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
      * 
      */
     public Optional<Output<Boolean>> isRamRole() {
@@ -63,14 +63,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     }
 
     /**
-     * The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+     * The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+     * @return The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -137,7 +137,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
+         * @param cluster The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
+         * @param cluster The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param isRamRole Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+         * @param isRamRole Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param isRamRole Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+         * @param isRamRole Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param namespace The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+         * @param namespace The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param namespace The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+         * @param namespace The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
          * 
          * @return builder
          * 

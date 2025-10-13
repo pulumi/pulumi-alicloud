@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class AutoSnapshotPolicyCopyEncryptionConfiguration
     {
         /// <summary>
-        /// Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether to enable encryption for cross-region snapshot replication. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>

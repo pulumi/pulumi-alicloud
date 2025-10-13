@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Adb
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
@@ -109,19 +109,19 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> DbClusterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The db_node_class of cluster node.
+        /// The DbNodeClass of cluster node.
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
-        /// The db_node_count of cluster node.
+        /// The DbNodeCount of cluster node.
         /// </summary>
         [Output("dbNodeCount")]
         public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The db_node_storage of cluster node.
+        /// The DbNodeStorage of cluster node.
         /// </summary>
         [Output("dbNodeStorage")]
         public Output<int> DbNodeStorage { get; private set; } = null!;
@@ -166,19 +166,19 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// Field `PayType` has been deprecated. New field `PaymentType` instead.
         /// </summary>
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -306,19 +306,19 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// The db_node_class of cluster node.
+        /// The DbNodeClass of cluster node.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// The db_node_count of cluster node.
+        /// The DbNodeCount of cluster node.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
-        /// The db_node_storage of cluster node.
+        /// The DbNodeStorage of cluster node.
         /// </summary>
         [Input("dbNodeStorage")]
         public Input<int>? DbNodeStorage { get; set; }
@@ -363,19 +363,19 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// Field `PayType` has been deprecated. New field `PaymentType` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -474,19 +474,19 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// The db_node_class of cluster node.
+        /// The DbNodeClass of cluster node.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// The db_node_count of cluster node.
+        /// The DbNodeCount of cluster node.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
-        /// The db_node_storage of cluster node.
+        /// The DbNodeStorage of cluster node.
         /// </summary>
         [Input("dbNodeStorage")]
         public Input<int>? DbNodeStorage { get; set; }
@@ -531,19 +531,19 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// Field `PayType` has been deprecated. New field `PaymentType` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

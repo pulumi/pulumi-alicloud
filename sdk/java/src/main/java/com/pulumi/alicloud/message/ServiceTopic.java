@@ -103,18 +103,18 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
         return this.enableLogging;
     }
     /**
-     * . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      * @deprecated
-     * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      */
-    @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
+    @Deprecated /* Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead. */
     @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> loggingEnabled;
 
     /**
-     * @return . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * @return . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      * 
      */
     public Output<Boolean> loggingEnabled() {

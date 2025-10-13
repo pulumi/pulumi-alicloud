@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketLifecycleRuleFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+        /// The condition that is matched by objects to which the lifecycle rule does not apply. See `Not` below.
         /// </summary>
         [Input("not")]
         public Input<Inputs.BucketLifecycleRuleFilterNotArgs>? Not { get; set; }

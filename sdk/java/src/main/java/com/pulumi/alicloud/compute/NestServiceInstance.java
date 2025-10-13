@@ -201,14 +201,14 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
         return this.enableUserPrometheus;
     }
     /**
-     * The configuration of O&amp;M. See `operation_metadata` below.
+     * The configuration of O&amp;M. See `operationMetadata` below.
      * 
      */
     @Export(name="operationMetadata", refs={NestServiceInstanceOperationMetadata.class}, tree="[0]")
     private Output<NestServiceInstanceOperationMetadata> operationMetadata;
 
     /**
-     * @return The configuration of O&amp;M. See `operation_metadata` below.
+     * @return The configuration of O&amp;M. See `operationMetadata` below.
      * 
      */
     public Output<NestServiceInstanceOperationMetadata> operationMetadata() {

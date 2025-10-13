@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
     public sealed class GetConfigsConfigResult
     {
         /// <summary>
-        /// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
+        /// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `AccessFailedCnt`, `AccessPermissionExprieMaxDays`, `LogDatasizeAvgDays`.
         /// </summary>
         public readonly string Code;
         /// <summary>

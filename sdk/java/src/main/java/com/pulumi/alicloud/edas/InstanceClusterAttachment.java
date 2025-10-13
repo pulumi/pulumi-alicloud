@@ -145,28 +145,28 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
         return this.clusterId;
     }
     /**
-     * The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+     * The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
      * 
      */
     @Export(name="clusterMemberIds", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> clusterMemberIds;
 
     /**
-     * @return The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+     * @return The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
      * 
      */
     public Output<Map<String,String>> clusterMemberIds() {
         return this.clusterMemberIds;
     }
     /**
-     * The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+     * The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
      * 
      */
     @Export(name="ecuMap", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> ecuMap;
 
     /**
-     * @return The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+     * @return The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
      * 
      */
     public Output<Map<String,String>> ecuMap() {
@@ -187,14 +187,14 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
         return this.instanceIds;
     }
     /**
-     * The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+     * The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      * 
      */
     @Export(name="statusMap", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> statusMap;
 
     /**
-     * @return The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+     * @return The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      * 
      */
     public Output<Map<String,Integer>> statusMap() {

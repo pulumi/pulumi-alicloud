@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<string>? HostGroupType { get; set; }
 
         /// <summary>
-        /// Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
+        /// Instance list for cluster scale down. This value follows the json format, e.g. ["InstanceId1","InstanceId2"]. escape character for " is \".
         /// </summary>
         [Input("instanceList")]
         public Input<string>? InstanceList { get; set; }

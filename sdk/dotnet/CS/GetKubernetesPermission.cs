@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of user permission. See `permissions` below.
+        /// A list of user permission. See `Permissions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesPermissionPermissionResult> Permissions;
         /// <summary>

@@ -33,14 +33,14 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      * 
      */
     @Import(name="subAccountUserId")
     private @Nullable Output<String> subAccountUserId;
 
     /**
-     * @return The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * @return The configuration of the Load Balancer. See the following `Block loadBalancer`.
      * 
      */
     public Optional<Output<String>> subAccountUserId() {
@@ -104,7 +104,7 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subAccountUserId The configuration of the Load Balancer. See the following `Block load_balancer`.
+         * @param subAccountUserId The configuration of the Load Balancer. See the following `Block loadBalancer`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subAccountUserId The configuration of the Load Balancer. See the following `Block load_balancer`.
+         * @param subAccountUserId The configuration of the Load Balancer. See the following `Block loadBalancer`.
          * 
          * @return builder
          * 

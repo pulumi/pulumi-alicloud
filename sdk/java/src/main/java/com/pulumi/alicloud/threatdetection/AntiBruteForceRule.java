@@ -134,14 +134,14 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
         return this.forbiddenTime;
     }
     /**
-     * The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
      * 
      */
     @Export(name="protocolType", refs={AntiBruteForceRuleProtocolType.class}, tree="[0]")
     private Output<AntiBruteForceRuleProtocolType> protocolType;
 
     /**
-     * @return The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * @return The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
      * 
      */
     public Output<AntiBruteForceRuleProtocolType> protocolType() {

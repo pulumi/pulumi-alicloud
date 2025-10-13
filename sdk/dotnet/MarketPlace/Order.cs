@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.MarketPlace
         public Output<string> PricingCycle { get; private set; } = null!;
 
         /// <summary>
-        /// The product_code of market place product.
+        /// The ProductCode of market place product.
         /// </summary>
         [Output("productCode")]
         public Output<string> ProductCode { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.MarketPlace
         public Input<string> PricingCycle { get; set; } = null!;
 
         /// <summary>
-        /// The product_code of market place product.
+        /// The ProductCode of market place product.
         /// </summary>
         [Input("productCode", required: true)]
         public Input<string> ProductCode { get; set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.MarketPlace
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The product_code of market place product.
+        /// The ProductCode of market place product.
         /// </summary>
         [Input("productCode")]
         public Input<string>? ProductCode { get; set; }

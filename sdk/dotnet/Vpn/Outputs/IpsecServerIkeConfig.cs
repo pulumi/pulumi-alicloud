@@ -14,27 +14,27 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class IpsecServerIkeConfig
     {
         /// <summary>
-        /// The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+        /// The authentication algorithm that is used in Phase 1 negotiations. Default value: `Sha1`.
         /// </summary>
         public readonly string? IkeAuthAlg;
         /// <summary>
-        /// The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+        /// The encryption algorithm that is used in Phase 1 negotiations. Default value: `Aes`.
         /// </summary>
         public readonly string? IkeEncAlg;
         /// <summary>
-        /// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+        /// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `Seconds`.
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
-        /// The IKE negotiation mode. Default value: `main`.
+        /// The IKE negotiation mode. Default value: `Main`.
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+        /// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `Group2`.
         /// </summary>
         public readonly string? IkePfs;
         /// <summary>
-        /// The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+        /// The IKE version. Valid values: `Ikev1` and `Ikev2`. Default value: `Ikev2`.
         /// </summary>
         public readonly string? IkeVersion;
         /// <summary>

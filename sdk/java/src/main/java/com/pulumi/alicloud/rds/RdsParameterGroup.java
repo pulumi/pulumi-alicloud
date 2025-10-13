@@ -113,14 +113,14 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * Parameter list. See `param_detail` below.
+     * Parameter list. See `paramDetail` below.
      * 
      */
     @Export(name="paramDetails", refs={List.class,RdsParameterGroupParamDetail.class}, tree="[0,1]")
     private Output<List<RdsParameterGroupParamDetail>> paramDetails;
 
     /**
-     * @return Parameter list. See `param_detail` below.
+     * @return Parameter list. See `paramDetail` below.
      * 
      */
     public Output<List<RdsParameterGroupParamDetail>> paramDetails() {

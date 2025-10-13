@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     public sealed class ConnectionAuthParametersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+        /// The parameters that are configured for API key authentication. See `ApiKeyAuthParameters` below.
         /// </summary>
         [Input("apiKeyAuthParameters")]
         public Input<Inputs.ConnectionAuthParametersApiKeyAuthParametersArgs>? ApiKeyAuthParameters { get; set; }
@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         public Input<string>? AuthorizationType { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+        /// The parameters that are configured for basic authentication. See `BasicAuthParameters` below.
         /// </summary>
         [Input("basicAuthParameters")]
         public Input<Inputs.ConnectionAuthParametersBasicAuthParametersArgs>? BasicAuthParameters { get; set; }
 
         /// <summary>
-        /// The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+        /// The parameters that are configured for OAuth authentication. See `OauthParameters` below.
         /// </summary>
         [Input("oauthParameters")]
         public Input<Inputs.ConnectionAuthParametersOauthParametersArgs>? OauthParameters { get; set; }

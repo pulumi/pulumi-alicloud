@@ -18,14 +18,14 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     public static final NamespaceArgs Empty = new NamespaceArgs();
 
     /**
-     * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+     * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      * 
      */
     @Import(name="enableMicroRegistration")
     private @Nullable Output<Boolean> enableMicroRegistration;
 
     /**
-     * @return Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+     * @return Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> enableMicroRegistration() {
@@ -78,14 +78,14 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+     * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      * 
      */
     @Import(name="namespaceShortId")
     private @Nullable Output<String> namespaceShortId;
 
     /**
-     * @return The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+     * @return The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      * 
      */
     public Optional<Output<String>> namespaceShortId() {
@@ -121,7 +121,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMicroRegistration Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+         * @param enableMicroRegistration Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMicroRegistration Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+         * @param enableMicroRegistration Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceShortId The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+         * @param namespaceShortId The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceShortId The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+         * @param namespaceShortId The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
          * 
          * @return builder
          * 

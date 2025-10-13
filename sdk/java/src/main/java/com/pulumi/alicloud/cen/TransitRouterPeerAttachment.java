@@ -307,36 +307,36 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.resourceType);
     }
     /**
-     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
      * @deprecated
-     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0. */
     @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+     * @return Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
-     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
      * @deprecated
-     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0. */
     @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+     * @return Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {

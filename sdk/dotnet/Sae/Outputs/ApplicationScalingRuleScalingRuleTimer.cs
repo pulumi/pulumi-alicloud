@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationScalingRuleScalingRuleTimer
     {
         /// <summary>
-        /// The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        /// The Start date. When the `BeginDate` and `EndDate` values are empty. it indicates long-term execution and is the default value.
         /// </summary>
         public readonly string? BeginDate;
         /// <summary>
-        /// The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        /// The End Date. When the `BeginDate` and `EndDate` values are empty. it indicates long-term execution and is the default value.
         /// </summary>
         public readonly string? EndDate;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Period;
         /// <summary>
-        /// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
+        /// Resilient Scaling Strategy Trigger Timing. See `Schedules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScalingRuleScalingRuleTimerSchedule> Schedules;
 

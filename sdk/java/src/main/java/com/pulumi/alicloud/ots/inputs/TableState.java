@@ -36,14 +36,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      * 
      */
     @Import(name="definedColumns")
     private @Nullable Output<List<TableDefinedColumnArgs>> definedColumns;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      * 
      */
     public Optional<Output<List<TableDefinedColumnArgs>>> definedColumns() {
@@ -111,14 +111,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      * 
      */
     @Import(name="primaryKeys")
     private @Nullable Output<List<TablePrimaryKeyArgs>> primaryKeys;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      * 
      */
     public Optional<Output<List<TablePrimaryKeyArgs>>> primaryKeys() {
@@ -126,14 +126,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     @Import(name="sseKeyId")
     private @Nullable Output<String> sseKeyId;
 
     /**
-     * @return . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * @return . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     public Optional<Output<String>> sseKeyId() {
@@ -156,14 +156,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     @Import(name="sseRoleArn")
     private @Nullable Output<String> sseRoleArn;
 
     /**
-     * @return The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * @return The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      * 
      */
     public Optional<Output<String>> sseRoleArn() {
@@ -257,7 +257,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyId . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * @param sseKeyId . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyId . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * @param sseKeyId . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseRoleArn The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * @param sseRoleArn The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseRoleArn The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * @param sseRoleArn The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
          * 
          * @return builder
          * 

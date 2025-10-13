@@ -50,14 +50,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+     * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
      * 
      */
     @Import(name="groupBies")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigGroupByArgs>> groupBies;
 
     /**
-     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigGroupByArgs>>> groupBies() {
@@ -159,7 +159,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
          * 
          * @return builder
          * 

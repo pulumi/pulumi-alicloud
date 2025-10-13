@@ -124,6 +124,10 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available in v1.137.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
     :param _builtins.str instance_type: EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
@@ -159,6 +163,10 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
     This data source provides the Eais Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.137.0+.
+
+    ## Example Usage
+
+    Basic Usage
 
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.

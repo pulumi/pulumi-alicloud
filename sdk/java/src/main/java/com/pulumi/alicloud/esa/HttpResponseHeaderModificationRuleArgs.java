@@ -20,14 +20,14 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
     public static final HttpResponseHeaderModificationRuleArgs Empty = new HttpResponseHeaderModificationRuleArgs();
 
     /**
-     * Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      * 
      */
     @Import(name="responseHeaderModifications", required=true)
     private Output<List<HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>> responseHeaderModifications;
 
     /**
-     * @return Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+     * @return Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      * 
      */
     public Output<List<HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>> responseHeaderModifications() {
@@ -139,7 +139,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
          * 
          * @return builder
          * 

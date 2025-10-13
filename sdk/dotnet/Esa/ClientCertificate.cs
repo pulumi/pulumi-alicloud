@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate status. Valid values: `revoked`, `active`.
+        /// The certificate status. Valid values: `Revoked`, `Active`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The certificate status. Valid values: `revoked`, `active`.
+        /// The certificate status. Valid values: `Revoked`, `Active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// The certificate status. Valid values: `revoked`, `active`.
+        /// The certificate status. Valid values: `Revoked`, `Active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

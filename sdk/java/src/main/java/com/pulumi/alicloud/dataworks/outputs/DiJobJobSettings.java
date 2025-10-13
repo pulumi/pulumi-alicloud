@@ -25,22 +25,22 @@ public final class DiJobJobSettings {
      */
     private @Nullable String channelSettings;
     /**
-     * @return Column type mapping of the synchronization task See `column_data_type_settings` below.
+     * @return Column type mapping of the synchronization task See `columnDataTypeSettings` below.
      * 
      */
     private @Nullable List<DiJobJobSettingsColumnDataTypeSetting> columnDataTypeSettings;
     /**
-     * @return Periodic scheduling settings See `cycle_schedule_settings` below.
+     * @return Periodic scheduling settings See `cycleScheduleSettings` below.
      * 
      */
     private @Nullable DiJobJobSettingsCycleScheduleSettings cycleScheduleSettings;
     /**
-     * @return List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+     * @return List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
      * 
      */
     private @Nullable List<DiJobJobSettingsDdlHandlingSetting> ddlHandlingSettings;
     /**
-     * @return Run-time setting parameter list See `runtime_settings` below.
+     * @return Run-time setting parameter list See `runtimeSettings` below.
      * 
      */
     private @Nullable List<DiJobJobSettingsRuntimeSetting> runtimeSettings;
@@ -57,28 +57,28 @@ public final class DiJobJobSettings {
         return Optional.ofNullable(this.channelSettings);
     }
     /**
-     * @return Column type mapping of the synchronization task See `column_data_type_settings` below.
+     * @return Column type mapping of the synchronization task See `columnDataTypeSettings` below.
      * 
      */
     public List<DiJobJobSettingsColumnDataTypeSetting> columnDataTypeSettings() {
         return this.columnDataTypeSettings == null ? List.of() : this.columnDataTypeSettings;
     }
     /**
-     * @return Periodic scheduling settings See `cycle_schedule_settings` below.
+     * @return Periodic scheduling settings See `cycleScheduleSettings` below.
      * 
      */
     public Optional<DiJobJobSettingsCycleScheduleSettings> cycleScheduleSettings() {
         return Optional.ofNullable(this.cycleScheduleSettings);
     }
     /**
-     * @return List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+     * @return List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
      * 
      */
     public List<DiJobJobSettingsDdlHandlingSetting> ddlHandlingSettings() {
         return this.ddlHandlingSettings == null ? List.of() : this.ddlHandlingSettings;
     }
     /**
-     * @return Run-time setting parameter list See `runtime_settings` below.
+     * @return Run-time setting parameter list See `runtimeSettings` below.
      * 
      */
     public List<DiJobJobSettingsRuntimeSetting> runtimeSettings() {

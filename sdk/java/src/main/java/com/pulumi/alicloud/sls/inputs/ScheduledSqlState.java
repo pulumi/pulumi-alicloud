@@ -78,14 +78,14 @@ public final class ScheduledSqlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Task Configuration. See `scheduled_sql_configuration` below.
+     * Task Configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     @Import(name="scheduledSqlConfiguration")
     private @Nullable Output<ScheduledSqlScheduledSqlConfigurationArgs> scheduledSqlConfiguration;
 
     /**
-     * @return Task Configuration. See `scheduled_sql_configuration` below.
+     * @return Task Configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     public Optional<Output<ScheduledSqlScheduledSqlConfigurationArgs>> scheduledSqlConfiguration() {
@@ -221,7 +221,7 @@ public final class ScheduledSqlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduledSqlConfiguration Task Configuration. See `scheduled_sql_configuration` below.
+         * @param scheduledSqlConfiguration Task Configuration. See `scheduledSqlConfiguration` below.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ScheduledSqlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduledSqlConfiguration Task Configuration. See `scheduled_sql_configuration` below.
+         * @param scheduledSqlConfiguration Task Configuration. See `scheduledSqlConfiguration` below.
          * 
          * @return builder
          * 

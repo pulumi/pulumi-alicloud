@@ -190,14 +190,14 @@ public class K8sSlbAttachment extends com.pulumi.resources.CustomResource {
         return this.appId;
     }
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      * 
      */
     @Export(name="slbConfigs", refs={List.class,K8sSlbAttachmentSlbConfig.class}, tree="[0,1]")
     private Output<List<K8sSlbAttachmentSlbConfig>> slbConfigs;
 
     /**
-     * @return The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+     * @return The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      * 
      */
     public Output<List<K8sSlbAttachmentSlbConfig>> slbConfigs() {

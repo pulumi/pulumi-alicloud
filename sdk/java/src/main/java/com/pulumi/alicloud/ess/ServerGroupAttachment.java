@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** If scaling group&#39;s network type is `VPC`, the server groups must be in the same `VPC`.
  * 
- * &gt; **NOTE:** server group attachment is defined uniquely by `scaling_group_id`, `server_group_id`,`type`, `port`.
+ * &gt; **NOTE:** server group attachment is defined uniquely by `scalingGroupId`, `serverGroupId`,`type`, `port`.
  * 
  * &gt; **NOTE:** Resource `alicloud.ess.ServerGroupAttachment` don&#39;t support modification.
  * 

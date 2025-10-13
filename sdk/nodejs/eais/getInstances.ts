@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
  * This data source provides the Eais Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -69,6 +73,10 @@ export interface GetInstancesResult {
  * This data source provides the Eais Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};

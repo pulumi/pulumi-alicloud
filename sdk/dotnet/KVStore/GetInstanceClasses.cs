@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstanceClassesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `Standard`, `Cluster` and `Rwsplit`.
         /// </summary>
         [Input("architecture")]
         public string? Architecture { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `Double`, `Single`, `Readone`, `Readthree` and `Readfive`.
         /// </summary>
         [Input("nodeType")]
         public string? NodeType { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? ProductType { get; set; }
 
         /// <summary>
-        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `EnhancedPerformanceType` and `HybridStorage`.
         /// </summary>
         [Input("seriesType")]
         public string? SeriesType { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstanceClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `Standard`, `Cluster` and `Rwsplit`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `Double`, `Single`, `Readone`, `Readthree` and `Readfive`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ProductType { get; set; }
 
         /// <summary>
-        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `EnhancedPerformanceType` and `HybridStorage`.
         /// </summary>
         [Input("seriesType")]
         public Input<string>? SeriesType { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         public readonly string? Architecture;
         /// <summary>
-        /// A list of KVStore available instance classes when the `sorted_by` is "Price". include:
+        /// A list of KVStore available instance classes when the `SortedBy` is "Price". include:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceClassesClassResult> Classes;
         public readonly string? EditionType;

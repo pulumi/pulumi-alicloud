@@ -221,14 +221,14 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+     * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
      * 
      */
     @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
     private Output<String> maintainEndTime;
 
     /**
-     * @return The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+     * @return The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
      * 
      */
     public Output<String> maintainEndTime() {

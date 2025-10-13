@@ -191,14 +191,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      * 
      */
     @Export(name="deleteVpcIpBlock", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deleteVpcIpBlock;
 
     /**
-     * @return Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * @return Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      * 
      */
     public Output<Optional<String>> deleteVpcIpBlock() {
@@ -269,28 +269,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ingressVpcId);
     }
     /**
-     * The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * The user ID that the VpcID of `ingressVpcId` belongs to.
      * 
      */
     @Export(name="ingressVpcOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ingressVpcOwnerId;
 
     /**
-     * @return The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * @return The user ID that the VpcID of `ingressVpcId` belongs to.
      * 
      */
     public Output<Optional<String>> ingressVpcOwnerId() {
         return Codegen.optional(this.ingressVpcOwnerId);
     }
     /**
-     * The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      * 
      */
     @Export(name="ingressVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ingressVswitchId;
 
     /**
-     * @return The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * @return The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      * 
      */
     public Output<Optional<String>> ingressVswitchId() {
@@ -441,14 +441,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.supportIpv6;
     }
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
     @Export(name="toConnectVpcIpBlock", refs={InstanceToConnectVpcIpBlock.class}, tree="[0]")
     private Output</* @Nullable */ InstanceToConnectVpcIpBlock> toConnectVpcIpBlock;
 
     /**
-     * @return The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * @return The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
     public Output<Optional<InstanceToConnectVpcIpBlock>> toConnectVpcIpBlock() {
@@ -497,14 +497,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.zoneId;
     }
     /**
-     * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      * 
      */
     @Export(name="zoneVswitchSecurityGroups", refs={List.class,InstanceZoneVswitchSecurityGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceZoneVswitchSecurityGroup>> zoneVswitchSecurityGroups;
 
     /**
-     * @return Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * @return Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      * 
      */
     public Output<Optional<List<InstanceZoneVswitchSecurityGroup>>> zoneVswitchSecurityGroups() {

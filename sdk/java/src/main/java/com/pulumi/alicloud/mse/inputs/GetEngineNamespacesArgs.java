@@ -79,7 +79,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
     /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
-     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
      * 
      */
     @Import(name="outputFile")
@@ -88,7 +88,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
     /**
      * @return File name where to save data source results (after running `pulumi preview`).
      * 
-     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
      * 
      */
     public Optional<Output<String>> outputFile() {
@@ -220,7 +220,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
-         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * **NOTE:** You must set `clusterId` or `instanceId` or both.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
-         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * **NOTE:** You must set `clusterId` or `instanceId` or both.
          * 
          * @return builder
          * 

@@ -136,14 +136,14 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
         return this.networkOrigin;
     }
     /**
-     * Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+     * Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      * 
      */
     @Export(name="publicAccessBlockConfiguration", refs={AccessPointPublicAccessBlockConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AccessPointPublicAccessBlockConfiguration> publicAccessBlockConfiguration;
 
     /**
-     * @return Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+     * @return Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      * 
      */
     public Output<Optional<AccessPointPublicAccessBlockConfiguration>> publicAccessBlockConfiguration() {
@@ -164,14 +164,14 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+     * If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      * 
      */
     @Export(name="vpcConfiguration", refs={AccessPointVpcConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AccessPointVpcConfiguration> vpcConfiguration;
 
     /**
-     * @return If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+     * @return If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      * 
      */
     public Output<Optional<AccessPointVpcConfiguration>> vpcConfiguration() {

@@ -132,14 +132,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data disk specifications See `data_disk` below.
+     * Data disk specifications See `dataDisk` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<InstanceDataDiskArgs>> dataDisks;
 
     /**
-     * @return Data disk specifications See `data_disk` below.
+     * @return Data disk specifications See `dataDisk` below.
      * 
      */
     public Optional<Output<List<InstanceDataDiskArgs>>> dataDisks() {
@@ -610,14 +610,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+     * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      * 
      */
     @Import(name="systemDisk")
     private @Nullable Output<InstanceSystemDiskArgs> systemDisk;
 
     /**
-     * @return System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+     * @return System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      * 
      */
     public Optional<Output<InstanceSystemDiskArgs>> systemDisk() {
@@ -893,7 +893,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk specifications See `data_disk` below.
+         * @param dataDisks Data disk specifications See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk specifications See `data_disk` below.
+         * @param dataDisks Data disk specifications See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -914,7 +914,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk specifications See `data_disk` below.
+         * @param dataDisks Data disk specifications See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -1549,7 +1549,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDisk System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+         * @param systemDisk System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
          * 
          * @return builder
          * 
@@ -1560,7 +1560,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDisk System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+         * @param systemDisk System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
          * 
          * @return builder
          * 

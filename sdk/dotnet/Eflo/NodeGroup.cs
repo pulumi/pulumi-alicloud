@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `IpAllocationPolicy` below.
         /// </summary>
         [Output("ipAllocationPolicies")]
         public Output<ImmutableArray<Outputs.NodeGroupIpAllocationPolicy>> IpAllocationPolicies { get; private set; } = null!;
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> NodeGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Node List See `nodes` below.
+        /// Node List See `Nodes` below.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.NodeGroupNode>> Nodes { get; private set; } = null!;
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.NodeGroupIpAllocationPolicyArgs>? _ipAllocationPolicies;
 
         /// <summary>
-        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `IpAllocationPolicy` below.
         /// </summary>
         public InputList<Inputs.NodeGroupIpAllocationPolicyArgs> IpAllocationPolicies
         {
@@ -505,7 +505,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.NodeGroupNodeArgs>? _nodes;
 
         /// <summary>
-        /// Node List See `nodes` below.
+        /// Node List See `Nodes` below.
         /// </summary>
         public InputList<Inputs.NodeGroupNodeArgs> Nodes
         {
@@ -585,7 +585,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.NodeGroupIpAllocationPolicyGetArgs>? _ipAllocationPolicies;
 
         /// <summary>
-        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `IpAllocationPolicy` below.
         /// </summary>
         public InputList<Inputs.NodeGroupIpAllocationPolicyGetArgs> IpAllocationPolicies
         {
@@ -643,7 +643,7 @@ namespace Pulumi.AliCloud.Eflo
         private InputList<Inputs.NodeGroupNodeGetArgs>? _nodes;
 
         /// <summary>
-        /// Node List See `nodes` below.
+        /// Node List See `Nodes` below.
         /// </summary>
         public InputList<Inputs.NodeGroupNodeGetArgs> Nodes
         {

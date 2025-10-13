@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public partial class AppAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The api_id that app apply to access.
+        /// The ApiId that app apply to access.
         /// </summary>
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class AppAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The api_id that app apply to access.
+        /// The ApiId that app apply to access.
         /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class AppAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The api_id that app apply to access.
+        /// The ApiId that app apply to access.
         /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }

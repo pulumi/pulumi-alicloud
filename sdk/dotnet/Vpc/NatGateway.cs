@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// 
     /// - transform nat from Normal to Enhanced
-    /// &gt; **NOTE:** You must set `nat_type` to `Enhanced` and set `vswitch_id`.
+    /// &gt; **NOTE:** You must set `NatType` to `Enhanced` and set `VswitchId`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -121,13 +121,13 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NatGateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        /// The access mode for reverse access to the VPC NAT gateway. See `AccessMode` below.
         /// </summary>
         [Output("accessMode")]
         public Output<Outputs.NatGatewayAccessMode> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// Specifies whether to only precheck this request. Default value: `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -167,25 +167,25 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ForwardTableIds { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+        /// Specifies whether to enable ICMP retrieval. Default value: `True`. Valid values:
         /// </summary>
         [Output("icmpReplyEnabled")]
         public Output<bool> IcmpReplyEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+        /// Field `InstanceChargeType` has been deprecated from provider version 1.121.0. New field `PaymentType` instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+        /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `InternetChargeType` cannot be set to `PayBySpec`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.121.0. New field `NatGatewayName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -197,13 +197,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NatGatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`.
         /// </summary>
         [Output("natType")]
         public Output<string> NatType { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
@@ -215,14 +215,14 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+        /// Specifies whether to enable PrivateLink. Default value: `False`. Valid values:
         /// </summary>
         [Output("privateLinkEnabled")]
         public Output<bool?> PrivateLinkEnabled { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SnatTableIds { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `InternetChargeType` is `PayBySpec` and `NetworkType` is `Internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         /// </summary>
         [Output("specification")]
         public Output<string> Specification { get; private set; } = null!;
@@ -310,13 +310,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        /// The access mode for reverse access to the VPC NAT gateway. See `AccessMode` below.
         /// </summary>
         [Input("accessMode")]
         public Input<Inputs.NatGatewayAccessModeArgs>? AccessMode { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// Specifies whether to only precheck this request. Default value: `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -350,25 +350,25 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+        /// Specifies whether to enable ICMP retrieval. Default value: `True`. Valid values:
         /// </summary>
         [Input("icmpReplyEnabled")]
         public Input<bool>? IcmpReplyEnabled { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+        /// Field `InstanceChargeType` has been deprecated from provider version 1.121.0. New field `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+        /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `InternetChargeType` cannot be set to `PayBySpec`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.121.0. New field `NatGatewayName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -380,13 +380,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`.
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
 
         /// <summary>
-        /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -398,20 +398,20 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+        /// Specifies whether to enable PrivateLink. Default value: `False`. Valid values:
         /// </summary>
         [Input("privateLinkEnabled")]
         public Input<bool>? PrivateLinkEnabled { get; set; }
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `InternetChargeType` is `PayBySpec` and `NetworkType` is `Internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
@@ -449,13 +449,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatGatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        /// The access mode for reverse access to the VPC NAT gateway. See `AccessMode` below.
         /// </summary>
         [Input("accessMode")]
         public Input<Inputs.NatGatewayAccessModeGetArgs>? AccessMode { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -469,7 +469,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// Specifies whether to only precheck this request. Default value: `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -495,25 +495,25 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ForwardTableIds { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+        /// Specifies whether to enable ICMP retrieval. Default value: `True`. Valid values:
         /// </summary>
         [Input("icmpReplyEnabled")]
         public Input<bool>? IcmpReplyEnabled { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+        /// Field `InstanceChargeType` has been deprecated from provider version 1.121.0. New field `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
+        /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `InternetChargeType` cannot be set to `PayBySpec`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+        /// Field `Name` has been deprecated from provider version 1.121.0. New field `NatGatewayName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -525,13 +525,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`.
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
 
         /// <summary>
-        /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -543,14 +543,14 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+        /// Specifies whether to enable PrivateLink. Default value: `False`. Valid values:
         /// </summary>
         [Input("privateLinkEnabled")]
         public Input<bool>? PrivateLinkEnabled { get; set; }
@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SnatTableIds { get; set; }
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `InternetChargeType` is `PayBySpec` and `NetworkType` is `Internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }

@@ -60,7 +60,7 @@ public final class ClusterHostGroup {
      */
     private @Nullable String hostGroupType;
     /**
-     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
+     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instanceId1&#34;,&#34;instanceId2&#34;]. escape character for &#34; is \&#34;.
      * 
      */
     private @Nullable String instanceList;
@@ -158,7 +158,7 @@ public final class ClusterHostGroup {
         return Optional.ofNullable(this.hostGroupType);
     }
     /**
-     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
+     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instanceId1&#34;,&#34;instanceId2&#34;]. escape character for &#34; is \&#34;.
      * 
      */
     public Optional<String> instanceList() {

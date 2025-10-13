@@ -16,14 +16,14 @@ public final class BucketReplicationProgressArgs extends com.pulumi.resources.Re
     public static final BucketReplicationProgressArgs Empty = new BucketReplicationProgressArgs();
 
     /**
-     * The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+     * The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
      * 
      */
     @Import(name="historicalObject")
     private @Nullable Output<String> historicalObject;
 
     /**
-     * @return The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+     * @return The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
      * 
      */
     public Optional<Output<String>> historicalObject() {
@@ -71,7 +71,7 @@ public final class BucketReplicationProgressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param historicalObject The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+         * @param historicalObject The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class BucketReplicationProgressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param historicalObject The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+         * @param historicalObject The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
          * 
          * @return builder
          * 

@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+        /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `MaintainStartTime` is `01:00Z`, `MaintainEndTime` must be `02:00Z`.
         /// </summary>
         [Output("maintainEndTime")]
         public Output<string> MaintainEndTime { get; private set; } = null!;
@@ -311,7 +311,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+        /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `MaintainStartTime` is `01:00Z`, `MaintainEndTime` must be `02:00Z`.
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
+        /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `MaintainStartTime` is `01:00Z`, `MaintainEndTime` must be `02:00Z`.
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }

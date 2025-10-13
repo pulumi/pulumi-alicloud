@@ -32,14 +32,14 @@ public final class ServiceNasConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Config the NAS mount points.See `mount_points` below.
+     * Config the NAS mount points.See `mountPoints` below.
      * 
      */
     @Import(name="mountPoints", required=true)
     private Output<List<ServiceNasConfigMountPointArgs>> mountPoints;
 
     /**
-     * @return Config the NAS mount points.See `mount_points` below.
+     * @return Config the NAS mount points.See `mountPoints` below.
      * 
      */
     public Output<List<ServiceNasConfigMountPointArgs>> mountPoints() {
@@ -109,7 +109,7 @@ public final class ServiceNasConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountPoints Config the NAS mount points.See `mount_points` below.
+         * @param mountPoints Config the NAS mount points.See `mountPoints` below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ServiceNasConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountPoints Config the NAS mount points.See `mount_points` below.
+         * @param mountPoints Config the NAS mount points.See `mountPoints` below.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ServiceNasConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountPoints Config the NAS mount points.See `mount_points` below.
+         * @param mountPoints Config the NAS mount points.See `mountPoints` below.
          * 
          * @return builder
          * 

@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Scdn
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Scdn
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
+        /// The status of the resource. Valid values: "CheckFailed", "checking", "ConfigureFailed", "configuring", "offline", "online".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Scdn
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Scdn
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
+        /// The status of the resource. Valid values: "CheckFailed", "checking", "ConfigureFailed", "configuring", "offline", "online".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

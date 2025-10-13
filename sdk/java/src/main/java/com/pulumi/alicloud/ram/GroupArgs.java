@@ -47,7 +47,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group name. You must specify at least one of the `group_name` and `name`.
+     * The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -57,7 +57,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> groupName;
 
     /**
-     * @return The group name. You must specify at least one of the `group_name` and `name`.
+     * @return The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -71,10 +71,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+     * Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -82,10 +82,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      * @return . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+     * Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -160,7 +160,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The group name. You must specify at least one of the `group_name` and `name`.
+         * @param groupName The group name. You must specify at least one of the `groupName` and `name`.
          * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -174,7 +174,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The group name. You must specify at least one of the `group_name` and `name`.
+         * @param groupName The group name. You must specify at least one of the `groupName` and `name`.
          * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -192,10 +192,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+         * Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -207,10 +207,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+         * Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }

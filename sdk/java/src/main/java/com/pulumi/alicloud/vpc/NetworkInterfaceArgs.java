@@ -145,7 +145,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      * @deprecated
      * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
@@ -156,7 +156,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<List<String>> privateIps;
 
     /**
-     * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      * @deprecated
      * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
@@ -168,7 +168,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Number of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      * @deprecated
      * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
@@ -179,7 +179,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Integer> privateIpsCount;
 
     /**
-     * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+     * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
      * @deprecated
      * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
@@ -504,7 +504,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateIpsCount Number of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+         * @param privateIpsCount Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateIpsCount Number of secondary private IPs to assign to the ENI. Don&#39;t use both private_ips and private_ips_count in the same ENI resource block.
+         * @param privateIpsCount Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
          * 
          * @return builder
          * 

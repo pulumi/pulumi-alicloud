@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
-        /// Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+        /// Category of data disk. The parameter value options are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd` , `CloudEssd` and `Cloud`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        /// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `True` or `False`, default to `True`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        /// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `True`: encrypted, `False`: not encrypted. Default value: `False`.
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? ProvisionedIops;
         /// <summary>
-        /// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        /// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an EphemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, CloudEssd disk.
         /// </summary>
         public readonly int? Size;
         /// <summary>

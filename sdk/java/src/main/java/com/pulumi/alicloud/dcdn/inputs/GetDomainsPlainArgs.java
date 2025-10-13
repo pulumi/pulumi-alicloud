@@ -47,14 +47,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
+     * Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
      * 
      */
     @Import(name="checkDomainShow")
     private @Nullable Boolean checkDomainShow;
 
     /**
-     * @return Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
+     * @return Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
      * 
      */
     public Optional<Boolean> checkDomainShow() {
@@ -62,14 +62,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
+     * The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
      * 
      */
     @Import(name="domainSearchType")
     private @Nullable String domainSearchType;
 
     /**
-     * @return The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
+     * @return The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
      * 
      */
     public Optional<String> domainSearchType() {
@@ -230,7 +230,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param checkDomainShow Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
+         * @param checkDomainShow Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainSearchType The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
+         * @param domainSearchType The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
          * 
          * @return builder
          * 

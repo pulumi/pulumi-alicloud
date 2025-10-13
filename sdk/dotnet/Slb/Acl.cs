@@ -57,8 +57,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// The entry mapping supports the following:
     /// 
-    /// * `entry` - (Optional, Computed) The CIDR blocks.
-    /// * `comment` - (Optional, Computed) The comment of the entry.
+    /// * `Entry` - (Optional, Computed) The CIDR blocks.
+    /// * `Comment` - (Optional, Computed) The comment of the entry.
     /// 
     /// ## Import
     /// 

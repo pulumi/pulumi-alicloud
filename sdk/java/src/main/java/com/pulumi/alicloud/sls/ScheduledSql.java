@@ -181,14 +181,14 @@ public class ScheduledSql extends com.pulumi.resources.CustomResource {
         return this.schedule;
     }
     /**
-     * Task Configuration. See `scheduled_sql_configuration` below.
+     * Task Configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     @Export(name="scheduledSqlConfiguration", refs={ScheduledSqlScheduledSqlConfiguration.class}, tree="[0]")
     private Output<ScheduledSqlScheduledSqlConfiguration> scheduledSqlConfiguration;
 
     /**
-     * @return Task Configuration. See `scheduled_sql_configuration` below.
+     * @return Task Configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     public Output<ScheduledSqlScheduledSqlConfiguration> scheduledSqlConfiguration() {

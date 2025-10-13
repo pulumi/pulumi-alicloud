@@ -17,7 +17,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
     /**
      * The password used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     @Import(name="password")
@@ -25,7 +25,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
     /**
      * @return The password used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     public Optional<Output<String>> password() {
@@ -33,7 +33,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
     }
 
     /**
-     * The address of the image repository. It is required when `image_registry_credential` is
+     * The address of the image repository. It is required when `imageRegistryCredential` is
      * configured.
      * 
      */
@@ -41,7 +41,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
     private @Nullable Output<String> server;
 
     /**
-     * @return The address of the image repository. It is required when `image_registry_credential` is
+     * @return The address of the image repository. It is required when `imageRegistryCredential` is
      * configured.
      * 
      */
@@ -51,7 +51,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
     /**
      * The username used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     @Import(name="username")
@@ -59,7 +59,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
     /**
      * @return The username used to log on to the image repository. It is required
-     * when `image_registry_credential` is configured.
+     * when `imageRegistryCredential` is configured.
      * 
      */
     public Optional<Output<String>> username() {
@@ -94,7 +94,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
         /**
          * @param password The password used to log on to the image repository. It is required
-         * when `image_registry_credential` is configured.
+         * when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
         /**
          * @param password The password used to log on to the image repository. It is required
-         * when `image_registry_credential` is configured.
+         * when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
         }
 
         /**
-         * @param server The address of the image repository. It is required when `image_registry_credential` is
+         * @param server The address of the image repository. It is required when `imageRegistryCredential` is
          * configured.
          * 
          * @return builder
@@ -128,7 +128,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
         }
 
         /**
-         * @param server The address of the image repository. It is required when `image_registry_credential` is
+         * @param server The address of the image repository. It is required when `imageRegistryCredential` is
          * configured.
          * 
          * @return builder
@@ -140,7 +140,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
         /**
          * @param username The username used to log on to the image repository. It is required
-         * when `image_registry_credential` is configured.
+         * when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
 
         /**
          * @param username The username used to log on to the image repository. It is required
-         * when `image_registry_credential` is configured.
+         * when `imageRegistryCredential` is configured.
          * 
          * @return builder
          * 

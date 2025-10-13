@@ -55,14 +55,14 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * BackendNodeGroups See `backend_node_groups` below.
+     * BackendNodeGroups See `backendNodeGroups` below.
      * 
      */
     @Import(name="backendNodeGroups")
     private @Nullable Output<List<StarRocksInstanceBackendNodeGroupArgs>> backendNodeGroups;
 
     /**
-     * @return BackendNodeGroups See `backend_node_groups` below.
+     * @return BackendNodeGroups See `backendNodeGroups` below.
      * 
      */
     public Optional<Output<List<StarRocksInstanceBackendNodeGroupArgs>>> backendNodeGroups() {
@@ -115,14 +115,14 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * FrontendNodeGroups See `frontend_node_groups` below.
+     * FrontendNodeGroups See `frontendNodeGroups` below.
      * 
      */
     @Import(name="frontendNodeGroups")
     private @Nullable Output<List<StarRocksInstanceFrontendNodeGroupArgs>> frontendNodeGroups;
 
     /**
-     * @return FrontendNodeGroups See `frontend_node_groups` below.
+     * @return FrontendNodeGroups See `frontendNodeGroups` below.
      * 
      */
     public Optional<Output<List<StarRocksInstanceFrontendNodeGroupArgs>>> frontendNodeGroups() {
@@ -160,14 +160,14 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ObserverNodeGroups See `observer_node_groups` below.
+     * ObserverNodeGroups See `observerNodeGroups` below.
      * 
      */
     @Import(name="observerNodeGroups")
     private @Nullable Output<List<StarRocksInstanceObserverNodeGroupArgs>> observerNodeGroups;
 
     /**
-     * @return ObserverNodeGroups See `observer_node_groups` below.
+     * @return ObserverNodeGroups See `observerNodeGroups` below.
      * 
      */
     public Optional<Output<List<StarRocksInstanceObserverNodeGroupArgs>>> observerNodeGroups() {
@@ -280,8 +280,8 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The run mode of the instance:
-     * - shared_nothing
-     * - shared_data
+     * - sharedNothing
+     * - sharedData
      * - lakehouse
      * 
      */
@@ -290,8 +290,8 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The run mode of the instance:
-     * - shared_nothing
-     * - shared_data
+     * - sharedNothing
+     * - sharedData
      * - lakehouse
      * 
      */
@@ -446,7 +446,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backendNodeGroups BackendNodeGroups See `backend_node_groups` below.
+         * @param backendNodeGroups BackendNodeGroups See `backendNodeGroups` below.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backendNodeGroups BackendNodeGroups See `backend_node_groups` below.
+         * @param backendNodeGroups BackendNodeGroups See `backendNodeGroups` below.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backendNodeGroups BackendNodeGroups See `backend_node_groups` below.
+         * @param backendNodeGroups BackendNodeGroups See `backendNodeGroups` below.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param frontendNodeGroups FrontendNodeGroups See `frontend_node_groups` below.
+         * @param frontendNodeGroups FrontendNodeGroups See `frontendNodeGroups` below.
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param frontendNodeGroups FrontendNodeGroups See `frontend_node_groups` below.
+         * @param frontendNodeGroups FrontendNodeGroups See `frontendNodeGroups` below.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param frontendNodeGroups FrontendNodeGroups See `frontend_node_groups` below.
+         * @param frontendNodeGroups FrontendNodeGroups See `frontendNodeGroups` below.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param observerNodeGroups ObserverNodeGroups See `observer_node_groups` below.
+         * @param observerNodeGroups ObserverNodeGroups See `observerNodeGroups` below.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param observerNodeGroups ObserverNodeGroups See `observer_node_groups` below.
+         * @param observerNodeGroups ObserverNodeGroups See `observerNodeGroups` below.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param observerNodeGroups ObserverNodeGroups See `observer_node_groups` below.
+         * @param observerNodeGroups ObserverNodeGroups See `observerNodeGroups` below.
          * 
          * @return builder
          * 
@@ -785,8 +785,8 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param runMode The run mode of the instance:
-         * - shared_nothing
-         * - shared_data
+         * - sharedNothing
+         * - sharedData
          * - lakehouse
          * 
          * @return builder
@@ -799,8 +799,8 @@ public final class StarRocksInstanceArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param runMode The run mode of the instance:
-         * - shared_nothing
-         * - shared_data
+         * - sharedNothing
+         * - sharedData
          * - lakehouse
          * 
          * @return builder

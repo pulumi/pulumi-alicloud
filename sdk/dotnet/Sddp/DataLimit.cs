@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+        /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`LogStoreDay` is valid when the `AuditStatus` is `1`.
         /// </summary>
         [Output("logStoreDay")]
         public Output<int?> LogStoreDay { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+        /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`LogStoreDay` is valid when the `AuditStatus` is `1`.
         /// </summary>
         [Input("logStoreDay")]
         public Input<int>? LogStoreDay { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
+        /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`LogStoreDay` is valid when the `AuditStatus` is `1`.
         /// </summary>
         [Input("logStoreDay")]
         public Input<int>? LogStoreDay { get; set; }

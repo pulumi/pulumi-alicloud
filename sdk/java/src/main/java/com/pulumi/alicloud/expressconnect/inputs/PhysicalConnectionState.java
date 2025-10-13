@@ -104,14 +104,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+     * The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
      * 
      */
     @Import(name="orderId")
     private @Nullable Output<String> orderId;
 
     /**
-     * @return The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+     * @return The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
      * 
      */
     public Optional<Output<String>> orderId() {
@@ -135,8 +135,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
     /**
      * The subscription duration. Valid values:
-     * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-     * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+     * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+     * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     @Import(name="period")
@@ -144,8 +144,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
     /**
      * @return The subscription duration. Valid values:
-     * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-     * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+     * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+     * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -176,7 +176,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-     * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+     * &gt; **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      * 
      */
     @Import(name="portType")
@@ -191,7 +191,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-     * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+     * &gt; **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      * 
      */
     public Optional<Output<String>> portType() {
@@ -200,7 +200,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-     * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+     * &gt; **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      * 
      */
     @Import(name="pricingCycle")
@@ -208,7 +208,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
     /**
      * @return The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-     * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+     * &gt; **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -216,14 +216,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+     * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
      * 
      */
     @Import(name="redundantPhysicalConnectionId")
     private @Nullable Output<String> redundantPhysicalConnectionId;
 
     /**
-     * @return The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+     * @return The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
      * 
      */
     public Optional<Output<String>> redundantPhysicalConnectionId() {
@@ -415,7 +415,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param orderId The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+         * @param orderId The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param orderId The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+         * @param orderId The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
          * 
          * @return builder
          * 
@@ -458,8 +458,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
         /**
          * @param period The subscription duration. Valid values:
-         * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-         * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+         * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+         * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
          * 
          * @return builder
          * 
@@ -471,8 +471,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
         /**
          * @param period The subscription duration. Valid values:
-         * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
-         * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+         * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+         * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
          * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
          * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
          * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-         * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+         * &gt; **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
          * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
          * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
          * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
-         * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+         * &gt; **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
         /**
          * @param pricingCycle The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-         * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+         * &gt; **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
 
         /**
          * @param pricingCycle The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
-         * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+         * &gt; **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param redundantPhysicalConnectionId The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+         * @param redundantPhysicalConnectionId The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param redundantPhysicalConnectionId The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+         * @param redundantPhysicalConnectionId The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
          * 
          * @return builder
          * 

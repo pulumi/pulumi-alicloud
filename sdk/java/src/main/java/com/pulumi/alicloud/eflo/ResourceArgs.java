@@ -64,14 +64,14 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+     * Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
      * 
      */
     @Import(name="machineTypes", required=true)
     private Output<ResourceMachineTypesArgs> machineTypes;
 
     /**
-     * @return Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+     * @return Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
      * 
      */
     public Output<ResourceMachineTypesArgs> machineTypes() {
@@ -79,14 +79,14 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used to define the access parameters for the user. See `user_access_param` below.
+     * Used to define the access parameters for the user. See `userAccessParam` below.
      * 
      */
     @Import(name="userAccessParam", required=true)
     private Output<ResourceUserAccessParamArgs> userAccessParam;
 
     /**
-     * @return Used to define the access parameters for the user. See `user_access_param` below.
+     * @return Used to define the access parameters for the user. See `userAccessParam` below.
      * 
      */
     public Output<ResourceUserAccessParamArgs> userAccessParam() {
@@ -185,7 +185,7 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machineTypes Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+         * @param machineTypes Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machineTypes Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+         * @param machineTypes Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userAccessParam Used to define the access parameters for the user. See `user_access_param` below.
+         * @param userAccessParam Used to define the access parameters for the user. See `userAccessParam` below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userAccessParam Used to define the access parameters for the user. See `user_access_param` below.
+         * @param userAccessParam Used to define the access parameters for the user. See `userAccessParam` below.
          * 
          * @return builder
          * 

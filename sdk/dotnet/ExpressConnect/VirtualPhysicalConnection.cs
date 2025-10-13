@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck the API request. Valid values: `true` and `false`.
+        /// Specifies whether to precheck the API request. Valid values: `True` and `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck the API request. Valid values: `true` and `false`.
+        /// Specifies whether to precheck the API request. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck the API request. Valid values: `true` and `false`.
+        /// Specifies whether to precheck the API request. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

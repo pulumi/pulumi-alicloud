@@ -16,18 +16,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ForwardingRuleRuleCondition {
     /**
-     * @return The configuration of the domain name. See `host_config` below.
-     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+     * @return The configuration of the domain name. See `hostConfig` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
     private @Nullable List<ForwardingRuleRuleConditionHostConfig> hostConfigs;
     /**
-     * @return The configuration of the path. See `path_config` below.
+     * @return The configuration of the path. See `pathConfig` below.
      * 
      */
     private @Nullable ForwardingRuleRuleConditionPathConfig pathConfig;
     /**
-     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     private String ruleConditionType;
@@ -39,22 +39,22 @@ public final class ForwardingRuleRuleCondition {
 
     private ForwardingRuleRuleCondition() {}
     /**
-     * @return The configuration of the domain name. See `host_config` below.
-     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+     * @return The configuration of the domain name. See `hostConfig` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
     public List<ForwardingRuleRuleConditionHostConfig> hostConfigs() {
         return this.hostConfigs == null ? List.of() : this.hostConfigs;
     }
     /**
-     * @return The configuration of the path. See `path_config` below.
+     * @return The configuration of the path. See `pathConfig` below.
      * 
      */
     public Optional<ForwardingRuleRuleConditionPathConfig> pathConfig() {
         return Optional.ofNullable(this.pathConfig);
     }
     /**
-     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     public String ruleConditionType() {

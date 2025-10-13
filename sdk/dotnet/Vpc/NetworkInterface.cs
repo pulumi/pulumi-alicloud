@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
     /// 
-    /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
+    /// &gt; **NOTE** Only one of PrivateIps or PrivateIpsCount can be specified when assign private IPs.
     /// 
     /// ## Example Usage
     /// 
@@ -133,13 +133,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> PrivateIpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        /// List of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
 
         /// <summary>
-        /// Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        /// Number of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
         /// </summary>
         [Output("privateIpsCount")]
         public Output<int> PrivateIpsCount { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        /// List of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
         /// </summary>
         [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        /// Number of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
         /// </summary>
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
@@ -440,7 +440,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        /// List of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
         /// </summary>
         [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
@@ -450,7 +450,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        /// Number of secondary private IPs to assign to the ENI. Don't use both PrivateIps and PrivateIpsCount in the same ENI resource block.
         /// </summary>
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }

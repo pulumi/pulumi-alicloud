@@ -77,14 +77,14 @@ public final class ApplicationNasConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+     * Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -204,7 +204,7 @@ public final class ApplicationNasConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param readOnly Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+         * @param readOnly Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ApplicationNasConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param readOnly Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+         * @param readOnly Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
          * 
          * @return builder
          * 

@@ -43,7 +43,7 @@ public final class GetInstancesInstance {
      */
     private String instanceType;
     /**
-     * @return The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
+     * @return The billing method of the instance. **Note:** `paymentType` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String paymentType;
@@ -58,17 +58,17 @@ public final class GetInstancesInstance {
      */
     private String publicEndpoint;
     /**
-     * @return Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
+     * @return Auto renewal period of an instance. **Note:** `renewalDuration` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private Integer renewalDuration;
     /**
-     * @return Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
+     * @return Automatic renewal period unit. **Note:** `renewalDurationUnit` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String renewalDurationUnit;
     /**
-     * @return Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
+     * @return Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String renewalStatus;
@@ -127,7 +127,7 @@ public final class GetInstancesInstance {
         return this.instanceType;
     }
     /**
-     * @return The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
+     * @return The billing method of the instance. **Note:** `paymentType` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String paymentType() {
@@ -148,21 +148,21 @@ public final class GetInstancesInstance {
         return this.publicEndpoint;
     }
     /**
-     * @return Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
+     * @return Auto renewal period of an instance. **Note:** `renewalDuration` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public Integer renewalDuration() {
         return this.renewalDuration;
     }
     /**
-     * @return Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
+     * @return Automatic renewal period unit. **Note:** `renewalDurationUnit` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String renewalDurationUnit() {
         return this.renewalDurationUnit;
     }
     /**
-     * @return Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
+     * @return Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String renewalStatus() {

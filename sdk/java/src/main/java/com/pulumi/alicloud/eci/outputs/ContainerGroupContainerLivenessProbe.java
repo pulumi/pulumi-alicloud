@@ -26,9 +26,9 @@ public final class ContainerGroupContainerLivenessProbe {
      */
     private @Nullable Integer failureThreshold;
     /**
-     * @return Health check using HTTP request method. See `http_get` below.
+     * @return Health check using HTTP request method. See `httpGet` below.
      * 
-     * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+     * &gt; **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
      * 
      */
     private @Nullable List<ContainerGroupContainerLivenessProbeHttpGet> httpGets;
@@ -48,7 +48,7 @@ public final class ContainerGroupContainerLivenessProbe {
      */
     private @Nullable Integer successThreshold;
     /**
-     * @return Health check using TCP socket method. See `tcp_socket` below.
+     * @return Health check using TCP socket method. See `tcpSocket` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets;
@@ -74,9 +74,9 @@ public final class ContainerGroupContainerLivenessProbe {
         return Optional.ofNullable(this.failureThreshold);
     }
     /**
-     * @return Health check using HTTP request method. See `http_get` below.
+     * @return Health check using HTTP request method. See `httpGet` below.
      * 
-     * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+     * &gt; **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
      * 
      */
     public List<ContainerGroupContainerLivenessProbeHttpGet> httpGets() {
@@ -104,7 +104,7 @@ public final class ContainerGroupContainerLivenessProbe {
         return Optional.ofNullable(this.successThreshold);
     }
     /**
-     * @return Health check using TCP socket method. See `tcp_socket` below.
+     * @return Health check using TCP socket method. See `tcpSocket` below.
      * 
      */
     public List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets() {

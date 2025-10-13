@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Rds.Inputs
     public sealed class CustomSystemDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        /// The cloud disk type of the system disk. Currently, only `CloudEssd`(ESSD cloud disk) is supported.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

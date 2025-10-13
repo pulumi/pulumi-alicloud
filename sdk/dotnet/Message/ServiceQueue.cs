@@ -67,13 +67,13 @@ namespace Pulumi.AliCloud.Message
         public Output<int> DelaySeconds { get; private set; } = null!;
 
         /// <summary>
-        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// The dead-letter queue policy. See `DlqPolicy` below.
         /// </summary>
         [Output("dlqPolicy")]
         public Output<Outputs.ServiceQueueDlqPolicy> DlqPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Output("loggingEnabled")]
         public Output<bool?> LoggingEnabled { get; private set; } = null!;
@@ -167,13 +167,13 @@ namespace Pulumi.AliCloud.Message
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
-        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// The dead-letter queue policy. See `DlqPolicy` below.
         /// </summary>
         [Input("dlqPolicy")]
         public Input<Inputs.ServiceQueueDlqPolicyArgs>? DlqPolicy { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
@@ -241,13 +241,13 @@ namespace Pulumi.AliCloud.Message
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
-        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// The dead-letter queue policy. See `DlqPolicy` below.
         /// </summary>
         [Input("dlqPolicy")]
         public Input<Inputs.ServiceQueueDlqPolicyGetArgs>? DlqPolicy { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }

@@ -194,14 +194,14 @@ public class DiJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Destination data source See `destination_data_source_settings` below.
+     * Destination data source See `destinationDataSourceSettings` below.
      * 
      */
     @Export(name="destinationDataSourceSettings", refs={List.class,DiJobDestinationDataSourceSetting.class}, tree="[0,1]")
     private Output<List<DiJobDestinationDataSourceSetting>> destinationDataSourceSettings;
 
     /**
-     * @return Destination data source See `destination_data_source_settings` below.
+     * @return Destination data source See `destinationDataSourceSettings` below.
      * 
      */
     public Output<List<DiJobDestinationDataSourceSetting>> destinationDataSourceSettings() {
@@ -250,14 +250,14 @@ public class DiJob extends com.pulumi.resources.CustomResource {
         return this.jobName;
     }
     /**
-     * The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+     * The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `jobSettings` below.
      * 
      */
     @Export(name="jobSettings", refs={DiJobJobSettings.class}, tree="[0]")
     private Output</* @Nullable */ DiJobJobSettings> jobSettings;
 
     /**
-     * @return The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+     * @return The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `jobSettings` below.
      * 
      */
     public Output<Optional<DiJobJobSettings>> jobSettings() {
@@ -312,28 +312,28 @@ public class DiJob extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Resource Group Properties See `resource_settings` below.
+     * Resource Group Properties See `resourceSettings` below.
      * 
      */
     @Export(name="resourceSettings", refs={DiJobResourceSettings.class}, tree="[0]")
     private Output<DiJobResourceSettings> resourceSettings;
 
     /**
-     * @return Resource Group Properties See `resource_settings` below.
+     * @return Resource Group Properties See `resourceSettings` below.
      * 
      */
     public Output<DiJobResourceSettings> resourceSettings() {
         return this.resourceSettings;
     }
     /**
-     * Source data source setting List See `source_data_source_settings` below.
+     * Source data source setting List See `sourceDataSourceSettings` below.
      * 
      */
     @Export(name="sourceDataSourceSettings", refs={List.class,DiJobSourceDataSourceSetting.class}, tree="[0,1]")
     private Output<List<DiJobSourceDataSourceSetting>> sourceDataSourceSettings;
 
     /**
-     * @return Source data source setting List See `source_data_source_settings` below.
+     * @return Source data source setting List See `sourceDataSourceSettings` below.
      * 
      */
     public Output<List<DiJobSourceDataSourceSetting>> sourceDataSourceSettings() {
@@ -354,28 +354,28 @@ public class DiJob extends com.pulumi.resources.CustomResource {
         return this.sourceDataSourceType;
     }
     /**
-     * Synchronize object transformation mapping list See `table_mappings` below.
+     * Synchronize object transformation mapping list See `tableMappings` below.
      * 
      */
     @Export(name="tableMappings", refs={List.class,DiJobTableMapping.class}, tree="[0,1]")
     private Output<List<DiJobTableMapping>> tableMappings;
 
     /**
-     * @return Synchronize object transformation mapping list See `table_mappings` below.
+     * @return Synchronize object transformation mapping list See `tableMappings` below.
      * 
      */
     public Output<List<DiJobTableMapping>> tableMappings() {
         return this.tableMappings;
     }
     /**
-     * Definition list of synchronization object conversion rules See `transformation_rules` below.
+     * Definition list of synchronization object conversion rules See `transformationRules` below.
      * 
      */
     @Export(name="transformationRules", refs={List.class,DiJobTransformationRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DiJobTransformationRule>> transformationRules;
 
     /**
-     * @return Definition list of synchronization object conversion rules See `transformation_rules` below.
+     * @return Definition list of synchronization object conversion rules See `transformationRules` below.
      * 
      */
     public Output<Optional<List<DiJobTransformationRule>>> transformationRules() {

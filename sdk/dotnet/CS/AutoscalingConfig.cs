@@ -14,13 +14,13 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** Available since v1.127.0.
     /// 
-    /// &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+    /// &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `ScaleDownEnabled`.
     /// 
-    /// &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+    /// &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `Expander`.
     /// 
-    /// &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+    /// &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `ScalerType`.
     /// 
-    /// &gt; **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
+    /// &gt; **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `Priorities`.
     /// 
     /// ## Example Usage
     /// 
@@ -178,13 +178,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CoolDownDuration { get; private set; } = null!;
 
         /// <summary>
-        /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+        /// If true DaemonSet pods will be  terminated from nodes. Default is `False`.
         /// </summary>
         [Output("daemonsetEvictionForNodes")]
         public Output<bool?> DaemonsetEvictionForNodes { get; private set; } = null!;
 
         /// <summary>
-        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `Random`, `Priority`. For scaler type `Goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Output("expander")]
         public Output<string?> Expander { get; private set; } = null!;
@@ -208,31 +208,31 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> MinReplicaCount { get; private set; } = null!;
 
         /// <summary>
-        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `Expander` is set to `Priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         /// </summary>
         [Output("priorities")]
         public Output<ImmutableDictionary<string, string>?> Priorities { get; private set; } = null!;
 
         /// <summary>
-        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `False`.
         /// </summary>
         [Output("recycleNodeDeletionEnabled")]
         public Output<bool?> RecycleNodeDeletionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether to allow the scale-in of nodes. Default is `true`.
+        /// Specify whether to allow the scale-in of nodes. Default is `True`.
         /// </summary>
         [Output("scaleDownEnabled")]
         public Output<bool?> ScaleDownEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Should CA scale up when there 0 ready nodes. Default is `true`.
+        /// Should CA scale up when there 0 ready nodes. Default is `True`.
         /// </summary>
         [Output("scaleUpFromZero")]
         public Output<bool?> ScaleUpFromZero { get; private set; } = null!;
 
         /// <summary>
-        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `Goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `Goatscaler`, all configuration parameters will be automatically migrated.
         /// </summary>
         [Output("scalerType")]
         public Output<string?> ScalerType { get; private set; } = null!;
@@ -244,13 +244,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ScanInterval { get; private set; } = null!;
 
         /// <summary>
-        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `False`.
         /// </summary>
         [Output("skipNodesWithLocalStorage")]
         public Output<bool?> SkipNodesWithLocalStorage { get; private set; } = null!;
 
         /// <summary>
-        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `True`.
         /// </summary>
         [Output("skipNodesWithSystemPods")]
         public Output<bool?> SkipNodesWithSystemPods { get; private set; } = null!;
@@ -326,13 +326,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
-        /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+        /// If true DaemonSet pods will be  terminated from nodes. Default is `False`.
         /// </summary>
         [Input("daemonsetEvictionForNodes")]
         public Input<bool>? DaemonsetEvictionForNodes { get; set; }
 
         /// <summary>
-        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `Random`, `Priority`. For scaler type `Goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Input("expander")]
         public Input<string>? Expander { get; set; }
@@ -359,7 +359,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _priorities;
 
         /// <summary>
-        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `Expander` is set to `Priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         /// </summary>
         public InputMap<string> Priorities
         {
@@ -368,25 +368,25 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `False`.
         /// </summary>
         [Input("recycleNodeDeletionEnabled")]
         public Input<bool>? RecycleNodeDeletionEnabled { get; set; }
 
         /// <summary>
-        /// Specify whether to allow the scale-in of nodes. Default is `true`.
+        /// Specify whether to allow the scale-in of nodes. Default is `True`.
         /// </summary>
         [Input("scaleDownEnabled")]
         public Input<bool>? ScaleDownEnabled { get; set; }
 
         /// <summary>
-        /// Should CA scale up when there 0 ready nodes. Default is `true`.
+        /// Should CA scale up when there 0 ready nodes. Default is `True`.
         /// </summary>
         [Input("scaleUpFromZero")]
         public Input<bool>? ScaleUpFromZero { get; set; }
 
         /// <summary>
-        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `Goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `Goatscaler`, all configuration parameters will be automatically migrated.
         /// </summary>
         [Input("scalerType")]
         public Input<string>? ScalerType { get; set; }
@@ -398,13 +398,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScanInterval { get; set; }
 
         /// <summary>
-        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `False`.
         /// </summary>
         [Input("skipNodesWithLocalStorage")]
         public Input<bool>? SkipNodesWithLocalStorage { get; set; }
 
         /// <summary>
-        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `True`.
         /// </summary>
         [Input("skipNodesWithSystemPods")]
         public Input<bool>? SkipNodesWithSystemPods { get; set; }
@@ -442,13 +442,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
-        /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+        /// If true DaemonSet pods will be  terminated from nodes. Default is `False`.
         /// </summary>
         [Input("daemonsetEvictionForNodes")]
         public Input<bool>? DaemonsetEvictionForNodes { get; set; }
 
         /// <summary>
-        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `Random`, `Priority`. For scaler type `Goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Input("expander")]
         public Input<string>? Expander { get; set; }
@@ -475,7 +475,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _priorities;
 
         /// <summary>
-        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `Expander` is set to `Priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         /// </summary>
         public InputMap<string> Priorities
         {
@@ -484,25 +484,25 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `False`.
         /// </summary>
         [Input("recycleNodeDeletionEnabled")]
         public Input<bool>? RecycleNodeDeletionEnabled { get; set; }
 
         /// <summary>
-        /// Specify whether to allow the scale-in of nodes. Default is `true`.
+        /// Specify whether to allow the scale-in of nodes. Default is `True`.
         /// </summary>
         [Input("scaleDownEnabled")]
         public Input<bool>? ScaleDownEnabled { get; set; }
 
         /// <summary>
-        /// Should CA scale up when there 0 ready nodes. Default is `true`.
+        /// Should CA scale up when there 0 ready nodes. Default is `True`.
         /// </summary>
         [Input("scaleUpFromZero")]
         public Input<bool>? ScaleUpFromZero { get; set; }
 
         /// <summary>
-        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `Goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `Goatscaler`, all configuration parameters will be automatically migrated.
         /// </summary>
         [Input("scalerType")]
         public Input<string>? ScalerType { get; set; }
@@ -514,13 +514,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScanInterval { get; set; }
 
         /// <summary>
-        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `False`.
         /// </summary>
         [Input("skipNodesWithLocalStorage")]
         public Input<bool>? SkipNodesWithLocalStorage { get; set; }
 
         /// <summary>
-        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `True`.
         /// </summary>
         [Input("skipNodesWithSystemPods")]
         public Input<bool>? SkipNodesWithSystemPods { get; set; }

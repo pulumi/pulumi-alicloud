@@ -62,14 +62,14 @@ public final class SnatEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      * 
      */
     @Import(name="snatIp")
     private @Nullable Output<String> snatIp;
 
     /**
-     * @return The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+     * @return The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      * 
      */
     public Optional<Output<String>> snatIp() {
@@ -231,7 +231,7 @@ public final class SnatEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatIp The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+         * @param snatIp The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class SnatEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatIp The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+         * @param snatIp The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
          * 
          * @return builder
          * 

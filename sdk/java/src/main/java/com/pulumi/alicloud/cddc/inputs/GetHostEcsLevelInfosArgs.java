@@ -62,14 +62,14 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
+     * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
      * 
      */
     @Import(name="storageType", required=true)
     private Output<String> storageType;
 
     /**
-     * @return The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
+     * @return The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
      * 
      */
     public Output<String> storageType() {
@@ -183,7 +183,7 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param storageType The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
+         * @param storageType The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param storageType The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
+         * @param storageType The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
          * 
          * @return builder
          * 

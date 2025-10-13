@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.CloudMonitor
     public partial class ServiceGroupMonitoringAgentProcess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The alert rule configurations. See `alert_config` below.
+        /// The alert rule configurations. See `AlertConfig` below.
         /// </summary>
         [Output("alertConfigs")]
         public Output<ImmutableArray<Outputs.ServiceGroupMonitoringAgentProcessAlertConfig>> AlertConfigs { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.AliCloud.CloudMonitor
         public Output<string> GroupMonitoringAgentProcessId { get; private set; } = null!;
 
         /// <summary>
-        /// The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
+        /// The logical operator used between conditional expressions that are used to match instances. Valid values: `All`, `And`, `Or`.
         /// </summary>
         [Output("matchExpressFilterRelation")]
         public Output<string> MatchExpressFilterRelation { get; private set; } = null!;
 
         /// <summary>
-        /// The expressions used to match instances. See `match_express` below.
+        /// The expressions used to match instances. See `MatchExpress` below.
         /// </summary>
         [Output("matchExpresses")]
         public Output<ImmutableArray<Outputs.ServiceGroupMonitoringAgentProcessMatchExpress>> MatchExpresses { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         private InputList<Inputs.ServiceGroupMonitoringAgentProcessAlertConfigArgs>? _alertConfigs;
 
         /// <summary>
-        /// The alert rule configurations. See `alert_config` below.
+        /// The alert rule configurations. See `AlertConfig` below.
         /// </summary>
         public InputList<Inputs.ServiceGroupMonitoringAgentProcessAlertConfigArgs> AlertConfigs
         {
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
+        /// The logical operator used between conditional expressions that are used to match instances. Valid values: `All`, `And`, `Or`.
         /// </summary>
         [Input("matchExpressFilterRelation")]
         public Input<string>? MatchExpressFilterRelation { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         private InputList<Inputs.ServiceGroupMonitoringAgentProcessMatchExpressArgs>? _matchExpresses;
 
         /// <summary>
-        /// The expressions used to match instances. See `match_express` below.
+        /// The expressions used to match instances. See `MatchExpress` below.
         /// </summary>
         public InputList<Inputs.ServiceGroupMonitoringAgentProcessMatchExpressArgs> MatchExpresses
         {
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         private InputList<Inputs.ServiceGroupMonitoringAgentProcessAlertConfigGetArgs>? _alertConfigs;
 
         /// <summary>
-        /// The alert rule configurations. See `alert_config` below.
+        /// The alert rule configurations. See `AlertConfig` below.
         /// </summary>
         public InputList<Inputs.ServiceGroupMonitoringAgentProcessAlertConfigGetArgs> AlertConfigs
         {
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         public Input<string>? GroupMonitoringAgentProcessId { get; set; }
 
         /// <summary>
-        /// The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
+        /// The logical operator used between conditional expressions that are used to match instances. Valid values: `All`, `And`, `Or`.
         /// </summary>
         [Input("matchExpressFilterRelation")]
         public Input<string>? MatchExpressFilterRelation { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.CloudMonitor
         private InputList<Inputs.ServiceGroupMonitoringAgentProcessMatchExpressGetArgs>? _matchExpresses;
 
         /// <summary>
-        /// The expressions used to match instances. See `match_express` below.
+        /// The expressions used to match instances. See `MatchExpress` below.
         /// </summary>
         public InputList<Inputs.ServiceGroupMonitoringAgentProcessMatchExpressGetArgs> MatchExpresses
         {

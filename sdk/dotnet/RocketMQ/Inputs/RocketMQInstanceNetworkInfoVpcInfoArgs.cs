@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
         private InputList<Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs>? _vswitches;
 
         /// <summary>
-        /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+        /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `Vswitches` below.
         /// </summary>
         public InputList<Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs> Vswitches
         {

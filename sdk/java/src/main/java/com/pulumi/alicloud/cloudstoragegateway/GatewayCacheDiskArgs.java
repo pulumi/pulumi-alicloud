@@ -18,14 +18,14 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
     public static final GatewayCacheDiskArgs Empty = new GatewayCacheDiskArgs();
 
     /**
-     * The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+     * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      * 
      */
     @Import(name="cacheDiskCategory")
     private @Nullable Output<String> cacheDiskCategory;
 
     /**
-     * @return The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+     * @return The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      * 
      */
     public Optional<Output<String>> cacheDiskCategory() {
@@ -63,14 +63,14 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+     * @return The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -105,7 +105,7 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cacheDiskCategory The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+         * @param cacheDiskCategory The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cacheDiskCategory The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+         * @param cacheDiskCategory The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param performanceLevel The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+         * @param performanceLevel The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param performanceLevel The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+         * @param performanceLevel The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
          * 
          * @return builder
          * 

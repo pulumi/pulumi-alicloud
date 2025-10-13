@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerReadinessProbe
     {
         /// <summary>
-        /// Health check using command line method. See `exec` below.
+        /// Health check using command line method. See `Exec` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbeExec> Execs;
         /// <summary>
@@ -22,9 +22,9 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? FailureThreshold;
         /// <summary>
-        /// Health check using HTTP request method. See `http_get` below.
+        /// Health check using HTTP request method. See `HttpGet` below.
         /// 
-        /// &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+        /// &gt; **NOTE:** When you configure `ReadinessProbe`, you can select only one of the `Exec`, `TcpSocket`, `HttpGet`.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbeHttpGet> HttpGets;
         /// <summary>
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? SuccessThreshold;
         /// <summary>
-        /// Health check using TCP socket method. See `tcp_socket` below.
+        /// Health check using TCP socket method. See `TcpSocket` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbeTcpSocket> TcpSockets;
         /// <summary>

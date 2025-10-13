@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupImageRegistryCredential
     {
         /// <summary>
-        /// The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        /// The password used to log on to the image repository. It is required when `ImageRegistryCredential` is configured.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The address of the image repository. It is required when `image_registry_credential` is configured.
+        /// The address of the image repository. It is required when `ImageRegistryCredential` is configured.
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+        /// The username used to log on to the image repository. It is required when `ImageRegistryCredential` is configured.
         /// </summary>
         public readonly string UserName;
 

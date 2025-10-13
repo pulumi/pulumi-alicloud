@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+        /// Indicates whether to include renewal data. Valid values: `True`: Return renewal data in the response. `False`: Do not return renewal data in the response.
         /// </summary>
         [Input("includeReservationData")]
         public bool? IncludeReservationData { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+        /// Indicates whether to include renewal data. Valid values: `True`: Return renewal data in the response. `False`: Do not return renewal data in the response.
         /// </summary>
         [Input("includeReservationData")]
         public Input<bool>? IncludeReservationData { get; set; }

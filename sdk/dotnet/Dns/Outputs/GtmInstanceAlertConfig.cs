@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Dns.Outputs
     public sealed class GtmInstanceAlertConfig
     {
         /// <summary>
-        /// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+        /// Whether to configure DingTalk notifications. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? DingtalkNotice;
         /// <summary>
-        /// Whether to configure mail notification. Valid values: `true`, `false`.
+        /// Whether to configure mail notification. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? EmailNotice;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string? NoticeType;
         /// <summary>
-        /// Whether to configure SMS notification. Valid values: `true`, `false`.
+        /// Whether to configure SMS notification. Valid values: `True`, `False`.
         /// </summary>
         public readonly bool? SmsNotice;
 

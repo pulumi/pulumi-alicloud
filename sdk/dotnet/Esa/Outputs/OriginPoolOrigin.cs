@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+        /// The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `AuthConf` below.
         /// </summary>
         public readonly Outputs.OriginPoolOriginAuthConf? AuthConf;
         /// <summary>

@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.CS
     public partial class NodePool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+        /// Whether enable worker node to support cis security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. Use `SecurityHardeningOs` instead.
         /// </summary>
         [Output("cisEnabled")]
         public Output<bool?> CisEnabled { get; private set; } = null!;
@@ -378,19 +378,19 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `MultiAzPolicy` to `COST_OPTIMIZED`. Valid values: `True`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `False`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         /// </summary>
         [Output("compensateWithOnDemand")]
         public Output<bool?> CompensateWithOnDemand { get; private set; } = null!;
 
         /// <summary>
-        /// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
+        /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         /// </summary>
         [Output("cpuPolicy")]
         public Output<string> CpuPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the data disk of the node in the node pool. See `data_disks` below.
+        /// Configure the data disk of the node in the node pool. See `DataDisks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.NodePoolDataDisk>> DataDisks { get; private set; } = null!;
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> DesiredSize { get; private set; } = null!;
 
         /// <summary>
-        /// Lingjun node pool configuration. See `eflo_node_group` below.
+        /// Lingjun node pool configuration. See `EfloNodeGroup` below.
         /// </summary>
         [Output("efloNodeGroup")]
         public Output<Outputs.NodePoolEfloNodeGroup?> EfloNodeGroup { get; private set; } = null!;
@@ -420,7 +420,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `False`.
         /// </summary>
         [Output("formatDisk")]
         public Output<bool> FormatDisk { get; private set; } = null!;
@@ -432,7 +432,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system image type and the `platform` parameter can be selected from the following values:
+        /// The operating system image type and the `Platform` parameter can be selected from the following values:
         /// - `AliyunLinux` : Alinux2 image.
         /// - `AliyunLinux3` : Alinux3 image.
         /// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
@@ -449,13 +449,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ImageType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
+        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `False`. Valid values:
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
 
         /// <summary>
-        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `Period`, `PeriodUnit`, `AutoRenew` and `AutoRenewPeriod` are required.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -473,7 +473,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `EipInternetChargeType`, EIP and public network IP can only choose one.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
@@ -485,49 +485,49 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
-        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `True`.
         /// </summary>
         [Output("keepInstanceName")]
         public Output<bool> KeepInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+        /// The name of the key pair. When the node pool is a managed node pool, only `KeyName` is supported.
         /// </summary>
         [Output("keyName")]
         public Output<string?> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a cs kubernetes with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+        /// Kubelet configuration parameters for worker nodes. See `KubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `KubeletConfiguration` below.
         /// </summary>
         [Output("kubeletConfiguration")]
         public Output<Outputs.NodePoolKubeletConfiguration?> KubeletConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
+        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.NodePoolLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `True` and `False`.
         /// </summary>
         [Output("loginAsNonRoot")]
         public Output<bool?> LoginAsNonRoot { get; private set; } = null!;
 
         /// <summary>
-        /// Managed node pool configuration. See `management` below.
+        /// Managed node pool configuration. See `Management` below.
         /// </summary>
         [Output("management")]
         public Output<Outputs.NodePoolManagement> Management { get; private set; } = null!;
@@ -545,7 +545,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+        /// The worker node number of the node pool. From version 1.111.0, `NodeCount` is not required.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -578,13 +578,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> OnDemandBaseCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `OnDemandBaseCapacity`. Valid values: 0 to 100.
         /// </summary>
         [Output("onDemandPercentageAboveBaseCapacity")]
         public Output<string?> OnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+        /// The password of ssh login. You have to specify one of `Password` and `KeyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -602,7 +602,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Operating system release, using `image_type` instead.
+        /// Operating system release, using `ImageType` instead.
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
@@ -614,7 +614,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PreUserData { get; private set; } = null!;
 
         /// <summary>
-        /// Private node pool configuration. See `private_pool_options` below.
+        /// Private node pool configuration. See `PrivatePoolOptions` below.
         /// </summary>
         [Output("privatePoolOptions")]
         public Output<Outputs.NodePoolPrivatePoolOptions?> PrivatePoolOptions { get; private set; } = null!;
@@ -642,7 +642,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Rotary configuration. See `rolling_policy` below.
+        /// Rotary configuration. See `RollingPolicy` below.
         /// </summary>
         [Output("rollingPolicy")]
         public Output<Outputs.NodePoolRollingPolicy?> RollingPolicy { get; private set; } = null!;
@@ -660,7 +660,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> RuntimeVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic scaling configuration. See `scaling_config` below.
+        /// Automatic scaling configuration. See `ScalingConfig` below.
         /// </summary>
         [Output("scalingConfig")]
         public Output<Outputs.NodePoolScalingConfig> ScalingConfig { get; private set; } = null!;
@@ -672,33 +672,33 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Scaling group mode, default value: `release`. Valid values:
+        /// Scaling group mode, default value: `Release`. Valid values:
         /// </summary>
         [Output("scalingPolicy")]
         public Output<string> ScalingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+        /// The security group ID of the node pool. This field has been replaced by `SecurityGroupIds`, please use the `SecurityGroupIds` field instead.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// Multiple security groups can be configured for a node pool. If both `SecurityGroupIds` and `SecurityGroupId` are configured, `SecurityGroupIds` takes effect. This field cannot be modified.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        /// Alibaba Cloud OS security reinforcement. Default value: `False`. Value:
         /// </summary>
         [Output("securityHardeningOs")]
         public Output<bool?> SecurityHardeningOs { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+        /// Whether enable worker node to support soc security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
         /// 
-        /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+        /// &gt; **NOTE:**  It is forbidden to set both `SecurityHardeningOs` and `SocEnabled` to `True` at the same time.
         /// </summary>
         [Output("socEnabled")]
         public Output<bool?> SocEnabled { get; private set; } = null!;
@@ -710,13 +710,13 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> SpotInstancePools { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `True`: enables the supplementation of preemptible instances. `False`: disables the supplementation of preemptible instances.
         /// </summary>
         [Output("spotInstanceRemedy")]
         public Output<bool?> SpotInstanceRemedy { get; private set; } = null!;
 
         /// <summary>
-        /// The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+        /// The current single preemptible instance type market price range configuration. See `SpotPriceLimit` below.
         /// </summary>
         [Output("spotPriceLimits")]
         public Output<ImmutableArray<Outputs.NodePoolSpotPriceLimit>> SpotPriceLimits { get; private set; } = null!;
@@ -731,19 +731,19 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// Specifies whether to enable the burst feature for system disks. Valid values:`True`: enables the burst feature. `False`: disables the burst feature. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         [Output("systemDiskBurstingEnabled")]
         public Output<bool?> SystemDiskBurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `SystemDiskCategory`.
         /// </summary>
         [Output("systemDiskCategories")]
         public Output<ImmutableArray<string>> SystemDiskCategories { get; private set; } = null!;
 
         /// <summary>
-        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
+        /// The category of the system disk for nodes. Default value: `CloudEfficiency`. Valid values:
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -755,7 +755,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> SystemDiskEncryptAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+        /// Whether to encrypt the system disk. Value range: `True`: encryption. `False`: Do not encrypt.
         /// </summary>
         [Output("systemDiskEncrypted")]
         public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
@@ -777,7 +777,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> SystemDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         [Output("systemDiskProvisionedIops")]
         public Output<int?> SystemDiskProvisionedIops { get; private set; } = null!;
@@ -805,13 +805,13 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
+        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `Taints` below.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.NodePoolTaint>> Taints { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration about confidential computing for the cluster. See `tee_config` below.
+        /// The configuration about confidential computing for the cluster. See `TeeConfig` below.
         /// </summary>
         [Output("teeConfig")]
         public Output<Outputs.NodePoolTeeConfig> TeeConfig { get; private set; } = null!;
@@ -900,7 +900,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -912,7 +912,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+        /// Whether enable worker node to support cis security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. Use `SecurityHardeningOs` instead.
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -924,13 +924,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `MultiAzPolicy` to `COST_OPTIMIZED`. Valid values: `True`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `False`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         /// </summary>
         [Input("compensateWithOnDemand")]
         public Input<bool>? CompensateWithOnDemand { get; set; }
 
         /// <summary>
-        /// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
+        /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         /// </summary>
         [Input("cpuPolicy")]
         public Input<string>? CpuPolicy { get; set; }
@@ -939,7 +939,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Configure the data disk of the node in the node pool. See `data_disks` below.
+        /// Configure the data disk of the node in the node pool. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.NodePoolDataDiskArgs> DataDisks
         {
@@ -960,7 +960,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? DesiredSize { get; set; }
 
         /// <summary>
-        /// Lingjun node pool configuration. See `eflo_node_group` below.
+        /// Lingjun node pool configuration. See `EfloNodeGroup` below.
         /// </summary>
         [Input("efloNodeGroup")]
         public Input<Inputs.NodePoolEfloNodeGroupArgs>? EfloNodeGroup { get; set; }
@@ -972,7 +972,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `False`.
         /// </summary>
         [Input("formatDisk")]
         public Input<bool>? FormatDisk { get; set; }
@@ -984,7 +984,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The operating system image type and the `platform` parameter can be selected from the following values:
+        /// The operating system image type and the `Platform` parameter can be selected from the following values:
         /// - `AliyunLinux` : Alinux2 image.
         /// - `AliyunLinux3` : Alinux3 image.
         /// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
@@ -1001,13 +1001,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageType { get; set; }
 
         /// <summary>
-        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
+        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `False`. Valid values:
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
 
         /// <summary>
-        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `Period`, `PeriodUnit`, `AutoRenew` and `AutoRenewPeriod` are required.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1037,7 +1037,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `EipInternetChargeType`, EIP and public network IP can only choose one.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -1049,13 +1049,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `True`.
         /// </summary>
         [Input("keepInstanceName")]
         public Input<bool>? KeepInstanceName { get; set; }
 
         /// <summary>
-        /// The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+        /// The name of the key pair. When the node pool is a managed node pool, only `KeyName` is supported.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -1064,7 +1064,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _kmsEncryptedPassword;
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? KmsEncryptedPassword
         {
@@ -1080,7 +1080,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a cs kubernetes with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1089,7 +1089,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+        /// Kubelet configuration parameters for worker nodes. See `KubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `KubeletConfiguration` below.
         /// </summary>
         [Input("kubeletConfiguration")]
         public Input<Inputs.NodePoolKubeletConfigurationArgs>? KubeletConfiguration { get; set; }
@@ -1098,7 +1098,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolLabelArgs>? _labels;
 
         /// <summary>
-        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
+        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `Labels` below.
         /// </summary>
         public InputList<Inputs.NodePoolLabelArgs> Labels
         {
@@ -1107,13 +1107,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `True` and `False`.
         /// </summary>
         [Input("loginAsNonRoot")]
         public Input<bool>? LoginAsNonRoot { get; set; }
 
         /// <summary>
-        /// Managed node pool configuration. See `management` below.
+        /// Managed node pool configuration. See `Management` below.
         /// </summary>
         [Input("management")]
         public Input<Inputs.NodePoolManagementArgs>? Management { get; set; }
@@ -1131,7 +1131,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+        /// The worker node number of the node pool. From version 1.111.0, `NodeCount` is not required.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -1158,7 +1158,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
-        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `OnDemandBaseCapacity`. Valid values: 0 to 100.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<string>? OnDemandPercentageAboveBaseCapacity { get; set; }
@@ -1167,7 +1167,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+        /// The password of ssh login. You have to specify one of `Password` and `KeyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         /// </summary>
         public Input<string>? Password
         {
@@ -1192,7 +1192,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// Operating system release, using `image_type` instead.
+        /// Operating system release, using `ImageType` instead.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -1204,7 +1204,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PreUserData { get; set; }
 
         /// <summary>
-        /// Private node pool configuration. See `private_pool_options` below.
+        /// Private node pool configuration. See `PrivatePoolOptions` below.
         /// </summary>
         [Input("privatePoolOptions")]
         public Input<Inputs.NodePoolPrivatePoolOptionsArgs>? PrivatePoolOptions { get; set; }
@@ -1238,7 +1238,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rotary configuration. See `rolling_policy` below.
+        /// Rotary configuration. See `RollingPolicy` below.
         /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyArgs>? RollingPolicy { get; set; }
@@ -1256,19 +1256,19 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
-        /// Automatic scaling configuration. See `scaling_config` below.
+        /// Automatic scaling configuration. See `ScalingConfig` below.
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigArgs>? ScalingConfig { get; set; }
 
         /// <summary>
-        /// Scaling group mode, default value: `release`. Valid values:
+        /// Scaling group mode, default value: `Release`. Valid values:
         /// </summary>
         [Input("scalingPolicy")]
         public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
-        /// The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+        /// The security group ID of the node pool. This field has been replaced by `SecurityGroupIds`, please use the `SecurityGroupIds` field instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1277,7 +1277,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// Multiple security groups can be configured for a node pool. If both `SecurityGroupIds` and `SecurityGroupId` are configured, `SecurityGroupIds` takes effect. This field cannot be modified.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -1286,15 +1286,15 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        /// Alibaba Cloud OS security reinforcement. Default value: `False`. Value:
         /// </summary>
         [Input("securityHardeningOs")]
         public Input<bool>? SecurityHardeningOs { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+        /// Whether enable worker node to support soc security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
         /// 
-        /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+        /// &gt; **NOTE:**  It is forbidden to set both `SecurityHardeningOs` and `SocEnabled` to `True` at the same time.
         /// </summary>
         [Input("socEnabled")]
         public Input<bool>? SocEnabled { get; set; }
@@ -1306,7 +1306,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? SpotInstancePools { get; set; }
 
         /// <summary>
-        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `True`: enables the supplementation of preemptible instances. `False`: disables the supplementation of preemptible instances.
         /// </summary>
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
@@ -1315,7 +1315,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolSpotPriceLimitArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+        /// The current single preemptible instance type market price range configuration. See `SpotPriceLimit` below.
         /// </summary>
         public InputList<Inputs.NodePoolSpotPriceLimitArgs> SpotPriceLimits
         {
@@ -1333,7 +1333,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// Specifies whether to enable the burst feature for system disks. Valid values:`True`: enables the burst feature. `False`: disables the burst feature. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         [Input("systemDiskBurstingEnabled")]
         public Input<bool>? SystemDiskBurstingEnabled { get; set; }
@@ -1342,7 +1342,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _systemDiskCategories;
 
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `SystemDiskCategory`.
         /// </summary>
         public InputList<string> SystemDiskCategories
         {
@@ -1351,7 +1351,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
+        /// The category of the system disk for nodes. Default value: `CloudEfficiency`. Valid values:
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1363,7 +1363,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+        /// Whether to encrypt the system disk. Value range: `True`: encryption. `False`: Do not encrypt.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
@@ -1385,7 +1385,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
         /// <summary>
-        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         [Input("systemDiskProvisionedIops")]
         public Input<int>? SystemDiskProvisionedIops { get; set; }
@@ -1422,7 +1422,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolTaintArgs>? _taints;
 
         /// <summary>
-        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
+        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `Taints` below.
         /// </summary>
         public InputList<Inputs.NodePoolTaintArgs> Taints
         {
@@ -1431,7 +1431,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The configuration about confidential computing for the cluster. See `tee_config` below.
+        /// The configuration about confidential computing for the cluster. See `TeeConfig` below.
         /// </summary>
         [Input("teeConfig")]
         public Input<Inputs.NodePoolTeeConfigArgs>? TeeConfig { get; set; }
@@ -1483,7 +1483,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -1495,7 +1495,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+        /// Whether enable worker node to support cis security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. Use `SecurityHardeningOs` instead.
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -1507,13 +1507,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `MultiAzPolicy` to `COST_OPTIMIZED`. Valid values: `True`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `False`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         /// </summary>
         [Input("compensateWithOnDemand")]
         public Input<bool>? CompensateWithOnDemand { get; set; }
 
         /// <summary>
-        /// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
+        /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         /// </summary>
         [Input("cpuPolicy")]
         public Input<string>? CpuPolicy { get; set; }
@@ -1522,7 +1522,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// Configure the data disk of the node in the node pool. See `data_disks` below.
+        /// Configure the data disk of the node in the node pool. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.NodePoolDataDiskGetArgs> DataDisks
         {
@@ -1543,7 +1543,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? DesiredSize { get; set; }
 
         /// <summary>
-        /// Lingjun node pool configuration. See `eflo_node_group` below.
+        /// Lingjun node pool configuration. See `EfloNodeGroup` below.
         /// </summary>
         [Input("efloNodeGroup")]
         public Input<Inputs.NodePoolEfloNodeGroupGetArgs>? EfloNodeGroup { get; set; }
@@ -1555,7 +1555,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+        /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `False`.
         /// </summary>
         [Input("formatDisk")]
         public Input<bool>? FormatDisk { get; set; }
@@ -1567,7 +1567,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The operating system image type and the `platform` parameter can be selected from the following values:
+        /// The operating system image type and the `Platform` parameter can be selected from the following values:
         /// - `AliyunLinux` : Alinux2 image.
         /// - `AliyunLinux3` : Alinux3 image.
         /// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
@@ -1584,13 +1584,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageType { get; set; }
 
         /// <summary>
-        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
+        /// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `False`. Valid values:
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
 
         /// <summary>
-        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `Period`, `PeriodUnit`, `AutoRenew` and `AutoRenewPeriod` are required.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1620,7 +1620,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `EipInternetChargeType`, EIP and public network IP can only choose one.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -1632,13 +1632,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+        /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `True`.
         /// </summary>
         [Input("keepInstanceName")]
         public Input<bool>? KeepInstanceName { get; set; }
 
         /// <summary>
-        /// The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+        /// The name of the key pair. When the node pool is a managed node pool, only `KeyName` is supported.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -1647,7 +1647,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _kmsEncryptedPassword;
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `Password` `KeyName` `KmsEncryptedPassword` fields.
         /// </summary>
         public Input<string>? KmsEncryptedPassword
         {
@@ -1663,7 +1663,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
-        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating a cs kubernetes with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
         /// </summary>
         public InputMap<string> KmsEncryptionContext
         {
@@ -1672,7 +1672,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+        /// Kubelet configuration parameters for worker nodes. See `KubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `KubeletConfiguration` below.
         /// </summary>
         [Input("kubeletConfiguration")]
         public Input<Inputs.NodePoolKubeletConfigurationGetArgs>? KubeletConfiguration { get; set; }
@@ -1681,7 +1681,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolLabelGetArgs>? _labels;
 
         /// <summary>
-        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
+        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `Labels` below.
         /// </summary>
         public InputList<Inputs.NodePoolLabelGetArgs> Labels
         {
@@ -1690,13 +1690,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+        /// Whether the ECS instance is logged on as a ecs-user user. Valid value: `True` and `False`.
         /// </summary>
         [Input("loginAsNonRoot")]
         public Input<bool>? LoginAsNonRoot { get; set; }
 
         /// <summary>
-        /// Managed node pool configuration. See `management` below.
+        /// Managed node pool configuration. See `Management` below.
         /// </summary>
         [Input("management")]
         public Input<Inputs.NodePoolManagementGetArgs>? Management { get; set; }
@@ -1714,7 +1714,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+        /// The worker node number of the node pool. From version 1.111.0, `NodeCount` is not required.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -1747,7 +1747,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
-        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `OnDemandBaseCapacity`. Valid values: 0 to 100.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<string>? OnDemandPercentageAboveBaseCapacity { get; set; }
@@ -1756,7 +1756,7 @@ namespace Pulumi.AliCloud.CS
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+        /// The password of ssh login. You have to specify one of `Password` and `KeyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         /// </summary>
         public Input<string>? Password
         {
@@ -1781,7 +1781,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// Operating system release, using `image_type` instead.
+        /// Operating system release, using `ImageType` instead.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -1793,7 +1793,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PreUserData { get; set; }
 
         /// <summary>
-        /// Private node pool configuration. See `private_pool_options` below.
+        /// Private node pool configuration. See `PrivatePoolOptions` below.
         /// </summary>
         [Input("privatePoolOptions")]
         public Input<Inputs.NodePoolPrivatePoolOptionsGetArgs>? PrivatePoolOptions { get; set; }
@@ -1827,7 +1827,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rotary configuration. See `rolling_policy` below.
+        /// Rotary configuration. See `RollingPolicy` below.
         /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyGetArgs>? RollingPolicy { get; set; }
@@ -1845,7 +1845,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
-        /// Automatic scaling configuration. See `scaling_config` below.
+        /// Automatic scaling configuration. See `ScalingConfig` below.
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigGetArgs>? ScalingConfig { get; set; }
@@ -1857,13 +1857,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// Scaling group mode, default value: `release`. Valid values:
+        /// Scaling group mode, default value: `Release`. Valid values:
         /// </summary>
         [Input("scalingPolicy")]
         public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
-        /// The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+        /// The security group ID of the node pool. This field has been replaced by `SecurityGroupIds`, please use the `SecurityGroupIds` field instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1872,7 +1872,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// Multiple security groups can be configured for a node pool. If both `SecurityGroupIds` and `SecurityGroupId` are configured, `SecurityGroupIds` takes effect. This field cannot be modified.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -1881,15 +1881,15 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        /// Alibaba Cloud OS security reinforcement. Default value: `False`. Value:
         /// </summary>
         [Input("securityHardeningOs")]
         public Input<bool>? SecurityHardeningOs { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+        /// Whether enable worker node to support soc security reinforcement, its valid value `True` or `False`. Default to `False` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
         /// 
-        /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+        /// &gt; **NOTE:**  It is forbidden to set both `SecurityHardeningOs` and `SocEnabled` to `True` at the same time.
         /// </summary>
         [Input("socEnabled")]
         public Input<bool>? SocEnabled { get; set; }
@@ -1901,7 +1901,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? SpotInstancePools { get; set; }
 
         /// <summary>
-        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+        /// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `True`: enables the supplementation of preemptible instances. `False`: disables the supplementation of preemptible instances.
         /// </summary>
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
@@ -1910,7 +1910,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolSpotPriceLimitGetArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+        /// The current single preemptible instance type market price range configuration. See `SpotPriceLimit` below.
         /// </summary>
         public InputList<Inputs.NodePoolSpotPriceLimitGetArgs> SpotPriceLimits
         {
@@ -1928,7 +1928,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// Specifies whether to enable the burst feature for system disks. Valid values:`True`: enables the burst feature. `False`: disables the burst feature. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         [Input("systemDiskBurstingEnabled")]
         public Input<bool>? SystemDiskBurstingEnabled { get; set; }
@@ -1937,7 +1937,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _systemDiskCategories;
 
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `SystemDiskCategory`.
         /// </summary>
         public InputList<string> SystemDiskCategories
         {
@@ -1946,7 +1946,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
+        /// The category of the system disk for nodes. Default value: `CloudEfficiency`. Valid values:
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1958,7 +1958,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+        /// Whether to encrypt the system disk. Value range: `True`: encryption. `False`: Do not encrypt.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
@@ -1980,7 +1980,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
         /// <summary>
-        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        /// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `SystemDiskCategory` is set to `CloudAuto`.
         /// </summary>
         [Input("systemDiskProvisionedIops")]
         public Input<int>? SystemDiskProvisionedIops { get; set; }
@@ -2017,7 +2017,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolTaintGetArgs>? _taints;
 
         /// <summary>
-        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
+        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `Taints` below.
         /// </summary>
         public InputList<Inputs.NodePoolTaintGetArgs> Taints
         {
@@ -2026,7 +2026,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The configuration about confidential computing for the cluster. See `tee_config` below.
+        /// The configuration about confidential computing for the cluster. See `TeeConfig` below.
         /// </summary>
         [Input("teeConfig")]
         public Input<Inputs.NodePoolTeeConfigGetArgs>? TeeConfig { get; set; }

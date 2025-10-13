@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+        /// Category of data disk. The parameter value options are `EphemeralSsd`, `CloudEfficiency`, `CloudSsd` , `CloudEssd` and `Cloud`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        /// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `True` or `False`, default to `True`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? Device { get; set; }
 
         /// <summary>
-        /// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        /// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `True`: encrypted, `False`: not encrypted. Default value: `False`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        /// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an EphemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, CloudEssd disk.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

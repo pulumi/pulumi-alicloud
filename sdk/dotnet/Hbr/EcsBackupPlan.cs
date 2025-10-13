@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Detail { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
+        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `Path` is empty, it means that all directories will be backed up.
         /// </summary>
         [Output("paths")]
         public Output<ImmutableArray<string>> Paths { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> SpeedLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        /// Attribute UpdatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         /// </summary>
         [Output("updatePaths")]
         public Output<bool?> UpdatePaths { get; private set; } = null!;
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
+        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `Path` is empty, it means that all directories will be backed up.
         /// </summary>
         public InputList<string> Paths
         {
@@ -395,7 +395,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? SpeedLimit { get; set; }
 
         /// <summary>
-        /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        /// Attribute UpdatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         /// </summary>
         [Input("updatePaths")]
         public Input<bool>? UpdatePaths { get; set; }
@@ -445,7 +445,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`.
+        /// Whether to disable the backup task. Valid values: `True`, `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _paths;
 
         /// <summary>
-        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
+        /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `Path` is empty, it means that all directories will be backed up.
         /// </summary>
         public InputList<string> Paths
         {
@@ -512,7 +512,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? SpeedLimit { get; set; }
 
         /// <summary>
-        /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        /// Attribute UpdatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         /// </summary>
         [Input("updatePaths")]
         public Input<bool>? UpdatePaths { get; set; }

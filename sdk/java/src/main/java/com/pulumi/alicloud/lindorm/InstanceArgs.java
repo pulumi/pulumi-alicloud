@@ -66,14 +66,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     * Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<String> autoRenew;
 
     /**
-     * @return Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     * @return Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
      * 
      */
     public Optional<Output<String>> autoRenew() {
@@ -126,18 +126,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+     * The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+     * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     @Import(name="coreSpec")
     private @Nullable Output<String> coreSpec;
 
     /**
-     * @return The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+     * @return The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+     * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     public Optional<Output<String>> coreSpec() {
@@ -160,14 +160,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+     * The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
      * 
      */
     @Import(name="diskCategory", required=true)
     private Output<String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+     * @return The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
      * 
      */
     public Output<String> diskCategory() {
@@ -175,14 +175,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+     * The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+     * @return The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      * 
      */
     public Optional<Output<String>> duration() {
@@ -265,14 +265,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
      * 
      */
     @Import(name="logDiskCategory")
     private @Nullable Output<String> logDiskCategory;
 
     /**
-     * @return The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * @return The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
      * 
      */
     public Optional<Output<String>> logDiskCategory() {
@@ -385,14 +385,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+     * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      * 
      */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
     /**
-     * @return The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+     * @return The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -610,24 +610,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      * @deprecated
-     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      */
-    @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
+    @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
     @Import(name="timeSeriresEngineSpecification")
     private @Nullable Output<String> timeSeriresEngineSpecification;
 
     /**
-     * @return Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * @return Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      * @deprecated
-     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      */
-    @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
+    @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
     public Optional<Output<String>> timeSeriresEngineSpecification() {
         return Optional.ofNullable(this.timeSeriresEngineSpecification);
     }
@@ -807,7 +807,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
          * 
          * @return builder
          * 
@@ -818,7 +818,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
          * 
          * @return builder
          * 
@@ -891,9 +891,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreSpec The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-         * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+         * @param coreSpec The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+         * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+         * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
          * 
          * @return builder
          * 
@@ -904,9 +904,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreSpec The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
-         * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+         * @param coreSpec The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+         * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+         * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+         * @param diskCategory The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
          * 
          * @return builder
          * 
@@ -948,7 +948,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
+         * @param diskCategory The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+         * @param duration The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
          * 
          * @return builder
          * 
@@ -969,7 +969,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+         * @param duration The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
          * 
          * @return builder
          * 
@@ -1094,7 +1094,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logDiskCategory The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+         * @param logDiskCategory The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
          * 
          * @return builder
          * 
@@ -1105,7 +1105,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logDiskCategory The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+         * @param logDiskCategory The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
          * 
          * @return builder
          * 
@@ -1262,7 +1262,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+         * @param pricingCycle The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
          * 
          * @return builder
          * 
@@ -1273,7 +1273,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+         * @param pricingCycle The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
          * 
          * @return builder
          * 
@@ -1577,30 +1577,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeSeriresEngineSpecification Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+         * @param timeSeriresEngineSpecification Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+         * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
          * 
          */
-        @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
+        @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
         public Builder timeSeriresEngineSpecification(@Nullable Output<String> timeSeriresEngineSpecification) {
             $.timeSeriresEngineSpecification = timeSeriresEngineSpecification;
             return this;
         }
 
         /**
-         * @param timeSeriresEngineSpecification Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+         * @param timeSeriresEngineSpecification Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+         * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
          * 
          */
-        @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
+        @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
         public Builder timeSeriresEngineSpecification(String timeSeriresEngineSpecification) {
             return timeSeriresEngineSpecification(Output.of(timeSeriresEngineSpecification));
         }

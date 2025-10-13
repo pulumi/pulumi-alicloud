@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Message.Inputs
         public Input<string>? DeadLetterTargetQueue { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+        /// Specifies whether to enable the dead-letter message delivery. Valid values: `True`, `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

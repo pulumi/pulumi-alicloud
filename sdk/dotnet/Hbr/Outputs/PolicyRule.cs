@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly int? Retention;
         /// <summary>
-        /// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+        /// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `RetentionRules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PolicyRuleRetentionRule> RetentionRules;
         /// <summary>

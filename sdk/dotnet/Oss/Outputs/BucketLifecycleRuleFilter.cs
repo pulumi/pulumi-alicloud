@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRuleFilter
     {
         /// <summary>
-        /// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+        /// The condition that is matched by objects to which the lifecycle rule does not apply. See `Not` below.
         /// </summary>
         public readonly Outputs.BucketLifecycleRuleFilterNot? Not;
         /// <summary>

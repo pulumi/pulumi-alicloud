@@ -36,11 +36,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ike_config mapping supports the following:
+        /// The IkeConfig mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionIkeConfigResult> IkeConfigs;
         /// <summary>
-        /// The ipsec_config mapping supports the following:
+        /// The IpsecConfig mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionIpsecConfigResult> IpsecConfigs;
         /// <summary>
@@ -56,16 +56,16 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string RemoteSubnet;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tunnel_options_specification supports the following:
+        /// The TunnelOptionsSpecification supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionTunnelOptionsSpecificationResult> TunnelOptionsSpecifications;
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionVcoHealthCheckResult> VcoHealthChecks;
         /// <summary>
-        /// The vpn_bgp_config mapping supports the following:
+        /// The VpnBgpConfig mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionVpnBgpConfigResult> VpnBgpConfigs;
         /// <summary>

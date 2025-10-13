@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public Input<string> Priority { get; set; } = null!;
 
         /// <summary>
-        /// The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+        /// The type of the origin server. Valid values: `Ipaddr`, `Domain`, `Oss`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

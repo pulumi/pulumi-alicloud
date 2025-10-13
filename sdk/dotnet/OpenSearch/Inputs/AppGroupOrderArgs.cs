@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.OpenSearch.Inputs
     public sealed class AppGroupOrderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+        /// Whether to renew automatically. It only takes effect when the parameter PaymentType takes the value `Subscription`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }

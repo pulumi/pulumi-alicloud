@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? CidrBlock { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to precheck this request only. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to precheck this request only. Valid values: `True` and `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

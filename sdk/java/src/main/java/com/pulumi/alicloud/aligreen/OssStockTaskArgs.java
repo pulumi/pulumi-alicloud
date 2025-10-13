@@ -139,14 +139,14 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket_01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
+     * The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
      * 
      */
     @Import(name="buckets")
     private @Nullable Output<String> buckets;
 
     /**
-     * @return The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket_01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
+     * @return The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
      * 
      */
     public Optional<Output<String>> buckets() {
@@ -756,7 +756,7 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buckets The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket_01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
+         * @param buckets The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buckets The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket_01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
+         * @param buckets The bucket configuration list of the oss stock scan task. Example:[{&#34;Bucket&#34;:&#34;bucket01&#34;,&#34;Selected&#34;:true,&#34;Prefixes&#34;:[&#34;img/test_&#34;],&#34;Type&#34;:&#34;exclude&#34;}]
          * 
          * @return builder
          * 

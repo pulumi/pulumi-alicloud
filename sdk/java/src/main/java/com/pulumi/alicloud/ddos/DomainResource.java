@@ -123,7 +123,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     /**
      * The name of the certificate.
      * 
-     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      * 
      */
     @Export(name="certIdentifier", refs={String.class}, tree="[0]")
@@ -132,7 +132,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the certificate.
      * 
-     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      * 
      */
     public Output<Optional<String>> certIdentifier() {
@@ -287,14 +287,14 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ocspEnabled);
     }
     /**
-     * Protocol type and port number information. See `proxy_types` below.
+     * Protocol type and port number information. See `proxyTypes` below.
      * 
      */
     @Export(name="proxyTypes", refs={List.class,DomainResourceProxyType.class}, tree="[0,1]")
     private Output<List<DomainResourceProxyType>> proxyTypes;
 
     /**
-     * @return Protocol type and port number information. See `proxy_types` below.
+     * @return Protocol type and port number information. See `proxyTypes` below.
      * 
      */
     public Output<List<DomainResourceProxyType>> proxyTypes() {

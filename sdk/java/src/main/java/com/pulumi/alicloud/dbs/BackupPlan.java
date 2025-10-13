@@ -176,14 +176,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dbs/backupPlan:BackupPlan")
 public class BackupPlan extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+     * The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      * 
      */
     @Export(name="backupGatewayId", refs={String.class}, tree="[0]")
     private Output<String> backupGatewayId;
 
     /**
-     * @return The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
+     * @return The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      * 
      */
     public Output<String> backupGatewayId() {
@@ -526,28 +526,28 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+     * The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      * 
      */
     @Export(name="sourceEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointDatabaseName;
 
     /**
-     * @return The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
+     * @return The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      * 
      */
     public Output<String> sourceEndpointDatabaseName() {
         return this.sourceEndpointDatabaseName;
     }
     /**
-     * The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+     * The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      * 
      */
     @Export(name="sourceEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointInstanceId;
 
     /**
-     * @return The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
+     * @return The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      * 
      */
     public Output<String> sourceEndpointInstanceId() {
@@ -582,28 +582,28 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceEndpointIp);
     }
     /**
-     * Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     @Export(name="sourceEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOracleSid;
 
     /**
-     * @return Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * @return Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     public Output<Optional<String>> sourceEndpointOracleSid() {
         return Codegen.optional(this.sourceEndpointOracleSid);
     }
     /**
-     * The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     @Export(name="sourceEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPassword;
 
     /**
-     * @return The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * @return The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     public Output<Optional<String>> sourceEndpointPassword() {
@@ -624,42 +624,42 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceEndpointPort);
     }
     /**
-     * The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+     * The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      * 
      */
     @Export(name="sourceEndpointRegion", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointRegion;
 
     /**
-     * @return The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
+     * @return The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      * 
      */
     public Output<String> sourceEndpointRegion() {
         return this.sourceEndpointRegion;
     }
     /**
-     * Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     @Export(name="sourceEndpointSid", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointSid;
 
     /**
-     * @return Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
+     * @return Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      * 
      */
     public Output<String> sourceEndpointSid() {
         return this.sourceEndpointSid;
     }
     /**
-     * The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     @Export(name="sourceEndpointUserName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointUserName;
 
     /**
-     * @return The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
+     * @return The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
     public Output<String> sourceEndpointUserName() {
@@ -694,14 +694,14 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageRegion);
     }
     /**
-     * Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+     * Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      * 
      */
     @Export(name="usedTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> usedTime;
 
     /**
-     * @return Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
+     * @return Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      * 
      */
     public Output<Optional<Integer>> usedTime() {

@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Pvtz
         public string? Keyword { get; set; }
 
         /// <summary>
-        /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
+        /// The language of the response. Default value: `En`. Valid values: `En`, `Zh`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes. Default value: `false`.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? Keyword { get; set; }
 
         /// <summary>
-        /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
+        /// The language of the response. Default value: `En`. Valid values: `En`, `Zh`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }

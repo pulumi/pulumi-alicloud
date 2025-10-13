@@ -116,28 +116,28 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.content;
     }
     /**
-     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      * 
      */
     @Export(name="contentCategory", refs={String.class}, tree="[0]")
     private Output<String> contentCategory;
 
     /**
-     * @return The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+     * @return The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      * 
      */
     public Output<String> contentCategory() {
         return this.contentCategory;
     }
     /**
-     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      * 
      */
     @Export(name="customType", refs={Integer.class}, tree="[0]")
     private Output<Integer> customType;
 
     /**
-     * @return The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+     * @return The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      * 
      */
     public Output<Integer> customType() {
@@ -214,14 +214,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.riskLevelId);
     }
     /**
-     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
-     * @return The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+     * @return The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      * 
      */
     public Output<String> ruleName() {
@@ -242,14 +242,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleType);
     }
     /**
-     * The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+     * The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      * 
      */
     @Export(name="statExpress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> statExpress;
 
     /**
-     * @return The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+     * @return The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      * 
      */
     public Output<Optional<String>> statExpress() {

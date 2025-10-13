@@ -162,25 +162,25 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the destination for the rule. See `destination` below.
+        /// Specifies the destination for the rule. See `Destination` below.
         /// </summary>
         [Output("destination")]
         public Output<Outputs.BucketReplicationDestination> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `EncryptionConfiguration` below.
         /// </summary>
         [Output("encryptionConfiguration")]
         public Output<Outputs.BucketReplicationEncryptionConfiguration?> EncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
+        /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `Enabled` or `Disabled`. Defaults to `Enabled`.
         /// </summary>
         [Output("historicalObjectReplication")]
         public Output<string?> HistoricalObjectReplication { get; private set; } = null!;
 
         /// <summary>
-        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `PrefixSet` below.
         /// </summary>
         [Output("prefixSet")]
         public Output<Outputs.BucketReplicationPrefixSet?> PrefixSet { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> RuleId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+        /// Specifies other conditions used to filter the source objects to replicate. See `SourceSelectionCriteria` below.
         /// </summary>
         [Output("sourceSelectionCriteria")]
         public Output<Outputs.BucketReplicationSourceSelectionCriteria?> SourceSelectionCriteria { get; private set; } = null!;
@@ -274,25 +274,25 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the destination for the rule. See `destination` below.
+        /// Specifies the destination for the rule. See `Destination` below.
         /// </summary>
         [Input("destination", required: true)]
         public Input<Inputs.BucketReplicationDestinationArgs> Destination { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `EncryptionConfiguration` below.
         /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.BucketReplicationEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
+        /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `Enabled` or `Disabled`. Defaults to `Enabled`.
         /// </summary>
         [Input("historicalObjectReplication")]
         public Input<string>? HistoricalObjectReplication { get; set; }
 
         /// <summary>
-        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `PrefixSet` below.
         /// </summary>
         [Input("prefixSet")]
         public Input<Inputs.BucketReplicationPrefixSetArgs>? PrefixSet { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketReplicationProgressArgs>? Progress { get; set; }
 
         /// <summary>
-        /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+        /// Specifies other conditions used to filter the source objects to replicate. See `SourceSelectionCriteria` below.
         /// </summary>
         [Input("sourceSelectionCriteria")]
         public Input<Inputs.BucketReplicationSourceSelectionCriteriaArgs>? SourceSelectionCriteria { get; set; }
@@ -336,25 +336,25 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Specifies the destination for the rule. See `destination` below.
+        /// Specifies the destination for the rule. See `Destination` below.
         /// </summary>
         [Input("destination")]
         public Input<Inputs.BucketReplicationDestinationGetArgs>? Destination { get; set; }
 
         /// <summary>
-        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `EncryptionConfiguration` below.
         /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.BucketReplicationEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
+        /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `Enabled` or `Disabled`. Defaults to `Enabled`.
         /// </summary>
         [Input("historicalObjectReplication")]
         public Input<string>? HistoricalObjectReplication { get; set; }
 
         /// <summary>
-        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `PrefixSet` below.
         /// </summary>
         [Input("prefixSet")]
         public Input<Inputs.BucketReplicationPrefixSetGetArgs>? PrefixSet { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+        /// Specifies other conditions used to filter the source objects to replicate. See `SourceSelectionCriteria` below.
         /// </summary>
         [Input("sourceSelectionCriteria")]
         public Input<Inputs.BucketReplicationSourceSelectionCriteriaGetArgs>? SourceSelectionCriteria { get; set; }

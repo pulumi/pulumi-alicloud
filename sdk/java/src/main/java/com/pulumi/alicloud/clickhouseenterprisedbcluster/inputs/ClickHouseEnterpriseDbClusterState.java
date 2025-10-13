@@ -33,14 +33,14 @@ public final class ClickHouseEnterpriseDbClusterState extends com.pulumi.resourc
     }
 
     /**
-     * The list of multi-zone information. See `multi_zones` below.
+     * The list of multi-zone information. See `multiZones` below.
      * 
      */
     @Import(name="multiZones")
     private @Nullable Output<List<ClickHouseEnterpriseDbClusterMultiZoneArgs>> multiZones;
 
     /**
-     * @return The list of multi-zone information. See `multi_zones` below.
+     * @return The list of multi-zone information. See `multiZones` below.
      * 
      */
     public Optional<Output<List<ClickHouseEnterpriseDbClusterMultiZoneArgs>>> multiZones() {
@@ -206,7 +206,7 @@ public final class ClickHouseEnterpriseDbClusterState extends com.pulumi.resourc
         }
 
         /**
-         * @param multiZones The list of multi-zone information. See `multi_zones` below.
+         * @param multiZones The list of multi-zone information. See `multiZones` below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ClickHouseEnterpriseDbClusterState extends com.pulumi.resourc
         }
 
         /**
-         * @param multiZones The list of multi-zone information. See `multi_zones` below.
+         * @param multiZones The list of multi-zone information. See `multiZones` below.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ClickHouseEnterpriseDbClusterState extends com.pulumi.resourc
         }
 
         /**
-         * @param multiZones The list of multi-zone information. See `multi_zones` below.
+         * @param multiZones The list of multi-zone information. See `multiZones` below.
          * 
          * @return builder
          * 

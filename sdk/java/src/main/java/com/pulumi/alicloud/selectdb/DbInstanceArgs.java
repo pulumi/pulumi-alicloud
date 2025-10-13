@@ -52,14 +52,14 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     @Import(name="dbInstanceClass", required=true)
     private Output<String> dbInstanceClass;
 
     /**
-     * @return The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+     * @return The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      * 
      */
     public Output<String> dbInstanceClass() {
@@ -82,14 +82,14 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The modified IP address whitelists. See `desired_security_ip_lists` below.
+     * The modified IP address whitelists. See `desiredSecurityIpLists` below.
      * 
      */
     @Import(name="desiredSecurityIpLists")
     private @Nullable Output<List<DbInstanceDesiredSecurityIpListArgs>> desiredSecurityIpLists;
 
     /**
-     * @return The modified IP address whitelists. See `desired_security_ip_lists` below.
+     * @return The modified IP address whitelists. See `desiredSecurityIpLists` below.
      * 
      */
     public Optional<Output<List<DbInstanceDesiredSecurityIpListArgs>>> desiredSecurityIpLists() {
@@ -142,14 +142,14 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+     * It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<String> period;
 
     /**
-     * @return It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+     * @return It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      * 
      */
     public Optional<Output<String>> period() {
@@ -157,14 +157,14 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Import(name="periodTime")
     private @Nullable Output<Integer> periodTime;
 
     /**
-     * @return The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Optional<Output<Integer>> periodTime() {
@@ -191,24 +191,24 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      * @deprecated
-     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
-    @Deprecated /* Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead. */
+    @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
     @Import(name="upgradedEngineMinorVersion")
     private @Nullable Output<String> upgradedEngineMinorVersion;
 
     /**
-     * @return Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * @return Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      * @deprecated
-     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
-    @Deprecated /* Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead. */
+    @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
     public Optional<Output<String>> upgradedEngineMinorVersion() {
         return Optional.ofNullable(this.upgradedEngineMinorVersion);
     }
@@ -339,7 +339,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceClass The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         * @param dbInstanceClass The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceClass The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         * @param dbInstanceClass The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredSecurityIpLists The modified IP address whitelists. See `desired_security_ip_lists` below.
+         * @param desiredSecurityIpLists The modified IP address whitelists. See `desiredSecurityIpLists` below.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredSecurityIpLists The modified IP address whitelists. See `desired_security_ip_lists` below.
+         * @param desiredSecurityIpLists The modified IP address whitelists. See `desiredSecurityIpLists` below.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredSecurityIpLists The modified IP address whitelists. See `desired_security_ip_lists` below.
+         * @param desiredSecurityIpLists The modified IP address whitelists. See `desiredSecurityIpLists` below.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+         * @param period It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
+         * @param period It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodTime The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * @param periodTime The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodTime The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * @param periodTime The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -542,30 +542,30 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradedEngineMinorVersion Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+         * @param upgradedEngineMinorVersion Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+         * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
          * 
          */
-        @Deprecated /* Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead. */
+        @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
         public Builder upgradedEngineMinorVersion(@Nullable Output<String> upgradedEngineMinorVersion) {
             $.upgradedEngineMinorVersion = upgradedEngineMinorVersion;
             return this;
         }
 
         /**
-         * @param upgradedEngineMinorVersion Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+         * @param upgradedEngineMinorVersion Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+         * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
          * 
          */
-        @Deprecated /* Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead. */
+        @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
         public Builder upgradedEngineMinorVersion(String upgradedEngineMinorVersion) {
             return upgradedEngineMinorVersion(Output.of(upgradedEngineMinorVersion));
         }

@@ -107,7 +107,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
@@ -116,7 +116,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
     private Output<String> encryptType;
 
     /**
-     * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * @return Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
@@ -125,14 +125,14 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return this.encryptType;
     }
     /**
-     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
-     * @return The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+     * @return The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      * 
      */
     public Output<Optional<String>> kmsKeyId() {
@@ -225,7 +225,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
     /**
      * The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
-     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     @Export(name="vaultType", refs={String.class}, tree="[0]")
@@ -234,7 +234,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
-     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     public Output<String> vaultType() {

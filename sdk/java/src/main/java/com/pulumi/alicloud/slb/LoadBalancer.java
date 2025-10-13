@@ -162,7 +162,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * Valid
-     * value is between 1 and 1000, If argument &#34;internet_charge_type&#34; is &#34;paybytraffic&#34;, then this value will be ignore.
+     * value is between 1 and 1000, If argument &#34;internetChargeType&#34; is &#34;paybytraffic&#34;, then this value will be ignore.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
@@ -170,7 +170,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Valid
-     * value is between 1 and 1000, If argument &#34;internet_charge_type&#34; is &#34;paybytraffic&#34;, then this value will be ignore.
+     * value is between 1 and 1000, If argument &#34;internetChargeType&#34; is &#34;paybytraffic&#34;, then this value will be ignore.
      * 
      */
     public Output<Optional<Integer>> bandwidth() {
@@ -257,14 +257,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.masterZoneId;
     }
     /**
-     * The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
      * 
      */
     @Export(name="modificationProtectionReason", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modificationProtectionReason;
 
     /**
-     * @return The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * @return The reason of modification protection. It&#39;s effective when `modificationProtectionStatus` is `ConsoleProtection`.
      * 
      */
     public Output<Optional<String>> modificationProtectionReason() {
@@ -285,7 +285,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.modificationProtectionStatus;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
@@ -296,7 +296,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
      */
     public Output<String> name() {
@@ -317,7 +317,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -325,7 +325,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -423,14 +423,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.tags;
     }
     /**
-     * The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+     * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+     * @return The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      * 
      */
     public Output<Optional<String>> vswitchId() {

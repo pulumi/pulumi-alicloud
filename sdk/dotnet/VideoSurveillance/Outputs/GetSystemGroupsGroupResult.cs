@@ -54,11 +54,11 @@ namespace Pulumi.AliCloud.VideoSurveillance.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        /// The use of the access protocol support `Gb28181`,`Rtmp`(Real Time Messaging Protocol).
         /// </summary>
         public readonly string InProtocol;
         /// <summary>
-        /// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
+        /// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `Flv`,`Hls`, `Rtmp`(Real Time Messaging Protocol).
         /// </summary>
         public readonly string OutProtocol;
         /// <summary>

@@ -33,14 +33,14 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
     }
 
     /**
-     * Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+     * Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+     * @return Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -176,14 +176,14 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
     }
 
     /**
-     * Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+     * Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+     * @return Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -262,7 +262,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param category Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+         * @param category Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param category Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+         * @param category Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param size Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+         * @param size Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param size Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+         * @param size Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
          * 
          * @return builder
          * 

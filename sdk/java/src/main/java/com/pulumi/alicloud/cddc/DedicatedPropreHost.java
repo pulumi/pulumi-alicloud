@@ -78,14 +78,14 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
         return this.dedicatedHostGroupId;
     }
     /**
-     * ECS specifications. See `ecs_class_list` below.
+     * ECS specifications. See `ecsClassList` below.
      * 
      */
     @Export(name="ecsClassLists", refs={List.class,DedicatedPropreHostEcsClassList.class}, tree="[0,1]")
     private Output<List<DedicatedPropreHostEcsClassList>> ecsClassLists;
 
     /**
-     * @return ECS specifications. See `ecs_class_list` below.
+     * @return ECS specifications. See `ecsClassList` below.
      * 
      */
     public Output<List<DedicatedPropreHostEcsClassList>> ecsClassLists() {
@@ -151,7 +151,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      * 
      */
     @Export(name="ecsUniqueSuffix", refs={String.class}, tree="[0]")
@@ -161,7 +161,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @return Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      * 
      */
     public Output<Optional<String>> ecsUniqueSuffix() {

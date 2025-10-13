@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+        /// Generally refers to the type or instance type of a computing resource. See `MachineTypes` below.
         /// </summary>
         [Output("machineTypes")]
         public Output<Outputs.ResourceMachineTypes> MachineTypes { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Used to define the access parameters for the user. See `user_access_param` below.
+        /// Used to define the access parameters for the user. See `UserAccessParam` below.
         /// </summary>
         [Output("userAccessParam")]
         public Output<Outputs.ResourceUserAccessParam> UserAccessParam { get; private set; } = null!;
@@ -122,13 +122,13 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+        /// Generally refers to the type or instance type of a computing resource. See `MachineTypes` below.
         /// </summary>
         [Input("machineTypes", required: true)]
         public Input<Inputs.ResourceMachineTypesArgs> MachineTypes { get; set; } = null!;
 
         /// <summary>
-        /// Used to define the access parameters for the user. See `user_access_param` below.
+        /// Used to define the access parameters for the user. See `UserAccessParam` below.
         /// </summary>
         [Input("userAccessParam", required: true)]
         public Input<Inputs.ResourceUserAccessParamArgs> UserAccessParam { get; set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+        /// Generally refers to the type or instance type of a computing resource. See `MachineTypes` below.
         /// </summary>
         [Input("machineTypes")]
         public Input<Inputs.ResourceMachineTypesGetArgs>? MachineTypes { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Used to define the access parameters for the user. See `user_access_param` below.
+        /// Used to define the access parameters for the user. See `UserAccessParam` below.
         /// </summary>
         [Input("userAccessParam")]
         public Input<Inputs.ResourceUserAccessParamGetArgs>? UserAccessParam { get; set; }

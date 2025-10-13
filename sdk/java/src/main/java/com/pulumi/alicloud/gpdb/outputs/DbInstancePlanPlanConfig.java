@@ -27,22 +27,22 @@ public final class DbInstancePlanPlanConfig {
      */
     private @Nullable DbInstancePlanPlanConfigResume resume;
     /**
-     * @return Scale down instance plan config. See `scale_down` below.
+     * @return Scale down instance plan config. See `scaleDown` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleDown scaleDown;
     /**
-     * @return Scale In instance plan config. See `scale_in` below.
+     * @return Scale In instance plan config. See `scaleIn` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleIn scaleIn;
     /**
-     * @return Scale out instance plan config. See `scale_out` below.
+     * @return Scale out instance plan config. See `scaleOut` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
     /**
-     * @return Scale up instance plan config. See `scale_up` below.
+     * @return Scale up instance plan config. See `scaleUp` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleUp scaleUp;
@@ -63,28 +63,28 @@ public final class DbInstancePlanPlanConfig {
         return Optional.ofNullable(this.resume);
     }
     /**
-     * @return Scale down instance plan config. See `scale_down` below.
+     * @return Scale down instance plan config. See `scaleDown` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigScaleDown> scaleDown() {
         return Optional.ofNullable(this.scaleDown);
     }
     /**
-     * @return Scale In instance plan config. See `scale_in` below.
+     * @return Scale In instance plan config. See `scaleIn` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigScaleIn> scaleIn() {
         return Optional.ofNullable(this.scaleIn);
     }
     /**
-     * @return Scale out instance plan config. See `scale_out` below.
+     * @return Scale out instance plan config. See `scaleOut` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigScaleOut> scaleOut() {
         return Optional.ofNullable(this.scaleOut);
     }
     /**
-     * @return Scale up instance plan config. See `scale_up` below.
+     * @return Scale up instance plan config. See `scaleUp` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigScaleUp> scaleUp() {

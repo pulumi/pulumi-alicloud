@@ -138,14 +138,14 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+     * Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
      * 
      */
     @Import(name="skipDestroy")
     private @Nullable Output<Boolean> skipDestroy;
 
     /**
-     * @return Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+     * @return Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
      * 
      */
     public Optional<Output<Boolean>> skipDestroy() {
@@ -170,7 +170,7 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
      * 
-     * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+     * &gt; **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      * 
      */
     @Import(name="zipFile")
@@ -179,7 +179,7 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ZIP package of the function code that is encoded in the Base64 format.
      * 
-     * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+     * &gt; **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      * 
      */
     public Optional<Output<String>> zipFile() {
@@ -399,7 +399,7 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipDestroy Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+         * @param skipDestroy Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipDestroy Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
+         * @param skipDestroy Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param zipFile The ZIP package of the function code that is encoded in the Base64 format.
          * 
-         * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+         * &gt; **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class LayerVersionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param zipFile The ZIP package of the function code that is encoded in the Base64 format.
          * 
-         * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+         * &gt; **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
          * 
          * @return builder
          * 
