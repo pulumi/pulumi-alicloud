@@ -4850,6 +4850,188 @@
             "alicloud_esa_video_processing": {
                 "current": "alicloud:esa/videoProcessing:VideoProcessing"
             },
+            "alicloud_esa_waf_rule": {
+                "current": "alicloud:esa/wafRule:WafRule",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "bypass": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "custom_rules": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "regular_rules": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "regular_types": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "response": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "app_package": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "package_signs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "app_sdk": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_sign": {
+                                                "maxItemsOne": true
+                                            },
+                                            "feature_abnormal": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "managed_rulesets": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "managed_rules": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "rate_limit": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "characteristics": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "criteria": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "criteria": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "criteria": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "threshold": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "response_status": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "security_level": {
+                                    "maxItemsOne": true
+                                },
+                                "sigchl": {
+                                    "maxItemsOne": false
+                                },
+                                "timer": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "periods": {
+                                                "maxItemsOne": false
+                                            },
+                                            "weekly_periods": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "daily_periods": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "shared": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "response": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "match": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "criteria": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "criteria": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "criteria": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_esa_waf_ruleset": {
                 "current": "alicloud:esa/wafRuleset:WafRuleset"
             },
@@ -4995,6 +5177,33 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "alicloud_ess_instance_refresh": {
+                "current": "alicloud:ess/instanceRefresh:InstanceRefresh",
+                "fields": {
+                    "checkpoints": {
+                        "maxItemsOne": false
+                    },
+                    "desired_configuration_containers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "commands": {
+                                    "maxItemsOne": false
+                                },
+                                "environment_vars": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "desired_configuration_launch_template_overrides": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -6522,7 +6731,14 @@
                 "current": "alicloud:log/etl:Etl",
                 "fields": {
                     "etl_sinks": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "datasets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -7784,6 +8000,9 @@
             "alicloud_polardb_primary_endpoint": {
                 "current": "alicloud:polardb/primaryEndpoint:PrimaryEndpoint"
             },
+            "alicloud_polardb_zonal_db_cluster": {
+                "current": "alicloud:polardb/zonalDbCluster:ZonalDbCluster"
+            },
             "alicloud_privatelink_vpc_endpoint": {
                 "current": "alicloud:privatelink/vpcEndpoint:VpcEndpoint",
                 "fields": {
@@ -8228,7 +8447,18 @@
                 }
             },
             "alicloud_resource_manager_resource_share": {
-                "current": "alicloud:resourcemanager/resourceShare:ResourceShare"
+                "current": "alicloud:resourcemanager/resourceShare:ResourceShare",
+                "fields": {
+                    "permission_names": {
+                        "maxItemsOne": false
+                    },
+                    "resources": {
+                        "maxItemsOne": false
+                    },
+                    "targets": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_resource_manager_role": {
                 "current": "alicloud:resourcemanager/role:Role"
@@ -12745,6 +12975,17 @@
             },
             "alicloud_cloud_sso_service": {
                 "current": "alicloud:cloudsso/getService:getService"
+            },
+            "alicloud_cloud_sso_user_provisioning_events": {
+                "current": "alicloud:cloudsso/getUserProvisioningEvents:getUserProvisioningEvents",
+                "fields": {
+                    "events": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_cloud_sso_users": {
                 "current": "alicloud:cloudsso/getUsers:getUsers",
@@ -22877,6 +23118,11 @@
             "alicloud_db_instance": {
                 "maxItemsOneOverrides": {
                     "serverless_config": false
+                }
+            },
+            "alicloud_ecs_elasticity_assurance": {
+                "maxItemsOneOverrides": {
+                    "instance_type": true
                 }
             },
             "alicloud_instance": {
