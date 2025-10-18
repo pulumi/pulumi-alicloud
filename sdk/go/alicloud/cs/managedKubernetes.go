@@ -151,6 +151,7 @@ import (
 //				ProxyMode:                   pulumi.String(proxyMode),
 //				ServiceCidr:                 pulumi.String(serviceCidr),
 //				IpStack:                     pulumi.String("ipv4"),
+//				DeletionProtection:          pulumi.Bool(true),
 //				AutoMode: &cs.ManagedKubernetesAutoModeArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
@@ -175,6 +176,7 @@ import (
 //					pulumi.String("alb"),
 //					pulumi.String("ack-goatscaler"),
 //					pulumi.String("coredns"),
+//					pulumi.String("gatekeeper"),
 //				},
 //				ControlPlaneLogTtl: pulumi.String("30"),
 //				AuditLogConfig: &cs.ManagedKubernetesAuditLogConfigArgs{
@@ -182,7 +184,7 @@ import (
 //				},
 //				Addons: cs.ManagedKubernetesAddonArray{
 //					&cs.ManagedKubernetesAddonArgs{
-//						Name: pulumi.String("managed-metrics-server"),
+//						Name: pulumi.String("metrics-server"),
 //					},
 //					&cs.ManagedKubernetesAddonArgs{
 //						Name: pulumi.String("managed-coredns"),

@@ -274,6 +274,7 @@ import javax.annotation.Nullable;
  *             .proxyMode(proxyMode)
  *             .serviceCidr(serviceCidr)
  *             .ipStack("ipv4")
+ *             .deletionProtection(true)
  *             .autoMode(ManagedKubernetesAutoModeArgs.builder()
  *                 .enabled(true)
  *                 .build())
@@ -297,14 +298,15 @@ import javax.annotation.Nullable;
  *                 "controlplane-events",
  *                 "alb",
  *                 "ack-goatscaler",
- *                 "coredns")
+ *                 "coredns",
+ *                 "gatekeeper")
  *             .controlPlaneLogTtl("30")
  *             .auditLogConfig(ManagedKubernetesAuditLogConfigArgs.builder()
  *                 .enabled(true)
  *                 .build())
  *             .addons(            
  *                 ManagedKubernetesAddonArgs.builder()
- *                     .name("managed-metrics-server")
+ *                     .name("metrics-server")
  *                     .build(),
  *                 ManagedKubernetesAddonArgs.builder()
  *                     .name("managed-coredns")

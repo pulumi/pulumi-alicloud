@@ -2195,7 +2195,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -2237,7 +2237,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -2279,7 +2279,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -2321,7 +2321,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -2363,7 +2363,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -2405,7 +2405,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 
@@ -2447,7 +2447,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of available zones by the enhanced Nat Gateway.
      * 
-     * &gt; **NOTE:** Available since 1.102.0+.
+     * &gt; **NOTE:** Available since v1.102.0.
      * 
      * ## Example Usage
      * 

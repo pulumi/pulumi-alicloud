@@ -18,14 +18,14 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     public static final VbrPconnAssociationState Empty = new VbrPconnAssociationState();
 
     /**
-     * The circuit code provided by the operator for the physical connection.
+     * (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      * 
      */
     @Import(name="circuitCode")
     private @Nullable Output<String> circuitCode;
 
     /**
-     * @return The circuit code provided by the operator for the physical connection.
+     * @return (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      * 
      */
     public Optional<Output<String>> circuitCode() {
@@ -34,8 +34,6 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
 
     /**
      * Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      * 
      */
     @Import(name="enableIpv6")
@@ -43,8 +41,6 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
 
     /**
      * @return Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
@@ -82,14 +78,18 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     @Import(name="peerGatewayIp")
     private @Nullable Output<String> peerGatewayIp;
 
     /**
-     * @return The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * @return The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     public Optional<Output<String>> peerGatewayIp() {
@@ -97,14 +97,18 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     @Import(name="peerIpv6GatewayIp")
     private @Nullable Output<String> peerIpv6GatewayIp;
 
     /**
-     * @return The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * @return The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     public Optional<Output<String>> peerIpv6GatewayIp() {
@@ -112,14 +116,16 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      * 
      */
     @Import(name="peeringIpv6SubnetMask")
     private @Nullable Output<String> peeringIpv6SubnetMask;
 
     /**
-     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      * 
      */
     public Optional<Output<String>> peeringIpv6SubnetMask() {
@@ -127,14 +133,16 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      * 
      */
     @Import(name="peeringSubnetMask")
     private @Nullable Output<String> peeringSubnetMask;
 
     /**
-     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      * 
      */
     public Optional<Output<String>> peeringSubnetMask() {
@@ -157,14 +165,14 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -187,14 +195,18 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * VLAN ID of the VBR. Valid values: **0 to 2999**.
+     * 
+     * &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * @return VLAN ID of the VBR. Valid values: **0 to 2999**.
+     * 
+     * &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -237,7 +249,7 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param circuitCode The circuit code provided by the operator for the physical connection.
+         * @param circuitCode (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
          * 
          * @return builder
          * 
@@ -248,7 +260,7 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param circuitCode The circuit code provided by the operator for the physical connection.
+         * @param circuitCode (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
          * 
          * @return builder
          * 
@@ -259,8 +271,6 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
 
         /**
          * @param enableIpv6 Whether IPv6 is enabled. Value:
-         * - **true**: on.
-         * - **false** (default): Off.
          * 
          * @return builder
          * 
@@ -272,8 +282,6 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
 
         /**
          * @param enableIpv6 Whether IPv6 is enabled. Value:
-         * - **true**: on.
-         * - **false** (default): Off.
          * 
          * @return builder
          * 
@@ -325,7 +333,9 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerGatewayIp The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+         * @param peerGatewayIp The client IP address of the VBR instance.
+         * - This attribute only allows the VBR owner to specify or modify.
+         * - Required when creating a VBR instance for the physical connection owner.
          * 
          * @return builder
          * 
@@ -336,7 +346,9 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerGatewayIp The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+         * @param peerGatewayIp The client IP address of the VBR instance.
+         * - This attribute only allows the VBR owner to specify or modify.
+         * - Required when creating a VBR instance for the physical connection owner.
          * 
          * @return builder
          * 
@@ -346,7 +358,9 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerIpv6GatewayIp The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+         * @param peerIpv6GatewayIp The IPv6 address of the client side of the VBR instance.
+         * - This attribute only allows the VBR owner to specify or modify.
+         * - Required when creating a VBR instance for the physical connection owner.
          * 
          * @return builder
          * 
@@ -357,7 +371,9 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerIpv6GatewayIp The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+         * @param peerIpv6GatewayIp The IPv6 address of the client side of the VBR instance.
+         * - This attribute only allows the VBR owner to specify or modify.
+         * - Required when creating a VBR instance for the physical connection owner.
          * 
          * @return builder
          * 
@@ -367,7 +383,8 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peeringIpv6SubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+         * @param peeringIpv6SubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+         * Two IPv6 addresses must be in the same subnet.
          * 
          * @return builder
          * 
@@ -378,7 +395,8 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peeringIpv6SubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+         * @param peeringIpv6SubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+         * Two IPv6 addresses must be in the same subnet.
          * 
          * @return builder
          * 
@@ -388,7 +406,8 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peeringSubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+         * @param peeringSubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+         * The two IP addresses must be in the same subnet.
          * 
          * @return builder
          * 
@@ -399,7 +418,8 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peeringSubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+         * @param peeringSubnetMask The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+         * The two IP addresses must be in the same subnet.
          * 
          * @return builder
          * 
@@ -430,7 +450,7 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -441,7 +461,7 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -472,7 +492,9 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vlanId VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+         * @param vlanId VLAN ID of the VBR. Valid values: **0 to 2999**.
+         * 
+         * &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
          * 
          * @return builder
          * 
@@ -483,7 +505,9 @@ public final class VbrPconnAssociationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vlanId VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+         * @param vlanId VLAN ID of the VBR. Valid values: **0 to 2999**.
+         * 
+         * &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
          * 
          * @return builder
          * 

@@ -121,18 +121,22 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.classify);
     }
     /**
-     * Node Model
+     * Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
     @Export(name="computingServer", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> computingServer;
+    private Output<String> computingServer;
 
     /**
-     * @return Node Model
+     * @return Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
-    public Output<Optional<String>> computingServer() {
-        return Codegen.optional(this.computingServer);
+    public Output<String> computingServer() {
+        return this.computingServer;
     }
     /**
      * The creation time of the resource
@@ -191,6 +195,20 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.installPai);
     }
     /**
+     * Model
+     * 
+     */
+    @Export(name="machineType", refs={String.class}, tree="[0]")
+    private Output<String> machineType;
+
+    /**
+     * @return Model
+     * 
+     */
+    public Output<String> machineType() {
+        return this.machineType;
+    }
+    /**
      * Down payment ratio
      * 
      */
@@ -203,6 +221,22 @@ public class Node extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> paymentRatio() {
         return Codegen.optional(this.paymentRatio);
+    }
+    /**
+     * The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -231,6 +265,20 @@ public class Node extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> productForm() {
         return Codegen.optional(this.productForm);
+    }
+    /**
+     * The region ID of the resource
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The region ID of the resource
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * Automatic renewal period, in months.
@@ -315,14 +363,14 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stageNum);
     }
     /**
-     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

@@ -87,9 +87,11 @@ export class Node extends pulumi.CustomResource {
      */
     declare public readonly classify: pulumi.Output<string | undefined>;
     /**
-     * Node Model
+     * Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+     *
+     * @deprecated Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
      */
-    declare public readonly computingServer: pulumi.Output<string | undefined>;
+    declare public readonly computingServer: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
@@ -107,9 +109,18 @@ export class Node extends pulumi.CustomResource {
      */
     declare public readonly installPai: pulumi.Output<boolean | undefined>;
     /**
+     * Model
+     */
+    declare public readonly machineType: pulumi.Output<string>;
+    /**
      * Down payment ratio
      */
     declare public readonly paymentRatio: pulumi.Output<string | undefined>;
+    /**
+     * The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     */
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
      */
@@ -118,6 +129,10 @@ export class Node extends pulumi.CustomResource {
      * Form
      */
     declare public readonly productForm: pulumi.Output<string | undefined>;
+    /**
+     * The region ID of the resource
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Automatic renewal period, in months.
      *
@@ -145,7 +160,7 @@ export class Node extends pulumi.CustomResource {
      */
     declare public readonly stageNum: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * The status of the resource
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -177,9 +192,12 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["discountLevel"] = state?.discountLevel;
             resourceInputs["hpnZone"] = state?.hpnZone;
             resourceInputs["installPai"] = state?.installPai;
+            resourceInputs["machineType"] = state?.machineType;
             resourceInputs["paymentRatio"] = state?.paymentRatio;
+            resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["productForm"] = state?.productForm;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["renewPeriod"] = state?.renewPeriod;
             resourceInputs["renewalStatus"] = state?.renewalStatus;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
@@ -196,7 +214,9 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["discountLevel"] = args?.discountLevel;
             resourceInputs["hpnZone"] = args?.hpnZone;
             resourceInputs["installPai"] = args?.installPai;
+            resourceInputs["machineType"] = args?.machineType;
             resourceInputs["paymentRatio"] = args?.paymentRatio;
+            resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["productForm"] = args?.productForm;
             resourceInputs["renewPeriod"] = args?.renewPeriod;
@@ -208,6 +228,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);
@@ -227,7 +248,9 @@ export interface NodeState {
      */
     classify?: pulumi.Input<string>;
     /**
-     * Node Model
+     * Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+     *
+     * @deprecated Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
      */
     computingServer?: pulumi.Input<string>;
     /**
@@ -247,9 +270,18 @@ export interface NodeState {
      */
     installPai?: pulumi.Input<boolean>;
     /**
+     * Model
+     */
+    machineType?: pulumi.Input<string>;
+    /**
      * Down payment ratio
      */
     paymentRatio?: pulumi.Input<string>;
+    /**
+     * The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     */
+    paymentType?: pulumi.Input<string>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
      */
@@ -258,6 +290,10 @@ export interface NodeState {
      * Form
      */
     productForm?: pulumi.Input<string>;
+    /**
+     * The region ID of the resource
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * Automatic renewal period, in months.
      *
@@ -285,7 +321,7 @@ export interface NodeState {
      */
     stageNum?: pulumi.Input<string>;
     /**
-     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
@@ -311,7 +347,9 @@ export interface NodeArgs {
      */
     classify?: pulumi.Input<string>;
     /**
-     * Node Model
+     * Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+     *
+     * @deprecated Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
      */
     computingServer?: pulumi.Input<string>;
     /**
@@ -327,9 +365,18 @@ export interface NodeArgs {
      */
     installPai?: pulumi.Input<boolean>;
     /**
+     * Model
+     */
+    machineType?: pulumi.Input<string>;
+    /**
      * Down payment ratio
      */
     paymentRatio?: pulumi.Input<string>;
+    /**
+     * The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     */
+    paymentType?: pulumi.Input<string>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
      */
@@ -365,7 +412,7 @@ export interface NodeArgs {
      */
     stageNum?: pulumi.Input<string>;
     /**
-     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,75 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> assuranceTimes() {
         return Optional.ofNullable(this.assuranceTimes);
+    }
+
+    /**
+     * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     * 
+     * Default value: `false`.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     * 
+     * Default value: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     * 
+     * &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     * 
+     */
+    @Import(name="autoRenewPeriod")
+    private @Nullable Output<Integer> autoRenewPeriod;
+
+    /**
+     * @return The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     * 
+     * &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewPeriod() {
+        return Optional.ofNullable(this.autoRenewPeriod);
+    }
+
+    /**
+     * Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     * 
+     * Default value: Year
+     * 
+     */
+    @Import(name="autoRenewPeriodUnit")
+    private @Nullable Output<String> autoRenewPeriodUnit;
+
+    /**
+     * @return Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     * 
+     * Default value: Year
+     * 
+     */
+    public Optional<Output<String>> autoRenewPeriodUnit() {
+        return Optional.ofNullable(this.autoRenewPeriodUnit);
     }
 
     /**
@@ -79,14 +149,14 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      * 
      */
     @Import(name="instanceAmount")
     private @Nullable Output<Integer> instanceAmount;
 
     /**
-     * @return The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * @return The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      * 
      */
     public Optional<Output<Integer>> instanceAmount() {
@@ -185,6 +255,21 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> privatePoolOptionsName() {
         return Optional.ofNullable(this.privatePoolOptionsName);
+    }
+
+    /**
+     * (Available since v1.261.0) The region ID of the elasticity assurance.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.261.0) The region ID of the elasticity assurance.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -296,6 +381,9 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
 
     private ElasticityAssuranceState(ElasticityAssuranceState $) {
         this.assuranceTimes = $.assuranceTimes;
+        this.autoRenew = $.autoRenew;
+        this.autoRenewPeriod = $.autoRenewPeriod;
+        this.autoRenewPeriodUnit = $.autoRenewPeriodUnit;
         this.description = $.description;
         this.elasticityAssuranceId = $.elasticityAssuranceId;
         this.endTime = $.endTime;
@@ -306,6 +394,7 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
         this.periodUnit = $.periodUnit;
         this.privatePoolOptionsMatchCriteria = $.privatePoolOptionsMatchCriteria;
         this.privatePoolOptionsName = $.privatePoolOptionsName;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.startTime = $.startTime;
         this.startTimeType = $.startTimeType;
@@ -352,6 +441,93 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
          */
         public Builder assuranceTimes(String assuranceTimes) {
             return assuranceTimes(Output.of(assuranceTimes));
+        }
+
+        /**
+         * @param autoRenew Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+         * - true
+         * - false
+         * 
+         * Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+         * - true
+         * - false
+         * 
+         * Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewPeriod The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+         * - Default value when `PeriodUnit` is set to Month: 1.
+         * - Default value when `PeriodUnit` is set to Year: 12.
+         * 
+         * &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(@Nullable Output<Integer> autoRenewPeriod) {
+            $.autoRenewPeriod = autoRenewPeriod;
+            return this;
+        }
+
+        /**
+         * @param autoRenewPeriod The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+         * - Default value when `PeriodUnit` is set to Month: 1.
+         * - Default value when `PeriodUnit` is set to Year: 12.
+         * 
+         * &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(Integer autoRenewPeriod) {
+            return autoRenewPeriod(Output.of(autoRenewPeriod));
+        }
+
+        /**
+         * @param autoRenewPeriodUnit Unit of duration. Value range:
+         * - Month: Month
+         * - Year: Year
+         * 
+         * Default value: Year
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriodUnit(@Nullable Output<String> autoRenewPeriodUnit) {
+            $.autoRenewPeriodUnit = autoRenewPeriodUnit;
+            return this;
+        }
+
+        /**
+         * @param autoRenewPeriodUnit Unit of duration. Value range:
+         * - Month: Month
+         * - Year: Year
+         * 
+         * Default value: Year
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriodUnit(String autoRenewPeriodUnit) {
+            return autoRenewPeriodUnit(Output.of(autoRenewPeriodUnit));
         }
 
         /**
@@ -418,7 +594,7 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instanceAmount The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+         * @param instanceAmount The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
          * 
          * @return builder
          * 
@@ -429,7 +605,7 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instanceAmount The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+         * @param instanceAmount The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
          * 
          * @return builder
          * 
@@ -566,6 +742,27 @@ public final class ElasticityAssuranceState extends com.pulumi.resources.Resourc
          */
         public Builder privatePoolOptionsName(String privatePoolOptionsName) {
             return privatePoolOptionsName(Output.of(privatePoolOptionsName));
+        }
+
+        /**
+         * @param regionId (Available since v1.261.0) The region ID of the elasticity assurance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.261.0) The region ID of the elasticity assurance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

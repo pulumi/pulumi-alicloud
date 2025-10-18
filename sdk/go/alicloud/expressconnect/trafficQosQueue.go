@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Express Connect Traffic Qos Queue resource. Express Connect Traffic QoS Queue.
+// Provides a Express Connect Traffic Qos Queue resource.
+//
+// Express Connect Traffic QoS Queue.
 //
 // For information about Express Connect Traffic Qos Queue and how to use it, see [What is Traffic Qos Queue](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosQueue).
 //
@@ -89,24 +91,27 @@ type TrafficQosQueue struct {
 
 	// QoS queue bandwidth percentage.
 	//
-	// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-	// - When the QoS queue type is **Default**, this field is "-".
+	// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+	// - When the QoS queue type is `Default`, this field is "-".
 	BandwidthPercent pulumi.StringOutput `pulumi:"bandwidthPercent"`
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	QosId pulumi.StringOutput `pulumi:"qosId"`
-	// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS queue.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	QueueDescription pulumi.StringPtrOutput `pulumi:"queueDescription"`
-	// The QoS queue ID.
+	// The ID of the QoS queue.
 	QueueId pulumi.StringOutput `pulumi:"queueId"`
-	// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS queue.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	QueueName pulumi.StringPtrOutput `pulumi:"queueName"`
 	// QoS queue type, value:
-	// - **High**: High priority queue.
-	// - **Medium**: Normal priority queue.
-	// - **Default**: the Default priority queue.
+	// - `High`: High priority queue.
+	// - `Medium`: Normal priority queue.
+	// - `Default`: the Default priority queue.
+	//
 	// > **NOTE:**  Default priority queue cannot be created.
 	QueueType pulumi.StringOutput `pulumi:"queueType"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -148,48 +153,54 @@ func GetTrafficQosQueue(ctx *pulumi.Context,
 type trafficQosQueueState struct {
 	// QoS queue bandwidth percentage.
 	//
-	// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-	// - When the QoS queue type is **Default**, this field is "-".
+	// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+	// - When the QoS queue type is `Default`, this field is "-".
 	BandwidthPercent *string `pulumi:"bandwidthPercent"`
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	QosId *string `pulumi:"qosId"`
-	// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS queue.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	QueueDescription *string `pulumi:"queueDescription"`
-	// The QoS queue ID.
+	// The ID of the QoS queue.
 	QueueId *string `pulumi:"queueId"`
-	// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS queue.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	QueueName *string `pulumi:"queueName"`
 	// QoS queue type, value:
-	// - **High**: High priority queue.
-	// - **Medium**: Normal priority queue.
-	// - **Default**: the Default priority queue.
+	// - `High`: High priority queue.
+	// - `Medium`: Normal priority queue.
+	// - `Default`: the Default priority queue.
+	//
 	// > **NOTE:**  Default priority queue cannot be created.
 	QueueType *string `pulumi:"queueType"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 }
 
 type TrafficQosQueueState struct {
 	// QoS queue bandwidth percentage.
 	//
-	// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-	// - When the QoS queue type is **Default**, this field is "-".
+	// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+	// - When the QoS queue type is `Default`, this field is "-".
 	BandwidthPercent pulumi.StringPtrInput
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	QosId pulumi.StringPtrInput
-	// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS queue.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	QueueDescription pulumi.StringPtrInput
-	// The QoS queue ID.
+	// The ID of the QoS queue.
 	QueueId pulumi.StringPtrInput
-	// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS queue.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	QueueName pulumi.StringPtrInput
 	// QoS queue type, value:
-	// - **High**: High priority queue.
-	// - **Medium**: Normal priority queue.
-	// - **Default**: the Default priority queue.
+	// - `High`: High priority queue.
+	// - `Medium`: Normal priority queue.
+	// - `Default`: the Default priority queue.
+	//
 	// > **NOTE:**  Default priority queue cannot be created.
 	QueueType pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 }
 
@@ -200,19 +211,22 @@ func (TrafficQosQueueState) ElementType() reflect.Type {
 type trafficQosQueueArgs struct {
 	// QoS queue bandwidth percentage.
 	//
-	// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-	// - When the QoS queue type is **Default**, this field is "-".
+	// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+	// - When the QoS queue type is `Default`, this field is "-".
 	BandwidthPercent *string `pulumi:"bandwidthPercent"`
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	QosId string `pulumi:"qosId"`
-	// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS queue.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	QueueDescription *string `pulumi:"queueDescription"`
-	// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS queue.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	QueueName *string `pulumi:"queueName"`
 	// QoS queue type, value:
-	// - **High**: High priority queue.
-	// - **Medium**: Normal priority queue.
-	// - **Default**: the Default priority queue.
+	// - `High`: High priority queue.
+	// - `Medium`: Normal priority queue.
+	// - `Default`: the Default priority queue.
+	//
 	// > **NOTE:**  Default priority queue cannot be created.
 	QueueType string `pulumi:"queueType"`
 }
@@ -221,19 +235,22 @@ type trafficQosQueueArgs struct {
 type TrafficQosQueueArgs struct {
 	// QoS queue bandwidth percentage.
 	//
-	// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-	// - When the QoS queue type is **Default**, this field is "-".
+	// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+	// - When the QoS queue type is `Default`, this field is "-".
 	BandwidthPercent pulumi.StringPtrInput
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	QosId pulumi.StringInput
-	// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS queue.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	QueueDescription pulumi.StringPtrInput
-	// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS queue.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	QueueName pulumi.StringPtrInput
 	// QoS queue type, value:
-	// - **High**: High priority queue.
-	// - **Medium**: Normal priority queue.
-	// - **Default**: the Default priority queue.
+	// - `High`: High priority queue.
+	// - `Medium`: Normal priority queue.
+	// - `Default`: the Default priority queue.
+	//
 	// > **NOTE:**  Default priority queue cannot be created.
 	QueueType pulumi.StringInput
 }
@@ -327,42 +344,45 @@ func (o TrafficQosQueueOutput) ToTrafficQosQueueOutputWithContext(ctx context.Co
 
 // QoS queue bandwidth percentage.
 //
-// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-// - When the QoS queue type is **Default**, this field is "-".
+// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+// - When the QoS queue type is `Default`, this field is "-".
 func (o TrafficQosQueueOutput) BandwidthPercent() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringOutput { return v.BandwidthPercent }).(pulumi.StringOutput)
 }
 
-// The QoS policy ID.
+// The ID of the QoS policy.
 func (o TrafficQosQueueOutput) QosId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringOutput { return v.QosId }).(pulumi.StringOutput)
 }
 
-// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+// The description of the QoS queue.
+// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 func (o TrafficQosQueueOutput) QueueDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringPtrOutput { return v.QueueDescription }).(pulumi.StringPtrOutput)
 }
 
-// The QoS queue ID.
+// The ID of the QoS queue.
 func (o TrafficQosQueueOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
 }
 
-// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+// The name of the QoS queue.
+// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 func (o TrafficQosQueueOutput) QueueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringPtrOutput { return v.QueueName }).(pulumi.StringPtrOutput)
 }
 
 // QoS queue type, value:
-// - **High**: High priority queue.
-// - **Medium**: Normal priority queue.
-// - **Default**: the Default priority queue.
+// - `High`: High priority queue.
+// - `Medium`: Normal priority queue.
+// - `Default`: the Default priority queue.
+//
 // > **NOTE:**  Default priority queue cannot be created.
 func (o TrafficQosQueueOutput) QueueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringOutput { return v.QueueType }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o TrafficQosQueueOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosQueue) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

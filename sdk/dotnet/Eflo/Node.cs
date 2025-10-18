@@ -79,10 +79,10 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> Classify { get; private set; } = null!;
 
         /// <summary>
-        /// Node Model
+        /// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         /// </summary>
         [Output("computingServer")]
-        public Output<string?> ComputingServer { get; private set; } = null!;
+        public Output<string> ComputingServer { get; private set; } = null!;
 
         /// <summary>
         /// The creation time of the resource
@@ -109,10 +109,23 @@ namespace Pulumi.AliCloud.Eflo
         public Output<bool?> InstallPai { get; private set; } = null!;
 
         /// <summary>
+        /// Model
+        /// </summary>
+        [Output("machineType")]
+        public Output<string> MachineType { get; private set; } = null!;
+
+        /// <summary>
         /// Down payment ratio
         /// </summary>
         [Output("paymentRatio")]
         public Output<string?> PaymentRatio { get; private set; } = null!;
+
+        /// <summary>
+        /// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+        /// The default is Subscription.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -125,6 +138,12 @@ namespace Pulumi.AliCloud.Eflo
         /// </summary>
         [Output("productForm")]
         public Output<string?> ProductForm { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// Automatic renewal period, in months.
@@ -163,7 +182,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> StageNum { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -239,7 +258,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? Classify { get; set; }
 
         /// <summary>
-        /// Node Model
+        /// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         /// </summary>
         [Input("computingServer")]
         public Input<string>? ComputingServer { get; set; }
@@ -263,10 +282,23 @@ namespace Pulumi.AliCloud.Eflo
         public Input<bool>? InstallPai { get; set; }
 
         /// <summary>
+        /// Model
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
         /// Down payment ratio
         /// </summary>
         [Input("paymentRatio")]
         public Input<string>? PaymentRatio { get; set; }
+
+        /// <summary>
+        /// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+        /// The default is Subscription.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -317,7 +349,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? StageNum { get; set; }
 
         /// <summary>
-        /// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -361,7 +393,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? Classify { get; set; }
 
         /// <summary>
-        /// Node Model
+        /// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         /// </summary>
         [Input("computingServer")]
         public Input<string>? ComputingServer { get; set; }
@@ -391,10 +423,23 @@ namespace Pulumi.AliCloud.Eflo
         public Input<bool>? InstallPai { get; set; }
 
         /// <summary>
+        /// Model
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
         /// Down payment ratio
         /// </summary>
         [Input("paymentRatio")]
         public Input<string>? PaymentRatio { get; set; }
+
+        /// <summary>
+        /// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+        /// The default is Subscription.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -407,6 +452,12 @@ namespace Pulumi.AliCloud.Eflo
         /// </summary>
         [Input("productForm")]
         public Input<string>? ProductForm { get; set; }
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// Automatic renewal period, in months.
@@ -445,7 +496,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? StageNum { get; set; }
 
         /// <summary>
-        /// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

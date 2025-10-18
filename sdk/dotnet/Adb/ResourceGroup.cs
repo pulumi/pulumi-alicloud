@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Adb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.Adb.GetZones.Invoke();
     /// 
     ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
@@ -102,6 +102,24 @@ namespace Pulumi.AliCloud.Adb
     public partial class ResourceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+        /// </summary>
+        [Output("clusterMode")]
+        public Output<string> ClusterMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource specifications of a single compute cluster. Unit: ACU.
+        /// </summary>
+        [Output("clusterSizeResource")]
+        public Output<string> ClusterSizeResource { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.261.0) The endpoint of the resource group.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the resource group was created.
         /// </summary>
         [Output("createTime")]
@@ -112,6 +130,18 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+        /// </summary>
+        [Output("engine")]
+        public Output<string> Engine { get; private set; } = null!;
+
+        /// <summary>
+        /// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+        /// </summary>
+        [Output("engineParams")]
+        public Output<ImmutableDictionary<string, string>?> EngineParams { get; private set; } = null!;
 
         /// <summary>
         /// The name of the resource group. The `GroupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
@@ -126,10 +156,46 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> GroupType { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum number of compute clusters that are allowed in the resource group.
+        /// </summary>
+        [Output("maxClusterCount")]
+        public Output<int?> MaxClusterCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+        /// </summary>
+        [Output("maxComputeResource")]
+        public Output<string> MaxComputeResource { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum number of compute clusters that are required in the resource group.
+        /// </summary>
+        [Output("minClusterCount")]
+        public Output<int?> MinClusterCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        /// </summary>
+        [Output("minComputeResource")]
+        public Output<string> MinComputeResource { get; private set; } = null!;
+
+        /// <summary>
         /// The number of nodes.
         /// </summary>
         [Output("nodeNum")]
-        public Output<int?> NodeNum { get; private set; } = null!;
+        public Output<int> NodeNum { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.261.0) The port number of the resource group.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.261.0) The status of the resource group.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The time when the resource group was updated.
@@ -196,10 +262,40 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ResourceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+        /// </summary>
+        [Input("clusterMode")]
+        public Input<string>? ClusterMode { get; set; }
+
+        /// <summary>
+        /// The resource specifications of a single compute cluster. Unit: ACU.
+        /// </summary>
+        [Input("clusterSizeResource")]
+        public Input<string>? ClusterSizeResource { get; set; }
+
+        /// <summary>
         /// The ID of the DBCluster.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        [Input("engineParams")]
+        private InputMap<string>? _engineParams;
+
+        /// <summary>
+        /// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+        /// </summary>
+        public InputMap<string> EngineParams
+        {
+            get => _engineParams ?? (_engineParams = new InputMap<string>());
+            set => _engineParams = value;
+        }
 
         /// <summary>
         /// The name of the resource group. The `GroupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
@@ -212,6 +308,30 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
+
+        /// <summary>
+        /// The maximum number of compute clusters that are allowed in the resource group.
+        /// </summary>
+        [Input("maxClusterCount")]
+        public Input<int>? MaxClusterCount { get; set; }
+
+        /// <summary>
+        /// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+        /// </summary>
+        [Input("maxComputeResource")]
+        public Input<string>? MaxComputeResource { get; set; }
+
+        /// <summary>
+        /// The minimum number of compute clusters that are required in the resource group.
+        /// </summary>
+        [Input("minClusterCount")]
+        public Input<int>? MinClusterCount { get; set; }
+
+        /// <summary>
+        /// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        /// </summary>
+        [Input("minComputeResource")]
+        public Input<string>? MinComputeResource { get; set; }
 
         /// <summary>
         /// The number of nodes.
@@ -240,6 +360,24 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ResourceGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+        /// </summary>
+        [Input("clusterMode")]
+        public Input<string>? ClusterMode { get; set; }
+
+        /// <summary>
+        /// The resource specifications of a single compute cluster. Unit: ACU.
+        /// </summary>
+        [Input("clusterSizeResource")]
+        public Input<string>? ClusterSizeResource { get; set; }
+
+        /// <summary>
+        /// (Available since v1.261.0) The endpoint of the resource group.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
+
+        /// <summary>
         /// The time when the resource group was created.
         /// </summary>
         [Input("createTime")]
@@ -250,6 +388,24 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
+
+        /// <summary>
+        /// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        [Input("engineParams")]
+        private InputMap<string>? _engineParams;
+
+        /// <summary>
+        /// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+        /// </summary>
+        public InputMap<string> EngineParams
+        {
+            get => _engineParams ?? (_engineParams = new InputMap<string>());
+            set => _engineParams = value;
+        }
 
         /// <summary>
         /// The name of the resource group. The `GroupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
@@ -264,10 +420,46 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
+        /// The maximum number of compute clusters that are allowed in the resource group.
+        /// </summary>
+        [Input("maxClusterCount")]
+        public Input<int>? MaxClusterCount { get; set; }
+
+        /// <summary>
+        /// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+        /// </summary>
+        [Input("maxComputeResource")]
+        public Input<string>? MaxComputeResource { get; set; }
+
+        /// <summary>
+        /// The minimum number of compute clusters that are required in the resource group.
+        /// </summary>
+        [Input("minClusterCount")]
+        public Input<int>? MinClusterCount { get; set; }
+
+        /// <summary>
+        /// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        /// </summary>
+        [Input("minComputeResource")]
+        public Input<string>? MinComputeResource { get; set; }
+
+        /// <summary>
         /// The number of nodes.
         /// </summary>
         [Input("nodeNum")]
         public Input<int>? NodeNum { get; set; }
+
+        /// <summary>
+        /// (Available since v1.261.0) The port number of the resource group.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// (Available since v1.261.0) The status of the resource group.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The time when the resource group was updated.

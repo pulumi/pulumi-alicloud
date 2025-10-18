@@ -4495,6 +4495,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/wafRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/wafRule:WafRule": "WafRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/wafRuleset",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4555,6 +4563,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ess",
   "classes": {
    "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration": "EciScalingConfiguration"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ess/instanceRefresh",
+  "fqn": "pulumi_alicloud.ess",
+  "classes": {
+   "alicloud:ess/instanceRefresh:InstanceRefresh": "InstanceRefresh"
   }
  },
  {
@@ -6819,6 +6835,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
    "alicloud:polardb/primaryEndpoint:PrimaryEndpoint": "PrimaryEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/zonalDbCluster",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/zonalDbCluster:ZonalDbCluster": "ZonalDbCluster"
   }
  },
  {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.expressconnect.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,16 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
     public static final TrafficQosState Empty = new TrafficQosState();
 
     /**
-     * The description of the QoS policy.  The length is **0** to **256** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="qosDescription")
     private @Nullable Output<String> qosDescription;
 
     /**
-     * @return The description of the QoS policy.  The length is **0** to **256** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> qosDescription() {
@@ -31,14 +34,16 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the QoS policy.  The length is **0** to **128** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="qosName")
     private @Nullable Output<String> qosName;
 
     /**
-     * @return The name of the QoS policy.  The length is **0** to **128** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> qosName() {
@@ -46,20 +51,48 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the QoS policy. Value:
-     * &gt; **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The status of the QoS policy.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the QoS policy. Value:
-     * &gt; **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+     * @return The status of the QoS policy.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private TrafficQosState() {}
@@ -67,7 +100,9 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
     private TrafficQosState(TrafficQosState $) {
         this.qosDescription = $.qosDescription;
         this.qosName = $.qosName;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -89,7 +124,8 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param qosDescription The description of the QoS policy.  The length is **0** to **256** characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param qosDescription The description of the QoS policy.
+         * The length is `0` to `256` characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -100,7 +136,8 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param qosDescription The description of the QoS policy.  The length is **0** to **256** characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param qosDescription The description of the QoS policy.
+         * The length is `0` to `256` characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -110,7 +147,8 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param qosName The name of the QoS policy.  The length is **0** to **128** characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param qosName The name of the QoS policy.
+         * The length is `0` to `128` characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -121,7 +159,8 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param qosName The name of the QoS policy.  The length is **0** to **128** characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param qosName The name of the QoS policy.
+         * The length is `0` to `128` characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -131,8 +170,28 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the QoS policy. Value:
-         * &gt; **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status The status of the QoS policy.
          * 
          * @return builder
          * 
@@ -143,14 +202,34 @@ public final class TrafficQosState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the QoS policy. Value:
-         * &gt; **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+         * @param status The status of the QoS policy.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public TrafficQosState build() {

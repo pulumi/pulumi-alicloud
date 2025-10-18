@@ -32,6 +32,10 @@ __all__ = [
     'EciScalingConfigurationSecurityContextSysctl',
     'EciScalingConfigurationVolume',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath',
+    'InstanceRefreshCheckpoint',
+    'InstanceRefreshDesiredConfigurationContainer',
+    'InstanceRefreshDesiredConfigurationContainerEnvironmentVar',
+    'InstanceRefreshDesiredConfigurationLaunchTemplateOverride',
     'ScalingConfigurationCustomPriority',
     'ScalingConfigurationDataDisk',
     'ScalingConfigurationInstancePatternInfo',
@@ -1715,6 +1719,205 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
         The relative file path.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class InstanceRefreshCheckpoint(dict):
+    def __init__(__self__, *,
+                 percentage: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int percentage: The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> Optional[_builtins.int]:
+        """
+        The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class InstanceRefreshDesiredConfigurationContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVars":
+            suggest = "environment_vars"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceRefreshDesiredConfigurationContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceRefreshDesiredConfigurationContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceRefreshDesiredConfigurationContainer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 environment_vars: Optional[Sequence['outputs.InstanceRefreshDesiredConfigurationContainerEnvironmentVar']] = None,
+                 image: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] args: The arguments for the container startup command.
+        :param Sequence[_builtins.str] commands: The container startup command.
+        :param Sequence['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs'] environment_vars: Information about the environment variables. See `environment_vars` below for details.
+        :param _builtins.str image: The container image.
+        :param _builtins.str name: The custom name of the container.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The arguments for the container startup command.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The container startup command.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[Sequence['outputs.InstanceRefreshDesiredConfigurationContainerEnvironmentVar']]:
+        """
+        Information about the environment variables. See `environment_vars` below for details.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional[_builtins.str]:
+        """
+        The container image.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The custom name of the container.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InstanceRefreshDesiredConfigurationContainerEnvironmentVar(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldRefFieldPath":
+            suggest = "field_ref_field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceRefreshDesiredConfigurationContainerEnvironmentVar. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceRefreshDesiredConfigurationContainerEnvironmentVar.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceRefreshDesiredConfigurationContainerEnvironmentVar.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_ref_field_path: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field_ref_field_path: This parameter is not available for use.
+        :param _builtins.str key: The name of the environment variable.
+        :param _builtins.str value: The value of the environment variable.
+        """
+        if field_ref_field_path is not None:
+            pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldRefFieldPath")
+    def field_ref_field_path(self) -> Optional[_builtins.str]:
+        """
+        This parameter is not available for use.
+        """
+        return pulumi.get(self, "field_ref_field_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class InstanceRefreshDesiredConfigurationLaunchTemplateOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceType":
+            suggest = "instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceRefreshDesiredConfigurationLaunchTemplateOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceRefreshDesiredConfigurationLaunchTemplateOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceRefreshDesiredConfigurationLaunchTemplateOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str instance_type: The specified instance type, which overwrites the instance type in the launch template.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[_builtins.str]:
+        """
+        The specified instance type, which overwrites the instance type in the launch template.
+        """
+        return pulumi.get(self, "instance_type")
 
 
 @pulumi.output_type

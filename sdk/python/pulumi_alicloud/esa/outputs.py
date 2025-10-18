@@ -29,6 +29,35 @@ __all__ = [
     'SiteDeliveryTaskS3Delivery',
     'SiteDeliveryTaskSlsDelivery',
     'TransportLayerApplicationRule',
+    'WafRuleConfig',
+    'WafRuleConfigActions',
+    'WafRuleConfigActionsBypass',
+    'WafRuleConfigActionsResponse',
+    'WafRuleConfigAppPackage',
+    'WafRuleConfigAppPackagePackageSign',
+    'WafRuleConfigAppSdk',
+    'WafRuleConfigAppSdkCustomSign',
+    'WafRuleConfigManagedRuleset',
+    'WafRuleConfigManagedRulesetManagedRule',
+    'WafRuleConfigRateLimit',
+    'WafRuleConfigRateLimitCharacteristics',
+    'WafRuleConfigRateLimitCharacteristicsCriteria',
+    'WafRuleConfigRateLimitCharacteristicsCriteriaCriteria',
+    'WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria',
+    'WafRuleConfigRateLimitThreshold',
+    'WafRuleConfigRateLimitThresholdResponseStatus',
+    'WafRuleConfigSecurityLevel',
+    'WafRuleConfigTimer',
+    'WafRuleConfigTimerPeriod',
+    'WafRuleConfigTimerWeeklyPeriod',
+    'WafRuleConfigTimerWeeklyPeriodDailyPeriod',
+    'WafRuleShared',
+    'WafRuleSharedActions',
+    'WafRuleSharedActionsResponse',
+    'WafRuleSharedMatch',
+    'WafRuleSharedMatchCriteria',
+    'WafRuleSharedMatchCriteriaCriteria',
+    'WafRuleSharedMatchCriteriaCriteriaCriteria',
     'WaitingRoomHostNameAndPath',
     'GetSitesSiteResult',
 ]
@@ -1283,6 +1312,1576 @@ class TransportLayerApplicationRule(dict):
         Rule ID
         """
         return pulumi.get(self, "rule_id")
+
+
+@pulumi.output_type
+class WafRuleConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appPackage":
+            suggest = "app_package"
+        elif key == "appSdk":
+            suggest = "app_sdk"
+        elif key == "managedGroupId":
+            suggest = "managed_group_id"
+        elif key == "managedList":
+            suggest = "managed_list"
+        elif key == "managedRulesets":
+            suggest = "managed_rulesets"
+        elif key == "rateLimit":
+            suggest = "rate_limit"
+        elif key == "securityLevel":
+            suggest = "security_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[_builtins.str] = None,
+                 actions: Optional['outputs.WafRuleConfigActions'] = None,
+                 app_package: Optional['outputs.WafRuleConfigAppPackage'] = None,
+                 app_sdk: Optional['outputs.WafRuleConfigAppSdk'] = None,
+                 expression: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.int] = None,
+                 managed_group_id: Optional[_builtins.int] = None,
+                 managed_list: Optional[_builtins.str] = None,
+                 managed_rulesets: Optional[Sequence['outputs.WafRuleConfigManagedRuleset']] = None,
+                 name: Optional[_builtins.str] = None,
+                 notes: Optional[_builtins.str] = None,
+                 rate_limit: Optional['outputs.WafRuleConfigRateLimit'] = None,
+                 security_level: Optional['outputs.WafRuleConfigSecurityLevel'] = None,
+                 sigchls: Optional[Sequence[_builtins.str]] = None,
+                 status: Optional[_builtins.str] = None,
+                 timer: Optional['outputs.WafRuleConfigTimer'] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str action: The action performed on requests that match the managed rule.
+        :param 'WafRuleConfigActionsArgs' actions: Extended action configurations, including custom responses and bypass settings. See `actions` below.
+        :param 'WafRuleConfigAppPackageArgs' app_package: Security mechanism to prevent apps from being repackaged. See `app_package` below.
+        :param 'WafRuleConfigAppSdkArgs' app_sdk: Mobile app SDK-related configurations. See `app_sdk` below.
+        :param _builtins.str expression: The match expression used to evaluate incoming requests.
+        :param _builtins.int id: The ID of the custom error page, which can be obtained by calling the ListPages operation.
+        :param _builtins.int managed_group_id: The ID of the managed rule group (deprecated).
+        :param _builtins.str managed_list: The name of the managed list applied to this rule.
+        :param Sequence['WafRuleConfigManagedRulesetArgs'] managed_rulesets: The managed rulesets referenced by this rule and their configurations. See `managed_rulesets` below.
+        :param _builtins.str name: The package name of an authorized application.
+        :param _builtins.str notes: Additional notes about this rule.
+        :param 'WafRuleConfigRateLimitArgs' rate_limit: Configuration of the rate limiting rule. See `rate_limit` below.
+        :param 'WafRuleConfigSecurityLevelArgs' security_level: The overall security protection level of WAF. See `security_level` below.
+        :param Sequence[_builtins.str] sigchls: Configuration items for token verification mechanisms.
+        :param _builtins.str status: The status of the managed rule: whether it is enabled or disabled.
+        :param 'WafRuleConfigTimerArgs' timer: Configuration for the time schedule when the rule takes effect. See `timer` below.
+        :param _builtins.str type: The type category of the WAF rule.
+        :param _builtins.str value: The value of the custom signature field used for validation.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if app_package is not None:
+            pulumi.set(__self__, "app_package", app_package)
+        if app_sdk is not None:
+            pulumi.set(__self__, "app_sdk", app_sdk)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if managed_group_id is not None:
+            pulumi.set(__self__, "managed_group_id", managed_group_id)
+        if managed_list is not None:
+            pulumi.set(__self__, "managed_list", managed_list)
+        if managed_rulesets is not None:
+            pulumi.set(__self__, "managed_rulesets", managed_rulesets)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
+        if rate_limit is not None:
+            pulumi.set(__self__, "rate_limit", rate_limit)
+        if security_level is not None:
+            pulumi.set(__self__, "security_level", security_level)
+        if sigchls is not None:
+            pulumi.set(__self__, "sigchls", sigchls)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if timer is not None:
+            pulumi.set(__self__, "timer", timer)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The action performed on requests that match the managed rule.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional['outputs.WafRuleConfigActions']:
+        """
+        Extended action configurations, including custom responses and bypass settings. See `actions` below.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter(name="appPackage")
+    def app_package(self) -> Optional['outputs.WafRuleConfigAppPackage']:
+        """
+        Security mechanism to prevent apps from being repackaged. See `app_package` below.
+        """
+        return pulumi.get(self, "app_package")
+
+    @_builtins.property
+    @pulumi.getter(name="appSdk")
+    def app_sdk(self) -> Optional['outputs.WafRuleConfigAppSdk']:
+        """
+        Mobile app SDK-related configurations. See `app_sdk` below.
+        """
+        return pulumi.get(self, "app_sdk")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        """
+        The match expression used to evaluate incoming requests.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the custom error page, which can be obtained by calling the ListPages operation.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="managedGroupId")
+    def managed_group_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the managed rule group (deprecated).
+        """
+        return pulumi.get(self, "managed_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="managedList")
+    def managed_list(self) -> Optional[_builtins.str]:
+        """
+        The name of the managed list applied to this rule.
+        """
+        return pulumi.get(self, "managed_list")
+
+    @_builtins.property
+    @pulumi.getter(name="managedRulesets")
+    def managed_rulesets(self) -> Optional[Sequence['outputs.WafRuleConfigManagedRuleset']]:
+        """
+        The managed rulesets referenced by this rule and their configurations. See `managed_rulesets` below.
+        """
+        return pulumi.get(self, "managed_rulesets")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The package name of an authorized application.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def notes(self) -> Optional[_builtins.str]:
+        """
+        Additional notes about this rule.
+        """
+        return pulumi.get(self, "notes")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimit")
+    def rate_limit(self) -> Optional['outputs.WafRuleConfigRateLimit']:
+        """
+        Configuration of the rate limiting rule. See `rate_limit` below.
+        """
+        return pulumi.get(self, "rate_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="securityLevel")
+    def security_level(self) -> Optional['outputs.WafRuleConfigSecurityLevel']:
+        """
+        The overall security protection level of WAF. See `security_level` below.
+        """
+        return pulumi.get(self, "security_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def sigchls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Configuration items for token verification mechanisms.
+        """
+        return pulumi.get(self, "sigchls")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the managed rule: whether it is enabled or disabled.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def timer(self) -> Optional['outputs.WafRuleConfigTimer']:
+        """
+        Configuration for the time schedule when the rule takes effect. See `timer` below.
+        """
+        return pulumi.get(self, "timer")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type category of the WAF rule.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the custom signature field used for validation.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WafRuleConfigActions(dict):
+    def __init__(__self__, *,
+                 bypass: Optional['outputs.WafRuleConfigActionsBypass'] = None,
+                 response: Optional['outputs.WafRuleConfigActionsResponse'] = None):
+        """
+        :param 'WafRuleConfigActionsBypassArgs' bypass: The skip configuration specified by the whitelist rule. See `bypass` below.
+        """
+        if bypass is not None:
+            pulumi.set(__self__, "bypass", bypass)
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+
+    @_builtins.property
+    @pulumi.getter
+    def bypass(self) -> Optional['outputs.WafRuleConfigActionsBypass']:
+        """
+        The skip configuration specified by the whitelist rule. See `bypass` below.
+        """
+        return pulumi.get(self, "bypass")
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional['outputs.WafRuleConfigActionsResponse']:
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class WafRuleConfigActionsBypass(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customRules":
+            suggest = "custom_rules"
+        elif key == "regularRules":
+            suggest = "regular_rules"
+        elif key == "regularTypes":
+            suggest = "regular_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigActionsBypass. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigActionsBypass.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigActionsBypass.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_rules: Optional[Sequence[_builtins.int]] = None,
+                 regular_rules: Optional[Sequence[_builtins.int]] = None,
+                 regular_types: Optional[Sequence[_builtins.str]] = None,
+                 skip: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.int] custom_rules: The IDs of custom rules to skip.
+        :param Sequence[_builtins.int] regular_rules: The IDs of specific managed rules to skip.
+        :param Sequence[_builtins.str] regular_types: The types of managed rules to skip.
+        :param _builtins.str skip: The scope that is skipped when requests match conditions defined in the whitelist rule.
+        :param Sequence[_builtins.str] tags: The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+        """
+        if custom_rules is not None:
+            pulumi.set(__self__, "custom_rules", custom_rules)
+        if regular_rules is not None:
+            pulumi.set(__self__, "regular_rules", regular_rules)
+        if regular_types is not None:
+            pulumi.set(__self__, "regular_types", regular_types)
+        if skip is not None:
+            pulumi.set(__self__, "skip", skip)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="customRules")
+    def custom_rules(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The IDs of custom rules to skip.
+        """
+        return pulumi.get(self, "custom_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="regularRules")
+    def regular_rules(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The IDs of specific managed rules to skip.
+        """
+        return pulumi.get(self, "regular_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="regularTypes")
+    def regular_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The types of managed rules to skip.
+        """
+        return pulumi.get(self, "regular_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def skip(self) -> Optional[_builtins.str]:
+        """
+        The scope that is skipped when requests match conditions defined in the whitelist rule.
+        """
+        return pulumi.get(self, "skip")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class WafRuleConfigActionsResponse(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int id: The internal unique ID of the WAF rule.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.int]:
+        """
+        The internal unique ID of the WAF rule.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class WafRuleConfigAppPackage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packageSigns":
+            suggest = "package_signs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigAppPackage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigAppPackage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigAppPackage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 package_signs: Optional[Sequence['outputs.WafRuleConfigAppPackagePackageSign']] = None):
+        """
+        :param Sequence['WafRuleConfigAppPackagePackageSignArgs'] package_signs: Security mechanism to prevent apps from being repackaged. See `package_signs` below.
+        """
+        if package_signs is not None:
+            pulumi.set(__self__, "package_signs", package_signs)
+
+    @_builtins.property
+    @pulumi.getter(name="packageSigns")
+    def package_signs(self) -> Optional[Sequence['outputs.WafRuleConfigAppPackagePackageSign']]:
+        """
+        Security mechanism to prevent apps from being repackaged. See `package_signs` below.
+        """
+        return pulumi.get(self, "package_signs")
+
+
+@pulumi.output_type
+class WafRuleConfigAppPackagePackageSign(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 sign: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str sign: The digital signature of a legitimate app package.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if sign is not None:
+            pulumi.set(__self__, "sign", sign)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sign(self) -> Optional[_builtins.str]:
+        """
+        The digital signature of a legitimate app package.
+        """
+        return pulumi.get(self, "sign")
+
+
+@pulumi.output_type
+class WafRuleConfigAppSdk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSign":
+            suggest = "custom_sign"
+        elif key == "customSignStatus":
+            suggest = "custom_sign_status"
+        elif key == "featureAbnormals":
+            suggest = "feature_abnormals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigAppSdk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigAppSdk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigAppSdk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_sign: Optional['outputs.WafRuleConfigAppSdkCustomSign'] = None,
+                 custom_sign_status: Optional[_builtins.str] = None,
+                 feature_abnormals: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'WafRuleConfigAppSdkCustomSignArgs' custom_sign: Custom fields used for mobile app signature validation. See `custom_sign` below.
+        :param _builtins.str custom_sign_status: Indicates whether the custom signature field validation is enabled.
+        :param Sequence[_builtins.str] feature_abnormals: Detected abnormal behaviors of the application.
+        """
+        if custom_sign is not None:
+            pulumi.set(__self__, "custom_sign", custom_sign)
+        if custom_sign_status is not None:
+            pulumi.set(__self__, "custom_sign_status", custom_sign_status)
+        if feature_abnormals is not None:
+            pulumi.set(__self__, "feature_abnormals", feature_abnormals)
+
+    @_builtins.property
+    @pulumi.getter(name="customSign")
+    def custom_sign(self) -> Optional['outputs.WafRuleConfigAppSdkCustomSign']:
+        """
+        Custom fields used for mobile app signature validation. See `custom_sign` below.
+        """
+        return pulumi.get(self, "custom_sign")
+
+    @_builtins.property
+    @pulumi.getter(name="customSignStatus")
+    def custom_sign_status(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether the custom signature field validation is enabled.
+        """
+        return pulumi.get(self, "custom_sign_status")
+
+    @_builtins.property
+    @pulumi.getter(name="featureAbnormals")
+    def feature_abnormals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Detected abnormal behaviors of the application.
+        """
+        return pulumi.get(self, "feature_abnormals")
+
+
+@pulumi.output_type
+class WafRuleConfigAppSdkCustomSign(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The name of the custom signature field used for validation.
+        :param _builtins.str value: The value of the custom signature field used for validation.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The name of the custom signature field used for validation.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the custom signature field used for validation.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WafRuleConfigManagedRuleset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attackType":
+            suggest = "attack_type"
+        elif key == "managedRules":
+            suggest = "managed_rules"
+        elif key == "numberEnabled":
+            suggest = "number_enabled"
+        elif key == "numberTotal":
+            suggest = "number_total"
+        elif key == "protectionLevel":
+            suggest = "protection_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigManagedRuleset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigManagedRuleset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigManagedRuleset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[_builtins.str] = None,
+                 attack_type: Optional[_builtins.int] = None,
+                 managed_rules: Optional[Sequence['outputs.WafRuleConfigManagedRulesetManagedRule']] = None,
+                 number_enabled: Optional[_builtins.int] = None,
+                 number_total: Optional[_builtins.int] = None,
+                 protection_level: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int attack_type: The primary attack type targeted by this ruleset.
+        :param Sequence['WafRuleConfigManagedRulesetManagedRuleArgs'] managed_rules: The individual managed rules included in this ruleset. See `managed_rules` below.
+        :param _builtins.int number_enabled: Number of rules currently enabled.
+        :param _builtins.int number_total: Total number of rules in this ruleset.
+        :param _builtins.int protection_level: The protection strength level assigned to this ruleset.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if attack_type is not None:
+            pulumi.set(__self__, "attack_type", attack_type)
+        if managed_rules is not None:
+            pulumi.set(__self__, "managed_rules", managed_rules)
+        if number_enabled is not None:
+            pulumi.set(__self__, "number_enabled", number_enabled)
+        if number_total is not None:
+            pulumi.set(__self__, "number_total", number_total)
+        if protection_level is not None:
+            pulumi.set(__self__, "protection_level", protection_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="attackType")
+    def attack_type(self) -> Optional[_builtins.int]:
+        """
+        The primary attack type targeted by this ruleset.
+        """
+        return pulumi.get(self, "attack_type")
+
+    @_builtins.property
+    @pulumi.getter(name="managedRules")
+    def managed_rules(self) -> Optional[Sequence['outputs.WafRuleConfigManagedRulesetManagedRule']]:
+        """
+        The individual managed rules included in this ruleset. See `managed_rules` below.
+        """
+        return pulumi.get(self, "managed_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="numberEnabled")
+    def number_enabled(self) -> Optional[_builtins.int]:
+        """
+        Number of rules currently enabled.
+        """
+        return pulumi.get(self, "number_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="numberTotal")
+    def number_total(self) -> Optional[_builtins.int]:
+        """
+        Total number of rules in this ruleset.
+        """
+        return pulumi.get(self, "number_total")
+
+    @_builtins.property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> Optional[_builtins.int]:
+        """
+        The protection strength level assigned to this ruleset.
+        """
+        return pulumi.get(self, "protection_level")
+
+
+@pulumi.output_type
+class WafRuleConfigManagedRulesetManagedRule(dict):
+    def __init__(__self__, *,
+                 action: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.int] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int id: The internal unique ID of the WAF rule.
+        :param _builtins.str status: The status of the managed rule: whether it is enabled or disabled.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.int]:
+        """
+        The internal unique ID of the WAF rule.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the managed rule: whether it is enabled or disabled.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onHit":
+            suggest = "on_hit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigRateLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigRateLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigRateLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 characteristics: Optional['outputs.WafRuleConfigRateLimitCharacteristics'] = None,
+                 interval: Optional[_builtins.int] = None,
+                 on_hit: Optional[_builtins.bool] = None,
+                 threshold: Optional['outputs.WafRuleConfigRateLimitThreshold'] = None,
+                 ttl: Optional[_builtins.int] = None):
+        """
+        :param 'WafRuleConfigRateLimitCharacteristicsArgs' characteristics: The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+        :param _builtins.int interval: The statistical interval.
+        :param _builtins.bool on_hit: Indicates whether the rule applies to requests that hit the cache.
+        :param 'WafRuleConfigRateLimitThresholdArgs' threshold: Threshold settings for the rate limiting rule. See `threshold` below.
+        :param _builtins.int ttl: The timeout period for creating the stack used in rate limiting.
+        """
+        if characteristics is not None:
+            pulumi.set(__self__, "characteristics", characteristics)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if on_hit is not None:
+            pulumi.set(__self__, "on_hit", on_hit)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def characteristics(self) -> Optional['outputs.WafRuleConfigRateLimitCharacteristics']:
+        """
+        The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+        """
+        return pulumi.get(self, "characteristics")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.int]:
+        """
+        The statistical interval.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="onHit")
+    def on_hit(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the rule applies to requests that hit the cache.
+        """
+        return pulumi.get(self, "on_hit")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional['outputs.WafRuleConfigRateLimitThreshold']:
+        """
+        Threshold settings for the rate limiting rule. See `threshold` below.
+        """
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> Optional[_builtins.int]:
+        """
+        The timeout period for creating the stack used in rate limiting.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimitCharacteristics(dict):
+    def __init__(__self__, *,
+                 criterias: Optional[Sequence['outputs.WafRuleConfigRateLimitCharacteristicsCriteria']] = None,
+                 logic: Optional[_builtins.str] = None):
+        if criterias is not None:
+            pulumi.set(__self__, "criterias", criterias)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+
+    @_builtins.property
+    @pulumi.getter
+    def criterias(self) -> Optional[Sequence['outputs.WafRuleConfigRateLimitCharacteristicsCriteria']]:
+        return pulumi.get(self, "criterias")
+
+    @_builtins.property
+    @pulumi.getter
+    def logic(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "logic")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimitCharacteristicsCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigRateLimitCharacteristicsCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigRateLimitCharacteristicsCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigRateLimitCharacteristicsCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 criterias: Optional[Sequence['outputs.WafRuleConfigRateLimitCharacteristicsCriteriaCriteria']] = None,
+                 logic: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None):
+        if criterias is not None:
+            pulumi.set(__self__, "criterias", criterias)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def criterias(self) -> Optional[Sequence['outputs.WafRuleConfigRateLimitCharacteristicsCriteriaCriteria']]:
+        return pulumi.get(self, "criterias")
+
+    @_builtins.property
+    @pulumi.getter
+    def logic(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "logic")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimitCharacteristicsCriteriaCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigRateLimitCharacteristicsCriteriaCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigRateLimitCharacteristicsCriteriaCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigRateLimitCharacteristicsCriteriaCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 criterias: Optional[Sequence['outputs.WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria']] = None,
+                 logic: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None):
+        if criterias is not None:
+            pulumi.set(__self__, "criterias", criterias)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def criterias(self) -> Optional[Sequence['outputs.WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria']]:
+        return pulumi.get(self, "criterias")
+
+    @_builtins.property
+    @pulumi.getter
+    def logic(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "logic")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_type: Optional[_builtins.str] = None):
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimitThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distinctManagedRules":
+            suggest = "distinct_managed_rules"
+        elif key == "managedRulesBlocked":
+            suggest = "managed_rules_blocked"
+        elif key == "responseStatus":
+            suggest = "response_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigRateLimitThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigRateLimitThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigRateLimitThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 distinct_managed_rules: Optional[_builtins.int] = None,
+                 managed_rules_blocked: Optional[_builtins.int] = None,
+                 request: Optional[_builtins.int] = None,
+                 response_status: Optional['outputs.WafRuleConfigRateLimitThresholdResponseStatus'] = None,
+                 traffic: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int distinct_managed_rules: The maximum number of distinct managed rules that can be triggered.
+        :param _builtins.int managed_rules_blocked: The maximum number of times that managed rules can be triggered.
+        :param _builtins.int request: The maximum number of allowed requests within a time interval.
+        :param 'WafRuleConfigRateLimitThresholdResponseStatusArgs' response_status: Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
+        :param _builtins.str traffic: The maximum allowed traffic within a time interval (deprecated).
+        """
+        if distinct_managed_rules is not None:
+            pulumi.set(__self__, "distinct_managed_rules", distinct_managed_rules)
+        if managed_rules_blocked is not None:
+            pulumi.set(__self__, "managed_rules_blocked", managed_rules_blocked)
+        if request is not None:
+            pulumi.set(__self__, "request", request)
+        if response_status is not None:
+            pulumi.set(__self__, "response_status", response_status)
+        if traffic is not None:
+            pulumi.set(__self__, "traffic", traffic)
+
+    @_builtins.property
+    @pulumi.getter(name="distinctManagedRules")
+    def distinct_managed_rules(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of distinct managed rules that can be triggered.
+        """
+        return pulumi.get(self, "distinct_managed_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="managedRulesBlocked")
+    def managed_rules_blocked(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of times that managed rules can be triggered.
+        """
+        return pulumi.get(self, "managed_rules_blocked")
+
+    @_builtins.property
+    @pulumi.getter
+    def request(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of allowed requests within a time interval.
+        """
+        return pulumi.get(self, "request")
+
+    @_builtins.property
+    @pulumi.getter(name="responseStatus")
+    def response_status(self) -> Optional['outputs.WafRuleConfigRateLimitThresholdResponseStatus']:
+        """
+        Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
+        """
+        return pulumi.get(self, "response_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def traffic(self) -> Optional[_builtins.str]:
+        """
+        The maximum allowed traffic within a time interval (deprecated).
+        """
+        return pulumi.get(self, "traffic")
+
+
+@pulumi.output_type
+class WafRuleConfigRateLimitThresholdResponseStatus(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 count: Optional[_builtins.int] = None,
+                 ratio: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int count: The maximum number of times the specified status code can be returned.
+        :param _builtins.int ratio: The upper limit of the percentage of occurrences of the specified status code among all responses.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if ratio is not None:
+            pulumi.set(__self__, "ratio", ratio)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of times the specified status code can be returned.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def ratio(self) -> Optional[_builtins.int]:
+        """
+        The upper limit of the percentage of occurrences of the specified status code among all responses.
+        """
+        return pulumi.get(self, "ratio")
+
+
+@pulumi.output_type
+class WafRuleConfigSecurityLevel(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str value: The value of the custom signature field used for validation.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the custom signature field used for validation.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WafRuleConfigTimer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "weeklyPeriods":
+            suggest = "weekly_periods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigTimer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigTimer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigTimer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 periods: Optional[Sequence['outputs.WafRuleConfigTimerPeriod']] = None,
+                 scopes: Optional[_builtins.str] = None,
+                 weekly_periods: Optional[Sequence['outputs.WafRuleConfigTimerWeeklyPeriod']] = None,
+                 zone: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str scopes: Timing type:
+        :param Sequence['WafRuleConfigTimerWeeklyPeriodArgs'] weekly_periods: Weekly recurring time schedules. See `weekly_periods` below.
+        :param _builtins.int zone: The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+        """
+        if periods is not None:
+            pulumi.set(__self__, "periods", periods)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if weekly_periods is not None:
+            pulumi.set(__self__, "weekly_periods", weekly_periods)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def periods(self) -> Optional[Sequence['outputs.WafRuleConfigTimerPeriod']]:
+        return pulumi.get(self, "periods")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[_builtins.str]:
+        """
+        Timing type:
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter(name="weeklyPeriods")
+    def weekly_periods(self) -> Optional[Sequence['outputs.WafRuleConfigTimerWeeklyPeriod']]:
+        """
+        Weekly recurring time schedules. See `weekly_periods` below.
+        """
+        return pulumi.get(self, "weekly_periods")
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> Optional[_builtins.int]:
+        """
+        The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class WafRuleConfigTimerPeriod(dict):
+    def __init__(__self__, *,
+                 end: Optional[_builtins.str] = None,
+                 start: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end: End time in HH:mm:ss format
+        :param _builtins.str start: Start time in HH:mm:ss format
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.str]:
+        """
+        End time in HH:mm:ss format
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.str]:
+        """
+        Start time in HH:mm:ss format
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class WafRuleConfigTimerWeeklyPeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dailyPeriods":
+            suggest = "daily_periods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleConfigTimerWeeklyPeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleConfigTimerWeeklyPeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleConfigTimerWeeklyPeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 daily_periods: Optional[Sequence['outputs.WafRuleConfigTimerWeeklyPeriodDailyPeriod']] = None,
+                 days: Optional[_builtins.str] = None):
+        """
+        :param Sequence['WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs'] daily_periods: Daily effective time periods within a weekly schedule. See `daily_periods` below.
+        :param _builtins.str days: Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+        """
+        if daily_periods is not None:
+            pulumi.set(__self__, "daily_periods", daily_periods)
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+
+    @_builtins.property
+    @pulumi.getter(name="dailyPeriods")
+    def daily_periods(self) -> Optional[Sequence['outputs.WafRuleConfigTimerWeeklyPeriodDailyPeriod']]:
+        """
+        Daily effective time periods within a weekly schedule. See `daily_periods` below.
+        """
+        return pulumi.get(self, "daily_periods")
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Optional[_builtins.str]:
+        """
+        Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+        """
+        return pulumi.get(self, "days")
+
+
+@pulumi.output_type
+class WafRuleConfigTimerWeeklyPeriodDailyPeriod(dict):
+    def __init__(__self__, *,
+                 end: Optional[_builtins.str] = None,
+                 start: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end: End time in HH:mm:ss format
+        :param _builtins.str start: Start time in HH:mm:ss format
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.str]:
+        """
+        End time in HH:mm:ss format
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.str]:
+        """
+        Start time in HH:mm:ss format
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class WafRuleShared(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crossSiteId":
+            suggest = "cross_site_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleShared. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleShared.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleShared.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[_builtins.str] = None,
+                 actions: Optional['outputs.WafRuleSharedActions'] = None,
+                 cross_site_id: Optional[_builtins.int] = None,
+                 expression: Optional[_builtins.str] = None,
+                 match: Optional['outputs.WafRuleSharedMatch'] = None,
+                 mode: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 target: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str action: The default action executed under shared configuration.
+        :param 'WafRuleSharedActionsArgs' actions: Extended action configurations under shared settings. See `actions` below.
+        :param _builtins.int cross_site_id: Specify the cross-domain site ID.
+        :param _builtins.str expression: The match expression used in shared configuration.
+        :param 'WafRuleSharedMatchArgs' match: Configuration of the request matching logic engine. See `match` below.
+        :param _builtins.str mode: The integration mode of the Web SDK:
+        :param _builtins.str name: The display name of the ruleset.
+        :param _builtins.str target: The target type protected by this rule: web or app.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if cross_site_id is not None:
+            pulumi.set(__self__, "cross_site_id", cross_site_id)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The default action executed under shared configuration.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional['outputs.WafRuleSharedActions']:
+        """
+        Extended action configurations under shared settings. See `actions` below.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter(name="crossSiteId")
+    def cross_site_id(self) -> Optional[_builtins.int]:
+        """
+        Specify the cross-domain site ID.
+        """
+        return pulumi.get(self, "cross_site_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        """
+        The match expression used in shared configuration.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.WafRuleSharedMatch']:
+        """
+        Configuration of the request matching logic engine. See `match` below.
+        """
+        return pulumi.get(self, "match")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        The integration mode of the Web SDK:
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the ruleset.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> Optional[_builtins.str]:
+        """
+        The target type protected by this rule: web or app.
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class WafRuleSharedActions(dict):
+    def __init__(__self__, *,
+                 response: Optional['outputs.WafRuleSharedActionsResponse'] = None):
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional['outputs.WafRuleSharedActionsResponse']:
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class WafRuleSharedActionsResponse(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int id: The internal unique ID of the WAF rule.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.int]:
+        """
+        The internal unique ID of the WAF rule.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class WafRuleSharedMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleSharedMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleSharedMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleSharedMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 criterias: Optional[Sequence['outputs.WafRuleSharedMatchCriteria']] = None,
+                 logic: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None):
+        if criterias is not None:
+            pulumi.set(__self__, "criterias", criterias)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def criterias(self) -> Optional[Sequence['outputs.WafRuleSharedMatchCriteria']]:
+        return pulumi.get(self, "criterias")
+
+    @_builtins.property
+    @pulumi.getter
+    def logic(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "logic")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class WafRuleSharedMatchCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleSharedMatchCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleSharedMatchCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleSharedMatchCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 criterias: Optional[Sequence['outputs.WafRuleSharedMatchCriteriaCriteria']] = None,
+                 logic: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None):
+        if criterias is not None:
+            pulumi.set(__self__, "criterias", criterias)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def criterias(self) -> Optional[Sequence['outputs.WafRuleSharedMatchCriteriaCriteria']]:
+        return pulumi.get(self, "criterias")
+
+    @_builtins.property
+    @pulumi.getter
+    def logic(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "logic")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class WafRuleSharedMatchCriteriaCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleSharedMatchCriteriaCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleSharedMatchCriteriaCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleSharedMatchCriteriaCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 criterias: Optional[Sequence['outputs.WafRuleSharedMatchCriteriaCriteriaCriteria']] = None,
+                 logic: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None):
+        if criterias is not None:
+            pulumi.set(__self__, "criterias", criterias)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def criterias(self) -> Optional[Sequence['outputs.WafRuleSharedMatchCriteriaCriteriaCriteria']]:
+        return pulumi.get(self, "criterias")
+
+    @_builtins.property
+    @pulumi.getter
+    def logic(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "logic")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class WafRuleSharedMatchCriteriaCriteriaCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WafRuleSharedMatchCriteriaCriteriaCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WafRuleSharedMatchCriteriaCriteriaCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WafRuleSharedMatchCriteriaCriteriaCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_type: Optional[_builtins.str] = None):
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_type")
 
 
 @pulumi.output_type

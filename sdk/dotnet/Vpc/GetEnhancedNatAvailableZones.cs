@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of available zones by the enhanced Nat Gateway.
         /// 
-        /// &gt; **NOTE:** Available since 1.102.0+.
+        /// &gt; **NOTE:** Available since v1.102.0.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of available zones by the enhanced Nat Gateway.
         /// 
-        /// &gt; **NOTE:** Available since 1.102.0+.
+        /// &gt; **NOTE:** Available since v1.102.0.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of available zones by the enhanced Nat Gateway.
         /// 
-        /// &gt; **NOTE:** Available since 1.102.0+.
+        /// &gt; **NOTE:** Available since v1.102.0.
         /// 
         /// ## Example Usage
         /// 
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Optional) A list of available zones IDs by the enhanced NAT gateway.
+        /// A list of available zones IDs by the enhanced NAT gateway.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;

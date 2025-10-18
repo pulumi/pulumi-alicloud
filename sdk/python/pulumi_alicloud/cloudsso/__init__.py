@@ -17,6 +17,7 @@ from .get_directories import *
 from .get_groups import *
 from .get_scim_server_credentials import *
 from .get_service import *
+from .get_user_provisioning_events import *
 from .get_users import *
 from .group import *
 from .scim_server_credential import *

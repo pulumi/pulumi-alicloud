@@ -17,6 +17,7 @@ from .get_scaling_configurations import *
 from .get_scaling_groups import *
 from .get_scaling_rules import *
 from .get_scheduled_tasks import *
+from .instance_refresh import *
 from .lifecycle_hook import *
 from .notification import *
 from .scaling_configuration import *

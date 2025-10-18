@@ -103,6 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Version{}
 	case "alicloud:esa/videoProcessing:VideoProcessing":
 		r = &VideoProcessing{}
+	case "alicloud:esa/wafRule:WafRule":
+		r = &WafRule{}
 	case "alicloud:esa/wafRuleset:WafRuleset":
 		r = &WafRuleset{}
 	case "alicloud:esa/waitingRoom:WaitingRoom":
@@ -327,6 +329,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/videoProcessing",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/wafRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

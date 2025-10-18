@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string? AccessKeySecret;
         /// <summary>
+        /// LogETL datasets.
+        /// 
+        /// &gt; **Note:** `FromTime` and `ToTime` no modification allowed after successful creation.
+        /// </summary>
+        public readonly ImmutableArray<string> Datasets;
+        /// <summary>
         /// Delivery target logstore region.
         /// </summary>
         public readonly string Endpoint;
@@ -46,13 +52,11 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Sts role info under delivery target logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        /// Sts role info under delivery target logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
         /// </summary>
         public readonly string? RoleArn;
         /// <summary>
         /// ETL sinks type, the default value is AliyunLOG.
-        /// 
-        /// &gt; **Note:** `FromTime` and `ToTime` no modification allowed after successful creation.
         /// </summary>
         public readonly string? Type;
 
@@ -61,6 +65,8 @@ namespace Pulumi.AliCloud.Log.Outputs
             string? accessKeyId,
 
             string? accessKeySecret,
+
+            ImmutableArray<string> datasets,
 
             string endpoint,
 
@@ -80,6 +86,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         {
             AccessKeyId = accessKeyId;
             AccessKeySecret = accessKeySecret;
+            Datasets = datasets;
             Endpoint = endpoint;
             KmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
             KmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;

@@ -2,10 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a Resource Manager Resource Share resource.
+ *
+ * RS resource sharing.
  *
  * For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  *
@@ -61,17 +65,47 @@ export class ResourceShare extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     */
+    declare public readonly allowExternalTargets: pulumi.Output<boolean | undefined>;
+    /**
+     * The create time of resource share.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     */
+    declare public readonly permissionNames: pulumi.Output<string[] | undefined>;
+    /**
+     * The ID of the resource group
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
      * The name of resource share.
      */
     declare public readonly resourceShareName: pulumi.Output<string>;
     /**
-     * The owner of the Resource Share.
+     * The owner of resource share,  `Self` and `OtherAccounts`.
      */
     declare public /*out*/ readonly resourceShareOwner: pulumi.Output<string>;
     /**
-     * The status of the Resource Share.
+     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     */
+    declare public readonly resources: pulumi.Output<outputs.resourcemanager.ResourceShareResource[] | undefined>;
+    /**
+     * The status of resource share.  `Active`,`Deleted` and `Deleting`.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The tag of the resource
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Resource user.
+     */
+    declare public readonly targets: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ResourceShare resource with the given unique name, arguments, and options.
@@ -86,15 +120,29 @@ export class ResourceShare extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceShareState | undefined;
+            resourceInputs["allowExternalTargets"] = state?.allowExternalTargets;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["permissionNames"] = state?.permissionNames;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["resourceShareName"] = state?.resourceShareName;
             resourceInputs["resourceShareOwner"] = state?.resourceShareOwner;
+            resourceInputs["resources"] = state?.resources;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targets"] = state?.targets;
         } else {
             const args = argsOrState as ResourceShareArgs | undefined;
             if (args?.resourceShareName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareName'");
             }
+            resourceInputs["allowExternalTargets"] = args?.allowExternalTargets;
+            resourceInputs["permissionNames"] = args?.permissionNames;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["resourceShareName"] = args?.resourceShareName;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targets"] = args?.targets;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["resourceShareOwner"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -108,17 +156,47 @@ export class ResourceShare extends pulumi.CustomResource {
  */
 export interface ResourceShareState {
     /**
+     * Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     */
+    allowExternalTargets?: pulumi.Input<boolean>;
+    /**
+     * The create time of resource share.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     */
+    permissionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The name of resource share.
      */
     resourceShareName?: pulumi.Input<string>;
     /**
-     * The owner of the Resource Share.
+     * The owner of resource share,  `Self` and `OtherAccounts`.
      */
     resourceShareOwner?: pulumi.Input<string>;
     /**
-     * The status of the Resource Share.
+     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     */
+    resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[]>;
+    /**
+     * The status of resource share.  `Active`,`Deleted` and `Deleting`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Resource user.
+     */
+    targets?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -126,7 +204,33 @@ export interface ResourceShareState {
  */
 export interface ResourceShareArgs {
     /**
+     * Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     */
+    allowExternalTargets?: pulumi.Input<boolean>;
+    /**
+     * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     */
+    permissionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The name of resource share.
      */
     resourceShareName: pulumi.Input<string>;
+    /**
+     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     */
+    resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[]>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Resource user.
+     */
+    targets?: pulumi.Input<pulumi.Input<string>[]>;
 }

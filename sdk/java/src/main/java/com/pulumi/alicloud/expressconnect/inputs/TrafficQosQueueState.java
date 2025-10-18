@@ -18,8 +18,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     /**
      * QoS queue bandwidth percentage.
      * 
-     * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-     * - When the QoS queue type is **Default**, this field is &#34;-&#34;.
+     * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+     * - When the QoS queue type is `Default`, this field is &#34;-&#34;.
      * 
      */
     @Import(name="bandwidthPercent")
@@ -28,8 +28,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     /**
      * @return QoS queue bandwidth percentage.
      * 
-     * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-     * - When the QoS queue type is **Default**, this field is &#34;-&#34;.
+     * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+     * - When the QoS queue type is `Default`, this field is &#34;-&#34;.
      * 
      */
     public Optional<Output<String>> bandwidthPercent() {
@@ -37,14 +37,14 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The QoS policy ID.
+     * The ID of the QoS policy.
      * 
      */
     @Import(name="qosId")
     private @Nullable Output<String> qosId;
 
     /**
-     * @return The QoS policy ID.
+     * @return The ID of the QoS policy.
      * 
      */
     public Optional<Output<String>> qosId() {
@@ -52,14 +52,16 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The description of the QoS queue.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The description of the QoS queue.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="queueDescription")
     private @Nullable Output<String> queueDescription;
 
     /**
-     * @return The description of the QoS queue.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The description of the QoS queue.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> queueDescription() {
@@ -67,14 +69,14 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The QoS queue ID.
+     * The ID of the QoS queue.
      * 
      */
     @Import(name="queueId")
     private @Nullable Output<String> queueId;
 
     /**
-     * @return The QoS queue ID.
+     * @return The ID of the QoS queue.
      * 
      */
     public Optional<Output<String>> queueId() {
@@ -82,14 +84,16 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the QoS queue.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The name of the QoS queue.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="queueName")
     private @Nullable Output<String> queueName;
 
     /**
-     * @return The name of the QoS queue.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The name of the QoS queue.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> queueName() {
@@ -98,9 +102,10 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
 
     /**
      * QoS queue type, value:
-     * - **High**: High priority queue.
-     * - **Medium**: Normal priority queue.
-     * - **Default**: the Default priority queue.
+     * - `High`: High priority queue.
+     * - `Medium`: Normal priority queue.
+     * - `Default`: the Default priority queue.
+     * 
      * &gt; **NOTE:**  Default priority queue cannot be created.
      * 
      */
@@ -109,9 +114,10 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return QoS queue type, value:
-     * - **High**: High priority queue.
-     * - **Medium**: Normal priority queue.
-     * - **Default**: the Default priority queue.
+     * - `High`: High priority queue.
+     * - `Medium`: Normal priority queue.
+     * - `Default`: the Default priority queue.
+     * 
      * &gt; **NOTE:**  Default priority queue cannot be created.
      * 
      */
@@ -120,14 +126,14 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -167,8 +173,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         /**
          * @param bandwidthPercent QoS queue bandwidth percentage.
          * 
-         * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-         * - When the QoS queue type is **Default**, this field is &#34;-&#34;.
+         * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+         * - When the QoS queue type is `Default`, this field is &#34;-&#34;.
          * 
          * @return builder
          * 
@@ -181,8 +187,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         /**
          * @param bandwidthPercent QoS queue bandwidth percentage.
          * 
-         * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-         * - When the QoS queue type is **Default**, this field is &#34;-&#34;.
+         * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+         * - When the QoS queue type is `Default`, this field is &#34;-&#34;.
          * 
          * @return builder
          * 
@@ -192,7 +198,7 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param qosId The QoS policy ID.
+         * @param qosId The ID of the QoS policy.
          * 
          * @return builder
          * 
@@ -203,7 +209,7 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param qosId The QoS policy ID.
+         * @param qosId The ID of the QoS policy.
          * 
          * @return builder
          * 
@@ -213,7 +219,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param queueDescription The description of the QoS queue.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param queueDescription The description of the QoS queue.
+         * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -224,7 +231,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param queueDescription The description of the QoS queue.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param queueDescription The description of the QoS queue.
+         * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -234,7 +242,7 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param queueId The QoS queue ID.
+         * @param queueId The ID of the QoS queue.
          * 
          * @return builder
          * 
@@ -245,7 +253,7 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param queueId The QoS queue ID.
+         * @param queueId The ID of the QoS queue.
          * 
          * @return builder
          * 
@@ -255,7 +263,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param queueName The name of the QoS queue.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param queueName The name of the QoS queue.
+         * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -266,7 +275,8 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param queueName The name of the QoS queue.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param queueName The name of the QoS queue.
+         * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -277,9 +287,10 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param queueType QoS queue type, value:
-         * - **High**: High priority queue.
-         * - **Medium**: Normal priority queue.
-         * - **Default**: the Default priority queue.
+         * - `High`: High priority queue.
+         * - `Medium`: Normal priority queue.
+         * - `Default`: the Default priority queue.
+         * 
          * &gt; **NOTE:**  Default priority queue cannot be created.
          * 
          * @return builder
@@ -292,9 +303,10 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param queueType QoS queue type, value:
-         * - **High**: High priority queue.
-         * - **Medium**: Normal priority queue.
-         * - **Default**: the Default priority queue.
+         * - `High`: High priority queue.
+         * - `Medium`: Normal priority queue.
+         * - `Default`: the Default priority queue.
+         * 
          * &gt; **NOTE:**  Default priority queue cannot be created.
          * 
          * @return builder
@@ -305,7 +317,7 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -316,7 +328,7 @@ public final class TrafficQosQueueState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 

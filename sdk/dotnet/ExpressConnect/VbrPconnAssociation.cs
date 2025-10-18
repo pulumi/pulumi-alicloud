@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// <summary>
     /// Provides a Express Connect Vbr Pconn Association resource.
     /// 
+    /// VBR multi-pconn Association.
+    /// 
     /// For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
@@ -74,22 +76,20 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Express Connect Vbr Pconn Association can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;VbrId&gt;:&lt;PhysicalConnectionId&gt;
+    /// $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;vbr_id&gt;:&lt;physical_connection_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation")]
     public partial class VbrPconnAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The circuit code provided by the operator for the physical connection.
+        /// (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
         /// </summary>
         [Output("circuitCode")]
         public Output<string> CircuitCode { get; private set; } = null!;
 
         /// <summary>
         /// Whether IPv6 is enabled. Value:
-        /// - **true**: on.
-        /// - **false** (default): Off.
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool> EnableIpv6 { get; private set; } = null!;
@@ -107,25 +107,31 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string?> LocalIpv6GatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+        /// The client IP address of the VBR instance.
+        /// - This attribute only allows the VBR owner to specify or modify.
+        /// - Required when creating a VBR instance for the physical connection owner.
         /// </summary>
         [Output("peerGatewayIp")]
         public Output<string?> PeerGatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+        /// The IPv6 address of the client side of the VBR instance.
+        /// - This attribute only allows the VBR owner to specify or modify.
+        /// - Required when creating a VBR instance for the physical connection owner.
         /// </summary>
         [Output("peerIpv6GatewayIp")]
         public Output<string?> PeerIpv6GatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+        /// Two IPv6 addresses must be in the same subnet.
         /// </summary>
         [Output("peeringIpv6SubnetMask")]
         public Output<string?> PeeringIpv6SubnetMask { get; private set; } = null!;
 
         /// <summary>
-        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+        /// The two IP addresses must be in the same subnet.
         /// </summary>
         [Output("peeringSubnetMask")]
         public Output<string?> PeeringSubnetMask { get; private set; } = null!;
@@ -137,7 +143,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> PhysicalConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -149,7 +155,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> VbrId { get; private set; } = null!;
 
         /// <summary>
-        /// VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+        /// VLAN ID of the VBR. Valid values: **0 to 2999**.
+        /// 
+        /// &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
         /// </summary>
         [Output("vlanId")]
         public Output<int> VlanId { get; private set; } = null!;
@@ -202,8 +210,6 @@ namespace Pulumi.AliCloud.ExpressConnect
     {
         /// <summary>
         /// Whether IPv6 is enabled. Value:
-        /// - **true**: on.
-        /// - **false** (default): Off.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
@@ -221,25 +227,31 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? LocalIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+        /// The client IP address of the VBR instance.
+        /// - This attribute only allows the VBR owner to specify or modify.
+        /// - Required when creating a VBR instance for the physical connection owner.
         /// </summary>
         [Input("peerGatewayIp")]
         public Input<string>? PeerGatewayIp { get; set; }
 
         /// <summary>
-        /// The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+        /// The IPv6 address of the client side of the VBR instance.
+        /// - This attribute only allows the VBR owner to specify or modify.
+        /// - Required when creating a VBR instance for the physical connection owner.
         /// </summary>
         [Input("peerIpv6GatewayIp")]
         public Input<string>? PeerIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+        /// Two IPv6 addresses must be in the same subnet.
         /// </summary>
         [Input("peeringIpv6SubnetMask")]
         public Input<string>? PeeringIpv6SubnetMask { get; set; }
 
         /// <summary>
-        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+        /// The two IP addresses must be in the same subnet.
         /// </summary>
         [Input("peeringSubnetMask")]
         public Input<string>? PeeringSubnetMask { get; set; }
@@ -257,7 +269,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string> VbrId { get; set; } = null!;
 
         /// <summary>
-        /// VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+        /// VLAN ID of the VBR. Valid values: **0 to 2999**.
+        /// 
+        /// &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
         /// </summary>
         [Input("vlanId", required: true)]
         public Input<int> VlanId { get; set; } = null!;
@@ -271,15 +285,13 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class VbrPconnAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The circuit code provided by the operator for the physical connection.
+        /// (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
         /// </summary>
         [Input("circuitCode")]
         public Input<string>? CircuitCode { get; set; }
 
         /// <summary>
         /// Whether IPv6 is enabled. Value:
-        /// - **true**: on.
-        /// - **false** (default): Off.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
@@ -297,25 +309,31 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? LocalIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+        /// The client IP address of the VBR instance.
+        /// - This attribute only allows the VBR owner to specify or modify.
+        /// - Required when creating a VBR instance for the physical connection owner.
         /// </summary>
         [Input("peerGatewayIp")]
         public Input<string>? PeerGatewayIp { get; set; }
 
         /// <summary>
-        /// The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+        /// The IPv6 address of the client side of the VBR instance.
+        /// - This attribute only allows the VBR owner to specify or modify.
+        /// - Required when creating a VBR instance for the physical connection owner.
         /// </summary>
         [Input("peerIpv6GatewayIp")]
         public Input<string>? PeerIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+        /// Two IPv6 addresses must be in the same subnet.
         /// </summary>
         [Input("peeringIpv6SubnetMask")]
         public Input<string>? PeeringIpv6SubnetMask { get; set; }
 
         /// <summary>
-        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+        /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+        /// The two IP addresses must be in the same subnet.
         /// </summary>
         [Input("peeringSubnetMask")]
         public Input<string>? PeeringSubnetMask { get; set; }
@@ -327,7 +345,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? PhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -339,7 +357,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? VbrId { get; set; }
 
         /// <summary>
-        /// VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+        /// VLAN ID of the VBR. Valid values: **0 to 2999**.
+        /// 
+        /// &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

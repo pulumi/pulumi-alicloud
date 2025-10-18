@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
  *
  * > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_etl.
- * Refer to details.
+ * [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
  *
  * > **NOTE:** Available since v1.120.0.
  *
@@ -151,7 +151,7 @@ export class Etl extends pulumi.CustomResource {
      */
     declare public readonly etlName: pulumi.Output<string>;
     /**
-     * Target logstore configuration for delivery after data processing.
+     * Target logstore configuration for delivery after data processing. See `etlSinks` below.
      */
     declare public readonly etlSinks: pulumi.Output<outputs.log.EtlEtlSink[]>;
     /**
@@ -178,6 +178,10 @@ export class Etl extends pulumi.CustomResource {
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
     declare public readonly kmsEncryptionAccessKeySecretContext: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The language of the etl job.
+     */
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * ETL job last modified time.
      */
@@ -245,6 +249,7 @@ export class Etl extends pulumi.CustomResource {
             resourceInputs["kmsEncryptedAccessKeySecret"] = state?.kmsEncryptedAccessKeySecret;
             resourceInputs["kmsEncryptionAccessKeyIdContext"] = state?.kmsEncryptionAccessKeyIdContext;
             resourceInputs["kmsEncryptionAccessKeySecretContext"] = state?.kmsEncryptionAccessKeySecretContext;
+            resourceInputs["lang"] = state?.lang;
             resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
             resourceInputs["logstore"] = state?.logstore;
             resourceInputs["parameters"] = state?.parameters;
@@ -288,6 +293,7 @@ export class Etl extends pulumi.CustomResource {
             resourceInputs["kmsEncryptedAccessKeySecret"] = args?.kmsEncryptedAccessKeySecret;
             resourceInputs["kmsEncryptionAccessKeyIdContext"] = args?.kmsEncryptionAccessKeyIdContext;
             resourceInputs["kmsEncryptionAccessKeySecretContext"] = args?.kmsEncryptionAccessKeySecretContext;
+            resourceInputs["lang"] = args?.lang;
             resourceInputs["lastModifiedTime"] = args?.lastModifiedTime;
             resourceInputs["logstore"] = args?.logstore;
             resourceInputs["parameters"] = args?.parameters;
@@ -335,7 +341,7 @@ export interface EtlState {
      */
     etlName?: pulumi.Input<string>;
     /**
-     * Target logstore configuration for delivery after data processing.
+     * Target logstore configuration for delivery after data processing. See `etlSinks` below.
      */
     etlSinks?: pulumi.Input<pulumi.Input<inputs.log.EtlEtlSink>[]>;
     /**
@@ -362,6 +368,10 @@ export interface EtlState {
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
     kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The language of the etl job.
+     */
+    lang?: pulumi.Input<string>;
     /**
      * ETL job last modified time.
      */
@@ -433,7 +443,7 @@ export interface EtlArgs {
      */
     etlName: pulumi.Input<string>;
     /**
-     * Target logstore configuration for delivery after data processing.
+     * Target logstore configuration for delivery after data processing. See `etlSinks` below.
      */
     etlSinks: pulumi.Input<pulumi.Input<inputs.log.EtlEtlSink>[]>;
     /**
@@ -460,6 +470,10 @@ export interface EtlArgs {
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
     kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The language of the etl job.
+     */
+    lang?: pulumi.Input<string>;
     /**
      * ETL job last modified time.
      */

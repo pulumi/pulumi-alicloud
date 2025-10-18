@@ -17,14 +17,31 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     public static final VbrHaState Empty = new VbrHaState();
 
     /**
-     * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The creation time of the VBR.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the VBR.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * @return The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +49,18 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -47,14 +68,14 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the other VBR in the VBR failover group.
+     * The instance ID of another VBR in The VBR switching group.
      * 
      */
     @Import(name="peerVbrId")
     private @Nullable Output<String> peerVbrId;
 
     /**
-     * @return The ID of the other VBR in the VBR failover group.
+     * @return The instance ID of another VBR in The VBR switching group.
      * 
      */
     public Optional<Output<String>> peerVbrId() {
@@ -62,14 +83,29 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The state of the VBR failover group.
+     * The ID of the region to which the VBR belongs.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region to which the VBR belongs.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * Status of VBR switching Group
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the VBR failover group.
+     * @return Status of VBR switching Group
      * 
      */
     public Optional<Output<String>> status() {
@@ -77,14 +113,14 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the VBR failover group.
+     * VBR switch group name.
      * 
      */
     @Import(name="vbrHaName")
     private @Nullable Output<String> vbrHaName;
 
     /**
-     * @return The name of the VBR failover group.
+     * @return VBR switch group name.
      * 
      */
     public Optional<Output<String>> vbrHaName() {
@@ -92,14 +128,14 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VBR instance.
+     * The VBR instance ID.
      * 
      */
     @Import(name="vbrId")
     private @Nullable Output<String> vbrId;
 
     /**
-     * @return The ID of the VBR instance.
+     * @return The VBR instance ID.
      * 
      */
     public Optional<Output<String>> vbrId() {
@@ -109,9 +145,11 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
     private VbrHaState() {}
 
     private VbrHaState(VbrHaState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.peerVbrId = $.peerVbrId;
+        this.regionId = $.regionId;
         this.status = $.status;
         this.vbrHaName = $.vbrHaName;
         this.vbrId = $.vbrId;
@@ -136,7 +174,29 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+         * @param createTime The creation time of the VBR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the VBR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the VBR switching group.
+         * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -147,7 +207,8 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+         * @param description The description of the VBR switching group.
+         * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -157,7 +218,9 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value range:
+         * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+         * - *false** (default): Send a normal request and start the instance directly after passing the check.
          * 
          * @return builder
          * 
@@ -168,7 +231,9 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value range:
+         * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+         * - *false** (default): Send a normal request and start the instance directly after passing the check.
          * 
          * @return builder
          * 
@@ -178,7 +243,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerVbrId The ID of the other VBR in the VBR failover group.
+         * @param peerVbrId The instance ID of another VBR in The VBR switching group.
          * 
          * @return builder
          * 
@@ -189,7 +254,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerVbrId The ID of the other VBR in the VBR failover group.
+         * @param peerVbrId The instance ID of another VBR in The VBR switching group.
          * 
          * @return builder
          * 
@@ -199,7 +264,28 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the VBR failover group.
+         * @param regionId The ID of the region to which the VBR belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region to which the VBR belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param status Status of VBR switching Group
          * 
          * @return builder
          * 
@@ -210,7 +296,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the VBR failover group.
+         * @param status Status of VBR switching Group
          * 
          * @return builder
          * 
@@ -220,7 +306,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vbrHaName The name of the VBR failover group.
+         * @param vbrHaName VBR switch group name.
          * 
          * @return builder
          * 
@@ -231,7 +317,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vbrHaName The name of the VBR failover group.
+         * @param vbrHaName VBR switch group name.
          * 
          * @return builder
          * 
@@ -241,7 +327,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vbrId The ID of the VBR instance.
+         * @param vbrId The VBR instance ID.
          * 
          * @return builder
          * 
@@ -252,7 +338,7 @@ public final class VbrHaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vbrId The ID of the VBR instance.
+         * @param vbrId The VBR instance ID.
          * 
          * @return builder
          * 

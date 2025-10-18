@@ -1588,6 +1588,10 @@ type EtlEtlSink struct {
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// Delivery target logstore access key secret.
 	AccessKeySecret *string `pulumi:"accessKeySecret"`
+	// LogETL datasets.
+	//
+	// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+	Datasets []string `pulumi:"datasets"`
 	// Delivery target logstore region.
 	Endpoint string `pulumi:"endpoint"`
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
@@ -1600,11 +1604,9 @@ type EtlEtlSink struct {
 	Name string `pulumi:"name"`
 	// The project where the target logstore is delivered.
 	Project string `pulumi:"project"`
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
 	RoleArn *string `pulumi:"roleArn"`
 	// ETL sinks type, the default value is AliyunLOG.
-	//
-	// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
 	Type *string `pulumi:"type"`
 }
 
@@ -1624,6 +1626,10 @@ type EtlEtlSinkArgs struct {
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	// Delivery target logstore access key secret.
 	AccessKeySecret pulumi.StringPtrInput `pulumi:"accessKeySecret"`
+	// LogETL datasets.
+	//
+	// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+	Datasets pulumi.StringArrayInput `pulumi:"datasets"`
 	// Delivery target logstore region.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
@@ -1636,11 +1642,9 @@ type EtlEtlSinkArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project where the target logstore is delivered.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// ETL sinks type, the default value is AliyunLOG.
-	//
-	// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1705,6 +1709,13 @@ func (o EtlEtlSinkOutput) AccessKeySecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtlEtlSink) *string { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
 }
 
+// LogETL datasets.
+//
+// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+func (o EtlEtlSinkOutput) Datasets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EtlEtlSink) []string { return v.Datasets }).(pulumi.StringArrayOutput)
+}
+
 // Delivery target logstore region.
 func (o EtlEtlSinkOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlEtlSink) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -1735,14 +1746,12 @@ func (o EtlEtlSinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlEtlSink) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
 func (o EtlEtlSinkOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtlEtlSink) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
 // ETL sinks type, the default value is AliyunLOG.
-//
-// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
 func (o EtlEtlSinkOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtlEtlSink) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

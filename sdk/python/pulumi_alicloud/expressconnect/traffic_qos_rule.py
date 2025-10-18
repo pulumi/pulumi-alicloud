@@ -35,56 +35,62 @@ class TrafficQosRuleArgs:
                  src_port_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosRule resource.
-        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         :param pulumi.Input[_builtins.str] protocol: QoS rule protocol type, value:
-               - **ALL**
+               - `ALL`
                - **ICMP(IPv4)**
                - **ICMPv6(IPv6)* *
-               - **TCP**
-               - **UDP**
-               - **GRE**
-               - **SSH**
-               - **Telnet**
-               - **HTTP**
-               - **HTTPS**
+               - `TCP`
+               - `UDP`
+               - `GRE`
+               - `SSH`
+               - `Telnet`
+               - `HTTP`
+               - `HTTPS`
                - **MS SQL**
-               - **Oracle**
-               - **MySql**
-               - **RDP**
-               - **PostgreSQL**
-               - **Redis**.
+               - `Oracle`
+               - `MySql`
+               - `RDP`
+               - `PostgreSQL`
+               - `Redis`
         :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
         :param pulumi.Input[_builtins.str] queue_id: The QoS queue ID.
         :param pulumi.Input[_builtins.str] dst_cidr: The traffic of the QoS rule matches the Destination IPv4 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] dst_ipv6_cidr: The QoS rule traffic matches the Destination IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-               - **ALL**:-1/-1, not editable.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+               - `ALL`:-1/-1, not editable.
                - **ICMP(IPv4)**:-1/-1, non-editable.
                - **ICMPv6(IPv6)**:-1/-1, non-editable.
-               - **TCP**:-1/-1, editable.
-               - **UDP**:-1/-1, editable.
-               - **GRE**:-1/-1, not editable.
-               - **SSH**:22/22, not editable.
-               - **Telnet**:23/23, not editable.
-               - **HTTP**:80/80, non-editable.
-               - **HTTPS**:443/443, which cannot be edited.
+               - `TCP`:-1/-1, editable.
+               - `UDP`:-1/-1, editable.
+               - `GRE`:-1/-1, not editable.
+               - `SSH`:22/22, not editable.
+               - `Telnet`:23/23, not editable.
+               - `HTTP`:80/80, non-editable.
+               - `HTTPS`:443/443, which cannot be edited.
                - **MS SQL**:1443/1443, which cannot be edited.
-               - **Oracle**:1521/1521, non-editable.
-               - **MySql**:3306/3306, non-editable.
-               - **RDP**:3389/3389, non-editable.
-               - **PostgreSQL**:5432/5432, non-editable.
-               - **Redis**:6379/6379, non-editable.
-        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
-        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
-        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+               - `Oracle`:1521/1521, non-editable.
+               - `MySql`:3306/3306, non-editable.
+               - `RDP`:3389/3389, non-editable.
+               - `PostgreSQL`:5432/5432, non-editable.
+               - `Redis`:6379/6379, non-editable.
+        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
+        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
+        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] src_cidr: The QoS rule traffic matches the source IPv4 CIDR block.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] src_ipv6_cidr: The QoS rule traffic matches the source IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "protocol", protocol)
@@ -115,7 +121,7 @@ class TrafficQosRuleArgs:
     @pulumi.getter
     def priority(self) -> pulumi.Input[_builtins.int]:
         """
-        QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         """
         return pulumi.get(self, "priority")
 
@@ -128,22 +134,22 @@ class TrafficQosRuleArgs:
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
         QoS rule protocol type, value:
-        - **ALL**
+        - `ALL`
         - **ICMP(IPv4)**
         - **ICMPv6(IPv6)* *
-        - **TCP**
-        - **UDP**
-        - **GRE**
-        - **SSH**
-        - **Telnet**
-        - **HTTP**
-        - **HTTPS**
+        - `TCP`
+        - `UDP`
+        - `GRE`
+        - `SSH`
+        - `Telnet`
+        - `HTTP`
+        - `HTTPS`
         - **MS SQL**
-        - **Oracle**
-        - **MySql**
-        - **RDP**
-        - **PostgreSQL**
-        - **Redis**.
+        - `Oracle`
+        - `MySql`
+        - `RDP`
+        - `PostgreSQL`
+        - `Redis`
         """
         return pulumi.get(self, "protocol")
 
@@ -180,7 +186,8 @@ class TrafficQosRuleArgs:
     def dst_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The traffic of the QoS rule matches the Destination IPv4 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         """
         return pulumi.get(self, "dst_cidr")
 
@@ -193,7 +200,8 @@ class TrafficQosRuleArgs:
     def dst_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The QoS rule traffic matches the Destination IPv6 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         """
         return pulumi.get(self, "dst_ipv6_cidr")
 
@@ -205,23 +213,23 @@ class TrafficQosRuleArgs:
     @pulumi.getter(name="dstPortRange")
     def dst_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-        - **ALL**:-1/-1, not editable.
+        QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+        - `ALL`:-1/-1, not editable.
         - **ICMP(IPv4)**:-1/-1, non-editable.
         - **ICMPv6(IPv6)**:-1/-1, non-editable.
-        - **TCP**:-1/-1, editable.
-        - **UDP**:-1/-1, editable.
-        - **GRE**:-1/-1, not editable.
-        - **SSH**:22/22, not editable.
-        - **Telnet**:23/23, not editable.
-        - **HTTP**:80/80, non-editable.
-        - **HTTPS**:443/443, which cannot be edited.
+        - `TCP`:-1/-1, editable.
+        - `UDP`:-1/-1, editable.
+        - `GRE`:-1/-1, not editable.
+        - `SSH`:22/22, not editable.
+        - `Telnet`:23/23, not editable.
+        - `HTTP`:80/80, non-editable.
+        - `HTTPS`:443/443, which cannot be edited.
         - **MS SQL**:1443/1443, which cannot be edited.
-        - **Oracle**:1521/1521, non-editable.
-        - **MySql**:3306/3306, non-editable.
-        - **RDP**:3389/3389, non-editable.
-        - **PostgreSQL**:5432/5432, non-editable.
-        - **Redis**:6379/6379, non-editable.
+        - `Oracle`:1521/1521, non-editable.
+        - `MySql`:3306/3306, non-editable.
+        - `RDP`:3389/3389, non-editable.
+        - `PostgreSQL`:5432/5432, non-editable.
+        - `Redis`:6379/6379, non-editable.
         """
         return pulumi.get(self, "dst_port_range")
 
@@ -233,7 +241,7 @@ class TrafficQosRuleArgs:
     @pulumi.getter(name="matchDscp")
     def match_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+        The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         """
         return pulumi.get(self, "match_dscp")
 
@@ -245,7 +253,7 @@ class TrafficQosRuleArgs:
     @pulumi.getter(name="remarkingDscp")
     def remarking_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+        Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         """
         return pulumi.get(self, "remarking_dscp")
 
@@ -257,7 +265,8 @@ class TrafficQosRuleArgs:
     @pulumi.getter(name="ruleDescription")
     def rule_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS rule.
+        The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "rule_description")
 
@@ -269,7 +278,8 @@ class TrafficQosRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS rule.
+        The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "rule_name")
 
@@ -282,7 +292,8 @@ class TrafficQosRuleArgs:
     def src_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv4 CIDR block.
-        > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         """
         return pulumi.get(self, "src_cidr")
 
@@ -295,7 +306,8 @@ class TrafficQosRuleArgs:
     def src_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv6 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         """
         return pulumi.get(self, "src_ipv6_cidr")
 
@@ -307,7 +319,7 @@ class TrafficQosRuleArgs:
     @pulumi.getter(name="srcPortRange")
     def src_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+        The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         return pulumi.get(self, "src_port_range")
 
@@ -338,56 +350,62 @@ class _TrafficQosRuleState:
         """
         Input properties used for looking up and filtering TrafficQosRule resources.
         :param pulumi.Input[_builtins.str] dst_cidr: The traffic of the QoS rule matches the Destination IPv4 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] dst_ipv6_cidr: The QoS rule traffic matches the Destination IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-               - **ALL**:-1/-1, not editable.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+               - `ALL`:-1/-1, not editable.
                - **ICMP(IPv4)**:-1/-1, non-editable.
                - **ICMPv6(IPv6)**:-1/-1, non-editable.
-               - **TCP**:-1/-1, editable.
-               - **UDP**:-1/-1, editable.
-               - **GRE**:-1/-1, not editable.
-               - **SSH**:22/22, not editable.
-               - **Telnet**:23/23, not editable.
-               - **HTTP**:80/80, non-editable.
-               - **HTTPS**:443/443, which cannot be edited.
+               - `TCP`:-1/-1, editable.
+               - `UDP`:-1/-1, editable.
+               - `GRE`:-1/-1, not editable.
+               - `SSH`:22/22, not editable.
+               - `Telnet`:23/23, not editable.
+               - `HTTP`:80/80, non-editable.
+               - `HTTPS`:443/443, which cannot be edited.
                - **MS SQL**:1443/1443, which cannot be edited.
-               - **Oracle**:1521/1521, non-editable.
-               - **MySql**:3306/3306, non-editable.
-               - **RDP**:3389/3389, non-editable.
-               - **PostgreSQL**:5432/5432, non-editable.
-               - **Redis**:6379/6379, non-editable.
-        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
-        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+               - `Oracle`:1521/1521, non-editable.
+               - `MySql`:3306/3306, non-editable.
+               - `RDP`:3389/3389, non-editable.
+               - `PostgreSQL`:5432/5432, non-editable.
+               - `Redis`:6379/6379, non-editable.
+        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
+        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         :param pulumi.Input[_builtins.str] protocol: QoS rule protocol type, value:
-               - **ALL**
+               - `ALL`
                - **ICMP(IPv4)**
                - **ICMPv6(IPv6)* *
-               - **TCP**
-               - **UDP**
-               - **GRE**
-               - **SSH**
-               - **Telnet**
-               - **HTTP**
-               - **HTTPS**
+               - `TCP`
+               - `UDP`
+               - `GRE`
+               - `SSH`
+               - `Telnet`
+               - `HTTP`
+               - `HTTPS`
                - **MS SQL**
-               - **Oracle**
-               - **MySql**
-               - **RDP**
-               - **PostgreSQL**
-               - **Redis**.
+               - `Oracle`
+               - `MySql`
+               - `RDP`
+               - `PostgreSQL`
+               - `Redis`
         :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
         :param pulumi.Input[_builtins.str] queue_id: The QoS queue ID.
-        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
-        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
+        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the QoS rule.
-        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] src_cidr: The QoS rule traffic matches the source IPv4 CIDR block.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] src_ipv6_cidr: The QoS rule traffic matches the source IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         :param pulumi.Input[_builtins.str] status: The status of the QoS rule. Value:
         """
         if dst_cidr is not None:
@@ -428,7 +446,8 @@ class _TrafficQosRuleState:
     def dst_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The traffic of the QoS rule matches the Destination IPv4 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         """
         return pulumi.get(self, "dst_cidr")
 
@@ -441,7 +460,8 @@ class _TrafficQosRuleState:
     def dst_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The QoS rule traffic matches the Destination IPv6 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         """
         return pulumi.get(self, "dst_ipv6_cidr")
 
@@ -453,23 +473,23 @@ class _TrafficQosRuleState:
     @pulumi.getter(name="dstPortRange")
     def dst_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-        - **ALL**:-1/-1, not editable.
+        QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+        - `ALL`:-1/-1, not editable.
         - **ICMP(IPv4)**:-1/-1, non-editable.
         - **ICMPv6(IPv6)**:-1/-1, non-editable.
-        - **TCP**:-1/-1, editable.
-        - **UDP**:-1/-1, editable.
-        - **GRE**:-1/-1, not editable.
-        - **SSH**:22/22, not editable.
-        - **Telnet**:23/23, not editable.
-        - **HTTP**:80/80, non-editable.
-        - **HTTPS**:443/443, which cannot be edited.
+        - `TCP`:-1/-1, editable.
+        - `UDP`:-1/-1, editable.
+        - `GRE`:-1/-1, not editable.
+        - `SSH`:22/22, not editable.
+        - `Telnet`:23/23, not editable.
+        - `HTTP`:80/80, non-editable.
+        - `HTTPS`:443/443, which cannot be edited.
         - **MS SQL**:1443/1443, which cannot be edited.
-        - **Oracle**:1521/1521, non-editable.
-        - **MySql**:3306/3306, non-editable.
-        - **RDP**:3389/3389, non-editable.
-        - **PostgreSQL**:5432/5432, non-editable.
-        - **Redis**:6379/6379, non-editable.
+        - `Oracle`:1521/1521, non-editable.
+        - `MySql`:3306/3306, non-editable.
+        - `RDP`:3389/3389, non-editable.
+        - `PostgreSQL`:5432/5432, non-editable.
+        - `Redis`:6379/6379, non-editable.
         """
         return pulumi.get(self, "dst_port_range")
 
@@ -481,7 +501,7 @@ class _TrafficQosRuleState:
     @pulumi.getter(name="matchDscp")
     def match_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+        The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         """
         return pulumi.get(self, "match_dscp")
 
@@ -493,7 +513,7 @@ class _TrafficQosRuleState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         """
         return pulumi.get(self, "priority")
 
@@ -506,22 +526,22 @@ class _TrafficQosRuleState:
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         QoS rule protocol type, value:
-        - **ALL**
+        - `ALL`
         - **ICMP(IPv4)**
         - **ICMPv6(IPv6)* *
-        - **TCP**
-        - **UDP**
-        - **GRE**
-        - **SSH**
-        - **Telnet**
-        - **HTTP**
-        - **HTTPS**
+        - `TCP`
+        - `UDP`
+        - `GRE`
+        - `SSH`
+        - `Telnet`
+        - `HTTP`
+        - `HTTPS`
         - **MS SQL**
-        - **Oracle**
-        - **MySql**
-        - **RDP**
-        - **PostgreSQL**
-        - **Redis**.
+        - `Oracle`
+        - `MySql`
+        - `RDP`
+        - `PostgreSQL`
+        - `Redis`
         """
         return pulumi.get(self, "protocol")
 
@@ -557,7 +577,7 @@ class _TrafficQosRuleState:
     @pulumi.getter(name="remarkingDscp")
     def remarking_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+        Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         """
         return pulumi.get(self, "remarking_dscp")
 
@@ -569,7 +589,8 @@ class _TrafficQosRuleState:
     @pulumi.getter(name="ruleDescription")
     def rule_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS rule.
+        The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "rule_description")
 
@@ -593,7 +614,8 @@ class _TrafficQosRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS rule.
+        The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "rule_name")
 
@@ -606,7 +628,8 @@ class _TrafficQosRuleState:
     def src_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv4 CIDR block.
-        > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         """
         return pulumi.get(self, "src_cidr")
 
@@ -619,7 +642,8 @@ class _TrafficQosRuleState:
     def src_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv6 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         """
         return pulumi.get(self, "src_ipv6_cidr")
 
@@ -631,7 +655,7 @@ class _TrafficQosRuleState:
     @pulumi.getter(name="srcPortRange")
     def src_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+        The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         return pulumi.get(self, "src_port_range")
 
@@ -674,7 +698,9 @@ class TrafficQosRule(pulumi.CustomResource):
                  src_port_range: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Express Connect Traffic Qos Rule resource. Express Connect Traffic QoS Rule.
+        Provides a Express Connect Traffic Qos Rule resource.
+
+        Express Connect Traffic QoS Rule.
 
         For information about Express Connect Traffic Qos Rule and how to use it, see [What is Traffic Qos Rule](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosRule).
 
@@ -732,55 +758,61 @@ class TrafficQosRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dst_cidr: The traffic of the QoS rule matches the Destination IPv4 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] dst_ipv6_cidr: The QoS rule traffic matches the Destination IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-               - **ALL**:-1/-1, not editable.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+               - `ALL`:-1/-1, not editable.
                - **ICMP(IPv4)**:-1/-1, non-editable.
                - **ICMPv6(IPv6)**:-1/-1, non-editable.
-               - **TCP**:-1/-1, editable.
-               - **UDP**:-1/-1, editable.
-               - **GRE**:-1/-1, not editable.
-               - **SSH**:22/22, not editable.
-               - **Telnet**:23/23, not editable.
-               - **HTTP**:80/80, non-editable.
-               - **HTTPS**:443/443, which cannot be edited.
+               - `TCP`:-1/-1, editable.
+               - `UDP`:-1/-1, editable.
+               - `GRE`:-1/-1, not editable.
+               - `SSH`:22/22, not editable.
+               - `Telnet`:23/23, not editable.
+               - `HTTP`:80/80, non-editable.
+               - `HTTPS`:443/443, which cannot be edited.
                - **MS SQL**:1443/1443, which cannot be edited.
-               - **Oracle**:1521/1521, non-editable.
-               - **MySql**:3306/3306, non-editable.
-               - **RDP**:3389/3389, non-editable.
-               - **PostgreSQL**:5432/5432, non-editable.
-               - **Redis**:6379/6379, non-editable.
-        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
-        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+               - `Oracle`:1521/1521, non-editable.
+               - `MySql`:3306/3306, non-editable.
+               - `RDP`:3389/3389, non-editable.
+               - `PostgreSQL`:5432/5432, non-editable.
+               - `Redis`:6379/6379, non-editable.
+        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
+        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         :param pulumi.Input[_builtins.str] protocol: QoS rule protocol type, value:
-               - **ALL**
+               - `ALL`
                - **ICMP(IPv4)**
                - **ICMPv6(IPv6)* *
-               - **TCP**
-               - **UDP**
-               - **GRE**
-               - **SSH**
-               - **Telnet**
-               - **HTTP**
-               - **HTTPS**
+               - `TCP`
+               - `UDP`
+               - `GRE`
+               - `SSH`
+               - `Telnet`
+               - `HTTP`
+               - `HTTPS`
                - **MS SQL**
-               - **Oracle**
-               - **MySql**
-               - **RDP**
-               - **PostgreSQL**
-               - **Redis**.
+               - `Oracle`
+               - `MySql`
+               - `RDP`
+               - `PostgreSQL`
+               - `Redis`
         :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
         :param pulumi.Input[_builtins.str] queue_id: The QoS queue ID.
-        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
-        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
+        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] src_cidr: The QoS rule traffic matches the source IPv4 CIDR block.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] src_ipv6_cidr: The QoS rule traffic matches the source IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         ...
     @overload
@@ -789,7 +821,9 @@ class TrafficQosRule(pulumi.CustomResource):
                  args: TrafficQosRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Express Connect Traffic Qos Rule resource. Express Connect Traffic QoS Rule.
+        Provides a Express Connect Traffic Qos Rule resource.
+
+        Express Connect Traffic QoS Rule.
 
         For information about Express Connect Traffic Qos Rule and how to use it, see [What is Traffic Qos Rule](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosRule).
 
@@ -940,56 +974,62 @@ class TrafficQosRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dst_cidr: The traffic of the QoS rule matches the Destination IPv4 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] dst_ipv6_cidr: The QoS rule traffic matches the Destination IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-               - **ALL**:-1/-1, not editable.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] dst_port_range: QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+               - `ALL`:-1/-1, not editable.
                - **ICMP(IPv4)**:-1/-1, non-editable.
                - **ICMPv6(IPv6)**:-1/-1, non-editable.
-               - **TCP**:-1/-1, editable.
-               - **UDP**:-1/-1, editable.
-               - **GRE**:-1/-1, not editable.
-               - **SSH**:22/22, not editable.
-               - **Telnet**:23/23, not editable.
-               - **HTTP**:80/80, non-editable.
-               - **HTTPS**:443/443, which cannot be edited.
+               - `TCP`:-1/-1, editable.
+               - `UDP`:-1/-1, editable.
+               - `GRE`:-1/-1, not editable.
+               - `SSH`:22/22, not editable.
+               - `Telnet`:23/23, not editable.
+               - `HTTP`:80/80, non-editable.
+               - `HTTPS`:443/443, which cannot be edited.
                - **MS SQL**:1443/1443, which cannot be edited.
-               - **Oracle**:1521/1521, non-editable.
-               - **MySql**:3306/3306, non-editable.
-               - **RDP**:3389/3389, non-editable.
-               - **PostgreSQL**:5432/5432, non-editable.
-               - **Redis**:6379/6379, non-editable.
-        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
-        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+               - `Oracle`:1521/1521, non-editable.
+               - `MySql`:3306/3306, non-editable.
+               - `RDP`:3389/3389, non-editable.
+               - `PostgreSQL`:5432/5432, non-editable.
+               - `Redis`:6379/6379, non-editable.
+        :param pulumi.Input[_builtins.int] match_dscp: The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
+        :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         :param pulumi.Input[_builtins.str] protocol: QoS rule protocol type, value:
-               - **ALL**
+               - `ALL`
                - **ICMP(IPv4)**
                - **ICMPv6(IPv6)* *
-               - **TCP**
-               - **UDP**
-               - **GRE**
-               - **SSH**
-               - **Telnet**
-               - **HTTP**
-               - **HTTPS**
+               - `TCP`
+               - `UDP`
+               - `GRE`
+               - `SSH`
+               - `Telnet`
+               - `HTTP`
+               - `HTTPS`
                - **MS SQL**
-               - **Oracle**
-               - **MySql**
-               - **RDP**
-               - **PostgreSQL**
-               - **Redis**.
+               - `Oracle`
+               - `MySql`
+               - `RDP`
+               - `PostgreSQL`
+               - `Redis`
         :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
         :param pulumi.Input[_builtins.str] queue_id: The QoS queue ID.
-        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
-        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.int] remarking_dscp: Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
+        :param pulumi.Input[_builtins.str] rule_description: The description of the QoS rule.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the QoS rule.
-        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] rule_name: The name of the QoS rule.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] src_cidr: The QoS rule traffic matches the source IPv4 CIDR block.
-               > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         :param pulumi.Input[_builtins.str] src_ipv6_cidr: The QoS rule traffic matches the source IPv6 network segment.
-               > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
-        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+               
+               > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+        :param pulumi.Input[_builtins.str] src_port_range: The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         :param pulumi.Input[_builtins.str] status: The status of the QoS rule. Value:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1019,7 +1059,8 @@ class TrafficQosRule(pulumi.CustomResource):
     def dst_cidr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The traffic of the QoS rule matches the Destination IPv4 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         """
         return pulumi.get(self, "dst_cidr")
 
@@ -1028,7 +1069,8 @@ class TrafficQosRule(pulumi.CustomResource):
     def dst_ipv6_cidr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the Destination IPv6 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         """
         return pulumi.get(self, "dst_ipv6_cidr")
 
@@ -1036,23 +1078,23 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter(name="dstPortRange")
     def dst_port_range(self) -> pulumi.Output[_builtins.str]:
         """
-        QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-        - **ALL**:-1/-1, not editable.
+        QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+        - `ALL`:-1/-1, not editable.
         - **ICMP(IPv4)**:-1/-1, non-editable.
         - **ICMPv6(IPv6)**:-1/-1, non-editable.
-        - **TCP**:-1/-1, editable.
-        - **UDP**:-1/-1, editable.
-        - **GRE**:-1/-1, not editable.
-        - **SSH**:22/22, not editable.
-        - **Telnet**:23/23, not editable.
-        - **HTTP**:80/80, non-editable.
-        - **HTTPS**:443/443, which cannot be edited.
+        - `TCP`:-1/-1, editable.
+        - `UDP`:-1/-1, editable.
+        - `GRE`:-1/-1, not editable.
+        - `SSH`:22/22, not editable.
+        - `Telnet`:23/23, not editable.
+        - `HTTP`:80/80, non-editable.
+        - `HTTPS`:443/443, which cannot be edited.
         - **MS SQL**:1443/1443, which cannot be edited.
-        - **Oracle**:1521/1521, non-editable.
-        - **MySql**:3306/3306, non-editable.
-        - **RDP**:3389/3389, non-editable.
-        - **PostgreSQL**:5432/5432, non-editable.
-        - **Redis**:6379/6379, non-editable.
+        - `Oracle`:1521/1521, non-editable.
+        - `MySql`:3306/3306, non-editable.
+        - `RDP`:3389/3389, non-editable.
+        - `PostgreSQL`:5432/5432, non-editable.
+        - `Redis`:6379/6379, non-editable.
         """
         return pulumi.get(self, "dst_port_range")
 
@@ -1060,7 +1102,7 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter(name="matchDscp")
     def match_dscp(self) -> pulumi.Output[_builtins.int]:
         """
-        The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+        The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         """
         return pulumi.get(self, "match_dscp")
 
@@ -1068,7 +1110,7 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[_builtins.int]:
         """
-        QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         """
         return pulumi.get(self, "priority")
 
@@ -1077,22 +1119,22 @@ class TrafficQosRule(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[_builtins.str]:
         """
         QoS rule protocol type, value:
-        - **ALL**
+        - `ALL`
         - **ICMP(IPv4)**
         - **ICMPv6(IPv6)* *
-        - **TCP**
-        - **UDP**
-        - **GRE**
-        - **SSH**
-        - **Telnet**
-        - **HTTP**
-        - **HTTPS**
+        - `TCP`
+        - `UDP`
+        - `GRE`
+        - `SSH`
+        - `Telnet`
+        - `HTTP`
+        - `HTTPS`
         - **MS SQL**
-        - **Oracle**
-        - **MySql**
-        - **RDP**
-        - **PostgreSQL**
-        - **Redis**.
+        - `Oracle`
+        - `MySql`
+        - `RDP`
+        - `PostgreSQL`
+        - `Redis`
         """
         return pulumi.get(self, "protocol")
 
@@ -1116,7 +1158,7 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter(name="remarkingDscp")
     def remarking_dscp(self) -> pulumi.Output[_builtins.int]:
         """
-        Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+        Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         """
         return pulumi.get(self, "remarking_dscp")
 
@@ -1124,7 +1166,8 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleDescription")
     def rule_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS rule.
+        The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "rule_description")
 
@@ -1140,7 +1183,8 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS rule.
+        The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "rule_name")
 
@@ -1149,7 +1193,8 @@ class TrafficQosRule(pulumi.CustomResource):
     def src_cidr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv4 CIDR block.
-        > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         """
         return pulumi.get(self, "src_cidr")
 
@@ -1158,7 +1203,8 @@ class TrafficQosRule(pulumi.CustomResource):
     def src_ipv6_cidr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv6 network segment.
-        > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+
+        > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         """
         return pulumi.get(self, "src_ipv6_cidr")
 
@@ -1166,7 +1212,7 @@ class TrafficQosRule(pulumi.CustomResource):
     @pulumi.getter(name="srcPortRange")
     def src_port_range(self) -> pulumi.Output[_builtins.str]:
         """
-        The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+        The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         return pulumi.get(self, "src_port_range")
 

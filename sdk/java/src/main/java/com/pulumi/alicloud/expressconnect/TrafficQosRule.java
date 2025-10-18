@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Express Connect Traffic Qos Rule resource. Express Connect Traffic QoS Rule.
+ * Provides a Express Connect Traffic Qos Rule resource.
+ * 
+ * Express Connect Traffic QoS Rule.
  * 
  * For information about Express Connect Traffic Qos Rule and how to use it, see [What is Traffic Qos Rule](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosRule).
  * 
@@ -114,7 +116,8 @@ import javax.annotation.Nullable;
 public class TrafficQosRule extends com.pulumi.resources.CustomResource {
     /**
      * The traffic of the QoS rule matches the Destination IPv4 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     @Export(name="dstCidr", refs={String.class}, tree="[0]")
@@ -122,7 +125,8 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The traffic of the QoS rule matches the Destination IPv4 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     public Output<Optional<String>> dstCidr() {
@@ -130,7 +134,8 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The QoS rule traffic matches the Destination IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     @Export(name="dstIpv6Cidr", refs={String.class}, tree="[0]")
@@ -138,81 +143,82 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The QoS rule traffic matches the Destination IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     public Output<Optional<String>> dstIpv6Cidr() {
         return Codegen.optional(this.dstIpv6Cidr);
     }
     /**
-     * QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-     * - **ALL**:-1/-1, not editable.
+     * QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+     * - `ALL`:-1/-1, not editable.
      * - **ICMP(IPv4)**:-1/-1, non-editable.
      * - **ICMPv6(IPv6)**:-1/-1, non-editable.
-     * - **TCP**:-1/-1, editable.
-     * - **UDP**:-1/-1, editable.
-     * - **GRE**:-1/-1, not editable.
-     * - **SSH**:22/22, not editable.
-     * - **Telnet**:23/23, not editable.
-     * - **HTTP**:80/80, non-editable.
-     * - **HTTPS**:443/443, which cannot be edited.
+     * - `TCP`:-1/-1, editable.
+     * - `UDP`:-1/-1, editable.
+     * - `GRE`:-1/-1, not editable.
+     * - `SSH`:22/22, not editable.
+     * - `Telnet`:23/23, not editable.
+     * - `HTTP`:80/80, non-editable.
+     * - `HTTPS`:443/443, which cannot be edited.
      * - **MS SQL**:1443/1443, which cannot be edited.
-     * - **Oracle**:1521/1521, non-editable.
-     * - **MySql**:3306/3306, non-editable.
-     * - **RDP**:3389/3389, non-editable.
-     * - **PostgreSQL**:5432/5432, non-editable.
-     * - **Redis**:6379/6379, non-editable.
+     * - `Oracle`:1521/1521, non-editable.
+     * - `MySql`:3306/3306, non-editable.
+     * - `RDP`:3389/3389, non-editable.
+     * - `PostgreSQL`:5432/5432, non-editable.
+     * - `Redis`:6379/6379, non-editable.
      * 
      */
     @Export(name="dstPortRange", refs={String.class}, tree="[0]")
     private Output<String> dstPortRange;
 
     /**
-     * @return QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-     * - **ALL**:-1/-1, not editable.
+     * @return QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+     * - `ALL`:-1/-1, not editable.
      * - **ICMP(IPv4)**:-1/-1, non-editable.
      * - **ICMPv6(IPv6)**:-1/-1, non-editable.
-     * - **TCP**:-1/-1, editable.
-     * - **UDP**:-1/-1, editable.
-     * - **GRE**:-1/-1, not editable.
-     * - **SSH**:22/22, not editable.
-     * - **Telnet**:23/23, not editable.
-     * - **HTTP**:80/80, non-editable.
-     * - **HTTPS**:443/443, which cannot be edited.
+     * - `TCP`:-1/-1, editable.
+     * - `UDP`:-1/-1, editable.
+     * - `GRE`:-1/-1, not editable.
+     * - `SSH`:22/22, not editable.
+     * - `Telnet`:23/23, not editable.
+     * - `HTTP`:80/80, non-editable.
+     * - `HTTPS`:443/443, which cannot be edited.
      * - **MS SQL**:1443/1443, which cannot be edited.
-     * - **Oracle**:1521/1521, non-editable.
-     * - **MySql**:3306/3306, non-editable.
-     * - **RDP**:3389/3389, non-editable.
-     * - **PostgreSQL**:5432/5432, non-editable.
-     * - **Redis**:6379/6379, non-editable.
+     * - `Oracle`:1521/1521, non-editable.
+     * - `MySql`:3306/3306, non-editable.
+     * - `RDP`:3389/3389, non-editable.
+     * - `PostgreSQL`:5432/5432, non-editable.
+     * - `Redis`:6379/6379, non-editable.
      * 
      */
     public Output<String> dstPortRange() {
         return this.dstPortRange;
     }
     /**
-     * The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+     * The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
      * 
      */
     @Export(name="matchDscp", refs={Integer.class}, tree="[0]")
     private Output<Integer> matchDscp;
 
     /**
-     * @return The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+     * @return The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
      * 
      */
     public Output<Integer> matchDscp() {
         return this.matchDscp;
     }
     /**
-     * QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+     * QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+     * @return QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      * 
      */
     public Output<Integer> priority() {
@@ -220,22 +226,22 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * QoS rule protocol type, value:
-     * - **ALL**
+     * - `ALL`
      * - **ICMP(IPv4)**
      * - **ICMPv6(IPv6)* *
-     * - **TCP**
-     * - **UDP**
-     * - **GRE**
-     * - **SSH**
-     * - **Telnet**
-     * - **HTTP**
-     * - **HTTPS**
+     * - `TCP`
+     * - `UDP`
+     * - `GRE`
+     * - `SSH`
+     * - `Telnet`
+     * - `HTTP`
+     * - `HTTPS`
      * - **MS SQL**
-     * - **Oracle**
-     * - **MySql**
-     * - **RDP**
-     * - **PostgreSQL**
-     * - **Redis**.
+     * - `Oracle`
+     * - `MySql`
+     * - `RDP`
+     * - `PostgreSQL`
+     * - `Redis`
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
@@ -243,22 +249,22 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return QoS rule protocol type, value:
-     * - **ALL**
+     * - `ALL`
      * - **ICMP(IPv4)**
      * - **ICMPv6(IPv6)* *
-     * - **TCP**
-     * - **UDP**
-     * - **GRE**
-     * - **SSH**
-     * - **Telnet**
-     * - **HTTP**
-     * - **HTTPS**
+     * - `TCP`
+     * - `UDP`
+     * - `GRE`
+     * - `SSH`
+     * - `Telnet`
+     * - `HTTP`
+     * - `HTTPS`
      * - **MS SQL**
-     * - **Oracle**
-     * - **MySql**
-     * - **RDP**
-     * - **PostgreSQL**
-     * - **Redis**.
+     * - `Oracle`
+     * - `MySql`
+     * - `RDP`
+     * - `PostgreSQL`
+     * - `Redis`
      * 
      */
     public Output<String> protocol() {
@@ -293,28 +299,30 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
         return this.queueId;
     }
     /**
-     * Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+     * Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
      * 
      */
     @Export(name="remarkingDscp", refs={Integer.class}, tree="[0]")
     private Output<Integer> remarkingDscp;
 
     /**
-     * @return Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+     * @return Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
      * 
      */
     public Output<Integer> remarkingDscp() {
         return this.remarkingDscp;
     }
     /**
-     * The description of the QoS rule.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The description of the QoS rule.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="ruleDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleDescription;
 
     /**
-     * @return The description of the QoS rule.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The description of the QoS rule.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> ruleDescription() {
@@ -335,14 +343,16 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
         return this.ruleId;
     }
     /**
-     * The name of the QoS rule.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The name of the QoS rule.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return The name of the QoS rule.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The name of the QoS rule.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> ruleName() {
@@ -350,7 +360,8 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The QoS rule traffic matches the source IPv4 CIDR block.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     @Export(name="srcCidr", refs={String.class}, tree="[0]")
@@ -358,7 +369,8 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The QoS rule traffic matches the source IPv4 CIDR block.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     public Output<Optional<String>> srcCidr() {
@@ -366,7 +378,8 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The QoS rule traffic matches the source IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     @Export(name="srcIpv6Cidr", refs={String.class}, tree="[0]")
@@ -374,21 +387,22 @@ public class TrafficQosRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The QoS rule traffic matches the source IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     public Output<Optional<String>> srcIpv6Cidr() {
         return Codegen.optional(this.srcIpv6Cidr);
     }
     /**
-     * The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+     * The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      * 
      */
     @Export(name="srcPortRange", refs={String.class}, tree="[0]")
     private Output<String> srcPortRange;
 
     /**
-     * @return The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+     * @return The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      * 
      */
     public Output<String> srcPortRange() {

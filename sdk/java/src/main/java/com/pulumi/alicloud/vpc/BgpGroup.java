@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Bgp Group resource.
+ * Provides a Express Connect Bgp Group resource.
  * 
- * For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+ * For information about Express Connect Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
  * 
  * &gt; **NOTE:** Available since v1.152.0.
  * 
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Bgp Group can be imported using the id, e.g.
+ * Express Connect Bgp Group can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example &lt;id&gt;
@@ -118,98 +118,162 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authKey);
     }
     /**
-     * The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="bgpGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bgpGroupName;
 
     /**
-     * @return The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * @return The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<Optional<String>> bgpGroupName() {
         return Codegen.optional(this.bgpGroupName);
     }
     /**
-     * The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * Specifies whether to clear the secret key. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="clearAuthKey", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> clearAuthKey;
+
+    /**
+     * @return Specifies whether to clear the secret key. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> clearAuthKey() {
+        return Codegen.optional(this.clearAuthKey);
+    }
+    /**
+     * The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * @return The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+     * The IP version. Valid values:
+     * - `IPv4`: This is the default value.
+     * - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+     * 
+     */
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
+    private Output<String> ipVersion;
+
+    /**
+     * @return The IP version. Valid values:
+     * - `IPv4`: This is the default value.
+     * - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+     * 
+     */
+    public Output<String> ipVersion() {
+        return this.ipVersion;
+    }
+    /**
+     * Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
      * 
      */
     @Export(name="isFakeAsn", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFakeAsn;
 
     /**
-     * @return The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+     * @return Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
      * 
      */
     public Output<Boolean> isFakeAsn() {
         return this.isFakeAsn;
     }
     /**
-     * The AS number on the Alibaba Cloud side.
+     * The custom ASN on the Alibaba Cloud side. Valid values:
      * 
      */
     @Export(name="localAsn", refs={Integer.class}, tree="[0]")
     private Output<Integer> localAsn;
 
     /**
-     * @return The AS number on the Alibaba Cloud side.
+     * @return The custom ASN on the Alibaba Cloud side. Valid values:
      * 
      */
     public Output<Integer> localAsn() {
         return this.localAsn;
     }
     /**
-     * The AS number of the BGP peer.
+     * The ASN of the gateway device in the data center.
      * 
      */
     @Export(name="peerAsn", refs={Integer.class}, tree="[0]")
     private Output<Integer> peerAsn;
 
     /**
-     * @return The AS number of the BGP peer.
+     * @return The ASN of the gateway device in the data center.
      * 
      */
     public Output<Integer> peerAsn() {
         return this.peerAsn;
     }
     /**
-     * The ID of the VBR.
+     * The Region ID of the BGP group.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The Region ID of the BGP group.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The maximum number of routes supported by a BGP peer. Default value: 110.
+     * 
+     */
+    @Export(name="routeLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> routeLimit;
+
+    /**
+     * @return The maximum number of routes supported by a BGP peer. Default value: 110.
+     * 
+     */
+    public Output<Integer> routeLimit() {
+        return this.routeLimit;
+    }
+    /**
+     * The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return The ID of the VBR.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     public Output<String> routerId() {
         return this.routerId;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

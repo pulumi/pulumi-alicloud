@@ -53,7 +53,7 @@ class GetEnhancedNatAvailableZonesResult:
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
         """
-        (Optional) A list of available zones IDs by the enhanced NAT gateway.
+        A list of available zones IDs by the enhanced NAT gateway.
         """
         return pulumi.get(self, "ids")
 
@@ -88,7 +88,7 @@ def get_enhanced_nat_available_zones(output_file: Optional[_builtins.str] = None
     """
     This data source provides a list of available zones by the enhanced Nat Gateway.
 
-    > **NOTE:** Available since 1.102.0+.
+    > **NOTE:** Available since v1.102.0.
 
     ## Example Usage
 
@@ -118,7 +118,7 @@ def get_enhanced_nat_available_zones_output(output_file: Optional[pulumi.Input[O
     """
     This data source provides a list of available zones by the enhanced Nat Gateway.
 
-    > **NOTE:** Available since 1.102.0+.
+    > **NOTE:** Available since v1.102.0.
 
     ## Example Usage
 

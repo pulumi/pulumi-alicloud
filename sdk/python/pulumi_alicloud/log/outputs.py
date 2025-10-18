@@ -750,6 +750,7 @@ class EtlEtlSink(dict):
                  project: _builtins.str,
                  access_key_id: Optional[_builtins.str] = None,
                  access_key_secret: Optional[_builtins.str] = None,
+                 datasets: Optional[Sequence[_builtins.str]] = None,
                  kms_encrypted_access_key_id: Optional[_builtins.str] = None,
                  kms_encrypted_access_key_secret: Optional[_builtins.str] = None,
                  role_arn: Optional[_builtins.str] = None,
@@ -761,12 +762,13 @@ class EtlEtlSink(dict):
         :param _builtins.str project: The project where the target logstore is delivered.
         :param _builtins.str access_key_id: Delivery target logstore access key id.
         :param _builtins.str access_key_secret: Delivery target logstore access key secret.
-        :param _builtins.str kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
-        :param _builtins.str kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
-        :param _builtins.str role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
-        :param _builtins.str type: ETL sinks type, the default value is AliyunLOG.
+        :param Sequence[_builtins.str] datasets: LogETL datasets.
                
                > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+        :param _builtins.str kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        :param _builtins.str kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        :param _builtins.str role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
+        :param _builtins.str type: ETL sinks type, the default value is AliyunLOG.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "logstore", logstore)
@@ -776,6 +778,8 @@ class EtlEtlSink(dict):
             pulumi.set(__self__, "access_key_id", access_key_id)
         if access_key_secret is not None:
             pulumi.set(__self__, "access_key_secret", access_key_secret)
+        if datasets is not None:
+            pulumi.set(__self__, "datasets", datasets)
         if kms_encrypted_access_key_id is not None:
             pulumi.set(__self__, "kms_encrypted_access_key_id", kms_encrypted_access_key_id)
         if kms_encrypted_access_key_secret is not None:
@@ -834,6 +838,16 @@ class EtlEtlSink(dict):
         return pulumi.get(self, "access_key_secret")
 
     @_builtins.property
+    @pulumi.getter
+    def datasets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        LogETL datasets.
+
+        > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+        """
+        return pulumi.get(self, "datasets")
+
+    @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeyId")
     def kms_encrypted_access_key_id(self) -> Optional[_builtins.str]:
         """
@@ -853,7 +867,7 @@ class EtlEtlSink(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[_builtins.str]:
         """
-        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
@@ -862,8 +876,6 @@ class EtlEtlSink(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         ETL sinks type, the default value is AliyunLOG.
-
-        > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         """
         return pulumi.get(self, "type")
 

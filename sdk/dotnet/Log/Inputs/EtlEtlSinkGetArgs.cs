@@ -44,6 +44,20 @@ namespace Pulumi.AliCloud.Log.Inputs
             }
         }
 
+        [Input("datasets")]
+        private InputList<string>? _datasets;
+
+        /// <summary>
+        /// LogETL datasets.
+        /// 
+        /// &gt; **Note:** `FromTime` and `ToTime` no modification allowed after successful creation.
+        /// </summary>
+        public InputList<string> Datasets
+        {
+            get => _datasets ?? (_datasets = new InputList<string>());
+            set => _datasets = value;
+        }
+
         /// <summary>
         /// Delivery target logstore region.
         /// </summary>
@@ -81,15 +95,13 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Sts role info under delivery target logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        /// Sts role info under delivery target logstore. `RoleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// ETL sinks type, the default value is AliyunLOG.
-        /// 
-        /// &gt; **Note:** `FromTime` and `ToTime` no modification allowed after successful creation.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

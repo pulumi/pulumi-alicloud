@@ -23,6 +23,9 @@ class ElasticityAssuranceArgs:
                  instance_type: pulumi.Input[_builtins.str],
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -33,10 +36,25 @@ class ElasticityAssuranceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ElasticityAssurance resource.
-        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         :param pulumi.Input[_builtins.str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+               - true
+               - false
+               
+               Default value: `false`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+               - Default value when `PeriodUnit` is set to Month: 1.
+               - Default value when `PeriodUnit` is set to Year: 12.
+               
+               > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] auto_renew_period_unit: Unit of duration. Value range:
+               - Month: Month
+               - Year: Year
+               
+               Default value: Year
         :param pulumi.Input[_builtins.str] description: Description of flexible guarantee service.
         :param pulumi.Input[_builtins.int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
                - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -53,6 +71,12 @@ class ElasticityAssuranceArgs:
         pulumi.set(__self__, "zone_ids", zone_ids)
         if assurance_times is not None:
             pulumi.set(__self__, "assurance_times", assurance_times)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if auto_renew_period_unit is not None:
+            pulumi.set(__self__, "auto_renew_period_unit", auto_renew_period_unit)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if period is not None:
@@ -74,7 +98,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="instanceAmount")
     def instance_amount(self) -> pulumi.Input[_builtins.int]:
         """
-        The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         """
         return pulumi.get(self, "instance_amount")
 
@@ -117,6 +141,54 @@ class ElasticityAssuranceArgs:
     @assurance_times.setter
     def assurance_times(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "assurance_times", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        - true
+        - false
+
+        Default value: `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        - Default value when `PeriodUnit` is set to Month: 1.
+        - Default value when `PeriodUnit` is set to Year: 12.
+
+        > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriodUnit")
+    def auto_renew_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unit of duration. Value range:
+        - Month: Month
+        - Year: Year
+
+        Default value: Year
+        """
+        return pulumi.get(self, "auto_renew_period_unit")
+
+    @auto_renew_period_unit.setter
+    def auto_renew_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auto_renew_period_unit", value)
 
     @_builtins.property
     @pulumi.getter
@@ -221,6 +293,9 @@ class ElasticityAssuranceArgs:
 class _ElasticityAssuranceState:
     def __init__(__self__, *,
                  assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  elasticity_assurance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  end_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -231,6 +306,7 @@ class _ElasticityAssuranceState:
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
                  private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -241,10 +317,25 @@ class _ElasticityAssuranceState:
         """
         Input properties used for looking up and filtering ElasticityAssurance resources.
         :param pulumi.Input[_builtins.str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+               - true
+               - false
+               
+               Default value: `false`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+               - Default value when `PeriodUnit` is set to Month: 1.
+               - Default value when `PeriodUnit` is set to Year: 12.
+               
+               > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] auto_renew_period_unit: Unit of duration. Value range:
+               - Month: Month
+               - Year: Year
+               
+               Default value: Year
         :param pulumi.Input[_builtins.str] description: Description of flexible guarantee service.
         :param pulumi.Input[_builtins.str] elasticity_assurance_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] end_time: Flexible guarantee service failure time.
-        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[_builtins.int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
@@ -253,6 +344,7 @@ class _ElasticityAssuranceState:
         :param pulumi.Input[_builtins.str] period_unit: Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
         :param pulumi.Input[_builtins.str] private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         :param pulumi.Input[_builtins.str] private_pool_options_name: The name of the flexible protection service.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.261.0) The region ID of the elasticity assurance.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] start_time: Flexible guarantee service effective time.
         :param pulumi.Input[_builtins.str] start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
@@ -263,6 +355,12 @@ class _ElasticityAssuranceState:
         """
         if assurance_times is not None:
             pulumi.set(__self__, "assurance_times", assurance_times)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if auto_renew_period_unit is not None:
+            pulumi.set(__self__, "auto_renew_period_unit", auto_renew_period_unit)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if elasticity_assurance_id is not None:
@@ -283,6 +381,8 @@ class _ElasticityAssuranceState:
             pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
         if private_pool_options_name is not None:
             pulumi.set(__self__, "private_pool_options_name", private_pool_options_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if start_time is not None:
@@ -309,6 +409,54 @@ class _ElasticityAssuranceState:
     @assurance_times.setter
     def assurance_times(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "assurance_times", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        - true
+        - false
+
+        Default value: `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        - Default value when `PeriodUnit` is set to Month: 1.
+        - Default value when `PeriodUnit` is set to Year: 12.
+
+        > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriodUnit")
+    def auto_renew_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unit of duration. Value range:
+        - Month: Month
+        - Year: Year
+
+        Default value: Year
+        """
+        return pulumi.get(self, "auto_renew_period_unit")
+
+    @auto_renew_period_unit.setter
+    def auto_renew_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auto_renew_period_unit", value)
 
     @_builtins.property
     @pulumi.getter
@@ -350,7 +498,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="instanceAmount")
     def instance_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         """
         return pulumi.get(self, "instance_amount")
 
@@ -431,6 +579,18 @@ class _ElasticityAssuranceState:
     @private_pool_options_name.setter
     def private_pool_options_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "private_pool_options_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.261.0) The region ID of the elasticity assurance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -524,6 +684,9 @@ class ElasticityAssurance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -537,9 +700,9 @@ class ElasticityAssurance(pulumi.CustomResource):
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a Ecs Elasticity Assurance resource.
+        Provides a ECS Elasticity Assurance resource.
 
-        For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
+        For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
 
         > **NOTE:** Available since v1.196.0.
 
@@ -551,14 +714,17 @@ class ElasticityAssurance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_get_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.c6")
         default_elasticity_assurance = alicloud.ecs.ElasticityAssurance("default",
             instance_amount=1,
             description="before",
-            zone_ids=[default_get_zones.zones[2].id],
-            private_pool_options_name="test_before",
+            zone_ids=[default_get_instance_types.instance_types[0].availability_zones[0]],
+            private_pool_options_name=name,
             period=1,
             private_pool_options_match_criteria="Open",
             instance_type=default_get_instance_types.instance_types[0].id,
@@ -569,7 +735,7 @@ class ElasticityAssurance(pulumi.CustomResource):
 
         ## Import
 
-        Ecs Elasticity Assurance can be imported using the id, e.g.
+        ECS Elasticity Assurance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
@@ -578,8 +744,23 @@ class ElasticityAssurance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+               - true
+               - false
+               
+               Default value: `false`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+               - Default value when `PeriodUnit` is set to Month: 1.
+               - Default value when `PeriodUnit` is set to Year: 12.
+               
+               > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] auto_renew_period_unit: Unit of duration. Value range:
+               - Month: Month
+               - Year: Year
+               
+               Default value: Year
         :param pulumi.Input[_builtins.str] description: Description of flexible guarantee service.
-        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[_builtins.int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
                - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -599,9 +780,9 @@ class ElasticityAssurance(pulumi.CustomResource):
                  args: ElasticityAssuranceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Ecs Elasticity Assurance resource.
+        Provides a ECS Elasticity Assurance resource.
 
-        For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
+        For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
 
         > **NOTE:** Available since v1.196.0.
 
@@ -613,14 +794,17 @@ class ElasticityAssurance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_get_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.c6")
         default_elasticity_assurance = alicloud.ecs.ElasticityAssurance("default",
             instance_amount=1,
             description="before",
-            zone_ids=[default_get_zones.zones[2].id],
-            private_pool_options_name="test_before",
+            zone_ids=[default_get_instance_types.instance_types[0].availability_zones[0]],
+            private_pool_options_name=name,
             period=1,
             private_pool_options_match_criteria="Open",
             instance_type=default_get_instance_types.instance_types[0].id,
@@ -631,7 +815,7 @@ class ElasticityAssurance(pulumi.CustomResource):
 
         ## Import
 
-        Ecs Elasticity Assurance can be imported using the id, e.g.
+        ECS Elasticity Assurance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
@@ -653,6 +837,9 @@ class ElasticityAssurance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -674,6 +861,9 @@ class ElasticityAssurance(pulumi.CustomResource):
             __props__ = ElasticityAssuranceArgs.__new__(ElasticityAssuranceArgs)
 
             __props__.__dict__["assurance_times"] = assurance_times
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["auto_renew_period_unit"] = auto_renew_period_unit
             __props__.__dict__["description"] = description
             if instance_amount is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_amount'")
@@ -694,6 +884,7 @@ class ElasticityAssurance(pulumi.CustomResource):
             __props__.__dict__["elasticity_assurance_id"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["instance_charge_type"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["start_time_type"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["used_assurance_times"] = None
@@ -708,6 +899,9 @@ class ElasticityAssurance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
+            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
+            auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             elasticity_assurance_id: Optional[pulumi.Input[_builtins.str]] = None,
             end_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -718,6 +912,7 @@ class ElasticityAssurance(pulumi.CustomResource):
             period_unit: Optional[pulumi.Input[_builtins.str]] = None,
             private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
             private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             start_time: Optional[pulumi.Input[_builtins.str]] = None,
             start_time_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -733,10 +928,25 @@ class ElasticityAssurance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+               - true
+               - false
+               
+               Default value: `false`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+               - Default value when `PeriodUnit` is set to Month: 1.
+               - Default value when `PeriodUnit` is set to Year: 12.
+               
+               > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        :param pulumi.Input[_builtins.str] auto_renew_period_unit: Unit of duration. Value range:
+               - Month: Month
+               - Year: Year
+               
+               Default value: Year
         :param pulumi.Input[_builtins.str] description: Description of flexible guarantee service.
         :param pulumi.Input[_builtins.str] elasticity_assurance_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] end_time: Flexible guarantee service failure time.
-        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[_builtins.int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
@@ -745,6 +955,7 @@ class ElasticityAssurance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] period_unit: Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
         :param pulumi.Input[_builtins.str] private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         :param pulumi.Input[_builtins.str] private_pool_options_name: The name of the flexible protection service.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.261.0) The region ID of the elasticity assurance.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] start_time: Flexible guarantee service effective time.
         :param pulumi.Input[_builtins.str] start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
@@ -758,6 +969,9 @@ class ElasticityAssurance(pulumi.CustomResource):
         __props__ = _ElasticityAssuranceState.__new__(_ElasticityAssuranceState)
 
         __props__.__dict__["assurance_times"] = assurance_times
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["auto_renew_period_unit"] = auto_renew_period_unit
         __props__.__dict__["description"] = description
         __props__.__dict__["elasticity_assurance_id"] = elasticity_assurance_id
         __props__.__dict__["end_time"] = end_time
@@ -768,6 +982,7 @@ class ElasticityAssurance(pulumi.CustomResource):
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["private_pool_options_match_criteria"] = private_pool_options_match_criteria
         __props__.__dict__["private_pool_options_name"] = private_pool_options_name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["start_time"] = start_time
         __props__.__dict__["start_time_type"] = start_time_type
@@ -784,6 +999,42 @@ class ElasticityAssurance(pulumi.CustomResource):
         The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         """
         return pulumi.get(self, "assurance_times")
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        - true
+        - false
+
+        Default value: `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        - Default value when `PeriodUnit` is set to Month: 1.
+        - Default value when `PeriodUnit` is set to Year: 12.
+
+        > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriodUnit")
+    def auto_renew_period_unit(self) -> pulumi.Output[_builtins.str]:
+        """
+        Unit of duration. Value range:
+        - Month: Month
+        - Year: Year
+
+        Default value: Year
+        """
+        return pulumi.get(self, "auto_renew_period_unit")
 
     @_builtins.property
     @pulumi.getter
@@ -813,7 +1064,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="instanceAmount")
     def instance_amount(self) -> pulumi.Output[_builtins.int]:
         """
-        The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         """
         return pulumi.get(self, "instance_amount")
 
@@ -868,8 +1119,16 @@ class ElasticityAssurance(pulumi.CustomResource):
         return pulumi.get(self, "private_pool_options_name")
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.261.0) The region ID of the elasticity assurance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the resource group.
         """

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a Express Connect Vbr Pconn Association resource.
  * 
+ * VBR multi-pconn Association.
+ * 
  * For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
  * 
  * &gt; **NOTE:** Available since v1.196.0.
@@ -98,21 +100,21 @@ import javax.annotation.Nullable;
  * Express Connect Vbr Pconn Association can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;VbrId&gt;:&lt;PhysicalConnectionId&gt;
+ * $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;vbr_id&gt;:&lt;physical_connection_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation")
 public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * The circuit code provided by the operator for the physical connection.
+     * (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      * 
      */
     @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output<String> circuitCode;
 
     /**
-     * @return The circuit code provided by the operator for the physical connection.
+     * @return (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      * 
      */
     public Output<String> circuitCode() {
@@ -120,8 +122,6 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
@@ -129,8 +129,6 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      * 
      */
     public Output<Boolean> enableIpv6() {
@@ -165,56 +163,68 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.localIpv6GatewayIp);
     }
     /**
-     * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     @Export(name="peerGatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerGatewayIp;
 
     /**
-     * @return The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * @return The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     public Output<Optional<String>> peerGatewayIp() {
         return Codegen.optional(this.peerGatewayIp);
     }
     /**
-     * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     @Export(name="peerIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerIpv6GatewayIp;
 
     /**
-     * @return The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * @return The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      * 
      */
     public Output<Optional<String>> peerIpv6GatewayIp() {
         return Codegen.optional(this.peerIpv6GatewayIp);
     }
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      * 
      */
     @Export(name="peeringIpv6SubnetMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeringIpv6SubnetMask;
 
     /**
-     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      * 
      */
     public Output<Optional<String>> peeringIpv6SubnetMask() {
         return Codegen.optional(this.peeringIpv6SubnetMask);
     }
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      * 
      */
     @Export(name="peeringSubnetMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeringSubnetMask;
 
     /**
-     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      * 
      */
     public Output<Optional<String>> peeringSubnetMask() {
@@ -235,14 +245,14 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
         return this.physicalConnectionId;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
@@ -263,14 +273,18 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
         return this.vbrId;
     }
     /**
-     * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * VLAN ID of the VBR. Valid values: **0 to 2999**.
+     * 
+     * &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      * 
      */
     @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**
-     * @return VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * @return VLAN ID of the VBR. Valid values: **0 to 2999**.
+     * 
+     * &gt; **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      * 
      */
     public Output<Integer> vlanId() {

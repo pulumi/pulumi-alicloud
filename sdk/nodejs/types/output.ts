@@ -11583,6 +11583,89 @@ export namespace cloudsso {
         status: string;
     }
 
+    export interface GetUserProvisioningEventsEvent {
+        /**
+         * Event content
+         */
+        content: string;
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * Processing policy when you delete a RAM user
+         */
+        deletionStrategy: string;
+        /**
+         * Directory ID
+         */
+        directoryId: string;
+        /**
+         * Conflict strategy
+         */
+        duplicationStrategy: string;
+        /**
+         * Number of manual retry failures
+         */
+        errorCount: number;
+        /**
+         * Error message for last failure
+         */
+        errorInfo: string;
+        /**
+         * Dead letter event ID
+         */
+        eventId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Last synchronization time
+         */
+        lastSyncTime: string;
+        /**
+         * User Provisioning body ID
+         */
+        principalId: string;
+        /**
+         * User Provisioning body name
+         */
+        principalName: string;
+        /**
+         * User Provisioning body type
+         */
+        principalType: string;
+        /**
+         * The type of the source action that triggered the event.
+         */
+        sourceType: string;
+        /**
+         * User Provisioning target ID
+         */
+        targetId: string;
+        /**
+         * User Provisioning target name
+         */
+        targetName: string;
+        /**
+         * RD path of User Provisioning target
+         */
+        targetPath: string;
+        /**
+         * User Provisioning target type
+         */
+        targetType: string;
+        /**
+         * Event update time
+         */
+        updateTime: string;
+        /**
+         * The ID of the User Provisioning.
+         */
+        userProvisioningId: string;
+    }
+
     export interface GetUsersUser {
         /**
          * The create time of the user.
@@ -32098,6 +32181,401 @@ export namespace esa {
         sourceType: string;
     }
 
+    export interface WafRuleConfig {
+        /**
+         * The action performed on requests that match the managed rule.
+         */
+        action: string;
+        /**
+         * Extended action configurations, including custom responses and bypass settings. See `actions` below.
+         */
+        actions: outputs.esa.WafRuleConfigActions;
+        /**
+         * Security mechanism to prevent apps from being repackaged. See `appPackage` below.
+         */
+        appPackage: outputs.esa.WafRuleConfigAppPackage;
+        /**
+         * Mobile app SDK-related configurations. See `appSdk` below.
+         */
+        appSdk?: outputs.esa.WafRuleConfigAppSdk;
+        /**
+         * The match expression used to evaluate incoming requests.
+         */
+        expression?: string;
+        /**
+         * The ID of the custom error page, which can be obtained by calling the ListPages operation.
+         */
+        id: number;
+        /**
+         * The ID of the managed rule group (deprecated).
+         */
+        managedGroupId: number;
+        /**
+         * The name of the managed list applied to this rule.
+         */
+        managedList?: string;
+        /**
+         * The managed rulesets referenced by this rule and their configurations. See `managedRulesets` below.
+         */
+        managedRulesets?: outputs.esa.WafRuleConfigManagedRuleset[];
+        /**
+         * The package name of an authorized application.
+         */
+        name: string;
+        /**
+         * Additional notes about this rule.
+         */
+        notes?: string;
+        /**
+         * Configuration of the rate limiting rule. See `rateLimit` below.
+         */
+        rateLimit?: outputs.esa.WafRuleConfigRateLimit;
+        /**
+         * The overall security protection level of WAF. See `securityLevel` below.
+         */
+        securityLevel?: outputs.esa.WafRuleConfigSecurityLevel;
+        /**
+         * Configuration items for token verification mechanisms.
+         */
+        sigchls?: string[];
+        /**
+         * The status of the managed rule: whether it is enabled or disabled.
+         */
+        status: string;
+        /**
+         * Configuration for the time schedule when the rule takes effect. See `timer` below.
+         */
+        timer?: outputs.esa.WafRuleConfigTimer;
+        /**
+         * The type category of the WAF rule.
+         */
+        type: string;
+        /**
+         * The value of the custom signature field used for validation.
+         */
+        value?: string;
+    }
+
+    export interface WafRuleConfigActions {
+        /**
+         * The skip configuration specified by the whitelist rule. See `bypass` below.
+         */
+        bypass: outputs.esa.WafRuleConfigActionsBypass;
+        response: outputs.esa.WafRuleConfigActionsResponse;
+    }
+
+    export interface WafRuleConfigActionsBypass {
+        /**
+         * The IDs of custom rules to skip.
+         */
+        customRules?: number[];
+        /**
+         * The IDs of specific managed rules to skip.
+         */
+        regularRules?: number[];
+        /**
+         * The types of managed rules to skip.
+         */
+        regularTypes?: string[];
+        /**
+         * The scope that is skipped when requests match conditions defined in the whitelist rule.
+         */
+        skip?: string;
+        /**
+         * The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+         */
+        tags?: string[];
+    }
+
+    export interface WafRuleConfigActionsResponse {
+        code: number;
+        /**
+         * The internal unique ID of the WAF rule.
+         */
+        id?: number;
+    }
+
+    export interface WafRuleConfigAppPackage {
+        /**
+         * Security mechanism to prevent apps from being repackaged. See `packageSigns` below.
+         */
+        packageSigns?: outputs.esa.WafRuleConfigAppPackagePackageSign[];
+    }
+
+    export interface WafRuleConfigAppPackagePackageSign {
+        name?: string;
+        /**
+         * The digital signature of a legitimate app package.
+         */
+        sign?: string;
+    }
+
+    export interface WafRuleConfigAppSdk {
+        /**
+         * Custom fields used for mobile app signature validation. See `customSign` below.
+         */
+        customSign?: outputs.esa.WafRuleConfigAppSdkCustomSign;
+        /**
+         * Indicates whether the custom signature field validation is enabled.
+         */
+        customSignStatus?: string;
+        /**
+         * Detected abnormal behaviors of the application.
+         */
+        featureAbnormals?: string[];
+    }
+
+    export interface WafRuleConfigAppSdkCustomSign {
+        /**
+         * The name of the custom signature field used for validation.
+         */
+        key?: string;
+        /**
+         * The value of the custom signature field used for validation.
+         */
+        value?: string;
+    }
+
+    export interface WafRuleConfigManagedRuleset {
+        action?: string;
+        /**
+         * The primary attack type targeted by this ruleset.
+         */
+        attackType?: number;
+        /**
+         * The individual managed rules included in this ruleset. See `managedRules` below.
+         */
+        managedRules?: outputs.esa.WafRuleConfigManagedRulesetManagedRule[];
+        /**
+         * Number of rules currently enabled.
+         */
+        numberEnabled: number;
+        /**
+         * Total number of rules in this ruleset.
+         */
+        numberTotal: number;
+        /**
+         * The protection strength level assigned to this ruleset.
+         */
+        protectionLevel?: number;
+    }
+
+    export interface WafRuleConfigManagedRulesetManagedRule {
+        action?: string;
+        /**
+         * The internal unique ID of the WAF rule.
+         */
+        id?: number;
+        /**
+         * The status of the managed rule: whether it is enabled or disabled.
+         */
+        status?: string;
+    }
+
+    export interface WafRuleConfigRateLimit {
+        /**
+         * The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+         */
+        characteristics?: outputs.esa.WafRuleConfigRateLimitCharacteristics;
+        /**
+         * The statistical interval.
+         */
+        interval?: number;
+        /**
+         * Indicates whether the rule applies to requests that hit the cache.
+         */
+        onHit?: boolean;
+        /**
+         * Threshold settings for the rate limiting rule. See `threshold` below.
+         */
+        threshold?: outputs.esa.WafRuleConfigRateLimitThreshold;
+        /**
+         * The timeout period for creating the stack used in rate limiting.
+         */
+        ttl?: number;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristics {
+        criterias?: outputs.esa.WafRuleConfigRateLimitCharacteristicsCriteria[];
+        logic?: string;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristicsCriteria {
+        criterias?: outputs.esa.WafRuleConfigRateLimitCharacteristicsCriteriaCriteria[];
+        logic?: string;
+        matchType?: string;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristicsCriteriaCriteria {
+        criterias?: outputs.esa.WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria[];
+        logic?: string;
+        matchType?: string;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
+        matchType?: string;
+    }
+
+    export interface WafRuleConfigRateLimitThreshold {
+        /**
+         * The maximum number of distinct managed rules that can be triggered.
+         */
+        distinctManagedRules?: number;
+        /**
+         * The maximum number of times that managed rules can be triggered.
+         */
+        managedRulesBlocked?: number;
+        /**
+         * The maximum number of allowed requests within a time interval.
+         */
+        request?: number;
+        /**
+         * Limits on the frequency of returning specific HTTP status codes. See `responseStatus` below.
+         */
+        responseStatus?: outputs.esa.WafRuleConfigRateLimitThresholdResponseStatus;
+        /**
+         * The maximum allowed traffic within a time interval (deprecated).
+         */
+        traffic?: string;
+    }
+
+    export interface WafRuleConfigRateLimitThresholdResponseStatus {
+        code?: number;
+        /**
+         * The maximum number of times the specified status code can be returned.
+         */
+        count?: number;
+        /**
+         * The upper limit of the percentage of occurrences of the specified status code among all responses.
+         */
+        ratio?: number;
+    }
+
+    export interface WafRuleConfigSecurityLevel {
+        /**
+         * The value of the custom signature field used for validation.
+         */
+        value?: string;
+    }
+
+    export interface WafRuleConfigTimer {
+        periods?: outputs.esa.WafRuleConfigTimerPeriod[];
+        /**
+         * Timing type:
+         */
+        scopes?: string;
+        /**
+         * Weekly recurring time schedules. See `weeklyPeriods` below.
+         */
+        weeklyPeriods?: outputs.esa.WafRuleConfigTimerWeeklyPeriod[];
+        /**
+         * The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+         */
+        zone?: number;
+    }
+
+    export interface WafRuleConfigTimerPeriod {
+        /**
+         * End time in HH:mm:ss format
+         */
+        end?: string;
+        /**
+         * Start time in HH:mm:ss format
+         */
+        start?: string;
+    }
+
+    export interface WafRuleConfigTimerWeeklyPeriod {
+        /**
+         * Daily effective time periods within a weekly schedule. See `dailyPeriods` below.
+         */
+        dailyPeriods?: outputs.esa.WafRuleConfigTimerWeeklyPeriodDailyPeriod[];
+        /**
+         * Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+         */
+        days?: string;
+    }
+
+    export interface WafRuleConfigTimerWeeklyPeriodDailyPeriod {
+        /**
+         * End time in HH:mm:ss format
+         */
+        end?: string;
+        /**
+         * Start time in HH:mm:ss format
+         */
+        start?: string;
+    }
+
+    export interface WafRuleShared {
+        /**
+         * The default action executed under shared configuration.
+         */
+        action?: string;
+        /**
+         * Extended action configurations under shared settings. See `actions` below.
+         */
+        actions?: outputs.esa.WafRuleSharedActions;
+        /**
+         * Specify the cross-domain site ID.
+         */
+        crossSiteId?: number;
+        /**
+         * The match expression used in shared configuration.
+         */
+        expression?: string;
+        /**
+         * Configuration of the request matching logic engine. See `match` below.
+         */
+        match?: outputs.esa.WafRuleSharedMatch;
+        /**
+         * The integration mode of the Web SDK:
+         */
+        mode?: string;
+        /**
+         * The display name of the ruleset.
+         */
+        name?: string;
+        /**
+         * The target type protected by this rule: web or app.
+         */
+        target?: string;
+    }
+
+    export interface WafRuleSharedActions {
+        response?: outputs.esa.WafRuleSharedActionsResponse;
+    }
+
+    export interface WafRuleSharedActionsResponse {
+        code?: number;
+        /**
+         * The internal unique ID of the WAF rule.
+         */
+        id?: number;
+    }
+
+    export interface WafRuleSharedMatch {
+        criterias?: outputs.esa.WafRuleSharedMatchCriteria[];
+        logic?: string;
+        matchType?: string;
+    }
+
+    export interface WafRuleSharedMatchCriteria {
+        criterias?: outputs.esa.WafRuleSharedMatchCriteriaCriteria[];
+        logic?: string;
+        matchType?: string;
+    }
+
+    export interface WafRuleSharedMatchCriteriaCriteria {
+        criterias?: outputs.esa.WafRuleSharedMatchCriteriaCriteriaCriteria[];
+        logic?: string;
+        matchType?: string;
+    }
+
+    export interface WafRuleSharedMatchCriteriaCriteriaCriteria {
+        matchType?: string;
+    }
+
     export interface WaitingRoomHostNameAndPath {
         /**
          * The domain name.
@@ -33278,6 +33756,58 @@ export namespace ess {
          */
         scheduledAction: string;
         taskEnabled: boolean;
+    }
+
+    export interface InstanceRefreshCheckpoint {
+        /**
+         * The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+         */
+        percentage?: number;
+    }
+
+    export interface InstanceRefreshDesiredConfigurationContainer {
+        /**
+         * The arguments for the container startup command.
+         */
+        args?: string[];
+        /**
+         * The container startup command.
+         */
+        commands?: string[];
+        /**
+         * Information about the environment variables. See `environmentVars` below for details.
+         */
+        environmentVars?: outputs.ess.InstanceRefreshDesiredConfigurationContainerEnvironmentVar[];
+        /**
+         * The container image.
+         */
+        image?: string;
+        /**
+         * The custom name of the container.
+         */
+        name?: string;
+    }
+
+    export interface InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
+        /**
+         * This parameter is not available for use.
+         */
+        fieldRefFieldPath?: string;
+        /**
+         * The name of the environment variable.
+         */
+        key?: string;
+        /**
+         * The value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface InstanceRefreshDesiredConfigurationLaunchTemplateOverride {
+        /**
+         * The specified instance type, which overwrites the instance type in the launch template.
+         */
+        instanceType?: string;
     }
 
     export interface ScalingConfigurationCustomPriority {
@@ -40781,6 +41311,12 @@ export namespace log {
          */
         accessKeySecret?: string;
         /**
+         * LogETL datasets.
+         *
+         * > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+         */
+        datasets?: string[];
+        /**
          * Delivery target logstore region.
          */
         endpoint: string;
@@ -40805,13 +41341,11 @@ export namespace log {
          */
         project: string;
         /**
-         * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
          */
         roleArn?: string;
         /**
          * ETL sinks type, the default value is AliyunLOG.
-         *
-         * > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
          */
         type?: string;
     }
@@ -49769,6 +50303,17 @@ export namespace resourcemanager {
          * The status of the resource group.
          */
         status: string;
+    }
+
+    export interface ResourceShareResource {
+        /**
+         * The ID of the shared resource.
+         */
+        resourceId?: string;
+        /**
+         * Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         */
+        resourceType?: string;
     }
 
 }

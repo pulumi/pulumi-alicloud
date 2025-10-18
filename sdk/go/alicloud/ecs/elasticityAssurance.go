@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Ecs Elasticity Assurance resource.
+// Provides a ECS Elasticity Assurance resource.
 //
-// For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
+// For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
 //
 // > **NOTE:** Available since v1.196.0.
 //
@@ -27,23 +27,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,9 +57,9 @@ import (
 //				InstanceAmount: pulumi.Int(1),
 //				Description:    pulumi.String("before"),
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String(defaultGetZones.Zones[2].Id),
+//					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
 //				},
-//				PrivatePoolOptionsName:          pulumi.String("test_before"),
+//				PrivatePoolOptionsName:          pulumi.String(name),
 //				Period:                          pulumi.Int(1),
 //				PrivatePoolOptionsMatchCriteria: pulumi.String("Open"),
 //				InstanceType:                    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
@@ -79,7 +78,7 @@ import (
 //
 // ## Import
 //
-// Ecs Elasticity Assurance can be imported using the id, e.g.
+// ECS Elasticity Assurance can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
@@ -89,13 +88,31 @@ type ElasticityAssurance struct {
 
 	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes pulumi.StringOutput `pulumi:"assuranceTimes"`
+	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+	// - true
+	// - false
+	//
+	// Default value: `false`.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+	// - Default value when `PeriodUnit` is set to Month: 1.
+	// - Default value when `PeriodUnit` is set to Year: 12.
+	//
+	// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// Unit of duration. Value range:
+	// - Month: Month
+	// - Year: Year
+	//
+	// Default value: Year
+	AutoRenewPeriodUnit pulumi.StringOutput `pulumi:"autoRenewPeriodUnit"`
 	// Description of flexible guarantee service.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The first ID of the resource
 	ElasticityAssuranceId pulumi.StringOutput `pulumi:"elasticityAssuranceId"`
 	// Flexible guarantee service failure time.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
 	InstanceAmount pulumi.IntOutput `pulumi:"instanceAmount"`
 	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -111,8 +128,10 @@ type ElasticityAssurance struct {
 	PrivatePoolOptionsMatchCriteria pulumi.StringOutput `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName pulumi.StringOutput `pulumi:"privatePoolOptionsName"`
+	// (Available since v1.261.0) The region ID of the elasticity assurance.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Flexible guarantee service effective time.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
@@ -168,13 +187,31 @@ func GetElasticityAssurance(ctx *pulumi.Context,
 type elasticityAssuranceState struct {
 	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes *string `pulumi:"assuranceTimes"`
+	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+	// - true
+	// - false
+	//
+	// Default value: `false`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+	// - Default value when `PeriodUnit` is set to Month: 1.
+	// - Default value when `PeriodUnit` is set to Year: 12.
+	//
+	// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Unit of duration. Value range:
+	// - Month: Month
+	// - Year: Year
+	//
+	// Default value: Year
+	AutoRenewPeriodUnit *string `pulumi:"autoRenewPeriodUnit"`
 	// Description of flexible guarantee service.
 	Description *string `pulumi:"description"`
 	// The first ID of the resource
 	ElasticityAssuranceId *string `pulumi:"elasticityAssuranceId"`
 	// Flexible guarantee service failure time.
 	EndTime *string `pulumi:"endTime"`
-	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
 	InstanceAmount *int `pulumi:"instanceAmount"`
 	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -190,6 +227,8 @@ type elasticityAssuranceState struct {
 	PrivatePoolOptionsMatchCriteria *string `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName *string `pulumi:"privatePoolOptionsName"`
+	// (Available since v1.261.0) The region ID of the elasticity assurance.
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Flexible guarantee service effective time.
@@ -209,13 +248,31 @@ type elasticityAssuranceState struct {
 type ElasticityAssuranceState struct {
 	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes pulumi.StringPtrInput
+	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+	// - true
+	// - false
+	//
+	// Default value: `false`.
+	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+	// - Default value when `PeriodUnit` is set to Month: 1.
+	// - Default value when `PeriodUnit` is set to Year: 12.
+	//
+	// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+	AutoRenewPeriod pulumi.IntPtrInput
+	// Unit of duration. Value range:
+	// - Month: Month
+	// - Year: Year
+	//
+	// Default value: Year
+	AutoRenewPeriodUnit pulumi.StringPtrInput
 	// Description of flexible guarantee service.
 	Description pulumi.StringPtrInput
 	// The first ID of the resource
 	ElasticityAssuranceId pulumi.StringPtrInput
 	// Flexible guarantee service failure time.
 	EndTime pulumi.StringPtrInput
-	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
 	InstanceAmount pulumi.IntPtrInput
 	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
 	InstanceChargeType pulumi.StringPtrInput
@@ -231,6 +288,8 @@ type ElasticityAssuranceState struct {
 	PrivatePoolOptionsMatchCriteria pulumi.StringPtrInput
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName pulumi.StringPtrInput
+	// (Available since v1.261.0) The region ID of the elasticity assurance.
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// Flexible guarantee service effective time.
@@ -254,9 +313,27 @@ func (ElasticityAssuranceState) ElementType() reflect.Type {
 type elasticityAssuranceArgs struct {
 	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes *string `pulumi:"assuranceTimes"`
+	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+	// - true
+	// - false
+	//
+	// Default value: `false`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+	// - Default value when `PeriodUnit` is set to Month: 1.
+	// - Default value when `PeriodUnit` is set to Year: 12.
+	//
+	// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Unit of duration. Value range:
+	// - Month: Month
+	// - Year: Year
+	//
+	// Default value: Year
+	AutoRenewPeriodUnit *string `pulumi:"autoRenewPeriodUnit"`
 	// Description of flexible guarantee service.
 	Description *string `pulumi:"description"`
-	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
 	InstanceAmount int `pulumi:"instanceAmount"`
 	// Instance type. Currently, only one instance type is supported.
 	InstanceType string `pulumi:"instanceType"`
@@ -284,9 +361,27 @@ type elasticityAssuranceArgs struct {
 type ElasticityAssuranceArgs struct {
 	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes pulumi.StringPtrInput
+	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+	// - true
+	// - false
+	//
+	// Default value: `false`.
+	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+	// - Default value when `PeriodUnit` is set to Month: 1.
+	// - Default value when `PeriodUnit` is set to Year: 12.
+	//
+	// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+	AutoRenewPeriod pulumi.IntPtrInput
+	// Unit of duration. Value range:
+	// - Month: Month
+	// - Year: Year
+	//
+	// Default value: Year
+	AutoRenewPeriodUnit pulumi.StringPtrInput
 	// Description of flexible guarantee service.
 	Description pulumi.StringPtrInput
-	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
 	InstanceAmount pulumi.IntInput
 	// Instance type. Currently, only one instance type is supported.
 	InstanceType pulumi.StringInput
@@ -402,6 +497,33 @@ func (o ElasticityAssuranceOutput) AssuranceTimes() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.AssuranceTimes }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+// - true
+// - false
+//
+// Default value: `false`.
+func (o ElasticityAssuranceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElasticityAssurance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+// - Default value when `PeriodUnit` is set to Month: 1.
+// - Default value when `PeriodUnit` is set to Year: 12.
+//
+// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+func (o ElasticityAssuranceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticityAssurance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Unit of duration. Value range:
+// - Month: Month
+// - Year: Year
+//
+// Default value: Year
+func (o ElasticityAssuranceOutput) AutoRenewPeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.AutoRenewPeriodUnit }).(pulumi.StringOutput)
+}
+
 // Description of flexible guarantee service.
 func (o ElasticityAssuranceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -417,7 +539,7 @@ func (o ElasticityAssuranceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
 func (o ElasticityAssuranceOutput) InstanceAmount() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.IntOutput { return v.InstanceAmount }).(pulumi.IntOutput)
 }
@@ -454,9 +576,14 @@ func (o ElasticityAssuranceOutput) PrivatePoolOptionsName() pulumi.StringOutput 
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.PrivatePoolOptionsName }).(pulumi.StringOutput)
 }
 
+// (Available since v1.261.0) The region ID of the elasticity assurance.
+func (o ElasticityAssuranceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
 // The ID of the resource group.
-func (o ElasticityAssuranceOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o ElasticityAssuranceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Flexible guarantee service effective time.

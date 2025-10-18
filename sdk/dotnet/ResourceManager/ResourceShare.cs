@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Resource Share resource.
     /// 
+    /// RS resource sharing.
+    /// 
     /// For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.111.0.
@@ -50,22 +52,66 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class ResourceShare : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to allow sharing to accounts outside the resource directory. Value:
+        /// - false (default): Only sharing within the resource directory is allowed.
+        /// - true: Allow sharing to any account.
+        /// </summary>
+        [Output("allowExternalTargets")]
+        public Output<bool?> AllowExternalTargets { get; private set; } = null!;
+
+        /// <summary>
+        /// The create time of resource share.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        /// </summary>
+        [Output("permissionNames")]
+        public Output<ImmutableArray<string>> PermissionNames { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of resource share.
         /// </summary>
         [Output("resourceShareName")]
         public Output<string> ResourceShareName { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the Resource Share.
+        /// The owner of resource share,  `Self` and `OtherAccounts`.
         /// </summary>
         [Output("resourceShareOwner")]
         public Output<string> ResourceShareOwner { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Resource Share.
+        /// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Resources` below.
+        /// </summary>
+        [Output("resources")]
+        public Output<ImmutableArray<Outputs.ResourceShareResource>> Resources { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of resource share.  `Active`,`Deleted` and `Deleting`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource user.
+        /// </summary>
+        [Output("targets")]
+        public Output<ImmutableArray<string>> Targets { get; private set; } = null!;
 
 
         /// <summary>
@@ -114,10 +160,72 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ResourceShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to allow sharing to accounts outside the resource directory. Value:
+        /// - false (default): Only sharing within the resource directory is allowed.
+        /// - true: Allow sharing to any account.
+        /// </summary>
+        [Input("allowExternalTargets")]
+        public Input<bool>? AllowExternalTargets { get; set; }
+
+        [Input("permissionNames")]
+        private InputList<string>? _permissionNames;
+
+        /// <summary>
+        /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        /// </summary>
+        public InputList<string> PermissionNames
+        {
+            get => _permissionNames ?? (_permissionNames = new InputList<string>());
+            set => _permissionNames = value;
+        }
+
+        /// <summary>
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The name of resource share.
         /// </summary>
         [Input("resourceShareName", required: true)]
         public Input<string> ResourceShareName { get; set; } = null!;
+
+        [Input("resources")]
+        private InputList<Inputs.ResourceShareResourceArgs>? _resources;
+
+        /// <summary>
+        /// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Resources` below.
+        /// </summary>
+        public InputList<Inputs.ResourceShareResourceArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.ResourceShareResourceArgs>());
+            set => _resources = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        [Input("targets")]
+        private InputList<string>? _targets;
+
+        /// <summary>
+        /// Resource user.
+        /// </summary>
+        public InputList<string> Targets
+        {
+            get => _targets ?? (_targets = new InputList<string>());
+            set => _targets = value;
+        }
 
         public ResourceShareArgs()
         {
@@ -128,22 +236,90 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ResourceShareState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to allow sharing to accounts outside the resource directory. Value:
+        /// - false (default): Only sharing within the resource directory is allowed.
+        /// - true: Allow sharing to any account.
+        /// </summary>
+        [Input("allowExternalTargets")]
+        public Input<bool>? AllowExternalTargets { get; set; }
+
+        /// <summary>
+        /// The create time of resource share.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        [Input("permissionNames")]
+        private InputList<string>? _permissionNames;
+
+        /// <summary>
+        /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        /// </summary>
+        public InputList<string> PermissionNames
+        {
+            get => _permissionNames ?? (_permissionNames = new InputList<string>());
+            set => _permissionNames = value;
+        }
+
+        /// <summary>
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The name of resource share.
         /// </summary>
         [Input("resourceShareName")]
         public Input<string>? ResourceShareName { get; set; }
 
         /// <summary>
-        /// The owner of the Resource Share.
+        /// The owner of resource share,  `Self` and `OtherAccounts`.
         /// </summary>
         [Input("resourceShareOwner")]
         public Input<string>? ResourceShareOwner { get; set; }
 
+        [Input("resources")]
+        private InputList<Inputs.ResourceShareResourceGetArgs>? _resources;
+
         /// <summary>
-        /// The status of the Resource Share.
+        /// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Resources` below.
+        /// </summary>
+        public InputList<Inputs.ResourceShareResourceGetArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.ResourceShareResourceGetArgs>());
+            set => _resources = value;
+        }
+
+        /// <summary>
+        /// The status of resource share.  `Active`,`Deleted` and `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        [Input("targets")]
+        private InputList<string>? _targets;
+
+        /// <summary>
+        /// Resource user.
+        /// </summary>
+        public InputList<string> Targets
+        {
+            get => _targets ?? (_targets = new InputList<string>());
+            set => _targets = value;
+        }
 
         public ResourceShareState()
         {

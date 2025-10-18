@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -44,6 +45,25 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accessKeySecret() {
         return Optional.ofNullable(this.accessKeySecret);
+    }
+
+    /**
+     * LogETL datasets.
+     * 
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+     * 
+     */
+    @Import(name="datasets")
+    private @Nullable Output<List<String>> datasets;
+
+    /**
+     * @return LogETL datasets.
+     * 
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+     * 
+     */
+    public Optional<Output<List<String>>> datasets() {
+        return Optional.ofNullable(this.datasets);
     }
 
     /**
@@ -137,14 +157,14 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
      * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
-     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -154,16 +174,12 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * ETL sinks type, the default value is AliyunLOG.
      * 
-     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
-     * 
-     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     public Optional<Output<String>> type() {
@@ -175,6 +191,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     private EtlEtlSinkArgs(EtlEtlSinkArgs $) {
         this.accessKeyId = $.accessKeyId;
         this.accessKeySecret = $.accessKeySecret;
+        this.datasets = $.datasets;
         this.endpoint = $.endpoint;
         this.kmsEncryptedAccessKeyId = $.kmsEncryptedAccessKeyId;
         this.kmsEncryptedAccessKeySecret = $.kmsEncryptedAccessKeySecret;
@@ -243,6 +260,43 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessKeySecret(String accessKeySecret) {
             return accessKeySecret(Output.of(accessKeySecret));
+        }
+
+        /**
+         * @param datasets LogETL datasets.
+         * 
+         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasets(@Nullable Output<List<String>> datasets) {
+            $.datasets = datasets;
+            return this;
+        }
+
+        /**
+         * @param datasets LogETL datasets.
+         * 
+         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasets(List<String> datasets) {
+            return datasets(Output.of(datasets));
+        }
+
+        /**
+         * @param datasets LogETL datasets.
+         * 
+         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasets(String... datasets) {
+            return datasets(List.of(datasets));
         }
 
         /**
@@ -372,7 +426,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * @param roleArn Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
          * 
          * @return builder
          * 
@@ -383,7 +437,7 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * @param roleArn Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
          * 
          * @return builder
          * 
@@ -395,8 +449,6 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type ETL sinks type, the default value is AliyunLOG.
          * 
-         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
-         * 
          * @return builder
          * 
          */
@@ -407,8 +459,6 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type ETL sinks type, the default value is AliyunLOG.
-         * 
-         * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
          * 
          * @return builder
          * 

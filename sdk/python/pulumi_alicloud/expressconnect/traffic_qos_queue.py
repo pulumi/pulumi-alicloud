@@ -26,18 +26,21 @@ class TrafficQosQueueArgs:
                  queue_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosQueue resource.
-        :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
+        :param pulumi.Input[_builtins.str] qos_id: The ID of the QoS policy.
         :param pulumi.Input[_builtins.str] queue_type: QoS queue type, value:
-               - **High**: High priority queue.
-               - **Medium**: Normal priority queue.
-               - **Default**: the Default priority queue.
+               - `High`: High priority queue.
+               - `Medium`: Normal priority queue.
+               - `Default`: the Default priority queue.
+               
                > **NOTE:**  Default priority queue cannot be created.
         :param pulumi.Input[_builtins.str] bandwidth_percent: QoS queue bandwidth percentage.
                
-               - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-               - When the QoS queue type is **Default**, this field is "-".
-        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+               - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+               - When the QoS queue type is `Default`, this field is "-".
+        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         pulumi.set(__self__, "qos_id", qos_id)
         pulumi.set(__self__, "queue_type", queue_type)
@@ -52,7 +55,7 @@ class TrafficQosQueueArgs:
     @pulumi.getter(name="qosId")
     def qos_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The QoS policy ID.
+        The ID of the QoS policy.
         """
         return pulumi.get(self, "qos_id")
 
@@ -65,9 +68,10 @@ class TrafficQosQueueArgs:
     def queue_type(self) -> pulumi.Input[_builtins.str]:
         """
         QoS queue type, value:
-        - **High**: High priority queue.
-        - **Medium**: Normal priority queue.
-        - **Default**: the Default priority queue.
+        - `High`: High priority queue.
+        - `Medium`: Normal priority queue.
+        - `Default`: the Default priority queue.
+
         > **NOTE:**  Default priority queue cannot be created.
         """
         return pulumi.get(self, "queue_type")
@@ -82,8 +86,8 @@ class TrafficQosQueueArgs:
         """
         QoS queue bandwidth percentage.
 
-        - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-        - When the QoS queue type is **Default**, this field is "-".
+        - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+        - When the QoS queue type is `Default`, this field is "-".
         """
         return pulumi.get(self, "bandwidth_percent")
 
@@ -95,7 +99,8 @@ class TrafficQosQueueArgs:
     @pulumi.getter(name="queueDescription")
     def queue_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS queue.
+        The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "queue_description")
 
@@ -107,7 +112,8 @@ class TrafficQosQueueArgs:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS queue.
+        The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "queue_name")
 
@@ -130,18 +136,21 @@ class _TrafficQosQueueState:
         Input properties used for looking up and filtering TrafficQosQueue resources.
         :param pulumi.Input[_builtins.str] bandwidth_percent: QoS queue bandwidth percentage.
                
-               - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-               - When the QoS queue type is **Default**, this field is "-".
-        :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
-        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] queue_id: The QoS queue ID.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+               - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+               - When the QoS queue type is `Default`, this field is "-".
+        :param pulumi.Input[_builtins.str] qos_id: The ID of the QoS policy.
+        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] queue_id: The ID of the QoS queue.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] queue_type: QoS queue type, value:
-               - **High**: High priority queue.
-               - **Medium**: Normal priority queue.
-               - **Default**: the Default priority queue.
+               - `High`: High priority queue.
+               - `Medium`: Normal priority queue.
+               - `Default`: the Default priority queue.
+               
                > **NOTE:**  Default priority queue cannot be created.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         """
         if bandwidth_percent is not None:
             pulumi.set(__self__, "bandwidth_percent", bandwidth_percent)
@@ -164,8 +173,8 @@ class _TrafficQosQueueState:
         """
         QoS queue bandwidth percentage.
 
-        - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-        - When the QoS queue type is **Default**, this field is "-".
+        - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+        - When the QoS queue type is `Default`, this field is "-".
         """
         return pulumi.get(self, "bandwidth_percent")
 
@@ -177,7 +186,7 @@ class _TrafficQosQueueState:
     @pulumi.getter(name="qosId")
     def qos_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The QoS policy ID.
+        The ID of the QoS policy.
         """
         return pulumi.get(self, "qos_id")
 
@@ -189,7 +198,8 @@ class _TrafficQosQueueState:
     @pulumi.getter(name="queueDescription")
     def queue_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS queue.
+        The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "queue_description")
 
@@ -201,7 +211,7 @@ class _TrafficQosQueueState:
     @pulumi.getter(name="queueId")
     def queue_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The QoS queue ID.
+        The ID of the QoS queue.
         """
         return pulumi.get(self, "queue_id")
 
@@ -213,7 +223,8 @@ class _TrafficQosQueueState:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS queue.
+        The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "queue_name")
 
@@ -226,9 +237,10 @@ class _TrafficQosQueueState:
     def queue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         QoS queue type, value:
-        - **High**: High priority queue.
-        - **Medium**: Normal priority queue.
-        - **Default**: the Default priority queue.
+        - `High`: High priority queue.
+        - `Medium`: Normal priority queue.
+        - `Default`: the Default priority queue.
+
         > **NOTE:**  Default priority queue cannot be created.
         """
         return pulumi.get(self, "queue_type")
@@ -241,7 +253,7 @@ class _TrafficQosQueueState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -263,7 +275,9 @@ class TrafficQosQueue(pulumi.CustomResource):
                  queue_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Express Connect Traffic Qos Queue resource. Express Connect Traffic QoS Queue.
+        Provides a Express Connect Traffic Qos Queue resource.
+
+        Express Connect Traffic QoS Queue.
 
         For information about Express Connect Traffic Qos Queue and how to use it, see [What is Traffic Qos Queue](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosQueue).
 
@@ -309,15 +323,18 @@ class TrafficQosQueue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_percent: QoS queue bandwidth percentage.
                
-               - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-               - When the QoS queue type is **Default**, this field is "-".
-        :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
-        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+               - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+               - When the QoS queue type is `Default`, this field is "-".
+        :param pulumi.Input[_builtins.str] qos_id: The ID of the QoS policy.
+        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] queue_type: QoS queue type, value:
-               - **High**: High priority queue.
-               - **Medium**: Normal priority queue.
-               - **Default**: the Default priority queue.
+               - `High`: High priority queue.
+               - `Medium`: Normal priority queue.
+               - `Default`: the Default priority queue.
+               
                > **NOTE:**  Default priority queue cannot be created.
         """
         ...
@@ -327,7 +344,9 @@ class TrafficQosQueue(pulumi.CustomResource):
                  args: TrafficQosQueueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Express Connect Traffic Qos Queue resource. Express Connect Traffic QoS Queue.
+        Provides a Express Connect Traffic Qos Queue resource.
+
+        Express Connect Traffic QoS Queue.
 
         For information about Express Connect Traffic Qos Queue and how to use it, see [What is Traffic Qos Queue](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosQueue).
 
@@ -435,18 +454,21 @@ class TrafficQosQueue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_percent: QoS queue bandwidth percentage.
                
-               - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-               - When the QoS queue type is **Default**, this field is "-".
-        :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
-        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] queue_id: The QoS queue ID.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+               - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+               - When the QoS queue type is `Default`, this field is "-".
+        :param pulumi.Input[_builtins.str] qos_id: The ID of the QoS policy.
+        :param pulumi.Input[_builtins.str] queue_description: The description of the QoS queue.
+               The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] queue_id: The ID of the QoS queue.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the QoS queue.
+               The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[_builtins.str] queue_type: QoS queue type, value:
-               - **High**: High priority queue.
-               - **Medium**: Normal priority queue.
-               - **Default**: the Default priority queue.
+               - `High`: High priority queue.
+               - `Medium`: Normal priority queue.
+               - `Default`: the Default priority queue.
+               
                > **NOTE:**  Default priority queue cannot be created.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -467,8 +489,8 @@ class TrafficQosQueue(pulumi.CustomResource):
         """
         QoS queue bandwidth percentage.
 
-        - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-        - When the QoS queue type is **Default**, this field is "-".
+        - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+        - When the QoS queue type is `Default`, this field is "-".
         """
         return pulumi.get(self, "bandwidth_percent")
 
@@ -476,7 +498,7 @@ class TrafficQosQueue(pulumi.CustomResource):
     @pulumi.getter(name="qosId")
     def qos_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The QoS policy ID.
+        The ID of the QoS policy.
         """
         return pulumi.get(self, "qos_id")
 
@@ -484,7 +506,8 @@ class TrafficQosQueue(pulumi.CustomResource):
     @pulumi.getter(name="queueDescription")
     def queue_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS queue.
+        The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "queue_description")
 
@@ -492,7 +515,7 @@ class TrafficQosQueue(pulumi.CustomResource):
     @pulumi.getter(name="queueId")
     def queue_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The QoS queue ID.
+        The ID of the QoS queue.
         """
         return pulumi.get(self, "queue_id")
 
@@ -500,7 +523,8 @@ class TrafficQosQueue(pulumi.CustomResource):
     @pulumi.getter(name="queueName")
     def queue_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS queue.
+        The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "queue_name")
 
@@ -509,9 +533,10 @@ class TrafficQosQueue(pulumi.CustomResource):
     def queue_type(self) -> pulumi.Output[_builtins.str]:
         """
         QoS queue type, value:
-        - **High**: High priority queue.
-        - **Medium**: Normal priority queue.
-        - **Default**: the Default priority queue.
+        - `High`: High priority queue.
+        - `Medium`: Normal priority queue.
+        - `Default`: the Default priority queue.
+
         > **NOTE:**  Default priority queue cannot be created.
         """
         return pulumi.get(self, "queue_type")
@@ -520,7 +545,7 @@ class TrafficQosQueue(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 

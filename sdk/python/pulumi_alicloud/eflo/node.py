@@ -25,7 +25,9 @@ class NodeArgs:
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -40,11 +42,14 @@ class NodeArgs:
         The set of arguments for constructing a Node resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model
+        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[_builtins.str] machine_type: Model
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+               The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
@@ -58,7 +63,7 @@ class NodeArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -67,6 +72,9 @@ class NodeArgs:
         if classify is not None:
             pulumi.set(__self__, "classify", classify)
         if computing_server is not None:
+            warnings.warn("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""computing_server is deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
+        if computing_server is not None:
             pulumi.set(__self__, "computing_server", computing_server)
         if discount_level is not None:
             pulumi.set(__self__, "discount_level", discount_level)
@@ -74,8 +82,12 @@ class NodeArgs:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
         if install_pai is not None:
             pulumi.set(__self__, "install_pai", install_pai)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
         if payment_ratio is not None:
             pulumi.set(__self__, "payment_ratio", payment_ratio)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if product_form is not None:
@@ -123,9 +135,10 @@ class NodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="computingServer")
+    @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
     def computing_server(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node Model
+        Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         """
         return pulumi.get(self, "computing_server")
 
@@ -170,6 +183,18 @@ class NodeArgs:
         pulumi.set(self, "install_pai", value)
 
     @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Model
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -180,6 +205,19 @@ class NodeArgs:
     @payment_ratio.setter
     def payment_ratio(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "payment_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+        The default is Subscription.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -275,7 +313,7 @@ class NodeArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -318,9 +356,12 @@ class _NodeState:
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -333,14 +374,18 @@ class _NodeState:
         Input properties used for looking up and filtering Node resources.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model
+        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[_builtins.str] machine_type: Model
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+               The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
                
                > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -352,7 +397,7 @@ class _NodeState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -360,6 +405,9 @@ class _NodeState:
             pulumi.set(__self__, "billing_cycle", billing_cycle)
         if classify is not None:
             pulumi.set(__self__, "classify", classify)
+        if computing_server is not None:
+            warnings.warn("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""computing_server is deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
         if computing_server is not None:
             pulumi.set(__self__, "computing_server", computing_server)
         if create_time is not None:
@@ -370,12 +418,18 @@ class _NodeState:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
         if install_pai is not None:
             pulumi.set(__self__, "install_pai", install_pai)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
         if payment_ratio is not None:
             pulumi.set(__self__, "payment_ratio", payment_ratio)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if product_form is not None:
             pulumi.set(__self__, "product_form", product_form)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
@@ -419,9 +473,10 @@ class _NodeState:
 
     @_builtins.property
     @pulumi.getter(name="computingServer")
+    @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
     def computing_server(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node Model
+        Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         """
         return pulumi.get(self, "computing_server")
 
@@ -478,6 +533,18 @@ class _NodeState:
         pulumi.set(self, "install_pai", value)
 
     @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Model
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -488,6 +555,19 @@ class _NodeState:
     @payment_ratio.setter
     def payment_ratio(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "payment_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+        The default is Subscription.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -512,6 +592,18 @@ class _NodeState:
     @product_form.setter
     def product_form(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "product_form", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
@@ -583,7 +675,7 @@ class _NodeState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -628,7 +720,9 @@ class Node(pulumi.CustomResource):
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -691,11 +785,14 @@ class Node(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model
+        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[_builtins.str] machine_type: Model
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+               The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
@@ -709,7 +806,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -787,7 +884,9 @@ class Node(pulumi.CustomResource):
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -813,7 +912,9 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["discount_level"] = discount_level
             __props__.__dict__["hpn_zone"] = hpn_zone
             __props__.__dict__["install_pai"] = install_pai
+            __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["payment_ratio"] = payment_ratio
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["product_form"] = product_form
             __props__.__dict__["renew_period"] = renew_period
@@ -825,6 +926,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(Node, __self__).__init__(
             'alicloud:eflo/node:Node',
             resource_name,
@@ -842,9 +944,12 @@ class Node(pulumi.CustomResource):
             discount_level: Optional[pulumi.Input[_builtins.str]] = None,
             hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
             install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
             payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
+            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             product_form: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             renew_period: Optional[pulumi.Input[_builtins.int]] = None,
             renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -862,14 +967,18 @@ class Node(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model
+        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[_builtins.str] machine_type: Model
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+               The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
                
                > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -881,7 +990,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -896,9 +1005,12 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["discount_level"] = discount_level
         __props__.__dict__["hpn_zone"] = hpn_zone
         __props__.__dict__["install_pai"] = install_pai
+        __props__.__dict__["machine_type"] = machine_type
         __props__.__dict__["payment_ratio"] = payment_ratio
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["product_form"] = product_form
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -927,9 +1039,10 @@ class Node(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="computingServer")
-    def computing_server(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
+    def computing_server(self) -> pulumi.Output[_builtins.str]:
         """
-        Node Model
+        Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
         """
         return pulumi.get(self, "computing_server")
 
@@ -966,12 +1079,29 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "install_pai")
 
     @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Model
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Down payment ratio
         """
         return pulumi.get(self, "payment_ratio")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+        The default is Subscription.
+        """
+        return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter
@@ -988,6 +1118,14 @@ class Node(pulumi.CustomResource):
         Form
         """
         return pulumi.get(self, "product_form")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
@@ -1039,7 +1177,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 

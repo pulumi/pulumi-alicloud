@@ -31,15 +31,19 @@ class CommonBandwithPackageAttachmentArgs:
                
                You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
                
-               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+               > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
-        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+               > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
+        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         :param pulumi.Input[_builtins.str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         pulumi.set(__self__, "instance_id", instance_id)
         if bandwidth_package_bandwidth is not None:
             pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        if cancel_common_bandwidth_package_ip_bandwidth is not None:
+            warnings.warn("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""", DeprecationWarning)
+            pulumi.log.warn("""cancel_common_bandwidth_package_ip_bandwidth is deprecated: Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
         if cancel_common_bandwidth_package_ip_bandwidth is not None:
             pulumi.set(__self__, "cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
         if ip_type is not None:
@@ -65,7 +69,7 @@ class CommonBandwithPackageAttachmentArgs:
 
         You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
 
-        > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -78,6 +82,7 @@ class CommonBandwithPackageAttachmentArgs:
     def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
@@ -87,9 +92,10 @@ class CommonBandwithPackageAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="cancelCommonBandwidthPackageIpBandwidth")
+    @_utilities.deprecated("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
     def cancel_common_bandwidth_package_ip_bandwidth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         """
         return pulumi.get(self, "cancel_common_bandwidth_package_ip_bandwidth")
 
@@ -122,13 +128,14 @@ class _CommonBandwithPackageAttachmentState:
         """
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
-        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the EIP that you want to query.
                
                You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
                
-               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+               > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         :param pulumi.Input[_builtins.str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         :param pulumi.Input[_builtins.str] status: The status of the Internet Shared Bandwidth instance.
         """
@@ -136,6 +143,9 @@ class _CommonBandwithPackageAttachmentState:
             pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
         if bandwidth_package_id is not None:
             pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        if cancel_common_bandwidth_package_ip_bandwidth is not None:
+            warnings.warn("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""", DeprecationWarning)
+            pulumi.log.warn("""cancel_common_bandwidth_package_ip_bandwidth is deprecated: Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
         if cancel_common_bandwidth_package_ip_bandwidth is not None:
             pulumi.set(__self__, "cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
         if instance_id is not None:
@@ -150,6 +160,7 @@ class _CommonBandwithPackageAttachmentState:
     def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
@@ -171,9 +182,10 @@ class _CommonBandwithPackageAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="cancelCommonBandwidthPackageIpBandwidth")
+    @_utilities.deprecated("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
     def cancel_common_bandwidth_package_ip_bandwidth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         """
         return pulumi.get(self, "cancel_common_bandwidth_package_ip_bandwidth")
 
@@ -189,7 +201,7 @@ class _CommonBandwithPackageAttachmentState:
 
         You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
 
-        > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -271,13 +283,14 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
-        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the EIP that you want to query.
                
                You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
                
-               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+               > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         :param pulumi.Input[_builtins.str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         ...
@@ -383,13 +396,14 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
-        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the EIP that you want to query.
                
                You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
                
-               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+               > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         :param pulumi.Input[_builtins.str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         :param pulumi.Input[_builtins.str] status: The status of the Internet Shared Bandwidth instance.
         """
@@ -410,6 +424,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def bandwidth_package_bandwidth(self) -> pulumi.Output[_builtins.str]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
@@ -423,9 +438,10 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="cancelCommonBandwidthPackageIpBandwidth")
+    @_utilities.deprecated("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
     def cancel_common_bandwidth_package_ip_bandwidth(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         """
         return pulumi.get(self, "cancel_common_bandwidth_package_ip_bandwidth")
 
@@ -437,7 +453,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
 
-        > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         """
         return pulumi.get(self, "instance_id")
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of available zones by the enhanced Nat Gateway.
  *
- * > **NOTE:** Available since 1.102.0+.
+ * > **NOTE:** Available since v1.102.0.
  *
  * ## Example Usage
  *
@@ -48,7 +48,7 @@ export interface GetEnhancedNatAvailableZonesResult {
      */
     readonly id: string;
     /**
-     * (Optional) A list of available zones IDs by the enhanced NAT gateway.
+     * A list of available zones IDs by the enhanced NAT gateway.
      */
     readonly ids: string[];
     readonly outputFile?: string;
@@ -60,7 +60,7 @@ export interface GetEnhancedNatAvailableZonesResult {
 /**
  * This data source provides a list of available zones by the enhanced Nat Gateway.
  *
- * > **NOTE:** Available since 1.102.0+.
+ * > **NOTE:** Available since v1.102.0.
  *
  * ## Example Usage
  *

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a Ecs Elasticity Assurance resource.
+    /// Provides a ECS Elasticity Assurance resource.
     /// 
-    /// For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
+    /// For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
     /// 
@@ -28,14 +28,11 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
-    ///     });
-    /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
     ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
@@ -49,9 +46,9 @@ namespace Pulumi.AliCloud.Ecs
     ///         Description = "before",
     ///         ZoneIds = new[]
     ///         {
-    ///             defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[2]?.Id),
+    ///             defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
     ///         },
-    ///         PrivatePoolOptionsName = "test_before",
+    ///         PrivatePoolOptionsName = name,
     ///         Period = 1,
     ///         PrivatePoolOptionsMatchCriteria = "Open",
     ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
@@ -65,7 +62,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Import
     /// 
-    /// Ecs Elasticity Assurance can be imported using the id, e.g.
+    /// ECS Elasticity Assurance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example &lt;id&gt;
@@ -79,6 +76,36 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("assuranceTimes")]
         public Output<string> AssuranceTimes { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        /// - true
+        /// - false
+        /// 
+        /// Default value: `False`.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        /// - Default value when `PeriodUnit` is set to Month: 1.
+        /// - Default value when `PeriodUnit` is set to Year: 12.
+        /// 
+        /// &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        /// </summary>
+        [Output("autoRenewPeriod")]
+        public Output<int?> AutoRenewPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Unit of duration. Value range:
+        /// - Month: Month
+        /// - Year: Year
+        /// 
+        /// Default value: Year
+        /// </summary>
+        [Output("autoRenewPeriodUnit")]
+        public Output<string> AutoRenewPeriodUnit { get; private set; } = null!;
 
         /// <summary>
         /// Description of flexible guarantee service.
@@ -99,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `InstanceAmount` can be modified.
         /// </summary>
         [Output("instanceAmount")]
         public Output<int> InstanceAmount { get; private set; } = null!;
@@ -143,10 +170,16 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PrivatePoolOptionsName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.261.0) The region ID of the elasticity assurance.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Flexible guarantee service effective time.
@@ -237,13 +270,43 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AssuranceTimes { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        /// - true
+        /// - false
+        /// 
+        /// Default value: `False`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        /// - Default value when `PeriodUnit` is set to Month: 1.
+        /// - Default value when `PeriodUnit` is set to Year: 12.
+        /// 
+        /// &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Unit of duration. Value range:
+        /// - Month: Month
+        /// - Year: Year
+        /// 
+        /// Default value: Year
+        /// </summary>
+        [Input("autoRenewPeriodUnit")]
+        public Input<string>? AutoRenewPeriodUnit { get; set; }
+
+        /// <summary>
         /// Description of flexible guarantee service.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `InstanceAmount` can be modified.
         /// </summary>
         [Input("instanceAmount", required: true)]
         public Input<int> InstanceAmount { get; set; } = null!;
@@ -331,6 +394,36 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AssuranceTimes { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        /// - true
+        /// - false
+        /// 
+        /// Default value: `False`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        /// - Default value when `PeriodUnit` is set to Month: 1.
+        /// - Default value when `PeriodUnit` is set to Year: 12.
+        /// 
+        /// &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Unit of duration. Value range:
+        /// - Month: Month
+        /// - Year: Year
+        /// 
+        /// Default value: Year
+        /// </summary>
+        [Input("autoRenewPeriodUnit")]
+        public Input<string>? AutoRenewPeriodUnit { get; set; }
+
+        /// <summary>
         /// Description of flexible guarantee service.
         /// </summary>
         [Input("description")]
@@ -349,7 +442,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+        /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `InstanceAmount` can be modified.
         /// </summary>
         [Input("instanceAmount")]
         public Input<int>? InstanceAmount { get; set; }
@@ -391,6 +484,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("privatePoolOptionsName")]
         public Input<string>? PrivatePoolOptionsName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.261.0) The region ID of the elasticity assurance.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

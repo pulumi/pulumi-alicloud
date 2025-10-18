@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Vbr Ha resource.
+// Provides a Express Connect Vbr Ha resource.
 //
-// For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
+// VBR switching Group.
+//
+// For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
 //
 // > **NOTE:** Available since v1.151.0.
 //
@@ -135,7 +137,7 @@ import (
 //
 // ## Import
 //
-// VPC Vbr Ha can be imported using the id, e.g.
+// Express Connect Vbr Ha can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
@@ -143,17 +145,24 @@ import (
 type VbrHa struct {
 	pulumi.CustomResourceState
 
-	// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The creation time of the VBR.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the VBR switching group.
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value range:
+	// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+	// - *false** (default): Send a normal request and start the instance directly after passing the check.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The ID of the other VBR in the VBR failover group.
+	// The instance ID of another VBR in The VBR switching group.
 	PeerVbrId pulumi.StringOutput `pulumi:"peerVbrId"`
-	// The state of the VBR failover group.
+	// The ID of the region to which the VBR belongs.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// Status of VBR switching Group
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The name of the VBR failover group.
+	// VBR switch group name.
 	VbrHaName pulumi.StringPtrOutput `pulumi:"vbrHaName"`
-	// The ID of the VBR instance.
+	// The VBR instance ID.
 	VbrId pulumi.StringOutput `pulumi:"vbrId"`
 }
 
@@ -193,32 +202,46 @@ func GetVbrHa(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VbrHa resources.
 type vbrHaState struct {
-	// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The creation time of the VBR.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the VBR switching group.
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value range:
+	// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+	// - *false** (default): Send a normal request and start the instance directly after passing the check.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the other VBR in the VBR failover group.
+	// The instance ID of another VBR in The VBR switching group.
 	PeerVbrId *string `pulumi:"peerVbrId"`
-	// The state of the VBR failover group.
+	// The ID of the region to which the VBR belongs.
+	RegionId *string `pulumi:"regionId"`
+	// Status of VBR switching Group
 	Status *string `pulumi:"status"`
-	// The name of the VBR failover group.
+	// VBR switch group name.
 	VbrHaName *string `pulumi:"vbrHaName"`
-	// The ID of the VBR instance.
+	// The VBR instance ID.
 	VbrId *string `pulumi:"vbrId"`
 }
 
 type VbrHaState struct {
-	// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The creation time of the VBR.
+	CreateTime pulumi.StringPtrInput
+	// The description of the VBR switching group.
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Whether to PreCheck only this request. Value range:
+	// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+	// - *false** (default): Send a normal request and start the instance directly after passing the check.
 	DryRun pulumi.BoolPtrInput
-	// The ID of the other VBR in the VBR failover group.
+	// The instance ID of another VBR in The VBR switching group.
 	PeerVbrId pulumi.StringPtrInput
-	// The state of the VBR failover group.
+	// The ID of the region to which the VBR belongs.
+	RegionId pulumi.StringPtrInput
+	// Status of VBR switching Group
 	Status pulumi.StringPtrInput
-	// The name of the VBR failover group.
+	// VBR switch group name.
 	VbrHaName pulumi.StringPtrInput
-	// The ID of the VBR instance.
+	// The VBR instance ID.
 	VbrId pulumi.StringPtrInput
 }
 
@@ -227,29 +250,35 @@ func (VbrHaState) ElementType() reflect.Type {
 }
 
 type vbrHaArgs struct {
-	// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The description of the VBR switching group.
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value range:
+	// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+	// - *false** (default): Send a normal request and start the instance directly after passing the check.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the other VBR in the VBR failover group.
+	// The instance ID of another VBR in The VBR switching group.
 	PeerVbrId string `pulumi:"peerVbrId"`
-	// The name of the VBR failover group.
+	// VBR switch group name.
 	VbrHaName *string `pulumi:"vbrHaName"`
-	// The ID of the VBR instance.
+	// The VBR instance ID.
 	VbrId string `pulumi:"vbrId"`
 }
 
 // The set of arguments for constructing a VbrHa resource.
 type VbrHaArgs struct {
-	// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The description of the VBR switching group.
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Whether to PreCheck only this request. Value range:
+	// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+	// - *false** (default): Send a normal request and start the instance directly after passing the check.
 	DryRun pulumi.BoolPtrInput
-	// The ID of the other VBR in the VBR failover group.
+	// The instance ID of another VBR in The VBR switching group.
 	PeerVbrId pulumi.StringInput
-	// The name of the VBR failover group.
+	// VBR switch group name.
 	VbrHaName pulumi.StringPtrInput
-	// The ID of the VBR instance.
+	// The VBR instance ID.
 	VbrId pulumi.StringInput
 }
 
@@ -340,32 +369,45 @@ func (o VbrHaOutput) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 	return o
 }
 
-// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+// The creation time of the VBR.
+func (o VbrHaOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the VBR switching group.
+// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
 func (o VbrHaOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VbrHa) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The dry run.
+// Whether to PreCheck only this request. Value range:
+// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+// - *false** (default): Send a normal request and start the instance directly after passing the check.
 func (o VbrHaOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VbrHa) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the other VBR in the VBR failover group.
+// The instance ID of another VBR in The VBR switching group.
 func (o VbrHaOutput) PeerVbrId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.PeerVbrId }).(pulumi.StringOutput)
 }
 
-// The state of the VBR failover group.
+// The ID of the region to which the VBR belongs.
+func (o VbrHaOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Status of VBR switching Group
 func (o VbrHaOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of the VBR failover group.
+// VBR switch group name.
 func (o VbrHaOutput) VbrHaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VbrHa) pulumi.StringPtrOutput { return v.VbrHaName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VBR instance.
+// The VBR instance ID.
 func (o VbrHaOutput) VbrId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.VbrId }).(pulumi.StringOutput)
 }

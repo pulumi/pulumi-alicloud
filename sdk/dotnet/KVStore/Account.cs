@@ -99,9 +99,9 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// The name of the account. The name must meet the following requirements:
-        /// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+        /// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
         /// * The name can be up to 100 characters in length.
-        /// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+        /// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
@@ -210,9 +210,9 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// The name of the account. The name must meet the following requirements:
-        /// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+        /// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
         /// * The name can be up to 100 characters in length.
-        /// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+        /// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
@@ -289,9 +289,9 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// The name of the account. The name must meet the following requirements:
-        /// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+        /// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
         /// * The name can be up to 100 characters in length.
-        /// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+        /// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
